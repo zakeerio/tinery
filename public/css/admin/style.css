@@ -1,0 +1,67 @@
+body.login-page {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.login-page div.has-feedback {
+    position: relative;
+}
+
+body.login-page div.has-feedback i {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+body.login-page span.invalid-feedback {
+    display: block;
+}
+
+div.br-sideleft-menu a {
+    color: white;
+}
+
+span.required {
+    color: red;
+}
+
+table#datatable1 td p {
+    margin: 0px;
+}
+
+a:not([href]):not([tabindex]) {
+    color: rgb(2, 108, 230);
+}
+
+.permission-body {
+    padding-left: 15px;
+}
+
+.permission-card {
+    box-shadow: 1px 1px 9px -3px gray;
+    margin: 10px;
+}
+
+.permission-body p span {
+    display: inline-block;
+    min-width: 75% !important;
+}
+
+.permission-body p a {
+    margin: 0px 10px;
+}
+
+.permission-body p a:hover {
+    box-shadow: 0px 1px 2px 1px #bbbaba;
+}
+
+.login-box,
+.register-box {
+    width: 450px;
+    margin: 10% auto;
+    box-shadow: 0px 0px 23px -4px black;
+}
+
+.settings-uploads img {
+    width: 65%;
+}
