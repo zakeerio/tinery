@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('front');
+    return view('frontend.pages.home');
+})->name('home');
+
+Route::get('/itineraries', function(){
+    return view('frontend.pages.itineraries');
+})->name('itineraries');
+
+Route::get('/discover', function(){
+    return view('frontend.pages.discover');
+})->name('discover');
+
 
 Route::group(['namespace' => 'Auth',], function () {
 
@@ -37,5 +46,6 @@ Route::group(['namespace' => 'Auth',], function () {
 
 });
 
-Route::get('home', 'UserController@index')->name('home');
+// Route::get('/', 'UserController@index')->name('home');
+// Route::get('search', 'UserController@index')->name('search');
 

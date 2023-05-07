@@ -16,7 +16,7 @@
                         <a href="#" class="d-block">{{auth()->user()->name}}<br>{{auth()->user()->roles()->first()->name}}</a>
                     </div>
                 </div>
-                
+
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul id="main_nav_ul" class="nav nav-pills nav-sidebar flex-column {{config('settings.ctrl_nav_flat')}} {{config('settings.ctrl_nav_legacy')}} {{config('settings.ctrl_nav_compact')}} {{config('settings.ctrl_nav_child_indent')}} {{config('settings.ctrl_nav_collapse_hide_child')}}" data-widget="treeview" role="menu"
@@ -91,6 +91,18 @@
                             </a>
                         </li>
                         @endcan
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
