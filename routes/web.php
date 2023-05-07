@@ -25,6 +25,10 @@ Route::get('/discover', function(){
     return view('frontend.pages.discover');
 })->name('discover');
 
+Route::get('/about', function(){
+    return view('frontend.pages.about');
+})->name('about');
+
 
 Route::group(['namespace' => 'Auth',], function () {
 
