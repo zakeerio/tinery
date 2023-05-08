@@ -70,6 +70,22 @@
                             </ul>
                         </li>
                         <li class="nav-header">Media Library</li>
+                        @php
+                            $permissions = \Spatie\Permission\Models\Permission::get();
+                        @endphp
+
+                        @foreach ($permissions as $permission )
+
+                            {{ $permission->name." -- ".$permission->guard_name }}<br>
+
+                            @can($permission->name)
+                            TRUE ---<br>
+                            @endcan
+
+
+
+                        @endforeach
+
                         @can('setting-index')
                         <li class="nav-item">
                             <a href="{{route('admin.media')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.media") !== false ? 'active' :''}}">
@@ -87,6 +103,19 @@
                                 <i class="nav-icon fa fa-cogs"></i>
                                 <p>
                                     Settings
+                                </p>
+                            </a>
+                        </li>
+                        @endcan
+
+
+                        @can('itineraries-index')
+                        <li class="nav-header">My Iteneraries</li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.itineraries.index') }}" class="nav-link ">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    Itineraries
                                 </p>
                             </a>
                         </li>

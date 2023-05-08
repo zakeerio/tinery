@@ -14,8 +14,10 @@ class RepositoryServiceProvider extends ServiceProvider
         \App\Interfaces\PermissionInterface::class=>\App\Repositories\PermissionRepository::class,
         \App\Interfaces\RoleInterface::class=>\App\Repositories\RoleRepository::class,
         \App\Interfaces\ProductInterface::class=>\App\Repositories\ProductRepository::class,
+        \App\Interfaces\CategoryInterface::class=>\App\Repositories\CategoryRepository::class,
+
     ];
-    
+
     /**
      * Register services.
      *
