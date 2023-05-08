@@ -38,11 +38,9 @@ class Itineraries extends BaseController
      */
     public function create()
     {
-        dd('test');
-
         //
         $this->setPageTitle("Itineraries","Itineraries List");
-        return view('admin.Itineraries.create',compact('itineraries'));
+        return view('admin.Itineraries.create');
     }
 
     /**
