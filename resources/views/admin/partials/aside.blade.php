@@ -76,10 +76,10 @@
 
                         @foreach ($permissions as $permission )
 
-                            {{ $permission->name." -- ".$permission->guard_name }}<br>
+                            {{-- {{ $permission->name." -- ".$permission->guard_name }}<br> --}}
 
                             @can($permission->name)
-                            TRUE ---<br>
+                            {{-- TRUE ---<br> --}}
                             @endcan
 
 
@@ -109,7 +109,7 @@
                         @endcan
 
 
-                        @can('itineraries-index')
+                        {{-- @can('itineraries-index') --}}
                         <li class="nav-header">My Iteneraries</li>
                         <li class="nav-item">
                             <a href="{{ route('admin.itineraries.index') }}" class="nav-link ">
@@ -119,7 +119,7 @@
                                 </p>
                             </a>
                         </li>
-                        @endcan
+                        {{-- @endcan --}}
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
