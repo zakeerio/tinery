@@ -32,6 +32,8 @@ Route::group([
     // Media Library
     Route::get('media-libarary', 'AdminController@media')->name('media');
 
+    // extra routes.
+
 
     // Routes
     Route::get('/', 'AdminController@index')->name('dashboard');
