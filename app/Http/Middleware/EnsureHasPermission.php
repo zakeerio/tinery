@@ -21,11 +21,16 @@ class EnsureHasPermission
             $controllerAction = class_basename($routeArray['controller']);
             list($controller, $action) = explode('@', $controllerAction);
             $permissionName = str_replace('controller','',strtolower($controller)).'-'.$action;
+            // dd($permissionName);
+            
+            // dd(\Auth::user()->roles[0]->hasPermissionTo($permissionName));
+            
             $permissionExists = \DB::table('permissions')->where('name',$permissionName)->count();
-
+            
             if($permissionExists < 1){
                 \App::abort(403, 'User does not have the right permissions.');
             }
+
             if (\Auth::user()->roles[0]->hasPermissionTo($permissionName))
             {
                 return $next($request);

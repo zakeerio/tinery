@@ -21,8 +21,10 @@ Route::group([
     Route::resource('roles', RoleController::class);
     Route::resource('admins', AdminUserController::class);
     Route::resource('permissions', PermissionController::class);
-    Route::resource('itineraries', Itineraries::class);
-
+    Route::resource('itineraries', ItinerariesController::class);
+    Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
+    Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
+    Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
     // system settings
     // Route::resource('settings', SettingController::class);
     Route::get('/settings', 'SettingController@index')->name('settings.index');
@@ -44,20 +46,18 @@ Route::group([
 
     // Route::get('/itineraries/create', 'Itineraries@create')->name('itineraries.create');
 
-
     // Route::get('/itineraries/create', function(){
     //     $pageTitle = "Create Itinerary";
     //     return view('admin.itineraries.create')->with('pageTitle', $pageTitle);
     // })->name('itineraries.create');
+    // Route::post('/itineraries/store', 'ItinerariesController@store')->name('admin.itineraries.store');
 
+    // // Route::get('/itineraries', function(){
+    // //     $pageTitle = "My Itineraries";
+    // //     return view('admin.itineraries.index')->with('pageTitle', $pageTitle);
+    // // })->name('itineraries.index');
 
-    // Route::get('/itineraries', function(){
-    //     $pageTitle = "My Itineraries";
-    //     return view('admin.itineraries.index')->with('pageTitle', $pageTitle);
-    // })->name('itineraries.index');
-
-
-    // Route::get('/itineraries/edit', 'AdminController@index')->name('itineraries.edit');
-    // Route::get('/itineraries/store', 'AdminController@index')->name('itineraries.store');
+    // // Route::get('/itineraries/edit', 'AdminController@index')->name('itineraries.edit');
+    // // Route::get('/itineraries/store', 'AdminController@index')->name('itineraries.store');
 
 });

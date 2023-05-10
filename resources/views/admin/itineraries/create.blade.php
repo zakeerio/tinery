@@ -57,6 +57,7 @@
 
                         {!! Form::open(['route' => 'admin.itineraries.store', 'method' => 'POST']) !!}
                         <div class="form-group">
+                        @csrf
                         {!! Form::label('title', 'Title') !!}
                         {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
                         </div>
@@ -93,7 +94,6 @@
                         @php
                             $categories = ['category1'=> 'category1', 'category2' => 'category2' ];
                             $tags = ['tag1'=> 'tag1', 'tag2' => 'tag2' ];
-
                         @endphp
                         {!! Form::select('categories', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
                         </div>
