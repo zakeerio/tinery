@@ -55,8 +55,8 @@ class ItinerariesController extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'author' => 'required',
-            'categories' => 'required',
-            'tags' => 'required',
+            'categories' => 'required|array',
+            'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
             'address_street_line1' => 'nullable|string|max:255',
             'address_city' => 'nullable|string|max:255',
@@ -106,8 +106,8 @@ class ItinerariesController extends BaseController
             $array->seo_description = $data['seo_description'];
             $array->seo_image = $data['seo_image'];
             $array->author = $data['author'];
-            $array->categories = $data['categories'];
-            $array->tags = $data['tags'];
+            $array->categories = json_encode($data['categories']);
+            $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->address_street_line1 = $data['address_street_line1'];
             $array->address_city = $data['address_city'];
@@ -170,8 +170,8 @@ class ItinerariesController extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'author' => 'required',
-            'categories' => 'required',
-            'tags' => 'required',
+            'categories' => 'required|array',
+            'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
             'address_street_line1' => 'nullable|string|max:255',
             'address_city' => 'nullable|string|max:255',
@@ -221,8 +221,8 @@ class ItinerariesController extends BaseController
             $array->seo_description = $data['seo_description'];
             $array->seo_image = $data['seo_image'];
             $array->author = $data['author'];
-            $array->categories = $data['categories'];
-            $array->tags = $data['tags'];
+            $array->categories = json_encode($data['categories']);
+            $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->address_street_line1 = $data['address_street_line1'];
             $array->address_city = $data['address_city'];

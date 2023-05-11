@@ -95,11 +95,11 @@
                             $categories = ['category1'=> 'category1', 'category2' => 'category2' ];
                             $tags = ['tag1'=> 'tag1', 'tag2' => 'tag2' ];
                         @endphp
-                        {!! Form::select('categories', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
+                        {!! Form::select('categories[]', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
                         </div>
                         <div class="form-group">
                         {!! Form::label('tags', 'Tags') !!}
-                        {!! Form::select('tags', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
+                        {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
@@ -167,6 +167,38 @@
                         {!! Form::label('status', 'Status') !!}
                         {!! Form::select('status', ['published' => 'Published', 'draft' => 'Draft'], null, ['class' => 'form-control']) !!}
                         </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3>
+                                    Add Activities
+                                </h3>
+                            </div>
+                            <div class="col-lg-6 mt-2 form-group">
+                                <label>Availability Day</label>
+                                <select name="day[]" required class="form-control">
+                                    <option value="">Select One</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 mt-2 form-group">
+                                <label>Start Time </label>
+                                <input type="time" name="stime[]" required class="form-control" />
+                            </div>
+                            <div class="col-lg-6 mt-2 form-group">
+                                <label>End Date</label>
+                                <input type="time" name="etime[]" required class="form-control" />
+                            </div>
+                            <div class="col-lg-6 mt-2 form-group">
+                                <label>Duration </label>
+                                <input type="number" name="duration[]" required class="form-control" />
+                            </div>
                         </div>
                         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}

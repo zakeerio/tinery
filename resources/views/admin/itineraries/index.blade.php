@@ -109,6 +109,7 @@
                                         <th>Visibility</th>
                                         <th>Status</th>
                                     </tr>
+                                    @if(!empty($itineraries))
                                     @foreach($itineraries as $row)
                                     <tr>
                                         <td>
@@ -123,8 +124,22 @@
                                         <td>{{ $row->seo_description}}</td>
                                         <td>{{ $row->seo_image}}</td>
                                         <td>{{ $row->author}}</td>
-                                        <td>{{ $row->categories}}</td>
-                                        <td>{{ $row->tags}}</td>
+                                        <td>
+                                            @php
+                                                $categories = json_decode($row->categories)
+                                            @endphp
+                                            @foreach($categories as $categories)
+                                                {{$categories}}
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @php
+                                                $tags = json_decode($row->tags)
+                                            @endphp
+                                            @foreach($tags as $tags)
+                                                {{$tags}}
+                                            @endforeach
+                                        </td>
                                         <td>{{ $row->address_street}}</td>
                                         <td>{{ $row->address_street_line1}}</td>
                                         <td>{{ $row->address_city}}</td>
@@ -141,6 +156,7 @@
                                         <td>{{ $row->status}}</td>
                                     </tr>
                                     @endforeach
+                                    @endif
                                 </table>
                             </div>
                         </div>
