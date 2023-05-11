@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 10, 2023 at 07:57 AM
+-- Generation Time: May 11, 2023 at 07:17 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -130,14 +130,15 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `itineraries_slug_unique` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itineraries`
 --
 
 INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo_title`, `seo_description`, `seo_image`, `author`, `categories`, `tags`, `address_street`, `address_street_line1`, `address_city`, `address_state`, `address_zipcode`, `address_country`, `latitude`, `longitude`, `phone`, `website`, `additional_info`, `activities_data`, `featured`, `visibility`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'djsa', 'fjskda', 'jfksd', 'jsdkj', 'flsgj', 'gfjsdklgjsdf', NULL, 'fjsglfj', 'category2', 'tag1', 'fsjg', 'gdfj', 'gfklsj', 'jgdflskj', 'jfdskl', 'jgdfkslj', 'jgsfklj', 'gjsflj', 'jgsfklj', 'jgsfkl', 'fsgljsdfl', NULL, '1', 'public', 'published', '2023-05-10 01:57:15', '2023-05-10 01:57:15');
+(2, 'djsa', 'fjskda', 'jfksd', 'jsdkj', 'flsgj', 'gfjsdklgjsdf', NULL, 'fjsglfj', '[\"category2\"]', '[\"tag1\",\"tag3\",\"tag4\"]', 'fsjg', 'gdfj', 'gfklsj', 'jgdflskj', 'jfdskl', 'jgdfkslj', 'jgsfklj', 'gjsflj', 'jgsfklj', 'jgsfkl', 'fsgljsdfl', NULL, '1', 'public', 'published', '2023-05-10 01:57:15', '2023-05-11 13:58:02'),
+(3, 'jsfagh', 'ghsdfjgh', 'hgsdfjkh', 'gsdfjkgh', NULL, NULL, NULL, 'ghdfjskh', '[\"category2\",\"category4\"]', '[\"tag2\",\"tag4\"]', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-11 10:20:38', '2023-05-11 13:51:50');
 
 -- --------------------------------------------------------
 
