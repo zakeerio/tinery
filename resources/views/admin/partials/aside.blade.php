@@ -121,14 +121,14 @@
                         </li>
                         @endcan
                         @can('itineraries-create')
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('admin.itinerariescategories.index') }}" class="nav-link ">
                                 <i class="nav-icon fa fa-edit"></i>
                                 <p>
                                     Itineraries categories
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         @endcan
 
                         <li class="nav-item">
