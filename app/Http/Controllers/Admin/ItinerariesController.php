@@ -96,7 +96,7 @@ class ItinerariesController extends BaseController
         }
         else{
             $data = $request->input();
-            
+
             $array = new Itineraries;
             $array->title = $data['title'];
             $array->slug = $data['slug'];
@@ -127,7 +127,9 @@ class ItinerariesController extends BaseController
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.Itineraries.index')->with('success', 'Post created successfully.');
+        // return redirect()->route('admin.Itineraries.index')->with('success', 'Post created successfully.');
+        return $this->responseRedirect('admin.itineraries.index', 'Itinerary Created successfully.', 'success');
+
     }
 
     /**
@@ -136,9 +138,12 @@ class ItinerariesController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($slug)
     {
         //
+
+        // dd($slug);
+
         $this->setPageTitle("Itineraries","Itineraries List");
         $itineraries = Itineraries::get();
         return view('admin.itineraries.index',compact('itineraries'));
@@ -211,7 +216,7 @@ class ItinerariesController extends BaseController
         }
         else{
             $data = $request->input();
-            
+
             $array = Itineraries::find($id);
             $array->title = $data['title'];
             $array->slug = $data['slug'];
@@ -241,8 +246,10 @@ class ItinerariesController extends BaseController
             $array->save();
         }
         // Logic for storing the data goes here...
+        return $this->responseRedirect('admin.itineraries.index', 'Itinerary Updated successfully.', 'success');
 
-        return redirect('admin/itineraries/index')->with('success', 'Post Updated successfully.');
+
+        // return redirect()->route('admin.itineraries.index')->with('success', 'Itinerary Updated successfully.');
     }
 
     /**
@@ -251,10 +258,14 @@ class ItinerariesController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($itinerary)
     {
-        Itineraries::find($id)->delete();
-        return redirect('admin/itineraries/index')->with('success', 'Post Deleted successfully.');
+        // dd($itinerary);
+        $itinerary = Itineraries::findOrFail($itinerary);
+        $itinerary->delete();
 
+        return $this->responseRedirect('admin.itineraries.index', 'Itinerary deleted successfully', 'success');
+
+        // return redirect()->route('admin.itineraries.index')->with('success', 'Itinerary deleted successfully');
     }
 }

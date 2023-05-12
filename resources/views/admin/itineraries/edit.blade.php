@@ -56,7 +56,7 @@
                         {!! Form::close() !!} --}}
                     </div>
                     <div class="card-body">
-                        
+
                         {!! Form::model($itineraries, ['route' => ['admin.itineraries.update', $itineraries->id], 'method' => 'PUT']) !!}
                         <div class="form-group">
                         @csrf
