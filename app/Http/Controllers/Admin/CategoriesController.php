@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
-
 use Illuminate\Http\Request;
+use App\Models\Categories;
 
-class Categories extends BaseController
+class CategoriesController extends BaseController
 {
-
-    protected $category = null;
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(CategoryInterface $category)
+    public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->category = $category;
+        // $this->category = $category;
     }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -28,10 +19,9 @@ class Categories extends BaseController
      */
     public function index()
     {
-        //
         $this->setPageTitle("Categories","Categories List");
-        $categories = $this->category->getAll();
-        return view('admin.categories.index',compact('categories'));
+        $categories = Categories::get();
+        return view('admin.itineraries.categories',compact('categories'));
     }
 
     /**
@@ -41,7 +31,6 @@ class Categories extends BaseController
      */
     public function create()
     {
-        //
         $this->setPageTitle("Categories","Create Category");
         return view('admin.categories.create');
     }
@@ -54,7 +43,33 @@ class Categories extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'category' => 'required|max:255',
+        ];
+
+        $messages = [
+            'category.required' => 'The category field is required.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        else{
+            $data = $request->input();
+            
+            $array = new Categories;
+            $array->category = $data['category'];
+
+            $array->save();
+        }
+        // Logic for storing the data goes here...
+
+        return redirect()->route('admin.Itineraries.categories')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -76,9 +91,8 @@ class Categories extends BaseController
      */
     public function edit($id)
     {
-        //
         $this->setPageTitle("Categories","Edit Category");
-        $permission = $this->category->findPermissionById($id);
+        $permission = Categories::find($id);
         return view('admin.categoriess.edit',compact('category'));
     }
 
@@ -102,8 +116,7 @@ class Categories extends BaseController
      */
     public function destroy($id)
     {
-        //
-        $category = $this->category->destroy($id);
+        $category = Categories::delete($id);
 
         if(!$category){
 			return $this->responseRedirectBack('Error occurred while deleting category', 'error', true, true);

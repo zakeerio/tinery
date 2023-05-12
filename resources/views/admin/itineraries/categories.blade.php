@@ -38,8 +38,12 @@
                                             @foreach($itinerariescategories as $row)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('admin.itineraries.edit', ['id' => $row->id])}}" class="badge bg-info">Edit</a>
-                                                    <a href="{{ url('/admin/itineraries/destroy/'.$row->id)}}" class="badge bg-danger">Delete</a>
+                                                    <a href="{{ route('admin.itineraries.edit', ['id' => $row->id])}}" class="btn bg-info">Edit</a>
+                                                    <form action="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    </form>
                                                 </td>
                                                 <td>{{ $row->category}}</td>
                                             </tr>
@@ -49,16 +53,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                {!! Form::open(['route' => 'admin.itinerariescategories.store', 'method' => 'POST']) !!}
+                                {!! Form::open(['route' => 'admin.categories.store', 'method' => 'POST']) !!}
                                     <div class="form-group">
                                     @csrf
                                     {!! Form::label('title', 'Title') !!}
                                     {!! Form::text('title', null, ['class' => 'form-control']) !!}
                                     </div>
-                                    <div class="form-group">
-                                    {!! Form::label('slug', 'Slug') !!}
-                                    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-                                    </div>
+
                                 {!! Form::close() !!}
                                 </div>
                             </div>

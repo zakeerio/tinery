@@ -129,7 +129,6 @@ class ItinerariesController extends BaseController
 
         // return redirect()->route('admin.Itineraries.index')->with('success', 'Post created successfully.');
         return $this->responseRedirect('admin.itineraries.index', 'Itinerary Created successfully.', 'success');
-
     }
 
     /**

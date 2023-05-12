@@ -28,7 +28,7 @@ Route::group([
     // Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
     // Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
 
-    Route::resource('itinerariescategories', ItinerariesCategoriesController::class);
+    Route::resource('categories', CategoriesController::class);
 
     // system settings
     // Route::resource('settings', SettingController::class);
