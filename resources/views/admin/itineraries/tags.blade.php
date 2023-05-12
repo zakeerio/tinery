@@ -31,8 +31,8 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <tr>
-                                                <th>Actions</th>
                                                 <th>Title</th>
+                                                <th>Actions</th>
                                             </tr>
                                             @if(!empty($tags))
                                             @foreach($tags as $row)
@@ -40,12 +40,12 @@
                                                 <td>
                                                     {{$row->name}}
                                                 </td>
-                                                <td>
-                                                    <a href="{{ route('admin.tags.edit', $row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                <td class="d-flex">
+                                                    <a href="{{ route('admin.tags.edit', $row->id)}}" class="btn btn-info" title="Edit Tag"><i class="fa fa-edit"></i></a> &nbsp;
                                                     <form action="{{ route('admin.tags.destroy', $row->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                        <button type="submit" class="btn btn-danger"  title="Delete Tag"><i class="fa fa-trash"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -72,45 +72,45 @@
                 @endif
                 <div class="card">
                     @if(!empty($single_tag))
-                    <div class="card-header">
-                        <h3 class="card-title">Update</h3>
-                    </div>
-                    <div class="card-body table-responsive no-padding">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                {!! Form::model($single_tag, ['route' => ['admin.tags.update', $single_tag->id], 'method' => 'PUT']) !!}
-                                    <div class="form-group">
-                                    @csrf
-                                    {!! Form::label('name', 'Tag Name') !!}
-                                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        <div class="card-header">
+                            <h3 class="card-title">Update</h3>
+                        </div>
+                        <div class="card-body table-responsive no-padding">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                    {!! Form::model($single_tag, ['route' => ['admin.tags.update', $single_tag->id], 'method' => 'PUT']) !!}
+                                        <div class="form-group">
+                                        @csrf
+                                        {!! Form::label('name', 'Tag Name') !!}
+                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        </div>
+                                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
                                     </div>
-                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                                {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @else
-                    <div class="card-header">
-                        <h3 class="card-title">Add New</h3>
-                    </div>
-                    <div class="card-body table-responsive no-padding">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                {!! Form::open(['route' => 'admin.tags.store', 'method' => 'POST']) !!}
-                                    <div class="form-group">
-                                    @csrf
-                                    {!! Form::label('name', 'Tag Name') !!}
-                                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        <div class="card-header">
+                            <h3 class="card-title">Add New</h3>
+                        </div>
+                        <div class="card-body table-responsive no-padding">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                    {!! Form::open(['route' => 'admin.tags.store', 'method' => 'POST']) !!}
+                                        <div class="form-group">
+                                        @csrf
+                                        {!! Form::label('name', 'Tag Name') !!}
+                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        </div>
+                                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
                                     </div>
-                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                                {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endif
                 </div>
             </div>

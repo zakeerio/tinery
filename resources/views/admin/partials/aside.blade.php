@@ -108,38 +108,42 @@
                         </li>
                         @endcan
 
+                        <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'menu-is-opening menu-open' :''}}">
+                            <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'active' :''}}">
+                                <i class="nav-icon fa fa-low-vision"></i>
+                                <p>
+                                    My Iteneraries
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false  || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'style="display:block"' :'style="display:none"'}}>
+                                @can('itineraries-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.itineraries.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.itineraries") !== false ? 'active' :''}}">
+                                        <i class="fa fa-user-tag nav-icon"></i>
+                                        <p>My Itineraries</p>
+                                    </a>
+                                </li>
+                                @endcan
+                                @can('categories-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.categories.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.categories") !== false ? 'active' :''}}">
+                                        <i class="fa fa-key nav-icon"></i>
+                                        <p>Itineraries Categories</p>
+                                    </a>
+                                </li>
+                                @endcan
+                                @can('tags-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.tags.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.tags") !== false ? 'active' :''}}">
+                                        <i class="fa fa-key nav-icon"></i>
+                                        <p>Itineraries Tags</p>
+                                    </a>
+                                </li>
+                                @endcan
+                            </ul>
+                        </li>
 
-                        @can('itineraries-create')
-                        <li class="nav-header">My Iteneraries</li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.itineraries.index') }}" class="nav-link ">
-                                <i class="nav-icon fa fa-edit"></i>
-                                <p>
-                                    Itineraries
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('categories-index')
-                        <li class="nav-item">
-                            <a href="{{ route('admin.categories.index') }}" class="nav-link ">
-                                <i class="nav-icon fa fa-edit"></i>
-                                <p>
-                                    Itineraries categories
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('tags-index')
-                        <li class="nav-item">
-                            <a href="{{ route('admin.tags.index') }}" class="nav-link ">
-                                <i class="nav-icon fa fa-edit"></i>
-                                <p>
-                                    Itineraries Tags
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
