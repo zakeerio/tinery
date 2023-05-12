@@ -92,14 +92,28 @@
                         <div class="form-group">
                         {!! Form::label('categories', 'Categories') !!}
                         @php
-                            $categories = ['category1'=> 'category1', 'category2' => 'category2' ];
-                            $tags = ['tag1'=> 'tag1', 'tag2' => 'tag2' ];
+                            $listcategories = array();
+                            $categories = \App\Models\Categories::get();
                         @endphp
-                        {!! Form::select('categories[]', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
+                        @foreach($categories as $key => $categories)
+                            @php
+                                $listcategories[$categories->id] = $categories->name
+                            @endphp
+                        @endforeach
+                        {!! Form::select('categories[]', $listcategories, null, ['class' => 'form-control select2', 'multiple' => true]) !!}
                         </div>
                         <div class="form-group">
+                        @php
+                            $listtags = array();
+                            $tags = \App\Models\Tags::get();
+                        @endphp
+                        @foreach($tags as $key => $tags)
+                            @php
+                                $listtags[$tags->id] = $tags->name
+                            @endphp
+                        @endforeach
                         {!! Form::label('tags', 'Tags') !!}
-                        {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => true]) !!}
+                        {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">

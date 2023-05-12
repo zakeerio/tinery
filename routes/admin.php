@@ -29,6 +29,7 @@ Route::group([
     // Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
 
     Route::resource('categories', CategoriesController::class);
+    Route::resource('tags', TagsController::class);
 
     // system settings
     // Route::resource('settings', SettingController::class);

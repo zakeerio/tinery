@@ -136,7 +136,10 @@
                                                 $categories = json_decode($row->categories)
                                             @endphp
                                             @foreach($categories as $category)
-                                                {{$category}}
+                                                @php
+                                                    $cate = \App\Models\Categories::find($category);
+                                                @endphp
+                                                <span class="badge bg-info">{{$cate->name}}</span>
                                             @endforeach
                                         </td>
                                         <td>
@@ -144,7 +147,10 @@
                                                 $tags = json_decode($row->tags)
                                             @endphp
                                             @foreach($tags as $tag)
-                                                {{$tag}}
+                                                @php
+                                                    $cate = \App\Models\Tags::find($tag);
+                                                @endphp
+                                                <span class="badge bg-primary">{{$cate->name}}</span>
                                             @endforeach
                                         </td>
                                         <td>{{ $row->address_street}}</td>

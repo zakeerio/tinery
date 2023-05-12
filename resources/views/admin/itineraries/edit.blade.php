@@ -94,18 +94,32 @@
                         <div class="form-group">
                         {!! Form::label('categories', 'Categories') !!}
                         @php
-                            $categories = ['category1'=> 'category1', 'category2' => 'category2', 'category3' => 'category3' , 'category4' => 'category4'  ];
-                            $tags = ['tag1'=> 'tag1', 'tag2' => 'tag2', 'tag3' => 'tag3', 'tag4' => 'tag4' ];
+                            $listcategories = array();
+                            $categories = \App\Models\Categories::get();
                             $listcat = json_decode($itineraries->categories)
                         @endphp
-                        {!! Form::select('categories[]', $categories, $listcat, ['class' => 'form-control', 'multiple' => true]) !!}
+                        @foreach($categories as $key => $categories)
+                            @php
+                                $listcategories[$categories->id] = $categories->name
+                            @endphp
+                        @endforeach
+                        {!! Form::select('categories[]', $listcategories, $listcat, ['class' => 'form-control select2', 'multiple' => true]) !!}
                         </div>
                         <div class="form-group">
                         {!! Form::label('tags', 'Tags') !!}
                         @php
+                            $listtags = array();
+                            $tags = \App\Models\Tags::get();
+                        @endphp
+                        @foreach($tags as $key => $tags)
+                            @php
+                                $listtags[$tags->id] = $tags->name
+                            @endphp
+                        @endforeach
+                        @php
                         $listtag = json_decode($itineraries->tags)
                         @endphp
-                        {!! Form::select('tags[]', $tags, $listtag, ['class' => 'form-control', 'multiple' => true]) !!}
+                        {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

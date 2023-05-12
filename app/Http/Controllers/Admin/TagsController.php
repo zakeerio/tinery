@@ -1,18 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\BaseController;
+
 use Illuminate\Http\Request;
-use App\Models\Categories;
+use App\Http\Controllers\BaseController;
+use App\Models\Tags;
 use Illuminate\Support\Facades\Validator;
 
-class CategoriesController extends BaseController
+class TagsController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-        // $this->category = $category;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +16,9 @@ class CategoriesController extends BaseController
      */
     public function index()
     {
-        $this->setPageTitle("Categories","Categories List");
-        $categories = Categories::get();
-        return view('admin.itineraries.categories',compact('categories'));
+        $this->setPageTitle("Tags","Tags List");
+        $tags = Tags::get();
+        return view('admin.itineraries.tags',compact('tags'));
     }
 
     /**
@@ -32,8 +28,7 @@ class CategoriesController extends BaseController
      */
     public function create()
     {
-        $this->setPageTitle("Categories","Create Category");
-        return view('admin.categories.create');
+        //
     }
 
     /**
@@ -63,14 +58,14 @@ class CategoriesController extends BaseController
         else{
             $data = $request->input();
             
-            $array = new Categories;
+            $array = new Tags;
             $array->name = $data['name'];
 
             $array->save();
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.categories.index')->with('success', 'Post created successfully.');
+        return redirect()->route('admin.tags.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -92,10 +87,10 @@ class CategoriesController extends BaseController
      */
     public function edit($id)
     {
-        $this->setPageTitle("Categories","Edit Category");
-        $categories = Categories::get();
-        $single_category = Categories::find($id);
-        return view('admin.itineraries.categories',compact('single_category','categories'));
+        $this->setPageTitle("Tags","Edit Tag");
+        $tags = Tags::get();
+        $single_tag = Tags::find($id);
+        return view('admin.itineraries.tags',compact('single_tag','tags'));
     }
 
     /**
@@ -126,14 +121,14 @@ class CategoriesController extends BaseController
         else{
             $data = $request->input();
             
-            $array = Categories::find($id);
+            $array = Tags::find($id);
             $array->name = $data['name'];
 
             $array->save();
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.categories.index')->with('success', 'Post Updated successfully.');
+        return redirect()->route('admin.tags.index')->with('success', 'Post Updated successfully.');
     }
 
     /**
@@ -144,11 +139,11 @@ class CategoriesController extends BaseController
      */
     public function destroy($id)
     {
-        $category = Categories::find($id)->delete();
+        $tag = Tags::find($id)->delete();
 
-        if(!$category){
-			return $this->responseRedirectBack('Error occurred while deleting category', 'error', true, true);
+        if(!$tag){
+			return $this->responseRedirectBack('Error occurred while deleting Tag', 'error', true, true);
 		}
-		return $this->responseRedirect('admin.categories.index', 'Category has been deleted successfully', 'success');
+		return $this->responseRedirect('admin.tags.index', 'Tag has been deleted successfully', 'success');
     }
 }

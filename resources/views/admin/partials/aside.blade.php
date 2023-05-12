@@ -119,6 +119,8 @@
                                 </p>
                             </a>
                         </li>
+                        @endcan
+                        @can('categories-index')
                         <li class="nav-item">
                             <a href="{{ route('admin.categories.index') }}" class="nav-link ">
                                 <i class="nav-icon fa fa-edit"></i>
@@ -128,10 +130,16 @@
                             </a>
                         </li>
                         @endcan
-                        @can('categories-index')
-                        
+                        @can('tags-index')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tags.index') }}" class="nav-link ">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    Itineraries Tags
+                                </p>
+                            </a>
+                        </li>
                         @endcan
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>

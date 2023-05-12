@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 11, 2023 at 07:17 PM
+-- Generation Time: May 12, 2023 at 08:35 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admins_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `admins`
@@ -62,16 +62,16 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Mr. Maximillian Nader', '2023-05-08 17:21:09', '2023-05-08 17:21:09'),
-(2, 'Leanne Orn', '2023-05-08 17:21:09', '2023-05-08 17:21:09'),
-(3, 'Anastacio Macejkovic', '2023-05-08 17:21:09', '2023-05-08 17:21:09');
+(8, 'Group', '2023-05-12 15:10:02', '2023-05-12 15:10:02'),
+(7, 'Foodie', '2023-05-12 15:09:42', '2023-05-12 15:09:42'),
+(6, 'Bars', '2023-05-12 15:09:37', '2023-05-12 15:09:37');
 
 -- --------------------------------------------------------
 
@@ -130,15 +130,29 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `itineraries_slug_unique` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itineraries`
 --
 
 INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo_title`, `seo_description`, `seo_image`, `author`, `categories`, `tags`, `address_street`, `address_street_line1`, `address_city`, `address_state`, `address_zipcode`, `address_country`, `latitude`, `longitude`, `phone`, `website`, `additional_info`, `activities_data`, `featured`, `visibility`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'djsa', 'fjskda', 'jfksd', 'jsdkj', 'flsgj', 'gfjsdklgjsdf', NULL, 'fjsglfj', '[\"category2\"]', '[\"tag1\",\"tag3\",\"tag4\"]', 'fsjg', 'gdfj', 'gfklsj', 'jgdflskj', 'jfdskl', 'jgdfkslj', 'jgsfklj', 'gjsflj', 'jgsfklj', 'jgsfkl', 'fsgljsdfl', NULL, '1', 'public', 'published', '2023-05-10 01:57:15', '2023-05-11 13:58:02'),
-(3, 'jsfagh', 'ghsdfjgh', 'hgsdfjkh', 'gsdfjkgh', NULL, NULL, NULL, 'ghdfjskh', '[\"category2\",\"category4\"]', '[\"tag2\",\"tag4\"]', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-11 10:20:38', '2023-05-11 13:51:50');
+(4, 'Toronto', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', NULL, 'Austin Bethell', '[\"7\",\"6\"]', '[\"2\",\"3\"]', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-12 15:31:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itineraries_tags`
+--
+
+DROP TABLE IF EXISTS `itineraries_tags`;
+CREATE TABLE IF NOT EXISTS `itineraries_tags` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tag` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -152,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -167,7 +181,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_07_17_042336_create_settings_table', 1),
 (7, '2023_05_07_151701_create_itineraries_table', 2),
 (11, '2023_05_07_151842_create_tags_table', 3),
-(12, '2023_05_07_151917_create_categories_table', 3);
+(12, '2023_05_07_151917_create_categories_table', 3),
+(13, '2023_05_12_064531_create_itineraries_categories_table', 4),
+(14, '2023_05_12_064818_create_itineraries_tags_table', 5);
 
 -- --------------------------------------------------------
 
@@ -243,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `permissions`
@@ -295,25 +311,28 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (43, 'setting-index', 'admin', '2023-05-07 00:55:53', '2023-05-07 00:55:53'),
 (44, 'setting-update', 'admin', '2023-05-07 00:55:53', '2023-05-07 00:55:53'),
 (45, 'setting-themeSetting', 'admin', '2023-05-07 00:55:53', '2023-05-07 00:55:53'),
-(78, 'Tags-Create', 'admin', '2023-05-09 05:29:06', '2023-05-09 05:29:13'),
-(77, 'Tags-Edit', 'admin', '2023-05-09 05:29:00', '2023-05-09 05:29:00'),
-(72, 'categories-Index', 'admin', '2023-05-09 05:27:53', '2023-05-09 05:27:53'),
-(71, 'categories-Create', 'admin', '2023-05-09 05:27:47', '2023-05-09 05:27:47'),
-(70, 'categories-Edit', 'admin', '2023-05-09 05:27:40', '2023-05-09 05:27:40'),
-(69, 'categories-Destroy', 'admin', '2023-05-09 05:27:20', '2023-05-09 05:27:20'),
+(95, 'tags-update', 'admin', '2023-05-12 15:06:40', '2023-05-12 15:06:40'),
+(94, 'tags-edit', 'admin', '2023-05-12 15:06:34', '2023-05-12 15:06:34'),
+(88, 'categories-index', 'admin', '2023-05-12 14:08:51', '2023-05-12 14:08:51'),
+(91, 'categories-update', 'admin', '2023-05-12 14:53:31', '2023-05-12 14:53:31'),
+(90, 'categories-edit', 'admin', '2023-05-12 14:45:09', '2023-05-12 14:45:09'),
+(89, 'categories-store', 'admin', '2023-05-12 14:33:14', '2023-05-12 14:33:14'),
 (85, 'itineraries-index', 'admin', '2023-05-10 01:31:14', '2023-05-10 01:31:14'),
 (68, 'itineraries-show', 'admin', '2023-05-09 05:26:57', '2023-05-10 01:26:12'),
 (67, 'itineraries-create', 'admin', '2023-05-09 05:26:53', '2023-05-09 08:23:47'),
 (66, 'itineraries-edit', 'admin', '2023-05-09 05:26:46', '2023-05-09 08:23:58'),
 (65, 'itineraries-destroy', 'admin', '2023-05-09 05:26:39', '2023-05-09 08:24:09'),
-(76, 'Tags-Destroy', 'admin', '2023-05-09 05:28:52', '2023-05-09 05:28:52'),
-(79, 'Tags-Index', 'admin', '2023-05-09 05:29:21', '2023-05-09 05:29:21'),
+(93, 'tags-create', 'admin', '2023-05-12 15:06:20', '2023-05-12 15:06:20'),
+(79, 'tags-index', 'admin', '2023-05-09 05:29:21', '2023-05-12 15:01:08'),
 (80, 'Blog-Destroy', 'admin', '2023-05-09 05:29:31', '2023-05-09 05:29:31'),
 (81, 'Blog-Edit', 'admin', '2023-05-09 05:29:42', '2023-05-09 05:29:42'),
 (82, 'Blog-Create', 'admin', '2023-05-09 05:29:53', '2023-05-09 05:29:53'),
 (83, 'Blog-Index', 'admin', '2023-05-09 05:30:02', '2023-05-09 05:30:02'),
 (84, 'itineraries-store', 'admin', '2023-05-09 08:28:05', '2023-05-09 08:28:05'),
-(86, 'itineraries-update', 'admin', '2023-05-10 02:42:58', '2023-05-10 02:42:58');
+(86, 'itineraries-update', 'admin', '2023-05-10 02:42:58', '2023-05-10 02:42:58'),
+(92, 'categories-destroy', 'admin', '2023-05-12 14:55:02', '2023-05-12 14:55:02'),
+(96, 'tags-destroy', 'admin', '2023-05-12 15:06:47', '2023-05-12 15:06:47'),
+(97, 'tags-store', 'admin', '2023-05-12 15:07:17', '2023-05-12 15:07:17');
 
 -- --------------------------------------------------------
 
@@ -408,13 +427,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (66, 1),
 (67, 1),
 (68, 1),
-(69, 1),
-(70, 1),
-(71, 1),
-(72, 1),
-(76, 1),
-(77, 1),
-(78, 1),
 (79, 1),
 (80, 1),
 (81, 1),
@@ -422,7 +434,17 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (83, 1),
 (84, 1),
 (85, 1),
-(86, 1);
+(86, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1),
+(97, 1);
 
 -- --------------------------------------------------------
 
@@ -492,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tags`
