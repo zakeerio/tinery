@@ -37,6 +37,9 @@ a:not([href]):not([tabindex]) {
     padding-left: 15px;
 }
 
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    color: #000 !important;
+}
 .permission-card {
     box-shadow: 1px 1px 9px -3px gray;
     margin: 10px;

@@ -85,26 +85,26 @@
                                     <tr>
                                         <th>Actions</th>
                                         <th>Title</th>
-                                        <th>Slug</th>
-                                        <th>Description</th>
-                                        <th>Excerpt</th>
-                                        <th>SEO Title</th>
-                                        <th>SEO Description</th>
-                                        <th>SEO Image</th>
+                                        {{-- <th>Slug</th> --}}
+                                        {{-- <th>Description</th> --}}
+                                        {{-- <th>Excerpt</th> --}}
+                                        {{-- <th>SEO Title</th> --}}
+                                        {{-- <th>SEO Description</th> --}}
+                                        {{-- <th>SEO Image</th> --}}
                                         <th>Author</th>
                                         <th>Categories</th>
                                         <th>Tags</th>
-                                        <th>Street</th>
-                                        <th>Street Line 1</th>
-                                        <th>City</th>
-                                        <th>State</th>
-                                        <th>Zipcode</th>
-                                        <th>Country</th>
-                                        <th>Latitude</th>
-                                        <th>Longitude</th>
-                                        <th>Phone</th>
-                                        <th>Website</th>
-                                        <th>Additional Info</th>
+                                        {{-- <th>Street</th> --}}
+                                        {{-- <th>Street Line 1</th> --}}
+                                        {{-- <th>City</th> --}}
+                                        {{-- <th>State</th> --}}
+                                        {{-- <th>Zipcode</th> --}}
+                                        {{-- <th>Country</th> --}}
+                                        {{-- <th>Latitude</th> --}}
+                                        {{-- <th>Longitude</th> --}}
+                                        {{-- <th>Phone</th> --}}
+                                        {{-- <th>Website</th> --}}
+                                        {{-- <th>Additional Info</th> --}}
                                         <th>Featured</th>
                                         <th>Visibility</th>
                                         <th>Status</th>
@@ -112,8 +112,8 @@
                                     @if(!empty($itineraries))
                                     @foreach($itineraries as $row)
                                     <tr>
-                                        <td>
-                                            <a href="{{ route('admin.itineraries.edit',['itinerary' => $row->id] )}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                        <td class="d-flex ">
+                                            <a href="{{ route('admin.itineraries.edit',['itinerary' => $row->id] )}}" class="btn btn-info"><i class="fa fa-edit"></i></a> &nbsp;
 
                                             <form action="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id]) }}" method="POST">
                                                 @csrf
@@ -124,12 +124,12 @@
                                             {{-- <a href="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id])}}" class="badge bg-danger">Delete</a> --}}
                                         </td>
                                         <td>{{ $row->title}}</td>
-                                        <td>{{ $row->slug}}</td>
-                                        <td>{{ $row->description}}</td>
-                                        <td>{{ $row->excerpt}}</td>
-                                        <td>{{ $row->seo_title}}</td>
-                                        <td>{{ $row->seo_description}}</td>
-                                        <td>{{ $row->seo_image}}</td>
+                                        {{-- <td>{{ $row->slug}}</td> --}}
+                                        {{-- <td>{{ $row->description}}</td> --}}
+                                        {{-- <td>{{ $row->excerpt}}</td> --}}
+                                        {{-- <td>{{ $row->seo_title}}</td> --}}
+                                        {{-- <td>{{ $row->seo_description}}</td> --}}
+                                        {{-- <td>{{ $row->seo_image}}</td> --}}
                                         <td>{{ $row->author}}</td>
                                         <td>
                                             @php
@@ -153,17 +153,17 @@
                                                 <span class="badge bg-primary">{{$cate->name}}</span>
                                             @endforeach
                                         </td>
-                                        <td>{{ $row->address_street}}</td>
-                                        <td>{{ $row->address_street_line1}}</td>
-                                        <td>{{ $row->address_city}}</td>
-                                        <td>{{ $row->address_state}}</td>
-                                        <td>{{ $row->address_zipcode}}</td>
-                                        <td>{{ $row->address_country}}</td>
-                                        <td>{{ $row->latitude}}</td>
-                                        <td>{{ $row->longitude}}</td>
-                                        <td>{{ $row->phone}}</td>
-                                        <td>{{ $row->website}}</td>
-                                        <td>{{ $row->additional_info}}</td>
+                                        {{-- <td>{{ $row->address_street}}</td> --}}
+                                        {{-- <td>{{ $row->address_street_line1}}</td> --}}
+                                        {{-- <td>{{ $row->address_city}}</td> --}}
+                                        {{-- <td>{{ $row->address_state}}</td> --}}
+                                        {{-- <td>{{ $row->address_zipcode}}</td> --}}
+                                        {{-- <td>{{ $row->address_country}}</td> --}}
+                                        {{-- <td>{{ $row->latitude}}</td> --}}
+                                        {{-- <td>{{ $row->longitude}}</td> --}}
+                                        {{-- <td>{{ $row->phone}}</td> --}}
+                                        {{-- <td>{{ $row->website}}</td> --}}
+                                        {{-- <td>{{ $row->additional_info}}</td> --}}
                                         <td>{{ $row->featured}}</td>
                                         <td>{{ $row->visibility}}</td>
                                         <td>{{ $row->status}}</td>
