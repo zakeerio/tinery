@@ -21,10 +21,14 @@ Route::group([
     Route::resource('roles', RoleController::class);
     Route::resource('admins', AdminUserController::class);
     Route::resource('permissions', PermissionController::class);
+
     Route::resource('itineraries', ItinerariesController::class);
     Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
     Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
     Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
+
+    Route::resource('itinerariescategories', ItinerariesCategoriesController::class);
+
     // system settings
     // Route::resource('settings', SettingController::class);
     Route::get('/settings', 'SettingController@index')->name('settings.index');

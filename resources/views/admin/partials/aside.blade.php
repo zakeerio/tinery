@@ -22,7 +22,7 @@
                     <ul id="main_nav_ul" class="nav nav-pills nav-sidebar flex-column {{config('settings.ctrl_nav_flat')}} {{config('settings.ctrl_nav_legacy')}} {{config('settings.ctrl_nav_compact')}} {{config('settings.ctrl_nav_child_indent')}} {{config('settings.ctrl_nav_collapse_hide_child')}}" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                            with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{route('admin.dashboard')}}" class="nav-link {{ Route::currentRouteName()== "admin.dashboard" ? 'active' :''}}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -119,6 +119,16 @@
                                 </p>
                             </a>
                         </li>
+                        @endcan
+                        @can('itineraries-create')
+                        <!-- <li class="nav-item">
+                            <a href="{{ route('admin.itinerariescategories.index') }}" class="nav-link ">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    Itineraries categories
+                                </p>
+                            </a>
+                        </li> -->
                         @endcan
 
                         <li class="nav-item">
