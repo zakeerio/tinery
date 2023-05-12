@@ -23,9 +23,10 @@ Route::group([
     Route::resource('permissions', PermissionController::class);
 
     Route::resource('itineraries', ItinerariesController::class);
-    Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
-    Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
-    Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
+
+    // Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
+    // Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
+    // Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
 
     Route::resource('itinerariescategories', ItinerariesCategoriesController::class);
 

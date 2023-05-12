@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ $pageTitle }}</h1>
+                    {{-- <h1>{{ $pageTitle }}</h1> --}}
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -113,8 +113,15 @@
                                     @foreach($itineraries as $row)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('admin.itineraries.edit', ['id' => $row->id])}}" class="badge bg-info">Edit</a>
-                                            <a href="{{ url('/admin/itineraries/destroy/'.$row->id)}}" class="badge bg-danger">Delete</a>
+                                            <a href="{{ route('admin.itineraries.edit',['itinerary' => $row->id] )}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+
+                                            <form action="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            </form>
+
+                                            {{-- <a href="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id])}}" class="badge bg-danger">Delete</a> --}}
                                         </td>
                                         <td>{{ $row->title}}</td>
                                         <td>{{ $row->slug}}</td>
@@ -128,16 +135,16 @@
                                             @php
                                                 $categories = json_decode($row->categories)
                                             @endphp
-                                            @foreach($categories as $categories)
-                                                {{$categories}}
+                                            @foreach($categories as $category)
+                                                {{$category}}
                                             @endforeach
                                         </td>
                                         <td>
                                             @php
                                                 $tags = json_decode($row->tags)
                                             @endphp
-                                            @foreach($tags as $tags)
-                                                {{$tags}}
+                                            @foreach($tags as $tag)
+                                                {{$tag}}
                                             @endforeach
                                         </td>
                                         <td>{{ $row->address_street}}</td>
