@@ -119,7 +119,7 @@
                         @php
                         $listtag = json_decode($itineraries->tags)
                         @endphp
-                        {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'multiple' => true]) !!}
+                        {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2-tags', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

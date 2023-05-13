@@ -113,7 +113,7 @@
                                 @endphp
                             @endforeach
                             {!! Form::label('tags', 'Tags') !!}
-                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'multiple' => true]) !!}
+                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2-tags', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -380,6 +380,8 @@
         e.preventDefault();
         var card_data = $("#faq #card1").clone();
         // $(card_data).removeAttr('id');
+        card_data.find('.remove-btn').removeClass('d-none');
+        card_data.find('.remove-btn').removeClass('d-none');
         $("#faq").append(card_data);
     })
 
