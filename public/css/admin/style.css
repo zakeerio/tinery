@@ -68,3 +68,59 @@ a:not([href]):not([tabindex]) {
 .settings-uploads img {
     width: 65%;
 }
+
+#main {
+    margin: 50px 0;
+  }
+
+  #main #faq .card {
+    margin-bottom: 30px;
+    border: 0;
+  }
+
+  #main #faq .card .card-header {
+    border: 0;
+    -webkit-box-shadow: 0 0 20px 0 rgba(213, 213, 213, 0.5);
+            box-shadow: 0 0 20px 0 rgba(213, 213, 213, 0.5);
+    border-radius: 2px;
+    padding: 0;
+  }
+
+  #main #faq .card .card-header .btn-header-link {
+    color: #fff;
+    display: block;
+    text-align: left;
+    color: #222;
+    padding: 20px;
+  }
+
+.remove-btn.rounded-circle {
+    position: absolute;
+    top: 12px;
+    z-index: 11111;
+    padding: 8px;
+    right: 41px;
+}
+
+  #main #faq .card .card-header .btn-header-link:after {
+    content: "\f107";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    float: right;
+  }
+
+
+
+  #main #faq .card .card-header .btn-header-link.collapsed:after {
+    content: "\f106";
+  }
+
+  #main #faq .card .collapse {
+    border: 0;
+  }
+
+  #main #faq .card .collapse.show {
+    /* background: #FFE472; */
+    line-height: 30px;
+    color: #222;
+  }
