@@ -96,17 +96,8 @@
                             </a>
                         </li>
                         @endcan
-                        <li class="nav-header">System Settings</li>
-                        @can('setting-index')
-                        <li class="nav-item">
-                            <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
-                                <i class="nav-icon fa fa-cogs"></i>
-                                <p>
-                                    Settings
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
+
+                        <li class="nav-header">Iteneraries Management</li>
 
                         <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'menu-is-opening menu-open' :''}}">
                             <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'active' :''}}">
@@ -143,6 +134,17 @@
                                 @endcan
                             </ul>
                         </li>
+                        <li class="nav-header">System Settings</li>
+                        @can('setting-index')
+                        <li class="nav-item">
+                            <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
+                                <i class="nav-icon fa fa-cogs"></i>
+                                <p>
+                                    Settings
+                                </p>
+                            </a>
+                        </li>
+                        @endcan
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
