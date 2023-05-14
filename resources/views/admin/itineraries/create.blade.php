@@ -186,25 +186,38 @@
                         </div>
                         <div id="accordion">
                             <div class="card">
-                                <div class="card-header" id="headingOne">
+                                {{-- <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
                                             Section 1 <i class="fa fa-angle-right float-right"></i>
                                         </button>
                                     </h5>
-                                </div>
+                                </div> --}}
 
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+
+
+                                {{-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin neque
-                                        augue, eget bibendum felis efficitur eget. Aliquam erat volutpat. Nunc id tortor id
-                                        felis dapibus sollicitudin.
+                                        <div class="form-group">
+                                            <div class="col-md-5">
+                                                {!! Form::label('activitytitle', 'Activity Time') !!}
+                                                {!! Form::text('activitytitle',null , ["class"=>"form-control"]) !!}
+                                            </div>
+                                            <div class="col-md-5">
+                                                {!! Form::label('activitytime', 'Activity Time') !!}
+                                                {!! Form::time('activitytime',null , ["class"=>"form-control"]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('activitytime', 'Activity Description') !!}
+                                            {!! Form::textarea("activitydescription", null, ["class"=>"form-control", "rows" => "3"]) !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
+                            </div> --}}
+                            {{-- <div class="card">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
                                         <button class="btn btn-link collapsed" data-toggle="collapse"
@@ -240,31 +253,43 @@
                                         dictumst.
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div id="main">
                             <div class="containera">
                                 <div class="accordion" id="faq">
 
-                                    <div class="card" id="card1">
+                                    <div class="card days-box" id="card1">
                                         <a href="#" class="btn btn-danger remove-btn rounded-circle d-none" title="Delete Day"><i class="fa fa-minus"></i></a>
 
                                         <div class="card-header" id="faqhead3">
-                                            <a href="#" class="btn btn-header-link" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">Day 1</a>
+                                            <a href="#" class="btn btn-header-link text-bold" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">Day 1</a>
                                         </div>
 
                                         <div id="faq1" class="collapse " aria-labelledby="faqhead3" data-parent="#faq">
-                                            <div class="card-body">
-                                                <div class="card">
+                                            <div class="card-body activities-body">
+                                                <div class="card activities-box">
                                                     <div class="card-header" id="faqhead31">
-                                                        <a href="#" class="btn btn-header-link" data-toggle="collapse" data-target="#faq11" aria-expanded="true" aria-controls="faq11">S.S.S</a>
+                                                        <a href="#" class="btn btn-header-link  text-bold" data-toggle="collapse" data-target="#faq11" aria-expanded="true" aria-controls="faq11">Day 1 Activity First</a>
                                                     </div>
 
-                                                    <div id="faq11" class="collapse " aria-labelledby="faqhead31" data-parent="#faq11">
+                                                    <div id="faq11" class="collapse show single-activity-body" aria-labelledby="faqhead31" data-parent="#faq11">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                                            richardson ad squid. 3 wolf
+                                                            <div class="form-group d-flex">
+                                                                <div class="col-md-6">
+                                                                    {!! Form::label('activitytitle', 'Activity Time') !!}
+                                                                    {!! Form::text('activitytitle',null , ["class"=>"form-control"]) !!}
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    {!! Form::label('activitytime', 'Activity Time') !!}
+                                                                    {!! Form::time('activitytime',null , ["class"=>"form-control"]) !!}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {!! Form::label('activitydescription', 'Activity Description') !!}
+                                                                {!! Form::textarea("activitydescription", null, ["class"=>"form-control", "rows" => "3"]) !!}
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -278,7 +303,7 @@
 
                                     </div>
 
-                                    <div class="card">
+                                    {{-- <div class="card">
                                         <a href="#" class="btn btn-danger remove-btn rounded-circle" title="Delete Day"><i class="fa fa-minus"></i></a>
 
                                         <div class="card-header" id="faqhead3">
@@ -338,7 +363,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
 
                                 </div>
@@ -352,10 +377,13 @@
 
 
 
-                        <div id="map" style="height: 500px;"></div>
+                        <div id="map" style="height: 500px; width:100%;"></div>
 
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                        {!! Form::close() !!}
+                        <div class="form-group">
+                            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::close() !!}
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -374,13 +402,74 @@
             e.preventDefault();
             $(this).find('i').toggleClass('fa-angle-right fa-angle-down');
         });
+
+
+        // // Create a new accordion with a unique ID
+        // var accordion_id = "faq" + (Math.floor(Math.random() * 100000) + 1); // Generate a unique ID for the new accordion
+        // var accordion = $("<div>", {id: accordion_id, class: "collapse", "aria-labelledby": "faqhead3", "data-parent": "#faq"});
+
+        // // Create the accordion body
+        // var accordion_body = $("<div>", {class: "card-body activities-body"});
+        // var card = $("<div>", {class: "card activities-box"});
+        // var card_header = $("<div>", {class: "card-header", "aria-labelledby": "faqhead31"});
+        // var link = $("<a>", {href: "#", class: "btn btn-header-link  text-bold", "data-toggle": "collapse", "data-target": "#faq11", "aria-expanded": "true", "aria-controls": "faq11", text: "Day 1 Activity First"});
+        // var accordion_inner_body = $("<div>", {id: "faq11", class: "collapse show single-activity-body", "aria-labelledby": "faqhead31", "data-parent": "#" + accordion_id});
+        // var card_inner_body = $("<div>", {class: "card-body"});
+        // var form_group1 = $("<div>", {class: "form-group d-flex"});
+        // var col1 = $("<div>", {class: "col-md-6"});
+        // var label1 = $("<label>", {for: "activitytitle", text: "Activity Time"});
+        // var input1 = $("<input>", {type: "text", name: "activitytitle", class: "form-control"});
+        // var col2 = $("<div>", {class: "col-md-6"});
+        // var label2 = $("<label>", {for: "activitytime", text: "Activity Time"});
+        // var input2 = $("<input>", {type: "time", name: "activitytime", class: "form-control"});
+        // var form_group2 = $("<div>", {class: "form-group"});
+        // var label3 = $("<label>", {for: "activitydescription", text: "Activity Description"});
+        // var textarea = $("<textarea>", {name: "activitydescription", class: "form-control", rows: "3"});
+
+        // // Add the accordion body elements
+        // col1.append(label1, input1);
+        // col2.append(label2, input2);
+        // form_group1.append(col1, col2);
+        // form_group2.append(label3, textarea);
+        // card_inner_body.append(form_group1, form_group2);
+        // accordion_inner_body.append(card_inner_body);
+        // link.appendTo(card_header);
+        // card_header.appendTo(card);
+        // accordion_inner_body.appendTo(card);
+        // card.appendTo(accordion);
+        // accordion_body.append(card);
+
+        // // Add the "Add Activity" button
+        // var button = $("<button>", {class: "btn btn-info add-activitybtn", title: "Add Activity", html: '<i class="fa fa-plus-circle"></i> Add Activity'});
+        // var button_container = $("<div>", {class: "form-group d-flex justify-content-end"});
+        // button.appendTo(button_container);
+        // accordion_body.append(button_container);
+
+        // // Append the new accordion to the parent element
+        // accordion.appendTo("#faq");
+
+
+
+
     });
+
+    var special = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
+    var deca = ['twent', 'thirt', 'fort', 'fift', 'sixt', 'sevent', 'eight', 'ninet'];
+
+    function stringifyNumber(n) {
+    if (n < 20) return special[n];
+    if (n%10 === 0) return deca[Math.floor(n/10)-2] + 'ieth';
+        return deca[Math.floor(n/10)-2] + 'y-' + special[n%10];
+    }
+
+    // TEST LOOP SHOWING RESULTS
+    // for (var i=0; i<100; i++)
+    // console.log(stringifyNumber(3));
 
     $(document).on("click", ".add-activity-day", function(e){
         e.preventDefault();
         var card_data = $("#faq #card1").clone();
-        // $(card_data).removeAttr('id');
-        card_data.find('.remove-btn').removeClass('d-none');
+        $(card_data).removeAttr('id');
         card_data.find('.remove-btn').removeClass('d-none');
         $("#faq").append(card_data);
     })
@@ -393,9 +482,9 @@
 
     $(document).on("click", ".add-activitybtn", function(e){
         e.preventDefault();
-        var clone  = $(this).parents('.card-body').find('.card').clone();
-        $(this).parents(".card-body").append(clone);
-        console.log("here");
+        var clone_box  = $(this).closest('.activities-body .activities-box').clone();
+        var cloned = $(this).closest(".card-body.activities-body").appendTo(clone_box);
+        console.log(clone_box);
 
     })
 </script>
@@ -406,59 +495,55 @@
 <script src="https://maps.googleapis.com/maps/api/js?key={{ $key }}"></script>
 
 <script>
-    var map;
 
+$(document).ready(function () {
+        // execute
+        (function () {
+          // map options
+          var options = {
+            zoom: 5,
+            center: new google.maps.LatLng(39.909736, -98.522109), // centered US
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            mapTypeControl: false,
+          };
 
+          // init map
+          var map = new google.maps.Map(
+            document.getElementById('map'),
+            options
+          );
 
-    var locations = [{
-            lat: 37.7749,
-            lng: -122.4194,
-            name: 'San Francisco'
-        },
-        {
-            lat: 34.0522,
-            lng: -118.2437,
-            name: 'Los Angeles'
-        },
-        {
-            lat: 41.8781,
-            lng: -87.6298,
-            name: 'Chicago'
-        },
-        {
-            lat: 40.7128,
-            lng: -74.0060,
-            name: 'New York'
-        }
-    ];
+          // NY and CA sample Lat / Lng
+          var southWest = new google.maps.LatLng(40.744656, -74.005966);
+          var northEast = new google.maps.LatLng(34.052234, -118.243685);
+          var lngSpan = northEast.lng() - southWest.lng();
+          var latSpan = northEast.lat() - southWest.lat();
 
-    for (var i = 0; i < locations.length; i++) {
-        var marker = new google.maps.Marker({
-            position: {
-                lat: locations[i].lat,
-                lng: locations[i].lng
-            },
-            map: map,
-            title: locations[i].name
-        });
+          // set multiple marker
+          for (var i = 0; i < 10; i++) {
+            // init markers
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(
+                southWest.lat() + latSpan * Math.random(),
+                southWest.lng() + lngSpan * Math.random()
+              ),
+              map: map,
+              title: 'Click Me ' + i,
+            });
 
-        $(document).ready(function() {
-            // var mapDiv = $('');
-            // $('#map').append(mapDiv);
-            initMap();
-        });
-    }
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            // center: {
-            //     lat: 37.7749,
-            //     lng: -122.4194
-            // },
-            map: map,
-            zoom: 8
-        });
-    }
+            // process multiple info windows
+            (function (marker, i) {
+              // add click event
+              google.maps.event.addListener(marker, 'click', function () {
+                infowindow = new google.maps.InfoWindow({
+                  content: 'Hello, World!!',
+                });
+                infowindow.open(map, marker);
+              });
+            })(marker, i);
+          }
+        })();
+      });
 </script>
 
 <script>
