@@ -54,7 +54,7 @@
                             <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                         </div>
                     </div>
-                    <h4 class="h-4">{{ $row->title}}</h4>
+                    <a href="{{url('/itinerary_detail/'.$row->slug)}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
                     <div class="tags">
                         @php
                             $itinerarytag = json_decode($row->tags);
