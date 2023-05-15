@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
+    @foreach($array as $row)
     <section class="hero-sections">
         <div class="container">
             <div class="hero-content">
@@ -10,19 +10,18 @@
 
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-lg-8">
-                                <h1 class="trip-h1">My Spring Break Trip</h1>
+                                <h1 class="trip-h1">{{ $row->title}}</h1>
                             </div>
                             <div class="col-lg-4 text-end">
                                 <a href="#"><img src="{{ asset('frontend/images/Path (1).png') }}" alt="" class="fluid-img "></a>
                             </div>
                         </div>
                         <div class="row related d-flex align-items-center">
-
                             <div class="col-lg-3">
                                 <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="w-75"></a>
                             </div>
                             <div class="col-lg-6">
-                                <h6 class="profile-p">Related Content |</h6>
+                                <h6 class="profile-p">{{ $row->author}} |</h6>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="profile-p">3/11/2022 </h6>
@@ -35,7 +34,7 @@
                         <div class="row city mt-4">
                             <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-1">Mexico City </h6>
+                                <h6 class="profile-p pt-2 mx-1">{{$row->address_city}} </h6>
                             </div>
                             <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
@@ -48,11 +47,24 @@
                         </div>
 
                         <div class="tags">
-                            <a href="#"> <button class="foodie">Foodie</button></a>
+                            @php
+                                $itinerarytag = json_decode($row->tags);
+                            @endphp
+                            @foreach($itinerarytag as $itinerarytag)
+                                <a href="#">
+                                    @php
+                                        $tag = \App\Models\Tags::find($itinerarytag);
+                                    @endphp
+                                    <button class="foodie">
+                                        {{$tag->name}}
+                                    </button>
+                                </a>
+                            @endforeach
+                            <!-- <a href="#"> <button class="foodie">Foodie</button></a>
                             <a href="#"> <button class="foodie">Backpacker</button></a>
                             <a href="#"> <button class="foodie">Spring</button></a>
                             <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                            <a href="#"> <button class="foodie">Mexico</button></a>
+                            <a href="#"> <button class="foodie">Mexico</button></a> -->
                             <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                         </div>
 
@@ -496,7 +508,7 @@
             </div>
 
     </section>
-
+    @endforeach
 
 
 @endsection
