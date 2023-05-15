@@ -57,7 +57,7 @@
                     </div>
                     <div class="card-body">
 
-                        {!! Form::model($itineraries, ['route' => ['admin.itineraries.update', $itineraries->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($itineraries, ['route' => ['admin.itineraries.update', $itineraries->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                         <div class="form-group">
                         @csrf
                         {!! Form::label('title', 'Title') !!}

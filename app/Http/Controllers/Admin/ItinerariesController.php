@@ -104,7 +104,6 @@ class ItinerariesController extends BaseController
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
-            $array->seo_image = $data['seo_image'];
             $array->author = $data['author'];
             $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
@@ -122,6 +121,17 @@ class ItinerariesController extends BaseController
             $array->featured = $data['featured'];
             $array->visibility = $data['visibility'];
             $array->status = $data['status'];
+
+            if($request->hasFile('seo_image'))
+            {
+                $seo_image = $request->file('seo_image');
+                $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
+            
+                $destinationPath = public_path('/frontend/itineraries');
+                $seo_image->move($destinationPath, $input['seo_image']);
+
+                $array->seo_image = $input['seo_image'];
+            }
 
             $array->save();
         }
@@ -223,7 +233,6 @@ class ItinerariesController extends BaseController
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
-            $array->seo_image = $data['seo_image'];
             $array->author = $data['author'];
             $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
@@ -241,6 +250,17 @@ class ItinerariesController extends BaseController
             $array->featured = $data['featured'];
             $array->visibility = $data['visibility'];
             $array->status = $data['status'];
+
+            if($request->hasFile('seo_image'))
+            {
+                $seo_image = $request->file('seo_image');
+                $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
+            
+                $destinationPath = public_path('/frontend/itineraries');
+                $seo_image->move($destinationPath, $input['seo_image']);
+
+                $array->seo_image = $input['seo_image'];
+            }
 
             $array->save();
         }

@@ -26,13 +26,11 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
-        if($('.select2-tags').length > 0 ){
-            $('.select2-tags').select2(
-                {
-                    tags: true,
-                }
-            );
-        }
         $('.select2').select2();
+        if($('.select2-tags').length > 0 ){
+            $('.select2-tags').select2({
+                tags: true,
+            });
+        }
     });
 </script>
