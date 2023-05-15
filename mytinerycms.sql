@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 12, 2023 at 08:35 PM
+-- Generation Time: May 15, 2023 at 08:47 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
 --
 
 INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo_title`, `seo_description`, `seo_image`, `author`, `categories`, `tags`, `address_street`, `address_street_line1`, `address_city`, `address_state`, `address_zipcode`, `address_country`, `latitude`, `longitude`, `phone`, `website`, `additional_info`, `activities_data`, `featured`, `visibility`, `status`, `created_at`, `updated_at`) VALUES
-(4, 'Toronto', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', NULL, 'Austin Bethell', '[\"7\",\"6\"]', '[\"2\",\"3\"]', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-12 15:31:04');
+(4, 'Toronto', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684139199.png', 'Austin Bethell', '[\"7\",\"6\"]', '[\"2\",\"3\"]', NULL, NULL, 'Islamabad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-15 03:26:39');
 
 -- --------------------------------------------------------
 
@@ -521,9 +521,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Myriam Tillman', '2023-05-08 17:20:34', '2023-05-08 17:20:34'),
-(2, 'Willard Rempel', '2023-05-08 17:20:34', '2023-05-08 17:20:34'),
-(3, 'Jeffry Bruen V', '2023-05-08 17:20:34', '2023-05-08 17:20:34');
+(1, 'Food', '2023-05-08 17:20:34', '2023-05-15 03:46:33'),
+(2, 'Hut', '2023-05-08 17:20:34', '2023-05-15 03:46:42'),
+(3, 'Brief', '2023-05-08 17:20:34', '2023-05-15 03:46:49');
 
 -- --------------------------------------------------------
 

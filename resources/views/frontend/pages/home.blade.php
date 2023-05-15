@@ -33,99 +33,50 @@
     <div class="container">
         <div class="cards-item">
             <div class="row">
+                @php
+                    $itineraries = \App\Models\Itineraries::where('featured','1')
+                    ->where('status','published')
+                    ->get();
+                @endphp
+                @if(!$itineraries->isEmpty())
+                @foreach($itineraries as $row)
                 <div class="col-lg-3">
-                    <div class="card bg-img">
+                    <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
                         <div class="Ellipse bg-white m-3 rounded-pill p-2">
                             <div class="">
                                 <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
                             </div>
                             <div class=" ">
-                                <span class="mx-3">Justin Lang</span>
+                                <span class="mx-3">{{ $row->author}}</span>
                             </div>
                         </div>
                         <div class="heart-icon">
                             <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                         </div>
                     </div>
-                    <h4 class="h-4">My Spring Break Trip</h4>
+                    <h4 class="h-4">{{ $row->title}}</h4>
                     <div class="tags">
-                        <a href="#"> <button class="foodie">Foodie</button></a>
-                        <a href="#"> <button class="foodie">Backpacker</button></a>
-                        <a href="#"> <button class="foodie">Backpacker</button></a>
-                        <a href="#"> <button class="foodie">Backpacker</button></a>
-                    </div>
-                    <p class="city">Mexico City | 3 Days</p>
-                </div>
-
-                <div class="col-lg-3">
-                    <div class="card bg-toro">
-                        <div class="Ellipse bg-white m-3 rounded-pill p-2">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
-                            </div>
-                            <div class=" ">
-                                <span class="mx-3">Justin Lang</span>
-                            </div>
-                        </div>
-                        <div class="heart-icon">
-                            <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
-                        </div>
-                    </div>
-                    <h4 class="h-4">My Winter Break 2022</h4>
-                    <div class="tags">
-                        <a href="#"> <button class="foodie">Cold</button></a>
-                        <a href="#"> <button class="foodie">Travel</button></a>
+                        @php
+                            $itinerarytag = json_decode($row->tags);
+                        @endphp
+                        @foreach($itinerarytag as $itinerarytag)
+                            <a href="#">
+                                @php
+                                    $tag = \App\Models\Tags::find($itinerarytag);
+                                @endphp
+                                <button class="foodie">
+                                    {{$tag->name}}
+                                </button>
+                            </a>
+                        @endforeach
                         <!-- <a href="#"> <button class="foodie">Backpacker</button></a>
+                        <a href="#"> <button class="foodie">Backpacker</button></a>
                         <a href="#"> <button class="foodie">Backpacker</button></a> -->
                     </div>
-                    <p class="city">Toronto | 6 Days</p>
+                    <p class="city">{{ $row->address_city}} | 3 Days</p>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card bg-fax">
-                        <div class="Ellipse bg-white m-3 rounded-pill p-2">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
-                            </div>
-                            <div class=" ">
-                                <span class="mx-3">Justin Lang</span>
-                            </div>
-                        </div>
-                        <div class="heart-icon">
-                            <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
-                        </div>
-                    </div>
-                    <h4 class="h-4">Autumn Escape</h4>
-                    <div class="tags">
-                        <a href="#"> <button class="foodie">Leaves</button></a>
-                        <a href="#"> <button class="foodie">Coffee</button></a>
-                        <a href="#"> <button class="foodie">Planned</button></a>
-                        <a href="#"> <button class="foodie">Fun</button></a>
-                    </div>
-                    <p class="city">Scotland | 6 Days</p>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card bg-turk">
-                        <div class="Ellipse bg-white m-3 rounded-pill p-2">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
-                            </div>
-                            <div class=" ">
-                                <span class="mx-3">Justin Lang</span>
-                            </div>
-                        </div>
-                        <div class="heart-icon">
-                            <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
-                        </div>
-                    </div>
-                    <h4 class="h-4">Semester Abroad</h4>
-                    <div class="tags">
-                        <a href="#"> <button class="foodie">Leaves</button></a>
-                        <a href="#"> <button class="foodie">Coffee</button></a>
-                        <a href="#"> <button class="foodie">Planned</button></a>
-                        <a href="#"> <button class="foodie">Fun</button></a>
-                    </div>
-                    <p class="city">Turkey | 3 Days</p>
-                </div>
+                @endforeach
+                @endif
             </div>
 
         </div>

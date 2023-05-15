@@ -55,7 +55,7 @@
                         </div>
                         {!! Form::close() !!} --}}
 
-                        {!! Form::open(['route' => 'admin.itineraries.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'admin.itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                         <div class="form-group">
                             @csrf
                             {!! Form::label('title', 'Title') !!}
