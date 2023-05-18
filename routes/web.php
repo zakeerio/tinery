@@ -35,6 +35,17 @@ Route::get('/about', function(){
 
 // Route::post('register', 'RegisterController@store')->name('store');
 
+Route::middleware('auth:user')->group(function () {
+    // Routes that require user authentication
+    Route::get('/dashboard', [UserController::class, 'dashboard']);
+    // Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/profile', function(){
+        dd('user logged in');
+    });
+
+    // Add more routes as needed
+});
+
 Route::group(['namespace' => 'Auth',], function () {
 
     // Authentication Routes...

@@ -15,12 +15,28 @@
                     <li class="nav-item">
                         <a class="nav-link text-clr" href="{{ route('itineraries') }}">Discover</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-secondary  rounded-pill px-4" href="javascript:void(0)" data-target="#userregistration" data-toggle="modal">Become a Member</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-clr" href="javascript:void(0)" data-target="#userlogin" data-toggle="modal">Login</a>
-                    </li>
+                    {{-- check user loggedin --}}
+                    @if(Auth::guard('user')->user())
+                        <div class="profile-item d-flex justify-content-between align-items-center">
+                            <li class="nav-item">
+                                <a class="nav-link " href="#login"><img src="{{ asset('frotnend/images/nav-profile.png') }}" alt="user image"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-danger  rounded-pill px-4" href="#membership">+ Add Itinerary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('logout') }}"><img src="{{ asset('frontend/images/logout.png') }}" alt=" logout link"></a>
+                            </li>
+                        </div>
+                    @else
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary  rounded-pill px-4" href="javascript:void(0)" data-target="#userregistration" data-toggle="modal">Become a Member</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-clr" href="javascript:void(0)" data-target="#userlogin" data-toggle="modal">Login</a>
+                        </li>
+                    @endif
+
                 </ul>
             </div>
         </div>
