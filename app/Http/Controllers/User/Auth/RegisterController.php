@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,11 +50,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        // Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]);
     }
 
     /**
@@ -62,6 +63,30 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    public function register_custom(Request $request)
+    {
+        // Validate the user input
+        // dd($request->firstname);
+        $validatedData = $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',    
+            'email' => 'required|string|email|unique:users|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        // Create a new user
+        $user = User::create([
+            'name' => $validatedData['firstname'],
+            'lastname' => $validatedData['lastname'],
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'confirmpassword' => Hash::make($validatedData['password']),
+        ]);
+
+        // Redirect or return a response
+        return redirect('/');
+    }
     protected function create(array $data)
     {
         return User::create([
@@ -73,6 +98,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('user.auth.register');
+        // dd("TEST");
+        return view('frontend.auth.register');
     }
 }

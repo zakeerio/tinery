@@ -33,17 +33,20 @@ Route::get('/about', function(){
     return view('frontend.pages.about');
 })->name('about');
 
+// Route::post('register', 'RegisterController@store')->name('store');
 
 Route::group(['namespace' => 'Auth',], function () {
 
     // Authentication Routes...
     Route::get('login', 'LoginController@showLoginForm')->name('login_page');
     Route::post('login', 'LoginController@login')->name('login');
-    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::post('login_new', 'LoginController@login_new')->name('login_new');
+    Route::get('logout', 'LoginController@logout')->name('logout');
 
     // Registration Routes...
     Route::get('register', 'RegisterController@showRegistrationForm')->name('register_page');
     Route::post('register', 'RegisterController@register')->name('register');
+    Route::post('register_custom', 'RegisterController@register_custom')->name('register_custom');
     Route::get('register/activate/{token}', 'RegisterController@confirm')->name('email_confirm');
 
     // Password Reset Routes...
