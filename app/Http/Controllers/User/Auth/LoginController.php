@@ -56,7 +56,7 @@ class LoginController extends Controller
         // Check if authentication was successful
         if ($attempt) {
             // Authentication successful
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         } else {
             // Authentication failed
             return back()->withErrors(['email' => 'Invalid credentials']);
