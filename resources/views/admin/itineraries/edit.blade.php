@@ -113,13 +113,15 @@
                         @endphp
                         @foreach($tags as $key => $tags)
                             @php
-                                $listtags[$tags->id] = $tags->name
+                                $listtags[$tags->name] = $tags->name
                             @endphp
                         @endforeach
                         @php
-                        $listtag = json_decode($itineraries->tags)
+                        $listtag = json_decode($itineraries->tags);
+                        $merge_array = array_merge($listtags,$listtag);
                         @endphp
-                        {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2-tags', 'multiple' => true]) !!}
+                        
+                        {!! Form::select('tags[]', $merge_array, $listtag, ['class' => 'form-control select2-tags', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

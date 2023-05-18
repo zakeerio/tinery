@@ -109,7 +109,7 @@
                             @endphp
                             @foreach ($tags as $key => $tags)
                                 @php
-                                    $listtags[$tags->id] = $tags->name;
+                                    $listtags[$tags->name] = $tags->name;
                                 @endphp
                             @endforeach
                             {!! Form::label('tags', 'Tags') !!}

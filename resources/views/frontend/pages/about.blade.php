@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    @foreach($array as $row)
+
     <section class="hero-sections">
         <div class="container">
             <div class="hero-content">
@@ -10,7 +10,7 @@
 
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-lg-8">
-                                <h1 class="trip-h1">{{ $row->title}}</h1>
+                                <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
                             <div class="col-lg-4 text-end">
                                 <a href="#"><img src="{{ asset('frontend/images/Path (1).png') }}" alt="" class="fluid-img "></a>
@@ -21,7 +21,7 @@
                                 <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="w-75"></a>
                             </div>
                             <div class="col-lg-6">
-                                <h6 class="profile-p">{{ $row->author}} |</h6>
+                                <h6 class="profile-p">{{ $itinerary->author}} |</h6>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="profile-p">3/11/2022 </h6>
@@ -34,7 +34,7 @@
                         <div class="row city mt-4">
                             <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-1">{{$row->address_city}} </h6>
+                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
                             </div>
                             <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
@@ -48,15 +48,12 @@
 
                         <div class="tags">
                             @php
-                                $itinerarytag = json_decode($row->tags);
+                                $itinerarytag = json_decode($itinerary->tags);
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
                                 <a href="#">
-                                    @php
-                                        $tag = \App\Models\Tags::find($itinerarytag);
-                                    @endphp
                                     <button class="foodie">
-                                        {{$tag->name}}
+                                        {{$itinerarytag}}
                                     </button>
                                 </a>
                             @endforeach
@@ -70,7 +67,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <img src="{{ asset('frontend/images/wed.png') }}" alt="" class="wed-img">
+                                <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                             </div>
                         </div>
 
@@ -374,7 +371,7 @@
                                     <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt=""></a>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h6 class="profiler">Benjamin Franklin</h6>
+                                    <h6 class="profiler">{{$itinerary->author}}</h6>
                                     <div class="row w-50">
                                         <div class="col-lg-3">
                                             <a href="#"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
@@ -404,111 +401,33 @@
 
                         <div class="profiles p-3 mt-5">
                             <h6 class="profiler-related">Related Content</h6>
-
+                            @php
+                                $related_itinerary = \App\Models\Itineraries::where('slug','!=',$itinerary->slug)->get();
+                            @endphp
+                            @if(!$related_itinerary->isEmpty())
+                            @foreach($related_itinerary as $row)
                             <div class="row pt-3 d-flex align-items-center justify-content-center">
                                 <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
+                                    <a href="{{url('/itinerary/'.$row->slug)}}"> <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
+                                    <a href="{{url('/itinerary/'.$row->slug)}}" style="text-decoration:none;">
+                                        <h6 class="profiler-related">{{$row->title}}</h6>
+                                    </a>
                                     <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
+                                        <p class="lang">{{$row->author}} |</p>
                                         <p class="lang px-2">16 Hours Ago</p>
-
                                     </div>
-
                                 </div>
-
                             </div>
-                            <div class="row  pt-3 d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
-                                </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
-                                    <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
-                                        <p class="lang px-2">16 Hours Ago</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row  pt-3 d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
-                                </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
-                                    <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
-                                        <p class="lang px-2">16 Hours Ago</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row  pt-3 d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
-                                </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
-                                    <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
-                                        <p class="lang px-2">16 Hours Ago</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row   pt-3 d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
-                                </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
-                                    <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
-                                        <p class="lang px-2">16 Hours Ago</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row  pt-3 d-flex align-items-center justify-content-center">
-                                <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/toursit.png') }}" alt="" class="w-100"></a>
-                                </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler-related">My Winter Break 2022</h6>
-                                    <div class="d-flex align-items-center">
-                                        <p class="lang">Justin Lang |</p>
-
-                                        <p class="lang px-2">16 Hours Ago</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
 
     </section>
-    @endforeach
 
 
 @endsection
