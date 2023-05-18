@@ -257,7 +257,6 @@
                         </div>
 
                         <div id="main">
-                            <div class="containera">
                                 <div class="accordion" id="faq">
 
                                     <div class="card days-box" id="card1">
@@ -281,7 +280,11 @@
                                                                     {!! Form::label('activitytitle', 'Activity Time') !!}
                                                                     {!! Form::text('activitytitle',null , ["class"=>"form-control"]) !!}
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-3">
+                                                                    {!! Form::label('activitytime', 'Activity Time') !!}
+                                                                    {!! Form::time('activitytime',null , ["class"=>"form-control"]) !!}
+                                                                </div>
+                                                                <div class="col-md-3">
                                                                     {!! Form::label('activitytime', 'Activity Time') !!}
                                                                     {!! Form::time('activitytime',null , ["class"=>"form-control"]) !!}
                                                                 </div>
@@ -372,7 +375,6 @@
                                     <button class="btn btn-success add-activity-day" title="Add Activity"><i class="fa fa-plus-circle"> Add Day</i></button>
                                 </div>
 
-                            </div>
                         </div>
 
 
