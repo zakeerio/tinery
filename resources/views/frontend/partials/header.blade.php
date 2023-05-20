@@ -8,7 +8,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link text-clr" href="{{ route('about') }}">About</a>
                     </li>
@@ -16,10 +16,11 @@
                         <a class="nav-link text-clr" href="{{ route('itineraries') }}">Discover</a>
                     </li>
                     {{-- check user loggedin --}}
+
                     @if(Auth::guard('user')->user())
                         <div class="profile-item d-flex justify-content-between align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link " href="#login"><img src="{{ asset('frotnend/images/nav-profile.png') }}" alt="user image"></a>
+                                <a class="nav-link " href="#login"><img src="{{ asset('frontend/images/nav-profile.png') }}" alt="user image"></a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-danger  rounded-pill px-4" href="#membership">+ Add Itinerary</a>
