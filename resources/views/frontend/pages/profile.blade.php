@@ -1,9 +1,9 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    @php
+    {{-- @php
         $user = Auth::guard('user')->user();
-    @endphp
+    @endphp --}}
     <section class="profile-section">
         <div class="container">
             <div class="row">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Hi, {{ $user->name}} {{ $user->lastname}}!</h5>
+                                <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
 
                             </div>
                         </div>
@@ -253,9 +253,9 @@
                         <div class="tab-pane fade w-100 m-auto tab-content" id="content2" role="tabpanel" aria-labelledby="tab2">
                             <div class="text-center p-4">
                                 <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                <h4>No Itineraries, yet</h4>
-                                <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
-                                <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                                <h4 class="mb-3">No Saved Itineraries, yet</h4>
+                                <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
+                                <button class="btn btn-info rounded-pill">+ Add Itinerary</button>
                             </div>
                         </div>
                     </div>
