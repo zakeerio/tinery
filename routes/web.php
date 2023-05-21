@@ -17,7 +17,7 @@ use App\Http\Controllers\User\UserController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+// User profile
 Route::get('/user/{username}', [HomeController::class, 'username'])->name('username');
 
 
