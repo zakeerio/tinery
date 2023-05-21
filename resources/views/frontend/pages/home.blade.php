@@ -323,22 +323,22 @@
 
         <div class="row d-flex  align-items-center">
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
-                <img src="Tiktok Post 01.png') }}" alt="" class="slider-img">
+                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
         </div>
     </div>
