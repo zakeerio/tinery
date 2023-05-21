@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Itineraries;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -36,7 +37,10 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('frontend.pages.profile');
+        $user = Auth::guard('user')->user();
+        $itineraries = $user->itineraries();
+
+        return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries);
     }
 
     public function profileupdate(Request $request)
@@ -62,7 +66,7 @@ class UserController extends Controller
                 $user->email = $data['email'];
                 $user->save();
 
-                return redirect('/profile')->with('success',"Updated Successfully");
+                return redirect('/profile')->with('success',"Updated Successfully")->with('user');
 			}
 			catch(Exception $e){
 				return back()->with('error',"Error Occured");
@@ -111,6 +115,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/profile')->with('success',"Updated Successfully");
+        return redirect('/profile')->with('success',"Updated Successfully")->with('user');
     }
 }
