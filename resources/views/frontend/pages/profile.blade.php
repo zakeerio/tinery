@@ -224,24 +224,39 @@
                     </ul>
 
                     <div class="tab-content" id="myTabsContent">
-                        <div class="tab-pane fade show active w-50 text-center m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
+                        <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
                             {{-- {{ dd($itineraries) }} --}}
                             @forelse ( $itineraries as $itinerary )
                             {{-- {{ dd($itinerary) }} --}}
+                                <div class="row">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="{{ asset('frontend/images/angilena.png') }}" alt="" class="col-3">
+                                        <div class="col-6">
+                                            <h2 class="title">{{ $itinerary->title }}</h2>
+                                            <p>{{ $itinerary->excerpt }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             @empty
 
-                                <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                <h4>No Itineraries, yet</h4>
-                                <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
-                                <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                                <div class="text-center p-4">
+                                    <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
+                                    <h4>No Itineraries, yet</h4>
+                                    <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
+                                    <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                                </div>
 
                             @endforelse
                             <!-- Content for Tab 1 -->
 
                         </div>
-                        <div class="tab-pane fade" id="content2" role="tabpanel" aria-labelledby="tab2">
-                            <h4>Tab 2 Content</h4>
-                            <p>This is the content for Tab 2.</p>
+                        <div class="tab-pane fade w-100 m-auto tab-content" id="content2" role="tabpanel" aria-labelledby="tab2">
+                            <div class="text-center p-4">
+                                <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
+                                <h4>No Itineraries, yet</h4>
+                                <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
+                                <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                            </div>
                         </div>
                     </div>
                 </div>
