@@ -104,7 +104,7 @@ class ItinerariesController extends BaseController
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
-            $array->author = $data['author'];
+            $array->user_id = $data['user_id'];
             $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
@@ -126,7 +126,7 @@ class ItinerariesController extends BaseController
             {
                 $seo_image = $request->file('seo_image');
                 $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
-            
+
                 $destinationPath = public_path('/frontend/itineraries');
                 $seo_image->move($destinationPath, $input['seo_image']);
 
@@ -233,7 +233,7 @@ class ItinerariesController extends BaseController
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
-            $array->author = $data['author'];
+            $array->user_id = $data['user_id'];
             $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
@@ -255,7 +255,7 @@ class ItinerariesController extends BaseController
             {
                 $seo_image = $request->file('seo_image');
                 $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
-            
+
                 $destinationPath = public_path('/frontend/itineraries');
                 $seo_image->move($destinationPath, $input['seo_image']);
 

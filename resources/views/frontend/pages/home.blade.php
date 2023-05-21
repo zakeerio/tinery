@@ -37,17 +37,18 @@
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
 
-
                     <div class="col-lg-3">
                         <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
-                            <div class="Ellipse bg-white m-3 rounded-pill p-2">
-                                <div class="">
-                                    <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
+                            <a href="{{ route('username', ['username' => $row->user->username]) }}" class="text-decoration-none text-dark">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-2">
+                                    <div class="">
+                                        <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
+                                    </div>
+                                    <div class=" ">
+                                        <span class="mx-3">{{ $row->user->name}}</span>
+                                    </div>
                                 </div>
-                                <div class=" ">
-                                    <span class="mx-3">{{ $row->author}}</span>
-                                </div>
-                            </div>
+                            </a>
                             <div class="heart-icon">
                                 <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                             </div>

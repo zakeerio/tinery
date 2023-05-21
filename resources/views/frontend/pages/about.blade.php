@@ -21,7 +21,7 @@
                                 <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="w-75"></a>
                             </div>
                             <div class="col-lg-6">
-                                <h6 class="profile-p">{{ $itinerary->author}} |</h6>
+                                <h6 class="profile-p">{{ $itinerary->user_id}} |</h6>
                             </div>
                             <div class="col-lg-3">
                                 <h6 class="profile-p">3/11/2022 </h6>
@@ -371,7 +371,7 @@
                                     <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt=""></a>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h6 class="profiler">{{$itinerary->author}}</h6>
+                                    <h6 class="profiler">{{$itinerary->user_id}}</h6>
                                     <div class="row w-50">
                                         <div class="col-lg-3">
                                             <a href="#"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
@@ -415,7 +415,7 @@
                                         <h6 class="profiler-related">{{$row->title}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <p class="lang">{{$row->author}} |</p>
+                                        <p class="lang">{{$row->user_id}} |</p>
                                         <p class="lang px-2">16 Hours Ago</p>
                                     </div>
                                 </div>

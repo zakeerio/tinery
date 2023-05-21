@@ -787,7 +787,8 @@ select.did-floating-select::-ms-expand {
 .border-card {
     border-right: 2px solid #000000;
     padding-right: 30px;
-    height: 744px;
+    min-height: 744px;
+    height: auto;
 }
 
 .tab-content {

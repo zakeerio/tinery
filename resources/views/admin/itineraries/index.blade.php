@@ -130,7 +130,7 @@
                                         {{-- <td>{{ $row->seo_title}}</td> --}}
                                         {{-- <td>{{ $row->seo_description}}</td> --}}
                                         {{-- <td>{{ $row->seo_image}}</td> --}}
-                                        <td>{{ $row->author}}</td>
+                                        <td>{{ $row->user_id}}</td>
                                         <td>
                                             @php
                                                 $categories = json_decode($row->categories)

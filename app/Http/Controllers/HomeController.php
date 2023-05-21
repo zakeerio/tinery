@@ -15,19 +15,24 @@ class HomeController extends Controller
         ->where('status','published')
         ->get();
 
-        return view('frontend.pages.home')->with('itineraries', $itineraries);
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user');
     }
     public function username($username = '')
     {
-        // if(!empty($username)) {
-        //     if(User::where('username', $username)->count() >  0) {
-        //         dd('user found');
-        //     } else {
-        //         dd('user not found');
-        //     }
-        //     dd($username);
-        // }
-        // return view('frontend.pages.home');
+        if(!empty($username)) {
+            $user = User::where('username', $username)->first();
+            $itineraries = $user->itineraries;
+
+            if($user->count() >  0) {
+                return view('frontend.pages.profile', compact('user','itineraries'));
+            } else {
+                abort(403);
+            }
+
+        } else {
+            abort(403);
+        }
+
     }
     public function itinerary($slug)
     {

@@ -7,7 +7,7 @@
     <section class="profile-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 border-card mt-5 ">
+                <div class="col-md-4 border-card my-5 ">
                     <div class="row d-flex align-items-center ">
                         <div class="col-md-4 position-relative">
                             <form action="" method="post" enctype="multipart/form-data">
@@ -21,10 +21,10 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name}} {{ $user->lastname}}!</h5>
-                                
+
                             </div>
                         </div>
-                        <div class="col-md-12 m-4">
+                        <div class="col-md-12 mt-4">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="fw-bold">Admin</span>
+                                    <span class="fw-bold">{{ $user->username }}</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse show" aria-labelledby="adminBio"
@@ -63,7 +63,9 @@
                                                 {!! Form::label('username', 'Username',['class'=>'fw-bold required']) !!}
                                                 {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
                                             </div>
-                                            <small>Your Tinery URL: {{ request()->getSchemeAndHttpHost() }}/{{$user->username}}</small>
+                                            <small>Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
+
+
                                         </div>
                                         <div class="col-lg-12 mt-4">
                                             <b>Change Password</b>
@@ -84,7 +86,7 @@
                                                 {!! Form::label('email', 'Email Address',['class'=>'fw-bold required']) !!}
                                                 {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
                                             </div>
-                                        </div>                                        
+                                        </div>
                                         <div class="float-end">
                                             <div class="form-group">
                                                 {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
@@ -114,9 +116,9 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
-                                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control']) !!}
+                                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control', 'rows' => '5']) !!}
                                             </div>
-                                        </div>                                      
+                                        </div>
                                         <div class="col-lg-2" style="float:right;margin-right:10px;">
                                             <div class="form-group">
                                                 {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
@@ -167,13 +169,13 @@
                                                 {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control']) !!}
                                             </div>
-                                        </div>   
+                                        </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('website', 'website',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('website', $user->website, ['class' => 'form-control']) !!}
                                             </div>
-                                        </div>                                        
+                                        </div>
                                         <div class="col-lg-2" style="float:right;margin-right:10px;">
                                             <div class="form-group">
                                                 {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
@@ -223,12 +225,19 @@
 
                     <div class="tab-content" id="myTabsContent">
                         <div class="tab-pane fade show active w-50 text-center m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
+                            {{-- {{ dd($itineraries) }} --}}
+                            @forelse ( $itineraries as $itinerary )
+                            {{-- {{ dd($itinerary) }} --}}
+                            @empty
+
+                                <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
+                                <h4>No Itineraries, yet</h4>
+                                <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
+                                <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+
+                            @endforelse
                             <!-- Content for Tab 1 -->
-                            <img src="{{ asset('frontend/images/map.png') }}" alt="map Image"
-                                    class="map-img mb-4">
-                            <h4>No Itineraries, yet</h4>
-                            <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
-                            <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+
                         </div>
                         <div class="tab-pane fade" id="content2" role="tabpanel" aria-labelledby="tab2">
                             <h4>Tab 2 Content</h4>
