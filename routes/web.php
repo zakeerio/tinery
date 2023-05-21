@@ -16,9 +16,7 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/itineraries', function(){
     return view('frontend.pages.itineraries');
@@ -33,6 +31,9 @@ Route::get('/discover', function(){
 Route::get('/about', function(){
     return view('frontend.pages.about');
 })->name('about');
+
+
+// Route::get('/{username?}',  [HomeController::class, 'username'])->name('username');
 
 // Route::post('register', 'RegisterController@store')->name('store');
 

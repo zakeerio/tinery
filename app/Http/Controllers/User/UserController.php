@@ -43,8 +43,6 @@ class UserController extends Controller
     {
         $rules = [
             'username'     =>  'required|string|unique:users,username,'.$request->id,
-            'new_password'      =>  Rule::requiredIf($request->filled('old_password')),
-            'old_password'      =>  Rule::requiredIf($request->filled('new_password')),
             'email'     =>  'required|string',
 		];
 
@@ -56,7 +54,7 @@ class UserController extends Controller
 		}
 		else{
             $data = $request->input();
-            
+
 			try{
                 $user = User::find($data['id']);
                 $user->username = $data['username'];
@@ -86,7 +84,7 @@ class UserController extends Controller
 		}
 		else{
             $data = $request->input();
-            
+
 			try{
                 $user = User::find($data['id']);
                 $user->bio = $data['bio'];

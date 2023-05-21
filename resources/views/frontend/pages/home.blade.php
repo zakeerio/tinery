@@ -33,46 +33,41 @@
     <div class="container">
         <div class="cards-item">
             <div class="row">
-                @php
-                    $itineraries = \App\Models\Itineraries::where('featured','1')
-                    ->where('status','published')
-                    ->get();
-                @endphp
-                @if(!$itineraries->isEmpty())
-                @foreach($itineraries as $row)
-                <div class="col-lg-3">
-                    <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
-                        <div class="Ellipse bg-white m-3 rounded-pill p-2">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
+
+                @if($itineraries->count() > 0)
+                    @foreach($itineraries as $row)
+
+
+                    <div class="col-lg-3">
+                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
+                            <div class="Ellipse bg-white m-3 rounded-pill p-2">
+                                <div class="">
+                                    <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
+                                </div>
+                                <div class=" ">
+                                    <span class="mx-3">{{ $row->author}}</span>
+                                </div>
                             </div>
-                            <div class=" ">
-                                <span class="mx-3">{{ $row->author}}</span>
+                            <div class="heart-icon">
+                                <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                             </div>
                         </div>
-                        <div class="heart-icon">
-                            <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                        <a href="{{url('/itinerary/'.$row->slug)}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
+                        <div class="tags">
+                            @php
+                                $itinerarytag = json_decode($row->tags);
+                            @endphp
+                            @foreach($itinerarytag as $itinerarytag)
+                                <a href="#">
+                                    <button class="foodie">
+                                        {{$itinerarytag}}
+                                    </button>
+                                </a>
+                            @endforeach
                         </div>
+                        <p class="city">{{ $row->address_city}} | 3 Days</p>
                     </div>
-                    <a href="{{url('/itinerary/'.$row->slug)}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
-                    <div class="tags">
-                        @php
-                            $itinerarytag = json_decode($row->tags);
-                        @endphp
-                        @foreach($itinerarytag as $itinerarytag)
-                            <a href="#">
-                                <button class="foodie">
-                                    {{$itinerarytag}}
-                                </button>
-                            </a>
-                        @endforeach
-                        <!-- <a href="#"> <button class="foodie">Backpacker</button></a>
-                        <a href="#"> <button class="foodie">Backpacker</button></a>
-                        <a href="#"> <button class="foodie">Backpacker</button></a> -->
-                    </div>
-                    <p class="city">{{ $row->address_city}} | 3 Days</p>
-                </div>
-                @endforeach
+                    @endforeach
                 @endif
             </div>
 

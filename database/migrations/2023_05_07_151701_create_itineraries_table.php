@@ -22,7 +22,7 @@ class CreateItinerariesTable extends Migration
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->string('seo_image')->nullable();
-            $table->string('author')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->string('categories')->nullable();
             $table->string('tags')->nullable();
             $table->string('address_street')->nullable();
@@ -41,6 +41,7 @@ class CreateItinerariesTable extends Migration
             $table->enum('visibility', ['public', 'private'])->default('public');
             $table->enum('status', ['published', 'draft'])->default('published');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
