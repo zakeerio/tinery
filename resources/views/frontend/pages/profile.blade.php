@@ -21,10 +21,12 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name}} {{ $user->lastname}}!</h5>
-                                <p class="card-text">Welcome to Tinery!</p>
+                                
                             </div>
                         </div>
-
+                        <div class="col-md-12 m-4">
+                            <p class="card-text">{{ $user->bio}}</p>
+                        </div>
                     </div>
 
                     <div class="accordion mt-5" id="accordionExample">
@@ -33,7 +35,7 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="bold">Admin</span>
+                                    <span class="fw-bold">Admin</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse show" aria-labelledby="adminBio"
@@ -58,32 +60,32 @@
                                         <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                {!! Form::label('username', 'Username',['class'=>'bold required']) !!}
+                                                {!! Form::label('username', 'Username',['class'=>'fw-bold required']) !!}
                                                 {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
                                             </div>
-                                            <small>Your Tinery URL: https://www.tinery.com/username</small>
+                                            <small>Your Tinery URL: {{ request()->getSchemeAndHttpHost() }}/{{$user->username}}</small>
                                         </div>
                                         <div class="col-lg-12 mt-4">
                                             <b>Change Password</b>
                                             <div class="form-group mt-4">
-                                                {!! Form::label('old_password', 'Old password',['class'=>'bold']) !!}
-                                                {!! Form::text('old_password', null, ['class' => 'form-control']) !!}
+                                                {!! Form::label('old_password', 'Old password',['class'=>'fw-bold']) !!}
+                                                {!! Form::password('old_password', ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                {!! Form::label('new_password', 'New password',['class'=>'bold']) !!}
-                                                {!! Form::text('new_password', null, ['class' => 'form-control']) !!}
+                                                {!! Form::label('new_password', 'New password',['class'=>'fw-bold']) !!}
+                                                {!! Form::password('new_password', ['class' => 'form-control']) !!}
                                             </div>
                                             <small>Minimum 6 characters</small>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('email', 'Email Address',['class'=>'bold required']) !!}
+                                                {!! Form::label('email', 'Email Address',['class'=>'fw-bold required']) !!}
                                                 {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>                                        
-                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                        <div class="float-end">
                                             <div class="form-group">
                                                 {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
                                             </div>
@@ -98,7 +100,7 @@
                             <h2 class="accordion-header" id="bioHeading">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
-                                    <span class="bold">Bio</span>
+                                    <span class="fw-bold">Bio</span>
                                 </button>
                             </h2>
                             <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
@@ -111,7 +113,7 @@
                                         <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                {!! Form::label('bio', 'Bio',['class'=>'bold required']) !!}
+                                                {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
                                                 {!! Form::textarea('bio', $user->bio, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>                                      
@@ -131,7 +133,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
-                                    <span class="bold">Social Profile</span>
+                                    <span class="fw-bold">Social Profile</span>
                                 </button>
                             </h2>
                             <div id="collapseSocialProfile" class="accordion-collapse collapse"
@@ -144,31 +146,31 @@
                                         <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                {!! Form::label('facebook', 'Facebook',['class'=>'bold']) !!}
+                                                {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('facebook', $user->facebook, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('twitter', 'Twitter',['class'=>'bold']) !!}
+                                                {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('twitter', $user->twitter, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('instagram', 'Instagram',['class'=>'bold']) !!}
+                                                {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('instagram', $user->instagram, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('tiktok', 'Tiktok',['class'=>'bold']) !!}
+                                                {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>   
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('website', 'website',['class'=>'bold']) !!}
+                                                {!! Form::label('website', 'website',['class'=>'fw-bold']) !!}
                                                 {!! Form::text('website', $user->website, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>                                        
@@ -188,7 +190,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
-                                    <span class="bold">Relevant Tags</span>
+                                    <span class="fw-bold">Relevant Tags</span>
                                 </button>
                             </h2>
                             <div id="collapseRelevantTags" class="accordion-collapse collapse"

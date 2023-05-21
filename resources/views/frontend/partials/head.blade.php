@@ -29,16 +29,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('frontend/css/mytinnery.css') }}">
 <style>
-    .bold
-    {
-        font-weight:bold;
-    }
-    .right
-    {
-        float: right;
-    }
     label.required:after {
         content: " *";
         color: red;
+    }
+    .select2-container--default .select2-selection--single {
+        height: 40px;
+        width: 100%;
     }
 </style>
