@@ -87,7 +87,18 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('author', 'Author') !!}
-                            {!! Form::text('author', null, ['class' => 'form-control']) !!}
+                            {{-- {!! Form::text('author', null, ['class' => 'form-control']) !!} --}}
+
+                            @php
+                                $authorsArr = [];
+                                $authors = \App\Models\User::get();
+                            @endphp
+                            @foreach ($authors as $key => $author)
+                                @php
+                                    $authorsArr[$author->id] = $author->name;
+                                @endphp
+                            @endforeach
+                            {!! Form::select('author', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('categories', 'Categories') !!}
@@ -100,7 +111,7 @@
                                     $listcategories[$categories->id] = $categories->name;
                                 @endphp
                             @endforeach
-                            {!! Form::select('categories[]', $listcategories, null, ['class' => 'form-control select2', 'multiple' => true]) !!}
+                            {!! Form::select('categories[]', $listcategories, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                         </div>
                         <div class="form-group">
                             @php
@@ -113,7 +124,7 @@
                                 @endphp
                             @endforeach
                             {!! Form::label('tags', 'Tags') !!}
-                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2-tags', 'multiple' => true]) !!}
+                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2-tags', 'required', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -122,7 +133,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 {!! Form::label('address_street_line1', 'Street Line 1') !!}
-                                {!! Form::text('address_street_line1', null, ['class' => 'form-control', 'id'=> 'address_zipcode']) !!}
+                                {!! Form::text('address_street_line1', null, ['class' => 'form-control', 'id'=> 'address_street_line1']) !!}
                             </div>
                         </div>
                         <div class="form-row">
@@ -137,7 +148,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                {!! Form::label('address_zipcode', 'Zipcode', null, ['class' => 'form-control']) !!}
+                                {!! Form::label('address_zipcode', 'Zipcode') !!}
                                 {!! Form::text('address_zipcode', null, ['class' => 'form-control', 'id'=> 'address_zipcode']) !!}
 
                             </div>
@@ -260,12 +271,9 @@
                                 <div class="accordion" id="faq">
 
                                     <div class="card days-box" id="card1">
-                                        <a href="#" class="btn btn-danger remove-btn rounded-circle d-none"
-                                            title="Delete Day"><i class="fa fa-minus"></i></a>
-
+                                        <a href="#" class="btn btn-danger remove-btn rounded-circle d-none" title="Delete Day"><i class="fa fa-minus"></i></a>
                                         <div class="card-header" id="faqhead3">
-                                            <a href="#" class="btn btn-header-link text-bold" data-toggle="collapse"
-                                                data-target="#faq1" aria-expanded="true" aria-controls="faq1">Day 1</a>
+                                            <a href="#" class="btn btn-header-link text-bold" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">Day 1</a>
                                         </div>
 
                                         <div id="faq1" class="collapse " aria-labelledby="faqhead3" data-parent="#faq">
@@ -304,8 +312,7 @@
 
                                                 </div>
                                                 <div class="form-group d-flex justify-content-end">
-                                                    <button class="btn btn-info add-activitybtn" title="Add Activity"><i
-                                                            class="fa fa-plus-circle"></i> Add Activity</button>
+                                                    <button class="btn btn-info add-activitybtn" title="Add Activity"><i class="fa fa-plus-circle"></i> Add Activity</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -378,19 +385,16 @@
                                 </div>
 
                                 <div class="form-group d-flex justify-content-end">
-                                    <button class="btn btn-success add-activity-day" title="Add Activity"><i
-                                            class="fa fa-plus-circle"> Add Day</i></button>
+                                    <button class="btn btn-success add-activity-day" title="Add Activity"><i class="fa fa-plus-circle"> Add Day</i></button>
                                 </div>
 
-                            </div>
+                                <div id="map" style="height: 500px; width:100%;"></div>
 
+                                <div class="form-group mt-4">
+                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::close() !!}
+                                </div>
 
-
-                            <div id="map" style="height: 500px; width:100%;"></div>
-
-                            <div class="form-group">
-                                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                                {!! Form::close() !!}
                             </div>
 
                         </div>
@@ -457,11 +461,12 @@
     @php
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ $key }}"></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{ $key }}"></script> --}}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ $key }}"></script>
 
     <script>
         $(document).ready(function() {
-            function  initfn(){
+            function  initMaps(){
 
                 // execute
                 var locations = [
@@ -476,7 +481,6 @@
                         'long' : -96.7894,
                     }
                 ];
-
 
                 console.log(locations)
 
@@ -511,13 +515,60 @@
                     })(marker, i));
 
                     // Perform actions with the location data
-                    console.log('Description:', description);
-                    console.log('Latitude:', lat);
-                    console.log('Longitude:', long);
+                    // console.log('Description:', description);
+                    // console.log('Latitude:', lat);
+                    // console.log('Longitude:', long);
                 })
 
-        }
-        initfn();
+            }
+            initMaps();
+
+            var apiKey = `{{ $key }}`;
+
+            var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], {});
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var result = autocomplete.getPlace();
+                console.log(result.address_components[0]);
+
+                var location = result.geometry.location;
+                var addressComponents = result.address_components;
+
+                var latitude = location.lat;
+                var longitude = location.lng;
+
+                var address_street_line1 = result.formatted_address;
+                var city = getAddressComponent(addressComponents, 'locality');
+                var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                var country = getAddressComponent(addressComponents, 'country');
+                var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+
+                // Update form fields with retrieved values
+
+                $('#address_street_line1').val(address_street_line1);
+                $('#address_zipcode').val(postalCode);
+
+                $('#latitude').val(latitude);
+                $('#longitude').val(longitude);
+                $('#address_city').val(city);
+                $('#address_state').val(state);
+                $('#address_country').val(country);
+            });
+
+
+
+            function getAddressComponent(components, type) {
+                for (var i = 0; i < components.length; i++) {
+                    var component = components[i];
+                    var componentTypes = component.types;
+
+                    if (componentTypes.indexOf(type) !== -1) {
+                    return component.long_name;
+                    }
+                }
+                return '';
+            }
         });
     </script>
 
