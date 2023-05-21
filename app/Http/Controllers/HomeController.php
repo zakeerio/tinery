@@ -34,4 +34,5 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('slug',$slug)->first();
         return view('frontend.pages.about',compact('itinerary'));
     }
+
 }

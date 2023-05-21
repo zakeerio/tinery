@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 18, 2023 at 06:32 PM
+-- Generation Time: May 21, 2023 at 02:39 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -545,6 +545,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `confirmpassword` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bio` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tiktok` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -553,9 +560,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`) VALUES
-(2, 'ali', '', 'ali@ali.com', '', NULL, '$2y$10$r3paj2d3t0V1Xo4Mm.2rD.Wh4HlTJyduzMVXOezWb2nyXNmEl4ezO', '2023-05-18 06:35:43', '2023-05-18 06:35:43', '', NULL),
-(4, 'ali', NULL, 'alizafar52898@gmail.com', NULL, NULL, '$2y$10$lpoUnvhDgrMxXDJhBG8qjeBpkOHScGWuuOndTroDZ.7STVz7j0Rru', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`) VALUES
+(2, 'ali', '', 'ali@ali.com', 'alihamzaa', NULL, '$2y$10$ebWrJ8BXv1unMSPaLSxiKuGvNkhO1H1uISAWnVyndd21HZbpVQ2qu', '2023-05-18 06:35:43', '2023-05-21 09:04:45', '', NULL, 'I like to travel big cicties and eat the best food!', '#', '#', '#', '#', '#', NULL),
+(4, 'ali', NULL, 'alizafar52898@gmail.com', 'alihamza', NULL, '$2y$10$lpoUnvhDgrMxXDJhBG8qjeBpkOHScGWuuOndTroDZ.7STVz7j0Rru', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
