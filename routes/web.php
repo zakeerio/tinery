@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +39,10 @@ Route::get('/about', function(){
 Route::middleware('auth:user')->group(function () {
     // Routes that require user authentication
     Route::get('/dashboard', [UserController::class, 'dashboard']);
-    // Route::get('/profile', [UserController::class, 'profile']);
-    Route::get('/profile', function(){
-        dd('user logged in');
-    });
-
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/profileupdate', [UserController::class, 'profileupdate'])->name('profileupdate');
+    Route::post('/bioupdate', [UserController::class, 'bioupdate'])->name('bioupdate');
+    Route::post('/socialprofileupdate', [UserController::class, 'socialprofileupdate'])->name('socialprofileupdate');
     // Add more routes as needed
 });
 

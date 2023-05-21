@@ -1,0 +1,242 @@
+@extends('frontend.layouts.app')
+
+@section('content')
+    @php
+        $user = Auth::guard('user')->user();
+    @endphp
+    <section class="profile-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 border-card mt-5 ">
+                    <div class="row d-flex align-items-center ">
+                        <div class="col-md-4 position-relative">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image"
+                                    class="profile-img">
+                                <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
+                                        class="fa-solid fa-circle-plus"></i></label>
+                                <div class="d-none"><input type="file" id="profileimg"></div>
+                            </form>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Hi, {{ $user->name}} {{ $user->lastname}}!</h5>
+                                <p class="card-text">Welcome to Tinery!</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="accordion mt-5" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="adminBio">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseAdminBio" aria-expanded="true"
+                                    aria-controls="collapseAdminBio">
+                                    <span class="bold">Admin</span>
+                                </button>
+                            </h2>
+                            <div id="collapseAdminBio" class="accordion-collapse collapse show" aria-labelledby="adminBio"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <!-- Admin profile content -->
+                                    <div class="row">
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="row">
+                                        {!! Form::open(['route' => 'profileupdate', 'method' => 'POST']) !!}
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                {!! Form::label('username', 'Username',['class'=>'bold required']) !!}
+                                                {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <small>Your Tinery URL: https://www.tinery.com/username</small>
+                                        </div>
+                                        <div class="col-lg-12 mt-4">
+                                            <b>Change Password</b>
+                                            <div class="form-group mt-4">
+                                                {!! Form::label('old_password', 'Old password',['class'=>'bold']) !!}
+                                                {!! Form::text('old_password', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                {!! Form::label('new_password', 'New password',['class'=>'bold']) !!}
+                                                {!! Form::text('new_password', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <small>Minimum 6 characters</small>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('email', 'Email Address',['class'=>'bold required']) !!}
+                                                {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                            <div class="form-group">
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="bioHeading">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
+                                    <span class="bold">Bio</span>
+                                </button>
+                            </h2>
+                            <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <!-- Admin bio content -->
+                                    <div class="row">
+                                        {!! Form::open(['route' => 'bioupdate', 'method' => 'POST']) !!}
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                {!! Form::label('bio', 'Bio',['class'=>'bold required']) !!}
+                                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>                                      
+                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                            <div class="form-group">
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="socialProfile">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSocialProfile" aria-expanded="false"
+                                    aria-controls="collapseSocialProfile">
+                                    <span class="bold">Social Profile</span>
+                                </button>
+                            </h2>
+                            <div id="collapseSocialProfile" class="accordion-collapse collapse"
+                                aria-labelledby="socialProfile" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <!-- Social profile content -->
+                                    <div class="row">
+                                        {!! Form::open(['route' => 'socialprofileupdate', 'method' => 'POST']) !!}
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                {!! Form::label('facebook', 'Facebook',['class'=>'bold']) !!}
+                                                {!! Form::text('facebook', $user->facebook, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('twitter', 'Twitter',['class'=>'bold']) !!}
+                                                {!! Form::text('twitter', $user->twitter, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('instagram', 'Instagram',['class'=>'bold']) !!}
+                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('tiktok', 'Tiktok',['class'=>'bold']) !!}
+                                                {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>   
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('website', 'website',['class'=>'bold']) !!}
+                                                {!! Form::text('website', $user->website, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                            <div class="form-group">
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="relevantTags">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseRelevantTags" aria-expanded="false"
+                                    aria-controls="collapseRelevantTags">
+                                    <span class="bold">Relevant Tags</span>
+                                </button>
+                            </h2>
+                            <div id="collapseRelevantTags" class="accordion-collapse collapse"
+                                aria-labelledby="relevantTags" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <!-- Relevant tags content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+                    <ul class="nav nav-tabs " id="myTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active text-danger"
+                                type="button" role="tab" aria-controls="content1" aria-selected="true"
+                                data-bs-toggle="tab" data-bs-target="#content1">
+                                My Itinerary List
+                            </button>
+
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark" id="tab2" data-bs-toggle="tab"
+                                data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
+                                aria-selected="false"><i class="fa-regular fa-heart px-3"></i>Saved Itineraries</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabsContent">
+                        <div class="tab-pane fade show active w-50 text-center m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
+                            <!-- Content for Tab 1 -->
+                            <img src="{{ asset('frontend/images/map.png') }}" alt="map Image"
+                                    class="map-img mb-4">
+                            <h4>No Itineraries, yet</h4>
+                            <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
+                            <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                        </div>
+                        <div class="tab-pane fade" id="content2" role="tabpanel" aria-labelledby="tab2">
+                            <h4>Tab 2 Content</h4>
+                            <p>This is the content for Tab 2.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+@endsection

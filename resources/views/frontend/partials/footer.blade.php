@@ -1,24 +1,24 @@
 <footer class="footer py-4 ">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-lg-2 ">
                 <img src="{{ asset("frontend/images/LOGO.png") }}" alt="Logo" class="img-fluid tiny-logo">
             </div>
             <div class="col-lg-2 col-sm-6">
-                <ul class="list-unstyled">
+                <ul class="d-flex flex-column gap-3 list-unstyled">
                     <li><a href="#">Share an Itinerary</a></li>
                     <li><a href="#" class="gap-2">Discover</a></li>
                     <li><a href="#">Blog</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-sm-6 px-2">
-                <ul class="list-unstyled">
+                <ul class="d-flex flex-column gap-3 list-unstyled">
                     <li><a href="#">Terms of Use</a></li>
                     <li><a href="#" class="gap-2">Contact Us</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
-            <div class="col-lg-6 touch">
+            <div class="col-lg-6">
                 <h5>Let's stay in touch</h5>
                 <p>We are working to make things better. You can get notified subscribing below</p>
                 <form>
@@ -58,6 +58,10 @@
         <div class="modal-header">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> bc5055ac1c33d7fbd333bd4a6290691631963c3b
         <div class="modal-body">
             <div class="form-section ">
 
@@ -142,11 +146,61 @@
   </div>
 </div>
 {{-- Login Modal  --}}
+<<<<<<< HEAD
+<div class="modal fade" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+
+            <div class="form-section mt-5">
+                <div class="container-fluid">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-lg-5 frame-img">
+                            <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
+                        </div>
+                        <div class="col-lg-7">
+                            {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
+                                @csrf
+                                <h2 class="member-h2"> Member Login</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="labe-section w-100">
+                                            <div class="did-floating-label-content mb-4">
+
+                                                {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
+
+                                            </div>
+                                            <div class="did-floating-label-content mb-4">
+
+                                                {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
+                                    {!! Form::close() !!}
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {{-- <div class="form-section ">
+=======
 <div class="modal fade modal-dialog-scrollable modal-fullscreen" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-body">
             <div class="form-section ">
+>>>>>>> bc5055ac1c33d7fbd333bd4a6290691631963c3b
                 <div class="container">
                     <div class="row d-flex align-items-center">
                         <div class="col-lg-12">
@@ -174,7 +228,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
   </div>
