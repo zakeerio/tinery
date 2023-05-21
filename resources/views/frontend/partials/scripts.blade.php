@@ -3,19 +3,21 @@
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
 <script src="{{asset('plugins/sparklines/sparkline.js')}}"></script>
 <script src="{{asset('plugins/jqvmap/jquery.vmap.min.js')}}"></script>
 <script src="{{asset('plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
 <script src="{{asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
 <script src="{{asset('plugins/moment/moment.min.js')}}"></script>
-{{-- <script src="{{asset('plugins/dropzone/dropzone.js')}}"></script> --}}
+<script src="{{asset('plugins/dropzone/dropzone.js')}}"></script>
 <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
+{{-- <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script> --}}
 
 
 

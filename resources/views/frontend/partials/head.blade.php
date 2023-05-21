@@ -19,13 +19,26 @@
 {{-- <link rel="stylesheet" href="{{ asset('plugins/dropzone/dropzone.css') }}"> --}}
 {{-- <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}"> --}}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 {{-- STYLES --}}
 {{-- <link rel="stylesheet" href="{{ asset('css/admin/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}"> --}}
 
-<link rel="stylesheet" href="{{ asset('frontend/css/mytinnery.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{{ asset('frontend/css/mytinnery.css') }}">
+<style>
+    .bold
+    {
+        font-weight:bold;
+    }
+    .right
+    {
+        float: right;
+    }
+    label.required:after {
+        content: " *";
+        color: red;
+    }
+</style>
