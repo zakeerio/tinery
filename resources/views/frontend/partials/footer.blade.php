@@ -58,10 +58,6 @@
         <div class="modal-header">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> bc5055ac1c33d7fbd333bd4a6290691631963c3b
         <div class="modal-body">
             <div class="form-section ">
 
@@ -146,7 +142,6 @@
   </div>
 </div>
 {{-- Login Modal  --}}
-<<<<<<< HEAD
 <div class="modal fade" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
     <div class="modal-content">
@@ -194,13 +189,6 @@
                 </div>
             </div>
             {{-- <div class="form-section ">
-=======
-<div class="modal fade modal-dialog-scrollable modal-fullscreen" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="form-section ">
->>>>>>> bc5055ac1c33d7fbd333bd4a6290691631963c3b
                 <div class="container">
                     <div class="row d-flex align-items-center">
                         <div class="col-lg-12">

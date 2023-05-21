@@ -26,7 +26,6 @@
 <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}"> --}}
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('frontend/css/mytinnery.css') }}">
 <style>
@@ -43,7 +42,3 @@
         color: red;
     }
 </style>
-=======
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
-<link rel="stylesheet" href="{{ asset('frontend/css/mytinnery.css') }}">
->>>>>>> bc5055ac1c33d7fbd333bd4a6290691631963c3b
