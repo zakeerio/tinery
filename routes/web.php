@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // User profile
 Route::get('/user/{username}', [HomeController::class, 'username'])->name('username');
 
+Route::post('/favourites', [HomeController::class, 'favourites'])->name('favourites');
 
 Route::get('/itineraries', function(){
     return view('frontend.pages.itineraries');

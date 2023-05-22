@@ -67,25 +67,41 @@ class RegisterController extends Controller
     {
         // Validate the user input
         // dd($request->firstname);
-        $validatedData = $request->validate([
+        $rules = [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',    
             'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-        // Create a new user
-        $user = User::create([
-            'name' => $validatedData['firstname'],
-            'lastname' => $validatedData['lastname'],
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'confirmpassword' => Hash::make($validatedData['password']),
-        ]);
+            'password' => 'required|string|min:8',
+            'confirm_password' => 'required_with:password|same:password|min:8'
+		];
 
-        // Redirect or return a response
-        return redirect('/');
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return back()->with('error','Fields Error')
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+
+			try{
+                $user = new User;
+                $user->name = $data['firstname'];
+                $user->lastname = $data['lastname'];
+                $user->username = $data['username'];
+                $user->email = $data['email'];
+                $user->password = Hash::make($data['password']);
+                $user->confirmpassword = Hash::make($data['password']);
+        
+                $user->save();
+
+                return redirect('/')->with('success',"Registered Successfully");
+			}
+			catch(Exception $e){
+				return back()->with('error',"Error Occured");
+			}
+		}
     }
     protected function create(array $data)
     {
