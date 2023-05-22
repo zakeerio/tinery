@@ -81,102 +81,33 @@
         <div class="spotlight">
             <div class="row spotlight-center">
                 <h2 class="membr">Members Spotlight</h2>
-                <div class="col-lg-4">
-                    <div class="member-info d-flex align-items-center justify-content-between">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
+
+                @forelse ($users as $userdata )
+
+                    <div class="col-lg-4">
+                        <div class="member-info d-flex align-items-center justify-content-between">
+                            <div class="">
+                                <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
+                            </div>
+                            <div class="mx-3">
+                                <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4>
+                                <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                            </div>
+                            <div class="">
+                                <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
+                            </div>
                         </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
+
                     </div>
 
-                </div>
+                @empty
 
-                <div class="col-lg-4">
-                    <div class="member-info">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
-                        </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
-                    </div>
+                    <div class="">No users found! </div>
 
-                </div>
-                <div class="col-lg-4">
-                    <div class="member-info">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
-                        </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
-                    </div>
+                @endforelse
 
-                </div>
             </div>
 
-            <div class="row  spotlight-centermt-4">
-                <!-- <h2 class="membr">James Dean</h2> -->
-                <div class="col-lg-4">
-                    <div class="member-info">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
-                        </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="member-info">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
-                        </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="member-info">
-                        <div class="">
-                            <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
-                        </div>
-                        <div class="mx-3">
-                            <h4 class="Benjamin">Benjamin Franklin</h4>
-                            <p class="Benjamin-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -14,8 +14,8 @@ class HomeController extends Controller
         $itineraries = \App\Models\Itineraries::where('featured','1')
         ->where('status','published')
         ->get();
-
-        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user');
+        $users = User::limit('8')->get();
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
     }
     public function username($username = '')
     {
