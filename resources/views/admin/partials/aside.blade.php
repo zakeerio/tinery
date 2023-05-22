@@ -147,14 +147,14 @@
                         @endcan
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a class="nav-link" href="{{ route('logout') }}">
                                 <i class="nav-icon fa fa-sign-out-alt" aria-hidden="true"></i>
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
-                            </form>
+                            </form> --}}
 
                         </li>
                     </ul>

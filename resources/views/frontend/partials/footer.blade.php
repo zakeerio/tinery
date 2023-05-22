@@ -159,7 +159,7 @@
     <div class="modal-content">
         <div class="modal-body">
 
-            <div class="form-section mt-5">
+            <div class="form-section">
                 <div class="container-fluid">
                     <div class="row d-flex align-items-center">
                         <div class="col-lg-5 frame-img">
