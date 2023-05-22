@@ -86,25 +86,23 @@
                             {!! Form::file('seo_image', ['class' => 'form-control-file']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('author', 'Author') !!}
-                            {{-- {!! Form::text('author', null, ['class' => 'form-control']) !!} --}}
+                            {!! Form::label('user_id', 'Author') !!}
+                            {{-- {!! Form::text('user_id', null, ['class' => 'form-control']) !!} --}}
 
                             @php
                                 $authorsArr = [];
-                                $authors = \App\Models\User::get();
                             @endphp
                             @foreach ($authors as $key => $author)
                                 @php
                                     $authorsArr[$author->id] = $author->name;
                                 @endphp
                             @endforeach
-                            {!! Form::select('author', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
+                            {!! Form::select('user_id', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('categories', 'Categories') !!}
                             @php
                                 $listcategories = [];
-                                $categories = \App\Models\Categories::get();
                             @endphp
                             @foreach ($categories as $key => $categories)
                                 @php
@@ -116,15 +114,14 @@
                         <div class="form-group">
                             @php
                                 $listtags = [];
-                                $tags = \App\Models\Tags::get();
                             @endphp
                             @foreach ($tags as $key => $tags)
                                 @php
-                                    $listtags[$tags->name] = $tags->name;
+                                    $listtags[$tags->id] = $tags->name;
                                 @endphp
                             @endforeach
                             {!! Form::label('tags', 'Tags') !!}
-                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2-tags', 'required', 'multiple' => true]) !!}
+                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
