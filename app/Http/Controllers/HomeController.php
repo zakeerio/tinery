@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Itineraries;
 use App\Models\User;
+use App\Models\Favorites;
 
 class HomeController extends Controller
 {
@@ -40,4 +41,28 @@ class HomeController extends Controller
         return view('frontend.pages.about',compact('itinerary'));
     }
 
+    public function favourites(Request $request)
+    {
+        $output = array();
+        $id = $request->input('id');
+
+        $query = Favorites::where('user_id',Auth::guard('user')->user()->id)
+        ->where('itineraries_id',$id)->get();
+        if(count($query) == 1)
+        {
+            $output['error'] = 'Already in List';
+        }
+        else
+        {
+            $arr = new Favorites;
+            $arr->user_id = Auth::guard('user')->user()->id;
+            $arr->itineraries_id = $id;
+    
+            $arr->save();
+
+            $output['success'] = 'Added Successfully';
+        }
+
+        echo json_encode($output);
+    }
 }

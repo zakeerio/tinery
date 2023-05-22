@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Itineraries;
+use App\Models\Favorites;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function itineraries()
     {
         return $this->hasMany(Itineraries::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorites::class);
     }
 }

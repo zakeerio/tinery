@@ -43,21 +43,22 @@ class LoginController extends Controller
 
     public function login_new(Request $request)
     {
-        // dd($request);
         // Validate the user input
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+        
         // Attempt to authenticate the user
         $attempt = Auth::guard('user')->attempt($credentials);
 
         // Check if authentication was successful
         if ($attempt) {
+            // dd($request);
             // Authentication successful
             return redirect()->intended('/');
         } else {
+            // dd($request->input());
             // Authentication failed
             return back()->withErrors(['email' => 'Invalid credentials']);
         }

@@ -67,6 +67,18 @@
                             <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                         </div>
                         <div class="col-lg-7">
+                            <div class="row">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            </div>
                             {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => 'p-5']) !!}
 
                                 @csrf
@@ -118,7 +130,7 @@
                                                 <label for="Username">Username</label> --}}
                                             </div>
                                             <div class="did-floating-label-content mb-4">
-                                                {!! Form::text('confirm_password', (old('confirm_password')) ? old('confirm_password') : null, [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
                                                 {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label']) !!}
 
                                                 {{-- <input type="password" name="confirm_password" class="form-control w-100 rounded-pill did-floating-input p-3" id="confirm_password" placeholder="Enter your confirm password" required>

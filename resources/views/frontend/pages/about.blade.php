@@ -13,7 +13,7 @@
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
                             <div class="col-lg-4 text-end">
-                                <a href="#"><img src="{{ asset('frontend/images/Path (1).png') }}" alt="" class="fluid-img "></a>
+                                <a href="#"><img src="{{ asset('frontend/images/border-heart.png') }}" alt="" class="fluid-img "></a>
                             </div>
                         </div>
                         <div class="row related d-flex align-items-center">

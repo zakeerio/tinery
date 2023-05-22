@@ -19,9 +19,71 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {{-- <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script> --}}
 
+<script src="{{asset('js/bootstrap-notify.js')}}"></script>
+<script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
 
 
 
 {{-- scripts --}}
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
+<input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
+@if(Session::has('success'))
+    <script>
+        $.notify({
+        title: '<strong>SUCCESS!</strong>',
+        message: '<?= Session::get('success')?>'
+        },{
+        type: 'success'
+        });
+    </script>
+@endif
+@if(Session::has('error'))
+    <script>
+        $.notify({
+        title: '<strong>Error!</strong>',
+        message: '<?= Session::get('error')?>'
+        },{
+        type: 'danger'
+        });
+    </script>
+@endif
+<script>
+    $(document).ready(function(){
+        $(document).on('click','a[data-role=addtowishlist]',function(){
+            var id = $(this).data('id');
+            var csrftoken = $('#csrftoken').val();
+            
+            $.ajax({
+                url:'{{ url("/favourites")}}',
+                method:'post',
+                data:{_token:csrftoken,id:id},
+                success:function(data)
+                {
+                    var res = $.parseJSON(data);
+                    if(res.success)
+                    {
+                        $.notify({
+                        title: '<strong>SUCCESS!</strong>',
+                        message: res.success
+                        },{
+                        type: 'success'
+                        });
+                    }
+                    if(res.error)
+                    {
+                        $.notify({
+                        title: '<strong>SUCCESS!</strong>',
+                        message: res.error
+                        },{
+                        type: 'danger'
+                        });
+                    }
+
+                    // window.setTimeout(window.location.href = "{{URL::to('/')}}",5000);
+
+                }
+            });
+        });
+    });
+</script>
