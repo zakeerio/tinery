@@ -94,6 +94,20 @@ class UserController extends Controller
                 $user->bio = $data['bio'];
                 $user->save();
 
+                if($request->hasFile('file'))
+                {
+                    $file = $request->file('file');
+                    $input['file'] = time().'.'.$file->getClientOriginalExtension();
+
+                    $destinationPath = public_path('/frontend/profile_pictures');
+                    $file->move($destinationPath, $input['file']);
+
+                    $user = User::find($data['id']);
+                    $user->profile = $input['file'];
+                    $user->save();
+                }
+
+
                 return redirect('/profile')->with('success',"Updated Successfully");
 			}
 			catch(Exception $e){

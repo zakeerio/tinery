@@ -11,11 +11,16 @@
                     <div class="row d-flex align-items-center ">
                         <div class="col-md-4 position-relative">
                             <form action="" method="post" enctype="multipart/form-data">
-                                <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image"
+                                @if($user->profile != '')
+                                <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img">
-                                <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
+                                @else
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image"
+                                    class="profile-img">
+                                @endif
+                                <!-- <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
                                         class="fa-solid fa-circle-plus"></i></label>
-                                <div class="d-none"><input type="file" id="profileimg"></div>
+                                <div class="d-none"><input type="file" id="profileimg"></div> -->
                             </form>
                         </div>
                         <div class="col-md-8">
@@ -110,13 +115,19 @@
                                 <div class="accordion-body">
                                     <!-- Admin bio content -->
                                     <div class="row">
-                                        {!! Form::open(['route' => 'bioupdate', 'method' => 'POST']) !!}
+                                        {!! Form::open(['route' => 'bioupdate', 'method' => 'POST', 'files' => true]) !!}
                                         @csrf
                                         <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
                                                 {!! Form::textarea('bio', $user->bio, ['class' => 'form-control', 'rows' => '5']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mt-3">
+                                            <div class="form-group">
+                                                {!! Form::label('file', 'File',['class'=>'fw-bold']) !!}
+                                                {!! Form::file('file', ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="float:right;margin-right:10px;">

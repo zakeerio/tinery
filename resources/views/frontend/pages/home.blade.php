@@ -92,7 +92,11 @@
                     <div class="col-lg-4">
                         <div class="member-info d-flex align-items-center justify-content-between">
                             <div class="">
-                                <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="member-img"></a>
+                                @if($userdata->profile != '')
+                                <a href="#"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="member-img"></a>
+                                @else
+                                <a href="#"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="member-img"></a>
+                                @endif
                             </div>
                             <div class="mx-3">
                                 <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4>

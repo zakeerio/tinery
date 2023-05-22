@@ -20,7 +20,13 @@
                     @if(Auth::guard('user')->user())
                         <div class="profile-item d-flex justify-content-between align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ url('/profile')}}"><img src="{{ asset('frontend/images/nav-profile.png') }}" alt="user image"></a>
+                                <a class="nav-link " href="{{ url('/profile')}}">
+                                    @if(Auth::guard('user')->user()->profile != '')
+                                    <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image">
+                                    @else
+                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="50px" alt="Profile Image">
+                                    @endif
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-danger  rounded-pill px-4" href="#membership">+ Add Itinerary</a>
