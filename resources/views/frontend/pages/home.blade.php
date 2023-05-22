@@ -39,17 +39,22 @@
 
                     <div class="col-lg-3">
                         <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
-                            <a href="{{ route('username', ['username' => $row->user->username]) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
                                 <div class="Ellipse bg-white m-3 rounded-pill p-2">
                                     <div class="">
-                                        <img src="{{ asset('frontend/images/toro (2).png') }}" alt="">
+                                        {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
+                                        @if($row->user->profile != '')
+                                         <img src="{{ asset('frontend/profile_pictures/'.$row->user->profile) }}" alt="" class="width-48">
+                                        @else
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="width-48">
+                                        @endif
                                     </div>
                                     <div class=" ">
                                         <span class="mx-3">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>
-                            
+
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
                                 <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
@@ -195,7 +200,7 @@
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
                 </div>
             </div>
-
+$
             <div class="col-lg-2 ">
                 <div class="social-descover">
                     <div class="">
