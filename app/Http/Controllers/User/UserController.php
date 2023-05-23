@@ -38,7 +38,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::guard('user')->user();
-        $itineraries = $user->itineraries();
+        $itineraries = $user->itineraries;
 
         return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries);
     }
