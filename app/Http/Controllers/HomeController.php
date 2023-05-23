@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function username($username = '')
     {
         if(!empty($username)) {
-            $user = User::where('username', $username)->first();
+            $user = User::where('username', $username)->with('favorites.itineraries')->first();
             $itineraries = $user->itineraries;
 
             if($user->count() >  0) {
@@ -57,7 +57,7 @@ class HomeController extends Controller
             $arr = new Favorites;
             $arr->user_id = Auth::guard('user')->user()->id;
             $arr->itineraries_id = $id;
-    
+
             $arr->save();
 
             $output['success'] = 'Added Successfully';
