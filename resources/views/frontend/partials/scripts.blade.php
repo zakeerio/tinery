@@ -73,16 +73,25 @@
                     if(res.error)
                     {
                         $.notify({
-                        title: '<strong>SUCCESS!</strong>',
+                        title: '<strong>ERROR!</strong>',
                         message: res.error
                         },{
                         type: 'danger'
                         });
                     }
 
-                    // window.setTimeout(window.location.href = "{{URL::to('/')}}",5000);
-
+                    // setTimeout(function() {
+                    // window.location.href = "{{URL::to('/')}}"; // Replace with your desired URL
+                    // }, 1500);
                 }
+            });
+        });
+        $(document).on('click','a[data-role=addtowishlistnotlogin]',function(){
+            $.notify({
+            title: '<strong>ERROR!</strong>',
+            message: 'Login to add your Favourites'
+            },{
+            type: 'danger'
             });
         });
     });
