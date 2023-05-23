@@ -74,7 +74,8 @@
                                         @php
                                             $tag = \App\Models\tags::find($itinerarytag);
                                         @endphp
-                                        {{$tag->name}}
+                                        {{-- {{$tag->name}} --}}
+                                        {{ $itinerarytag }}
                                     </button>
                                 </a>
                             @endforeach

@@ -241,10 +241,14 @@
                             {{-- {{ dd($itinerary) }} --}}
                                 <div class="row">
                                     <div class="d-flex gap-3 align-items-center">
-                                        <img src="{{ asset('frontend/images/angilena.png') }}" alt="" class="col-3">
+                                        @if (!empty($itinerary->seo_image))
+                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3">
+                                        @else
+                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3">
+                                        @endif
                                         <div class="col-6">
                                             <h2 class="title">{{ $itinerary->title }}</h2>
-                                            <p>{{ $itinerary->excerpt }}</p>
+                                            <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -269,10 +273,14 @@
 
                                     <div class="row">
                                         <div class="d-flex gap-3 align-items-center">
-                                            <img src="{{ asset('frontend/images/angilena.png') }}" alt="" class="col-3">
+                                            @if (!empty($itinerary->seo_image))
+                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3">
+                                            @else
+                                                <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3">
+                                            @endif
                                             <div class="col-6">
                                                 <h2 class="title">{{ $itinerary->title }}</h2>
-                                                <p>{{ $itinerary->excerpt }}</p>
+                                                <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                             </div>
                                         </div>
                                     </div>
