@@ -71,7 +71,10 @@
                             @foreach($itinerarytag as $itinerarytag)
                                 <a href="#">
                                     <button class="foodie">
-                                        {{$itinerarytag}}
+                                        @php
+                                            $tag = \App\Models\tags::find($itinerarytag);
+                                        @endphp
+                                        {{$tag->name}}
                                     </button>
                                 </a>
                             @endforeach

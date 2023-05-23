@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\Itineraries;
-
+use App\Models\Categories;
+use App\Models\User;
+use App\Models\Tags;
 class ItinerariesController extends BaseController
 {
     public function __construct()
@@ -39,8 +41,11 @@ class ItinerariesController extends BaseController
      */
     public function create()
     {
+        $categories = Categories::get();
+        $authors = User::get();
+        $tags = Tags::get();
         $this->setPageTitle("Itineraries","Itineraries List");
-        return view('admin.Itineraries.create');
+        return view('admin.Itineraries.create',compact('categories','authors','tags'));
     }
 
     /**
@@ -51,10 +56,11 @@ class ItinerariesController extends BaseController
      */
     public function store(Request $request)
     {
+        // dd($request->input());
         $rules = [
             'title' => 'required|max:255',
             'description' => 'required',
-            'author' => 'required',
+            'user_id' => 'required',
             'categories' => 'required|array',
             'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
@@ -77,7 +83,7 @@ class ItinerariesController extends BaseController
             'title.required' => 'The title field is required.',
             'title.max' => 'The title field cannot be longer than 255 characters.',
             'description.required' => 'The description field is required.',
-            'author.required' => 'The author field is required.',
+            'user_id.required' => 'The author field is required.',
             'categories.required' => 'The categories field is required.',
             'tags.required' => 'The tags field is required.',
             'visibility.required' => 'The visibility field is required.',
@@ -166,9 +172,13 @@ class ItinerariesController extends BaseController
      */
     public function edit($id)
     {
+        $categories = Categories::get();
+        $authors = User::get();
+        $tags = Tags::get();
+
         $this->setPageTitle("Itineraries","Itineraries Edit");
         $itineraries = Itineraries::find($id);
-        return view('admin.itineraries.edit',compact('itineraries'));
+        return view('admin.itineraries.edit',compact('itineraries','categories','authors','tags'));
     }
 
     /**
@@ -183,7 +193,7 @@ class ItinerariesController extends BaseController
         $rules = [
             'title' => 'required|max:255',
             'description' => 'required',
-            'author' => 'required',
+            'user_id' => 'required',
             'categories' => 'required|array',
             'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
@@ -206,7 +216,7 @@ class ItinerariesController extends BaseController
             'title.required' => 'The title field is required.',
             'title.max' => 'The title field cannot be longer than 255 characters.',
             'description.required' => 'The description field is required.',
-            'author.required' => 'The author field is required.',
+            'user_id.required' => 'The author field is required.',
             'categories.required' => 'The categories field is required.',
             'tags.required' => 'The tags field is required.',
             'visibility.required' => 'The visibility field is required.',
