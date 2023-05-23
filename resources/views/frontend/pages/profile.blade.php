@@ -231,18 +231,23 @@
                                         {!! Form::close() !!}
                                     @else
                                         <div class="col-lg-12">
+                                            {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold d-block']) !!}
                                             {{$user->facebook}}
                                         </div>
                                         <div class="col-lg-12">
+                                            {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold d-block']) !!}
                                             {{$user->twitter}}
                                         </div>
                                         <div class="col-lg-12">
+                                            {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold d-block']) !!}
                                             {{$user->instagram}}
                                         </div>
                                         <div class="col-lg-12">
+                                            {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold d-block']) !!}
                                             {{$user->tiktok}}
                                         </div>
                                         <div class="col-lg-12">
+                                            {!! Form::label('website', 'website',['class'=>'fw-bold d-block']) !!}
                                             {{$user->website}}
                                         </div>
                                     @endif
@@ -270,8 +275,8 @@
 
                 </div>
 
-                <div class="col-md-8">
-                    <ul class="nav nav-tabs profile-tabs d-flex gap-2 " id="myTabs" role="tablist">
+                <div class="col-md-8 px-4">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-3 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"

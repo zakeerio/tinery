@@ -322,11 +322,19 @@
     max-width: 120px;
     width: 100%;
 }
-.profile-tabs .nav-link, .profile-tabs .nav-link i {
-    color:#000 !important;
+
+
+.profile-tabs .nav-link{
+    font-weight: 600 !important;
+    border: 2px solid #000 !important;
+    color: #000 !important;
+    font-size: 24px;
+    line-height: 40px;
 }
-.profile-tabs .nav-link.active, .profile-tabs .nav-link.active i {
-    color:red !important;
+
+.profile-tabs .nav-link.active {
+    border: 2px solid #C83232 !important;
+    color:#C83232 !important;
 }
 
 .Ellipse {
@@ -347,6 +355,7 @@
     width: 120px;
     margin-bottom: 20px;
 }
+
 
 .navyblubtn {
     background: #0F6496;
