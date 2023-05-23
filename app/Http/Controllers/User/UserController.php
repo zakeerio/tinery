@@ -42,8 +42,9 @@ class UserController extends Controller
         $user = User::where('id', $user_loggedin->id)->with('favorites.itineraries')->first();
 
         $itineraries = $user->itineraries;
+        $isloggedin = true;
 
-        return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries);
+        return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries)->with('isloggedin',$isloggedin);
     }
 
     public function profileupdate(Request $request)

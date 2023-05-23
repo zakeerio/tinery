@@ -1,9 +1,10 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    {{-- @php
-        $user = Auth::guard('user')->user();
-    @endphp --}}
+    @php
+        $usercheck = isset($isloggedin) ? $isloggedin : false;;
+
+    @endphp
     <section class="profile-section">
         <div class="container">
             <div class="row">
@@ -15,8 +16,7 @@
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img">
                                 @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image"
-                                    class="profile-img">
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image" class="profile-img">
                                 @endif
                                 <!-- <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
                                         class="fa-solid fa-circle-plus"></i></label>
@@ -26,7 +26,6 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-
                             </div>
                         </div>
                         <div class="col-md-12 mt-4">
@@ -60,44 +59,55 @@
                                         @endif
                                     </div>
                                     <div class="row">
-                                        {!! Form::open(['route' => 'profileupdate', 'method' => 'POST']) !!}
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$user->id}}">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                {!! Form::label('username', 'Username',['class'=>'fw-bold required']) !!}
-                                                {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
-                                            </div>
-                                            <small>Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
+                                        @if ($usercheck)
+
+                                            {!! Form::open(['route' => 'profileupdate', 'method' => 'POST']) !!}
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    {!! Form::label('username', 'Username',['class'=>'fw-bold required']) !!}
+                                                    {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
+                                                </div>
+                                                <small>Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
 
 
-                                        </div>
-                                        <div class="col-lg-12 mt-4">
-                                            <b>Change Password</b>
-                                            <div class="form-group mt-4">
-                                                {!! Form::label('old_password', 'Old password',['class'=>'fw-bold']) !!}
-                                                {!! Form::password('old_password', ['class' => 'form-control']) !!}
                                             </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                {!! Form::label('new_password', 'New password',['class'=>'fw-bold']) !!}
-                                                {!! Form::password('new_password', ['class' => 'form-control']) !!}
+                                            <div class="col-lg-12 mt-4">
+                                                <b>Change Password</b>
+                                                <div class="form-group mt-4">
+                                                    {!! Form::label('old_password', 'Old password',['class'=>'fw-bold']) !!}
+                                                    {!! Form::password('old_password', ['class' => 'form-control']) !!}
+                                                </div>
                                             </div>
-                                            <small>Minimum 6 characters</small>
-                                        </div>
-                                        <div class="col-lg-12 mt-3">
-                                            <div class="form-group">
-                                                {!! Form::label('email', 'Email Address',['class'=>'fw-bold required']) !!}
-                                                {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    {!! Form::label('new_password', 'New password',['class'=>'fw-bold']) !!}
+                                                    {!! Form::password('new_password', ['class' => 'form-control']) !!}
+                                                </div>
+                                                <small>Minimum 6 characters</small>
                                             </div>
-                                        </div>
-                                        <div class="float-end">
-                                            <div class="form-group">
-                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                            <div class="col-lg-12 mt-3">
+                                                <div class="form-group">
+                                                    {!! Form::label('email', 'Email Address',['class'=>'fw-bold required']) !!}
+                                                    {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                        {!! Form::close() !!}
+                                            <div class="float-end">
+                                                <div class="form-group">
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                                </div>
+                                            </div>
+                                            {!! Form::close() !!}
+
+                                        @else
+
+                                            {!! Form::label('email', 'Email Address',['class'=>'fw-bold']) !!}
+                                            <div class="form-text"> {{ $user->email }}</div>
+
+                                        @endif
+
+
                                     </div>
                                 </div>
                             </div>
@@ -114,28 +124,39 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <!-- Admin bio content -->
+
+
                                     <div class="row">
-                                        {!! Form::open(['route' => 'bioupdate', 'method' => 'POST', 'files' => true]) !!}
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$user->id}}">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
-                                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control', 'rows' => '5']) !!}
+                                        @if ($usercheck)
+
+                                            {!! Form::open(['route' => 'bioupdate', 'method' => 'POST', 'files' => true]) !!}
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
+                                                    {!! Form::textarea('bio', $user->bio, ['class' => 'form-control', 'rows' => '5']) !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-12 mt-3">
-                                            <div class="form-group">
-                                                {!! Form::label('file', 'File',['class'=>'fw-bold']) !!}
-                                                {!! Form::file('file', ['class' => 'form-control']) !!}
+                                            <div class="col-lg-12 mt-3">
+                                                <div class="form-group">
+                                                    {!! Form::label('file', 'File',['class'=>'fw-bold']) !!}
+                                                    {!! Form::file('file', ['class' => 'form-control']) !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
-                                            <div class="form-group">
-                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                            <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                                <div class="form-group">
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                        {!! Form::close() !!}
+                                            {!! Form::close() !!}
+
+                                        @else
+
+                                            {!! Form::label('bio', 'Bio',['class'=>'fw-bold']) !!}
+                                            <div class="form-text">{{ $user->bio }}</div>
+
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -239,12 +260,12 @@
                             {{-- {{ dd($itineraries) }} --}}
                             @forelse ( $itineraries as $itinerary )
                             {{-- {{ dd($itinerary) }} --}}
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="d-flex gap-3 align-items-center">
                                         @if (!empty($itinerary->seo_image))
-                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3">
+                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120">
                                         @else
-                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3">
+                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                         @endif
                                         <div class="col-6">
                                             <h2 class="title">{{ $itinerary->title }}</h2>
@@ -271,12 +292,12 @@
                                 $itinerary = $favorite->itineraries;
                                 @endphp
 
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="d-flex gap-3 align-items-center">
                                             @if (!empty($itinerary->seo_image))
-                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3">
+                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120">
                                             @else
-                                                <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3">
+                                                <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                             @endif
                                             <div class="col-6">
                                                 <h2 class="title">{{ $itinerary->title }}</h2>

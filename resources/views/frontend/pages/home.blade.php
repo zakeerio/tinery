@@ -99,17 +99,19 @@
 
                     <div class="col-lg-4">
                         <div class="member-info d-flex align-items-center justify-content-between">
-                            <div class="">
+                            <div class="d-flex align-items-center justify-content-start">
                                 @if($userdata->profile != '')
-                                <a href="#"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="member-img"></a>
                                 @else
-                                <a href="#"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="member-img"></a>
                                 @endif
+
+                                <div class="mx-3">
+                                    <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
+                                    <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                </div>
                             </div>
-                            <div class="mx-3">
-                                <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4>
-                                <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
-                            </div>
+
                             <div class="">
                                 <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
                             </div>

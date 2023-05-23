@@ -318,6 +318,10 @@
     line-height: 32px;
     color: #545464;
 }
+.w-120 {
+    max-width: 120px;
+    width: 100%;
+}
 
 .Ellipse {
     display: flex !important;
