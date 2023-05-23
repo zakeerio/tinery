@@ -26,26 +26,18 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                                <div class="row w-50">
+                                <div class="d-flex gap-1">
                                     @if(!empty($user->facebook))
-                                    <div class="col-lg-3">
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
-                                    </div>
                                     @endif
                                     @if(!empty($user->twitter))
-                                    <div class="col-lg-3">
                                         <a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
-                                    </div>
                                     @endif
                                     @if(!empty($user->instagram))
-                                    <div class="col-lg-3">
                                         <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
-                                    </div>
                                     @endif
                                     @if(!empty($user->website))
-                                    <div class="col-lg-3">
                                         <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                    </div>
                                     @endif
                                 </div>
                             </div>
@@ -279,9 +271,9 @@
                 </div>
 
                 <div class="col-md-8">
-                    <ul class="nav nav-tabs " id="myTabs" role="tablist">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-2 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active text-danger"
+                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -291,7 +283,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
-                                aria-selected="false"><i class="fa-regular fa-heart px-3"></i>Saved Itineraries</button>
+                                aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
 
@@ -307,9 +299,13 @@
                                         @else
                                             <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                         @endif
-                                        <div class="col-6">
+                                        <div class="col-8">
                                             <h2 class="title">{{ $itinerary->title }}</h2>
                                             <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                        </div>
+                                        <div class="col-3 d-flex justify-content-end gap-2">
+                                            <a href="" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
+                                            <a href="{{ route('itinerary', ['id' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -318,8 +314,8 @@
                                 <div class="text-center p-4">
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
                                     <h4>No Itineraries, yet</h4>
-                                    <p>No itineraries in your list yet. Please add your first itinerary to view in the list.</p>
-                                    <button class="btn btn-danger rounded-pill">+ Add Itinerary</button>
+                                    <p>No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
+                                    <a href="{{ route('additinerary') }}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
                                 </div>
 
                             @endforelse
@@ -339,10 +335,13 @@
                                             @else
                                                 <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                             @endif
-                                            
-                                            <div class="col-6">
+
+                                            <div class="col-8">
                                                 <h2 class="title">{{ $itinerary->title }}</h2>
                                                 <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            </div>
+                                            <div class="col-3 d-flex justify-content-end gap-2">
+                                                <a href="{{ route('itinerary', ['id' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +352,7 @@
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
                                     <h4 class="mb-3">No Saved Itineraries, yet</h4>
                                     <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
-                                    <button class="btn btn-info rounded-pill">+ Add Itinerary</button>
+                                    <a href="{{ route('additinerary') }}" class="btn btn-info rounded-pill navyblubtn">+ Add Itinerary</a>
                                 </div>
 
                             @endforelse

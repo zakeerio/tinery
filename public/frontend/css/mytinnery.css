@@ -322,6 +322,12 @@
     max-width: 120px;
     width: 100%;
 }
+.profile-tabs .nav-link, .profile-tabs .nav-link i {
+    color:#000 !important;
+}
+.profile-tabs .nav-link.active, .profile-tabs .nav-link.active i {
+    color:red !important;
+}
 
 .Ellipse {
     display: flex !important;
@@ -342,6 +348,9 @@
     margin-bottom: 20px;
 }
 
+.navyblubtn {
+    background: #0F6496;
+}
 
 
 .member-info {

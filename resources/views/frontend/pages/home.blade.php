@@ -67,7 +67,7 @@
                                         <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                     @endif
                                 @else
-                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>                                   
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                 @endif
                             </div>
                         </div>
@@ -77,17 +77,19 @@
                                 $itinerarytag = json_decode($row->tags);
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
+                            @php
+                                $tag = \App\Models\tags::find($itinerarytag);
+                            @endphp
+
+                            @if($tag)
                                 <a href="#">
                                     <button class="foodie">
-                                        @php
-                                            $tag = \App\Models\tags::find($itinerarytag);
-                                        @endphp
-                                        @if($tag->count() > 0)
                                         {{$tag->name}}
-                                        @endif
-                                        {{-- {{ $itinerarytag }} --}}
                                     </button>
                                 </a>
+                            @endif
+
+                            {{-- {{ $itinerarytag }} --}}
                             @endforeach
                         </div>
                         <p class="city">{{ $row->address_city}} | 3 Days</p>

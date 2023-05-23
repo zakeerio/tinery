@@ -46,6 +46,9 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/profileupdate', [UserController::class, 'profileupdate'])->name('profileupdate');
     Route::post('/bioupdate', [UserController::class, 'bioupdate'])->name('bioupdate');
     Route::post('/socialprofileupdate', [UserController::class, 'socialprofileupdate'])->name('socialprofileupdate');
+    Route::get('add-itineraray', function(){
+        dd('additinerary');
+    })->name('additinerary');
     // Add more routes as needed
 });
 
