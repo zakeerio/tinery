@@ -403,26 +403,21 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <h6 class="profiler">{{$itinerary->user->name}}</h6>
-                                    <div class="row w-50">
+                                    <div class="d-flex gap-2">
                                         @if(!empty($itinerary->user->facebook))
-                                        <div class="col-lg-3">
                                             <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
-                                        </div>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
-                                        <div class="col-lg-3">
                                             <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
-                                        </div>
                                         @endif
                                         @if(!empty($itinerary->user->instagram))
-                                        <div class="col-lg-3">
                                             <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
-                                        </div>
+                                        @endif
+                                        @if(!empty($itinerary->user->tiktok))
+                                            <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""> 11</a>
                                         @endif
                                         @if(!empty($itinerary->user->website))
-                                        <div class="col-lg-3">
                                             <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                        </div>
                                         @endif
                                     </div>
 
