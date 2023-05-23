@@ -59,7 +59,7 @@
                                 @if(Auth::guard('user')->user())
                                 <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                 @else
-                                <a href="javascript:void(0)"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                                <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                 @endif
                             </div>
                         </div>
