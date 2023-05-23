@@ -37,14 +37,12 @@ class UserController extends Controller
 
     public function profile()
     {
-<<<<<<< HEAD
         $user = Auth::guard('user')->user();
-=======
+
         $user_loggedin = Auth::guard('user')->user();
 
         $user = User::where('id', $user_loggedin->id)->with('favorites.itineraries')->first();
 
->>>>>>> e7817f5143f344f6b605b6b13a71bc283fabde79
         $itineraries = $user->itineraries;
         $isloggedin = true;
 

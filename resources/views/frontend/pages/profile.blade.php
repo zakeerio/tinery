@@ -262,15 +262,11 @@
                             {{-- {{ dd($itinerary) }} --}}
                                 <div class="row mb-3">
                                     <div class="d-flex gap-3 align-items-center">
-<<<<<<< HEAD
-                                        <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="col-3">
-=======
                                         @if (!empty($itinerary->seo_image))
                                             <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120">
                                         @else
                                             <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                         @endif
->>>>>>> e7817f5143f344f6b605b6b13a71bc283fabde79
                                         <div class="col-6">
                                             <h2 class="title">{{ $itinerary->title }}</h2>
                                             <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
@@ -291,30 +287,6 @@
 
                         </div>
                         <div class="tab-pane fade w-100 m-auto tab-content" id="content2" role="tabpanel" aria-labelledby="tab2">
-<<<<<<< HEAD
-                        {{--    @forelse ( $favourites as $favourites )
-                            
-                                <div class="row">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="col-3">
-                                        <div class="col-6">
-                                            <h2 class="title">{{ $itinerary->title }}</h2>
-                                            <p>{{ $itinerary->excerpt }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-
-                            <div class="text-center p-4">
-                                <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                <h4 class="mb-3">No Saved Itineraries, yet</h4>
-                                <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
-                                <button class="btn btn-info rounded-pill">+ Add Itinerary</button>
-                            </div>
-
-                            @endforelse
-                            --}}
-=======
                             @forelse ( $user->favorites as $favorite )
                                 @php
                                 $itinerary = $favorite->itineraries;
@@ -345,7 +317,6 @@
 
                             @endforelse
 
->>>>>>> e7817f5143f344f6b605b6b13a71bc283fabde79
                         </div>
                     </div>
                 </div>
