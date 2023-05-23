@@ -33,7 +33,6 @@
     <div class="container">
         <div class="cards-item">
             <div class="row">
-{{-- {{dd(Auth::guard('user')->user())}} --}}
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
 
@@ -57,13 +56,13 @@
 
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
-                                <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                                    <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                 @else
-                                <a href="javascript:void(0)"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                                    <a href="javascript:void(0)"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                                 @endif
                             </div>
                         </div>
-                        <a href="{{url('/itinerary/'.$row->slug)}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
+                        <a href="{{route('itinerary', ['id' => $row->slug])}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
                         <div class="tags">
                             @php
                                 $itinerarytag = json_decode($row->tags);
