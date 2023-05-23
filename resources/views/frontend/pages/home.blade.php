@@ -76,8 +76,10 @@
                                         @php
                                             $tag = \App\Models\tags::find($itinerarytag);
                                         @endphp
-                                        {{-- {{$tag->name}} --}}
-                                        {{ $itinerarytag }}
+                                        @if($tag->count() > 0)
+                                        {{$tag->name}}
+                                        @endif
+                                        {{-- {{ $itinerarytag }} --}}
                                     </button>
                                 </a>
                             @endforeach
