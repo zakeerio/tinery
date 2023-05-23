@@ -56,12 +56,18 @@
 
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
-                                    <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                                    @php
+                                        $query = \App\Models\Favorites::where('user_id',Auth::guard('user')->user()->id)
+                                        ->where('itineraries_id',$row->id)
+                                        ->get();
+                                    @endphp
+                                    @if($query->count() == 1)
+                                        <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt="" class="path-img"></a>
+                                    @else
+                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $row->id}}"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
+                                    @endif
                                 @else
-                                <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
-
-                                    <a href="javascript:void(0)"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
-
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>                                   
                                 @endif
                             </div>
                         </div>

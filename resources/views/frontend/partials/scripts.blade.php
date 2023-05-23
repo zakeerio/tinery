@@ -79,10 +79,36 @@
                         type: 'danger'
                         });
                     }
+                    setTimeout(function() {
+                        window.history.go(0); // Replace with your desired URL
+                    }, 500);
+                }
+            });
+        });
+        $(document).on('click','a[data-role=removetowishlist]',function(){
+            var id = $(this).data('id');
+            var csrftoken = $('#csrftoken').val();
+            
+            $.ajax({
+                url:'{{ url("/removefavourites")}}',
+                method:'post',
+                data:{_token:csrftoken,id:id},
+                success:function(data)
+                {
+                    var res = $.parseJSON(data);
+                    if(res.success)
+                    {
+                        $.notify({
+                        title: '<strong>SUCCESS!</strong>',
+                        message: res.success
+                        },{
+                        type: 'success'
+                        });
+                    }
 
-                    // setTimeout(function() {
-                    // window.location.href = "{{URL::to('/')}}"; // Replace with your desired URL
-                    // }, 1500);
+                    setTimeout(function() {
+                        window.history.go(0); // Replace with your desired URL
+                    }, 500);
                 }
             });
         });

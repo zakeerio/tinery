@@ -65,4 +65,17 @@ class HomeController extends Controller
 
         echo json_encode($output);
     }
+
+    public function removefavourites(Request $request)
+    {
+        $output = array();
+        $id = $request->input('id');
+
+        $query = Favorites::where('user_id',Auth::guard('user')->user()->id)
+        ->where('itineraries_id',$id)->delete();
+
+        $output['success'] = 'Deleted Successfully';
+
+        echo json_encode($output);
+    }
 }

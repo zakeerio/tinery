@@ -26,6 +26,28 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                                <div class="row w-50">
+                                    @if(!empty($user->facebook))
+                                    <div class="col-lg-3">
+                                        <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                    </div>
+                                    @endif
+                                    @if(!empty($user->twitter))
+                                    <div class="col-lg-3">
+                                        <a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                    </div>
+                                    @endif
+                                    @if(!empty($user->instagram))
+                                    <div class="col-lg-3">
+                                        <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                    </div>
+                                    @endif
+                                    @if(!empty($user->website))
+                                    <div class="col-lg-3">
+                                        <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12 mt-4">
@@ -175,6 +197,7 @@
                                 <div class="accordion-body">
                                     <!-- Social profile content -->
                                     <div class="row">
+                                    @if ($usercheck)
                                         {!! Form::open(['route' => 'socialprofileupdate', 'method' => 'POST']) !!}
                                         @csrf
                                         <input type="hidden" name="id" value="{{$user->id}}">
@@ -214,6 +237,23 @@
                                             </div>
                                         </div>
                                         {!! Form::close() !!}
+                                    @else
+                                        <div class="col-lg-12">
+                                            {{$user->facebook}}
+                                        </div>
+                                        <div class="col-lg-12">
+                                            {{$user->twitter}}
+                                        </div>
+                                        <div class="col-lg-12">
+                                            {{$user->instagram}}
+                                        </div>
+                                        <div class="col-lg-12">
+                                            {{$user->tiktok}}
+                                        </div>
+                                        <div class="col-lg-12">
+                                            {{$user->website}}
+                                        </div>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -299,6 +339,7 @@
                                             @else
                                                 <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                             @endif
+                                            
                                             <div class="col-6">
                                                 <h2 class="title">{{ $itinerary->title }}</h2>
                                                 <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>

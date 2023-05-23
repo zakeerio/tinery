@@ -13,18 +13,37 @@
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
                             <div class="col-lg-4 text-end">
-                                <a href="#"><img src="{{ asset('frontend/images/border-heart.png') }}" alt="" class="fluid-img "></a>
+                                @if(Auth::guard('user')->user())
+                                    @php
+                                        $query = \App\Models\Favorites::where('user_id',Auth::guard('user')->user()->id)
+                                        ->where('itineraries_id',$itinerary->id)
+                                        ->get();
+                                    @endphp
+                                    @if($query->count() == 1)
+                                        <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" alt=""></a>
+                                    @else
+                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>
+                                    @endif
+                                @else
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>                                   
+                                @endif
                             </div>
                         </div>
                         <div class="row related d-flex align-items-center">
                             <div class="col-lg-3">
-                                <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt="" class="w-75"></a>
+                                <a href="#"> 
+                                    @if (!empty($itinerary->user->profile))
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
+                                    @else
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                    @endif
+                                </a>
                             </div>
                             <div class="col-lg-6">
-                                <h6 class="profile-p">{{ $itinerary->user_id}} |</h6>
+                                <h6 class="profile-p">{{ $itinerary->user->name}} |</h6>
                             </div>
                             <div class="col-lg-3">
-                                <h6 class="profile-p">3/11/2022 </h6>
+                                <h6 class="profile-p">{{date('d/y/Y',strtotime($itinerary->created_at))}}</h6>
                             </div>
 
 
@@ -53,7 +72,12 @@
                             @foreach($itinerarytag as $itinerarytag)
                                 <a href="#">
                                     <button class="foodie">
-                                        {{$itinerarytag}}
+                                        @php
+                                            $tag = \App\Models\tags::find($itinerarytag);
+                                        @endphp
+                                        @if($tag->count() > 0)
+                                        {{$tag->name}}
+                                        @endif
                                     </button>
                                 </a>
                             @endforeach
@@ -368,25 +392,37 @@
                         <div class="profile p-3">
                             <div class="row d-flex align-items-center">
                                 <div class="col-lg-4">
-                                    <a href="#"> <img src="{{ asset('frontend/images/hat.png') }}" alt=""></a>
+                                    <a href="#"> 
+                                        @if (!empty($itinerary->user->profile))
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
+                                        @else
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                        @endif
+                                    </a>
                                 </div>
                                 <div class="col-lg-8">
-                                    <h6 class="profiler">{{$itinerary->user_id}}</h6>
+                                    <h6 class="profiler">{{$itinerary->user->name}}</h6>
                                     <div class="row w-50">
+                                        @if(!empty($itinerary->user->facebook))
                                         <div class="col-lg-3">
-                                            <a href="#"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                         </div>
-
+                                        @endif
+                                        @if(!empty($itinerary->user->twitter))
                                         <div class="col-lg-3">
-                                            <a href="#"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
                                         </div>
+                                        @endif
+                                        @if(!empty($itinerary->user->instagram))
                                         <div class="col-lg-3">
-                                            <a href="#"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
                                         </div>
+                                        @endif
+                                        @if(!empty($itinerary->user->website))
                                         <div class="col-lg-3">
-                                            <a href="#"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
                                         </div>
-
+                                        @endif
                                     </div>
 
 
@@ -394,9 +430,9 @@
                                 </div>
 
                             </div>
-                            <h6 class="profile-details p-3">Lorem ipsum dolor sit amet consectetur. Lectus congue
-                                rhoncus id
-                                vel odio.</h6>
+                            <h6 class="profile-details p-3">
+                                {{$itinerary->user->bio}}
+                            </h6>
                         </div>
 
                         <div class="profiles p-3 mt-5">
@@ -415,7 +451,7 @@
                                         <h6 class="profiler-related">{{$row->title}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <p class="lang">{{$row->user_id}} |</p>
+                                        <p class="lang">{{$row->user->name}} |</p>
                                         <p class="lang px-2">16 Hours Ago</p>
                                     </div>
                                 </div>
