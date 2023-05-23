@@ -37,8 +37,11 @@ class UserController extends Controller
 
     public function profile()
     {
-        $user = Auth::guard('user')->user();
-        $itineraries = $user->itineraries();
+        $user_loggedin = Auth::guard('user')->user();
+
+        $user = User::where('id', $user_loggedin->id)->with('favorites.itineraries')->first();
+
+        $itineraries = $user->itineraries;
 
         return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries);
     }
