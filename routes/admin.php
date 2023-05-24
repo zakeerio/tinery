@@ -23,6 +23,7 @@ Route::group([
     Route::resource('permissions', PermissionController::class);
 
     Route::resource('itineraries', ItinerariesController::class);
+    Route::resource('users', UsersController::class);
 
     // Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
     // Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');

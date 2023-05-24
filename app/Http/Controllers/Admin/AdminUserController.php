@@ -26,7 +26,7 @@ class AdminUserController extends BaseController
      */
     public function index(Request $request)
     {
-        $this->setPageTitle("Users","Users List");
+        $this->setPageTitle("Admin Users","Admin Users List");
         $data = $this->admin->getAll();
         return view('admin.admins.index',compact('data'));
     }
@@ -38,7 +38,7 @@ class AdminUserController extends BaseController
      */
     public function create()
     {
-        $this->setPageTitle("Users","Create User");
+        $this->setPageTitle("Admin Users","Create Admin User");
         $roles = Role::pluck('name','name')->all();
         return view('admin.admins.create',compact('roles'));
     }
@@ -73,7 +73,7 @@ class AdminUserController extends BaseController
      */
     public function show($id)
     {
-        $this->setPageTitle("Users","View User");
+        $this->setPageTitle("Admin Users","View Admin User");
         $user = Admin::findOrFail($id);
         return view('admin.admins.show',compact('user'));
     }
@@ -86,7 +86,7 @@ class AdminUserController extends BaseController
      */
     public function edit($id)
     {
-        $this->setPageTitle("Users","Edit User");
+        $this->setPageTitle("Admin Users","Edit Admin User");
         $user = $this->admin->findAdminById($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();

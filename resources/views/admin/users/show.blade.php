@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="{{route('admin.admins.index')}}">Admin Users</a></li>
+                        <li class="breadcrumb-item active"><a href="{{route('admin.users.index')}}">Users</a></li>
                         <li class="breadcrumb-item active">Show</li>
                     </ol>
                 </div>
@@ -25,7 +25,7 @@
                     <h3 class="widget-user-username">{{ $user->name }}</h3>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle elevation-2" src="{{asset('/img/user1-128x128.jpg')}}" alt="User Avatar">
+                    <img class="img-circle elevation-2" src="{{asset('/frontend/profile_pictures/'.$user->profile)}}" alt="User Avatar">
                 </div>
                 <div class="card-footer">
                     <div class="row">
@@ -39,13 +39,9 @@
                         <!-- /.col -->
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header">Roles</h5>
+                                <h5 class="description-header">Username</h5>
                                 <span class="description-text">
-                                    @if (!empty($user->getRoleNames()))
-                                        @foreach ($user->getRoleNames() as $v)
-                                            <label class="badge badge-success">{{ $v }}</label>
-                                        @endforeach
-                                    @endif
+                                    {{$user->username}}
                                 </span>
                             </div>
                             <!-- /.description-block -->

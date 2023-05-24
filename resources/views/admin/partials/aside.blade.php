@@ -37,7 +37,7 @@
                             <a href="{{route('admin.admins.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.admins") !== false ? 'active' :''}}">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
-                                    Users
+                                    Admin Users
                                 </p>
                             </a>
                         </li>
@@ -68,6 +68,14 @@
                                 </li>
                                 @endcan
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.users.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.admins") !== false ? 'active' :''}}">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
                         </li>
                         <li class="nav-header">Media Library</li>
                         @php
