@@ -309,7 +309,7 @@
                         <div class=" mt-4">
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
-                                <h2 class="coments mt-3 px-2">Comments (5)</h2>
+                                <h2 class="coments mt-3 px-2">Comments ({{ ($itinerary->comments) ? count($itinerary->comments) : '0' }})</h2>
                                 <div class=" d-flex align-items-center">
                                     <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                     <img src="{{ asset('frontend/images/up.png') }}" alt="" class="  mx-2">
@@ -325,23 +325,40 @@
                             <div class="row">
 
                                 <div class="col-md-12">
-                                    <div class="d-flex flex-row comment-row">
-                                        <div class="p-2"><img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50"
-                                                class="rounded-circle"></div>
-                                        <div class="comment-text w-100">
-                                            <h5 class="font-medium">John Doe</h5>
-                                            <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry.</span>
-                                            <div class="comment-footer">
+                                    @if ($itinerary->comments)
 
-                                                <img src="{{ asset('frontend/images/Like Animation.png') }}" alt="">
-                                                <img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt="">
-                                                <span class="text-muted ">May 7, 2023</span>
 
+                                        @foreach($itinerary->comments as $comment)
+
+                                            {{-- {{ dd($comment->user->profile) }} --}}
+
+                                            <div class="d-flex flex-row comment-row">
+                                                <div class="p-2">
+                                                    @if (!empty($comment->user->profile))
+                                                        <img src="{{ asset('frontend/profile_pictures/'. $comment->user->profile) }}" alt="user-image" width="50" class="rounded-circle">
+                                                    @else
+                                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="user-image" width="50" class="rounded-circle">
+                                                    @endif
+                                                    {{-- <img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50" class="rounded-circle"> --}}
+                                                </div>
+                                                <div class="comment-text w-100">
+                                                    <h5 class="font-medium">{{ $comment->user->name }} {{ $comment->user->last_name }}</h5>
+                                                    <span class="m-b-15 d-block">{{ $comment->body }}</span>
+                                                    <div class="comment-footer">
+
+                                                        <img src="{{ asset('frontend/images/Like Animation.png') }}" alt="">
+                                                        <img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt="">
+                                                        <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span>
+
+
+
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <hr>
+                                            <hr>
+                                        @endforeach
+                                    @endif
                                     <div class="d-flex flex-row comment-row">
                                         <div class="p-2"><img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50"
                                                 class="rounded-circle"></div>
@@ -380,6 +397,59 @@
                             <div class="w-25 m-auto mt-4">
                                 <button class="btn btn-light rounded-pill load-btn px-4 text-center">Load More</button>
                             </div>
+                        </div>
+
+                        <div>
+                            <h3>Comments</h3>
+
+                            {{-- {{ dd($itinerary->comments) }} --}}
+
+                            @if ($itinerary->comments)
+
+
+                            @foreach($itinerary->comments as $comment)
+                            <div>
+                                <div>{{ $comment->body }} 1122</div>
+                                    {{-- <form action="{{ route('comments.destroy', $comment) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete Comment</button>
+                                    </form> --}}
+
+                                    <h4>Replies</h4>
+                                    @foreach($comment->likesDislikes as $likeDislike)
+                                        <div>
+                                            <p>{{ $likeDislike->type }}</p>
+                                            <form action="{{ route('likesDislikes.update', $likeDislike) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="type">
+                                                    <option value="like" {{ $likeDislike->type === 'like' ? 'selected' : '' }}>Like</option>
+                                                    <option value="dislike" {{ $likeDislike->type === 'dislike' ? 'selected' : '' }}>Dislike</option>
+                                                </select>
+                                                <button type="submit">Update</button>
+                                            </form>
+
+                                            <form action="{{ route('likesDislikes.destroy', $likeDislike) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    @endforeach
+
+                                    <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                        @csrf
+                                        <select name="type">
+                                            <option value="like">Like</option>
+                                            <option value="dislike">Dislike</option>
+                                        </select>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                </div>
+                            @endforeach
+
+                            @endif
                         </div>
 
                     </div>

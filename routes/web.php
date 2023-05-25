@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeDislikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +53,15 @@ Route::middleware('auth:user')->group(function () {
         dd('additinerary');
     })->name('additinerary');
     // Add more routes as needed
+
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+    Route::post('/comments/{comment}/like-dislikes', [LikeDislikeController::class, 'store'])->name('likesDislikes.store');
+    Route::put('/like-dislikes/{likeDislike}', [LikeDislikeController::class, 'update'])->name('likesDislikes.update');
+    Route::delete('/like-dislikes/{likeDislike}', [LikeDislikeController::class, 'destroy'])->name('likesDislikes.destroy');
+
+
 });
 
 Route::group(['namespace' => 'Auth',], function () {

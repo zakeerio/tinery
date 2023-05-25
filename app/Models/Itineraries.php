@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Favorites;
+use App\Models\Comment;
 
 class Itineraries extends Model
 {
@@ -47,4 +48,11 @@ class Itineraries extends Model
     {
         return $this->hasMany(Favorites::class);
     }
+
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

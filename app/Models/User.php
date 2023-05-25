@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Itineraries;
 use App\Models\Favorites;
+use App\Models\Comment;
+
 
 class User extends Authenticatable
 {
@@ -52,5 +54,10 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->hasMany(Favorites::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
