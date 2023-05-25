@@ -148,7 +148,7 @@
                                             @endphp
                                             @foreach($tags as $tag)
                                                 @php
-                                                    $tag = \App\Models\tags::find($tag);
+                                                    $tag = \App\Models\Tags::find($tag);
                                                 @endphp
                                                 <span class="badge bg-primary">{{$tag->name}}</span>
                                             @endforeach
