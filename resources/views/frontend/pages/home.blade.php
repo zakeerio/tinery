@@ -78,7 +78,7 @@
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
                             @php
-                                $tag = \App\Models\tags::find($itinerarytag);
+                                $tag = \App\Models\Tags::find($itinerarytag);
                             @endphp
 
                             @if($tag)
