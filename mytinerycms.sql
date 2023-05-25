@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 22, 2023 at 08:02 PM
+-- Generation Time: May 25, 2023 at 07:58 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   PRIMARY KEY (`id`),
   KEY `favorites_user_id_foreign` (`user_id`),
   KEY `favorites_itineraries_id_foreign` (`itineraries_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `favorites`
@@ -116,7 +116,8 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 
 INSERT INTO `favorites` (`id`, `user_id`, `itineraries_id`, `created_at`, `updated_at`) VALUES
 (1, 6, 5, '2023-05-22 06:12:04', '2023-05-22 06:12:04'),
-(2, 6, 4, '2023-05-22 06:12:46', '2023-05-22 06:12:46');
+(2, 6, 4, '2023-05-22 06:12:46', '2023-05-22 06:12:46'),
+(3, 2, 5, '2023-05-23 02:26:01', '2023-05-23 02:26:01');
 
 -- --------------------------------------------------------
 
@@ -290,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `permissions`
@@ -363,7 +364,14 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (86, 'itineraries-update', 'admin', '2023-05-10 02:42:58', '2023-05-10 02:42:58'),
 (92, 'categories-destroy', 'admin', '2023-05-12 14:55:02', '2023-05-12 14:55:02'),
 (96, 'tags-destroy', 'admin', '2023-05-12 15:06:47', '2023-05-12 15:06:47'),
-(97, 'tags-store', 'admin', '2023-05-12 15:07:17', '2023-05-12 15:07:17');
+(97, 'tags-store', 'admin', '2023-05-12 15:07:17', '2023-05-12 15:07:17'),
+(98, 'users-index', 'admin', '2023-05-24 13:01:22', '2023-05-24 13:01:22'),
+(99, 'users-create', 'admin', '2023-05-24 13:12:52', '2023-05-24 13:12:52'),
+(100, 'users-store', 'admin', '2023-05-24 13:30:32', '2023-05-24 13:30:32'),
+(101, 'users-edit', 'admin', '2023-05-24 14:47:05', '2023-05-24 14:47:05'),
+(102, 'users-update', 'admin', '2023-05-24 14:48:52', '2023-05-24 14:48:52'),
+(103, 'users-show', 'admin', '2023-05-24 14:59:58', '2023-05-24 14:59:58'),
+(104, 'users-destroy', 'admin', '2023-05-24 15:00:05', '2023-05-24 15:00:05');
 
 -- --------------------------------------------------------
 
@@ -475,7 +483,14 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (94, 1),
 (95, 1),
 (96, 1),
-(97, 1);
+(97, 1),
+(98, 1),
+(99, 1),
+(100, 1),
+(101, 1),
+(102, 1),
+(103, 1),
+(104, 1);
 
 -- --------------------------------------------------------
 
@@ -585,14 +600,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `profile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`) VALUES
-(2, 'ali', '', 'ali@ali.com', 'alihamzaa', NULL, '$2a$12$SAXOshyAuVuxaexdOMz2TeP.Re2N03.jsEzyzMvZQP7oUFR0ADLFe', '2023-05-18 06:35:43', '2023-05-21 10:39:50', '', NULL, 'I like to travel big cities and eat the best food!', 'https://facebook.com', 'https://twitter.com', 'https://instagram.com', 'https://tiktok.com', 'https://mytinery.com', NULL, NULL),
 (4, 'ali', 'zafar', 'alizafar52898@gmail.com', 'alizafar', NULL, '$2a$12$NIWq6t/HWYujQMjstTn6k.PQkphAaPS050h9fYk2S7SbAMud0XF6y', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png');
 COMMIT;
