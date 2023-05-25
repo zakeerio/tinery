@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">Links </h6>
+                                <h6 class="profile-p pt-2 mx-2"><a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
                             </div>
                         </div>
 
