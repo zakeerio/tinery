@@ -70,7 +70,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.users.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.admins") !== false ? 'active' :''}}">
+                            <a href="{{route('admin.users.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.users") !== false ? 'active' :''}}">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Users

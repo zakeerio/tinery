@@ -22,8 +22,6 @@
 <script src="{{asset('js/bootstrap-notify.js')}}"></script>
 <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
 
-
-
 {{-- scripts --}}
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
