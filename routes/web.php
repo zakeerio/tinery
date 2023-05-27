@@ -88,4 +88,3 @@ Route::group(['namespace' => 'Auth',], function () {
 
 // Route::get('/', 'UserController@index')->name('home');
 // Route::get('search', 'UserController@index')->name('search');
-

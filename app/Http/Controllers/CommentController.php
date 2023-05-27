@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     //
-    public function store(Post $post)
+    public function store(Request $request,$id)
     {
+        dd($request);
         $attributes = request()->validate([
             'body' => 'required'
         ]);
@@ -19,6 +20,7 @@ class CommentController extends Controller
 
         return back();
     }
+
 
     public function destroy(Comment $comment)
     {

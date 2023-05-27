@@ -316,11 +316,19 @@
 
                                 </div>
                             </div>
-
+                            @if(auth('user')->id() == '')
                             <div class=" d-flex align-items-center">
                                 <a href="#"> <img src="{{ asset('frontend/images/User Image.png') }}" alt=""></a>
                                 <p class="login-to-add mt-3 px-2">Login to add a comment</p>
                             </div>
+                            @else
+                            <form action="{{route('comments.store',$itinerary)}}" method="POST">
+                                <label>Comment</label>
+                                <textarea name="comment" class="form-control" cols="10" rows="5" required></textarea>
+                                <br>
+                                <input type="submit" value="Save" class="btn btn-primary">
+                            </form>
+                            @endif
                             <hr>
                             <div class="row">
 
@@ -345,60 +353,40 @@
                                                     <h5 class="font-medium">{{ $comment->user->name }} {{ $comment->user->last_name }}</h5>
                                                     <span class="m-b-15 d-block">{{ $comment->body }}</span>
                                                     <div class="comment-footer">
-
-                                                        <img src="{{ asset('frontend/images/Like Animation.png') }}" alt="">
-                                                        <img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt="">
-                                                        <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span>
-
-
-
-
+                                                        <div class="row">
+                                                            @if(auth('user')->id() != '')
+                                                            <div class="col-lg-1">
+                                                                <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="like" name="type">
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Like Animation.png') }}" alt=""></button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="dislike" name="type">
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt=""></button>
+                                                                </form>
+                                                            </div>
+                                                            @endif
+                                                            <div class="col-lg-3 mt-2">
+                                                                <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr>
                                         @endforeach
                                     @endif
-                                    <div class="d-flex flex-row comment-row">
-                                        <div class="p-2"><img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50"
-                                                class="rounded-circle"></div>
-                                        <div class="comment-text w-100">
-                                            <h5 class="font-medium">John Doe</h5>
-                                            <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry.</span>
-                                            <div class="comment-footer">
-
-                                                <img src="{{ asset('frontend/images/Like Animation.png') }}" alt="">
-                                                <img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt="">
-                                                <span class="text-muted ">May 7, 2023</span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="d-flex flex-row comment-row">
-                                        <div class="p-2"><img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50"
-                                                class="rounded-circle"></div>
-                                        <div class="comment-text w-100">
-                                            <h5 class="font-medium">John Doe</h5>
-                                            <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the
-                                                printing and typesetting industry.</span>
-                                            <div class="comment-footer">
-
-                                                <img src="{{ asset('frontend/images/Like Animation.png') }}" alt="">
-                                                <img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt="">
-                                                <span class="text-muted ">May 7, 2023</span>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="w-25 m-auto mt-4">
                                 <button class="btn btn-light rounded-pill load-btn px-4 text-center">Load More</button>
                             </div>
                         </div>
-
                         <div>
                             <h3>Comments</h3>
 
@@ -451,7 +439,6 @@
 
                             @endif
                         </div>
-
                     </div>
 
 
