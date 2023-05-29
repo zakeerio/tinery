@@ -22,10 +22,20 @@ Route::group([
     Route::resource('admins', AdminUserController::class);
     Route::resource('permissions', PermissionController::class);
 
+    Route::get('itineraries/createload', 'ItinerariesController@createload')->name('itineraries.createload');
+    Route::post('itineraries/additineraryday', 'ItinerariesController@additineraryday')->name('itineraries.additineraryday');
+    Route::post('itineraries/showitinerarydays', 'ItinerariesController@showitinerarydays')->name('itineraries.showitinerarydays');
+    Route::post('itineraries/deleteday', 'ItinerariesController@deleteday')->name('itineraries.deleteday');
+    Route::post('itineraries/submitdayform', 'ItinerariesController@submitdayform')->name('itineraries.submitdayform');
+    Route::post('itineraries/addactivity', 'ItinerariesController@addactivity')->name('itineraries.addactivity');
+    Route::post('itineraries/showitineraryactivities', 'ItinerariesController@showitineraryactivities')->name('itineraries.showitineraryactivities');
+    Route::post('itineraries/deleteactivity', 'ItinerariesController@deleteactivity')->name('itineraries.deleteactivity');
+    Route::post('itineraries/submitstarttimeform', 'ItinerariesController@submitstarttimeform')->name('itineraries.submitstarttimeform');
+    Route::post('itineraries/submitendtimeform', 'ItinerariesController@submitendtimeform')->name('itineraries.submitendtimeform');
+    Route::post('itineraries/submitdescriptionform', 'ItinerariesController@submitdescriptionform')->name('itineraries.submitdescriptionform');
     Route::resource('itineraries', ItinerariesController::class);
     Route::resource('users', UsersController::class);
 
-    // Route::get('itineraries/edit/{id}', 'ItinerariesController@edit')->name('itineraries.edit');
     // Route::put('itineraries/update/{id}', 'ItinerariesController@update')->name('itineraries.update');
     // Route::get('itineraries/destroy/{id}', 'ItinerariesController@destroy')->name('itineraries.destroy');
 

@@ -323,6 +323,7 @@
                             </div>
                             @else
                             <form action="{{route('comments.store',$itinerary)}}" method="POST">
+                                @csrf
                                 <label>Comment</label>
                                 <textarea name="comment" class="form-control" cols="10" rows="5" required></textarea>
                                 <br>

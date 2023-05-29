@@ -11,6 +11,10 @@ use App\Models\Itineraries;
 use App\Models\Categories;
 use App\Models\User;
 use App\Models\Tags;
+use App\Models\ItineraryDays;
+use App\Models\ItineraryActivities;
+
+
 class ItinerariesController extends BaseController
 {
     public function __construct()
@@ -38,14 +42,20 @@ class ItinerariesController extends BaseController
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
+    public function createload()
+    {
+        return redirect()->route('admin.itineraries.create',['id'   =>  rand(999,999999)]);
+    }
+
     public function create()
     {
+        $tempid = $_GET['id'];
         $categories = Categories::get();
         $authors = User::get();
         $tags = Tags::get();
         $this->setPageTitle("Itineraries","Itineraries List");
-        return view('admin.Itineraries.create',compact('categories','authors','tags'));
+        return view('admin.Itineraries.create',compact('categories','authors','tags','tempid'));
     }
 
     /**
@@ -140,6 +150,21 @@ class ItinerariesController extends BaseController
             }
 
             $array->save();
+
+            ItineraryDays::where('itineraries_id',$data['tempid'])
+            ->update(
+                [
+                    'itineraries_id'    =>  $array->id,
+                    'tempid'    =>  ''
+                ]
+            );
+            ItineraryActivities::where('itineraries_id',$data['tempid'])
+            ->update(
+                [
+                    'itineraries_id'    =>  $array->id,
+                    'tempid'    =>  ''
+                ]
+            );
         }
         // Logic for storing the data goes here...
 
@@ -273,6 +298,19 @@ class ItinerariesController extends BaseController
             }
 
             $array->save();
+
+            ItineraryDays::where('itineraries_id',$id)
+            ->update(
+                [
+                    'tempid'    =>  ''
+                ]
+            );
+            ItineraryActivities::where('itineraries_id',$id)
+            ->update(
+                [
+                    'tempid'    =>  ''
+                ]
+            );
         }
         // Logic for storing the data goes here...
         return $this->responseRedirect('admin.itineraries.index', 'Itinerary Updated successfully.', 'success');
@@ -296,5 +334,402 @@ class ItinerariesController extends BaseController
         return $this->responseRedirect('admin.itineraries.index', 'Itinerary deleted successfully', 'success');
 
         // return redirect()->route('admin.itineraries.index')->with('success', 'Itinerary deleted successfully');
+    }
+
+    public function additineraryday(Request $request)
+    {
+        $output = '';
+        $tempid = $request->itineraries_id;
+        
+        $array = new ItineraryDays;
+        $array->itineraries_id = $tempid;
+        $array->tempid = $tempid;
+        $array->save();
+    }
+
+    public function showitinerarydays(Request $request)
+    {
+        $output = '';
+        $itineraries_id = $request->itineraries_id;
+        $days = ItineraryDays::where('itineraries_id',$itineraries_id)
+        ->get();
+        if(count($days) > 0)
+        {
+            foreach($days as $key => $days)
+            {
+                $output .=
+                '
+                    <div class="card p-4">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h4><b>Day '.++$key.'</b></h4>
+                            </div>
+                            <input type="hidden" class="itinerariesidloop" value="'.$days->itineraries_id.'">
+                            <input type="hidden" class="dayidloop" value="'.$days->id.'">
+                            <div class="col-lg-2">
+                                <a href="javascript:void(0)" data-id="'.$days->id.'" data-role="deleteday" class="mr-auto btn btn-danger btn-block">Delete day</a>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <label>Date</label>
+                                <input type="date" value="'.$days->date.'" class="form-control signledatedb" data-id="'.$days->id.'">
+                            </div>
+                            <div class="col-md-12 mt-4 showitineraryactivitieshtml'.$days->id.' mb-4">
+                            </div>
+                            <div class="col-lg-3 mt-4">
+                                <a href="javascript:void(0)" data-id="'.$days->id.'" data-role="addactivity" class="mr-auto btn btn-primary btn-block">Add Activity</a>
+                            </div>
+                            <div class="col-lg-3 mt-4">
+                                <a href="javascript:void(0)" data-id="'.$days->id.'" data-role="showactivity" class="mr-auto btn btn-info btn-block">Show Existing Activities</a>
+                            </div>
+                        </div>
+                    </div>
+                ';
+            }
+        }
+        $output .=
+        '
+            <script>
+                $(document).ready(function(){
+                    function showitinerarydays(itineraries_id)
+                    {
+                        var csrftoken = $("#csrftoken").val();
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/showitinerarydays').'",
+                            method:"post",
+                            data:{_token:csrftoken,itineraries_id:itineraries_id},
+                            success:function(data)
+                            {
+                                $(".showitinerarydayshtml").html(data);
+                            }
+                        });
+                    }
+                    function showitineraryactivities(itinerariesidloop,dayid)
+                    {
+
+                        var csrftoken = $("#csrftoken").val();
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/showitineraryactivities').'",
+                            method:"post",
+                            data:{_token:csrftoken,itinerariesidloop:itinerariesidloop,dayid:dayid},
+                            success:function(data)
+                            {
+                                $(".showitineraryactivitieshtml"+dayid).html(data);
+                            }
+                        });
+                    }
+                    $(document).on("click","a[data-role=deleteday]",function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var itinerariesidloop = $(".itinerariesidloop").val();
+                        var id = $(this).data("id");
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/deleteday').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Deleted"
+                                },{
+                                type: "success"
+                                });
+                                showitinerarydays(itinerariesidloop);
+                            }
+                        });
+                    });
+                    $(document).on("click","a[data-role=addactivity]",function(e){
+                        e.preventDefault();
+                        var csrftoken = $("#csrftoken").val();
+                        var itinerariesidloop = $(".itinerariesidloop").val();
+                        var dayid = $(this).data("id");
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/addactivity').'",
+                            method:"post",
+                            data:{_token:csrftoken,dayid:dayid,itinerariesidloop:itinerariesidloop},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Saved"
+                                },{
+                                type: "success"
+                                });    
+                                showitineraryactivities(itinerariesidloop,dayid);
+                            }
+                        });
+                    });
+                    $(document).on("click","a[data-role=showactivity]",function(e){
+                        e.preventDefault();
+
+                        var itinerariesidloop = $(".itinerariesidloop").val();
+                        var dayid = $(this).data("id");
+
+                        showitineraryactivities(itinerariesidloop,dayid);
+                    });
+                    $(".signledatedb").change(function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var itinerariesidloop = $(".itinerariesidloop").val();
+                        var dayid = $(this).data("id");
+                        var val = $(this).val();
+                        
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/submitdayform').'",
+                            method:"post",
+                            data:{_token:csrftoken,dayid:dayid,itinerariesidloop:itinerariesidloop,val:val},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Saved"
+                                },{
+                                type: "success"
+                                });
+    
+                                showitinerarydays(itinerariesidloop);
+                                showitineraryactivities(itinerariesidloop,dayid);
+                            }
+                        });
+                    });
+                });
+            </script>
+        ';
+        echo $output;
+    }
+
+    public function deleteday(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        
+        $array = ItineraryDays::find($id)->delete();
+        $array = ItineraryActivities::where('days_id',$id)->delete();
+    }
+
+    public function submitdayform(Request $request)
+    {
+        $output = '';
+        $id = $request->dayid;
+        $val = $request->val;
+        
+        $array = ItineraryDays::find($id);
+        $array->date = $val;
+        $array->save();
+    }
+
+    public function addactivity(Request $request)
+    {
+        $output = '';
+        $tempid = $request->itinerariesidloop;
+        $days_id = $request->dayid;
+        
+        $array = new ItineraryActivities;
+        $array->itineraries_id = $tempid;
+        $array->tempid = $tempid;
+        $array->days_id = $days_id;
+        $array->save();
+    }
+
+    public function showitineraryactivities(Request $request)
+    {
+        $output = '';
+        $itineraries_id = $request->itinerariesidloop;
+        $dayid = $request->dayid;
+
+        $dayactivity = ItineraryActivities::where('itineraries_id',$itineraries_id)
+        ->where('days_id',$dayid)
+        ->get();
+        if(count($dayactivity) > 0)
+        {
+            foreach($dayactivity as $key => $dayactivity)
+            {
+                $output .=
+                '
+                    <div class="card p-4">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h4><b>Activity '.++$key.'</b></h4>
+                            </div>
+                            <input type="hidden" class="activityitinerariesidloop" value="'.$dayactivity->itineraries_id.'">
+                            <input type="hidden" class="activitydaysidloop" value="'.$dayactivity->days_id.'">
+                            <div class="col-lg-2">
+                                <a href="javascript:void(0)" data-id="'.$dayactivity->id.'" data-role="deleteactivity" class="mr-auto btn btn-danger btn-block">Delete Activity</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Activity Time Start</label>
+                                <input type="time" value="'.$dayactivity->starttime.'" class="form-control signlestarttimedb" data-id="'.$dayactivity->id.'">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Activity Time End</label>
+                                <input type="time" value="'.$dayactivity->endtime.'" class="form-control signleendtimedb" data-id="'.$dayactivity->id.'">
+                            </div>
+                            <div class="col-md-12">
+                                <label>Description</label>
+                                <textarea class="form-control signledescriptiondb" data-id="'.$dayactivity->id.'" rows="3">'.$dayactivity->description.'</textarea>
+                            </div>
+                        </div>
+                    </div>
+                ';
+            }
+        }
+        $output .=
+        '
+            <script>
+                $(document).ready(function(){
+                    function showitineraryactivities(itinerariesidloop,dayid)
+                    {
+
+                        var csrftoken = $("#csrftoken").val();
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/showitineraryactivities').'",
+                            method:"post",
+                            data:{_token:csrftoken,itinerariesidloop:itinerariesidloop,dayid:dayid},
+                            success:function(data)
+                            {
+                                $(".showitineraryactivitieshtml"+dayid).html(data);
+                            }
+                        });
+                    }
+                    $(document).on("click","a[data-role=deleteactivity]",function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var activityitinerariesidloop = $(".activityitinerariesidloop").val();
+                        var activitydaysidloop = $(".activitydaysidloop").val();
+                        var id = $(this).data("id");
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/deleteactivity').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Deleted"
+                                },{
+                                type: "success"
+                                });
+    
+                                showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
+                            }
+                        });
+                    });
+                    $(".signlestarttimedb").change(function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var activityitinerariesidloop = $(".activityitinerariesidloop").val();
+                        var activitydaysidloop = $(".activitydaysidloop").val();
+                        var id = $(this).data("id");
+                        var val = $(this).val();
+                        
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/submitstarttimeform').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id,val:val},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Saved"
+                                },{
+                                type: "success"
+                                });    
+                                showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
+                            }
+                        });
+                    });
+                    $(".signleendtimedb").change(function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var activityitinerariesidloop = $(".activityitinerariesidloop").val();
+                        var activitydaysidloop = $(".activitydaysidloop").val();
+                        var id = $(this).data("id");
+                        var val = $(this).val();
+                        
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/submitendtimeform').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id,val:val},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Saved"
+                                },{
+                                type: "success"
+                                });
+    
+                                showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
+                            }
+                        });
+                    });
+                    $(".signledescriptiondb").change(function(){
+                        var csrftoken = $("#csrftoken").val();
+                        var activityitinerariesidloop = $(".activityitinerariesidloop").val();
+                        var activitydaysidloop = $(".activitydaysidloop").val();
+                        var id = $(this).data("id");
+                        var val = $(this).val();
+                        
+                        $.ajax({
+                            url:"'.url('/admin/itineraries/submitdescriptionform').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id,val:val},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Saved"
+                                },{
+                                type: "success"
+                                });
+    
+                                showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
+                            }
+                        });
+                    });
+                });
+            </script>
+        ';
+        echo $output;
+    }
+
+    public function deleteactivity(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        
+        $array = ItineraryActivities::find($id)->delete();
+    }
+
+    public function submitstarttimeform(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        $val = $request->val;
+        
+        $array = ItineraryActivities::find($id);
+        $array->starttime = $val;
+        $array->save();
+    }
+
+    public function submitendtimeform(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        $val = $request->val;
+        
+        $array = ItineraryActivities::find($id);
+        $array->endtime = $val;
+        $array->save();
+    }
+
+    public function submitdescriptionform(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        $val = $request->val;
+        
+        $array = ItineraryActivities::find($id);
+        $array->description = $val;
+        $array->save();
     }
 }
