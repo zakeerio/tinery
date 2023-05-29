@@ -47,16 +47,16 @@
                         </div>
                     </div>
 
-                    <div class="accordion mt-5" id="accordionExample">
-                        <div class="accordion-item">
+                    <div class="accordion mt-5 " id="accordionExample">
+                        <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="adminBio">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
                                     <span class="fw-bold">{{ $user->username }}</span>
                                 </button>
                             </h2>
-                            <div id="collapseAdminBio" class="accordion-collapse collapse show" aria-labelledby="adminBio"
+                            <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <!-- Admin profile content -->
@@ -80,8 +80,8 @@
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    {!! Form::label('username', 'Username',['class'=>'fw-bold required']) !!}
-                                                    {!! Form::text('username', $user->username, ['class' => 'form-control']) !!}
+                                                    {!! Form::label('username', 'Username',['class'=>'fw-bold required mb-3']) !!}
+                                                    {!! Form::text('username', $user->username, ['class' => 'form-control rounded-pill mb-1']) !!}
                                                 </div>
                                                 <small>Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
 
@@ -90,26 +90,26 @@
                                             <div class="col-lg-12 mt-4">
                                                 <b>Change Password</b>
                                                 <div class="form-group mt-4">
-                                                    {!! Form::label('old_password', 'Old password',['class'=>'fw-bold']) !!}
-                                                    {!! Form::password('old_password', ['class' => 'form-control']) !!}
+                                                    {!! Form::label('old_password', 'Old password',['class'=>'fw-bold mb-1']) !!}
+                                                    {!! Form::password('old_password', ['class' => 'form-control rounded-pill mb-3']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    {!! Form::label('new_password', 'New password',['class'=>'fw-bold']) !!}
-                                                    {!! Form::password('new_password', ['class' => 'form-control']) !!}
+                                                    {!! Form::label('new_password', 'New password',['class'=>'fw-bold mb-1']) !!}
+                                                    {!! Form::password('new_password', ['class' => 'form-control rounded-pill mb-3']) !!}
                                                 </div>
                                                 <small>Minimum 6 characters</small>
                                             </div>
                                             <div class="col-lg-12 mt-3">
                                                 <div class="form-group">
-                                                    {!! Form::label('email', 'Email Address',['class'=>'fw-bold required']) !!}
-                                                    {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                                                    {!! Form::label('email', 'Email Address',['class'=>'fw-bold required mb-2']) !!}
+                                                    {!! Form::email('email', $user->email, ['class' => 'form-control rounded-pill']) !!}
                                                 </div>
                                             </div>
                                             <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-5' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -127,9 +127,9 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item ">
                             <h2 class="accordion-header" id="bioHeading">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
                                     <span class="fw-bold">Bio</span>
                                 </button>
@@ -160,7 +160,7 @@
                                             </div>
                                             <div class="col-lg-2" style="float:right;margin-right:10px;">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3  rounded-pill px-4' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -178,7 +178,7 @@
 
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="socialProfile">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
                                     <span class="fw-bold">Social Profile</span>
@@ -196,36 +196,36 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('facebook', $user->facebook, ['class' => 'form-control']) !!}
+                                                {!! Form::text('facebook', $user->facebook, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('twitter', $user->twitter, ['class' => 'form-control']) !!}
+                                                {!! Form::text('twitter', $user->twitter, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-control']) !!}
+                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-contr rounded-pillol']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control']) !!}
+                                                {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('website', 'website',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('website', $user->website, ['class' => 'form-control']) !!}
+                                                {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="float:right;margin-right:10px;">
                                             <div class="form-group">
-                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3' ]) !!}
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
                                             </div>
                                         </div>
                                         {!! Form::close() !!}
@@ -258,7 +258,7 @@
 
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="relevantTags">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
                                     <span class="fw-bold">Relevant Tags</span>
