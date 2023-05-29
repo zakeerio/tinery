@@ -54,6 +54,48 @@
 @endif
 <script>
     $(document).ready(function() {
+
+
+        if($('#map').length > 0) {
+
+            initMaps();
+
+            // var options = {
+            //             types: ['(cities)']
+            //         };
+
+            // var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
+
+            // google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            //     var result = autocomplete.getPlace();
+            //     console.log(result.address_components[0]);
+
+            //     var location = result.geometry.location;
+            //     var addressComponents = result.address_components;
+
+            //     var latitude = location.lat;
+            //     var longitude = location.lng;
+
+            //     var address_street_line1 = result.formatted_address;
+            //     var city = getAddressComponent(addressComponents, 'locality');
+            //     var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+            //     var country = getAddressComponent(addressComponents, 'country');
+            //     var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+
+            //     // Update form fields with retrieved values
+
+            //     $('#address_street_line1').val(address_street_line1);
+            //     $('#address_zipcode').val(postalCode);
+
+            //     $('#latitude').val(latitude);
+            //     $('#longitude').val(longitude);
+            //     $('#address_city').val(city);
+            //     $('#address_state').val(state);
+            //     $('#address_country').val(country);
+            // });
+        }
+
         function  initMaps(){
 
             // execute
@@ -108,45 +150,7 @@
                 // console.log('Longitude:', long);
             })
 
-        }
-        initMaps();
-
-        var apiKey = `{{ $key }}`;
-
-        var options = {
-                    types: ['(cities)']
-                };
-
-        var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var result = autocomplete.getPlace();
-            console.log(result.address_components[0]);
-
-            var location = result.geometry.location;
-            var addressComponents = result.address_components;
-
-            var latitude = location.lat;
-            var longitude = location.lng;
-
-            var address_street_line1 = result.formatted_address;
-            var city = getAddressComponent(addressComponents, 'locality');
-            var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
-            var country = getAddressComponent(addressComponents, 'country');
-            var postalCode = getAddressComponent(addressComponents, 'postal_code');
-
-
-            // Update form fields with retrieved values
-
-            $('#address_street_line1').val(address_street_line1);
-            $('#address_zipcode').val(postalCode);
-
-            $('#latitude').val(latitude);
-            $('#longitude').val(longitude);
-            $('#address_city').val(city);
-            $('#address_state').val(state);
-            $('#address_country').val(country);
-        });
+}
 
 
 

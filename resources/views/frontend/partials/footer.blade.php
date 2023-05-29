@@ -200,35 +200,6 @@
 
                 </div>
             </div>
-            {{-- <div class="form-section ">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-lg-12">
-                            <form action="{{ route('login_new')}}" method="POST">
-                            @csrf
-                                <h2 class="mb-3">Member Login</h2>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="labe-section">
-                                            <div class="did-floating-label-content mb-4">
-                                                <input type="email" class="form-control rounded-pill " name="email" id="email"
-                                                    placeholder="Enter your email" required>
-                                                <label for="email">Email</label>
-                                            </div>
-                                            <div class="did-floating-label-content mb-4">
-                                                <input type="password" class="form-control rounded-pill" name="password" id="password"
-                                                    placeholder="Enter your password" required>
-                                                <label for="password">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary become-btn"> Login </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
   </div>
