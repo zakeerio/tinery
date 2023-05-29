@@ -26,6 +26,9 @@
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@php
+    $key = env('GOOGLE_MAP_API_KEY');
+@endphp
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ $key }}"></script>
 
 <input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
@@ -110,7 +113,11 @@
 
         var apiKey = `{{ $key }}`;
 
-        var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], {});
+        var options = {
+                    types: ['(cities)']
+                };
+
+        var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var result = autocomplete.getPlace();
@@ -160,7 +167,7 @@
         $(document).on('click','a[data-role=addtowishlist]',function(){
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
-            
+
             $.ajax({
                 url:'{{ url("/favourites")}}',
                 method:'post',
@@ -195,7 +202,7 @@
         $(document).on('click','a[data-role=removetowishlist]',function(){
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
-            
+
             $.ajax({
                 url:'{{ url("/removefavourites")}}',
                 method:'post',
