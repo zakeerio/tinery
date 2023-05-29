@@ -147,9 +147,13 @@
 <div class="world">
     <div class="container">
         <h2 class="membr">Explore Your World</h2>
-        <div class="map">
+        {{-- <div class="map">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
+                width="100%" height="550"></iframe>
 
-        </div>
+        </div> --}}
+
+        <div id="map" style="height: 450px;"></div>
     </div>
 </div>
 
@@ -323,5 +327,3 @@ $
 
 
 @endsection
-
-@include('frontend.partials.scripts')
