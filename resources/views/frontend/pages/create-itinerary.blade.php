@@ -7,6 +7,10 @@
     @endphp
     <section class="profile-section">
         <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-8">
+
+
             <div class="row border p-2 rounded p-3 ">
                 <div class="col-12 d-flex justify-content-between ">
                     <h2>Itinerary Name</h2>
@@ -44,12 +48,9 @@
                                         <div
                                             class="">
                                             <!-- cross button problem -->
-                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            X</button>
-                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            X</button>
-                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            X</button>
+                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California X</button>
+                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California X</button>
+                                            <button type="submit" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3 mx-1">California X</button>
                                         </div>
                                         <div class="">
                                             <a href="">Clear all tags</a>
@@ -291,6 +292,83 @@
                     </div>
                 </div>
             </div>
+
+                </div>
+
+                    <div class="col-lg-4">
+                        <div class="profile p-3">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-lg-4">
+                                    <a href="#">
+                                        {{-- @if (!empty($itinerary->user->profile))
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
+                                        @else
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                        @endif --}}
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+
+                                    </a>
+                                </div>
+                                <div class="col-lg-8">
+                                    <h6 class="profiler">user name</h6>
+                                    {{-- <h6 class="profiler">{{$itinerary->user->name}}</h6>
+
+                                    <div class="d-flex gap-2">
+                                        @if(!empty($itinerary->user->facebook))
+                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->twitter))
+                                            <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->instagram))
+                                            <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->tiktok))
+                                            <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->website))
+                                            <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                        @endif
+                                    </div> --}}
+
+
+
+                                </div>
+
+                            </div>
+                            <h6 class="profile-details p-3">
+                                {{-- {{$itinerary->user->bio}} --}}
+                            </h6>
+                        </div>
+
+                        <div class="profiles p-3 mt-5">
+                            <h6 class="profiler-related">Related Content</h6>
+                            {{-- @php
+                                $related_itinerary = \App\Models\Itineraries::where('slug','!=',$itinerary->slug)->get();
+                            @endphp
+                            @if(!$related_itinerary->isEmpty())
+                            @foreach($related_itinerary as $row)
+                            <div class="row pt-3 d-flex align-items-center justify-content-center">
+                                <div class="col-lg-4">
+                                    <a href="{{route('itinerary', ['id' => $row->slug])}}"> <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
+                                </div>
+                                <div class="col-lg-8">
+                                    <a href="{{route('itinerary', ['id' => $row->slug])}}" style="text-decoration:none;">
+                                        <h6 class="profiler-related">{{$row->title}}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+                                        <p class="lang">{{$row->user->name}} |</p>
+                                        <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif --}}
+                        </div>
+                    </div>
+
+            </div>
+
         </div>
     </div>
 </div>
