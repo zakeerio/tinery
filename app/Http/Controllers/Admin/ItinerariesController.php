@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
+use Illuminate\Support\Str;
 
 
 class ItinerariesController extends BaseController
@@ -43,7 +44,7 @@ class ItinerariesController extends BaseController
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function createload()
     {
         return redirect()->route('admin.itineraries.create',['id'   =>  rand(999,999999)]);
@@ -345,7 +346,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $tempid = $request->itineraries_id;
-        
+
         $array = new ItineraryDays;
         $array->itineraries_id = $tempid;
         $array->tempid = $tempid;
@@ -460,7 +461,7 @@ class ItinerariesController extends BaseController
                                 message: "Saved"
                                 },{
                                 type: "success"
-                                });    
+                                });
                                 showitineraryactivities(itinerariesidloop,dayid);
                             }
                         });
@@ -478,7 +479,7 @@ class ItinerariesController extends BaseController
                         var itinerariesidloop = $(".itinerariesidloop").val();
                         var dayid = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitdayform').'",
                             method:"post",
@@ -491,7 +492,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitinerarydays(itinerariesidloop);
                                 showitineraryactivities(itinerariesidloop,dayid);
                             }
@@ -507,7 +508,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $id = $request->id;
-        
+
         $array = ItineraryDays::find($id)->delete();
         $array = ItineraryActivities::where('days_id',$id)->delete();
     }
@@ -517,7 +518,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->dayid;
         $val = $request->val;
-        
+
         $array = ItineraryDays::find($id);
         $array->date = $val;
         $array->save();
@@ -528,7 +529,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $tempid = $request->itinerariesidloop;
         $days_id = $request->dayid;
-        
+
         $array = new ItineraryActivities;
         $array->itineraries_id = $tempid;
         $array->tempid = $tempid;
@@ -615,7 +616,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -626,7 +627,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitstarttimeform').'",
                             method:"post",
@@ -638,7 +639,7 @@ class ItinerariesController extends BaseController
                                 message: "Saved"
                                 },{
                                 type: "success"
-                                });    
+                                });
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -649,7 +650,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitendtimeform').'",
                             method:"post",
@@ -662,7 +663,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -673,7 +674,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitdescriptionform').'",
                             method:"post",
@@ -686,7 +687,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -701,7 +702,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $id = $request->id;
-        
+
         $array = ItineraryActivities::find($id)->delete();
     }
 
@@ -710,7 +711,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->starttime = $val;
         $array->save();
@@ -721,7 +722,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->endtime = $val;
         $array->save();
@@ -732,7 +733,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->description = $val;
         $array->save();

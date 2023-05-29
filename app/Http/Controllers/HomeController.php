@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tags;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Itineraries;
 use App\Models\User;
 use App\Models\Favorites;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -81,12 +84,56 @@ class HomeController extends Controller
 
     public function create_itinerary_load()
     {
-        return redirect('/create_itinerary/'.rand(999,99999));
+        $array = new Itineraries;
+        $array->title = '';
+        $array->slug = '';
+        $array->user_id = '0';
+        $array->save();
+        return redirect('/create_itinerary/'.$array->id);
     }
 
-    public function create_itinerary($tempid)
+    public function create_itinerary($itineraryid)
     {
-        return view('frontend.pages.create-itinerary',compact('tempid'));
+        $tags = Tags::get();
+        $itinerary = Itineraries::find($itineraryid);
+        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags'));
     }
 
+    public function itineraries_store(Request $request)
+    {
+        $rules = [
+            'title' => 'required|max:255',
+        ];
+
+        $messages = [
+            'title.required' => 'The title field is required.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        else{
+            $data = $request->input();
+
+            $array = Itineraries::find($data['id']);
+            $array->title = $data['title'];
+            $array->slug = Str::slug($data['slug']);
+            $array->description = $data['description'];
+            $array->tags = json_encode($data['tags']);
+            $array->address_street = $data['address_street'];
+            $array->duration = $data['duration'];
+            $array->website = $data['website'];
+            $array->user_id = auth('user')->user()->id;
+
+            $array->save();
+
+        }
+        // Logic for storing the data goes here...
+        return redirect('/create_itinerary/'.$array->id)->with('success','Updated Successfully');
+    }
 }

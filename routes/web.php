@@ -32,7 +32,6 @@ Route::get('/itineraries', function(){
 
 Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
 Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
-Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
@@ -55,6 +54,8 @@ Route::middleware('auth:user')->group(function () {
         dd('additinerary');
     })->name('additinerary');
     // Add more routes as needed
+    Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
+    Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 
     Route::post('/itinerary/{itinerary}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
