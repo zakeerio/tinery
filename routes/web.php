@@ -33,6 +33,7 @@ Route::get('/itineraries', function(){
 Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
 Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
 Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
+Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');

@@ -42,6 +42,7 @@ class CreateItinerariesTable extends Migration
             $table->enum('status', ['published', 'draft'])->default('published');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('duration')->default(0);
         });
     }
 

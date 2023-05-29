@@ -25,6 +25,9 @@
 {{-- scripts --}}
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ $key }}"></script>
+
 <input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
 @if(Session::has('success'))
     <script>
@@ -47,7 +50,113 @@
     </script>
 @endif
 <script>
+    $(document).ready(function() {
+        function  initMaps(){
+
+            // execute
+            var locations = [
+                {
+                    'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="#" >Link<a> of some sort.',
+                    'lat': 46.8133,
+                    'long': -100.7790,
+                },
+                {
+                    'description' : '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
+                    'lat' : 46.8772,
+                    'long' : -96.7894,
+                }
+            ];
+
+            console.log(locations)
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                /* Zoom level of your map */
+                center: new google.maps.LatLng(47.47021625, -100.47173475),
+                /* coordinates for the center of your map */
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            locations.forEach(function(location) {
+                // Accessing individual properties
+                var description = location.description;
+                var lat = location.lat;
+                var long = location.long;
+
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(lat, long),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(description);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Perform actions with the location data
+                // console.log('Description:', description);
+                // console.log('Latitude:', lat);
+                // console.log('Longitude:', long);
+            })
+
+        }
+        initMaps();
+
+        var apiKey = `{{ $key }}`;
+
+        var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], {});
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var result = autocomplete.getPlace();
+            console.log(result.address_components[0]);
+
+            var location = result.geometry.location;
+            var addressComponents = result.address_components;
+
+            var latitude = location.lat;
+            var longitude = location.lng;
+
+            var address_street_line1 = result.formatted_address;
+            var city = getAddressComponent(addressComponents, 'locality');
+            var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+            var country = getAddressComponent(addressComponents, 'country');
+            var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+
+            // Update form fields with retrieved values
+
+            $('#address_street_line1').val(address_street_line1);
+            $('#address_zipcode').val(postalCode);
+
+            $('#latitude').val(latitude);
+            $('#longitude').val(longitude);
+            $('#address_city').val(city);
+            $('#address_state').val(state);
+            $('#address_country').val(country);
+        });
+
+
+
+        function getAddressComponent(components, type) {
+            for (var i = 0; i < components.length; i++) {
+                var component = components[i];
+                var componentTypes = component.types;
+
+                if (componentTypes.indexOf(type) !== -1) {
+                return component.long_name;
+                }
+            }
+            return '';
+        }
+    });
     $(document).ready(function(){
+        $('.select2').select2();
         $(document).on('click','a[data-role=addtowishlist]',function(){
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
