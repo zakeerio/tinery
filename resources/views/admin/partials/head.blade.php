@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 {{-- <link rel="stylesheet" href="{{ asset('plugins/dropzone/dropzone.css') }}"> --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 
 
