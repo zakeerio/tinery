@@ -82,7 +82,7 @@
                             @endphp
 
                             @if($tag)
-                                <a href="#">
+                                <a href="#0">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
