@@ -127,7 +127,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item ">
+                        <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="bioHeading">
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
@@ -176,7 +176,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="socialProfile">
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
@@ -256,7 +256,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="relevantTags">
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
