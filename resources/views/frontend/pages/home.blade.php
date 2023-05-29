@@ -92,7 +92,7 @@
                             {{-- {{ $itinerarytag }} --}}
                             @endforeach
                         </div>
-                        <p class="city">{{ $row->address_city}} | 3 Days</p>
+                        <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                 @endif

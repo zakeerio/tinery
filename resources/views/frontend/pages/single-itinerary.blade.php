@@ -380,7 +380,7 @@
                                             <hr>
                                         @endforeach
                                     @endif
-                                    
+
                                 </div>
                             </div>
                             <div class="w-25 m-auto mt-4">
@@ -397,7 +397,7 @@
 
                             @foreach($itinerary->comments as $comment)
                             <div>
-                                <div>{{ $comment->body }} 1122</div>
+                                <div>{{ $comment->body }}</div>
                                     {{-- <form action="{{ route('comments.destroy', $comment) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -505,7 +505,7 @@
                                     </a>
                                     <div class="d-flex align-items-center">
                                         <p class="lang">{{$row->user->name}} |</p>
-                                        <p class="lang px-2">16 Hours Ago</p>
+                                        <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </div>

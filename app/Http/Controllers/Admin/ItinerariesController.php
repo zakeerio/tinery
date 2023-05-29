@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use App\Models\Itineraries;
 use App\Models\Categories;
@@ -105,7 +106,10 @@ class ItinerariesController extends BaseController
 
             $array = new Itineraries;
             $array->title = $data['title'];
-            $array->slug = $data['slug'];
+            // $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug'], '-');
+
+
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
@@ -238,7 +242,8 @@ class ItinerariesController extends BaseController
 
             $array = Itineraries::find($id);
             $array->title = $data['title'];
-            $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug'], '-');
+
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
