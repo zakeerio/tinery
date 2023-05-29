@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Itineraries;
 use App\Models\User;
 use App\Models\Favorites;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -121,7 +122,7 @@ class HomeController extends Controller
 
             $array = Itineraries::find($data['id']);
             $array->title = $data['title'];
-            $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug']);
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];

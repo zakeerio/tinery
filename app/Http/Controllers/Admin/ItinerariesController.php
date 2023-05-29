@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
+use Illuminate\Support\Str;
 
 
 class ItinerariesController extends BaseController
@@ -115,7 +116,7 @@ class ItinerariesController extends BaseController
 
             $array = new Itineraries;
             $array->title = $data['title'];
-            $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug']);
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
@@ -263,7 +264,7 @@ class ItinerariesController extends BaseController
 
             $array = Itineraries::find($id);
             $array->title = $data['title'];
-            $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug']);
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
