@@ -929,8 +929,16 @@ select.did-floating-select::-ms-expand {
 
     transform: rotate(360deg);
 }
+.accordionbtn.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+}
+.accordionbtn.accordion-button:focus {
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 
-.save-bt {
+}
+
+
+.accordion-button:not(.collapsed) .save-bt {
     padding: 8px 43px;
 }
 .attach-area-width {

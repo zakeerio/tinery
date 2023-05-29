@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion mt-5 " id="accordionExample">
+                    <div class="accordion mt-4 " id="accordionExample">
                         <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="adminBio">
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-5' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -148,13 +148,13 @@
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    {!! Form::label('bio', 'Bio',['class'=>'fw-bold required']) !!}
+                                                    {!! Form::label('bio', 'Bio',['class'=>'fw-bold required mb-2']) !!}
                                                     {!! Form::textarea('bio', $user->bio, ['class' => 'form-control', 'rows' => '5']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mt-3">
                                                 <div class="form-group">
-                                                    {!! Form::label('file', 'File',['class'=>'fw-bold']) !!}
+                                                    {!! Form::label('file', 'File',['class'=>'fw-bold mb-2']) !!}
                                                     {!! Form::file('file', ['class' => 'form-control']) !!}
                                                 </div>
                                             </div>
@@ -195,31 +195,31 @@
                                         <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold']) !!}
+                                                {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold mb-2']) !!}
                                                 {!! Form::text('facebook', $user->facebook, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold']) !!}
+                                                {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold mb-2']) !!}
                                                 {!! Form::text('twitter', $user->twitter, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold']) !!}
-                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-contr rounded-pillol']) !!}
+                                                {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold mb-2']) !!}
+                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold']) !!}
+                                                {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold mb-2']) !!}
                                                 {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
-                                                {!! Form::label('website', 'website',['class'=>'fw-bold']) !!}
+                                                {!! Form::label('website', 'website',['class'=>'fw-bold mb-2']) !!}
                                                 {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill']) !!}
                                             </div>
                                         </div>
