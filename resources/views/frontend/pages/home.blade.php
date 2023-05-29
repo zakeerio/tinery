@@ -39,7 +39,7 @@
                     <div class="col-lg-3">
                         <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-2">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -110,13 +110,13 @@
 
                 @forelse ($users as $userdata )
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mb-5">
                         <div class="member-info d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center justify-content-start">
+                            <div class="d-flex align-items-center justify-content-start ">
                                 @if($userdata->profile != '')
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
                                 @else
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
                                 @endif
 
                                 <div class="mx-3">
