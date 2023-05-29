@@ -99,19 +99,7 @@
                             @endforeach
                             {!! Form::select('user_id', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('categories', 'Categories') !!}
-                            @php
-                                $listcategories = [];
-                                $listcat = json_decode($itineraries->categories);
-                            @endphp
-                            @foreach ($categories as $key => $categories)
-                                @php
-                                    $listcategories[$categories->id] = $categories->name;
-                                @endphp
-                            @endforeach
-                            {!! Form::select('categories[]', $listcategories, $listcat, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                        </div>
+
                         <div class="form-group">
                             @php
                                 $listtags = [];

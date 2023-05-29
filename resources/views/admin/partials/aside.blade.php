@@ -107,7 +107,7 @@
 
                         <li class="nav-header">Iteneraries Management</li>
 
-                        <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'menu-is-opening menu-open' :''}}">
+                        <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'menu-is-opening menu-open' :''}}">
                             <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.itineraries") !==false || strpos(Route::currentRouteName(),"admin.categories")!== false || strpos(Route::currentRouteName(),"admin.tags")!== false) ? 'active' :''}}">
                                 <i class="nav-icon fa fa-low-vision"></i>
                                 <p>
@@ -124,14 +124,7 @@
                                     </a>
                                 </li>
                                 @endcan
-                                @can('categories-index')
-                                <li class="nav-item">
-                                    <a href="{{route('admin.categories.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.categories") !== false ? 'active' :''}}">
-                                        <i class="fa fa-key nav-icon"></i>
-                                        <p>Itineraries Categories</p>
-                                    </a>
-                                </li>
-                                @endcan
+
                                 @can('tags-index')
                                 <li class="nav-item">
                                     <a href="{{route('admin.tags.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.tags") !== false ? 'active' :''}}">

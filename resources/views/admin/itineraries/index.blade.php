@@ -92,7 +92,6 @@
                                         {{-- <th>SEO Description</th> --}}
                                         {{-- <th>SEO Image</th> --}}
                                         <th>Author</th>
-                                        <th>Categories</th>
                                         <th>Tags</th>
                                         {{-- <th>Street</th> --}}
                                         {{-- <th>Street Line 1</th> --}}
@@ -131,27 +130,20 @@
                                         {{-- <td>{{ $row->seo_description}}</td> --}}
                                         {{-- <td>{{ $row->seo_image}}</td> --}}
                                         <td>{{ $row->user_id}}</td>
+
                                         <td>
-                                            @php
-                                                $categories = json_decode($row->categories)
-                                            @endphp
-                                            @foreach($categories as $category)
+                                            @if ($row->tags)
                                                 @php
-                                                    $cate = \App\Models\Categories::find($category);
+                                                    $tags = json_decode($row->tags)
                                                 @endphp
-                                                <span class="badge bg-info">{{$cate->name}}</span>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            @php
-                                                $tags = json_decode($row->tags)
-                                            @endphp
-                                            @foreach($tags as $tag)
-                                                @php
-                                                    $tag = \App\Models\Tags::find($tag);
-                                                @endphp
-                                                <span class="badge bg-primary">{{$tag->name}}</span>
-                                            @endforeach
+                                                @foreach($tags as $tag)
+                                                    @php
+                                                        $tag = \App\Models\Tags::find($tag);
+                                                    @endphp
+                                                    <span class="badge bg-primary">{{$tag->name}}</span>
+                                                @endforeach
+                                            @endif
+
                                         </td>
                                         {{-- <td>{{ $row->address_street}}</td> --}}
                                         {{-- <td>{{ $row->address_street_line1}}</td> --}}
