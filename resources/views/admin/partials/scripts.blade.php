@@ -18,6 +18,8 @@
 <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
 
 
+<script src="{{asset('js/bootstrap-notify.js')}}"></script>
+<script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
 
 
 {{-- scripts --}}

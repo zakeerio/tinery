@@ -921,3 +921,22 @@ select.did-floating-select::-ms-expand {
         height: auto;
     }
 }
+
+/* .myaccordion-button::after {
+  transform: rotate(270deg);
+}
+.myaccordion-button:not(.collapsed)::after {
+  transform: rotate(360deg);
+} */
+
+.save-bt {
+    padding: 8px 43px;
+  }
+  .attach-area-width {
+    max-width: 400px;
+  }
+  .edit-bt-size {
+    width: 20px;
+    height: 20px;
+  }
+  

@@ -26,7 +26,7 @@
 
                         <div class="card-tools">
                             @can('permission-create')
-                                <a class="btn btn-success" href="{{ route('admin.itineraries.create') }}">Create Itenerary</a>
+                                <a class="btn btn-success" href="{{ url('/admin/itineraries/createload') }}">Create Itenerary</a>
                             @endcan
                         </div>
                     </div>

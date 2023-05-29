@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Favorites;
 use App\Models\Comment;
+use App\Models\ItineraryDays;
+use App\Models\ItineraryActivities;
 
 class Itineraries extends Model
 {
@@ -49,10 +51,18 @@ class Itineraries extends Model
         return $this->hasMany(Favorites::class);
     }
 
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
+    public function itinerarydays()
+    {
+        return $this->hasMany(ItineraryDays::class);
+    }
+
+    public function itineraryactivities()
+    {
+        return $this->ItineraryActivities(Comment::class);
+    }
 }

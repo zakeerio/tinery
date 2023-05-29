@@ -194,7 +194,20 @@
                                 {!! Form::select('status', ['published' => 'Published', 'draft' => 'Draft'], null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div id="accordion">
+                        <input type="hidden" name="tempid" class="itineraries_id" value="{{$itineraries->id}}">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h3>Create Activities</h3>
+                                <small><b>NOTE: Days and Activity form fields should be auto save</b></small>
+                            </div>
+                            <div class="col-lg-3">
+                                <a href="javascript:void(0)" data-role="additineraryday" class="btn btn-success btn-block">Add Day</a>
+                            </div>
+                            <div class="col-lg-12 mt-4 showitinerarydayshtml">
+                                
+                            </div>
+                        </div>
+                        <!-- <div id="accordion">
                             <div class="card">
                                 {{-- <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
@@ -264,10 +277,10 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            </div>
+                            </div> -->
 
                             <div id="main">
-                                <div class="accordion" id="faq">
+                                <!-- <div class="accordion" id="faq">
 
                                     <div class="card days-box" id="card1">
                                         <a href="#" class="btn btn-danger remove-btn rounded-circle d-none" title="Delete Day"><i class="fa fa-minus"></i></a>
@@ -385,7 +398,7 @@
 
                                 <div class="form-group d-flex justify-content-end">
                                     <button class="btn btn-success add-activity-day" title="Add Activity"><i class="fa fa-plus-circle"> Add Day</i></button>
-                                </div>
+                                </div> -->
 
                                 <div id="map" style="height: 500px; width:100%;"></div>
 
@@ -404,7 +417,7 @@
     @endsection
 
     @include('admin.partials.scripts')
-
+    @include('admin.itineraries.itineraryscript')
 
     <script>
         $(document).ready(function() {
