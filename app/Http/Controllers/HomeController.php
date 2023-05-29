@@ -78,4 +78,15 @@ class HomeController extends Controller
 
         echo json_encode($output);
     }
+
+    public function create_itinerary_load()
+    {
+        return redirect('/create_itinerary/'.rand(999,99999));
+    }
+
+    public function create_itinerary($tempid)
+    {
+        return view('frontend.pages.create-itinerary',compact('tempid'));
+    }
+
 }

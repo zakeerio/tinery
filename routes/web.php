@@ -31,6 +31,8 @@ Route::get('/itineraries', function(){
 })->name('itineraries');
 
 Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
+Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
+Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
