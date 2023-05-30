@@ -275,7 +275,7 @@
 
                 </div>
 
-                <div class="col-md-8 px-4">
+                <div class="col-md-8 myitinerylist">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-3 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
@@ -300,12 +300,12 @@
                                 <div class="row mb-3">
                                     <div class="d-flex gap-3 align-items-center">
                                         @if (!empty($itinerary->seo_image))
-                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120">
+                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
                                         @else
                                             <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                         @endif
                                         <div class="col-8">
-                                            <h2 class="title">{{ $itinerary->title }}</h2>
+                                            <h2 class="title title1">{{ $itinerary->title }}</h2>
                                             <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                         </div>
                                         <div class="col-3 d-flex justify-content-end gap-2">
@@ -336,13 +336,13 @@
                                     <div class="row mb-3">
                                         <div class="d-flex gap-3 align-items-center">
                                             @if (!empty($itinerary->seo_image))
-                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120">
+                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
                                             @else
                                                 <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
                                             @endif
 
                                             <div class="col-8">
-                                                <h2 class="title">{{ $itinerary->title }}</h2>
+                                                <h2 class="title title1">{{ $itinerary->title }}</h2>
                                                 <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                             </div>
                                             <div class="col-3 d-flex justify-content-end gap-2">
@@ -354,10 +354,10 @@
 
                                 <div class="text-center p-4">
 
-                                    <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                    <h4 class="mb-3">No Saved Itineraries, yet</h4>
+                                    <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-5">
+                                    <h4 class="mb-4 fw-bold">No Saved Itineraries, yet</h4>
                                     <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
-                                    <a href="{{ route('additinerary') }}" class="btn btn-info rounded-pill navyblubtn">+ Add Itinerary</a>
+                                    <a href="{{ route('additinerary') }}" class="btn btn-dark rounded-pill navyblubtn mt-3 px-4">Browse Itinaries</a>
                                 </div>
 
                             @endforelse

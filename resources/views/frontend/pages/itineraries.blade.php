@@ -529,7 +529,7 @@
                                 <a href="#"> <img src="{{ asset('frontend/images/Path.png') }}" alt="" class="path-img"></a>
                             </div>
                         </div>
-                        <h4 class="h-4">Autumn Escape</h4>
+                        <h4 class="h-4 ">Autumn Escape</h4>
                         <div class="tags">
                             <a href="#"> <button class="foodie">Leaves</button></a>
                             <a href="#"> <button class="foodie">Coffee</button></a>
