@@ -226,26 +226,28 @@ CREATE TABLE IF NOT EXISTS `itinerary_activities` (
   `itineraries_id` bigint UNSIGNED NOT NULL,
   `tempid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `days_id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `starttime` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `endtime` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `itinerary_activities_itineraries_id_foreign` (`itineraries_id`),
   KEY `itinerary_activities_days_id_foreign` (`days_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itinerary_activities`
 --
 
-INSERT INTO `itinerary_activities` (`id`, `itineraries_id`, `tempid`, `days_id`, `starttime`, `endtime`, `description`, `created_at`, `updated_at`) VALUES
-(103, 4, '', 30, '19:59', '19:00', 'Onde sds', '2023-05-29 09:57:01', '2023-05-29 09:58:25'),
-(96, 7, '', 29, '19:52', '19:53', 'One', '2023-05-29 09:48:29', '2023-05-29 09:59:01'),
-(100, 7, '', 29, '19:51', '19:54', 'One', '2023-05-29 09:49:12', '2023-05-29 09:59:01'),
-(101, 7, '', 29, '19:50', '19:51', 'One two three', '2023-05-29 09:49:15', '2023-05-29 09:59:01');
-
+INSERT INTO `itinerary_activities` (`id`, `itineraries_id`, `tempid`, `days_id`, `title`, `starttime`, `endtime`, `description`, `location`, `created_at`, `updated_at`) VALUES
+(103, 4, '', 30, NULL, '19:59', '19:00', 'Onde sds', NULL, '2023-05-29 09:57:01', '2023-05-29 09:58:25'),
+(96, 7, '', 29, NULL, '19:52', '19:53', 'One', NULL, '2023-05-29 09:48:29', '2023-05-29 09:59:01'),
+(100, 7, '', 29, NULL, '19:51', '19:54', 'One', NULL, '2023-05-29 09:49:12', '2023-05-29 09:59:01'),
+(101, 7, '', 29, NULL, '19:50', '19:51', 'One two three', NULL, '2023-05-29 09:49:15', '2023-05-29 09:59:01'),
+(104, 11, NULL, 33, NULL, NULL, NULL, NULL, NULL, '2023-05-30 04:11:05', '2023-05-30 04:11:05');
 -- --------------------------------------------------------
 
 --
