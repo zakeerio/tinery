@@ -30,19 +30,6 @@ Route::get('/itineraries', function(){
     return view('frontend.pages.itineraries');
 })->name('itineraries');
 
-Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
-Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
-
-Route::get('/create_itinerary',[HomeController::class,'create_itinerary'])->name('create_itinerary');
-Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
-Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
-Route::get('/edit_itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit_itinerary');
-Route::get('/create_itinerary_day/{id}',[HomeController::class,'create_itinerary_day'])->name('create_itinerary_day');
-Route::get('/deleteday/{id}/{id1}',[HomeController::class,'deleteday'])->name('deleteday');
-Route::post('/showdaysactivities',[HomeController::class,'showdaysactivities'])->name('showdaysactivities');
-Route::post('/addactivitydb',[HomeController::class,'addactivitydb'])->name('addactivitydb');
-Route::post('/addactivitydbdata',[HomeController::class,'addactivitydbdata'])->name('addactivitydbdata');
-Route::post('/deleteactivitydb',[HomeController::class,'deleteactivitydb'])->name('deleteactivitydb');
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
@@ -65,7 +52,7 @@ Route::middleware('auth:user')->group(function () {
         dd('additinerary');
     })->name('additinerary');
     // Add more routes as needed
-    Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
+    // Route::get('/create-itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create-itinerary');
     Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 
     Route::post('/itinerary/{itinerary}/comments', [CommentController::class, 'store'])->name('comments.store');
@@ -74,6 +61,21 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/comments/{comment}/like-dislikes', [LikeDislikeController::class, 'store'])->name('likesDislikes.store');
     Route::put('/like-dislikes/{likeDislike}', [LikeDislikeController::class, 'update'])->name('likesDislikes.update');
     Route::delete('/like-dislikes/{likeDislike}', [LikeDislikeController::class, 'destroy'])->name('likesDislikes.destroy');
+
+
+    Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
+    Route::get('/create-itinerary-load',[HomeController::class,'create_itinerary_load'])->name('create-itinerary-load');
+
+    Route::get('/create-itinerary',[HomeController::class,'create_itinerary'])->name('create-itinerary');
+    Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
+    Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
+    Route::get('/edit_itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit_itinerary');
+    Route::get('/create-itinerary-day/{id}',[HomeController::class,'create_itinerary_day'])->name('create-itinerary-day');
+    Route::get('/deleteday/{id}/{id1}',[HomeController::class,'deleteday'])->name('deleteday');
+    Route::post('/showdaysactivities',[HomeController::class,'showdaysactivities'])->name('showdaysactivities');
+    Route::post('/addactivitydb',[HomeController::class,'addactivitydb'])->name('addactivitydb');
+    Route::post('/addactivitydbdata',[HomeController::class,'addactivitydbdata'])->name('addactivitydbdata');
+    Route::post('/deleteactivitydb',[HomeController::class,'deleteactivitydb'])->name('deleteactivitydb');
 
 
 });

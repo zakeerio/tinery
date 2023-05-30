@@ -264,7 +264,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
-                                
+
                             </div>
                             <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
                                 <a href="javascript:void(0)" style="text-decoration:none;" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
@@ -288,7 +288,7 @@
             @endif
             <!-- line pbolem -->
             <div class="vr mx-auto"></div>
-            <a href="{{ url('create_itinerary_day/'.$itinerary->id)}}" style="text-decoration:none;">
+            <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                 <div class="col-12  text-center border rounded-3 p-3 my-3 mt-1">
                     <h2 class="text-danger">+Add Day</h2>
                 </div>
