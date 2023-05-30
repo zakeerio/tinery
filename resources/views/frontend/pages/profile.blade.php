@@ -309,7 +309,7 @@
                                             <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                         </div>
                                         <div class="col-3 d-flex justify-content-end gap-2">
-                                            <a href="{{ url('/edit_itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
+                                            <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             <a href="{{ route('itinerary', ['id' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                         </div>
                                     </div>

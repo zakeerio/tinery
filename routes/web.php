@@ -69,7 +69,7 @@ Route::middleware('auth:user')->group(function () {
     Route::get('/create-itinerary',[HomeController::class,'create_itinerary'])->name('create-itinerary');
     Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
     Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
-    Route::get('/edit_itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit_itinerary');
+    Route::get('/edit-itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit-itinerary');
     Route::get('/create-itinerary-day/{id}',[HomeController::class,'create_itinerary_day'])->name('create-itinerary-day');
     Route::get('/deleteday/{id}/{id1}',[HomeController::class,'deleteday'])->name('deleteday');
     Route::post('/showdaysactivities',[HomeController::class,'showdaysactivities'])->name('showdaysactivities');

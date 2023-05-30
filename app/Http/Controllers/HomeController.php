@@ -132,7 +132,7 @@ class HomeController extends Controller
             $array1->save();
         }
         // Logic for storing the data goes here...
-        return redirect('/edit_itinerary/'.$array->id)->with('success','Saved Successfully');
+        return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
     }
 
     public function edit_itinerary($itineraryid)
@@ -178,7 +178,7 @@ class HomeController extends Controller
         }
 
         // Logic for storing the data goes here...
-        return redirect('/edit_itinerary/'.$array->id)->with('success','Saved Successfully');
+        return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
     }
 
     public function create_itinerary_day($itineraryid)
@@ -187,15 +187,15 @@ class HomeController extends Controller
         $array1->itineraries_id = $itineraryid;
         $array1->save();
 
-        return redirect('/edit_itinerary/'.$itineraryid)->with('success','Added Successfully');
+        return redirect('/edit-itinerary/'.$itineraryid)->with('success','Added Successfully');
     }
 
     public function deleteday($id,$itineraryid)
     {
         ItineraryDays::where('id',$id)->delete();
         ItineraryActivities::where('days_id',$id)->delete();
-        
-        return redirect('/edit_itinerary/'.$itineraryid)->with('success','Deleted Successfully');
+
+        return redirect('/edit-itinerary/'.$itineraryid)->with('success','Deleted Successfully');
 
     }
 
@@ -329,8 +329,8 @@ class HomeController extends Controller
                                 });
                                 showdaysactivities(itineraryid,daysid);
                             }
-                        });                     
-                    });        
+                        });
+                    });
                 });
             </script>
         ';
