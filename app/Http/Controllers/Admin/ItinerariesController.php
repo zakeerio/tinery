@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use App\Models\Itineraries;
-use App\Models\Categories;
 use App\Models\User;
 use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
-use Illuminate\Support\Str;
 
 
 class ItinerariesController extends BaseController
@@ -43,7 +42,7 @@ class ItinerariesController extends BaseController
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function createload()
     {
         return redirect()->route('admin.itineraries.create',['id'   =>  rand(999,999999)]);
@@ -52,11 +51,10 @@ class ItinerariesController extends BaseController
     public function create()
     {
         $tempid = $_GET['id'];
-        $categories = Categories::get();
         $authors = User::get();
         $tags = Tags::get();
         $this->setPageTitle("Itineraries","Itineraries List");
-        return view('admin.Itineraries.create',compact('categories','authors','tags','tempid'));
+        return view('admin.Itineraries.create',compact('authors','tags','tempid'));
     }
 
     /**
@@ -72,7 +70,6 @@ class ItinerariesController extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'user_id' => 'required',
-            'categories' => 'required|array',
             'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
             'address_street_line1' => 'nullable|string|max:255',
@@ -95,7 +92,6 @@ class ItinerariesController extends BaseController
             'title.max' => 'The title field cannot be longer than 255 characters.',
             'description.required' => 'The description field is required.',
             'user_id.required' => 'The author field is required.',
-            'categories.required' => 'The categories field is required.',
             'tags.required' => 'The tags field is required.',
             'visibility.required' => 'The visibility field is required.',
             'visibility.in' => 'The visibility field must be either "public" or "private".',
@@ -116,13 +112,15 @@ class ItinerariesController extends BaseController
 
             $array = new Itineraries;
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            // $array->slug = $data['slug'];
+            $array->slug = Str::slug($data['slug'], '-');
+
+
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];
-            $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->address_street_line1 = $data['address_street_line1'];
@@ -198,13 +196,12 @@ class ItinerariesController extends BaseController
      */
     public function edit($id)
     {
-        $categories = Categories::get();
         $authors = User::get();
         $tags = Tags::get();
 
         $this->setPageTitle("Itineraries","Itineraries Edit");
         $itineraries = Itineraries::find($id);
-        return view('admin.itineraries.edit',compact('itineraries','categories','authors','tags'));
+        return view('admin.itineraries.edit',compact('itineraries','authors','tags'));
     }
 
     /**
@@ -220,7 +217,6 @@ class ItinerariesController extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'user_id' => 'required',
-            'categories' => 'required|array',
             'tags' => 'required|array',
             'address_street' => 'nullable|string|max:255',
             'address_street_line1' => 'nullable|string|max:255',
@@ -243,7 +239,6 @@ class ItinerariesController extends BaseController
             'title.max' => 'The title field cannot be longer than 255 characters.',
             'description.required' => 'The description field is required.',
             'user_id.required' => 'The author field is required.',
-            'categories.required' => 'The categories field is required.',
             'tags.required' => 'The tags field is required.',
             'visibility.required' => 'The visibility field is required.',
             'visibility.in' => 'The visibility field must be either "public" or "private".',
@@ -264,13 +259,13 @@ class ItinerariesController extends BaseController
 
             $array = Itineraries::find($id);
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            $array->slug = Str::slug($data['slug'], '-');
+
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];
-            $array->categories = json_encode($data['categories']);
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->address_street_line1 = $data['address_street_line1'];
@@ -341,7 +336,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $tempid = $request->itineraries_id;
-        
+
         $array = new ItineraryDays;
         $array->itineraries_id = $tempid;
         $array->tempid = $tempid;
@@ -456,7 +451,7 @@ class ItinerariesController extends BaseController
                                 message: "Saved"
                                 },{
                                 type: "success"
-                                });    
+                                });
                                 showitineraryactivities(itinerariesidloop,dayid);
                             }
                         });
@@ -474,7 +469,7 @@ class ItinerariesController extends BaseController
                         var itinerariesidloop = $(".itinerariesidloop").val();
                         var dayid = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitdayform').'",
                             method:"post",
@@ -487,7 +482,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitinerarydays(itinerariesidloop);
                                 showitineraryactivities(itinerariesidloop,dayid);
                             }
@@ -503,7 +498,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $id = $request->id;
-        
+
         $array = ItineraryDays::find($id)->delete();
         $array = ItineraryActivities::where('days_id',$id)->delete();
     }
@@ -513,7 +508,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->dayid;
         $val = $request->val;
-        
+
         $array = ItineraryDays::find($id);
         $array->date = $val;
         $array->save();
@@ -524,7 +519,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $tempid = $request->itinerariesidloop;
         $days_id = $request->dayid;
-        
+
         $array = new ItineraryActivities;
         $array->itineraries_id = $tempid;
         $array->tempid = $tempid;
@@ -611,7 +606,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -622,7 +617,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitstarttimeform').'",
                             method:"post",
@@ -634,7 +629,7 @@ class ItinerariesController extends BaseController
                                 message: "Saved"
                                 },{
                                 type: "success"
-                                });    
+                                });
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -645,7 +640,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitendtimeform').'",
                             method:"post",
@@ -658,7 +653,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -669,7 +664,7 @@ class ItinerariesController extends BaseController
                         var activitydaysidloop = $(".activitydaysidloop").val();
                         var id = $(this).data("id");
                         var val = $(this).val();
-                        
+
                         $.ajax({
                             url:"'.url('/admin/itineraries/submitdescriptionform').'",
                             method:"post",
@@ -682,7 +677,7 @@ class ItinerariesController extends BaseController
                                 },{
                                 type: "success"
                                 });
-    
+
                                 showitineraryactivities(activityitinerariesidloop,activitydaysidloop);
                             }
                         });
@@ -697,7 +692,7 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $id = $request->id;
-        
+
         $array = ItineraryActivities::find($id)->delete();
     }
 
@@ -706,7 +701,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->starttime = $val;
         $array->save();
@@ -717,7 +712,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->endtime = $val;
         $array->save();
@@ -728,7 +723,7 @@ class ItinerariesController extends BaseController
         $output = '';
         $id = $request->id;
         $val = $request->val;
-        
+
         $array = ItineraryActivities::find($id);
         $array->description = $val;
         $array->save();

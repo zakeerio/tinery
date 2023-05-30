@@ -28,6 +28,9 @@ $key = env('GOOGLE_MAP_API_KEY');
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@php
+    $key = env('GOOGLE_MAP_API_KEY');
+@endphp
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ $key }}"></script>
 
 <input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
@@ -54,6 +57,48 @@ $key = env('GOOGLE_MAP_API_KEY');
 
 <script>
     $(document).ready(function() {
+
+
+        if($('#map').length > 0) {
+
+            initMaps();
+
+            // var options = {
+            //             types: ['(cities)']
+            //         };
+
+            // var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
+
+            // google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            //     var result = autocomplete.getPlace();
+            //     console.log(result.address_components[0]);
+
+            //     var location = result.geometry.location;
+            //     var addressComponents = result.address_components;
+
+            //     var latitude = location.lat;
+            //     var longitude = location.lng;
+
+            //     var address_street_line1 = result.formatted_address;
+            //     var city = getAddressComponent(addressComponents, 'locality');
+            //     var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+            //     var country = getAddressComponent(addressComponents, 'country');
+            //     var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+
+            //     // Update form fields with retrieved values
+
+            //     $('#address_street_line1').val(address_street_line1);
+            //     $('#address_zipcode').val(postalCode);
+
+            //     $('#latitude').val(latitude);
+            //     $('#longitude').val(longitude);
+            //     $('#address_city').val(city);
+            //     $('#address_state').val(state);
+            //     $('#address_country').val(country);
+            // });
+        }
+
         function  initMaps(){
 
             // execute
@@ -108,41 +153,7 @@ $key = env('GOOGLE_MAP_API_KEY');
                 // console.log('Longitude:', long);
             })
 
-        }
-        initMaps();
-
-        var apiKey = `{{ $key }}`;
-
-        var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], {});
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var result = autocomplete.getPlace();
-            console.log(result.address_components[0]);
-
-            var location = result.geometry.location;
-            var addressComponents = result.address_components;
-
-            var latitude = location.lat;
-            var longitude = location.lng;
-
-            var address_street_line1 = result.formatted_address;
-            var city = getAddressComponent(addressComponents, 'locality');
-            var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
-            var country = getAddressComponent(addressComponents, 'country');
-            var postalCode = getAddressComponent(addressComponents, 'postal_code');
-
-
-            // Update form fields with retrieved values
-
-            $('#address_street_line1').val(address_street_line1);
-            $('#address_zipcode').val(postalCode);
-
-            $('#latitude').val(latitude);
-            $('#longitude').val(longitude);
-            $('#address_city').val(city);
-            $('#address_state').val(state);
-            $('#address_country').val(country);
-        });
+}
 
 
 
@@ -163,7 +174,7 @@ $key = env('GOOGLE_MAP_API_KEY');
         $(document).on('click','a[data-role=addtowishlist]',function(){
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
-            
+
             $.ajax({
                 url:'{{ url("/favourites")}}',
                 method:'post',
@@ -198,7 +209,7 @@ $key = env('GOOGLE_MAP_API_KEY');
         $(document).on('click','a[data-role=removetowishlist]',function(){
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
-            
+
             $.ajax({
                 url:'{{ url("/removefavourites")}}',
                 method:'post',
@@ -232,6 +243,7 @@ $key = env('GOOGLE_MAP_API_KEY');
         });
     });
 </script>
+<<<<<<< HEAD
 <script>
     $(document).ready(function(){
         function showdaysactivities(itineraryid,daysid)
@@ -266,3 +278,5 @@ $key = env('GOOGLE_MAP_API_KEY');
         });
     });
 </script>
+=======
+>>>>>>> a8977e117be767d6464d01d0fafa5b3a7a7d251a

@@ -31,6 +31,7 @@ Route::get('/itineraries', function(){
 })->name('itineraries');
 
 Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
+<<<<<<< HEAD
 Route::get('/create_itinerary',[HomeController::class,'create_itinerary'])->name('create_itinerary');
 Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
@@ -39,6 +40,9 @@ Route::get('/create_itinerary_day/{id}',[HomeController::class,'create_itinerary
 Route::post('/showdaysactivities',[HomeController::class,'showdaysactivities'])->name('showdaysactivities');
 Route::post('/addactivitydb',[HomeController::class,'addactivitydb'])->name('addactivitydb');
 
+=======
+Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
+>>>>>>> a8977e117be767d6464d01d0fafa5b3a7a7d251a
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
@@ -61,6 +65,8 @@ Route::middleware('auth:user')->group(function () {
         dd('additinerary');
     })->name('additinerary');
     // Add more routes as needed
+    Route::get('/create_itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create_itinerary');
+    Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 
     Route::post('/itinerary/{itinerary}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');

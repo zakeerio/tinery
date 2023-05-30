@@ -99,19 +99,7 @@
                             @endforeach
                             {!! Form::select('user_id', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('categories', 'Categories') !!}
-                            @php
-                                $listcategories = [];
-                                $listcat = json_decode($itineraries->categories);
-                            @endphp
-                            @foreach ($categories as $key => $categories)
-                                @php
-                                    $listcategories[$categories->id] = $categories->name;
-                                @endphp
-                            @endforeach
-                            {!! Form::select('categories[]', $listcategories, $listcat, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                        </div>
+
                         <div class="form-group">
                             @php
                                 $listtags = [];
@@ -204,7 +192,7 @@
                                 <a href="javascript:void(0)" data-role="additineraryday" class="btn btn-success btn-block">Add Day</a>
                             </div>
                             <div class="col-lg-12 mt-4 showitinerarydayshtml">
-                                
+
                             </div>
                         </div>
                         <!-- <div id="accordion">
@@ -537,7 +525,11 @@
 
             var apiKey = `{{ $key }}`;
 
-            var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], {});
+            var options = {
+                    types: ['(cities)']
+                };
+
+            var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options );
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var result = autocomplete.getPlace();

@@ -16,8 +16,8 @@
     <div class="container">
         <div class="explore-section py-4">
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>Explore Popular Travel Itineraries</h2>
+                <div class="col-lg-6 ">
+                    <h2 class=" fw-bold " >Explore Popular Travel Itineraries</h2>
                 </div>
                 <div class="col-lg-6 text-end">
                     <h2>
@@ -36,10 +36,10 @@
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
 
-                    <div class="col-lg-3">
-                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
+                    <div class="col-lg-3 ">
+                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-2">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -92,7 +92,7 @@
                             {{-- {{ $itinerarytag }} --}}
                             @endforeach
                         </div>
-                        <p class="city">{{ $row->address_city}} | 3 Days</p>
+                        <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                 @endif
@@ -110,13 +110,13 @@
 
                 @forelse ($users as $userdata )
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mb-5">
                         <div class="member-info d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center justify-content-start">
+                            <div class="d-flex align-items-center justify-content-start ">
                                 @if($userdata->profile != '')
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
                                 @else
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="member-img"></a>
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
                                 @endif
 
                                 <div class="mx-3">
@@ -147,11 +147,13 @@
 <div class="world">
     <div class="container">
         <h2 class="membr">Explore Your World</h2>
-        <div class="map">
+        {{-- <div class="map">
             <iframe src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
                 width="100%" height="550"></iframe>
 
-        </div>
+        </div> --}}
+
+        <div id="map" style="height: 450px;"></div>
     </div>
 </div>
 
