@@ -31,18 +31,18 @@ Route::get('/itineraries', function(){
 })->name('itineraries');
 
 Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
-<<<<<<< HEAD
+Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
+
 Route::get('/create_itinerary',[HomeController::class,'create_itinerary'])->name('create_itinerary');
 Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
 Route::get('/edit_itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit_itinerary');
 Route::get('/create_itinerary_day/{id}',[HomeController::class,'create_itinerary_day'])->name('create_itinerary_day');
+Route::get('/deleteday/{id}/{id1}',[HomeController::class,'deleteday'])->name('deleteday');
 Route::post('/showdaysactivities',[HomeController::class,'showdaysactivities'])->name('showdaysactivities');
 Route::post('/addactivitydb',[HomeController::class,'addactivitydb'])->name('addactivitydb');
-
-=======
-Route::get('/create_itinerary_load',[HomeController::class,'create_itinerary_load'])->name('create_itinerary_load');
->>>>>>> a8977e117be767d6464d01d0fafa5b3a7a7d251a
+Route::post('/addactivitydbdata',[HomeController::class,'addactivitydbdata'])->name('addactivitydbdata');
+Route::post('/deleteactivitydb',[HomeController::class,'deleteactivitydb'])->name('deleteactivitydb');
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');

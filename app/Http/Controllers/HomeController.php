@@ -190,6 +190,15 @@ class HomeController extends Controller
         return redirect('/edit_itinerary/'.$itineraryid)->with('success','Added Successfully');
     }
 
+    public function deleteday($id,$itineraryid)
+    {
+        ItineraryDays::where('id',$id)->delete();
+        ItineraryActivities::where('days_id',$id)->delete();
+        
+        return redirect('/edit_itinerary/'.$itineraryid)->with('success','Deleted Successfully');
+
+    }
+
     public function showdaysactivities(Request $request)
     {
         $output= '';
@@ -201,59 +210,130 @@ class HomeController extends Controller
         ->get();
         if(!empty($query))
         {
-            foreach($query as $query)
+            foreach($query as $key => $query)
             {
+                $count = ++$key;
                 $output .=
                 '
-                <div class=" p-3">
-                    <div class="row border rounded-pill ">
-                        <div class="col-12 d-flex justify-content-between  align-items-center">
-                            <p class="m-0">Activity 1</p>
-                            <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
-                            </button>
+                <form action="#" class="mt-4">
+                    <div class=" p-3">
+                        <div class="row border rounded-pill ">
+                            <div class="col-12 d-flex justify-content-between  align-items-center">
+                                <p class="m-0">Activity '.$count.'</p>
+                                <button type="button" class="bg-transparent border-0" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">
+                                    <img class="w-75" src="'.asset("frontend/images/cross-x.png").'" alt="">
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-light rounded-2 p-2 mt-2 mb-2">
-                        <div class="mb-3 ">
-                            <div class="mb-3 d-flex gap-1">
-                                <div class="">
-                                    <label for="title1" class="form-label fw-bold">Title</label>
-                                    <input type="text" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="titleHelp">
+                        <div class="bg-light rounded-2 p-2 mt-2 mb-2">
+                            <div class="mb-3 ">
+                                <div class="mb-3 d-flex gap-1">
+                                    <div class="">
+                                        <label class="form-label fw-bold">Title</label>
+                                        <input type="text" class="form-control rounded-pill" name="activitytitle" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
+                                    </div>
+                                    <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
+                                    <input type="hidden" name="daysid" value="'.$query->days_id.'">
+                                    <input type="hidden" name="activityid" value="'.$query->id.'">
+                                    <div class="">
+                                        <label class="form-label fw-bold">Time</label>
+                                        <input type="time" class="form-control rounded-pill" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                    </div>
+                                    <div class="">
+                                        <label class="form-label fw-bold">&nbsp;</label>
+                                        <label class="form-label fw-bold px-1">
+                                            <h4>:</h4>
+                                        </label>
+                                    </div>
+                                    <div class="">
+                                        <label class="form-label fw-bold">&nbsp;</label>
+                                        <input type="time" class="form-control rounded-pill" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                    </div>
                                 </div>
-                                <div class="">
-                                    <label for="title1" class="form-label fw-bold">Time</label>
-                                    <input type="time" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="timeHelp">
-                                </div>
-                                <div class="">
-                                    <label for="title1" class="form-label fw-bold">&nbsp;</label>
-                                    <label for="title1" class="form-label fw-bold px-1">
-                                        <h4>:</h4>
-                                    </label>
-                                </div>
-                                <div class="">
-                                    <label for="title1" class="form-label fw-bold">&nbsp;</label>
-                                    <input type="time" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="timeHelp">
-                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="summary" class="form-label fw-bold">Summary</label>
+                                <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2">
+                                <img src="'.asset("frontend/images/location1.png").'" alt="">
+                                <p class="text-center m-0">Add map location</p>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="summary" class="form-label fw-bold">Summary</label>
-                            <textarea class="form-control" placeholder="Please add summary" id="exampleFormControlTextarea1" rows="5"></textarea>
-                        </div>
-                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2">
-                            <img src="{{ asset('frontend/images/location1.png')}}" alt="">
-                            <p class="text-center m-0">Add map location</p>
+                            <button type="button" class="btn save-bt btn-dark rounded-pill float-end " data-role="btnaddactivitydb">Save</button>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <button type="button" class="btn save-bt btn-dark rounded-pill float-end ">Save</button>
-                    </div>
-                </div>
+                </form>
                 ';
             }
         }
-
+        $output .=
+        '
+            <script>
+                $(document).ready(function(){
+                    function showdaysactivities(itineraryid,daysid)
+                    {
+                        var csrftoken = $("#csrftoken").val();
+                        $.ajax({
+                            url:"'.url('/showdaysactivities').'",
+                            method:"post",
+                            data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
+                            success:function(data)
+                            {
+                                $("#showitinerariesdaysactivities"+daysid).html(data);
+                            }
+                        });
+                    }
+                    $(document).on("click","button[data-role=btnaddactivitydb]",function(e){
+                        e.preventDefault();
+                        var csrftoken = $("#csrftoken").val();
+                        var activitytitle  = $(this).closest("form").find("input[name=activitytitle]").val();
+                        var activitystarttime = $(this).closest("form").find("input[name=activitystarttime]").val();
+                        var activityendtime = $(this).closest("form").find("input[name=activityendtime]").val();
+                        var activitydescription = $(this).closest("form").find("textarea[name=activitydescription]").val();
+                        var itineraryid = $(this).closest("form").find("input[name=itineraryid]").val();
+                        var daysid = $(this).closest("form").find("input[name=daysid]").val();
+                        var activityid = $(this).closest("form").find("input[name=activityid]").val();
+                        $.ajax({
+                            url:"'.url('/addactivitydbdata').'",
+                            method:"post",
+                            data:{_token:csrftoken,activitytitle:activitytitle,activitystarttime:activitystarttime,activityendtime:activityendtime,activitydescription:activitydescription,activityid:activityid},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Updated"
+                                },{
+                                type: "success"
+                                });
+                            }
+                        });
+                    });
+                    $(document).on("click","button[data-role=deleteactivity]",function(e){
+                        var itineraryid = $(this).data("itineraryid");
+                        var daysid = $(this).data("daysid");
+                        var id = $(this).data("id");
+                        var csrftoken = $("#csrftoken").val();
+                        $.ajax({
+                            url:"'.url('/deleteactivitydb').'",
+                            method:"post",
+                            data:{_token:csrftoken,id:id},
+                            success:function(data)
+                            {
+                                $.notify({
+                                title: "<strong>SUCCESS!</strong>",
+                                message: "Deleted"
+                                },{
+                                type: "success"
+                                });
+                                showdaysactivities(itineraryid,daysid);
+                            }
+                        });                     
+                    });        
+                });
+            </script>
+        ';
         echo $output;
     }
 
@@ -266,5 +346,29 @@ class HomeController extends Controller
         $activity->itineraries_id = $itineraryid;
         $activity->days_id = $daysid;
         $activity->save();
+    }
+
+    public function addactivitydbdata(Request $request)
+    {
+        $activitytitle = $request->activitytitle;
+        $activitystarttime = $request->activitystarttime;
+        $activityendtime = $request->activityendtime;
+        $activitydescription = $request->activitydescription;
+        $activityid = $request->activityid;
+
+        $activity = ItineraryActivities::find($activityid);
+        $activity->title = $activitytitle;
+        $activity->starttime = $activitystarttime;
+        $activity->endtime = $activityendtime;
+        $activity->description = $activitydescription;
+        $activity->save();
+    }
+
+    public function deleteactivitydb(Request $request)
+    {
+        $id = $request->id;
+
+        $activity = ItineraryActivities::find($id);
+        $activity->delete();
     }
 }

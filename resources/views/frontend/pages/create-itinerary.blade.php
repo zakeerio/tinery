@@ -4,11 +4,8 @@
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;;
         $user = auth('user')->user();
-<<<<<<< HEAD
-=======
 
         $key = env('GOOGLE_MAP_API_KEY');
->>>>>>> a8977e117be767d6464d01d0fafa5b3a7a7d251a
     @endphp
     <section class="profile-section">
         @if(empty($itinerary))
@@ -256,7 +253,7 @@
             @endphp
             <div class="col-12 d-flex justify-content-between  border rounded-3 p-3 mt-3">
                 <h2>Day {{$count}}</h2>
-                <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
+                <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                     <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
                 <!-- Modal -->
                 <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -266,71 +263,22 @@
                                 <h5 class="modal-title" id="staticBackdropLabel">Day {{$count}} Activities</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" id="showitinerariesdaysactivities">
-                                @php
-                                    $activities = \App\Models\ItineraryActivities::where('itineraries_id',$itinerary->id)
-                                    ->where('days_id',$days->id)
-                                    ->get();
-                                @endphp
-                                @if(!empty($activit))
-                                @foreach($activit as $activit)
-                                <div class=" p-3">
-                                    <div class="row border rounded-pill ">
-                                        <div class="col-12 d-flex justify-content-between  align-items-center">
-                                            <p class="m-0">Activity 1</p>
-                                            <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                <img class="w-75" src="{{ asset('frontend/images/editbt.png')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light rounded-2 p-2 mt-2 mb-2">
-                                        <div class="mb-3 ">
-                                            <div class="mb-3 d-flex gap-1">
-                                                <div class="">
-                                                    <label for="title1" class="form-label fw-bold">Title</label>
-                                                    <input type="text" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="titleHelp">
-                                                </div>
-                                                <div class="">
-                                                    <label for="title1" class="form-label fw-bold">Time</label>
-                                                    <input type="time" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="timeHelp">
-                                                </div>
-                                                <div class="">
-                                                    <label for="title1" class="form-label fw-bold">&nbsp;</label>
-                                                    <label for="title1" class="form-label fw-bold px-1">
-                                                        <h4>:</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="">
-                                                    <label for="title1" class="form-label fw-bold">&nbsp;</label>
-                                                    <input type="time" class="form-control rounded-pill" placeholder="Ex. Metropolitan Museum" id="title1" aria-describedby="timeHelp">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="summary" class="form-label fw-bold">Summary</label>
-                                            <textarea class="form-control" placeholder="Please add summary" id="exampleFormControlTextarea1" rows="5"></textarea>
-                                        </div>
-                                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2">
-                                            <img src="{{ asset('frontend/images/location1.png')}}" alt="">
-                                            <p class="text-center m-0">Add map location</p>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button type="button" class="btn save-bt btn-dark rounded-pill float-end ">Save</button>
-                                    </div>
-                                </div>
-                                @endforeach
-                                @endif
+                            <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
+                                
                             </div>
                             <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
-                                <a href="javascript:void(0)" style="text-decoration:none;" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
+                                <a href="javascript:void(0)" style="text-decoration:none;" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
                                     <h5 class="text-center text-danger m-0 p-2">
                                         + Add activity
                                     </h5>
                                 </a>
                             </div>
                             <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
-                                <h5 class="text-center text-danger m-0 p-2" data-bs-toggle="modal" data-bs-target="#intro1">Show Activities</h5>
+                                <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
+                                    <h5 class="text-center text-danger m-0 p-2">
+                                        Delete Day
+                                    </h5>
+                                </a>
                             </div>
                         </div>
                     </div>

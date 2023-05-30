@@ -243,7 +243,6 @@ $key = env('GOOGLE_MAP_API_KEY');
         });
     });
 </script>
-<<<<<<< HEAD
 <script>
     $(document).ready(function(){
         function showdaysactivities(itineraryid,daysid)
@@ -255,17 +254,30 @@ $key = env('GOOGLE_MAP_API_KEY');
                 data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
                 success:function(data)
                 {
-                    alert(data);
-                    $("#showitinerariesdaysactivities").html(data);
+                    $("#showitinerariesdaysactivities"+daysid).html(data);
                 }
             });
         }
-        $(document).on('click','a[data-role=btnaddactivity]',function(){
+        $(document).on('click','button[data-role=btnshowactivitymodel]',function(){
             var itineraryid = $(this).data('itineraryid');
             var daysid = $(this).data('daysid');
             var csrftoken = $('#csrftoken').val();
-            alert(daysid);
-            
+            $.ajax({
+                url:'{{ url("/showdaysactivities")}}',
+                method:'post',
+                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
+                success:function(data)
+                {
+                    $("#showitinerariesdaysactivities"+daysid).html(data);
+                }
+            });
+        });
+        $(document).on('click','a[data-role=btnaddactivity]',function(){
+            var itineraryid = $(this).data('itineraryid');
+            var daysid = $(this).data('daysid');
+            var dataID = $(this).data('id');
+            var csrftoken = $('#csrftoken').val();
+
             $.ajax({
                 url:'{{ url("/addactivitydb")}}',
                 method:'post',
@@ -276,7 +288,6 @@ $key = env('GOOGLE_MAP_API_KEY');
                 }
             });
         });
+
     });
 </script>
-=======
->>>>>>> a8977e117be767d6464d01d0fafa5b3a7a7d251a
