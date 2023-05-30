@@ -30,7 +30,7 @@ Route::get('/itineraries', function(){
     return view('frontend.pages.itineraries');
 })->name('itineraries');
 
-Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
+Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 
 
 Route::get('/discover', function(){

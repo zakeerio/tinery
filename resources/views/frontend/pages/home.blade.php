@@ -71,7 +71,7 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="{{route('itinerary', ['id' => $row->slug])}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
+                        <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
                         <div class="tags">
                             @php
                                 $itinerarytag = json_decode($row->tags);
