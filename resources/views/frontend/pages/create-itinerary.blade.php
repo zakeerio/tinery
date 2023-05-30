@@ -9,8 +9,8 @@
     @endphp
     <section class="profile-section">
         @if(empty($itinerary))
-        <div class="container mt-4">
-            <div class="row border p-2 rounded p-3 ">
+        <div class="container border rounded mt-4">
+            <div class="row p-2  p-3 ">
                 <div class="col-12 d-flex justify-content-between ">
                     <h2>Itinerary Title</h2>
                     <!-- Button trigger modal -->
@@ -117,10 +117,10 @@
         @else
         <div class="container mt-4">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 border rounded ">
 
 
-                    <div class="row border p-2 rounded p-3 ">
+                    <div class="row  p-2  p-3 ">
                         <div class="col-12 d-flex justify-content-between ">
                             <h2>{{$itinerary->title}}</h2>
                             <!-- Button trigger modal -->
