@@ -233,3 +233,8 @@
     </div>
   </div>
 </div>
+<script>
+    $(document).ready(function(){
+        alert('hey');
+    });
+</script>

@@ -21,7 +21,9 @@
 
 <script src="{{asset('js/bootstrap-notify.js')}}"></script>
 <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
-
+@php
+$key = env('GOOGLE_MAP_API_KEY');
+@endphp
 {{-- scripts --}}
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
@@ -49,6 +51,7 @@
         });
     </script>
 @endif
+
 <script>
     $(document).ready(function() {
         function  initMaps(){
@@ -225,6 +228,40 @@
             message: 'Login to add your Favourites'
             },{
             type: 'danger'
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        function showdaysactivities(itineraryid,daysid)
+        {
+            var csrftoken = $('#csrftoken').val();
+            $.ajax({
+                url:'{{ url("/showdaysactivities")}}',
+                method:'post',
+                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
+                success:function(data)
+                {
+                    alert(data);
+                    $("#showitinerariesdaysactivities").html(data);
+                }
+            });
+        }
+        $(document).on('click','a[data-role=btnaddactivity]',function(){
+            var itineraryid = $(this).data('itineraryid');
+            var daysid = $(this).data('daysid');
+            var csrftoken = $('#csrftoken').val();
+            alert(daysid);
+            
+            $.ajax({
+                url:'{{ url("/addactivitydb")}}',
+                method:'post',
+                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
+                success:function(data)
+                {
+                    showdaysactivities(itineraryid,daysid);
+                }
             });
         });
     });

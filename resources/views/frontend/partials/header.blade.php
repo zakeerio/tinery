@@ -29,7 +29,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create_itinerary_load')}}">+ Add Itinerary</a>
+                                <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create_itinerary')}}">+ Add Itinerary</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ route('logout') }}"><img src="{{ asset('frontend/images/logout.png') }}" alt=" logout link"></a>

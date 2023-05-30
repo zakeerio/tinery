@@ -18,9 +18,11 @@ class CreateItineraryActivitiesTable extends Migration
             $table->foreignId('itineraries_id')->references('id')->on('itineraries');
             $table->foreignId('days_id')->references('id')->on('itinerary_days');
             $table->string('tempid')->nullable();
+            $table->string('title')->nullable();
             $table->string('starttime')->nullable();
             $table->string('endtime')->nullable();
             $table->longtext('description')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }
