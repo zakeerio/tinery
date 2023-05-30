@@ -30,6 +30,8 @@ Route::get('/itineraries', function(){
     return view('frontend.pages.itineraries');
 })->name('itineraries');
 
+Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
+
 
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
@@ -63,7 +65,6 @@ Route::middleware('auth:user')->group(function () {
     Route::delete('/like-dislikes/{likeDislike}', [LikeDislikeController::class, 'destroy'])->name('likesDislikes.destroy');
 
 
-    Route::get('/itinerary/{id}',[HomeController::class,'itinerary'])->name('itinerary');
     Route::get('/create-itinerary-load',[HomeController::class,'create_itinerary_load'])->name('create-itinerary-load');
 
     Route::get('/create-itinerary',[HomeController::class,'create_itinerary'])->name('create-itinerary');
