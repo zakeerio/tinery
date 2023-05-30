@@ -16,8 +16,8 @@
     <div class="container">
         <div class="explore-section py-4">
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>Explore Popular Travel Itineraries</h2>
+                <div class="col-lg-6 ">
+                    <h2 class=" fw-bold " >Explore Popular Travel Itineraries</h2>
                 </div>
                 <div class="col-lg-6 text-end">
                     <h2>
@@ -36,8 +36,8 @@
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
 
-                    <div class="col-lg-3">
-                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 370px !important;">
+                    <div class="col-lg-3 ">
+                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
                                 <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class="">
