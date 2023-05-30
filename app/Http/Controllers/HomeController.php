@@ -230,14 +230,14 @@ class HomeController extends Controller
                                 <div class="mb-3 d-flex gap-1">
                                     <div class="">
                                         <label class="form-label fw-bold">Title</label>
-                                        <input type="text" class="form-control rounded-pill" name="activitytitle" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
+                                        <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
                                     </div>
                                     <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
                                     <input type="hidden" name="daysid" value="'.$query->days_id.'">
                                     <input type="hidden" name="activityid" value="'.$query->id.'">
                                     <div class="">
                                         <label class="form-label fw-bold">Time</label>
-                                        <input type="time" class="form-control rounded-pill" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                        <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                     </div>
                                     <div class="">
                                         <label class="form-label fw-bold">&nbsp;</label>
@@ -247,13 +247,13 @@ class HomeController extends Controller
                                     </div>
                                     <div class="">
                                         <label class="form-label fw-bold">&nbsp;</label>
-                                        <input type="time" class="form-control rounded-pill" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                        <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="summary" class="form-label fw-bold">Summary</label>
-                                <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
                             </div>
                             <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2">
                                 <img src="'.asset("frontend/images/location1.png").'" alt="">
