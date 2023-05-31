@@ -33,6 +33,8 @@ Route::get('/itineraries', function(){
 Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 
 
+
+
 Route::get('/discover', function(){
     return view('frontend.pages.discover');
 })->name('discover');
