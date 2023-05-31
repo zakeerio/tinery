@@ -14,7 +14,7 @@
                             <form action="" method="post" enctype="multipart/form-data">
                                 @if($user->profile != '')
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
-                                    class="profile-img">
+                                    class="profile-img rounded-circle">
                                 @else
                                 <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image" class="profile-img">
                                 @endif
@@ -276,6 +276,7 @@
                 </div>
 
                 <div class="col-md-8 myitinerylist">
+                    <div class=" d-flex justify-content-between align-items-center ">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-3 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
@@ -291,6 +292,12 @@
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item " role="presentation">
+                            <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                        </li>
+                    </ul>
+</div>
 
                     <div class="tab-content" id="myTabsContent">
                         <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
