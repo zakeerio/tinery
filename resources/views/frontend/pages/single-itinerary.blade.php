@@ -491,9 +491,7 @@
 
                         <div class="profiles p-3 mt-5">
                             <h6 class="profiler-related">Related Content</h6>
-                            @php
-                                $related_itinerary = \App\Models\Itineraries::where('slug','!=',$itinerary->slug)->get();
-                            @endphp
+
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $row)
                             <div class="row pt-3 d-flex align-items-center justify-content-center">
