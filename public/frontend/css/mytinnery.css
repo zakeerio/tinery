@@ -37,7 +37,7 @@
 }
 
 .hero-content {
-    padding: 150px 30px;
+    padding: 88px 30px;
 }
 
 .hero-content h2 {
@@ -57,6 +57,7 @@
     font-size: 24px;
     line-height: 36px;
     color: #FFFFFF;
+    margin: 0;
 }
 
 .explore-section h2 {
@@ -346,19 +347,39 @@
     /* width: 100%; */
     /* max-width: 207px; */
 }
+.tripday {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
 
+}
 .footer-feild {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
 }
-
+.acordionsinglepage {
+    padding: 0 10px;
+}
+.itemnumbers {
+    width: 32px;
+    height: 32px;
+}
 .member-img {
     width: 120px;
     margin-bottom: 20px;
 }
 
-
+.sideborder {
+    height: 206px;
+}
+.vr1 {
+    left: 26px;
+    z-index: 0;
+}
+.vr2 {
+    width: 2px;
+}
 .navyblubtn {
     background: #0F6496;
 }
@@ -468,6 +489,7 @@ header {
     font-size: 42px;
     line-height: 76px;
     color: #2A293D;
+
 }
 
 .profile {
@@ -561,8 +583,13 @@ header {
 
 .wed-img {
     width: 100%;
-    max-width: 1000px;
-    margin: 50px 0;
+    max-width: 1032px;
+    max-height: 412px;
+    height: 100%;
+    object-fit: cover;
+
+
+    margin: 64px 0;
 }
 
 .vector-img {
@@ -606,8 +633,8 @@ header {
 
 .line {
     width: 100%;
-    max-width: 600px;
-    height: 2px;
+    max-width: 450 pxpx;
+    height: 1.5px;
 }
 
 .sea-img {
@@ -625,7 +652,13 @@ header {
     height: 100px;
 
 }
+.mycollapsebutton .accordion-button:focus {
 
+    background-color: transparent;
+    border: none;
+    box-shadow: none
+}
+.mycollapsebutton.accordion-button:not(.collapsed) {}
 .login-to-add {
 
     font-family: "Axiforma", Sans-serif;
@@ -787,6 +820,7 @@ select.did-floating-select::-ms-expand {
 .profile-img {
     width: 121px;
     height: 121px;
+
 }
 
 .card-title {
