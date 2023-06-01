@@ -36,6 +36,9 @@
                                     @if(!empty($user->instagram))
                                         <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
                                     @endif
+                                    @if(!empty($user->tiktok))
+                                        <a href="{{$user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                    @endif
                                     @if(!empty($user->website))
                                         <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
                                     @endif
@@ -330,7 +333,7 @@
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
                                     <h4>No Itineraries, yet</h4>
                                     <p>No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
-                                    <a href="{{ route('additinerary') }}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
+                                    <a href="{{url('/create-itinerary')}}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
                                 </div>
 
                             @endforelse
