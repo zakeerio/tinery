@@ -142,8 +142,13 @@
     /* line-height: 24px; */
     color: #29293D;
     font-family: "Axiforma", Sans-serif;
-    padding: 12px 0;
+    margin-top: 36px;
+    margin-bottom: 24px;
+    gap: 42px;
+    font-size: 20px !important;
+
 }
+
 
 .membr {
     font-family: "Axiforma", Sans-serif;
@@ -320,6 +325,7 @@
     line-height: 32px;
     color: #545464;
 }
+
 .w-120 {
     max-width: 120px;
     width: 100%;
@@ -347,24 +353,29 @@
     /* width: 100%; */
     /* max-width: 207px; */
 }
+
 .tripday {
     font-weight: 600;
     font-size: 24px;
     line-height: 40px;
 
 }
+
 .footer-feild {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
 }
+
 .acordionsinglepage {
     padding: 0 10px;
 }
+
 .itemnumbers {
     width: 32px;
     height: 32px;
 }
+
 .member-img {
     width: 120px;
     margin-bottom: 20px;
@@ -373,13 +384,16 @@
 .sideborder {
     height: 206px;
 }
+
 .vr1 {
     left: 26px;
     z-index: 0;
 }
+
 .vr2 {
     width: 2px;
 }
+
 .navyblubtn {
     background: #0F6496;
 }
@@ -571,6 +585,10 @@ header {
 
 }
 
+.city .profile-p {
+    font-size: 20px;
+}
+
 .related {
     width: 100%;
     max-width: 400px;
@@ -579,6 +597,12 @@ header {
 .city {
     width: 100%;
     max-width: 500px;
+
+}
+
+.city img {
+    width: 32px;
+    height: 32px;
 }
 
 .wed-img {
@@ -604,8 +628,25 @@ header {
     font-weight: 300;
     font-size: 16px !important;
     line-height: 24px;
-
+    min-width: 70px;
     color: #C83232;
+}
+
+.imgagesize {
+    width: 40px;
+    height: 40px;
+}
+
+.profilefont {
+    font-size: 16px !important;
+}
+
+.profilefont1 {
+    font-size: 20px !important;
+}
+
+.linesize {
+    height: 25px;
 }
 
 .yoga {
@@ -652,13 +693,16 @@ header {
     height: 100px;
 
 }
+
 .mycollapsebutton .accordion-button:focus {
 
     background-color: transparent;
     border: none;
     box-shadow: none
 }
-.mycollapsebutton.accordion-button:not(.collapsed) {}
+
+
+
 .login-to-add {
 
     font-family: "Axiforma", Sans-serif;
@@ -832,9 +876,11 @@ select.did-floating-select::-ms-expand {
     /* identical to box height, or 167% */
     color: #000000;
 }
+
 .myitinerylist {
     padding: 0 69px;
 }
+
 .card-text {
     font-family: 'Axiforma';
     font-style: normal;
@@ -850,11 +896,13 @@ select.did-floating-select::-ms-expand {
     min-height: 744px;
     height: auto;
 }
+
 .width-48 {
     width: 48px;
     background: #CCC;
     border-radius: 50%;
 }
+
 .tab-content {
     width: 100%;
     margin: auto;
@@ -874,17 +922,21 @@ select.did-floating-select::-ms-expand {
     border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
 
 }
+
 .accordionbtn::after {
 
     transform: rotate(270deg);
 }
+
 .accordionbtn:not(.collapsed)::after {
 
     transform: rotate(360deg);
 }
+
 .accordionbtn.accordion-button:not(.collapsed) {
     background-color: transparent !important;
 }
+
 .accordionbtn.accordion-button:focus {
     box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 
@@ -894,13 +946,16 @@ select.did-floating-select::-ms-expand {
 .accordion-button:not(.collapsed) .save-bt {
     padding: 8px 43px;
 }
+
 .attach-area-width {
     max-width: 400px;
 }
+
 .edit-bt-size {
     width: 20px;
     height: 20px;
 }
+
 .title1 {
     font-size: 20px;
     font-weight: 600;
