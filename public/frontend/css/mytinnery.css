@@ -632,7 +632,7 @@ header {
     object-fit: cover;
     border-radius: 12px;
 
-    margin: 64px 0;
+    margin: 64px 0 40px 0;
 }
 
 .side-iamge-set {
@@ -645,8 +645,14 @@ header {
 
 .profile-relate {
     font-weight: 300;
-    font-size: 20px;
+    font-size: 20px !important;
     line-height: 24px;
+}
+
+.related {
+    font-weight: 600;
+    font-size: 20px !important;
+    line-height: 33px;
 }
 
 .vector-img {
@@ -734,6 +740,10 @@ header {
     box-shadow: none
 }
 
+.mycollapsebutton .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none
+}
 
 
 .login-to-add {
@@ -968,6 +978,7 @@ select.did-floating-select::-ms-expand {
 
 .accordionbtn.accordion-button:not(.collapsed) {
     background-color: transparent !important;
+    box-shadow: none
 }
 
 .accordionbtn.accordion-button:focus {
