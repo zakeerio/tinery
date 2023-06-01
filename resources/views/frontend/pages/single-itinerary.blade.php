@@ -29,37 +29,39 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="related d-flex align-items-center gap-2">
-                            <div class=" ">
+                        <div class="row related d-flex align-items-center">
+                            <div class="col-lg-3">
                                 <a href="#">
                                     @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
                                     @else
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
                                     @endif
                                 </a>
                             </div>
-
-                            <div class="profile-p px-1 profilefont">{{ $itinerary->user->name}} </div>
-                            <div class="vr align-self-center linesize mx-1"></div>
-                            <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
+                            <div class="col-lg-6">
+                                <h6 class="profile-p">{{ $itinerary->user->name}} |</h6>
+                            </div>
+                            <div class="col-lg-3">
+                                <h6 class="profile-p">{{date('d/y/Y',strtotime($itinerary->created_at))}}</h6>
+                            </div>
 
 
 
                         </div>
 
-                        <div class="city d-flex ">
-                            <div class="d-flex align-items-center">
+                        <div class="row city mt-4">
+                            <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
                             </div>
-                            <div class=" d-flex align-items-center">
+                            <div class="col-lg-4 d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-2">3 Days</h6>
                             </div>
-                            <div class=" d-flex align-items-center">
+                            <div class="col-lg-4 d-flex align-items-center">
                                 <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                                <h6 class="profile-p pt-2 mx-2"><a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
                             </div>
                         </div>
 
@@ -134,7 +136,7 @@
                                             <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">2</div>
                                             <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
                     
-                                                <div class="red-p text-danger ">3:00 AM</div>
+                                                <div class="red-p text-danger">03:00 AM</div>
                                                 <div class="vr vr2"></div>
                                                 <div class="yoga">Check-in to Gurneys Hotel</div>
                                                 
@@ -472,7 +474,7 @@
                                         <div class="profiler-related profile-relate">{{$row->title}}</div>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <p class="lang">{{$row->user->name}} |</p>
+                                        {{-- <p class="lang">{{$row->user->name}} |</p> --}}
                                         <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>

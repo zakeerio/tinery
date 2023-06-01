@@ -73,4 +73,5 @@ class LoginController extends Controller
     {
         return view('user.auth.register');
     }
+
 }
