@@ -194,8 +194,15 @@ $key = env('GOOGLE_MAP_API_KEY');
                     data:{_token:csrftoken,email:email},
                     success:function(data)
                     {
-                        alert(data);
-                        // $(".forgotpasswordalertsuccess").show();
+                        var res = $.parseJSON(data);
+                        if(res.error)
+                        {
+                            alert('Email Address is not Found');
+                        }
+                        if(res.success)
+                        {
+                            $(".forgotpasswordalertsuccess").show();
+                        }
                     }
                 });
             }

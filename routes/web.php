@@ -33,6 +33,7 @@ Route::get('/itineraries', function(){
 Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 
 Route::post('/forgotpasswordcode',[HomeController::class,'forgotpasswordcode'])->name('forgotpasswordcode');
+Route::post('/forgotpassworddb',[HomeController::class,'forgotpassworddb'])->name('forgotpassworddb');
 
 
 

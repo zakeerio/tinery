@@ -12,6 +12,11 @@ use App\Models\Favorites;
 use Illuminate\Support\Str;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
+use App\Models\ForgotPasswordCode;
+use Session;
+use Mail;
+use App\Mail\UserForgotPasswordEmail;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -377,7 +382,81 @@ class HomeController extends Controller
     
     public function forgotpasswordcode(Request $request)
     {
+        $output = array();
         $email = $request->input('email');
-        echo $email;
+        
+        $array = User::where('email',$email)->first();
+        if(!empty($array))
+        {
+            $array1 = ForgotPasswordCode::where('email',$email)->first();
+            if(!empty($array1))
+            {
+                ForgotPasswordCode::where('email',$email)->update(
+                    [
+                        'code'  =>  rand(999,9999)
+                    ]
+                );
+            }
+            else
+            {
+                $array2 = new ForgotPasswordCode;
+                $array2->email = $email;
+                $array2->code = rand(999,9999);
+                $array2->save();
+            }
+            Session::put('forgotuseremail',$email);
+            Mail::to($email)->send(new UserForgotPasswordEmail());
+            $output['success'] = "Code sent successfully";
+        }
+        else
+        {
+            $output['error'] = "Email is not registered";
+        }
+
+        echo json_encode($output);
+    }
+
+    public function forgotpassworddb(Request $request)
+    {
+        // Validate the user input
+        // dd($request->email);
+        $rules = [
+            'email' => 'required|string',
+            'password' => 'required|string|min:8',
+            'verify_code' => 'required|string'
+		];
+
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return back()->with('error','Fields Error')
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+
+			try{
+                $array = ForgotPasswordCode::where('email',$data['email'])->first();
+                if(!empty($array))
+                {
+                    if($array->code == $data['verify_code'])
+                    {
+                        User::where('email',$data['email'])->update(
+                            [
+                                'password'  =>  Hash::make($data['password'])
+                            ]
+                        );
+                        return redirect()->back()->with('success',"Password Updated Successfully");
+                    }
+                    else
+                    {
+                        return redirect()->back()->with('error',"Invalid Code");
+                    }
+                }
+			}
+			catch(Exception $e){
+				return back()->with('error',"Error Occured");
+			}
+		}
     }
 }

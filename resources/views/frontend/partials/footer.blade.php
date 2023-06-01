@@ -187,11 +187,11 @@
                                     <div class="form-group">
                                         {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
                                     </div>
-                                    <!-- <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a> -->
+                                    <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
                                 {!! Form::close() !!}
                             </div>
                             <div id="forgotpasswordform" style="display:none;">
-                                {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
+                                {!! Form::open(['route' => 'forgotpassworddb', 'method' => 'POST', 'class' => 'p-5']) !!}
                                     @csrf
                                     <h2 class="member-h2"> Forgot Password</h2>
                                     <div class="row">
