@@ -472,7 +472,7 @@
                                         <h6 class="profiler-related">{{$row->title}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <p class="lang">{{$row->user->name}} |</p>
+                                        {{--<p class="lang">{{$row->user->name}} |</p>--}}
                                         <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
