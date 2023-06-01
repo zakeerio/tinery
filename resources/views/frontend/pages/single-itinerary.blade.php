@@ -40,7 +40,7 @@
                                 </a>
                             </div>
 
-                            <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                            <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
                             <div class="vr align-self-center linesize mx-1"></div>
                             <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
 
@@ -428,7 +428,7 @@
                                     </a>
                                 </div>
                                 <div class="sidenameandlinks ">
-                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}">{{$itinerary->user->name}}</a></div>
+                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
                                     <div class="d-flex  socialpicsize">
                                         @if(!empty($itinerary->user->facebook))
                                           <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
