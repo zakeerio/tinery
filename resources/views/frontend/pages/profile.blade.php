@@ -26,7 +26,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                                <div class="d-flex gap-1">
+                                <div class="d-flex gap-1 socail-imgaes">
                                     @if(!empty($user->facebook))
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                     @endif
@@ -37,7 +37,7 @@
                                         <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->tiktok))
-                                        <a href="{{$user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                        <a href="{{$user->tiktok}}"><img class=" socail-imgaes" src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->website))
                                         <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
