@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2023 at 01:00 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Generation Time: Jun 01, 2023 at 02:44 PM
+-- Server version: 8.0.27
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -148,6 +148,30 @@ INSERT INTO `favorites` (`id`, `user_id`, `itineraries_id`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `forgot_password_codes`
+--
+
+DROP TABLE IF EXISTS `forgot_password_codes`;
+CREATE TABLE IF NOT EXISTS `forgot_password_codes` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `forgot_password_codes`
+--
+
+INSERT INTO `forgot_password_codes` (`id`, `email`, `code`, `created_at`, `updated_at`) VALUES
+(1, 'umairamjad52@gmail.com', '2721', '2023-06-01 09:12:23', '2023-06-01 09:40:22'),
+(2, 'mirzausama94@gmail.com', '1717', '2023-06-01 09:37:40', '2023-06-01 09:37:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `itineraries`
 --
 
@@ -192,13 +216,8 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
 --
 
 INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo_title`, `seo_description`, `seo_image`, `user_id`, `categories`, `tags`, `address_street`, `address_street_line1`, `address_city`, `address_state`, `address_zipcode`, `address_country`, `latitude`, `longitude`, `phone`, `website`, `additional_info`, `activities_data`, `featured`, `visibility`, `status`, `created_at`, `updated_at`, `duration`) VALUES
-(4, 'My Spring Break Trip', 'my-spring-break-trip', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'My Spring Break Trip', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1685405480.png', 6, '[\"6\"]', '[\"1\",\"2\",\"3\"]', 'Mexico City, CDMX, Mexico', 'Toronto, ON, Canada', 'Mexico City', 'Ontario', NULL, 'Canada', '43.653226', '-79.3831843', NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-29 19:27:59', 0),
-(5, 'My Winter Break 2022', 'my-winter-break-2022', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Title test', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1685405564.png', 13, '[\"7\",\"6\"]', '[\"5\",\"6\"]', 'Toronto, ON, Canada', NULL, 'Toronto', NULL, '7899', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-15 08:51:13', '2023-05-29 19:28:25', 0),
-(6, 'Autumn Escape', 'autumn-escape', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sed amet dictumst maecenas nisi, volutpat suscipit. Ultrices eget laoreet commodo at', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sed amet dictumst maecenas nisi, volutpat suscipit. Ultrices eget laoreet commodo at', 'vfs', 'fdg', '1685405707.png', 12, '[\"8\",\"7\"]', '[\"7\",\"8\",\"9\",\"10\"]', 'Scotland Island NSW, Australia', 'Scotland Island NSW 2105, Australia', 'Scotland', 'New South Wales', '2105', 'Australia', '-33.641844', '151.2934369', '+923331736316', NULL, NULL, NULL, '1', 'public', 'published', '2023-05-22 13:33:55', '2023-05-29 20:01:25', 0),
-(7, 'Semester Abroad', 'semester-abroad', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sed amet dictumst maecenas nisi, volutpat suscipit. Ultrices eget laoreet commodo at', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sed amet dictumst maecenas nisi, volutpat suscipit. Ultrices eget laoreet commodo at', 'one', 'one', '1685405834.png', 10, '[\"8\"]', '[\"5\",\"8\",\"9\",\"10\"]', 'Turkey Point, ON, Canada', 'Quebec G0S, Canada', 'Turkey', 'Quebec', 'G0S', 'Canada', '46.4762754', '-71.4429373', NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-29 09:52:41', '2023-05-29 20:01:36', 0),
-(8, 'one', 'ome', 'Descriptin', NULL, NULL, NULL, NULL, 4, NULL, '[\"1\",\"3\"]', 'Islamabad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'www', NULL, NULL, '0', 'public', 'published', '2023-05-29 14:02:59', '2023-05-29 14:02:59', 20),
-(9, 'One two three', 'sluggg', 'dfkf sda\r\n ghsf\r\nghsdfg\r\nsdfghdf\r\ns', NULL, NULL, NULL, NULL, 4, NULL, '[\"1\",\"2\",\"3\"]', 'pakistn', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 'public', 'published', '2023-05-29 14:15:59', '2023-05-29 14:26:29', 20),
-(10, '', '', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 'public', 'published', '2023-05-29 20:35:29', '2023-05-29 20:35:29', 0);
+(4, 'Toronto', 'toronto-one-two', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684139199.png', 6, '[\"6\"]', '[\"3\"]', NULL, NULL, 'Islamabad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-22 14:41:47', 0),
+(5, 'Title test', 'test-one-onnr-jjf', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Title test', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684158673.png', 6, '[\"7\",\"6\"]', '[\"3\"]', 'Melson Street', NULL, 'Hemburg', NULL, '7899', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-15 08:51:13', '2023-05-22 14:45:10', 0);
 
 -- --------------------------------------------------------
 
@@ -227,25 +246,32 @@ CREATE TABLE IF NOT EXISTS `itinerary_activities` (
   `itineraries_id` bigint UNSIGNED NOT NULL,
   `tempid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `days_id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `starttime` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `endtime` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `itinerary_activities_itineraries_id_foreign` (`itineraries_id`),
   KEY `itinerary_activities_days_id_foreign` (`days_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itinerary_activities`
 --
 
-INSERT INTO `itinerary_activities` (`id`, `itineraries_id`, `tempid`, `days_id`, `starttime`, `endtime`, `description`, `created_at`, `updated_at`) VALUES
-(103, 4, '', 30, '19:59', '19:00', 'Onde sds', '2023-05-29 09:57:01', '2023-05-29 19:27:59'),
-(96, 7, '', 29, '19:52', '19:53', 'One', '2023-05-29 09:48:29', '2023-05-29 20:01:36'),
-(100, 7, '', 29, '19:51', '19:54', 'One', '2023-05-29 09:49:12', '2023-05-29 20:01:36'),
-(101, 7, '', 29, '19:50', '19:51', 'One two three', '2023-05-29 09:49:15', '2023-05-29 20:01:36');
+INSERT INTO `itinerary_activities` (`id`, `itineraries_id`, `tempid`, `days_id`, `title`, `starttime`, `endtime`, `description`, `location`, `created_at`, `updated_at`) VALUES
+(103, 4, '', 30, NULL, '19:59', '19:00', 'Onde sds', NULL, '2023-05-29 09:57:01', '2023-05-29 09:58:25'),
+(96, 7, '', 29, NULL, '19:52', '19:53', 'One', NULL, '2023-05-29 09:48:29', '2023-05-29 09:59:01'),
+(100, 7, '', 29, NULL, '19:51', '19:54', 'One', NULL, '2023-05-29 09:49:12', '2023-05-29 09:59:01'),
+(101, 7, '', 29, NULL, '19:50', '19:51', 'One two three', NULL, '2023-05-29 09:49:15', '2023-05-29 09:59:01'),
+(121, 10, NULL, 31, 'Metro', '17:29', NULL, NULL, NULL, '2023-05-30 07:13:11', '2023-05-30 07:27:44'),
+(105, 10, NULL, 31, 'Title activity 1', '15:32', '15:35', 'Descriptionn', NULL, '2023-05-30 04:27:17', '2023-05-30 05:33:02'),
+(131, 10, NULL, 39, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:42', '2023-06-01 06:09:42'),
+(132, 10, NULL, 39, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:44', '2023-06-01 06:09:44'),
+(133, 10, NULL, 31, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:51', '2023-06-01 06:09:51');
 
 -- --------------------------------------------------------
 
@@ -263,16 +289,17 @@ CREATE TABLE IF NOT EXISTS `itinerary_days` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `itinerary_days_itineraries_id_foreign` (`itineraries_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itinerary_days`
 --
 
 INSERT INTO `itinerary_days` (`id`, `itineraries_id`, `tempid`, `date`, `created_at`, `updated_at`) VALUES
-(29, 7, '', '2023-05-18', '2023-05-29 09:48:17', '2023-05-29 20:01:36'),
-(30, 4, '', '2023-05-12', '2023-05-29 09:56:56', '2023-05-29 19:27:59'),
-(31, 8, '8', NULL, '2023-05-29 19:22:12', '2023-05-29 19:22:12');
+(29, 7, '', '2023-05-18', '2023-05-29 09:48:17', '2023-05-29 09:59:01'),
+(30, 4, '', '2023-05-12', '2023-05-29 09:56:56', '2023-05-29 09:58:25'),
+(31, 10, NULL, NULL, '2023-05-30 04:27:06', '2023-05-30 04:27:06'),
+(39, 10, NULL, NULL, '2023-05-30 07:26:44', '2023-05-30 07:26:44');
 
 -- --------------------------------------------------------
 
@@ -317,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -340,7 +367,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2023_05_25_205146_create_comments_table', 8),
 (18, '2023_05_25_205228_create_like_dislikes_table', 8),
 (20, '2023_05_27_201940_create_itinerary_days_table', 9),
-(21, '2023_05_27_202414_create_itinerary_activities_table', 10);
+(21, '2023_05_27_202414_create_itinerary_activities_table', 10),
+(22, '2023_06_01_124825_create_forgot_password_codes_table', 11);
 
 -- --------------------------------------------------------
 
@@ -707,22 +735,16 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Foodie', '2023-05-08 17:20:34', '2023-05-29 18:51:53'),
-(2, 'Backpacker', '2023-05-08 17:20:34', '2023-05-29 18:52:24'),
-(3, 'Brief', '2023-05-08 17:20:34', '2023-05-15 03:46:49'),
-(5, 'Cold', '2023-05-29 18:57:05', '2023-05-29 18:57:05'),
-(6, 'Travel', '2023-05-29 18:57:24', '2023-05-29 18:57:24'),
-(7, 'Leaves', '2023-05-29 18:57:49', '2023-05-29 18:57:49'),
-(8, 'Coffee', '2023-05-29 18:57:59', '2023-05-29 18:57:59'),
-(9, 'Planned', '2023-05-29 18:58:10', '2023-05-29 18:58:10'),
-(10, 'Fun', '2023-05-29 18:58:23', '2023-05-29 18:58:23');
+(1, 'Food', '2023-05-08 17:20:34', '2023-05-15 03:46:33'),
+(2, 'Hut', '2023-05-08 17:20:34', '2023-05-15 03:46:42'),
+(3, 'Brief', '2023-05-08 17:20:34', '2023-05-15 03:46:49');
 
 -- --------------------------------------------------------
 
@@ -760,7 +782,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`) VALUES
-(4, 'ali', 'zafar', 'test@test.com', 'alizafar', NULL, '$2y$10$L4/Lc8lmthoDYe9ne54skOSX673eZEJTqH1Eef0mwMerYX6zNUBb.', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'ali', 'zafar', 'umairamjad52@gmail.com', 'alizafar', NULL, '$2y$10$bZXtgpMbBIOHog.aee6LrOp4uTi6SN5ozDv8UNcjUmNprBlCmZ0Ze', '2023-05-18 09:13:06', '2023-06-01 09:39:25', NULL, NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png'),
 (9, 'James', 'Dean', 'jamesdean@gmail.com', 'justinlang', NULL, '$2y$10$IFiqJItMoVk7RQnGt1lLa.7qlpYXgZ/o.TASQqgOccg1yKjqe3L6q', '2023-05-29 18:20:02', '2023-05-29 18:20:56', '$2y$10$fNWK93JyNnoRlnXwYTnJFeKTNaG/viXI259Wn92dzq3tuN/RNK1xa', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402446.png'),
 (10, 'Angelina', 'Smith', 'angelinasmith@gmail.com', 'angelinasmith', NULL, '$2y$10$U8BKIe2boEaM6qZktEOSae8T7IHhmBLY7pHTUKj1ekVUHsOgLrbvi', '2023-05-29 18:21:32', '2023-05-29 18:22:23', '$2y$10$Y.mBCCk6tFYIszPieGuFyOrofykO5GtrouZJrpsEfzb64jpNYTNLe', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402534.png'),
