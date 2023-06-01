@@ -170,6 +170,36 @@ $key = env('GOOGLE_MAP_API_KEY');
         }
     });
     $(document).ready(function(){
+        $(document).on('click','a[data-role=clicktoforgot]',function(){
+            $("#forgotpasswordform").show();
+            $("#loginform").hide();
+        });
+        $(document).on('click','a[data-role=clicktologin]',function(){
+            $("#forgotpasswordform").hide();
+            $("#loginform").show();
+        });
+        $(document).on('click','a[data-role=sendforgotpasswordcode]',function(){
+            var csrftoken = $('#csrftoken').val();
+            var email = $(".forgotpasswordemail").val();
+
+            if(email == "")
+            {
+                alert('Email Address is not Empty');
+            }
+            else
+            {
+                $.ajax({
+                    url:'{{ url("/forgotpasswordcode")}}',
+                    method:'post',
+                    data:{_token:csrftoken,email:email},
+                    success:function(data)
+                    {
+                        alert(data);
+                        // $(".forgotpasswordalertsuccess").show();
+                    }
+                });
+            }
+        });
         $('.select2').select2();
         $(document).on('click','a[data-role=addtowishlist]',function(){
             var id = $(this).data('id');

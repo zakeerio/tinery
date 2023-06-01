@@ -101,18 +101,6 @@
                             {!! Form::select('user_id', $authorsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('categories', 'Categories') !!}
-                            @php
-                                $listcategories = [];
-                            @endphp
-                            @foreach ($categories as $key => $categories)
-                                @php
-                                    $listcategories[$categories->id] = $categories->name;
-                                @endphp
-                            @endforeach
-                            {!! Form::select('categories[]', $listcategories, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                        </div>
-                        <div class="form-group">
                             @php
                                 $listtags = [];
                             @endphp
@@ -193,8 +181,9 @@
                                 {!! Form::select('status', ['published' => 'Published', 'draft' => 'Draft'], null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
+
                         <input type="hidden" name="tempid" class="itineraries_id" value="{{$tempid}}">
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-lg-9">
                                 <h3>Create Activities</h3>
                                 <small><b>NOTE: Days and Activity form fields should be auto save</b></small>
@@ -417,9 +406,10 @@
 
     @include('admin.partials.scripts')
     @include('admin.itineraries.itineraryscript')
-
+    
     <script>
         $(document).ready(function() {
+            
             // Add click event to accordion header buttons
             $('.card-header button').click(function(e) {
                 // Toggle the right-side icon

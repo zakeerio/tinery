@@ -374,4 +374,10 @@ class HomeController extends Controller
         $activity = ItineraryActivities::find($id);
         $activity->delete();
     }
+    
+    public function forgotpasswordcode(Request $request)
+    {
+        $email = $request->input('email');
+        echo $email;
+    }
 }

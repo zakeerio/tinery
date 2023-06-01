@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
-
+;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeDislikeController;
 
@@ -32,6 +32,7 @@ Route::get('/itineraries', function(){
 
 Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 
+Route::post('/forgotpasswordcode',[HomeController::class,'forgotpasswordcode'])->name('forgotpasswordcode');
 
 
 
