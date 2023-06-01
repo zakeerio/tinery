@@ -60,6 +60,25 @@
     margin: 0;
 }
 
+.sideprofilepic img {
+    width: 100px !important;
+    height: 100px;
+}
+
+.socialpicsize img {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+}
+
+.socialpicsize {
+    gap: 15px;
+}
+
+.sidenameandlinks {
+    padding-left: 12px;
+}
+
 .explore-section h2 {
     font-weight: 300;
     font-size: 20px;
@@ -611,9 +630,29 @@ header {
     max-height: 412px;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
 
+    margin: 64px 0 40px 0;
+}
 
-    margin: 64px 0;
+.side-iamge-set {
+    max-width: 64px;
+    width: 100%;
+    height: 64px;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.profile-relate {
+    font-weight: 300;
+    font-size: 20px !important;
+    line-height: 24px;
+}
+
+.related {
+    font-weight: 600;
+    font-size: 20px !important;
+    line-height: 33px;
 }
 
 .vector-img {
@@ -701,6 +740,10 @@ header {
     box-shadow: none
 }
 
+.mycollapsebutton .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none
+}
 
 
 .login-to-add {
@@ -935,6 +978,7 @@ select.did-floating-select::-ms-expand {
 
 .accordionbtn.accordion-button:not(.collapsed) {
     background-color: transparent !important;
+    box-shadow: none
 }
 
 .accordionbtn.accordion-button:focus {
