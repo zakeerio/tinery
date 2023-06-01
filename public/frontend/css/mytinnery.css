@@ -635,6 +635,11 @@ header {
     margin: 64px 0 40px 0;
 }
 
+.socail-imgaes {
+    width: 24px;
+    height: 24px;
+}
+
 .side-iamge-set {
     max-width: 64px;
     width: 100%;
