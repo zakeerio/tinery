@@ -638,6 +638,15 @@ header {
 .socail-imgaes {
     width: 24px;
     height: 24px;
+    gap: 20px;
+}
+
+.profile-gap {
+    gap: 35px;
+}
+
+.small-tiny-color {
+    color: #9F9FA1;
 }
 
 .side-iamge-set {
@@ -935,7 +944,7 @@ select.did-floating-select::-ms-expand {
     font-weight: 300;
     font-size: 16px;
     line-height: 24px;
-    color: #000000;
+    color: #6E6E72;
 }
 
 .border-card {
@@ -945,10 +954,46 @@ select.did-floating-select::-ms-expand {
     height: auto;
 }
 
+.accordion-button:not(.collapsed) {
+    color: black;
+}
+
 .width-48 {
     width: 48px;
     background: #CCC;
     border-radius: 50%;
+}
+
+.tags-links1 {
+    font-family: 'Axiforma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #29293F;
+}
+
+.button-24 {
+    width: 24px;
+    height: 24px;
+}
+
+.profile-padding-left {
+    padding-left: 30px;
+}
+
+.tags-description {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 28px 0;
+    padding-left: 35px;
+
+}
+
+.profile-button1 {
+    padding: 20px;
 }
 
 .tab-content {
