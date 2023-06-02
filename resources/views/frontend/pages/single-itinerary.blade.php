@@ -416,8 +416,6 @@
                     <div class="col-lg-4">
                         <div class="profile p-3">
                             <div class="d-flex align-items-center">
-                                
-                            
                                 <div class="sideprofilepic rounded-circle">
                                     <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))

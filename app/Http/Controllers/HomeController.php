@@ -225,9 +225,9 @@ class HomeController extends Controller
                 $output .=
 
                 '
-                    <div class="accordion-item">
+                    <div class="accordion-item focus-bt">
                         <h2 class="accordion-header" id="headingOne'.$count.'">
-                        <button class="accordion-button d-block" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
+                        <button class="accordion-button d-block " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
                             <div class="row border rounded-pill ">
                             <div class="d-flex justify-content-between py-2 align-items-center">
                                 <div class="m-0">Activity '.$count.'</div>

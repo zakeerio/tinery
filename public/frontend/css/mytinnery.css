@@ -89,7 +89,7 @@
     background-image: url('../images/Image_2.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 
 }
 
@@ -97,22 +97,36 @@
     background-image: url('../images/toro\ \(1\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 
+}
+
+.focus-bt .accordion-button:focus {
+    background-color: transparent;
+    box-shadow: none
+}
+
+.focus-bt.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
 }
 
 .bg-fax {
     background-image: url('../images/Image\ \(3\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 }
 
 .bg-turk {
     background-image: url('../images/Image\ \(4\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 }
 
 .cards-item {
@@ -369,8 +383,8 @@
     display: flex !important;
     align-items: center;
     justify-content: flex-start;
-    /* width: 100%; */
-    /* max-width: 207px; */
+    width: 100%;
+    max-width: 220px;
 }
 
 .tripday {

@@ -12,7 +12,7 @@
         <div class="container border rounded mt-4">
             <div class="row p-2  p-3 ">
                 <div class="col-12 d-flex justify-content-between ">
-                    <h2>Itinerary Title</h2>
+                    <h2 class=" trip-h1">Itinerary Title</h2>
                     <!-- Button trigger modal -->
                     <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
                         <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
@@ -90,6 +90,7 @@
                 <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
                 </div>
             </div>
+            
 
             <div class="col-12 d-flex gap-3">
                 <div class="location d-flex gap-2 align-items-center">
@@ -273,7 +274,7 @@
                         @php
                             $count = ++$key;
                         @endphp
-                        <div class="col-12 d-flex justify-content-between  border rounded-3 p-3 mt-3">
+                        <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
                             <h2>Day {{$count}}</h2>
                             <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                 <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
@@ -309,9 +310,11 @@
                         @endforeach
                     @endif
                     <!-- line pbolem -->
-                    <div class="vr mx-auto"></div>
+                    <div class="">
+                    <div class="vr"></div>
+                    </div>
                     <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
-                        <div class="col-12  text-center border rounded-3 p-3 my-3 mt-1">
+                        <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-1">
                             <h2 class="text-danger">+Add Day</h2>
                         </div>
                     </a>
