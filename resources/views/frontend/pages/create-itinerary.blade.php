@@ -12,7 +12,7 @@
         <div class="container border rounded mt-4">
             <div class="row p-2  p-3 ">
                 <div class="col-12 d-flex justify-content-between ">
-                    <h2>Itinerary Title</h2>
+                    <h2 class=" trip-h1">Itinerary Title</h2>
                     <!-- Button trigger modal -->
                     <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
                         <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
@@ -90,6 +90,7 @@
                 <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
                 </div>
             </div>
+            
 
             <div class="col-12 d-flex gap-3">
                 <div class="location d-flex gap-2 align-items-center">
@@ -122,10 +123,10 @@
 
                     <div class="row  p-2  p-3 ">
                         <div class="col-12 d-flex justify-content-between ">
-                            <h2>{{$itinerary->title}}</h2>
+                            <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             <!-- Button trigger modal -->
                             <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
-                                <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                                <img class="button-24" src="{{ asset('frontend/images/editbt.png')}}" alt="">
                             </button>
                             <!-- Modal -->
                             <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -195,44 +196,66 @@
                     </div>
 
 
-                    <div class="col-12 d-flex align-items-center my-3  gap-2">
-                        <img src="{{ asset('frontend/images/Image.png')}}" alt="">
-                        <p class="my-auto">{{$user->name}}</p>
-                        <div class="vr h-50 align-self-center"></div>
-                        <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
-                        </div>
-                    </div>
+                   <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                            <div class=" ">
+                                <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
+                                    @if (!empty($itinerary->user->profile))
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
+                                    @else
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                    @endif
+                                </a>
+                            </div>
 
-                    <div class="col-12 d-flex gap-3">
-                        <div class="location d-flex gap-2 align-items-center">
-                            <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
-                            <p class="my-auto">{{$itinerary->address_street}}</p>
-                        </div>
-                        <div class="location d-flex gap-2 align-items-center">
-                            <img class="w" src="{{ asset('frontend/images/duration.png')}}" alt="">
-                            <p class="my-auto">{{$itinerary->duration}}</p>
-                        </div>
-                        <div class="location d-flex gap-2 align-items-center">
-                            <img class="w" src="{{ asset('frontend/images/world.png')}}" alt="">
-                            <p class="my-auto">{{$itinerary->website}}</p>
-                        </div>
-                    </div>
+                            <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                            <div class="vr align-self-center linesize mx-1"></div>
+                            <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
 
-                    <div class="col-12 ">
-                        @if($itinerary->tags != '')
-                        @php
-                            $tags = json_decode($itinerary->tags);
-                        @endphp
-                        @foreach($tags as $tags)
-                        @php
-                            $tag = \App\Models\tags::find($tags);
-                        @endphp
-                        <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">{{$tag->name}}</button>
-                        @endforeach
-                        @endif
-                    </div>
-                    <div class="col-12 mb-3">
-                        <p>{{$itinerary->description}}</p>
+
+
+                        </div>
+
+                    <div class="city d-flex profile-padding-left ">
+                            <div class="d-flex align-items-center">
+                                <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
+                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
+                            </div>
+                            <div class=" d-flex align-items-center">
+                                <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
+                                <h6 class="profile-p pt-2 mx-2">3 Days</h6>
+                            </div>
+                            <div class=" d-flex align-items-center">
+                                <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                            </div>
+                        </div>
+
+                     <div class="tags profile-padding-left">
+                            @php
+                                $itinerarytag = json_decode($itinerary->tags);
+                            @endphp
+                            @foreach($itinerarytag as $itinerarytag)
+                            @php
+                                $tag = \App\Models\Tags::find($itinerarytag);
+                                @endphp
+                            @if($tag)
+                                <a href="#">
+                                    <button class="foodie">
+                                        {{$tag->name}}
+                                    </button>
+                                </a>
+                            @endif
+
+                            @endforeach
+                            <!-- <a href="#"> <button class="foodie">Foodie</button></a>
+                            <a href="#"> <button class="foodie">Backpacker</button></a>
+                            <a href="#"> <button class="foodie">Spring</button></a>
+                            <a href="#"> <button class="foodie">Holiday Destination</button></a>
+                            <a href="#"> <button class="foodie">Mexico</button></a> -->
+                            <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
+                        </div>
+                    <div class="col-12 tags-description ">
+                        <p class=" pe-2 ">{{$itinerary->description}}</p>
                     </div>
 
                 <div class="container mt-4">
@@ -251,7 +274,7 @@
                         @php
                             $count = ++$key;
                         @endphp
-                        <div class="col-12 d-flex justify-content-between  border rounded-3 p-3 mt-3">
+                        <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
                             <h2>Day {{$count}}</h2>
                             <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                 <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
@@ -287,9 +310,11 @@
                         @endforeach
                     @endif
                     <!-- line pbolem -->
-                    <div class="vr mx-auto"></div>
+                    <div class=" justify-content-center d-flex align-items-center">
+                    <div class="vr vr3"></div>
+                    </div>
                     <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
-                        <div class="col-12  text-center border rounded-3 p-3 my-3 mt-1">
+                        <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
                             <h2 class="text-danger">+Add Day</h2>
                         </div>
                     </a>
@@ -320,7 +345,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
+                            <div class="modal-content ">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="staticBackdropLabel">Day 1 Activities</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -349,80 +374,74 @@
 
                 </div>
             </div>
-
-                            <div class="col-lg-4">
-                                <div class="profile p-3">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-lg-4">
-                                            <a href="#">
-                                                {{-- @if (!empty($itinerary->user->profile))
-                                                    <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
-                                                @else
-                                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
-                                                @endif --}}
-                                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
-
-                                            </a>
+            <div class="col-lg-4">
+                <div class="profile p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="sideprofilepic rounded-circle">
+                            <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
+                                        @if (!empty($itinerary->user->profile))
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
+                                        @else
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                        @endif
+                                    </a>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <h6 class="profiler">user name</h6>
-                                            {{-- <h6 class="profiler">{{$itinerary->user->name}}</h6>
-
-                                            <div class="d-flex gap-2">
-                                                @if(!empty($itinerary->user->facebook))
-                                                    <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
-                                                @endif
-                                                @if(!empty($itinerary->user->twitter))
-                                                    <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
-                                                @endif
-                                                @if(!empty($itinerary->user->instagram))
-                                                    <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
-                                                @endif
-                                                @if(!empty($itinerary->user->tiktok))
-                                                    <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
-                                                @endif
-                                                @if(!empty($itinerary->user->website))
-                                                    <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                                @endif
-                                            </div> --}}
-
-
-
-                                        </div>
+                                        <div class="sidenameandlinks ">
+                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
+                                    <div class="d-flex  socialpicsize">
+                                        @if(!empty($itinerary->user->facebook))
+                                          <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->twitter))
+                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->instagram))
+                                           <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->tiktok))
+                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->website))
+                                           <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                        @endif
+                                    </div>
+                                </div>
+                                        
 
                                     </div>
                                     <h6 class="profile-details p-3">
-                                        {{-- {{$itinerary->user->bio}} --}}
-                                    </h6>
+                                {{$itinerary->user->bio}}
+                            </h6>
                                 </div>
 
                                 <div class="profiles p-3 mt-5">
-                                    <h6 class="profiler-related">Related Content</h6>
+                                    <h6 class="profiler-related related">Related Content</h6>
                                     {{-- @php
                                         $related_itinerary = \App\Models\Itineraries::where('slug','!=',$itinerary->slug)->get();
-                                    @endphp
-                                    @if(!$related_itinerary->isEmpty())
+                                        @endphp
+                                        @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
-                                    <div class="row pt-3 d-flex align-items-center justify-content-center">
-                                        <div class="col-lg-4">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}"> <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                                <h6 class="profiler-related">{{$row->title}}</h6>
-                                            </a>
-                                            <div class="d-flex align-items-center">
-                                                <p class="lang">{{$row->user->name}} |</p>
-                                                <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
-                                            </div>
-                                        </div>
+                                    <div class="pt-3 d-flex align-items-center ">
+                                        <div class="">
+                                            <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}"> 
+                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="side-iamge-set"></a>
+                                </div>
+                                <div class="px-2 mx-1">
+                                    <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}" style="text-decoration:none;">
+                                        <div class="profiler-related profile-relate">{{$rowrelated->title}}</div>
+                                    </a>
+                                    <div class="d-flex align-items-center ">
+                                        <p class="lang"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
+                                        <p class="lang px-2">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                     </div>
+                                </div>
+                            </div>
                                     @endforeach
                                     @endif --}}
                                 </div>
                             </div>
-
-                    </div>
+                            
+                        </div>
 
                 </div>
             </div>
@@ -431,3 +450,4 @@
 @endif
 </section>
 @endsection
+
