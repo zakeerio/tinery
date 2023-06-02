@@ -394,6 +394,25 @@
 
 }
 
+.map-focus {
+    background-color: white;
+}
+
+
+
+
+
+.map-focus .form-control {
+    box-shadow: none;
+    border: none;
+    background-color: white;
+
+}
+
+.vr3 {
+    height: 36px;
+}
+
 .footer-feild {
     display: flex !important;
     justify-content: space-between;

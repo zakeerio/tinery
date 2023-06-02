@@ -273,9 +273,9 @@ class HomeController extends Controller
                                             <label for="summary" class="form-label fw-bold">Summary</label>
                                             <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
                                         </div>
-                                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2">
-                                            <img src="'.asset("frontend/images/location1.png").'" alt="">
-                                            <p class="text-center m-0">Add map location</p>
+                                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
+                                            <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
+                                            <input type="text" class="form-control rounded-pill " placeholder="Add map location">
                                         </div>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-end">

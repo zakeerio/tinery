@@ -310,11 +310,11 @@
                         @endforeach
                     @endif
                     <!-- line pbolem -->
-                    <div class="">
-                    <div class="vr"></div>
+                    <div class=" justify-content-center d-flex align-items-center">
+                    <div class="vr vr3"></div>
                     </div>
                     <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
-                        <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-1">
+                        <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
                             <h2 class="text-danger">+Add Day</h2>
                         </div>
                     </a>
@@ -345,7 +345,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
+                            <div class="modal-content ">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="staticBackdropLabel">Day 1 Activities</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
