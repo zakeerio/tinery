@@ -119,13 +119,13 @@
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
-                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{ ++$activityKey }}  </div>
-                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
-                                                            <div class="red-p text-danger">{{ date('g:i A', strtotime($time)) }}</div>
+                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
+                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3"> 
+                                                            <div class="red-p text-danger">10:00 AM</div>
                                                             <div class="vr vr2"></div>
                                                             <div class="yoga">{{ $activity->title }}</div>
                                                         </div>
-                                                        <div class=" px-1 align-items-center">
+                                                        <div class=" px-1 align-items-center w-100">
                                                             <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                                         </div>
                                                     </div>

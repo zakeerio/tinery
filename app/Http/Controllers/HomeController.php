@@ -48,11 +48,10 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('slug',$slug)->first();
-        $days = ItineraryDays::where('itineraries_id',$itinerary->id)->orderby('id','asc')->get();
 
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
 
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary'));
     }
 
     public function favourites(Request $request)
