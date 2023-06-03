@@ -16,12 +16,13 @@
 
 .container {
     width: 100%;
-    max-width: 1920px !important;
+    max-width: 1366px;
+    /* max-width: 1920px !important; */
 }
 
-.left-margin {
+/* .left-margin {
     margin-left: 200px;
-}
+} */
 
 .text-clr {
     font-style: normal;
@@ -700,6 +701,7 @@ header {
     font-weight: 300;
     font-size: 20px !important;
     line-height: 24px;
+    color: #2A293D;
 }
 
 .related {
