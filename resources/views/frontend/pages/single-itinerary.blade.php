@@ -226,10 +226,7 @@
                                 <div class="col-md-12">
                                     @if ($itinerary->comments)
 
-
                                         @foreach($itinerary->comments as $comment)
-
-                                            {{-- {{ dd($comment->user->profile) }} --}}
 
                                             <div class="d-flex flex-row comment-row">
                                                 <div class="p-2">
