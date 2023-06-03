@@ -22,10 +22,10 @@
                                     @if($query->count() == 1)
                                         <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" alt=""></a>
                                     @else
-                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>
+                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
                                     @endif
                                 @else
-                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
                                 @endif
                             </div>
                         </div>
@@ -101,8 +101,11 @@
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
                             @foreach($days as $key => $days)
-                            <div class="accordion accordion-flush " id="accordionSibglepage">
-                                <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
+                            @php
+                                $count = ++$key;
+                            @endphp
+                            <div class="accordion accordion-flush " id="accordionSibglepage{{$count}}">
+                                <h5 class=" text-dark tripday m-0"> Day {{$count}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>      
                                     <div class="d-flex flex-column gap-4 py-5 ">
@@ -110,16 +113,19 @@
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
                                         @if(!empty($days))
-                                        @foreach($activities as $activities)
+                                        @foreach($activities as $actkey => $activities)
+                                        @php
+                                            $actcount = ++$actkey;
+                                        @endphp
                                         <div class="accordion-item  border-0  mycollapsebutton">      
-                                            <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$count.''.$actcount}}" aria-expanded="false" aria-controls="flush-collapse{{$count.''.$actcount}}">
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
-                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
+                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{$actcount}}  </div>
                                                         <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3"> 
-                                                            <div class="red-p text-danger">10:00 AM</div>
+                                                            <div class="red-p text-danger">{{date('h:ia',strtotime($activities->starttime))}}</div>
                                                             <div class="vr vr2"></div>
-                                                            <div class="yoga">Yoga at Jessie’s</div>
+                                                            <div class="yoga">{{ $activities->title}}</div>
                                                         </div>
                                                         <div class=" px-1 align-items-center">
                                                             <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
@@ -127,8 +133,8 @@
                                                     </div>
                                                 </div>
                                             </button>
-                                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage">
-                                                <div class="accordion-body px-5">Placeholder content for this accordion, which is intended to demonstrate the accordion-flush class. This is the first item's accordion body.</div>
+                                            <div id="flush-collapse{{$count.''.$actcount}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$count}}">
+                                                <div class="accordion-body px-5">{{$activities->description}}</div>
                                             </div>
                                         </div>
                                         @endforeach
@@ -390,12 +396,6 @@
                             @endif
                         </div>
                     </div>
-
-
-
-
-
-
                     <div class="col-lg-4">
                         <div class="profile p-3">
                             <div class="row d-flex align-items-center">

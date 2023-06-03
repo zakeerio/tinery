@@ -148,8 +148,9 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = Itineraries::find($itineraryid);
+        $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days'));
+        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary'));
     }
 
     public function itineraries_update(Request $request)
@@ -181,6 +182,7 @@ class HomeController extends Controller
             $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
+            $array->featured = '1';
 
             $array->save();
 
