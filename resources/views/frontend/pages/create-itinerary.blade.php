@@ -29,7 +29,7 @@
                                 <div class="modal-body p-3 ">
                                     {!! Form::open(['route' => 'itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                     <div class="mb-3">
-                                        <h4>Itinerary info</h4>
+                                        <h4 class="fw-bold">Itinerary info</h4>
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
@@ -70,7 +70,7 @@
                                         <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
                                         <input type="text" name="website" value="" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
                                     </div>
-                                   
+
                                     <div class="text-end ">
                                         <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
                                     </div>
@@ -90,7 +90,7 @@
                 <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
                 </div>
             </div>
-            
+
 
             <div class="col-12 d-flex gap-3">
                 <div class="location d-flex gap-2 align-items-center">
@@ -141,7 +141,7 @@
                                             {!! Form::open(['route' => 'itineraries.update', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                             <input type="hidden" name="id" value="{{$itinerary->id}}">
                                             <div class="mb-3">
-                                                <h4>Itinerary info</h4>
+                                                <h4 class="fw-bold">Itinerary info</h4>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
@@ -184,7 +184,7 @@
                                                 <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
                                                 <input type="text" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
                                             </div>
-                                           
+
                                             <div class="text-end ">
                                                 <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
                                             </div>
@@ -278,7 +278,7 @@
                             $count = ++$key;
                         @endphp
                         <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                            <h2>Day {{$count}}</h2>
+                            <h2 class="fw-bold">Day {{$count}}</h2>
                             <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                 <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
                             <!-- Modal -->
@@ -292,11 +292,9 @@
                                         <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
 
                                         </div>
-                                        <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
-                                            <a href="javascript:void(0)" style="text-decoration:none;" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
-                                                <h5 class="text-center text-danger m-0 p-2">
-                                                    + Add activity
-                                                </h5>
+                                        <div class="mb-3 activity-bt border border-0 mx-3 mb-3">
+                                            <a href="javascript:void(0)" class="text-decoration-none" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
+                                                <h5 class="text-center text-danger add-activity-bt rounded-pill fw-bold m-0 p-2"> + Add activity </h5>
                                             </a>
                                         </div>
                                         <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
@@ -312,13 +310,13 @@
                         </div>
                         @endforeach
                     @endif
-    
+
                     <div class=" justify-content-center d-flex align-items-center">
                     <div class="vr vr3"></div>
                     </div>
                     <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                         <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
-                            <h2 class="text-danger">+Add Day</h2>
+                            <h2 class="text-danger fw-bold">+Add Day</h2>
                         </div>
                     </a>
 
@@ -409,7 +407,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                        
+
 
                                     </div>
                                     <h6 class="profile-details p-3">
@@ -423,7 +421,7 @@
                                     @foreach($related_itinerary as $row)
                                     <div class="row pt-3 d-flex align-items-center justify-content-center">
                                         <div class="col-lg-4">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}"> 
+                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
                                         </div>
                                         <div class="col-lg-8">
@@ -440,7 +438,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                         </div>
 
                 </div>

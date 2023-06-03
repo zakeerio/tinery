@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -162,9 +162,9 @@
                                                     {!! Form::file('file', ['class' => 'form-control']) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                            <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3  rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3  rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -227,9 +227,9 @@
                                                 {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.website.com/example']) !!}
                                             </div>
                                         </div>
-                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                        <div class="float-end">
                                             <div class="form-group">
-                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                             </div>
                                         </div>
                                         {!! Form::close() !!}
@@ -292,7 +292,7 @@
                                             </div>
                                              <div class="float-end">
                                                 <div class="form-group text-end">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -323,10 +323,10 @@
                     </ul>
                     <ul class="nav nav-tabs">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
-</div>
+                </div>
 
                     <div class="tab-content" id="myTabsContent">
                         <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">

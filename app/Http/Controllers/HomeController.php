@@ -226,67 +226,67 @@ class HomeController extends Controller
                 $output .=
 
                 '
-                    <div class="accordion-item focus-bt">
-                        <h2 class="accordion-header" id="headingOne'.$count.'">
-                        <button class="accordion-button d-block " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
-                            <div class="row border rounded-pill ">
-                            <div class="d-flex justify-content-between py-2 align-items-center">
-                                <div class="m-0">Activity '.$count.'</div>
-                                <a href="#" class="bg-transparent border-0" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">
-                                    <img class="w-75" src="'.asset("frontend/images/cross-x.png").'" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        </button>
-                        </h2>
-                        <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
-                        <div class="accordion-body p-0">
-                            <form action="#" class="">
-                                <div class=" p-3">
-
-                                    <div class="bg-light rounded-2 p-2 mt-2 mb-2">
-                                        <div class="mb-3 ">
-                                            <div class="mb-3 d-flex gap-1">
-                                                <div class="">
-                                                    <label class="form-label fw-bold">Title</label>
-                                                    <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
-                                                </div>
-                                                <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
-                                                <input type="hidden" name="daysid" value="'.$query->days_id.'">
-                                                <input type="hidden" name="activityid" value="'.$query->id.'">
-                                                <div class="">
-                                                    <label class="form-label fw-bold">Time</label>
-                                                    <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
-                                                </div>
-                                                <div class=" d-flex align-items-end">
-                                                    <label class="form-label fw-bold">&nbsp;</label>
-                                                    <label class="form-label fw-bold px-1">
-                                                        <h4 class="m-0">:</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="">
-                                                    <label class="form-label fw-bold">&nbsp;</label>
-                                                    <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="summary" class="form-label fw-bold">Summary</label>
-                                            <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
-                                        </div>
-                                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
-                                            <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
-                                            <input type="text" class="form-control rounded-pill " placeholder="Add map location">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 d-flex justify-content-end">
-                                        <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
+                <div class="accordion-item focus-bt">
+                    <h2 class="accordion-header" id="headingOne'.$count.'">
+                    <button class="accordion-button d-block " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
+                        <div class="row border rounded-pill ">
+                        <div class="d-flex justify-content-between py-2 align-items-center">
+                            <div class="m-0">Activity '.$count.'</div>
+                            <a href="#" class="bg-transparent border-0" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">
+                                <img class="w-75" src="'.asset("frontend/images/cross-x.png").'" alt="">
+                            </a>
                         </div>
                     </div>
+                    </button>
+                    </h2>
+                    <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
+                    <div class="accordion-body p-0">
+                        <form action="#" class="">
+                            <div class=" p-3">
+
+                                <div class="bg-light rounded-2 p-2 mt-2 mb-2">
+                                    <div class="mb-3 ">
+                                        <div class="mb-3 d-flex gap-1">
+                                            <div class="">
+                                                <label class="form-label fw-bold">Title</label>
+                                                <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
+                                            </div>
+                                            <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
+                                            <input type="hidden" name="daysid" value="'.$query->days_id.'">
+                                            <input type="hidden" name="activityid" value="'.$query->id.'">
+                                            <div class="">
+                                                <label class="form-label fw-bold">Time</label>
+                                                <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                            </div>
+                                            <div class=" d-flex align-items-end">
+                                                <label class="form-label fw-bold">&nbsp;</label>
+                                                <label class="form-label fw-bold px-1">
+                                                    <h4 class="m-0">:</h4>
+                                                </label>
+                                            </div>
+                                            <div class="">
+                                                <label class="form-label fw-bold">&nbsp;</label>
+                                                <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="summary" class="form-label fw-bold">Summary</label>
+                                        <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
+                                        <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
+                                        <input type="text" class="form-control rounded-pill " placeholder="Add map location">
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex justify-content-end">
+                                    <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
                 ';
             }
             $output .='</div>';
