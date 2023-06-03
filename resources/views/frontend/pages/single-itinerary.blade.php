@@ -22,46 +22,45 @@
                                     @if($query->count() == 1)
                                         <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" alt=""></a>
                                     @else
-                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>
+                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
                                     @endif
                                 @else
-                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.png') }}" alt=""></a>
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
                                 @endif
                             </div>
                         </div>
-                        <div class="row related d-flex align-items-center">
-                            <div class="col-lg-3">
-                                <a href="#">
+                        <div class="related d-flex align-items-center gap-2">
+                            <div class=" ">
+                                <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                     @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
                                     @else
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
                                     @endif
                                 </a>
                             </div>
-                            <div class="col-lg-6">
-                                <h6 class="profile-p">{{ $itinerary->user->name}} |</h6>
-                            </div>
-                            <div class="col-lg-3">
-                                <h6 class="profile-p">{{date('d/y/Y',strtotime($itinerary->created_at))}}</h6>
-                            </div>
+
+                            <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                            <div class="vr align-self-center linesize mx-1"></div>
+                            <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
 
 
 
                         </div>
 
-                        <div class="row city mt-4">
-                            <div class="col-lg-4 d-flex align-items-center">
+
+                        <div class="city d-flex">
+                            <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
                             </div>
-                            <div class="col-lg-4 d-flex align-items-center">
+                            <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-2">3 Days</h6>
                             </div>
-                            <div class="col-lg-4 d-flex align-items-center">
+                            <div class="d-flex align-items-center">
                                 <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2"><a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                                <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
                             </div>
                         </div>
 
@@ -137,9 +136,9 @@
                                         </div>
                                         @endforeach
                                         @endif
-                                    </div>
                                 </div>
                             </div>
+                    </div>
                             @endforeach
                             @endif
 
@@ -338,19 +337,19 @@
 
                     <div class="col-lg-4">
                         <div class="profile p-3">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-lg-4">
-                                    <a href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="sideprofilepic rounded-circle">
+                                    <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="w-75">
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
                                         @else
-                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
                                         @endif
                                     </a>
                                 </div>
-                                <div class="col-lg-8">
-                                    <h6 class="profiler">{{$itinerary->user->name}}</h6>
-                                    <div class="d-flex gap-2">
+                                <div class="sidenameandlinks">
+                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
+                                    <div class="d-flex socialpicsize">
                                         @if(!empty($itinerary->user->facebook))
                                             <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                         @endif
@@ -379,22 +378,22 @@
                         </div>
 
                         <div class="profiles p-3 mt-5">
-                            <h6 class="profiler-related">Related Content</h6>
+                            <h6 class="profiler-related related">Related Content</h6>
 
                             @if(!$related_itinerary->isEmpty())
-                            @foreach($related_itinerary as $row)
-                            <div class="row pt-3 d-flex align-items-center justify-content-center">
+                            @foreach($related_itinerary as $rowrelated)
+                            <div class="pt-3 d-flex align-items-center ">
                                 <div class="col-lg-4">
-                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}">
-                                        <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
+                                    <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
+                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-100"></a>
                                 </div>
-                                <div class="col-lg-8">
-                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                        <h6 class="profiler-related">{{$row->title}}</h6>
+                                <div class="px-2 mx-1">
+                                    <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}" style="text-decoration:none;">
+                                        <div class="profiler-relate profile-relate">{{$rowrelated->title}}</div>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        {{-- <p class="lang">{{$row->user->name}} |</p> --}}
-                                        <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
+                                        {{-- <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p> --}}
+                                        <p class="lang px-2">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </div>
