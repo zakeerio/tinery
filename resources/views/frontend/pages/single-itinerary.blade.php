@@ -4,7 +4,7 @@
 
     <section class="hero-sections">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content left-margin">
                 <div class="row">
                     <div class="col-lg-8">
 
@@ -105,7 +105,7 @@
                             <div class="accordion-item  border-0  mycollapsebutton">      
                                     <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                         <div class=" row days-menu ">
-                                            <div class=" d-flex ">
+                                            <div class=" d-flex w-100">
 
                                                 <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
                                                 <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
@@ -114,7 +114,7 @@
                                                     <div class="vr vr2"></div>
                                                     <div class="yoga">Yoga at Jessie’s</div>
                                                 </div>
-                                                    <div class=" px-1 align-items-center">
+                                                    <div class=" px-1 align-items-center w-100">
                                                     <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                                     </div>
                                             </div>
