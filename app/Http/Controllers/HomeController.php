@@ -226,14 +226,14 @@ class HomeController extends Controller
                 $output .=
 
                 '
-                <div class="accordion-item focus-bt">
+                <div class="accordion-item focus-bt border-0">
                     <h2 class="accordion-header" id="headingOne'.$count.'">
-                    <button class="accordion-button d-block " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
+                    <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
                         <div class="row border rounded-pill ">
                         <div class="d-flex justify-content-between py-2 align-items-center">
                             <div class="m-0">Activity '.$count.'</div>
-                            <a href="#" class="bg-transparent border-0" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">
-                                <img class="w-75" src="'.asset("frontend/images/cross-x.png").'" alt="">
+                            <a href="#" class="bg-transparent border-0" >
+                                <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
                             </a>
                         </div>
                     </div>
@@ -242,8 +242,7 @@ class HomeController extends Controller
                     <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
                     <div class="accordion-body p-0">
                         <form action="#" class="">
-                            <div class=" p-3">
-
+                            <div class="px-3">
                                 <div class="bg-light rounded-2 p-2 mt-2 mb-2">
                                     <div class="mb-3 ">
                                         <div class="mb-3 d-flex gap-1">
@@ -278,9 +277,10 @@ class HomeController extends Controller
                                         <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
                                         <input type="text" class="form-control rounded-pill " placeholder="Add map location">
                                     </div>
-                                </div>
-                                <div class="mb-3 d-flex justify-content-end">
-                                    <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                    <div class="mb-3 d-flex justify-content-end">
+                                        <button class="btn btn-danger me-2 rounded-pill text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
+                                        <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -334,6 +334,8 @@ class HomeController extends Controller
                         });
                     });
                     $(document).on("click","button[data-role=deleteactivity]",function(e){
+                        e.preventDefault();
+
                         var itineraryid = $(this).data("itineraryid");
                         var daysid = $(this).data("daysid");
                         var id = $(this).data("id");

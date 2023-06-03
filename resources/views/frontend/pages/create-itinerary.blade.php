@@ -278,7 +278,7 @@
                             $count = ++$key;
                         @endphp
                         <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                            <h2 class="fw-bold">Day {{$count}}</h2>
+                            <h2 class="fw-bold mb-0">Day {{$count}}</h2>
                             <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                 <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
                             <!-- Modal -->
@@ -316,7 +316,7 @@
                     </div>
                     <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                         <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
-                            <h2 class="text-danger fw-bold">+Add Day</h2>
+                            <h2 class="text-danger fw-bold mb-0">+Add Day</h2>
                         </div>
                     </a>
 
