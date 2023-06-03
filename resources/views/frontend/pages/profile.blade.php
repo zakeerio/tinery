@@ -9,24 +9,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 border-card my-5 ">
-                    <div class="row d-flex align-items-center ">
-                        <div class="col-md-4 position-relative">
+                    <div class="d-flex align-items-center profile-gap ">
+                        <div class="position-relative">
                             <form action="" method="post" enctype="multipart/form-data">
                                 @if($user->profile != '')
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img rounded-circle">
                                 @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image" class="profile-img">
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image" class="profile-img rounded-circle">
                                 @endif
                                 <!-- <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
                                         class="fa-solid fa-circle-plus"></i></label>
                                 <div class="d-none"><input type="file" id="profileimg"></div> -->
                             </form>
                         </div>
-                        <div class="col-md-8">
+                        <div class="">
                             <div class="card-body">
                                 <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                                <div class="d-flex gap-1">
+                                <div class="d-flex  socail-imgaes">
                                     @if(!empty($user->facebook))
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                     @endif
@@ -36,16 +36,20 @@
                                     @if(!empty($user->instagram))
                                         <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
                                     @endif
+                                    @if(!empty($user->tiktok))
+                                        <a href="{{$user->tiktok}}"><img class=" socail-imgaes" src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                    @endif
                                     @if(!empty($user->website))
                                         <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
                                     @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mt-4">
+                        
+                    </div>
+                    <div class="mt-4">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
-                    </div>
 
                     <div class="accordion mt-4 " id="accordionExample">
                         <div class="accordion-item border-0 border-bottom ">
@@ -53,7 +57,7 @@
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="fw-bold">{{ $user->username }}</span>
+                                    <span class="fw-bold text-black">{{ $user->username }}</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
@@ -83,7 +87,7 @@
                                                     {!! Form::label('username', 'Username',['class'=>'fw-bold required mb-3']) !!}
                                                     {!! Form::text('username', $user->username, ['class' => 'form-control rounded-pill mb-1']) !!}
                                                 </div>
-                                                <small>Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
+                                                <small class="small-tiny-color" >Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
 
 
                                             </div>
@@ -99,7 +103,7 @@
                                                     {!! Form::label('new_password', 'New password',['class'=>'fw-bold mb-1']) !!}
                                                     {!! Form::password('new_password', ['class' => 'form-control rounded-pill mb-3']) !!}
                                                 </div>
-                                                <small>Minimum 6 characters</small>
+                                                <small class="small-tiny-color">Minimum 6 characters</small>
                                             </div>
                                             <div class="col-lg-12 mt-3">
                                                 <div class="form-group">
@@ -131,7 +135,7 @@
                             <h2 class="accordion-header" id="bioHeading">
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
-                                    <span class="fw-bold">Bio</span>
+                                    <span class="fw-bold color-black">Bio</span>
                                 </button>
                             </h2>
                             <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
@@ -181,7 +185,7 @@
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
-                                    <span class="fw-bold">Social Profile</span>
+                                    <span class="fw-bold color-black">Social Profile</span>
                                 </button>
                             </h2>
                             <div id="collapseSocialProfile" class="accordion-collapse collapse"
@@ -196,31 +200,31 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 {!! Form::label('facebook', 'Facebook',['class'=>'fw-bold mb-2']) !!}
-                                                {!! Form::text('facebook', $user->facebook, ['class' => 'form-control rounded-pill']) !!}
+                                                {!! Form::text('facebook', $user->facebook, ['class' => 'form-control rounded-pill', 'placeholder' => 'https:/www.facebook.com/example']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('twitter', 'Twitter',['class'=>'fw-bold mb-2']) !!}
-                                                {!! Form::text('twitter', $user->twitter, ['class' => 'form-control rounded-pill']) !!}
+                                                {!! Form::text('twitter', $user->twitter, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.twitter.com/example']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('instagram', 'Instagram',['class'=>'fw-bold mb-2']) !!}
-                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-control rounded-pill']) !!}
+                                                {!! Form::text('instagram', $user->instagram, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.instagram.com/example']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('tiktok', 'Tiktok',['class'=>'fw-bold mb-2']) !!}
-                                                {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control rounded-pill']) !!}
+                                                {!! Form::text('tiktok', $user->tiktok, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.tiktok.com/example']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-3">
                                             <div class="form-group">
                                                 {!! Form::label('website', 'website',['class'=>'fw-bold mb-2']) !!}
-                                                {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill']) !!}
+                                                {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.website.com/example']) !!}
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="float:right;margin-right:10px;">
@@ -261,13 +265,31 @@
                                 <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
-                                    <span class="fw-bold">Relevant Tags</span>
+                                    <span class="fw-bold color-black">Relevant Tags</span>
                                 </button>
                             </h2>
                             <div id="collapseRelevantTags" class="accordion-collapse collapse"
                                 aria-labelledby="relevantTags" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <!-- Relevant tags content -->
+                                       <div class="row">
+                                       
+                                            <input type="hidden" name="id" value="{{$user->id}}">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    {!! Form::label('tags', 'tags',['class'=>'fw-bold required mb-3']) !!}
+                                                    {!! Form::text('tags', $user->tags, ['class' => 'form-control rounded-pill mb-1' , 'placeholder' => 'Ex: locations, subjects, themes, etc.' ]) !!}
+                                                </div>
+                                                <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                <div class=" tags-links1"><a href="">Clear all tags</a></div>
+                                            </div>
+                                             <div class="float-end">
+                                                <div class="form-group text-end">
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                 </div>
                             </div>
                         </div>
@@ -330,7 +352,7 @@
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
                                     <h4>No Itineraries, yet</h4>
                                     <p>No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
-                                    <a href="{{ route('additinerary') }}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
+                                    <a href="{{url('/create-itinerary')}}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
                                 </div>
 
                             @endforelse

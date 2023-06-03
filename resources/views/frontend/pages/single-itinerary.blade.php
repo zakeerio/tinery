@@ -100,13 +100,15 @@
 
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
-                            @foreach($days as $days)
+                            @foreach($days as $key => $days)
                             <div class="accordion accordion-flush " id="accordionSibglepage">
-                                <h5 class=" text-dark tripday m-0"> Day 1</h5>
+                                <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>      
                                     <div class="d-flex flex-column gap-4 py-5 ">
+                                        @php
                                         
+                                        @endphp
                                         <div class="accordion-item  border-0  mycollapsebutton">      
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <div class=" row days-menu ">

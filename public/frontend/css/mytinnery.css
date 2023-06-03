@@ -60,6 +60,25 @@
     margin: 0;
 }
 
+.sideprofilepic img {
+    width: 100px !important;
+    height: 100px;
+}
+
+.socialpicsize img {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+}
+
+.socialpicsize {
+    gap: 15px;
+}
+
+.sidenameandlinks {
+    padding-left: 12px;
+}
+
 .explore-section h2 {
     font-weight: 300;
     font-size: 20px;
@@ -70,7 +89,7 @@
     background-image: url('../images/Image_2.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 
 }
 
@@ -78,22 +97,36 @@
     background-image: url('../images/toro\ \(1\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 
+}
+
+.focus-bt .accordion-button:focus {
+    background-color: transparent;
+    box-shadow: none
+}
+
+.focus-bt.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
 }
 
 .bg-fax {
     background-image: url('../images/Image\ \(3\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 }
 
 .bg-turk {
     background-image: url('../images/Image\ \(4\).png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 370px !important;
+    height: 317px !important;
 }
 
 .cards-item {
@@ -350,8 +383,8 @@
     display: flex !important;
     align-items: center;
     justify-content: flex-start;
-    /* width: 100%; */
-    /* max-width: 207px; */
+    width: 100%;
+    max-width: 220px;
 }
 
 .tripday {
@@ -359,6 +392,25 @@
     font-size: 24px;
     line-height: 40px;
 
+}
+
+.map-focus {
+    background-color: white;
+}
+
+
+
+
+
+.map-focus .form-control {
+    box-shadow: none;
+    border: none;
+    background-color: white;
+
+}
+
+.vr3 {
+    height: 36px;
 }
 
 .footer-feild {
@@ -611,9 +663,43 @@ header {
     max-height: 412px;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
 
+    margin: 64px 0 40px 0;
+}
 
-    margin: 64px 0;
+.socail-imgaes {
+    width: 24px;
+    height: 24px;
+    gap: 20px;
+}
+
+.profile-gap {
+    gap: 35px;
+}
+
+.small-tiny-color {
+    color: #9F9FA1;
+}
+
+.side-iamge-set {
+    max-width: 64px;
+    width: 100%;
+    height: 64px;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.profile-relate {
+    font-weight: 300;
+    font-size: 20px !important;
+    line-height: 24px;
+}
+
+.related {
+    font-weight: 600;
+    font-size: 20px !important;
+    line-height: 33px;
 }
 
 .vector-img {
@@ -701,6 +787,10 @@ header {
     box-shadow: none
 }
 
+.mycollapsebutton .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none
+}
 
 
 .login-to-add {
@@ -887,7 +977,7 @@ select.did-floating-select::-ms-expand {
     font-weight: 300;
     font-size: 16px;
     line-height: 24px;
-    color: #000000;
+    color: #6E6E72;
 }
 
 .border-card {
@@ -897,10 +987,46 @@ select.did-floating-select::-ms-expand {
     height: auto;
 }
 
+.accordion-button:not(.collapsed) {
+    color: black;
+}
+
 .width-48 {
     width: 48px;
     background: #CCC;
     border-radius: 50%;
+}
+
+.tags-links1 {
+    font-family: 'Axiforma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #29293F;
+}
+
+.button-24 {
+    width: 24px;
+    height: 24px;
+}
+
+.profile-padding-left {
+    padding-left: 30px;
+}
+
+.tags-description {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 28px 0;
+    padding-left: 35px;
+
+}
+
+.profile-button1 {
+    padding: 20px;
 }
 
 .tab-content {
@@ -935,6 +1061,7 @@ select.did-floating-select::-ms-expand {
 
 .accordionbtn.accordion-button:not(.collapsed) {
     background-color: transparent !important;
+    box-shadow: none
 }
 
 .accordionbtn.accordion-button:focus {

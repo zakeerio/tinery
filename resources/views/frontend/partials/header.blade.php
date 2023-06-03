@@ -22,9 +22,9 @@
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ url('/profile')}}">
                                     @if(Auth::guard('user')->user()->profile != '')
-                                    <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image">
+                                    <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                                     @else
-                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="50px" alt="Profile Image">
+                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
                                     @endif
                                 </a>
                             </li>

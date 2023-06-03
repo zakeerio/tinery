@@ -562,6 +562,7 @@
                         <p class="city">Turkey | 3 Days</p>
                     </div>
                 </div>
+              
 
                 <div class="row">
                     <div class="col-lg-3">
