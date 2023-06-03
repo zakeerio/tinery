@@ -107,8 +107,10 @@
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>      
                                     <div class="d-flex flex-column gap-4 py-5 ">
                                         @php
-                                        
+                                            $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
+                                        @if(!empty($days))
+                                        @foreach($activities as $activities)
                                         <div class="accordion-item  border-0  mycollapsebutton">      
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <div class=" row days-menu ">
@@ -129,7 +131,8 @@
                                                 <div class="accordion-body px-5">Placeholder content for this accordion, which is intended to demonstrate the accordion-flush class. This is the first item's accordion body.</div>
                                             </div>
                                         </div>
-                                        
+                                        @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
