@@ -49,9 +49,11 @@ class HomeController extends Controller
     {
         $itinerary = Itineraries::where('slug',$slug)->first();
 
+        $days = $itinerary->itinerarydays;
+
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
 
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary'));
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary', 'days'));
     }
 
     public function favourites(Request $request)
@@ -147,8 +149,9 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = Itineraries::find($itineraryid);
+        $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days'));
+        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary'));
     }
 
     public function itineraries_update(Request $request)
@@ -180,6 +183,7 @@ class HomeController extends Controller
             $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
+            $array->featured = '1';
 
             $array->save();
 
@@ -238,7 +242,7 @@ class HomeController extends Controller
                         </div>
                         </button>
                         </h2>
-                        <div id="collapseOne'.$count.'" class="accordion-collapse collapse show" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
+                        <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
                         <div class="accordion-body p-0">
                             <form action="#" class="">
                                 <div class=" p-3">

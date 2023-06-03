@@ -96,7 +96,6 @@
                         </div>
 
 
-
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
                             @foreach($days as $key => $days)
@@ -108,7 +107,7 @@
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
-                                        @if(!empty($days))
+                                        @if(!empty($activities))
                                         @foreach($activities as $activityKey => $activity)
                                         {{-- {{ print_r($activity) }} --}}
                                         @php
@@ -119,8 +118,8 @@
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
                                                         <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
-                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3"> 
-                                                            <div class="red-p text-danger">10:00 AM</div>
+                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
+                                                            <div class="red-p text-danger">{{date('h:ia',strtotime($activity->starttime))}}</div>
                                                             <div class="vr vr2"></div>
                                                             <div class="yoga">{{ $activity->title }}</div>
                                                         </div>
