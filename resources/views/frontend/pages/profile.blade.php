@@ -277,7 +277,7 @@
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <div class="col-lg-12">
                                                 <small class="small-tiny-color " >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
-                                                <div class="tags d-flex flex-wrap mt-3 gap-1">
+                                                <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
                                                     <a href="#"><button class="foodie"> Leaves </button> </a>
                                                     <a href="#"> <button class="foodie"> Coffee </button> </a>
                                                     <a href="#"> <button class="foodie"> Planned </button> </a>
@@ -396,7 +396,7 @@
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-5">
                                     <h4 class="mb-4 fw-bold">No Saved Itineraries, yet</h4>
                                     <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
-                                    <a href="{{ route('additinerary') }}" class="btn btn-dark rounded-pill navyblubtn mt-3 px-4">Browse Itinaries</a>
+                                    <a href="{{ route('itineraries') }}" class="btn btn-dark rounded-pill navyblubtn mt-3 px-4">Browse Itinaries</a>
                                 </div>
 
                             @endforelse
