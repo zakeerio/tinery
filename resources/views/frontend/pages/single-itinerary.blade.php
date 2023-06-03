@@ -384,14 +384,14 @@
                             <div class="pt-3 d-flex align-items-center ">
                                 <div class="col-lg-4">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
-                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-100"></a>
+                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-120"></a>
                                 </div>
                                 <div class="px-2 mx-1">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}" style="text-decoration:none;">
                                         <div class="profiler-relate profile-relate">{{$rowrelated->title}}</div>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        {{-- <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p> --}}
+                                        <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
                                         <p class="lang px-2">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>

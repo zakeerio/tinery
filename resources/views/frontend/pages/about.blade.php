@@ -445,7 +445,7 @@
                             @foreach($related_itinerary as $row)
                             <div class="row pt-3 d-flex align-items-center justify-content-center">
                                 <div class="col-lg-4">
-                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}"> <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
+                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}"> <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
                                 </div>
                                 <div class="col-lg-8">
                                     <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">

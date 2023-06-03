@@ -9,371 +9,377 @@
     @endphp
     <section class="profile-section">
         @if(empty($itinerary))
-        <div class="container border rounded mt-4">
-            <div class="row p-2  p-3 ">
-                <div class="col-12 d-flex justify-content-between ">
-                    <h2 class=" trip-h1">Itinerary Title</h2>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
-                        <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                                        Intro</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body p-3 ">
-                                    {!! Form::open(['route' => 'itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                    <div class="mb-3">
-                                        <h4 class="fw-bold">Itinerary info</h4>
+        <div class="container mt-4">
+            <div class="border rounded">
+                <div class="row p-2  p-3 ">
+                    <div class="col-12 d-flex justify-content-between ">
+                        <h2 class=" trip-h1">Itinerary Title</h2>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
+                            <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                                            Intro</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" name="title" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" name="slug" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                            @php
-                                                $listtags = [];
-                                            @endphp
-                                            @foreach ($tags as $key => $tags)
+                                    <div class="modal-body p-3 ">
+                                        {!! Form::open(['route' => 'itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                        <div class="mb-3">
+                                            <h4 class="fw-bold">Itinerary info</h4>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" name="title" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" name="slug" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
                                                 @php
-                                                    $listtags[$tags->id] = $tags->name;
+                                                    $listtags = [];
                                                 @endphp
-                                            @endforeach
-                                            {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
-                                        <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5"></textarea>
-                                    </div>
+                                                @foreach ($tags as $key => $tags)
+                                                    @php
+                                                        $listtags[$tags->id] = $tags->name;
+                                                    @endphp
+                                                @endforeach
+                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
+                                            <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control rounded-pill" name="address_street" value="" id="address_street" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label fw-bold">Duration</label>
-                                        <input type="number" name="duration" value="" class="form-control rounded-pill" placeholder="Duration">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
-                                        <input type="text" name="website" value="" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control rounded-pill" name="address_street" value="" id="address_street" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label fw-bold">Duration</label>
+                                            <input type="number" name="duration" value="" class="form-control rounded-pill" placeholder="Duration">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
+                                            <input type="text" name="website" value="" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
+                                        </div>
 
-                                    <div class="text-end ">
-                                        <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
+                                        <div class="text-end ">
+                                            <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
+                                        </div>
+                                        {!! Form::close() !!}
                                     </div>
-                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="col-12 d-flex align-items-center my-3  gap-2">
-                <img src="{{ asset('frontend/images/Image.png')}}" alt="">
-                <p class="my-auto">{{$user->name}}</p>
-                <div class="vr h-50 align-self-center"></div>
-                <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
+                <div class="col-12 d-flex align-items-center my-3  gap-2">
+                    <img src="{{ asset('frontend/images/Image.png')}}" alt="">
+                    <p class="my-auto">{{$user->name}}</p>
+                    <div class="vr h-50 align-self-center"></div>
+                    <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="col-12 d-flex gap-3">
-                <div class="location d-flex gap-2 align-items-center">
-                    <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
-                    <p class="my-auto">Location</p>
+                <div class="col-12 d-flex gap-3">
+                    <div class="location d-flex gap-2 align-items-center">
+                        <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
+                        <p class="my-auto">Location</p>
+                    </div>
+                    <div class="location d-flex gap-2 align-items-center">
+                        <img class="w" src="{{ asset('frontend/images/duration.png')}}" alt="">
+                        <p class="my-auto">Duration</p>
+                    </div>
+                    <div class="location d-flex gap-2 align-items-center">
+                        <img class="w" src="{{ asset('frontend/images/world.png')}}" alt="">
+                        <p class="my-auto">Links</p>
+                    </div>
                 </div>
-                <div class="location d-flex gap-2 align-items-center">
-                    <img class="w" src="{{ asset('frontend/images/duration.png')}}" alt="">
-                    <p class="my-auto">Duration</p>
-                </div>
-                <div class="location d-flex gap-2 align-items-center">
-                    <img class="w" src="{{ asset('frontend/images/world.png')}}" alt="">
-                    <p class="my-auto">Links</p>
-                </div>
-            </div>
 
             <div class="col-12 ">
+            <div class="col-12 ">
 
-                <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">Food</button>
-            </div>
-            <div class="col-12 mb-3">
-                <p>This is our itinerary Description</p>
+                <div class="col-12 ">
+
+                    <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">Food</button>
+                </div>
+                <div class="col-12 mb-3">
+                    <p>This is our itinerary Description</p>
+                </div>
             </div>
         </div>
         @else
         <div class="container mt-4">
             <div class="row">
-                <div class="col-lg-8 border rounded ">
+                <div class="col-lg-8">
+                        <div class="border rounded">
 
-
-                    <div class="row  p-2  p-3 ">
-                        <div class="col-12 d-flex justify-content-between ">
-                            <h1 class="trip-h1">{{ $itinerary->title}}</h1>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
-                                <img class="button-24" src="{{ asset('frontend/images/editbt.png')}}" alt="">
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                                               Edit Intro</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body p-3 ">
-                                            {!! Form::open(['route' => 'itineraries.update', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                            <input type="hidden" name="id" value="{{$itinerary->id}}">
-                                            <div class="mb-3">
-                                                <h4 class="fw-bold">Itinerary info</h4>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
-                                                </label>
-                                                <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
-                                                </label>
-                                                <input type="text" name="slug" value="{{ $itinerary->slug}}" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                    @php
-                                                        $listtags = [];
-                                                        $listtag = json_decode($itinerary->tags);
-                                                    @endphp
-                                                    @foreach ($tags as $key => $tags)
-                                                        @php
-                                                            $listtags[$tags->id] = $tags->name;
-                                                        @endphp
-                                                    @endforeach
-                                                    {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
-                                                    <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                            <div class="row  p-2  p-3 ">
+                                <div class="col-12 d-flex justify-content-between ">
+                                    <h1 class="trip-h1">{{ $itinerary->title}}</h1>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
+                                        <img class="button-24" src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                                                    Edit Intro</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                            <div class="mb-3">
-                                                <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
-                                                <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
-                                            </div>
+                                                <div class="modal-body p-3 ">
+                                                    {!! Form::open(['route' => 'itineraries.update', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                                    <input type="hidden" name="id" value="{{$itinerary->id}}">
+                                                    <div class="mb-3">
+                                                        <h4 class="fw-bold">Itinerary info</h4>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" name="slug" value="{{ $itinerary->slug}}" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
+                                                            @php
+                                                                $listtags = [];
+                                                                $listtag = json_decode($itinerary->tags);
+                                                            @endphp
+                                                            @foreach ($tags as $key => $tags)
+                                                                @php
+                                                                    $listtags[$tags->id] = $tags->name;
+                                                                @endphp
+                                                            @endforeach
+                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
+                                                            <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                        </div>
+                                                    <div class="mb-3">
+                                                        <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
+                                                        <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
+                                                    </div>
 
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label fw-bold">Duration</label>
-                                                <input type="number" name="duration" value="{{ $itinerary->duration}}" class="form-control rounded-pill" placeholder="Duration">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
-                                                <input type="text" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
-                                            </div>
+                                                    <div class="mb-3">
+                                                        <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="title" class="form-label fw-bold">Duration</label>
+                                                        <input type="number" name="duration" value="{{ $itinerary->duration}}" class="form-control rounded-pill" placeholder="Duration">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
+                                                        <input type="text" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
+                                                    </div>
 
-                                            <div class="text-end ">
-                                                <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
+                                                    <div class="text-end ">
+                                                        <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
+                                                    </div>
+                                                    {!! Form::close() !!}
+                                                </div>
                                             </div>
-                                            {!! Form::close() !!}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-                   <div class="related d-flex align-items-center gap-2 profile-padding-left">
-                            <div class=" ">
-                                <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
-                                    @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
-                                    @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
-                                    @endif
-                                </a>
+                            <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                                <div class=" ">
+                                    <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
+                                        @if (!empty($itinerary->user->profile))
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
+                                        @else
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                        @endif
+                                    </a>
+                                </div>
+
+                                <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                                <div class="vr align-self-center linesize mx-1"></div>
+                                <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
                             </div>
 
-                            <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
-                            <div class="vr align-self-center linesize mx-1"></div>
-                            <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
-
-
-
-                        </div>
-
-                    <div class="city d-flex profile-padding-left ">
-                            <div class="d-flex align-items-center">
-                                <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_street}} </h6>
+                            <div class="city d-flex profile-padding-left ">
+                                <div class="d-flex align-items-center">
+                                    <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
+                                    <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_street}} </h6>
+                                </div>
+                                <div class=" d-flex align-items-center">
+                                    <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
+                                    <h6 class="profile-p pt-2 mx-2">
+                                        {{count($days)}}
+                                        Days</h6>
+                                </div>
+                                <div class=" d-flex align-items-center">
+                                    <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                    <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                                </div>
                             </div>
-                            <div class=" d-flex align-items-center">
-                                <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">
-                                    {{count($days)}}
-                                    Days</h6>
-                            </div>
-                            <div class=" d-flex align-items-center">
-                                <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
-                            </div>
-                        </div>
 
-                     <div class="tags profile-padding-left">
-                            @php
-                                $itinerarytag = json_decode($itinerary->tags);
-                            @endphp
-                            @foreach($itinerarytag as $itinerarytag)
-                            @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
+                            <div class="tags profile-padding-left">
+                                @php
+                                    $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
-                            @if($tag)
-                                <a href="#">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
+                                @foreach($itinerarytag as $itinerarytag)
+                                @php
+                                    $tag = \App\Models\Tags::find($itinerarytag);
+                                    @endphp
+                                @if($tag)
+                                    <a href="#">
+                                        <button class="foodie">
+                                            {{$tag->name}}
+                                        </button>
+                                    </a>
+                                @endif
+
+                                @endforeach
+                                <!-- <a href="#"> <button class="foodie">Foodie</button></a>
+                                <a href="#"> <button class="foodie">Backpacker</button></a>
+                                <a href="#"> <button class="foodie">Spring</button></a>
+                                <a href="#"> <button class="foodie">Holiday Destination</button></a>
+                                <a href="#"> <button class="foodie">Mexico</button></a> -->
+                                <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
+                            </div>
+                            <div class="col-12 tags-description ">
+                                <p class=" pe-2 ">{{$itinerary->description}}</p>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center" style="height:412px" ;>
+                                    <input type="file" id="file" class="d-none">
+                                    <label for="file" class="text-center">
+                                        <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                        <h3>Add cover photo!</h3>
+                                        <p>Showcase the itinerary showing image.</p>
+                                        <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            @if(!empty($days))
+                                @foreach($days as $key => $days)
+                                @php
+                                    $count = ++$key;
+                                @endphp
+                                <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
+                                    <h2 class="fw-bold mb-0">Day {{$count}}</h2>
+                                    <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
+                                        <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">Day {{$count}} Activities</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
+
+                                                </div>
+                                                <div class="mb-3 activity-bt border border-0 mx-3 mb-3">
+                                                    <a href="javascript:void(0)" class="text-decoration-none" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
+                                                        <h5 class="text-center text-danger add-activity-bt rounded-pill fw-bold m-0 p-2"> + Add activity </h5>
+                                                    </a>
+                                                </div>
+                                                <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
+                                                    <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
+                                                        <h5 class="text-center text-danger m-0 p-2">
+                                                            Delete Day
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             @endif
 
-                            @endforeach
-                            <!-- <a href="#"> <button class="foodie">Foodie</button></a>
-                            <a href="#"> <button class="foodie">Backpacker</button></a>
-                            <a href="#"> <button class="foodie">Spring</button></a>
-                            <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                            <a href="#"> <button class="foodie">Mexico</button></a> -->
-                            <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
-                        </div>
-                    <div class="col-12 tags-description ">
-                        <p class=" pe-2 ">{{$itinerary->description}}</p>
-                    </div>
+                            <div class=" justify-content-center d-flex align-items-center">
+                            <div class="vr vr3"></div>
+                            </div>
+                            <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
+                                <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
+                                    <h2 class="text-danger fw-bold mb-0">+Add Day</h2>
+                                </div>
+                            </a>
 
-                <div class="container mt-4">
-                    <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center" style="height:412px" ;>
-                        <input type="file" id="file" class="d-none">
-                        <label for="file" class="text-center">
-                            <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                            <h3>Add cover photo!</h3>
-                            <p>Showcase the itinerary showing image.</p>
-                            <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
-                        </label>
-                    </div>
+                            <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5" style="height:345px" ;>
 
-                    @if(!empty($days))
-                        @foreach($days as $key => $days)
-                        @php
-                            $count = ++$key;
-                        @endphp
-                        <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                            <h2 class="fw-bold mb-0">Day {{$count}}</h2>
-                            <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
-                                <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
+
+                                <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
+
+                                <label for="file" class="text-center">
+                                    <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+
+                                    <p class="attach-area-width text-center">
+                                        <span class="fw-bold">Attach or drop your images here.</span><br>
+                                        Accepts .jpg, .jpeg, .png, and .gif file types.</p>
+                                    <p class="fw-bold">Maximum file size is 5 MB</p>
+
+                                    <!-- <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button> -->
+                                    <input type="file" id="file" class="d-none">
+
+                                    <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label>
+                            </div>
+
+
+                            <!-- Extra Activity -->
+
+
                             <!-- Modal -->
-                            <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
-                                    <div class="modal-content">
+                            <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content ">
                                         <div class="modal-header">
-                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">Day {{$count}} Activities</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">Day 1 Activities</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
+                                        <div class="modal-body">
+
+
+                                            <div class="col-12 border rounded-pill p-1 mb-2  d-flex justify-content-between">
+                                                <p class="m-0 align-self-center px-3">1. Metropolitan Museum</p>
+                                                <img class="edit-bt-size" src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                                            </div>
+                                            <div class="col-12 border rounded-pill p-1 mb-2 d-flex justify-content-between">
+                                                <p class="m-0 align-self-center px-3">2. Statue of Liberty</p>
+                                                <img class="edit-bt-size" src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                                            </div>
+                                            <div class="col-12 border rounded-pill text-danger text-center mb-5">
+                                                <p class="m-0 align-self-center p-1 px-3 fw-bold">+ Add activity</p>
+                                            </div>
+
 
                                         </div>
-                                        <div class="mb-3 activity-bt border border-0 mx-3 mb-3">
-                                            <a href="javascript:void(0)" class="text-decoration-none" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
-                                                <h5 class="text-center text-danger add-activity-bt rounded-pill fw-bold m-0 p-2"> + Add activity </h5>
-                                            </a>
-                                        </div>
-                                        <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
-                                            <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
-                                                <h5 class="text-center text-danger m-0 p-2">
-                                                    Delete Day
-                                                </h5>
-                                            </a>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        @endforeach
-                    @endif
-
-                    <div class=" justify-content-center d-flex align-items-center">
-                    <div class="vr vr3"></div>
-                    </div>
-                    <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
-                        <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
-                            <h2 class="text-danger fw-bold mb-0">+Add Day</h2>
-                        </div>
-                    </a>
-
-                    <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5" style="height:345px" ;>
 
 
-                        <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
-
-                        <label for="file" class="text-center">
-                            <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-
-                            <p class="attach-area-width text-center">
-                                <span class="fw-bold">Attach or drop your images here.</span><br>
-                                Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                            <p class="fw-bold">Maximum file size is 5 MB</p>
-
-                            <!-- <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button> -->
-                            <input type="file" id="file" class="d-none">
-
-                            <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label>
-                    </div>
-
-
-                    <!-- Extra Activity -->
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content ">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Day 1 Activities</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-
-                                    <div class="col-12 border rounded-pill p-1 mb-2  d-flex justify-content-between">
-                                        <p class="m-0 align-self-center px-3">1. Metropolitan Museum</p>
-                                        <img class="edit-bt-size" src="{{ asset('frontend/images/editbt.png')}}" alt="">
-                                    </div>
-                                    <div class="col-12 border rounded-pill p-1 mb-2 d-flex justify-content-between">
-                                        <p class="m-0 align-self-center px-3">2. Statue of Liberty</p>
-                                        <img class="edit-bt-size" src="{{ asset('frontend/images/editbt.png')}}" alt="">
-                                    </div>
-                                    <div class="col-12 border rounded-pill text-danger text-center mb-5">
-                                        <p class="m-0 align-self-center p-1 px-3 fw-bold">+ Add activity</p>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <div class="col-lg-4">
                 <div class="profile p-3">
@@ -422,14 +428,14 @@
                                     <div class="row pt-3 d-flex align-items-center justify-content-center">
                                         <div class="col-lg-4">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
-                                                <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
+                                                <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
                                         </div>
                                         <div class="col-lg-8">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
                                                 <h6 class="profiler-related">{{$row->title}}</h6>
                                             </a>
                                             <div class="d-flex align-items-center">
-                                                {{-- <p class="lang">{{$row->user->name}} |</p> --}}
+                                                <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
                                                 <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
                                             </div>
                                         </div>
