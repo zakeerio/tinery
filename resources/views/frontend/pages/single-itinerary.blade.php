@@ -117,7 +117,7 @@
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
-                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
+                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{ ++$activityKey }}  </div>
                                                         <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
                                                             <div class="red-p text-danger">{{date('h:ia',strtotime($activity->starttime))}}</div>
                                                             <div class="vr vr2"></div>
