@@ -219,11 +219,13 @@
                     <div class="city d-flex profile-padding-left ">
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
+                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_street}} </h6>
                             </div>
                             <div class=" d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">{{count($days)}} Days</h6>
+                                <h6 class="profile-p pt-2 mx-2">
+                                    {{count($days)}}
+                                    Days</h6>
                             </div>
                             <div class=" d-flex align-items-center">
                                 <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
@@ -418,21 +420,21 @@
                                     <h6 class="profiler-related related">Related Content</h6>
                                     @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
-                                    <div class="row pt-3 d-flex align-items-center justify-content-center">
-                                        <div class="col-lg-4">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}">
-                                                <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                                <h6 class="profiler-related">{{$row->title}}</h6>
-                                            </a>
-                                            <div class="d-flex align-items-center">
-                                                {{-- <p class="lang">{{$row->user->name}} |</p> --}}
-                                                <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
-                                            </div>
-                                        </div>
+                                    <div class="pt-3 d-flex align-items-center ">
+                                        <div class="">
+                                            <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
+                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="side-iamge-set"></a>
+                                </div>
+                                <div class="px-2 mx-1">
+                                    <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}" style="text-decoration:none;">
+                                        <div class="profiler-related profile-relate">{{$rowrelated->title}}</div>
+                                    </a>
+                                    <div class="d-flex align-items-center ">
+                                        <p class="lang"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
+                                        <p class="lang px-2">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                     </div>
+                                </div>
+                            </div>
                                     @endforeach
                                     @endif
                                 </div>

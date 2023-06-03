@@ -107,37 +107,46 @@
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
+
                                         @if(!empty($activities))
-                                        @foreach($activities as $activityKey => $activity)
-                                        {{-- {{ print_r($activity) }} --}}
-                                        @php
-                                            $time = $activity->starttime;
-                                        @endphp
-                                        <div class="accordion-item  border-0  mycollapsebutton">
-                                            <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
-                                                <div class=" row days-menu ">
-                                                    <div class=" d-flex ">
-                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
-                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
-                                                            <div class="red-p text-danger">{{date('h:ia',strtotime($activity->starttime))}}</div>
-                                                            <div class="vr vr2"></div>
-                                                            <div class="yoga">{{ $activity->title }}</div>
+
+                                        @if(!empty($days))
+                                            @foreach($activities as $actkey => $activities)
+                                                @php
+                                                    $actcount = ++$actkey;
+                                                @endphp
+                                                <div class="accordion-item  border-0  mycollapsebutton">
+                                                    <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$count.''.$actcount}}" aria-expanded="false" aria-controls="flush-collapse{{$count.''.$actcount}}">
+                                                @foreach($activities as $activityKey => $activity)
+                                                {{-- {{ print_r($activity) }} --}}
+                                                @php
+                                                    $time = $activity->starttime;
+                                                @endphp
+                                                <div class="accordion-item  border-0  mycollapsebutton">
+                                                    <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
+                                                        <div class=" row days-menu ">
+                                                            <div class=" d-flex ">
+                                                                <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{ ++$activityKey }}  </div>
+                                                                <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
+                                                                    <div class="red-p text-danger">{{date('h:ia',strtotime($activity->starttime))}}</div>
+                                                                    <div class="vr vr2"></div>
+                                                                    <div class="yoga">{{ $activity->title }}</div>
+                                                                </div>
+                                                                <div class=" px-1 align-items-center w-100">
+                                                                    <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class=" px-1 align-items-center w-100">
-                                                            <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
-                                                        </div>
+                                                    </button>
+                                                    <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
+                                                        <div class="accordion-body px-5">{{ $activity->description }}</div>
                                                     </div>
                                                 </div>
-                                            </button>
-                                            <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
-                                                <div class="accordion-body px-5">{{ $activity->description }}</div>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
                                         @endif
+                                    </div>
                                 </div>
                             </div>
-                    </div>
                             @endforeach
                             @endif
 
@@ -159,15 +168,9 @@
 
                         <div class="gallery-img">
                             <div class="row d-flex justify-content-between align-items-center images-items">
-                                <div class="col-lg-6">
-                                    <img src="{{ asset('frontend/images/fam.png') }}" alt="" class="fam-img">
+                                <div class="col-lg-6"><img src="{{ asset('frontend/images/fam.png') }}" alt="" class="fam-img"></div>
 
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" sea-img">
-
-                                </div>
+                                <div class="col-lg-3"><img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" sea-img"></div>
 
                                 <div class="col-lg-3">
                                     <div class=" row d-flex align-items-center justify-content-between ">
@@ -328,12 +331,6 @@
                             @endif
                         </div>
                     </div>
-
-
-
-
-
-
                     <div class="col-lg-4">
                         <div class="profile p-3">
                             <div class="d-flex align-items-center">
