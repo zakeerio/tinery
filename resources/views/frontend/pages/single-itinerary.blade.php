@@ -100,16 +100,16 @@
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
                             @foreach($days as $key => $days)
-<<<<<<< HEAD
+
                             @php
                                 $count = ++$key;
                             @endphp
                             <div class="accordion accordion-flush " id="accordionSibglepage{{$count}}">
                                 <h5 class=" text-dark tripday m-0"> Day {{$count}}</h5>
-=======
+
                             <div class="accordion accordion-flush  py-4" id="accordionSibglepage{{$days->id}}">
                                 <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
->>>>>>> e595954d206a5e3df7b330de7708cdc81f35fa95
+
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
                                     <div class="d-flex flex-column gap-4 py-5 ">
@@ -117,14 +117,14 @@
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
                                         @if(!empty($days))
-<<<<<<< HEAD
+
                                         @foreach($activities as $actkey => $activities)
                                         @php
                                             $actcount = ++$actkey;
                                         @endphp
                                         <div class="accordion-item  border-0  mycollapsebutton">      
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$count.''.$actcount}}" aria-expanded="false" aria-controls="flush-collapse{{$count.''.$actcount}}">
-=======
+
                                         @foreach($activities as $activityKey => $activity)
                                         {{-- {{ print_r($activity) }} --}}
                                         @php
@@ -132,18 +132,18 @@
                                         @endphp
                                         <div class="accordion-item  border-0  mycollapsebutton">
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
->>>>>>> e595954d206a5e3df7b330de7708cdc81f35fa95
+
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
                                                         <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{$actcount}}  </div>
                                                         <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3"> 
                                                             <div class="red-p text-danger">{{date('h:ia',strtotime($activities->starttime))}}</div>
                                                             <div class="vr vr2"></div>
-<<<<<<< HEAD
+
                                                             <div class="yoga">{{ $activities->title}}</div>
-=======
+
                                                             <div class="yoga">{{ $activity->title }}</div>
->>>>>>> e595954d206a5e3df7b330de7708cdc81f35fa95
+
                                                         </div>
                                                         <div class=" px-1 align-items-center w-100">
                                                             <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
@@ -151,13 +151,13 @@
                                                     </div>
                                                 </div>
                                             </button>
-<<<<<<< HEAD
+
                                             <div id="flush-collapse{{$count.''.$actcount}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$count}}">
                                                 <div class="accordion-body px-5">{{$activities->description}}</div>
-=======
+
                                             <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
                                                 <div class="accordion-body px-5">{{ $activity->description }}</div>
->>>>>>> e595954d206a5e3df7b330de7708cdc81f35fa95
+
                                             </div>
                                         </div>
                                         @endforeach
