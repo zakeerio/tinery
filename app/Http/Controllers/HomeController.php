@@ -48,10 +48,9 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('slug',$slug)->first();
-
+        $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
-
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary'));
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
     }
 
     public function favourites(Request $request)
@@ -240,7 +239,7 @@ class HomeController extends Controller
                         </div>
                         </button>
                         </h2>
-                        <div id="collapseOne'.$count.'" class="accordion-collapse collapse show" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
+                        <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
                         <div class="accordion-body p-0">
                             <form action="#" class="">
                                 <div class=" p-3">
