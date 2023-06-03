@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="mt-4">
                             <p class="card-text">{{ $user->bio}}</p>
@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -162,9 +162,9 @@
                                                     {!! Form::file('file', ['class' => 'form-control']) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                            <div class="float-end">
                                                 <div class="form-group">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3  rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3  rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}
@@ -227,9 +227,9 @@
                                                 {!! Form::text('website', $user->website, ['class' => 'form-control rounded-pill' , 'placeholder' => 'https:/www.website.com/example']) !!}
                                             </div>
                                         </div>
-                                        <div class="col-lg-2" style="float:right;margin-right:10px;">
+                                        <div class="float-end">
                                             <div class="form-group">
-                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                             </div>
                                         </div>
                                         {!! Form::close() !!}
@@ -273,23 +273,30 @@
                                 <div class="accordion-body">
                                     <!-- Relevant tags content -->
                                        <div class="row">
-                                       
+
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <div class="col-lg-12">
-                                                <div class="form-group">
+                                                <small class="small-tiny-color " >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
+                                                    <a href="#"><button class="foodie"> Leaves </button> </a>
+                                                    <a href="#"> <button class="foodie"> Coffee </button> </a>
+                                                    <a href="#"> <button class="foodie"> Planned </button> </a>
+                                                    <a href="#"> <button class="foodie"> Fun </button> </a>
+                                                </div>
+                                                {{-- <div class="form-group">
+
                                                     {!! Form::label('tags', 'tags',['class'=>'fw-bold required mb-3']) !!}
                                                     {!! Form::text('tags', $user->tags, ['class' => 'form-control rounded-pill mb-1' , 'placeholder' => 'Ex: locations, subjects, themes, etc.' ]) !!}
-                                                </div>
-                                                <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                </div> --}}
                                                 <div class=" tags-links1"><a href="">Clear all tags</a></div>
                                             </div>
                                              <div class="float-end">
                                                 <div class="form-group text-end">
-                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4' ]) !!}
+                                                    {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -316,10 +323,10 @@
                     </ul>
                     <ul class="nav nav-tabs">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
-</div>
+                </div>
 
                     <div class="tab-content" id="myTabsContent">
                         <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1" role="tabpanel" aria-labelledby="tab1">
@@ -389,7 +396,7 @@
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-5">
                                     <h4 class="mb-4 fw-bold">No Saved Itineraries, yet</h4>
                                     <p>No saved itineraries in your list yet. Please browse <br> for more itinaries and add them to your list</p>
-                                    <a href="{{ route('additinerary') }}" class="btn btn-dark rounded-pill navyblubtn mt-3 px-4">Browse Itinaries</a>
+                                    <a href="{{ route('itineraries') }}" class="btn btn-dark rounded-pill navyblubtn mt-3 px-4">Browse Itinaries</a>
                                 </div>
 
                             @endforelse

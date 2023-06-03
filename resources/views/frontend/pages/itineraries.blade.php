@@ -41,90 +41,22 @@
                                         class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
                                         type="go">Go <span>X</span>
                                     </button>
-                                    <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
-                                        type="go">Go <span>X</span>
-                                    </button>
-                                    <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
-                                        type="go">Go <span>X</span>
-                                    </button>
-                                    <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
-                                        type="go">Go <span>X</span>
-                                    </button>
-                                    <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
-                                        type="go">Go <span>X</span>
-                                    </button>
+                                    
                                     <hr>
                                 </div>
                                 <form class="d-flex py-3">
 
-                                    <input type="search" id="my-input" name="my-input" placeholder=" Enter location"
+                                <input type="search" id="my-input" name="my-input" placeholder=" Locations"
                                         class="locator rounded-pill px-2 mx-2 ">
 
                                     <button class="btn btn-secondary w-50 rounded-pill  text-white"
                                         type="go">Go</button>
                                 </form>
+
                                 <div class="filter-dropdown-header">
                                     <div class="form-check">
                                         <input type="checkbox" id="select-all-filter1" class="form-check-input">
                                         <label for="select-all-filter1" class="form-check-label">option</label>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option1"
-                                                id="option1">
-                                            <label for="option1" class="form-check-label">Option 1</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option2"
-                                                id="option2">
-                                            <label for="option2" class="form-check-label">Option 2</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option3"
-                                                id="option3">
-                                            <label for="option3" class="form-check-label">Option 3</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option4"
-                                                id="option4">
-                                            <label for="option4" class="form-check-label">Option 4</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option5"
-                                                id="option5">
-                                            <label for="option5" class="form-check-label">Option 5</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="option6"
-                                                id="option6">
-                                            <label for="option6" class="form-check-label">Option 6</label>
-                                        </div>
                                     </div>
                                 </div>
 
