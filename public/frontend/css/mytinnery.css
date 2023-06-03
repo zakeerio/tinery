@@ -76,7 +76,7 @@
 }
 
 .socialpicsize {
-    gap: 15px;
+    gap: 10px;
 }
 
 .sidenameandlinks {
@@ -655,7 +655,6 @@ header {
 
 .city {
     width: 100%;
-    max-width: 500px;
 
 }
 
@@ -1077,9 +1076,17 @@ select.did-floating-select::-ms-expand {
 
 }
 
+.save-bt {
+    padding: 7px 41px !important;
+}
+
+.add-activity-bt {
+    color: #C83232;
+    border: 1px solid #C83232;
+}
 
 .accordion-button:not(.collapsed) .save-bt {
-    padding: 8px 43px;
+    padding: 7px 41px;
 }
 
 .attach-area-width {
