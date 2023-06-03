@@ -16,9 +16,12 @@
 
 .container {
     width: 100%;
-    max-width: 1366px !important;
+    max-width: 1920px !important;
 }
 
+.left-margin {
+    margin-left: 200px;
+}
 
 .text-clr {
     font-style: normal;
@@ -399,7 +402,10 @@
 }
 
 
-
+.day-pop-width {
+    max-width: 641px !important;
+    width: 100%;
+}
 
 
 .map-focus .form-control {
@@ -760,7 +766,7 @@ header {
 
 .line {
     width: 100%;
-    max-width: 450 pxpx;
+    max-width: 450px;
     height: 1.5px;
 }
 

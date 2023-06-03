@@ -22,7 +22,7 @@
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
                                         Intro</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
@@ -70,7 +70,7 @@
                                         <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
                                         <input type="text" name="website" value="" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
                                     </div>
-                                    <!-- space problem -->
+                                   
                                     <div class="text-end ">
                                         <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
                                     </div>
@@ -133,8 +133,8 @@
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">
-                                                Intro</h5>
+                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                                               Edit Intro</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body p-3 ">
@@ -165,7 +165,8 @@
                                                         @endphp
                                                     @endforeach
                                                     {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
-                                            </div>
+                                                    <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                </div>
                                             <div class="mb-3">
                                                 <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
                                                 <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
@@ -183,7 +184,7 @@
                                                 <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
                                                 <input type="text" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
                                             </div>
-                                            <!-- space problem -->
+                                           
                                             <div class="text-end ">
                                                 <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
                                             </div>
@@ -282,10 +283,10 @@
                                 <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
                             <!-- Modal -->
                             <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Day {{$count}} Activities</h5>
+                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">Day {{$count}} Activities</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
@@ -311,7 +312,7 @@
                         </div>
                         @endforeach
                     @endif
-                    <!-- line pbolem -->
+    
                     <div class=" justify-content-center d-flex align-items-center">
                     <div class="vr vr3"></div>
                     </div>

@@ -48,11 +48,10 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('slug',$slug)->first();
-        $days = ItineraryDays::where('itineraries_id',$itinerary->id)->orderby('id','asc')->get();
 
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
 
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary'));
     }
 
     public function favourites(Request $request)
@@ -260,10 +259,10 @@ class HomeController extends Controller
                                                     <label class="form-label fw-bold">Time</label>
                                                     <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                                 </div>
-                                                <div class="">
+                                                <div class=" d-flex align-items-end">
                                                     <label class="form-label fw-bold">&nbsp;</label>
                                                     <label class="form-label fw-bold px-1">
-                                                        <h4>:</h4>
+                                                        <h4 class="m-0">:</h4>
                                                     </label>
                                                 </div>
                                                 <div class="">
