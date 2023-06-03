@@ -579,8 +579,16 @@ header {
 
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.06);
     border-radius: 12px;
-    height: 454px;
+    height: 524px;
     overflow-y: auto;
+}
+
+.btn-check:checked+.btn,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    background-color: black !important;
+    color: white;
 }
 
 .profiler {
