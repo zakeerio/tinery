@@ -4,7 +4,7 @@
 
     <section class="hero-sections">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content left-margin">
                 <div class="row">
                     <div class="col-lg-8">
 
@@ -101,25 +101,29 @@
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
                             @foreach($days as $key => $days)
-                            <div class="accordion accordion-flush " id="accordionSibglepage">
+                            <div class="accordion accordion-flush  py-4" id="accordionSibglepage{{$days->id}}">
                                 <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
-                                    <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>      
+                                    <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
                                     <div class="d-flex flex-column gap-4 py-5 ">
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
                                         @if(!empty($days))
-                                        @foreach($activities as $activities)
-                                        <div class="accordion-item  border-0  mycollapsebutton">      
-                                            <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        @foreach($activities as $activityKey => $activity)
+                                        {{-- {{ print_r($activity) }} --}}
+                                        @php
+                                            $time = $activity->starttime;
+                                        @endphp
+                                        <div class="accordion-item  border-0  mycollapsebutton">
+                                            <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
                                                 <div class=" row days-menu ">
                                                     <div class=" d-flex ">
-                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
-                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3"> 
-                                                            <div class="red-p text-danger">10:00 AM</div>
+                                                        <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{ ++$activityKey }}  </div>
+                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
+                                                            <div class="red-p text-danger">{{ date('g:i A', strtotime($time)) }}</div>
                                                             <div class="vr vr2"></div>
-                                                            <div class="yoga">Yoga at Jessie’s</div>
+                                                            <div class="yoga">{{ $activity->title }}</div>
                                                         </div>
                                                         <div class=" px-1 align-items-center">
                                                             <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
@@ -127,8 +131,8 @@
                                                     </div>
                                                 </div>
                                             </button>
-                                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage">
-                                                <div class="accordion-body px-5">Placeholder content for this accordion, which is intended to demonstrate the accordion-flush class. This is the first item's accordion body.</div>
+                                            <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
+                                                <div class="accordion-body px-5">{{ $activity->description }}</div>
                                             </div>
                                         </div>
                                         @endforeach
@@ -138,74 +142,10 @@
                             </div>
                             @endforeach
                             @endif
-                      
+
                            <!--End  DAY 1 Coding  -->
 
 
-                            <!--Start  DAY 2 Coding  -->
-                        <!-- <div class="accordion accordion-flush " id="accordionSibglepage">
-                            <h5 class=" text-dark tripday m-0"> Day 1</h5>
-                   <div class="sideborder d-flex position-relative">
-                    <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>      
-                    <div class="d-flex flex-column gap-4 py-5 ">
-                            <div class="accordion-item  border-0 ">      
-                                    <button class="accordion-button collapsed acordionsinglepage" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsethree" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        <div class=" row days-menu ">
-                                            <div class=" d-flex ">
-
-                                                <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  1  </div>
-                                                <div class=" col-lg-4 d-flex justify-content-between align-items-center">
-                                                    <div class="img-counter"><img src="{{ asset('frontend/images/Number.png') }}" alt=""></div>
-                                                    <p class="red-p text-danger">10:00 AM</p>
-                                                    <div class="img-counter"><img src="{{ asset('frontend/images/Vec 2.png') }}" alt=""></div>
-                                                    <p class="yoga">Yoga at Jessie’s</p>
-                                                </div>
-                                                    <div class=" px-1 align-items-center">
-                                                    <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </button>
-                                    <div id="flush-collapsethree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                    </div>
-
-                            </div>
-                        
-                            <div class="accordion-item">
-                                <button class="accordion-button collapsed acordionsinglepage" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsefour" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    <div class=" row days-menu ">
-                                        <div class=" d-flex ">
-
-                                            <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">2</div>
-                                            <div class=" col-lg-4 d-flex justify-content-between align-items-center">
-                                                <div class="img-counter"><img src="{{ asset('frontend/images/Number.png') }}" alt=""></div>
-                                                <p class="red-p text-danger">10:00 AM</p>
-                                                <div class="img-counter"><img src="{{ asset('frontend/images/Vec 2.png') }}" alt=""></div>
-                                                <p class="yoga">Yoga at Jessie’s</p>
-                                            </div>
-                                            <div class="p-1 align-items-center">
-                                                <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <div id="flush-collapsefour" class="accordion-collapse collapse" aria-labelledby="flush-headingtwo" data-bs-parent="#accordionSibglepage">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-                        
-                    </div> -->
-                           <!--End  DAY 2 Coding  -->
-
-
-
-                            <!--Start  DAY 3 Coding  -->
-                      
-                           <!--End  DAY 3 Coding  -->
 
 
 
@@ -445,7 +385,7 @@
                             @foreach($related_itinerary as $row)
                             <div class="row pt-3 d-flex align-items-center justify-content-center">
                                 <div class="col-lg-4">
-                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}"> 
+                                    <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                         <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-100"></a>
                                 </div>
                                 <div class="col-lg-8">
