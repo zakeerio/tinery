@@ -793,17 +793,6 @@ header {
 
 }
 
-.btn:hover {
-    background-color: transparent;
-    border: 1px solid #6c757d;
-    color: #6c757d;
-}
-
-.btn:first-child:active {
-    background-color: transparent !important;
-    border: 1px solid #6c757d;
-    color: #6c757d;
-}
 
 .position-close-bt {
     top: 15px;
