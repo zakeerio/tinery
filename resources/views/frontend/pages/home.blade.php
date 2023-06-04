@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-6 text-end">
                     <h2>
-                        <a href="#" class="text-decoration-none text-dark">Explore All</a>
+                        <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All</a>
                     </h2>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             </a>
-                            
+
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
                                 @php
@@ -77,7 +77,7 @@
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
                                 @php
-                                    $tag = $row->tagsdata($itinerarytag);                            
+                                    $tag = $row->tagsdata($itinerarytag);
                                 @endphp
                                 @if($tag)
                                 <a href="{{url('/slug/'.$tag->slug)}}">
@@ -85,7 +85,7 @@
                                         {{$tag->name}}
                                     </button>
                                 </a>
-                                @endif                                
+                                @endif
                             @endforeach
                         </div>
                         <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
@@ -93,7 +93,7 @@
                     @endforeach
                     @endif
                 </div>
-                
+
             </div>
         </div>
 </div>
@@ -105,7 +105,7 @@
                 <h2 class="membr">Members Spotlight</h2>
 
                 @forelse ($users as $userdata )
-                
+
                 <div class="col-lg-4 mb-5">
                     <div class="member-info d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center justify-content-start ">
@@ -114,49 +114,49 @@
                             @else
                             <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
                             @endif
-                            
+
                             <div class="mx-3">
                                 <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
                                     <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
                                 </div>
                             </div>
-                            
+
                             <div class="">
                                 <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
                             </div>
                         </div>
-                        
+
                     </div>
 
                     @empty
 
                     <div class="">No users found! </div>
-                    
+
                     @endforelse
-                    
+
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
+
     <div class="world">
         <div class="container">
             <h2 class="membr">Explore Your World</h2>
             {{-- <div class="map">
             <iframe src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
                 width="100%" height="550"></iframe>
-                
+
             </div> --}}
-            
+
             <div id="map" style="height: 450px;"></div>
         </div>
     </div>
-    
+
     <div class="social-media">
         <div class="container">
             <h2 class="membr my-2">Discover More on Social</h2>
-            
+
             <div class="row">
                 <div class="col-lg-2 ">
                     <div class="social-descover">
@@ -190,13 +190,13 @@
                         </div>
                     </div>
                     <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-                    
+
                     <div class="pt-2">
                         <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                             #Tinery #RelaxiTaxi #Fun #Reset</p>
                 </div>
             </div>
-            
+
             <div class="col-lg-2 ">
                 <div class="social-descover">
                     <div class="">
@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-                
+
                 <div class="pt-2">
                     <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
@@ -230,13 +230,13 @@
                         </div>
                     </div>
                     <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-                    
+
                     <div class="pt-2">
                         <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                             #Tinery #RelaxiTaxi #Fun #Reset</p>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-2 ">
                         <div class="social-descover">
                             <div class="">
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                         <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-                        
+
                         <div class="pt-2">
                             <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
@@ -269,15 +269,15 @@
                     </div>
                 </div>
                 <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-                
+
                 <div class="pt-2">
                     <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <div class="row d-flex  align-items-center">
                 <div class="col-lg-2 ">
                     <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
@@ -313,7 +313,7 @@
                         we empower travel creators to build awareness and reputation, and allow travel consumers to find
                         more personalized and authentic travel recommendations from their peers.</p>
                     </div>
-                    
+
                     <div>
                         <a href="#"><button class="btn btn-dark rounded-pill px-4 join">Join Tinery</button></a>
                     </div>
