@@ -103,7 +103,7 @@
                                 <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
-                                    <div class="d-flex flex-column gap-4 py-5 ">
+                                    <div class="d-flex flex-column gap-4 py-5 w-100 ">
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
@@ -382,7 +382,7 @@
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)
                             <div class="pt-3 d-flex align-items-center ">
-                                <div class="col-lg-4">
+                                <div class="">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
                                         <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-120"></a>
                                 </div>

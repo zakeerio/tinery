@@ -74,22 +74,19 @@
                         <div class="tags">
                             @php
                                 $itinerarytag = json_decode($row->tags);
-                                @endphp
-                                @foreach($itinerarytag as $itinerarytag)
+                            @endphp
+                            @foreach($itinerarytag as $itinerarytag)
                                 @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
+                                    $tag = $row->tagsdata($itinerarytag);                            
                                 @endphp
-                                
                                 @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
                                 </a>
-                                @endif
-                                
-                                {{-- {{ $itinerarytag }} --}}
-                                @endforeach
+                                @endif                                
+                            @endforeach
                         </div>
                         <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>

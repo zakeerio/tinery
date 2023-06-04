@@ -400,8 +400,8 @@
         <div class="container">
             <div class="cards-item">
                 <div class="row">
-                    @if(!empty($itinerary))
-                    @foreach($itinerary as $row)
+                    @if(!empty($itineraries))
+                    @foreach($itineraries as $row)
                     <div class="col-lg-3 ">
                         <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
@@ -441,22 +441,19 @@
                         <div class="tags">
                             @php
                                 $itinerarytag = json_decode($row->tags);
-                                @endphp
-                                @foreach($itinerarytag as $itinerarytag)
+                            @endphp
+                            @foreach($itinerarytag as $itinerarytag)
                                 @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
+                                    $tag = $row->tagsdata($itinerarytag);
                                 @endphp
-                                
                                 @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
                                 </a>
-                                @endif
-                                
-                                {{-- {{ $itinerarytag }} --}}
-                                @endforeach
+                                @endif                                
+                            @endforeach
                         </div>
                         <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>

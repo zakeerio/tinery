@@ -24,10 +24,9 @@ Route::get('/user/{username}', [HomeController::class, 'username'])->name('usern
 
 Route::post('/favourites', [HomeController::class, 'favourites'])->name('favourites');
 Route::post('/removefavourites', [HomeController::class, 'removefavourites'])->name('removefavourites');
+Route::get('/itineraries', [HomeController::class, 'itineraries'])->name('itineraries');
+Route::get('/slug/{id}', [HomeController::class, 'slug_itineraries'])->name('slug_itineraries');
 
-Route::get('/itineraries', function(){
-    return view('frontend.pages.itineraries');
-})->name('itineraries');
 
 Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 

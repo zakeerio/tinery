@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Models\Tags;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class TagsController extends BaseController
@@ -57,10 +58,10 @@ class TagsController extends BaseController
         }
         else{
             $data = $request->input();
-            
+
             $array = new Tags;
             $array->name = $data['name'];
-
+            $array->slug = Str::slug($data['name'], '-');
             $array->save();
         }
         // Logic for storing the data goes here...
@@ -120,15 +121,16 @@ class TagsController extends BaseController
         }
         else{
             $data = $request->input();
-            
+
             $array = Tags::find($id);
             $array->name = $data['name'];
-
+            $array->slug = Str::slug($data['name'], '-');
             $array->save();
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.tags.index')->with('success', 'Post Updated successfully.');
+		return $this->responseRedirect('admin.tags.index', 'Tag Updated successfully', 'success');
+
     }
 
     /**
