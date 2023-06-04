@@ -264,14 +264,24 @@
                             </div>
 
                             <div class="col-12 mt-4">
-                                <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center" style="height:412px" ;>
-                                    <input type="file" id="file" class="d-none">
-                                    <label for="file" class="text-center">
-                                        <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                        <h3>Add cover photo!</h3>
-                                        <p>Showcase the itinerary showing image.</p>
-                                        <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
-                                    </label>
+                                <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center">
+                                    <div class="ms-2">
+                                         <div class=" position-relative w-120">
+                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                            <div class=" position-absolute top-0 end-0 p-1">
+                                                <button class="btn-close" ></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                         <input type="file" id="file" class="d-none">
+                                         <label for="file" class="text-center">
+                                             <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                             <h3>Add cover photo!</h3>
+                                             <p>Showcase the itinerary showing image.</p>
+                                             <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                         </label>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -323,9 +333,33 @@
                                     <h2 class="text-danger fw-bold mb-0">+Add Day</h2>
                                 </div>
                             </a>
-
-                            <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5" style="height:345px" ;>
-
+                            <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5 height-400">
+                                <div class="d-flex align-self-start mb-2 ms-2">
+                                    <div class="">
+                                        <div class=" position-relative w-120">
+                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                            <div class=" position-absolute top-0 end-0 p-1">
+                                                <button class="btn-close" ></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class=" position-relative w-120">
+                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                            <div class=" position-absolute top-0 end-0 p-1">
+                                                <button class="btn-close" ></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class=" position-relative w-120">
+                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                            <div class=" position-absolute top-0 end-0 p-1">
+                                                <button class="btn-close" ></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
 
@@ -425,14 +459,15 @@
                                     <h6 class="profiler-related related">Related Content</h6>
                                     @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
-                                    <div class="row pt-3 d-flex align-items-center justify-content-center">
-                                        <div class="col-lg-4">
+
+                                    <div class="pt-3 d-flex align-items-center ">
+                                        <div class="">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
                                         </div>
-                                        <div class="col-lg-8">
+                                        <div class="px-2 mx-1">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                                <h6 class="profiler-related">{{$row->title}}</h6>
+                                                <div class="profiler-relate profile-relate">{{$row->title}}</div>
                                             </a>
                                             <div class="d-flex align-items-center">
                                                 <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
@@ -440,6 +475,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                     @endforeach
                                     @endif
                                 </div>
