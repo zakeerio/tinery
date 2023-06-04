@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 01, 2023 at 02:44 PM
+-- Generation Time: Jun 04, 2023 at 02:38 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   PRIMARY KEY (`id`),
   KEY `favorites_user_id_foreign` (`user_id`),
   KEY `favorites_itineraries_id_foreign` (`itineraries_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `favorites`
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `itineraries_slug_unique` (`slug`),
   KEY `itineraries_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itineraries`
@@ -217,7 +217,8 @@ CREATE TABLE IF NOT EXISTS `itineraries` (
 
 INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo_title`, `seo_description`, `seo_image`, `user_id`, `categories`, `tags`, `address_street`, `address_street_line1`, `address_city`, `address_state`, `address_zipcode`, `address_country`, `latitude`, `longitude`, `phone`, `website`, `additional_info`, `activities_data`, `featured`, `visibility`, `status`, `created_at`, `updated_at`, `duration`) VALUES
 (4, 'Toronto', 'toronto-one-two', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Toronto', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684139199.png', 6, '[\"6\"]', '[\"3\"]', NULL, NULL, 'Islamabad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-12 15:31:04', '2023-05-22 14:41:47', 0),
-(5, 'Title test', 'test-one-onnr-jjf', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Title test', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684158673.png', 6, '[\"7\",\"6\"]', '[\"3\"]', 'Melson Street', NULL, 'Hemburg', NULL, '7899', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-15 08:51:13', '2023-05-22 14:45:10', 0);
+(5, 'Title test', 'test-one-onnr-jjf', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', 'Title test', 'After 2 years of planning, we finally visited Toronto to experience the best this vibrant metropolis has to offer. From the iconic CN Tower to the bustling streets of Kensington Market, there’s something for everyone in this bustling metropolis. In this itinerary, we’ll take you on a journey through Toronto’s must-see sights, hidden gems, and unforgettable moments. Here is how we embrace the culture, beauty, and energy of this exciting city.', '1684158673.png', 6, '[\"7\",\"6\"]', '[\"3\"]', 'Melson Street', NULL, 'Hemburg', NULL, '7899', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-05-15 08:51:13', '2023-05-22 14:45:10', 0),
+(11, 'New Itinerary', 'new-ittineryary', 'Detail Descriptiob', 'defdsf', 'ufjdf', NULL, '1685778513.png', 15, NULL, '[\"1\",\"2\",\"3\"]', 'Islamabad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'public', 'published', '2023-06-03 02:39:55', '2023-06-03 02:48:33', 1);
 
 -- --------------------------------------------------------
 
@@ -228,6 +229,7 @@ INSERT INTO `itineraries` (`id`, `title`, `slug`, `description`, `excerpt`, `seo
 DROP TABLE IF EXISTS `itineraries_tags`;
 CREATE TABLE IF NOT EXISTS `itineraries_tags` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -256,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `itinerary_activities` (
   PRIMARY KEY (`id`),
   KEY `itinerary_activities_itineraries_id_foreign` (`itineraries_id`),
   KEY `itinerary_activities_days_id_foreign` (`days_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itinerary_activities`
@@ -269,9 +271,13 @@ INSERT INTO `itinerary_activities` (`id`, `itineraries_id`, `tempid`, `days_id`,
 (101, 7, '', 29, NULL, '19:50', '19:51', 'One two three', NULL, '2023-05-29 09:49:15', '2023-05-29 09:59:01'),
 (121, 10, NULL, 31, 'Metro', '17:29', NULL, NULL, NULL, '2023-05-30 07:13:11', '2023-05-30 07:27:44'),
 (105, 10, NULL, 31, 'Title activity 1', '15:32', '15:35', 'Descriptionn', NULL, '2023-05-30 04:27:17', '2023-05-30 05:33:02'),
+(154, 11, '11', 49, NULL, NULL, NULL, NULL, NULL, '2023-06-03 02:50:26', '2023-06-03 02:50:26'),
+(153, 4, '4', 48, NULL, '11:59', '02:58', 'Description', NULL, '2023-06-03 01:58:12', '2023-06-03 01:58:25'),
+(152, 4, '4', 48, NULL, '03:02', '11:01', 'Descriptin one tow theeee', NULL, '2023-06-03 01:58:12', '2023-06-03 01:58:42'),
 (131, 10, NULL, 39, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:42', '2023-06-01 06:09:42'),
 (132, 10, NULL, 39, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:44', '2023-06-01 06:09:44'),
-(133, 10, NULL, 31, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:51', '2023-06-01 06:09:51');
+(133, 10, NULL, 31, NULL, NULL, NULL, NULL, NULL, '2023-06-01 06:09:51', '2023-06-01 06:09:51'),
+(155, 11, '11', 50, NULL, NULL, NULL, NULL, NULL, '2023-06-03 02:50:28', '2023-06-03 02:50:28');
 
 -- --------------------------------------------------------
 
@@ -289,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `itinerary_days` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `itinerary_days_itineraries_id_foreign` (`itineraries_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `itinerary_days`
@@ -299,7 +305,10 @@ INSERT INTO `itinerary_days` (`id`, `itineraries_id`, `tempid`, `date`, `created
 (29, 7, '', '2023-05-18', '2023-05-29 09:48:17', '2023-05-29 09:59:01'),
 (30, 4, '', '2023-05-12', '2023-05-29 09:56:56', '2023-05-29 09:58:25'),
 (31, 10, NULL, NULL, '2023-05-30 04:27:06', '2023-05-30 04:27:06'),
-(39, 10, NULL, NULL, '2023-05-30 07:26:44', '2023-05-30 07:26:44');
+(39, 10, NULL, NULL, '2023-05-30 07:26:44', '2023-05-30 07:26:44'),
+(48, 4, '4', NULL, '2023-06-03 01:44:08', '2023-06-03 01:44:08'),
+(49, 11, '', NULL, '2023-06-03 02:39:55', '2023-06-03 02:48:33'),
+(50, 11, '', NULL, '2023-06-03 02:40:01', '2023-06-03 02:48:33');
 
 -- --------------------------------------------------------
 
@@ -344,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -368,7 +377,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2023_05_25_205228_create_like_dislikes_table', 8),
 (20, '2023_05_27_201940_create_itinerary_days_table', 9),
 (21, '2023_05_27_202414_create_itinerary_activities_table', 10),
-(22, '2023_06_01_124825_create_forgot_password_codes_table', 11);
+(22, '2023_06_01_124825_create_forgot_password_codes_table', 11),
+(23, '2023_06_01_145624_add_deleted_at_to_users_table', 12);
 
 -- --------------------------------------------------------
 
@@ -731,6 +741,7 @@ INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -741,10 +752,10 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- Dumping data for table `tags`
 --
 
-INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Food', '2023-05-08 17:20:34', '2023-05-15 03:46:33'),
-(2, 'Hut', '2023-05-08 17:20:34', '2023-05-15 03:46:42'),
-(3, 'Brief', '2023-05-08 17:20:34', '2023-05-15 03:46:49');
+INSERT INTO `tags` (`id`, `slug`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'food-and-travel', 'Food and travel', '2023-05-08 17:20:34', '2023-06-03 23:48:54'),
+(2, 'hut', 'Hut', '2023-05-08 17:20:34', '2023-06-03 23:49:07'),
+(3, 'brief', 'Brief', '2023-05-08 17:20:34', '2023-06-03 23:49:12');
 
 -- --------------------------------------------------------
 
@@ -773,22 +784,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tags` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`) VALUES
-(4, 'ali', 'zafar', 'umairamjad52@gmail.com', 'alizafar', NULL, '$2y$10$bZXtgpMbBIOHog.aee6LrOp4uTi6SN5ozDv8UNcjUmNprBlCmZ0Ze', '2023-05-18 09:13:06', '2023-06-01 09:39:25', NULL, NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png'),
-(9, 'James', 'Dean', 'jamesdean@gmail.com', 'justinlang', NULL, '$2y$10$IFiqJItMoVk7RQnGt1lLa.7qlpYXgZ/o.TASQqgOccg1yKjqe3L6q', '2023-05-29 18:20:02', '2023-05-29 18:20:56', '$2y$10$fNWK93JyNnoRlnXwYTnJFeKTNaG/viXI259Wn92dzq3tuN/RNK1xa', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402446.png'),
-(10, 'Angelina', 'Smith', 'angelinasmith@gmail.com', 'angelinasmith', NULL, '$2y$10$U8BKIe2boEaM6qZktEOSae8T7IHhmBLY7pHTUKj1ekVUHsOgLrbvi', '2023-05-29 18:21:32', '2023-05-29 18:22:23', '$2y$10$Y.mBCCk6tFYIszPieGuFyOrofykO5GtrouZJrpsEfzb64jpNYTNLe', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402534.png'),
-(11, 'Megan', 'James', 'meganjames@gmail.com', 'meganjames', NULL, '$2y$10$FoXdCQ5E99VgoM/CqehDQevRyfIPu3B0MCzeOsOIlUqIm5W1dAzt2', '2023-05-29 18:24:48', '2023-05-29 18:25:32', '$2y$10$EyPxFCLOkV1xMcCRrhrbD.lHbPaAPpzs3xr4im8XRrstdbKr2e702', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402723.png'),
-(12, 'Holly', 'Fax', 'hollyfax@gmail.com', 'meganjames', NULL, '$2y$10$j28Q9BqOu3TvqnvH3CMq5Ozlt6ZKVFYGpGN4oO2dRhBwnWT7cGvUK', '2023-05-29 18:26:05', '2023-05-29 18:26:41', '$2y$10$0jOWZPPC1Ze2PPypzIv.f.kvgEdvS5srz3Jr4Y.4I5IWFGSzQ1peu', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402791.png'),
-(13, 'Justin', 'Lang', 'justinlang@gmail.com', 'justinlang', NULL, '$2a$12$A8xyz0fOOgB41EbR.5L5YOPjmiui76NAaTJvci0D6EMu8ro3O84rC', '2023-05-29 18:27:20', '2023-05-29 18:29:13', '$2y$10$eCPMVoK5b/JFL4gqz8DNFeEsWf3AcQYBQSm2/hRI0U1e8NLUdn6yW', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402895.png');
+INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`, `deleted_at`) VALUES
+(6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png', NULL),
+(9, 'James', 'Dean', 'jamesdean@gmail.com', 'justinlang', NULL, '$2y$10$IFiqJItMoVk7RQnGt1lLa.7qlpYXgZ/o.TASQqgOccg1yKjqe3L6q', '2023-05-29 18:20:02', '2023-05-29 18:20:56', '$2y$10$fNWK93JyNnoRlnXwYTnJFeKTNaG/viXI259Wn92dzq3tuN/RNK1xa', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402446.png', NULL),
+(10, 'Angelina', 'Smith', 'angelinasmith@gmail.com', 'angelinasmith', NULL, '$2y$10$U8BKIe2boEaM6qZktEOSae8T7IHhmBLY7pHTUKj1ekVUHsOgLrbvi', '2023-05-29 18:21:32', '2023-05-29 18:22:23', '$2y$10$Y.mBCCk6tFYIszPieGuFyOrofykO5GtrouZJrpsEfzb64jpNYTNLe', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402534.png', NULL),
+(11, 'Megan', 'James', 'meganjames@gmail.com', 'meganjames', NULL, '$2y$10$FoXdCQ5E99VgoM/CqehDQevRyfIPu3B0MCzeOsOIlUqIm5W1dAzt2', '2023-05-29 18:24:48', '2023-05-29 18:25:32', '$2y$10$EyPxFCLOkV1xMcCRrhrbD.lHbPaAPpzs3xr4im8XRrstdbKr2e702', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402723.png', NULL),
+(12, 'Holly', 'Fax', 'hollyfax@gmail.com', 'meganjames', NULL, '$2y$10$j28Q9BqOu3TvqnvH3CMq5Ozlt6ZKVFYGpGN4oO2dRhBwnWT7cGvUK', '2023-05-29 18:26:05', '2023-05-29 18:26:41', '$2y$10$0jOWZPPC1Ze2PPypzIv.f.kvgEdvS5srz3Jr4Y.4I5IWFGSzQ1peu', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402791.png', NULL),
+(13, 'Justin', 'Lang', 'justinlang@gmail.com', 'justinlang', NULL, '$2a$12$A8xyz0fOOgB41EbR.5L5YOPjmiui76NAaTJvci0D6EMu8ro3O84rC', '2023-05-29 18:27:20', '2023-05-29 18:29:13', '$2y$10$eCPMVoK5b/JFL4gqz8DNFeEsWf3AcQYBQSm2/hRI0U1e8NLUdn6yW', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402895.png', NULL),
+(15, 'ali', 'zafar', 'alizafar52898@gmail.com', 'alizafar', NULL, '$2y$10$GERBrdVV5V5HzPXmbmSrI.Rf5EEI0H83gq2.npMsZ/L.cN4ryEau2', '2023-06-03 02:39:05', '2023-06-03 02:39:05', '$2y$10$XZI9AE25nHy7Lz2JHbAyS.E/wlIIC5FI7ksbcTnxDn4/DjMM57aZi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -53,6 +53,29 @@ class HomeController extends Controller
         return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
     }
 
+    public function itineraries()
+    {
+        $itinerary = Itineraries::get();
+        return view('frontend.pages.itineraries',compact('itinerary'));
+    }
+
+    public function slug_itineraries($slug)
+    {
+        $tag = Tags::where('slug',$slug)->first();
+        if(!empty($tag))
+        {
+            $itineraries = Itineraries::whereJsonContains('tags',json_encode($tag->id))
+            ->get();
+
+            // dd($itineraries);
+            return view('frontend.pages.slug-itineraries',compact('itineraries'));                
+        }
+        else
+        {
+            return back()->with('error','Invalid Tag');
+        }
+    }
+
     public function favourites(Request $request)
     {
         $output = array();

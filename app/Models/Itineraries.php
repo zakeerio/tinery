@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Favorites;
 use App\Models\Comment;
 use App\Models\ItineraryDays;
+use App\Models\Tags;
 use App\Models\ItineraryActivities;
 
 class Itineraries extends Model
@@ -64,5 +65,12 @@ class Itineraries extends Model
     public function itineraryactivities()
     {
         return $this->ItineraryActivities(Comment::class);
+    }
+
+    public function tagsdata($tags){
+        
+        $singletag = Tags::find($tags);
+
+        return $singletag;
     }
 }
