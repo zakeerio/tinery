@@ -28,7 +28,7 @@
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #0F6496 !important;
 }
 
@@ -86,7 +86,7 @@
 .explore-section h2 {
     font-weight: 300;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 1.4em;
 }
 
 .bg-img {
@@ -147,7 +147,7 @@
     font-style: normal;
     font-weight: 300;
     font-size: 24px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #29293D;
     font-family: "Axiforma", Sans-serif;
     padding: 12px 0;
@@ -176,7 +176,7 @@
     font-style: normal;
     font-weight: 200;
     font-size: 16px;
-    /* line-height: 24px; */
+    /* line-height: 1.4em; */
     color: #29293D;
     font-family: "Axiforma", Sans-serif;
     margin-top: 36px;
@@ -247,7 +247,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
 
     color: #000000;
 }
@@ -278,7 +278,7 @@
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #29293D;
 }
 
@@ -340,7 +340,7 @@
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #2A293D;
 }
 
@@ -364,8 +364,9 @@
 }
 
 .w-120 {
-    max-width: 120px;
+    max-width: 64px;
     width: 100%;
+    border-radius: 6px;
 }
 
 
@@ -441,7 +442,7 @@
 }
 
 .sideborder {
-    height: 206px;
+    height: 100%;
 }
 
 .vr1 {
@@ -521,7 +522,7 @@
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #FFFFFF;
 }
 
@@ -624,7 +625,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
 
     color: #1d1d1e;
 }
@@ -634,7 +635,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 14px !important;
-    /* line-height: 24px; */
+    /* line-height: 1.4em; */
 
 
     color: #000000 !important;
@@ -645,7 +646,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 1.4em;
 
 
     color: #3E3E43;
@@ -707,7 +708,7 @@ header {
 .profile-relate {
     font-weight: 300;
     font-size: 20px !important;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #2A293D;
 }
 
@@ -728,7 +729,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 16px !important;
-    line-height: 24px;
+    line-height: 1.4em;
     min-width: 70px;
     color: #C83232;
 }
@@ -755,7 +756,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 16px !important;
-    line-height: 24px;
+    line-height: 1.4em;
 
 
     color: #3E3E43 !important;
@@ -775,7 +776,6 @@ header {
 
 .line {
     width: 100%;
-    max-width: 450px;
     height: 1.5px;
 }
 
@@ -784,9 +784,30 @@ header {
 
 }
 
+.height-400 {
+    height: 400px;
+}
+
 .fam-img {
     width: 400px;
 
+}
+
+.btn:hover {
+    background-color: transparent;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+
+.btn:first-child:active {
+    background-color: transparent !important;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+
+.position-close-bt {
+    top: 15px;
+    right: 30px;
 }
 
 .seaimg {
@@ -832,7 +853,7 @@ header {
     font-style: normal;
     font-weight: 300;
     font-size: 16px !important;
-    line-height: 24px;
+    line-height: 1.4em;
     /* or 150% */
 
 
@@ -991,7 +1012,7 @@ select.did-floating-select::-ms-expand {
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
     color: #6E6E72;
 }
 
@@ -1034,7 +1055,7 @@ select.did-floating-select::-ms-expand {
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.4em;
     margin: 28px 0;
     padding-left: 35px;
 
