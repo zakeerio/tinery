@@ -30,12 +30,26 @@ class HomeController extends Controller
     }
     public function username($username = '')
     {
+        $tagsnames = array();
         if(!empty($username)) {
             $user = User::where('username', $username)->with('favorites.itineraries')->first();
             $itineraries = $user->itineraries;
-
+            foreach($itineraries as $itineraries)
+            {
+                $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
+                $tags = json_decode($singleitinerary->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+                    
+                    array_push($tagsnames,$tag->name);
+                }
+            }
+            $itineraries = $user->itineraries;
+            $singletag = array_unique($tagsnames);
+            
             if($user->count() >  0) {
-                return view('frontend.pages.profile', compact('user','itineraries'));
+                return view('frontend.pages.profile', compact('user','itineraries','singletag'));
             } else {
                 abort(403);
             }
