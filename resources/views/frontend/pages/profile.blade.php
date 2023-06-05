@@ -280,8 +280,8 @@
                                                 <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
                                                     @if ($singletag)
 
-                                                        @foreach($singletag as $singletag)
-                                                        <a href="{{url('/slug/'.Str::slug($singletag))}}"><button class="foodie"> {{$singletag}} </button> </a>
+                                                        @foreach($singletag as $singletagitem)
+                                                        <a href="{{url('/slug/'.Str::slug($singletagitem->slug))}}"><button class="foodie"> {{$singletagitem->name}} </button> </a>
                                                         @endforeach
                                                     @endif
                                                     <!-- <a href="#"> <button class="foodie"> Coffee </button> </a>

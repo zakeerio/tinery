@@ -46,7 +46,27 @@ class UserController extends Controller
         $itineraries = $user->itineraries;
         $isloggedin = true;
 
-        return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries)->with('isloggedin',$isloggedin);
+        $tagsnames = array();
+        if(!empty($username)) {
+            $user = User::where('username', $username)->with('favorites.itineraries')->first();
+            $itineraries = $user->itineraries;
+            foreach($itineraries as $itineraries)
+            {
+                $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
+                $tags = json_decode($singleitinerary->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+
+                    array_push($tagsnames,$tag->name);
+                }
+            }
+        }
+
+
+        $singletag = array_unique($tagsnames);
+
+        return view('frontend.pages.profile')->with('user',$user)->with('itineraries', $itineraries)->with('isloggedin',$isloggedin)->with('singletag', $singletag);
     }
 
     public function profileupdate(Request $request)
