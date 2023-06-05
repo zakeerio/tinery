@@ -41,13 +41,13 @@ class HomeController extends Controller
                 foreach($tags as $tags)
                 {
                     $tag = Tags::where('id',$tags)->first();
-                    
-                    array_push($tagsnames,$tag->name);
+
+                    array_push($tagsnames,$tag->slug);
                 }
             }
             $itineraries = $user->itineraries;
             $singletag = array_unique($tagsnames);
-            
+
             if($user->count() >  0) {
                 return view('frontend.pages.profile', compact('user','itineraries','singletag'));
             } else {
@@ -82,7 +82,7 @@ class HomeController extends Controller
             ->get();
 
             // dd($itineraries);
-            return view('frontend.pages.slug-itineraries',compact('itineraries'));                
+            return view('frontend.pages.slug-itineraries',compact('itineraries'));
         }
         else
         {

@@ -58,7 +58,7 @@ class UserController extends Controller
                 {
                     $tag = Tags::where('id',$tags)->first();
 
-                    array_push($tagsnames,$tag->name);
+                    array_push($tagsnames,$tag->slug);
                 }
             }
         }
