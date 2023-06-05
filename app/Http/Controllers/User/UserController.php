@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Tags;
 use App\Models\Itineraries;
 use Illuminate\Support\Facades\Hash;
 
@@ -47,19 +48,16 @@ class UserController extends Controller
         $isloggedin = true;
 
         $tagsnames = array();
-        if(!empty($username)) {
-            $user = User::where('username', $username)->with('favorites.itineraries')->first();
-            $itineraries = $user->itineraries;
-            foreach($itineraries as $itineraries)
+        foreach($itineraries as $singleitinerary)
+        {
+            // dd($singleitinerary);
+            // $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
+            $tags = json_decode($singleitinerary->tags);
+            foreach($tags as $tags)
             {
-                $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
-                $tags = json_decode($singleitinerary->tags);
-                foreach($tags as $tags)
-                {
-                    $tag = Tags::where('id',$tags)->first();
+                $tag = Tags::where('id',$tags)->first();
 
-                    array_push($tagsnames,$tag->slug);
-                }
+                array_push($tagsnames,$tag->slug);
             }
         }
 
