@@ -278,9 +278,12 @@
                                             <div class="col-lg-12">
                                                 <small class="small-tiny-color " >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                 <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
-                                                    @foreach($singletag as $singletag)
-                                                    <a href="{{url('/slug/'.Str::slug($singletag))}}"><button class="foodie"> {{$singletag}} </button> </a>
-                                                    @endforeach
+                                                    @if ($singletag)
+
+                                                        @foreach($singletag as $singletag)
+                                                        <a href="{{url('/slug/'.Str::slug($singletag))}}"><button class="foodie"> {{$singletag}} </button> </a>
+                                                        @endforeach
+                                                    @endif
                                                     <!-- <a href="#"> <button class="foodie"> Coffee </button> </a>
                                                     <a href="#"> <button class="foodie"> Planned </button> </a>
                                                     <a href="#"> <button class="foodie"> Fun </button> </a> -->
