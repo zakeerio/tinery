@@ -279,9 +279,8 @@
                                                 <small class="small-tiny-color " >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                 <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
                                                     @if ($singletag)
-
                                                         @foreach($singletag as $singletagitem)
-                                                        <a href="{{url('/slug/'.Str::slug($singletagitem->slug))}}"><button class="foodie"> {{$singletagitem->name}} </button> </a>
+                                                        <a href="{{url('/slug/'.Str::slug($singletagitem))}}"><button class="foodie"> {{$singletagitem}} </button> </a>
                                                         @endforeach
                                                     @endif
                                                     <!-- <a href="#"> <button class="foodie"> Coffee </button> </a>
