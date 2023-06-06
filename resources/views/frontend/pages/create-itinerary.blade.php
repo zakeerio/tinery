@@ -121,7 +121,7 @@
             </div>
         </div>
         @else
-        <div class="container mt-4">
+        <div class="container margin-top-75">
             <div class="row">
                 <div class="col-lg-8">
                         <div class="border rounded">
@@ -276,12 +276,12 @@
                                             </div>
                                         </div> -->
                                     @endif
-                                    
+
                                     {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                          <!-- <input type='file' id="imgInp"/>
                                          <img id="blah" src="#" alt="your image" /> -->
                                          <input type="file" id="image-upload" name="seo_image" accept="image/*" required>
-                                        
+
                                         <img id="image-preview" src="#" alt="Image Preview">
                                         <!-- <label for="file" class="text-center">
                                              <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
@@ -302,7 +302,7 @@
                                         };
                                         reader.readAsDataURL(event.target.files[0]);
                                         }
-                                        
+
                                         var fileInput = document.getElementById('image-upload');
                                         fileInput.addEventListener('change', previewImage);
                                      </script>
@@ -318,7 +318,7 @@
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
                                     <h2 class="fw-bold mb-0">Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
-                                        <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
+                                        <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
@@ -337,7 +337,7 @@
                                                 </div>
                                                 <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
                                                     <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
-                                                        <h5 class="text-center text-danger m-0 p-2">
+                                                        <h5 class="text-center text-danger m-0 p-2 fw-bold">
                                                             Delete Day
                                                         </h5>
                                                     </a>
@@ -412,25 +412,25 @@
                                         function previewImages(event) {
                                         var files = event.target.files;
                                         var previewContainer = document.getElementById('image-preview-1');
-                                        
+
                                         // Clear existing previews
                                         previewContainer.innerHTML = '';
-                                        
+
                                         for (var i = 0; i < files.length; i++) {
                                             var reader = new FileReader();
-                                            
+
                                             reader.onload = function(e) {
                                             var previewImage = document.createElement('img');
                                             previewImage.classList.add('preview-image');
                                             previewImage.src = e.target.result;
-                                            
+
                                             previewContainer.appendChild(previewImage);
                                             };
-                                            
+
                                             reader.readAsDataURL(files[i]);
                                         }
                                         }
-                                        
+
                                         var fileInput = document.getElementById('image-upload-1');
                                         fileInput.addEventListener('change', previewImages);
                                     </script>
@@ -476,7 +476,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="profile p-3">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center mb-3">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
