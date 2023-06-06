@@ -428,7 +428,7 @@
                                                 reader.onload = function(e) {
                                                 var previewImage = document.createElement('img');
                                                 previewImage.classList.add('preview-image');
-                                                previewImage.classList.add('w-200');
+                                                previewImage.classList.add('w-200 me-2');
                                                 previewImage.src = e.target.result;
 
                                                 previewContainer.appendChild(previewImage);
