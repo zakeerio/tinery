@@ -707,7 +707,11 @@ header {
     height: 30px;
 }
 
-
+.w-200 {
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+}
 
 .w-120px {
     max-width: 120px;
@@ -751,9 +755,7 @@ header {
 }
 
 .vector-img {
-
     height: 330px;
-
 }
 
 .red-p {
