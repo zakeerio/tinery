@@ -395,16 +395,14 @@
                                     <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
                                     @if($itinerary_gallery)
                                         <div class="gallery-img py-2">
-                                            <div class="d-flex justify-content-between align-items-center images-items flex-wrap">
+                                            <div class="d-flex images-items flex-wrap gap-3">
                                                 @foreach($itinerary_gallery as $files)
-                                                <div class="">
                                                     <div class=" position-relative w-200">
                                                         <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class="  position-relative img-thumbnail" alt="">
                                                         <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1">
                                                             <button class="btn-close" ></button>
                                                         </div></a>
                                                     </div>
-                                                </div>
                                                 @endforeach
 
                                             </div>
