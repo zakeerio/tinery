@@ -17,6 +17,7 @@ use Session;
 use Mail;
 use App\Mail\UserForgotPasswordEmail;
 use Hash;
+use App\Models\ItineraryGallery;
 
 class HomeController extends Controller
 {
@@ -64,7 +65,8 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('slug',$slug)->first();
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
+        $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
     }
 
     public function itineraries()
@@ -512,5 +514,76 @@ class HomeController extends Controller
 				return back()->with('error',"Error Occured");
 			}
 		}
+    }
+
+    public function single_itinerary_cover_upload(Request $request)
+    {
+        // Validate the user input
+        $rules = [
+            'seo_image' => 'required|image',
+		];
+
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return back()->with('error','Fields Error')
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+
+			try{
+
+                if($request->hasFile('seo_image'))
+                {
+                    $seo_image = $request->file('seo_image');
+                    $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
+
+                    $destinationPath = public_path('/frontend/itineraries');
+                    $seo_image->move($destinationPath, $input['seo_image']);
+
+                    $array = Itineraries::find($data['id']);
+                    $array->seo_image = $input['seo_image'];
+                    $array->save();
+                    return redirect()->back()->with('success',"Upload Cover Successfully");
+                }
+                else
+                {
+                    return redirect()->back()->with('error',"Uploade Image Fail");
+                }
+			}
+			catch(Exception $e){
+				return back()->with('error',"Error Occured");
+			}
+		}
+    }
+
+    public function single_itinerary_gallery_upload(Request $request)
+    {
+        // Validate the user input
+        $request->validate([
+			'images' => 'required',
+		]);
+
+		if ($request->hasfile('images')) 
+		{
+			$images = $request->file('images');
+
+			foreach($images as $image) {
+
+				$name = time().rand(1,100).'.'.$image->extension();
+				$image->move(public_path('frontend/itineraries'), $name);  
+
+                $array = new ItineraryGallery;
+                $array->itineraryid = $request->id;
+                $array->image = $name;
+                $array->save();
+			}
+            return redirect()->back()->with('success',"Upload Pictures Successfully");
+        }
+        else
+        {
+            return redirect()->back()->with('error',"Uploade Image Fail");
+        }
     }
 }

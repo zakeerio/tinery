@@ -56,6 +56,7 @@ $key = env('GOOGLE_MAP_API_KEY');
 @endif
 
 <script>
+     
     $(document).ready(function() {
 
 

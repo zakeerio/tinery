@@ -59,6 +59,9 @@ Route::middleware('auth:user')->group(function () {
     // Route::get('/create-itinerary/{id}',[HomeController::class,'create_itinerary'])->name('create-itinerary');
     Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
 
+    Route::post('/single_itinerary_cover_upload',[HomeController::class,'single_itinerary_cover_upload'])->name('single.itinerary.cover.upload');
+    Route::post('/single_itinerary_gallery_upload',[HomeController::class,'single_itinerary_gallery_upload'])->name('single.itinerary.gallery.upload');
+
     Route::post('/itinerary/{itinerary}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
