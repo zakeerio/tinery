@@ -258,9 +258,7 @@
                             </div>
 
                             <div class="col-12 mt-4">
-                                <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center">
-
-                                    {{ $itinerary->seo_image }}
+                                <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
 
                                     @if($itinerary->seo_image != '')
                                         <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img">
@@ -396,7 +394,7 @@
                                 <div class="col-12 gallery-images p-3">
                                     <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
                                     {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                    <input type="file" id="image-upload-1" name="images[]" required accept="image/*" multiple>
+                                    <input type="file" id="image-upload-1" name="images[]" required class="form-control" accept="image/*" multiple>
                                     <br>
                                     <div id="image-preview-1" class="image-preview-1"></div>
 
