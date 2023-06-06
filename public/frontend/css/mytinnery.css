@@ -592,6 +592,11 @@ header {
     color: white;
 }
 
+.filter-bordr .btn:hover {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+}
+
 .profiler {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -680,7 +685,15 @@ header {
     object-fit: cover;
     border-radius: 12px;
 
-    margin: 64px 0 40px 0;
+    margin: 64px 0;
+}
+
+.map-margin {
+    margin: 72px 0;
+}
+
+.margin-top-75 {
+    margin-top: 75px;
 }
 
 .socail-imgaes {
@@ -689,9 +702,28 @@ header {
     gap: 10px;
 }
 
+.heart-size {
+    width: 36px;
+    height: 30px;
+}
+
+
+
+.w-120px {
+    max-width: 120px;
+    width: 100%;
+    height: 90px;
+}
+
+.mb-36px {
+    margin-bottom: 36px;
+}
+
 .profile-gap {
     gap: 35px;
 }
+
+
 
 .small-tiny-color {
     color: #9F9FA1;
@@ -781,18 +813,23 @@ header {
 
 .sea-img {
     width: 200px;
+    /* height: 264px; */
 
 }
 
-.height-400 {
-    height: 400px;
+.margin-custom {
+    margin-bottom: 88px;
 }
 
 .fam-img {
     width: 400px;
+    /* height: 264px; */
 
 }
 
+.i-img-width {
+    width: 38%;
+}
 
 .position-close-bt {
     top: 15px;
@@ -800,8 +837,8 @@ header {
 }
 
 .seaimg {
-    width: 128px;
-    height: 100px;
+    width: 96px;
+    /* height: 128px; */
 
 }
 
@@ -817,6 +854,21 @@ header {
     box-shadow: none
 }
 
+.slickslider .slick-slide {
+    margin-right: 30px;
+}
+
+.slickslider .slick-slide:last-child {
+    margin-right: 0;
+}
+
+.slickslider6 .slick-slide {
+    margin-right: 30px;
+}
+
+.slickslider6 .slick-slide:last-child {
+    margin-right: 0;
+}
 
 .login-to-add {
 
@@ -1032,8 +1084,9 @@ select.did-floating-select::-ms-expand {
 }
 
 .button-24 {
-    width: 24px;
-    height: 24px;
+    max-width: 24px;
+    width: 100%;
+
 }
 
 .profile-padding-left {
