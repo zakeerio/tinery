@@ -399,7 +399,7 @@
                                                 @foreach($itinerary_gallery as $files)
                                                 <div class="">
                                                     <div class=" position-relative w-200">
-                                                        <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class="  position-relative img-thumbnail" alt=""></a>
+                                                        <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class="  position-relative img-thumbnail" alt="">
                                                         <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1">
                                                             <button class="btn-close" ></button>
                                                         </div></a>
