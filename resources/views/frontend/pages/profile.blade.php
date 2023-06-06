@@ -278,23 +278,28 @@
                                             <div class="col-lg-12">
                                                 <small class="small-tiny-color " >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                 <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
-                                                    <a href="#"><button class="foodie"> Leaves </button> </a>
-                                                    <a href="#"> <button class="foodie"> Coffee </button> </a>
+                                                    @if ($singletag)
+
+                                                        @foreach($singletag as $singletagitem)
+                                                        <a href="{{url('/slug/'.$singletagitem)}}"><button class="foodie"> {{$singletagitem}} </button> </a>
+                                                        @endforeach
+                                                    @endif
+                                                    <!-- <a href="#"> <button class="foodie"> Coffee </button> </a>
                                                     <a href="#"> <button class="foodie"> Planned </button> </a>
-                                                    <a href="#"> <button class="foodie"> Fun </button> </a>
+                                                    <a href="#"> <button class="foodie"> Fun </button> </a> -->
                                                 </div>
                                                 {{-- <div class="form-group">
 
                                                     {!! Form::label('tags', 'tags',['class'=>'fw-bold required mb-3']) !!}
                                                     {!! Form::text('tags', $user->tags, ['class' => 'form-control rounded-pill mb-1' , 'placeholder' => 'Ex: locations, subjects, themes, etc.' ]) !!}
                                                 </div> --}}
-                                                <div class=" tags-links1"><a href="">Clear all tags</a></div>
+                                                <!-- <div class=" tags-links1"><a href="">Clear all tags</a></div> -->
                                             </div>
-                                             <div class="float-end">
+                                             <!-- <div class="float-end">
                                                 <div class="form-group text-end">
                                                     {!! Form::submit("Save", ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt' ]) !!}
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                 </div>

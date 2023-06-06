@@ -17,6 +17,7 @@ use Session;
 use Mail;
 use App\Mail\UserForgotPasswordEmail;
 use Hash;
+use App\Models\ItineraryGallery;
 
 class HomeController extends Controller
 {
@@ -30,12 +31,26 @@ class HomeController extends Controller
     }
     public function username($username = '')
     {
+        $tagsnames = array();
         if(!empty($username)) {
             $user = User::where('username', $username)->with('favorites.itineraries')->first();
             $itineraries = $user->itineraries;
+            foreach($itineraries as $itineraries)
+            {
+                $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
+                $tags = json_decode($singleitinerary->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+
+                    array_push($tagsnames,$tag->slug);
+                }
+            }
+            $itineraries = $user->itineraries;
+            $singletag = array_unique($tagsnames);
 
             if($user->count() >  0) {
-                return view('frontend.pages.profile', compact('user','itineraries'));
+                return view('frontend.pages.profile', compact('user','itineraries','singletag'));
             } else {
                 abort(403);
             }
@@ -50,7 +65,8 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('slug',$slug)->first();
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days'));
+        $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
     }
 
     public function itineraries()
@@ -68,7 +84,7 @@ class HomeController extends Controller
             ->get();
 
             // dd($itineraries);
-            return view('frontend.pages.slug-itineraries',compact('itineraries'));                
+            return view('frontend.pages.slug-itineraries',compact('itineraries'));
         }
         else
         {
@@ -268,7 +284,7 @@ class HomeController extends Controller
                             <div class="px-3">
                                 <div class="bg-light rounded-2 p-2 mt-2 mb-2">
                                     <div class="mb-3 ">
-                                        <div class="mb-3 d-flex gap-1">
+                                        <div class="mb-3 d-flex gap-1 flex-wrap">
                                             <div class="">
                                                 <label class="form-label fw-bold">Title</label>
                                                 <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
@@ -300,8 +316,8 @@ class HomeController extends Controller
                                         <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
                                         <input type="text" class="form-control rounded-pill " placeholder="Add map location">
                                     </div>
-                                    <div class="mb-3 d-flex justify-content-end">
-                                        <button class="btn btn-danger me-2 rounded-pill text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
+                                    <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
+                                        <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
                                         <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
                                     </div>
                                 </div>
@@ -498,5 +514,76 @@ class HomeController extends Controller
 				return back()->with('error',"Error Occured");
 			}
 		}
+    }
+
+    public function single_itinerary_cover_upload(Request $request)
+    {
+        // Validate the user input
+        $rules = [
+            'seo_image' => 'required|image',
+		];
+
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return back()->with('error','Fields Error')
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+
+			try{
+
+                if($request->hasFile('seo_image'))
+                {
+                    $seo_image = $request->file('seo_image');
+                    $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
+
+                    $destinationPath = public_path('/frontend/itineraries');
+                    $seo_image->move($destinationPath, $input['seo_image']);
+
+                    $array = Itineraries::find($data['id']);
+                    $array->seo_image = $input['seo_image'];
+                    $array->save();
+                    return redirect()->back()->with('success',"Upload Cover Successfully");
+                }
+                else
+                {
+                    return redirect()->back()->with('error',"Uploade Image Fail");
+                }
+			}
+			catch(Exception $e){
+				return back()->with('error',"Error Occured");
+			}
+		}
+    }
+
+    public function single_itinerary_gallery_upload(Request $request)
+    {
+        // Validate the user input
+        $request->validate([
+			'images' => 'required',
+		]);
+
+		if ($request->hasfile('images'))
+		{
+			$images = $request->file('images');
+
+			foreach($images as $image) {
+
+				$name = time().rand(1,100).'.'.$image->extension();
+				$image->move(public_path('frontend/itineraries'), $name);
+
+                $array = new ItineraryGallery;
+                $array->itineraryid = $request->id;
+                $array->image = $name;
+                $array->save();
+			}
+            return redirect()->back()->with('success',"Upload Pictures Successfully");
+        }
+        else
+        {
+            return redirect()->back()->with('error',"Uploade Image Fail");
+        }
     }
 }

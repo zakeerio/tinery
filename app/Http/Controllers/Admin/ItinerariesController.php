@@ -13,7 +13,7 @@ use App\Models\User;
 use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
-
+use App\Models\ItineraryGallery;
 
 class ItinerariesController extends BaseController
 {
@@ -149,6 +149,22 @@ class ItinerariesController extends BaseController
             }
 
             $array->save();
+
+            if ($request->hasfile('images')) 
+            {
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+
+                    $name = time().rand(1,100).'.'.$image->extension();
+                    $image->move(public_path('frontend/itineraries'), $name);  
+
+                    $array = new ItineraryGallery;
+                    $array->itineraryid = $array->id;
+                    $array->image = $name;
+                    $array->save();
+                }
+            }
 
             ItineraryDays::where('itineraries_id',$data['tempid'])
             ->update(
@@ -294,6 +310,22 @@ class ItinerariesController extends BaseController
             }
 
             $array->save();
+
+            if ($request->hasfile('images')) 
+            {
+                $images = $request->file('images');
+
+                foreach($images as $image) {
+
+                    $name = time().rand(1,100).'.'.$image->extension();
+                    $image->move(public_path('frontend/itineraries'), $name);  
+
+                    $array = new ItineraryGallery;
+                    $array->itineraryid = $id;
+                    $array->image = $name;
+                    $array->save();
+                }
+            }
 
             ItineraryDays::where('itineraries_id',$id)
             ->update(

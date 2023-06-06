@@ -39,13 +39,9 @@
                                     @endif
                                 </a>
                             </div>
-
                             <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
                             <div class="vr align-self-center linesize mx-1"></div>
                             <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
-
-
-
                         </div>
 
 
@@ -159,36 +155,13 @@
 
                         <div class="gallery-img">
                             <div class="row d-flex justify-content-between align-items-center images-items">
-                                <div class="col-lg-6">
-                                    <img src="{{ asset('frontend/images/fam.png') }}" alt="" class="fam-img">
+                                @foreach($itinerary_gallery as $files)
+                                <div class="col-lg-3 mt-2">
+                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class=" sea-img">
 
                                 </div>
-
-                                <div class="col-lg-3">
-                                    <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" sea-img">
-
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class=" row d-flex align-items-center justify-content-between ">
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" seaimg">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class="seaimg">
-                                        </div>
-                                    </div>
-
-                                    <div class=" row d-flex align-items-center justify-content-between">
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" seaimg">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class="seaimg">
-                                        </div>
-                                    </div>
-
-                                </div>
+                                @endforeach
+                                
                             </div>
 
                         </div>
@@ -328,11 +301,6 @@
                             @endif
                         </div>
                     </div>
-
-
-
-
-
 
                     <div class="col-lg-4">
                         <div class="profile p-3">

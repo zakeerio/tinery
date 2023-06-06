@@ -181,7 +181,10 @@
                                 {!! Form::select('status', ['published' => 'Published', 'draft' => 'Draft'], null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            {!! Form::label('images', 'Select Gallery Images') !!}
+                            {!! Form::file('images[]', ['class' => 'form-control']) !!}
+                        </div>
                         <input type="hidden" name="tempid" class="itineraries_id" value="{{$tempid}}">
                         <div class="row mt-4">
                             <div class="col-lg-9">
