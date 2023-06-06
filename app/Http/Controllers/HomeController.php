@@ -184,7 +184,7 @@ class HomeController extends Controller
     public function edit_itinerary($itineraryid)
     {
         $tags = Tags::get();
-        $itinerary = Itineraries::find($itineraryid);
+        $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary'));

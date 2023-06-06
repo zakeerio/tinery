@@ -284,9 +284,7 @@
                                                         <a href="{{url('/slug/'.$singletagitem)}}"><button class="foodie"> {{$singletagitem}} </button> </a>
                                                         @endforeach
                                                     @endif
-                                                    <!-- <a href="#"> <button class="foodie"> Coffee </button> </a>
-                                                    <a href="#"> <button class="foodie"> Planned </button> </a>
-                                                    <a href="#"> <button class="foodie"> Fun </button> </a> -->
+
                                                 </div>
                                                 {{-- <div class="form-group">
 

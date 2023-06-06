@@ -244,7 +244,7 @@
                                     $tag = \App\Models\Tags::find($itinerarytag);
                                     @endphp
                                 @if($tag)
-                                    <a href="#">
+                                    <a href="{{url('/slug/'.$tag->slug)}}">
                                         <button class="foodie">
                                             {{$tag->name}}
                                         </button>
@@ -252,12 +252,6 @@
                                 @endif
 
                                 @endforeach
-                                <!-- <a href="#"> <button class="foodie">Foodie</button></a>
-                                <a href="#"> <button class="foodie">Backpacker</button></a>
-                                <a href="#"> <button class="foodie">Spring</button></a>
-                                <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                                <a href="#"> <button class="foodie">Mexico</button></a> -->
-                                <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                             </div>
                             <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>
@@ -265,8 +259,11 @@
 
                             <div class="col-12 mt-4">
                                 <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center">
+
+                                    {{ $itinerary->seo_image }}
+
                                     @if($itinerary->seo_image != '')
-                                        <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview">
+                                        <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img">
                                         <!-- <div class="ms-2">
                                                 <div class=" position-relative w-120">
                                                 <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
@@ -275,23 +272,34 @@
                                                 </div>
                                             </div>
                                         </div> -->
+                                    @else
+                                        <label for="file" class="text-center">
+                                            <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                            <h3>Add cover photo!</h3>
+                                            <p>Showcase the itinerary showing image.</p>
+                                            <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                        </label>
                                     @endif
 
                                     {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                          <!-- <input type='file' id="imgInp"/>
                                          <img id="blah" src="#" alt="your image" /> -->
-                                         <input type="file" id="image-upload" name="seo_image" accept="image/*" required>
+                                         <div class="col-12">
+                                            <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
+                                        </div>
+                                        <div class="col-12">
 
-                                        <img id="image-preview" src="#" alt="Image Preview">
-                                        <!-- <label for="file" class="text-center">
-                                             <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                             <h3>Add cover photo!</h3>
-                                             <p>Showcase the itinerary showing image.</p>
-                                             <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
-                                        </label> -->
-                                        <br><br>
-                                        <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                        <input type="submit" value="Save">
+                                            <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200">
+                                            <!-- <label for="file" class="text-center">
+                                                <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                                <h3>Add cover photo!</h3>
+                                                <p>Showcase the itinerary showing image.</p>
+                                                <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                            </label> -->
+                                            <br><br>
+                                            <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                            <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
+                                        </div>
                                      {!! Form::close() !!}
                                      <script>
                                         function previewImage(event) {
@@ -309,7 +317,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-4">
+                        <div class="col-12">
                             @if(!empty($days))
                                 @foreach($days as $key => $days)
                                 @php
@@ -394,7 +402,7 @@
 
                                 <br><br>
                                 <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                <input type="submit" value="Save">
+                                <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
                                 {!! Form::close() !!}
                                 <!-- <label for="file" class="text-center">
                                     <img src="{{ asset('frontend/images/add-image.png')}}" alt="">

@@ -448,7 +448,7 @@
                                 @endphp
 
                                 @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
