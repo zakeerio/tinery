@@ -275,7 +275,7 @@
                                             <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
                                             <h3>Add cover photo!</h3>
                                             <p>Showcase the itinerary showing image.</p>
-                                            <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                            <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                         </label>
                                     @endif
 
@@ -292,7 +292,7 @@
                                                 <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
                                                 <h3>Add cover photo!</h3>
                                                 <p>Showcase the itinerary showing image.</p>
-                                                <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
+                                                <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                             </label> -->
                                             <br><br>
                                             <input type="hidden" value="{{$itinerary->id}}" name="id">
