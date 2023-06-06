@@ -287,7 +287,7 @@
                                          <div class="col-12">
                                             <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 py-4">
 
                                             <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200">
                                             <!-- <label for="file" class="text-center">
@@ -358,7 +358,7 @@
                             @endif
 
                             <div class=" justify-content-center d-flex align-items-center">
-                            <div class="vr vr3"></div>
+                                <div class="vr vr3"></div>
                             </div>
                             <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                                 <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
@@ -393,55 +393,56 @@
                                     </div>
                                 </div> -->
 
-                                <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
+                                <div class="col-12 gallery-images p-3">
+                                    <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
+                                    {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                    <input type="file" id="image-upload-1" name="images[]" required accept="image/*" multiple>
+                                    <br>
+                                    <div id="image-preview-1" class="image-preview-1"></div>
 
-                                {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                <input type="file" id="image-upload-1" name="images[]" required accept="image/*" multiple>
-                                <br>
-                                <div id="image-preview-1" class="image-preview-1"></div>
+                                    <br><br>
+                                    <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                    <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
+                                    {!! Form::close() !!}
+                                    <!-- <label for="file" class="text-center">
+                                        <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
 
-                                <br><br>
-                                <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
-                                {!! Form::close() !!}
-                                <!-- <label for="file" class="text-center">
-                                    <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                        <p class="attach-area-width text-center">
+                                            <span class="fw-bold">Attach or drop your images here.</span><br>
+                                            Accepts .jpg, .jpeg, .png, and .gif file types.</p>
+                                        <p class="fw-bold">Maximum file size is 5 MB</p>
 
-                                    <p class="attach-area-width text-center">
-                                        <span class="fw-bold">Attach or drop your images here.</span><br>
-                                        Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                                    <p class="fw-bold">Maximum file size is 5 MB</p>
+                                        <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
+                                        <input type="file" id="file" class="d-none">
 
-                                    <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
-                                    <input type="file" id="file" class="d-none">
+                                        <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label> -->
+                                        <script>
+                                            function previewImages(event) {
+                                            var files = event.target.files;
+                                            var previewContainer = document.getElementById('image-preview-1');
 
-                                    <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label> -->
-                                    <script>
-                                        function previewImages(event) {
-                                        var files = event.target.files;
-                                        var previewContainer = document.getElementById('image-preview-1');
+                                            // Clear existing previews
+                                            previewContainer.innerHTML = '';
 
-                                        // Clear existing previews
-                                        previewContainer.innerHTML = '';
+                                            for (var i = 0; i < files.length; i++) {
+                                                var reader = new FileReader();
 
-                                        for (var i = 0; i < files.length; i++) {
-                                            var reader = new FileReader();
+                                                reader.onload = function(e) {
+                                                var previewImage = document.createElement('img');
+                                                previewImage.classList.add('preview-image');
+                                                previewImage.src = e.target.result;
 
-                                            reader.onload = function(e) {
-                                            var previewImage = document.createElement('img');
-                                            previewImage.classList.add('preview-image');
-                                            previewImage.src = e.target.result;
+                                                previewContainer.appendChild(previewImage);
+                                                };
 
-                                            previewContainer.appendChild(previewImage);
-                                            };
+                                                reader.readAsDataURL(files[i]);
+                                            }
+                                            }
 
-                                            reader.readAsDataURL(files[i]);
-                                        }
-                                        }
-
-                                        var fileInput = document.getElementById('image-upload-1');
-                                        fileInput.addEventListener('change', previewImages);
-                                    </script>
+                                            var fileInput = document.getElementById('image-upload-1');
+                                            fileInput.addEventListener('change', previewImages);
+                                        </script>
+                                    </div>
                             </div>
 
 
