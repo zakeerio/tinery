@@ -395,7 +395,7 @@
                                     <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
                                     @if($itinerary_gallery)
                                         <div class="gallery-img py-2">
-                                            <div class="row d-flex justify-content-between align-items-center images-items">
+                                            <div class="d-flex justify-content-between align-items-center images-items flex-wrap">
                                                 @foreach($itinerary_gallery as $files)
                                                 <div class="">
                                                     <div class=" position-relative w-200">
@@ -405,10 +405,6 @@
                                                         </div></a>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="col-lg-3 mt-2">
-                                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class="sea-img">
-
-                                                </div> --}}
                                                 @endforeach
 
                                             </div>
