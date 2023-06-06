@@ -392,7 +392,22 @@
                                 </div> -->
 
                                 <div class="col-12 gallery-images p-3">
-                                    <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
+                                    <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
+                                    @if($itinerary_gallery)
+                                        <div class="gallery-img">
+                                            <div class="row d-flex justify-content-between align-items-center images-items">
+                                                @foreach($itinerary_gallery as $files)
+                                                <div class="col-lg-3 mt-2">
+                                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class=" sea-img">
+
+                                                </div>
+                                                @endforeach
+
+                                            </div>
+
+                                        </div>
+                                    @endif
+
                                     {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                     <input type="file" id="image-upload-1" name="images[]" required class="form-control" accept="image/*" multiple>
                                     <br>
@@ -416,25 +431,25 @@
                                         <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label> -->
                                         <script>
                                             function previewImages(event) {
-                                            var files = event.target.files;
-                                            var previewContainer = document.getElementById('image-preview-1');
+                                                var files = event.target.files;
+                                                var previewContainer = document.getElementById('image-preview-1');
 
-                                            // Clear existing previews
-                                            previewContainer.innerHTML = '';
+                                                // Clear existing previews
+                                                previewContainer.innerHTML = '';
 
-                                            for (var i = 0; i < files.length; i++) {
-                                                var reader = new FileReader();
+                                                for (var i = 0; i < files.length; i++) {
+                                                    var reader = new FileReader();
 
-                                                reader.onload = function(e) {
-                                                var previewImage = document.createElement('img');
-                                                previewImage.classList.add('preview-image','img-thumbnail','w-200','m-1');
-                                                previewImage.src = e.target.result;
+                                                    reader.onload = function(e) {
+                                                        var previewImage = document.createElement('img');
+                                                        previewImage.classList.add('preview-image','img-thumbnail','w-200','m-1');
+                                                        previewImage.src = e.target.result;
 
-                                                previewContainer.appendChild(previewImage);
-                                                };
+                                                        previewContainer.appendChild(previewImage);
+                                                    };
 
-                                                reader.readAsDataURL(files[i]);
-                                            }
+                                                    reader.readAsDataURL(files[i]);
+                                                }
                                             }
 
                                             var fileInput = document.getElementById('image-upload-1');

@@ -187,7 +187,8 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary'));
+        $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
+        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
     }
 
     public function itineraries_update(Request $request)
