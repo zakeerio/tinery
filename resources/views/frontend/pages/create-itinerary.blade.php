@@ -394,7 +394,7 @@
                                 <div class="col-12 gallery-images p-3">
                                     <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
                                     @if($itinerary_gallery)
-                                        <div class="gallery-img">
+                                        <div class="gallery-img py-2">
                                             <div class="row d-flex justify-content-between align-items-center images-items">
                                                 @foreach($itinerary_gallery as $files)
                                                 <div class="col-lg-3 mt-2">
