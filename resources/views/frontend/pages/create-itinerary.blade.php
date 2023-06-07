@@ -9,7 +9,7 @@
     @endphp
     <section class="profile-section py-4">
         @if(empty($itinerary))
-        <div class="container row margin-top-75">
+        <div class="container row margin-top-75 mx-auto">
             <div class="border rounded col-lg-8">
                 <div class="row  p-3 ">
                     <div class="col-12 d-flex justify-content-between ">
@@ -52,7 +52,7 @@
                                                         $listtags[$tags->id] = $tags->name;
                                                     @endphp
                                                 @endforeach
-                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
+                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select21', 'required', 'multiple' => true]) !!}
                                             </div>
                                             <div class="mb-3">
                                                 <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
