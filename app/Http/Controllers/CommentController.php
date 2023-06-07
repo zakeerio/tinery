@@ -9,7 +9,7 @@ class CommentController extends Controller
     //
     public function store(Request $request,$id)
     {
-        dd($request);
+        dd($request->body);
         $attributes = request()->validate([
             'body' => 'required'
         ]);

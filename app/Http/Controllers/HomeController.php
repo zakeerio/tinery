@@ -71,7 +71,7 @@ class HomeController extends Controller
 
     public function itineraries()
     {
-        $itinerary = Itineraries::get();
+        $itinerary = Itineraries::paginate(20);
         return view('frontend.pages.itineraries',compact('itinerary'));
     }
 
