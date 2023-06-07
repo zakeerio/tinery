@@ -11,13 +11,26 @@ class LikeDislikeController extends Controller
     //
     public function store(Comment $comment)
     {
+        // dd($comment);
         $attributes = request()->validate([
             'type' => 'required'
         ]);
+        // dd($attributes);
+        $check = LikeDislike::where('comment_id',$comment->id)->get();
+        if(count($check) == 0)
+        {
+            $attributes['user_id'] = auth()->id();
 
-        $attributes['user_id'] = auth()->id();
+            $comment->likesDislikes()->create($attributes);    
+        }     
+        else
+        {
+            foreach($check as $check);
 
-        $comment->likesDislikes()->create($attributes);
+            $array = LikeDislike::find($check->id);
+            $array->type = $attributes['type'];
+            $array->save();
+        }   
 
         return back();
     }

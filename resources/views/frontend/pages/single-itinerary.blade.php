@@ -183,7 +183,6 @@
                                 <div class=" d-flex align-items-center">
                                     <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                     <img src="{{ asset('frontend/images/up.png') }}" alt="" class="  mx-2">
-
                                 </div>
                             </div>
                             @if(auth('user')->id() == '')
@@ -195,7 +194,7 @@
                             <form action="{{route('comments.store',$itinerary)}}" method="POST">
                                 @csrf
                                 <label>Comment</label>
-                                <textarea name="comment" class="form-control" cols="10" rows="5" required></textarea>
+                                <textarea name="body" class="form-control" cols="10" rows="5" required></textarea>
                                 <br>
                                 <input type="submit" value="Save" class="btn btn-primary">
                             </form>
@@ -204,12 +203,13 @@
                             <div class="row">
 
                                 <div class="col-md-12">
+                                <h3>Comments</h3>
                                     @if ($itinerary->comments)
 
 
                                         @foreach($itinerary->comments as $comment)
 
-                                            {{-- {{ dd($comment->user->profile) }} --}}
+                                            {{--{{ dd($comment->likesDislikes) }}--}}
 
                                             <div class="d-flex flex-row comment-row">
                                                 <div class="p-2">
@@ -227,18 +227,59 @@
                                                         <div class="row">
                                                             @if(auth('user')->id() != '')
                                                             <div class="col-lg-1">
+                                                                @if(count($comment->likesDislikes) > 0)
+                                                                @foreach($comment->likesDislikes as $likeDislike)
+                                                                @if($likeDislike->type == 'like')
+                                                                <form action="{{ route('likesDislikes.destroy', $likeDislike) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/liked.svg') }}" alt=""></button>
+                                                                </form>
+                                                                @else
                                                                 <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
                                                                     @csrf
                                                                     <input type="hidden" value="like" name="type">
                                                                     <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Like Animation.png') }}" alt=""></button>
                                                                 </form>
+                                                                @endif
+                                                                @endforeach
+                                                                @else
+                                                                <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="like" name="type">
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Like Animation.png') }}" alt=""></button>
+                                                                </form>
+                                                                @endif
                                                             </div>
                                                             <div class="col-lg-1">
+                                                            @if(count($comment->likesDislikes) > 0)
+                                                                @foreach($comment->likesDislikes as $likeDislike)
+                                                                @if($likeDislike->type == 'dislike')
+                                                                <form action="{{ route('likesDislikes.destroy', $likeDislike) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/disliked.svg') }}" alt=""></button>
+                                                                </form>
+                                                                @else
                                                                 <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
                                                                     @csrf
                                                                     <input type="hidden" value="dislike" name="type">
                                                                     <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt=""></button>
                                                                 </form>
+                                                                @endif
+                                                                @endforeach
+                                                                @else
+                                                                <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="dislike" name="type">
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt=""></button>
+                                                                </form>
+                                                                @endif
+                                                                {{--<form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="dislike" name="type">
+                                                                    <button type="submit" class="btn btn-transparent"><img src="{{ asset('frontend/images/Dislike Animation.png') }}" alt=""></button>
+                                                                </form>--}}
                                                             </div>
                                                             @endif
                                                             <div class="col-lg-3 mt-2">
@@ -259,56 +300,9 @@
                             </div>
                         </div>
                         <div>
-                            <h3>Comments</h3>
+                            
 
-                            {{-- {{ dd($itinerary->comments) }} --}}
-
-                            @if ($itinerary->comments)
-
-
-                            @foreach($itinerary->comments as $comment)
-                            <div>
-                                <div>{{ $comment->body }}</div>
-                                    {{-- <form action="{{ route('comments.destroy', $comment) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit">Delete Comment</button>
-                                    </form> --}}
-
-                                    <h4>Replies</h4>
-                                    @foreach($comment->likesDislikes as $likeDislike)
-                                        <div>
-                                            <p>{{ $likeDislike->type }}</p>
-                                            <form action="{{ route('likesDislikes.update', $likeDislike) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <select name="type">
-                                                    <option value="like" {{ $likeDislike->type === 'like' ? 'selected' : '' }}>Like</option>
-                                                    <option value="dislike" {{ $likeDislike->type === 'dislike' ? 'selected' : '' }}>Dislike</option>
-                                                </select>
-                                                <button type="submit">Update</button>
-                                            </form>
-
-                                            <form action="{{ route('likesDislikes.destroy', $likeDislike) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit">Delete</button>
-                                            </form>
-                                        </div>
-                                    @endforeach
-
-                                    <form action="{{ route('likesDislikes.store', $comment) }}" method="POST">
-                                        @csrf
-                                        <select name="type">
-                                            <option value="like">Like</option>
-                                            <option value="dislike">Dislike</option>
-                                        </select>
-                                        <button type="submit">Submit</button>
-                                    </form>
-                                </div>
-                            @endforeach
-
-                            @endif
+                            
                         </div>
                     </div>
 
