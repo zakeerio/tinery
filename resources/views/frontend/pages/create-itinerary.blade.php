@@ -9,7 +9,7 @@
     @endphp
     <section class="profile-section py-4">
         @if(empty($itinerary))
-        <div class="container row margin-top-75">
+        <div class="container row margin-top-75 mx-auto">
             <div class="border rounded col-lg-8">
                 <div class="row  p-3 ">
                     <div class="col-12 d-flex justify-content-between ">
