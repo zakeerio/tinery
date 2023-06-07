@@ -45,10 +45,10 @@ class HomeController extends Controller
                     foreach($tags as $tags)
                     {
                         $tag = Tags::where('id',$tags)->first();
-    
+
                         array_push($tagsnames,$tag->slug);
                     }
-    
+
                 }
             }
             $itineraries = $user->itineraries;
@@ -137,7 +137,7 @@ class HomeController extends Controller
 
     public function create_itinerary()
     {
-        
+
         $query = Itineraries::where('user_id',Auth::guard('user')->user()->id)
         ->where('itinerary_status',NULL)
         ->get();
@@ -190,9 +190,22 @@ class HomeController extends Controller
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
+
+
             $array = new Itineraries;
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
@@ -203,13 +216,17 @@ class HomeController extends Controller
 
             $array->save();
 
+
+
+            for($i=0;$i<$data['duration'];$i++)
+            {
+                $array1 = new ItineraryDays;
+                $array1->itineraries_id = $array->id;
+                $array1->save();
+            }
+
         }
-        for($i=0;$i<$data['duration'];$i++)
-        {
-            $array1 = new ItineraryDays;
-            $array1->itineraries_id = $array->id;
-            $array1->save();
-        }
+
         // Logic for storing the data goes here...
         return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
     }
@@ -245,9 +262,22 @@ class HomeController extends Controller
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
+
             $array = Itineraries::find($data['id']);
+            // dd($array->itinerarydays->count());
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
@@ -256,6 +286,16 @@ class HomeController extends Controller
             $array->featured = '1';
             $array->itinerary_status = 'updated';
             $array->save();
+
+            if($array->itinerarydays->count() < $data['duration'] ){
+                for ($i=$array->itinerarydays->count(); $i < $data['duration']; $i++) {
+                    # code...
+                    // echo $i."<br>";
+                    $array1 = new ItineraryDays;
+                    $array1->itineraries_id = $array->id;
+                    $array1->save();
+                }
+            }
 
         }
 
@@ -269,6 +309,14 @@ class HomeController extends Controller
         $array1->itineraries_id = $itineraryid;
         $array1->save();
 
+        $days = ItineraryDays::where('itineraries_id', $itineraryid)->count();
+
+        $daysupdate = itineraries::find($itineraryid);
+
+        $daysupdate->duration = $days;
+        $daysupdate->save();
+
+
         return redirect('/edit-itinerary/'.$itineraryid)->with('success','Added Successfully');
     }
 
@@ -276,6 +324,13 @@ class HomeController extends Controller
     {
         ItineraryDays::where('id',$id)->delete();
         ItineraryActivities::where('days_id',$id)->delete();
+
+        $days = ItineraryDays::where('itineraries_id', $itineraryid)->count();
+
+        $daysupdate = itineraries::find($itineraryid);
+        $daysupdate->duration = $days;
+        $daysupdate->save();
+
 
         return redirect('/edit-itinerary/'.$itineraryid)->with('success','Deleted Successfully');
 

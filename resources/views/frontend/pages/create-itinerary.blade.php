@@ -37,11 +37,11 @@
                                             </label>
                                             <input type="text" name="title" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
                                         </div>
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
                                             </label>
                                             <input type="text" name="slug" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-3">
                                             <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
                                             @php
@@ -233,11 +233,11 @@
                                                         </label>
                                                         <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
                                                     </div>
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="slug" value="{{ $itinerary->slug}}" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
                                                         @php

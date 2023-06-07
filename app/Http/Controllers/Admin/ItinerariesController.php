@@ -110,10 +110,21 @@ class ItinerariesController extends BaseController
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
             $array = new Itineraries;
             $array->title = $data['title'];
             // $array->slug = $data['slug'];
-            $array->slug = Str::slug($data['slug'], '-');
+            $array->slug = $slug;
 
 
             $array->description = $data['description'];
@@ -151,14 +162,14 @@ class ItinerariesController extends BaseController
 
             $array->save();
 
-            if ($request->hasfile('images')) 
+            if ($request->hasfile('images'))
             {
                 $images = $request->file('images');
 
                 foreach($images as $image) {
 
                     $name = time().rand(1,100).'.'.$image->extension();
-                    $image->move(public_path('frontend/itineraries'), $name);  
+                    $image->move(public_path('frontend/itineraries'), $name);
 
                     $array = new ItineraryGallery;
                     $array->itineraryid = $array->id;
@@ -274,9 +285,20 @@ class ItinerariesController extends BaseController
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
             $array = Itineraries::find($id);
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug'], '-');
+            $array->slug = $slug;
 
             $array->description = $data['description'];
             $array->excerpt = $data['excerpt'];
@@ -313,14 +335,14 @@ class ItinerariesController extends BaseController
 
             $array->save();
 
-            if ($request->hasfile('images')) 
+            if ($request->hasfile('images'))
             {
                 $images = $request->file('images');
 
                 foreach($images as $image) {
 
                     $name = time().rand(1,100).'.'.$image->extension();
-                    $image->move(public_path('frontend/itineraries'), $name);  
+                    $image->move(public_path('frontend/itineraries'), $name);
 
                     $array = new ItineraryGallery;
                     $array->itineraryid = $id;
