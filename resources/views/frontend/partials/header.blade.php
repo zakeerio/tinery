@@ -65,16 +65,16 @@
                         <div class="container-fluid">
 
                             <div class="row d-flex align-items-center">
-                                <div class="col-lg-5 d-md-block d-none frame-img">
+                                <div class="col-md-5 d-md-block d-none frame-img">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <div id="loginform">
                                         {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
                                         @csrf
                                         <h2 class="member-h2"> Member Login</h2>
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-md-6">
                                                 <div class="labe-section w-100">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
@@ -145,10 +145,10 @@
                       <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
                     <div class="container-fluid">
                             <div class="row d-flex align-items-center">
-                                <div class="col-lg-5 d-md-block d-none frame-img">
+                                <div class="col-md-5 d-md-block d-none frame-img">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <div class="row">
                                         @if (count($errors) > 0)
                                         <div class="alert alert-danger">
@@ -161,12 +161,12 @@
                                         </div>
                                         @endif
                                     </div>
-                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => 'p-5']) !!}
+                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => 'ps-3 pe-5']) !!}
 
                                     @csrf
                                     <h2 class="member-h2">Become a Member</h2>
                                     <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-md-6">
                                                 <div class="labe-section w-100">
 
                                                     <div class="did-floating-label-content mb-4">
@@ -197,7 +197,7 @@
                                                     </div>
 
                                             </div>
-                                            <div class="col-lg-6 ">
+                                            <div class="col-md-6 ">
                                                 <div class="labe-section mx-0 mx-md-5 w-100">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}

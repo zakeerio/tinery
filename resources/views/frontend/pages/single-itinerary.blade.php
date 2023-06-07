@@ -164,10 +164,10 @@
                         </div>
 
                         <div class="gallery-img">
-                            <div class="row d-flex justify-content-between align-items-center images-items">
+                            <div class="row d-flex  images-items">
                                 @foreach($itinerary_gallery as $files)
                                 <div class="col-lg-3 mt-2">
-                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class=" sea-img">
+                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class=" sea-img w-200">
 
                                 </div>
                                 @endforeach
