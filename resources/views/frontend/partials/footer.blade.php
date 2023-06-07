@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-2 ">
+                <a href="{{ url('/')}}">
                 <img src="{{ asset("frontend/images/LOGO.png") }}" alt="Logo" class="img-fluid tiny-logo">
+                </a>
             </div>
             <div class="col-lg-2 col-sm-6">
                 <ul class="d-flex flex-column gap-3 list-unstyled">

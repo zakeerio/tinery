@@ -30,7 +30,7 @@
 
                     <div class="col-lg-2 col-sm-2 col-md-2 mx-4">
                         <div class="dropdown ">
-                            <button class="btn bg-dark text-white dropdown-toggle rounded-pill px-3 active"
+                            <button class="btn bg-light text-white dropdown-toggle rounded-pill px-3 active"
                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Location
                             </button>
@@ -41,7 +41,7 @@
                                         class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
                                         type="go">Go <span>X</span>
                                     </button>
-                                    
+
                                     <hr>
                                 </div>
                                 <form class="d-flex py-3">
@@ -419,7 +419,7 @@
                                     </div>
                                 </div>
                             </a>
-                            
+
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
                                 @php
@@ -446,31 +446,22 @@
                                 @php
                                 $tag = \App\Models\Tags::find($itinerarytag);
                                 @endphp
-                                
+
                                 @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
                                 </a>
                                 @endif
-                                
+
                                 {{-- {{ $itinerarytag }} --}}
                                 @endforeach
                         </div>
                         <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
-                    @endif                    
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="cpagination padding5050">
-                            <nav aria-label="Page navigation example">
-                                {{ $itinerary->links('vendor.pagination.custom_links') }}
-                            </nav>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -184,10 +184,11 @@ class HomeController extends Controller
     public function edit_itinerary($itineraryid)
     {
         $tags = Tags::get();
-        $itinerary = Itineraries::find($itineraryid);
+        $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary'));
+        $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
+        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
     }
 
     public function itineraries_update(Request $request)
@@ -284,7 +285,7 @@ class HomeController extends Controller
                             <div class="px-3">
                                 <div class="bg-light rounded-2 p-2 mt-2 mb-2">
                                     <div class="mb-3 ">
-                                        <div class="mb-3 d-flex gap-1">
+                                        <div class="mb-3 d-flex gap-1 flex-wrap">
                                             <div class="">
                                                 <label class="form-label fw-bold">Title</label>
                                                 <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
@@ -316,8 +317,8 @@ class HomeController extends Controller
                                         <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
                                         <input type="text" class="form-control rounded-pill " placeholder="Add map location">
                                     </div>
-                                    <div class="mb-3 d-flex justify-content-end">
-                                        <button class="btn btn-danger me-2 rounded-pill text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
+                                    <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
+                                        <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
                                         <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
                                     </div>
                                 </div>
@@ -565,14 +566,14 @@ class HomeController extends Controller
 			'images' => 'required',
 		]);
 
-		if ($request->hasfile('images')) 
+		if ($request->hasfile('images'))
 		{
 			$images = $request->file('images');
 
 			foreach($images as $image) {
 
 				$name = time().rand(1,100).'.'.$image->extension();
-				$image->move(public_path('frontend/itineraries'), $name);  
+				$image->move(public_path('frontend/itineraries'), $name);
 
                 $array = new ItineraryGallery;
                 $array->itineraryid = $request->id;

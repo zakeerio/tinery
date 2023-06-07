@@ -56,16 +56,16 @@
     <div class="modal fade" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body p-0">
 
 
 
                     <div class="form-section position-relative">
-                        <button type="button" class="btn-close position-absolute position-close-bt " data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
                         <div class="container-fluid">
 
                             <div class="row d-flex align-items-center">
-                                <div class="col-lg-5 frame-img">
+                                <div class="col-lg-5 d-md-block d-none frame-img">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
                                 <div class="col-lg-7">
@@ -87,7 +87,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-2">
                                             {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
                                         </div>
                                         <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
@@ -119,7 +119,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-2 mt-2">
                                             {!! Form::submit("Submit", ['class' => 'btn btn-light become-btn' ]) !!}
                                         </div>
                                         <a href="javascript:void(0)" data-role="clicktologin">Login?</a>
@@ -140,12 +140,12 @@
 
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
             <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-body p-0">
                 <div class="form-section position-relative">
-                      <button type="button" class="btn-close position-absolute position-close-bt " data-bs-dismiss="modal" aria-label="Close"></button>
+                      <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
                     <div class="container-fluid">
                             <div class="row d-flex align-items-center">
-                                <div class="col-lg-5 frame-img">
+                                <div class="col-lg-5 d-md-block d-none frame-img">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
                                 <div class="col-lg-7">
@@ -197,8 +197,8 @@
                                                     </div>
 
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="labe-section w-100 mx-5">
+                                            <div class="col-lg-6 ">
+                                                <div class="labe-section mx-0 mx-md-5 w-100">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
                                                         {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label']) !!}

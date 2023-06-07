@@ -12,6 +12,7 @@
                             <div class="col-lg-8">
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
+
                             <div class="col-lg-4 text-end">
                                 @if(Auth::guard('user')->user())
                                     @php
@@ -69,7 +70,7 @@
                                 $tag = \App\Models\Tags::find($itinerarytag);
                                 @endphp
                             @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
@@ -85,9 +86,18 @@
                             <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                         </div>
 
+                        <div class="content mt-4">
+                            {{ $itinerary->description }}
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
+                                @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
+                                @else
+                                {{-- <img src="{{ asset('frontend/images/map.png') }}" alt="" class="wed-img"> --}}
+                                @endif
+
                             </div>
                         </div>
 
@@ -161,7 +171,7 @@
 
                                 </div>
                                 @endforeach
-                                
+
                             </div>
 
                         </div>
