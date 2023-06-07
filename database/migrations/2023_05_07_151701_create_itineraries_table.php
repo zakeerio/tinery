@@ -43,6 +43,7 @@ class CreateItinerariesTable extends Migration
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('duration')->default(0);
+            $table->string('itinerary_status')->nullable();
         });
     }
 

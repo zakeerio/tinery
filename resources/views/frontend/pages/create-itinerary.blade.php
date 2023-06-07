@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                            @php
+                                                @php
                                                     $listtags = [];
                                                     @endphp
                                                 @foreach ($tags as $key => $tags)
@@ -240,7 +240,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                        @php
+                                                            @php
                                                                 $listtags = [];
                                                                 $listtag = json_decode($itinerary->tags);
                                                                 @endphp
@@ -316,6 +316,7 @@
                             </div>
 
                             <div class="tags profile-padding-left">
+                                @if($itinerary->tag != '')
                                 @php
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
@@ -324,14 +325,15 @@
                                     $tag = \App\Models\Tags::find($itinerarytag);
                                     @endphp
                                 @if($tag)
-                                    <a href="{{url('/slug/'.$tag->slug)}}">
-                                        <button class="foodie">
-                                            {{$tag->name}}
-                                        </button>
-                                    </a>
-                                    @endif
+                                <a href="{{url('/slug/'.$tag->slug)}}">
+                                    <button class="foodie">
+                                        {{$tag->name}}
+                                    </button>
+                                </a>
+                                @endif
 
-                                    @endforeach
+                                @endforeach
+                                @endif
                                 </div>
                                 <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>
@@ -479,7 +481,7 @@
                                             @foreach($itinerary_gallery as $files)
                                             <div class=" position-relative">
                                                 <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class=" w-200 position-relative img-thumbnail" alt="">
-                                                <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1 ">
+                                                <a href="{{ url('/delete_gallery_image/'.$files->id)}}"><div class=" position-absolute top-0 end-0 p-1 ">
                                                     <button class="btn-close btn-close-white p-2 bg-body" ></button>
                                                 </div></a>
                                                     </div>
