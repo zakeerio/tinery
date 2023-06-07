@@ -320,18 +320,18 @@
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
                                 @if ($itinerarytag)
-                                @foreach($itinerarytag as $itinerarytag)
-                                    @php
-                                        $tag = $row->tagsdata($itinerarytag);
-                                    @endphp
-                                    @if($tag)
-                                    <a href="{{url('/slug/'.$tag->slug)}}">
-                                        <button class="foodie">
-                                            {{$tag->name}}
-                                        </button>
-                                    </a>
-                                    @endif
-                                @endforeach
+                                    @foreach($itinerarytag as $itinerarytag)
+                                        @php
+                                            $tag = $itinerary->tagsdata($itinerarytag);
+                                        @endphp
+                                        @if($tag)
+                                        <a href="{{url('/slug/'.$tag->slug)}}">
+                                            <button class="foodie">
+                                                {{$tag->name}}
+                                            </button>
+                                        </a>
+                                        @endif
+                                    @endforeach
                                 @endif
 
                                 </div>
