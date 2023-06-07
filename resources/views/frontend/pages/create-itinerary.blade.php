@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                @php
+                                            @php
                                                     $listtags = [];
                                                     @endphp
                                                 @foreach ($tags as $key => $tags)
@@ -52,7 +52,7 @@
                                                         $listtags[$tags->id] = $tags->name;
                                                     @endphp
                                                 @endforeach
-                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select21', 'required', 'multiple' => true]) !!}
+                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                                             </div>
                                             <div class="mb-3">
                                                 <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
@@ -240,7 +240,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                            @php
+                                                        @php
                                                                 $listtags = [];
                                                                 $listtag = json_decode($itinerary->tags);
                                                                 @endphp
@@ -249,7 +249,7 @@
                                                                     $listtags[$tags->id] = $tags->name;
                                                                     @endphp
                                                             @endforeach
-                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
+                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                                                             <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                         </div>
                                                     <div class="mb-3">
@@ -316,24 +316,24 @@
                             </div>
 
                             <div class="tags profile-padding-left">
-                                @if($itinerary->tag != '')
                                 @php
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
+                                @if ($itinerarytag)
                                 @foreach($itinerarytag as $itinerarytag)
-                                @php
-                                    $tag = \App\Models\Tags::find($itinerarytag);
+                                    @php
+                                        $tag = $row->tagsdata($itinerarytag);
                                     @endphp
-                                @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
-                                @endif
-
+                                    @if($tag)
+                                    <a href="{{url('/slug/'.$tag->slug)}}">
+                                        <button class="foodie">
+                                            {{$tag->name}}
+                                        </button>
+                                    </a>
+                                    @endif
                                 @endforeach
                                 @endif
+
                                 </div>
                                 <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>
@@ -481,7 +481,7 @@
                                             @foreach($itinerary_gallery as $files)
                                             <div class=" position-relative">
                                                 <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class=" w-200 position-relative img-thumbnail" alt="">
-                                                <a href="{{ url('/delete_gallery_image/'.$files->id)}}"><div class=" position-absolute top-0 end-0 p-1 ">
+                                                <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1 ">
                                                     <button class="btn-close btn-close-white p-2 bg-body" ></button>
                                                 </div></a>
                                                     </div>

@@ -81,6 +81,12 @@ $(document).ready(function() {
 
     $(document).ready(function() {
 
+        $('#intro').on('shown.bs.modal', function () {
+            $('.select2').select2({
+                dropdownParent: $('#intro') // Specify the modal element as the parent container
+            });
+        });
+
         if($('#address_street').length > 0) {
 
                 var options = {
