@@ -34,7 +34,7 @@ class ItinerariesController extends BaseController
     {
         //
         $this->setPageTitle("Itineraries","Itineraries List");
-        $itineraries = Itineraries::get();
+        $itineraries = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         return view('admin.itineraries.index',compact('itineraries'));
     }
 
@@ -136,6 +136,7 @@ class ItinerariesController extends BaseController
             $array->featured = $data['featured'];
             $array->visibility = $data['visibility'];
             $array->status = $data['status'];
+            $array->itinerary_status = 'updated';
 
             if($request->hasFile('seo_image'))
             {
@@ -200,7 +201,7 @@ class ItinerariesController extends BaseController
         // dd($slug);
 
         $this->setPageTitle("Itineraries","Itineraries List");
-        $itineraries = Itineraries::get();
+        $itineraries = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         return view('admin.itineraries.index',compact('itineraries'));
     }
 
@@ -297,6 +298,7 @@ class ItinerariesController extends BaseController
             $array->featured = $data['featured'];
             $array->visibility = $data['visibility'];
             $array->status = $data['status'];
+            $array->itinerary_status = 'updated';
 
             if($request->hasFile('seo_image'))
             {
