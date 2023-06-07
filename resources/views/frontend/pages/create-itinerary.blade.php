@@ -7,16 +7,16 @@
 
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
-    <section class="profile-section">
+    <section class="profile-section py-4">
         @if(empty($itinerary))
-        <div class="container mt-4">
-            <div class="border rounded">
-                <div class="row p-2  p-3 ">
+        <div class="container row margin-top-75">
+            <div class="border rounded col-lg-8">
+                <div class="row  p-3 ">
                     <div class="col-12 d-flex justify-content-between ">
                         <h2 class=" trip-h1">Itinerary Title</h2>
                         <!-- Button trigger modal -->
-                        <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
-                            <img src="{{ asset('frontend/images/editbt.png')}}" alt="">
+                        <button type="button " class="bg-transparent border-0 " data-bs-toggle="modal" data-bs-target="#intro"  title="Create Itinerary">
+                            <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24" alt="">
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -25,8 +25,8 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title fw-bold" id="staticBackdropLabel">
                                             Intro</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
                                     <div class="modal-body p-3 ">
                                         {!! Form::open(['route' => 'itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                         <div class="mb-3">
@@ -44,25 +44,25 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                @php
+                                            @php
                                                     $listtags = [];
-                                                @endphp
+                                                    @endphp
                                                 @foreach ($tags as $key => $tags)
-                                                    @php
+                                                @php
                                                         $listtags[$tags->id] = $tags->name;
                                                     @endphp
                                                 @endforeach
                                                 {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5"></textarea>
-                                        </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            </div>
 
-                                        <div class="mb-3">
-                                            <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control rounded-pill" name="address_street" value="" id="address_street" required>
-                                        </div>
+                                            <div class="mb-3">
+                                                <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control rounded-pill" name="address_street" value="" id="address_street" required>
+                                            </div>
                                         <div class="mb-3">
                                             <label for="title" class="form-label fw-bold">Duration</label>
                                             <input type="number" name="duration" value="" class="form-control rounded-pill" placeholder="Duration">
@@ -81,19 +81,28 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
-                <div class="col-12 d-flex align-items-center my-3  gap-2">
-                    <img src="{{ asset('frontend/images/Image.png')}}" alt="">
-                    <p class="my-auto">{{$user->name}}</p>
-                    <div class="vr h-50 align-self-center"></div>
-                    <div class="text">{{date('d/m/Y',strtotime($user->created_at))}}
+                <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                    <div class=" ">
+                        <a href="{{ route('username', ['username' => $user->username]) }}">
+                            @if (!empty($user->profile))
+                                <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="imgagesize rounded-circle">
+                            @else
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                            @endif
+                        </a>
                     </div>
+
+                    <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $user->username]) }}">{{ ($user) ? $user->name : 'User not found.' }} </a></div>
+                    <div class="vr align-self-center linesize mx-1"></div>
+                    <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime(date(now())))}}</div>
                 </div>
 
 
-                <div class="col-12 d-flex gap-3">
+                <div class="city d-flex profile-padding-left ">
                     <div class="location d-flex gap-2 align-items-center">
                         <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
                         <p class="my-auto">Location</p>
@@ -108,25 +117,96 @@
                     </div>
                 </div>
 
-            <div class="col-12 ">
-            <div class="col-12 ">
 
                 <div class="col-12 ">
 
-                    <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">Food</button>
+
+                        <div class="tags profile-padding-left">
+
+                            <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">Food</button>
+                        </div>
+                        <div class=" col-12 tags-description ">
+                            <p class=" pe-2 ">This is our itinerary Description</p>
+                        </div>
                 </div>
-                <div class="col-12 mb-3">
-                    <p>This is our itinerary Description</p>
-                </div>
-            </div>
+
+             </div>
+             <div class="col-lg-4">
+                <div class="profile p-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="sideprofilepic rounded-circle">
+                            <a href="{{ route('username', ['username' => $user->username]) }}">
+                                        @if (!empty($user->profile))
+                                        <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="">
+                                        @else
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                        @endif
+                                    </a>
+                                        </div>
+                                        <div class="sidenameandlinks ">
+                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $user->username]) }}">{{$user->name}}</a></div>
+                                    <div class="d-flex  socialpicsize">
+                                        @if(!empty($user->facebook))
+                                        <div>  <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($user->twitter))
+                                            <div><a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
+                                            @endif
+                                            @if(!empty($user->instagram))
+                                            <div> <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($user->tiktok))
+                                            <div><a href="{{$user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
+                                            @endif
+                                            @if(!empty($user->website))
+                                            <div> <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                            @endif
+                                    </div>
+                                </div>
+
+
+                            </div>
+                                    <h6 class="profile-details p-3">
+                                {{$user->bio}}
+                            </h6>
+                        </div>
+
+                                <div class="profiles p-3 mt-5">
+                                    <h6 class="profiler-related related">Related Content</h6>
+                                    @if(!$related_itinerary->isEmpty())
+                                    @foreach($related_itinerary as $row)
+
+                                    <div class="pt-3 d-flex align-items-center ">
+                                        <div class="">
+                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}">
+                                                <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
+                                            </div>
+                                            <div class="px-2 mx-1">
+                                                <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
+                                                    <div class="profiler-relate profile-relate">{{$row->title}}</div>
+                                                </a>
+                                                <div class="d-flex align-items-center">
+                                                <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
+                                                <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    @endforeach
+                                    @endif
+                                </div>
+                            </div>
+
         </div>
-        @else
-        <div class="container margin-top-75">
+
+            @else
+            <div class="container margin-top-75">
             <div class="row">
                 <div class="col-lg-8">
-                        <div class="border rounded">
+                    <div class="border rounded">
 
-                            <div class="row  p-2  p-3 ">
+                        <div class="row  p-3 ">
                                 <div class="col-12 d-flex justify-content-between ">
                                     <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                                     <!-- Button trigger modal -->
@@ -160,14 +240,14 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                            @php
+                                                        @php
                                                                 $listtags = [];
                                                                 $listtag = json_decode($itinerary->tags);
-                                                            @endphp
-                                                            @foreach ($tags as $key => $tags)
-                                                                @php
-                                                                    $listtags[$tags->id] = $tags->name;
                                                                 @endphp
+                                                            @foreach ($tags as $key => $tags)
+                                                            @php
+                                                                    $listtags[$tags->id] = $tags->name;
+                                                                    @endphp
                                                             @endforeach
                                                             {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
                                                             <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
@@ -206,10 +286,10 @@
                                 <div class=" ">
                                     <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
                                         @else
-                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
-                                        @endif
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                            @endif
                                     </a>
                                 </div>
 
@@ -228,9 +308,9 @@
                                     <h6 class="profile-p pt-2 mx-2">
                                         {{count($days)}}
                                         Days</h6>
-                                </div>
-                                <div class=" d-flex align-items-center">
-                                    <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                    </div>
+                                    <div class=" d-flex align-items-center">
+                                        <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
                                     <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
                                 </div>
                             </div>
@@ -249,11 +329,11 @@
                                             {{$tag->name}}
                                         </button>
                                     </a>
-                                @endif
+                                    @endif
 
-                                @endforeach
-                            </div>
-                            <div class="col-12 tags-description ">
+                                    @endforeach
+                                </div>
+                                <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>
                             </div>
 
@@ -261,53 +341,53 @@
                                 <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
 
                                     @if($itinerary->seo_image != '')
-                                        <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img">
-                                        <!-- <div class="ms-2">
-                                                <div class=" position-relative w-120">
-                                                <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
-                                                <div class=" position-absolute top-0 end-0 p-1">
+                                    <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4">
+                                    <!-- <div class="ms-2">
+                                        <div class=" position-relative w-120">
+                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                            <div class=" position-absolute top-0 end-0 p-1">
                                                     <button class="btn-close" ></button>
                                                 </div>
                                             </div>
                                         </div> -->
-                                    @else
+                                        @else
                                         <label for="file" class="text-center">
-                                            <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                            <h3>Add cover photo!</h3>
+                                        <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                        <h3>Add cover photo!</h3>
                                             <p>Showcase the itinerary showing image.</p>
                                             <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                         </label>
-                                    @endif
+                                        @endif
 
                                     {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                         <!-- <input type='file' id="imgInp"/>
-                                         <img id="blah" src="#" alt="your image" /> -->
+                                    <!-- <input type='file' id="imgInp"/>
+                                        <img id="blah" src="#" alt="your image" /> -->
                                          <div class="col-12">
-                                            <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
-                                        </div>
-                                        <div class="col-12 py-4">
+                                             <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
+                                            </div>
+                                            <div class="col-12 py-4">
 
-                                            <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200">
-                                            <!-- <label for="file" class="text-center">
-                                                <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                                <h3>Add cover photo!</h3>
-                                                <p>Showcase the itinerary showing image.</p>
-                                                <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
-                                            </label> -->
+                                                <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200">
+                                                <!-- <label for="file" class="text-center">
+                                                    <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                                    <h3>Add cover photo!</h3>
+                                                    <p>Showcase the itinerary showing image.</p>
+                                                    <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
+                                                </label> -->
                                             <br><br>
                                             <input type="hidden" value="{{$itinerary->id}}" name="id">
                                             <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
                                         </div>
-                                     {!! Form::close() !!}
-                                     <script>
+                                        {!! Form::close() !!}
+                                        <script>
                                         function previewImage(event) {
-                                        var reader = new FileReader();
-                                        reader.onload = function() {
+                                            var reader = new FileReader();
+                                            reader.onload = function() {
                                             var output = document.getElementById('image-preview');
                                             output.src = reader.result;
                                         };
                                         reader.readAsDataURL(event.target.files[0]);
-                                        }
+                                    }
 
                                         var fileInput = document.getElementById('image-upload');
                                         fileInput.addEventListener('change', previewImage);
@@ -317,15 +397,15 @@
                         </div>
                         <div class="col-12">
                             @if(!empty($days))
-                                @foreach($days as $key => $days)
-                                @php
+                            @foreach($days as $key => $days)
+                            @php
                                     $count = ++$key;
                                 @endphp
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
                                     <h2 class="fw-bold mb-0">Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                         <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
-                                    <!-- Modal -->
+                                        <!-- Modal -->
                                     <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
                                             <div class="modal-content">
@@ -353,10 +433,10 @@
                                     </div>
                                 </div>
                                 @endforeach
-                            @endif
+                                @endif
 
-                            <div class=" justify-content-center d-flex align-items-center">
-                                <div class="vr vr3"></div>
+                                <div class=" justify-content-center d-flex align-items-center">
+                                    <div class="vr vr3"></div>
                             </div>
                             <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                                 <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
@@ -392,22 +472,22 @@
                                 </div> -->
 
                                 <div class="col-12 gallery-images p-3">
-                                    <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
+                                    <h3 class="align-self-start justify-content-start px-3 fw-bold">Gallery Pictures</h3>
                                     @if($itinerary_gallery)
-                                        <div class="gallery-img py-2">
-                                            <div class="d-flex images-items flex-wrap gap-3">
-                                                @foreach($itinerary_gallery as $files)
-                                                    <div class=" position-relative w-200">
-                                                        <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class="  position-relative img-thumbnail" alt="">
-                                                        <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1">
-                                                            <button class="btn-close" ></button>
-                                                        </div></a>
+                                    <div class="gallery-img py-2">
+                                        <div class="d-flex images-items flex-wrap gap-3 mb-3">
+                                            @foreach($itinerary_gallery as $files)
+                                            <div class=" position-relative">
+                                                <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class=" w-200 position-relative img-thumbnail" alt="">
+                                                <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1 ">
+                                                    <button class="btn-close btn-close-white p-2 bg-body" ></button>
+                                                </div></a>
                                                     </div>
-                                                @endforeach
+                                                    @endforeach
+
+                                                </div>
 
                                             </div>
-
-                                        </div>
                                     @endif
 
                                     {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -415,9 +495,9 @@
                                     <br>
                                     <div id="image-preview-1" class="image-preview-1"></div>
 
-                                    <br><br>
+
                                     <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                    <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
+                                    <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt my-4">
                                     {!! Form::close() !!}
                                     <!-- <label for="file" class="text-center">
                                         <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
@@ -425,7 +505,7 @@
                                         <p class="attach-area-width text-center">
                                             <span class="fw-bold">Attach or drop your images here.</span><br>
                                             Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                                        <p class="fw-bold">Maximum file size is 5 MB</p>
+                                            <p class="fw-bold">Maximum file size is 5 MB</p>
 
                                         <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
                                         <input type="file" id="file" class="d-none">
@@ -456,16 +536,16 @@
 
                                             var fileInput = document.getElementById('image-upload-1');
                                             fileInput.addEventListener('change', previewImages);
-                                        </script>
+                                            </script>
                                     </div>
-                            </div>
+                                </div>
 
 
-                            <!-- Extra Activity -->
+                                <!-- Extra Activity -->
 
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <!-- Modal -->
+                                <div class="modal fade" id="intro1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content ">
                                         <div class="modal-header">
@@ -497,16 +577,16 @@
                         </div>
 
 
-            </div>
+                    </div>
             <div class="col-lg-4">
                 <div class="profile p-3">
                     <div class="d-flex align-items-center mb-3">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
                                         @else
-                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
                                         @endif
                                     </a>
                                         </div>
@@ -514,29 +594,29 @@
                                     <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
                                     <div class="d-flex  socialpicsize">
                                         @if(!empty($itinerary->user->facebook))
-                                          <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
                                             <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
-                                        @endif
-                                        @if(!empty($itinerary->user->instagram))
-                                           <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                            @endif
+                                            @if(!empty($itinerary->user->instagram))
+                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->tiktok))
                                             <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
-                                        @endif
-                                        @if(!empty($itinerary->user->website))
-                                           <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
-                                        @endif
+                                            @endif
+                                            @if(!empty($itinerary->user->website))
+                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                            @endif
                                     </div>
                                 </div>
 
 
-                                    </div>
+                            </div>
                                     <h6 class="profile-details p-3">
                                 {{$itinerary->user->bio}}
                             </h6>
-                                </div>
+                        </div>
 
                                 <div class="profiles p-3 mt-5">
                                     <h6 class="profiler-related related">Related Content</h6>
@@ -547,12 +627,12 @@
                                         <div class="">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
-                                        </div>
-                                        <div class="px-2 mx-1">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                                <div class="profiler-relate profile-relate">{{$row->title}}</div>
-                                            </a>
-                                            <div class="d-flex align-items-center">
+                                            </div>
+                                            <div class="px-2 mx-1">
+                                                <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
+                                                    <div class="profiler-relate profile-relate">{{$row->title}}</div>
+                                                </a>
+                                                <div class="d-flex align-items-center">
                                                 <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
                                                 <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
                                             </div>

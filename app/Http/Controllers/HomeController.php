@@ -134,7 +134,9 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = array();
-        return view('frontend.pages.create-itinerary',compact('tags','itinerary'));
+        $related_itinerary = Itineraries::limit(6)->get();
+
+        return view('frontend.pages.create-itinerary',compact('tags','itinerary','related_itinerary'));
     }
 
     public function itineraries_store(Request $request)
