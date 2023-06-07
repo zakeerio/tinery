@@ -25,6 +25,8 @@
 $key = env('GOOGLE_MAP_API_KEY');
 @endphp
 {{-- scripts --}}
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -56,6 +58,29 @@ $key = env('GOOGLE_MAP_API_KEY');
 @endif
 
 <script>
+
+$(document).ready(function() {
+      $('.slickslider').slick({
+        slidesToShow: 4,        // Display 4 items at a time
+        autoplay: true,         // Enable auto start
+        autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
+        infinite: true,         // Enable continuous loop
+        arrows: false,          // Hide navigation arrows (optional)
+        dots: false              // Show navigation dots (optional)
+      });
+    });
+$(document).ready(function() {
+      $('.slickslider6').slick({
+        slidesToShow:6,        // Display 4 items at a time
+        autoplay: true,         // Enable auto start
+        autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
+        infinite: true,         // Enable continuous loop
+        arrows: false,          // Hide navigation arrows (optional)
+        dots: false              // Show navigation dots (optional)
+      });
+    });
+
+
     $(document).ready(function() {
 
 

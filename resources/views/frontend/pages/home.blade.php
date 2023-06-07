@@ -32,7 +32,7 @@
 <div class="card-section py-3">
     <div class="container">
         <div class="cards-item">
-            <div class="row">
+            <div class="row slickslider">
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
                     <div class="col-lg-3 ">
@@ -156,8 +156,7 @@
     <div class="social-media">
         <div class="container">
             <h2 class="membr my-2">Discover More on Social</h2>
-
-            <div class="row">
+            <div class="row slickslider6">
                 <div class="col-lg-2 ">
                     <div class="social-descover">
                         <div class="">
@@ -254,8 +253,29 @@
                         <div class="pt-2">
                             <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
-                </div>
-            </div>
+
+                        </div>
+                     </div>
+                     <div class="col-lg-2 ">
+                        <div class="social-descover">
+                            <div class="">
+                                <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
+                            </div>
+                            <div class="">
+                                <h6 class="anna">Anna Jones</h6>
+                            </div>
+                            <div class="">
+                                <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
+                            </div>
+                        </div>
+                        <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
+
+                        <div class="pt-2">
+                            <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
+                        #Tinery #RelaxiTaxi #Fun #Reset</p>
+
+                        </div>
+                     </div>
             <div class="col-lg-2 ">
                 <div class="social-descover">
                     <div class="">
@@ -278,7 +298,7 @@
 
             </div>
 
-            <div class="row d-flex  align-items-center">
+            <div class="row slickslider6 d-flex mb-5  align-items-center">
                 <div class="col-lg-2 ">
                     <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
                 </div>
@@ -286,9 +306,12 @@
                     <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
                 </div>
                 <div class="col-lg-2 ">
-                <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-            </div>
-            <div class="col-lg-2 ">
+                    <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
+                </div>
+                <div class="col-lg-2 ">
+                    <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
+                </div>
+                <div class="col-lg-2 ">
                 <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
             </div>
             <div class="col-lg-2 ">
@@ -315,11 +338,11 @@
                     </div>
 
                     <div>
-                        <a href="#"><button class="btn btn-dark rounded-pill px-4 join">Join Tinery</button></a>
+                        <a href="#"><button class="btn btn-dark rounded-pill px-4 join" data-bs-toggle="modal" data-bs-target="#userregistration">Join Tinery</button></a>
                     </div>
                 </div>
             </div>
-</div>
+        </div>
 
 
 @endsection

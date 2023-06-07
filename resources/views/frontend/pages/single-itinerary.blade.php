@@ -12,6 +12,7 @@
                             <div class="col-lg-8">
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
+
                             <div class="col-lg-4 text-end">
                                 @if(Auth::guard('user')->user())
                                     @php
@@ -39,13 +40,9 @@
                                     @endif
                                 </a>
                             </div>
-
                             <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
                             <div class="vr align-self-center linesize mx-1"></div>
                             <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
-
-
-
                         </div>
 
 
@@ -73,7 +70,7 @@
                                 $tag = \App\Models\Tags::find($itinerarytag);
                                 @endphp
                             @if($tag)
-                                <a href="#">
+                                <a href="{{url('/slug/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
@@ -89,9 +86,18 @@
                             <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                         </div>
 
+                        <div class="content mt-4">
+                            {{ $itinerary->description }}
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
+                                @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
+                                @else
+                                {{-- <img src="{{ asset('frontend/images/map.png') }}" alt="" class="wed-img"> --}}
+                                @endif
+
                             </div>
                         </div>
 
@@ -159,36 +165,13 @@
 
                         <div class="gallery-img">
                             <div class="row d-flex justify-content-between align-items-center images-items">
-                                <div class="col-lg-6">
-                                    <img src="{{ asset('frontend/images/fam.png') }}" alt="" class="fam-img">
+                                @foreach($itinerary_gallery as $files)
+                                <div class="col-lg-3 mt-2">
+                                    <img src="{{ asset('frontend/itineraries/'.$files->image) }}" alt="" class=" sea-img">
 
                                 </div>
+                                @endforeach
 
-                                <div class="col-lg-3">
-                                    <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" sea-img">
-
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class=" row d-flex align-items-center justify-content-between ">
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" seaimg">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class="seaimg">
-                                        </div>
-                                    </div>
-
-                                    <div class=" row d-flex align-items-center justify-content-between">
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class=" seaimg">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <img src="{{ asset('frontend/images/sea.png') }}" alt="" class="seaimg">
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
 
                         </div>
@@ -328,11 +311,6 @@
                             @endif
                         </div>
                     </div>
-
-
-
-
-
 
                     <div class="col-lg-4">
                         <div class="profile p-3">

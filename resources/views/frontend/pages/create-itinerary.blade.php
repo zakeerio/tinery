@@ -121,7 +121,7 @@
             </div>
         </div>
         @else
-        <div class="container mt-4">
+        <div class="container margin-top-75">
             <div class="row">
                 <div class="col-lg-8">
                         <div class="border rounded">
@@ -244,7 +244,7 @@
                                     $tag = \App\Models\Tags::find($itinerarytag);
                                     @endphp
                                 @if($tag)
-                                    <a href="#">
+                                    <a href="{{url('/slug/'.$tag->slug)}}">
                                         <button class="foodie">
                                             {{$tag->name}}
                                         </button>
@@ -252,40 +252,70 @@
                                 @endif
 
                                 @endforeach
-                                <!-- <a href="#"> <button class="foodie">Foodie</button></a>
-                                <a href="#"> <button class="foodie">Backpacker</button></a>
-                                <a href="#"> <button class="foodie">Spring</button></a>
-                                <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                                <a href="#"> <button class="foodie">Mexico</button></a> -->
-                                <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                             </div>
                             <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>
                             </div>
 
                             <div class="col-12 mt-4">
-                                <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center">
-                                    <div class="ms-2">
-                                         <div class=" position-relative w-120">
-                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
-                                            <div class=" position-absolute top-0 end-0 p-1">
-                                                <button class="btn-close" ></button>
+                                <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
+
+                                    @if($itinerary->seo_image != '')
+                                        <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img">
+                                        <!-- <div class="ms-2">
+                                                <div class=" position-relative w-120">
+                                                <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
+                                                <div class=" position-absolute top-0 end-0 p-1">
+                                                    <button class="btn-close" ></button>
+                                                </div>
                                             </div>
+                                        </div> -->
+                                    @else
+                                        <label for="file" class="text-center">
+                                            <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                            <h3>Add cover photo!</h3>
+                                            <p>Showcase the itinerary showing image.</p>
+                                            <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
+                                        </label>
+                                    @endif
+
+                                    {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                         <!-- <input type='file' id="imgInp"/>
+                                         <img id="blah" src="#" alt="your image" /> -->
+                                         <div class="col-12">
+                                            <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
                                         </div>
-                                    </div>
-                                    <div class="">
-                                         <input type="file" id="file" class="d-none">
-                                         <label for="file" class="text-center">
-                                             <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                             <h3>Add cover photo!</h3>
-                                             <p>Showcase the itinerary showing image.</p>
-                                             <img src="{{ asset('frontend/images/cover-bt.png')}}" alt="">
-                                         </label>
-                                     </div>
+                                        <div class="col-12 py-4">
+
+                                            <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200">
+                                            <!-- <label for="file" class="text-center">
+                                                <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                                <h3>Add cover photo!</h3>
+                                                <p>Showcase the itinerary showing image.</p>
+                                                <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
+                                            </label> -->
+                                            <br><br>
+                                            <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                            <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
+                                        </div>
+                                     {!! Form::close() !!}
+                                     <script>
+                                        function previewImage(event) {
+                                        var reader = new FileReader();
+                                        reader.onload = function() {
+                                            var output = document.getElementById('image-preview');
+                                            output.src = reader.result;
+                                        };
+                                        reader.readAsDataURL(event.target.files[0]);
+                                        }
+
+                                        var fileInput = document.getElementById('image-upload');
+                                        fileInput.addEventListener('change', previewImage);
+                                     </script>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-4">
+                        <div class="col-12">
                             @if(!empty($days))
                                 @foreach($days as $key => $days)
                                 @php
@@ -294,7 +324,7 @@
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
                                     <h2 class="fw-bold mb-0">Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
-                                        <img src="{{ asset('frontend/images/editbt.png')}}" alt=""></button>
+                                        <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="day{{$count}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
@@ -313,7 +343,7 @@
                                                 </div>
                                                 <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
                                                     <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
-                                                        <h5 class="text-center text-danger m-0 p-2">
+                                                        <h5 class="text-center text-danger m-0 p-2 fw-bold">
                                                             Delete Day
                                                         </h5>
                                                     </a>
@@ -326,7 +356,7 @@
                             @endif
 
                             <div class=" justify-content-center d-flex align-items-center">
-                            <div class="vr vr3"></div>
+                                <div class="vr vr3"></div>
                             </div>
                             <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                                 <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
@@ -334,7 +364,7 @@
                                 </div>
                             </a>
                             <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5 height-400">
-                                <div class="d-flex align-self-start mb-2 ms-2">
+                                <!-- <div class="d-flex align-self-start mb-2 ms-2">
                                     <div class="">
                                         <div class=" position-relative w-120">
                                             <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
@@ -359,22 +389,75 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <h3 class="align-self-start justify-content-start px-3">Pictures</h3>
+                                <div class="col-12 gallery-images p-3">
+                                    <h3 class="align-self-start justify-content-start px-3">Gallery Pictures</h3>
+                                    @if($itinerary_gallery)
+                                        <div class="gallery-img py-2">
+                                            <div class="d-flex images-items flex-wrap gap-3">
+                                                @foreach($itinerary_gallery as $files)
+                                                    <div class=" position-relative w-200">
+                                                        <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class="  position-relative img-thumbnail" alt="">
+                                                        <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1">
+                                                            <button class="btn-close" ></button>
+                                                        </div></a>
+                                                    </div>
+                                                @endforeach
 
-                                <label for="file" class="text-center">
-                                    <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+                                            </div>
 
-                                    <p class="attach-area-width text-center">
-                                        <span class="fw-bold">Attach or drop your images here.</span><br>
-                                        Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                                    <p class="fw-bold">Maximum file size is 5 MB</p>
+                                        </div>
+                                    @endif
 
-                                    <!-- <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button> -->
-                                    <input type="file" id="file" class="d-none">
+                                    {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                    <input type="file" id="image-upload-1" name="images[]" required class="form-control" accept="image/*" multiple>
+                                    <br>
+                                    <div id="image-preview-1" class="image-preview-1"></div>
 
-                                    <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label>
+                                    <br><br>
+                                    <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                    <input type="submit" value="Save" class="btn btn-dark rounded-pill save-bt">
+                                    {!! Form::close() !!}
+                                    <!-- <label for="file" class="text-center">
+                                        <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
+
+                                        <p class="attach-area-width text-center">
+                                            <span class="fw-bold">Attach or drop your images here.</span><br>
+                                            Accepts .jpg, .jpeg, .png, and .gif file types.</p>
+                                        <p class="fw-bold">Maximum file size is 5 MB</p>
+
+                                        <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
+                                        <input type="file" id="file" class="d-none">
+
+                                        <img src="{{ asset('frontend/images/Attach.png')}}" alt=""></label> -->
+                                        <script>
+                                            function previewImages(event) {
+                                                var files = event.target.files;
+                                                var previewContainer = document.getElementById('image-preview-1');
+
+                                                // Clear existing previews
+                                                previewContainer.innerHTML = '';
+
+                                                for (var i = 0; i < files.length; i++) {
+                                                    var reader = new FileReader();
+
+                                                    reader.onload = function(e) {
+                                                        var previewImage = document.createElement('img');
+                                                        previewImage.classList.add('preview-image','img-thumbnail','w-200','m-1');
+                                                        previewImage.src = e.target.result;
+
+                                                        previewContainer.appendChild(previewImage);
+                                                    };
+
+                                                    reader.readAsDataURL(files[i]);
+                                                }
+                                            }
+
+                                            var fileInput = document.getElementById('image-upload-1');
+                                            fileInput.addEventListener('change', previewImages);
+                                        </script>
+                                    </div>
                             </div>
 
 
@@ -417,7 +500,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="profile p-3">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center mb-3">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
