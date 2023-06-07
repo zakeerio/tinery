@@ -52,7 +52,7 @@
                                                         $listtags[$tags->id] = $tags->name;
                                                     @endphp
                                                 @endforeach
-                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
+                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select21', 'required', 'multiple' => true]) !!}
                                             </div>
                                             <div class="mb-3">
                                                 <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
