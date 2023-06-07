@@ -21,9 +21,7 @@
 
 <script src="{{asset('js/bootstrap-notify.js')}}"></script>
 <script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
-@php
-$key = env('GOOGLE_MAP_API_KEY');
-@endphp
+
 {{-- scripts --}}
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
@@ -83,46 +81,50 @@ $(document).ready(function() {
 
     $(document).ready(function() {
 
+        if($('#address_street').length > 0) {
 
-        if($('#map').length > 0) {
+                var options = {
+                            types: ['(cities)']
+                        };
+                var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
 
-            initMaps();
+                google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                    var result = autocomplete.getPlace();
+                    console.log(result.address_components[0]);
 
-            // var options = {
-            //             types: ['(cities)']
-            //         };
+                    var location = result.geometry.location;
+                    var addressComponents = result.address_components;
 
-            // var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
+                    var latitude = location.lat;
+                    var longitude = location.lng;
 
-            // google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            //     var result = autocomplete.getPlace();
-            //     console.log(result.address_components[0]);
-
-            //     var location = result.geometry.location;
-            //     var addressComponents = result.address_components;
-
-            //     var latitude = location.lat;
-            //     var longitude = location.lng;
-
-            //     var address_street_line1 = result.formatted_address;
-            //     var city = getAddressComponent(addressComponents, 'locality');
-            //     var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
-            //     var country = getAddressComponent(addressComponents, 'country');
-            //     var postalCode = getAddressComponent(addressComponents, 'postal_code');
+                    var address_street_line1 = result.formatted_address;
+                    var city = getAddressComponent(addressComponents, 'locality');
+                    var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                    var country = getAddressComponent(addressComponents, 'country');
+                    var postalCode = getAddressComponent(addressComponents, 'postal_code');
 
 
-            //     // Update form fields with retrieved values
+                    // Update form fields with retrieved values
 
-            //     $('#address_street_line1').val(address_street_line1);
-            //     $('#address_zipcode').val(postalCode);
+                    $('#address_street_line1').val(address_street_line1);
+                    $('#address_zipcode').val(postalCode);
 
-            //     $('#latitude').val(latitude);
-            //     $('#longitude').val(longitude);
-            //     $('#address_city').val(city);
-            //     $('#address_state').val(state);
-            //     $('#address_country').val(country);
-            // });
-        }
+                    $('#latitude').val(latitude);
+                    $('#longitude').val(longitude);
+                    $('#address_city').val(city);
+                    $('#address_state').val(state);
+                    $('#address_country').val(country);
+                });
+            }
+
+
+            if($('#map').length > 0 ) {
+
+                initMaps();
+            }
+
+
 
         function  initMaps(){
 
