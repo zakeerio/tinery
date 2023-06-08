@@ -315,7 +315,7 @@
                                 </div>
                             </div>
 
-                            <div class="tags profile-padding-left">
+                            <div class="tags profile-padding-left flex-wrap gap-1">
                                 @php
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp

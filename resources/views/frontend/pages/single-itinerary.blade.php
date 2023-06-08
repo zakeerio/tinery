@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="tags">
+                        <div class="tags flex-wrap gap-1">
                             @if($itinerary->tags != '')
                             @php
                                 $itinerarytag = json_decode($itinerary->tags);
@@ -111,7 +111,7 @@
                                 <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
-                                    <div class="d-flex flex-column gap-4 py-5 w-100 ">
+                                    <div class="d-flex flex-column gap-4 py-4 w-100 ">
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
@@ -302,13 +302,13 @@
                             </div>
                         </div>
                         <div>
-                            
 
-                            
+
+
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mt-3">
                         <div class="profile p-3">
                             <div class="d-flex align-items-center">
                                 <div class="sideprofilepic rounded-circle">
@@ -350,7 +350,7 @@
                             </h6>
                         </div>
 
-                        <div class="profiles p-3 mt-5">
+                        <div class="profiles p-3 mt-32">
                             <h6 class="profiler-related related">Related Content</h6>
 
                             @if(!$related_itinerary->isEmpty())
