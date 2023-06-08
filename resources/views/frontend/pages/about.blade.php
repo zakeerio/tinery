@@ -7,7 +7,7 @@
             <div class="hero-content">
                 <div class="row">
                     <div class="col-lg-8">
-
+                        
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-lg-8">
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
@@ -66,6 +66,7 @@
                         </div>
 
                         <div class="tags">
+                            @if($itinerary->tags != '')
                             @php
                                 $itinerarytag = json_decode($itinerary->tags);
                             @endphp
@@ -82,6 +83,7 @@
                             @endif
 
                             @endforeach
+                            @endif
                             <!-- <a href="#"> <button class="foodie">Foodie</button></a>
                             <a href="#"> <button class="foodie">Backpacker</button></a>
                             <a href="#"> <button class="foodie">Spring</button></a>

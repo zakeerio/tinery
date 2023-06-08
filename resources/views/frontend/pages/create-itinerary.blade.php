@@ -37,11 +37,11 @@
                                             </label>
                                             <input type="text" name="title" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
                                         </div>
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
                                             </label>
                                             <input type="text" name="slug" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-3">
                                             <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
                                             @php
@@ -233,11 +233,11 @@
                                                         </label>
                                                         <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
                                                     </div>
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="slug" value="{{ $itinerary->slug}}" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
                                                         @php
@@ -249,7 +249,7 @@
                                                                     $listtags[$tags->id] = $tags->name;
                                                                     @endphp
                                                             @endforeach
-                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control', 'required', 'multiple' => true]) !!}
+                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                                                             <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                         </div>
                                                     <div class="mb-3">
@@ -319,19 +319,21 @@
                                 @php
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
-                                @foreach($itinerarytag as $itinerarytag)
-                                @php
-                                    $tag = \App\Models\Tags::find($itinerarytag);
-                                    @endphp
-                                @if($tag)
-                                    <a href="{{url('/slug/'.$tag->slug)}}">
-                                        <button class="foodie">
-                                            {{$tag->name}}
-                                        </button>
-                                    </a>
-                                    @endif
-
+                                @if ($itinerarytag)
+                                    @foreach($itinerarytag as $itinerarytag)
+                                        @php
+                                            $tag = $itinerary->tagsdata($itinerarytag);
+                                        @endphp
+                                        @if($tag)
+                                        <a href="{{url('/slug/'.$tag->slug)}}">
+                                            <button class="foodie">
+                                                {{$tag->name}}
+                                            </button>
+                                        </a>
+                                        @endif
                                     @endforeach
+                                @endif
+
                                 </div>
                                 <div class="col-12 tags-description ">
                                 <p class=" pe-2 ">{{$itinerary->description}}</p>

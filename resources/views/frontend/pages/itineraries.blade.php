@@ -439,7 +439,8 @@
                         </div>
                         <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
                         <div class="tags">
-                            @php
+                                @if($row->tags != '')
+                                @php
                                 $itinerarytag = json_decode($row->tags);
                                 @endphp
                                 @foreach($itinerarytag as $itinerarytag)
@@ -457,6 +458,7 @@
 
                                 {{-- {{ $itinerarytag }} --}}
                                 @endforeach
+                                @endif
                         </div>
                         <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>

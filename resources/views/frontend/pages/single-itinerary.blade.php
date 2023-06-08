@@ -62,6 +62,7 @@
                         </div>
 
                         <div class="tags">
+                            @if($itinerary->tags != '')
                             @php
                                 $itinerarytag = json_decode($itinerary->tags);
                             @endphp
@@ -78,6 +79,7 @@
                             @endif
 
                             @endforeach
+                            @endif
                             <!-- <a href="#"> <button class="foodie">Foodie</button></a>
                             <a href="#"> <button class="foodie">Backpacker</button></a>
                             <a href="#"> <button class="foodie">Spring</button></a>

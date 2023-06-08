@@ -25,6 +25,7 @@ class HomeController extends Controller
     {
         $itineraries = \App\Models\Itineraries::where('featured','1')
         ->where('status','published')
+        ->where('itinerary_status','updated')
         ->get();
         $users = User::limit('8')->get();
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
@@ -38,12 +39,16 @@ class HomeController extends Controller
             foreach($itineraries as $itineraries)
             {
                 $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
-                $tags = json_decode($singleitinerary->tags);
-                foreach($tags as $tags)
+                if($singleitinerary->tags != '')
                 {
-                    $tag = Tags::where('id',$tags)->first();
+                    $tags = json_decode($singleitinerary->tags);
+                    foreach($tags as $tags)
+                    {
+                        $tag = Tags::where('id',$tags)->first();
 
-                    array_push($tagsnames,$tag->slug);
+                        array_push($tagsnames,$tag->slug);
+                    }
+
                 }
             }
             $itineraries = $user->itineraries;
@@ -62,7 +67,7 @@ class HomeController extends Controller
     }
     public function itinerary($slug)
     {
-        $itinerary = Itineraries::where('slug',$slug)->first();
+        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
@@ -71,7 +76,7 @@ class HomeController extends Controller
 
     public function itineraries()
     {
-        $itinerary = Itineraries::paginate(20);
+        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(20);
         return view('frontend.pages.itineraries',compact('itinerary'));
     }
 
@@ -80,7 +85,7 @@ class HomeController extends Controller
         $tag = Tags::where('slug',$slug)->first();
         if(!empty($tag))
         {
-            $itineraries = Itineraries::whereJsonContains('tags',json_encode($tag->id))
+            $itineraries = Itineraries::where('itinerary_status','updated')->where('status','published')->whereJsonContains('tags',json_encode($tag->id))
             ->get();
 
             // dd($itineraries);
@@ -132,11 +137,36 @@ class HomeController extends Controller
 
     public function create_itinerary()
     {
-        $tags = Tags::get();
-        $itinerary = array();
-        $related_itinerary = Itineraries::limit(6)->get();
 
-        return view('frontend.pages.create-itinerary',compact('tags','itinerary','related_itinerary'));
+        $query = Itineraries::where('user_id',Auth::guard('user')->user()->id)
+        ->where('itinerary_status',NULL)
+        ->get();
+        if(count($query) == 1)
+        {
+            foreach($query as $query);
+
+            return redirect('/edit-itinerary/'.$query->id);
+        }
+        else
+        {
+
+            $array = new Itineraries;
+            $array->title = '';
+            $array->slug = '';
+            $array->user_id = Auth::guard('user')->user()->id;
+            $array->save();
+
+            $array = Itineraries::find($array->id);
+            $array->slug = 'itinerary-'.$array->id;
+            $array->save();
+
+            return redirect('/edit-itinerary/'.$array->id);
+        }
+        // $tags = Tags::get();
+        // $itinerary = array();
+        // $related_itinerary = Itineraries::limit(6)->get();
+
+        // return view('frontend.pages.create-itinerary',compact('tags','itinerary','related_itinerary'));
     }
 
     public function itineraries_store(Request $request)
@@ -160,25 +190,43 @@ class HomeController extends Controller
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
+
+
             $array = new Itineraries;
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->user_id = auth('user')->user()->id;
+            $array->itinerary_status = 'updated';
 
             $array->save();
 
+
+
+            for($i=0;$i<$data['duration'];$i++)
+            {
+                $array1 = new ItineraryDays;
+                $array1->itineraries_id = $array->id;
+                $array1->save();
+            }
+
         }
-        for($i=0;$i<$data['duration'];$i++)
-        {
-            $array1 = new ItineraryDays;
-            $array1->itineraries_id = $array->id;
-            $array1->save();
-        }
+
         // Logic for storing the data goes here...
         return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
     }
@@ -214,17 +262,40 @@ class HomeController extends Controller
         else{
             $data = $request->input();
 
+            $slug = Str::slug($data['title'],'-');
+            $slugExists = Itineraries::where('slug', $slug)->exists();
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while ($slugExists) {
+                $slug = $originalSlug . '-' . $counter;
+                $slugExists = Itineraries::where('slug', $slug)->exists();
+                $counter++;
+            }
+
+
             $array = Itineraries::find($data['id']);
+            // dd($array->itinerarydays->count());
             $array->title = $data['title'];
-            $array->slug = Str::slug($data['slug']);
+            $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
             $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->featured = '1';
-
+            $array->itinerary_status = 'updated';
             $array->save();
+
+            if($array->itinerarydays->count() < $data['duration'] ){
+                for ($i=$array->itinerarydays->count(); $i < $data['duration']; $i++) {
+                    # code...
+                    // echo $i."<br>";
+                    $array1 = new ItineraryDays;
+                    $array1->itineraries_id = $array->id;
+                    $array1->save();
+                }
+            }
 
         }
 
@@ -238,6 +309,14 @@ class HomeController extends Controller
         $array1->itineraries_id = $itineraryid;
         $array1->save();
 
+        $days = ItineraryDays::where('itineraries_id', $itineraryid)->count();
+
+        $daysupdate = itineraries::find($itineraryid);
+
+        $daysupdate->duration = $days;
+        $daysupdate->save();
+
+
         return redirect('/edit-itinerary/'.$itineraryid)->with('success','Added Successfully');
     }
 
@@ -245,6 +324,13 @@ class HomeController extends Controller
     {
         ItineraryDays::where('id',$id)->delete();
         ItineraryActivities::where('days_id',$id)->delete();
+
+        $days = ItineraryDays::where('itineraries_id', $itineraryid)->count();
+
+        $daysupdate = itineraries::find($itineraryid);
+        $daysupdate->duration = $days;
+        $daysupdate->save();
+
 
         return redirect('/edit-itinerary/'.$itineraryid)->with('success','Deleted Successfully');
 
@@ -588,5 +674,13 @@ class HomeController extends Controller
         {
             return redirect()->back()->with('error',"Uploade Image Fail");
         }
+    }
+
+    public function delete_gallery_image($id)
+    {
+        ItineraryGallery::where('id',$id)->delete();
+
+        return back()->with('success','Deleted Successfully');
+
     }
 }

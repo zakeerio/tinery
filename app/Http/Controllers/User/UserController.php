@@ -52,12 +52,15 @@ class UserController extends Controller
         {
             // dd($singleitinerary);
             // $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
-            $tags = json_decode($singleitinerary->tags);
-            foreach($tags as $tags)
+            if(!empty($singleitinerary->tags))
             {
-                $tag = Tags::where('id',$tags)->first();
-
-                array_push($tagsnames,$tag->slug);
+                $tags = json_decode($singleitinerary->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+    
+                    array_push($tagsnames,$tag->slug);
+                }    
             }
         }
 
