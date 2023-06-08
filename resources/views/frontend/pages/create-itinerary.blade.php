@@ -486,7 +486,7 @@
 
                                                     <div class=" position-relative">
                                                         <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class=" w-200 position-relative img-thumbnail" alt="">
-                                                        <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1 ">
+                                                        <a href="{{ url('/delete_gallery_image/'.$files->id)}}"><div class=" position-absolute top-0 end-0 p-1 ">
                                                     <button class="btn-close btn-close-white p-2 bg-body" ></button>
                                                 </div></a>
                                                     </div>
