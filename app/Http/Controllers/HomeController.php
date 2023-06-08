@@ -359,7 +359,7 @@ class HomeController extends Controller
                     <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
                         <div class="row border rounded-pill ">
                         <div class="d-flex justify-content-between py-2 align-items-center">
-                            <div class="m-0">Activity '.$count.'</div>
+                            <div class="m-0 activitytitle">'.$count.'. '.$query->title.'</div>
                             <a href="#" class="bg-transparent border-0" >
                                 <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
                             </a>
@@ -436,6 +436,7 @@ class HomeController extends Controller
                             }
                         });
                     }
+
                     $(document).on("click","button[data-role=btnaddactivitydb]",function(e){
                         e.preventDefault();
                         var csrftoken = $("#csrftoken").val();
@@ -446,6 +447,9 @@ class HomeController extends Controller
                         var itineraryid = $(this).closest("form").find("input[name=itineraryid]").val();
                         var daysid = $(this).closest("form").find("input[name=daysid]").val();
                         var activityid = $(this).closest("form").find("input[name=activityid]").val();
+
+                        // $(this).closest(".accordion-item").find(".activitytitle").text($(this).closest(".accordion").find(".accordion-item").length + ". "+activitytitle);
+
                         $.ajax({
                             url:"'.url('/addactivitydbdata').'",
                             method:"post",
@@ -609,7 +613,7 @@ class HomeController extends Controller
     {
         // Validate the user input
         $rules = [
-            'seo_image' => 'required|image',
+            'file' => 'required|image',
 		];
 
 		$validator = Validator::make($request->all(),$rules);
@@ -623,22 +627,27 @@ class HomeController extends Controller
 
 			try{
 
-                if($request->hasFile('seo_image'))
+                if($request->hasFile('file'))
                 {
-                    $seo_image = $request->file('seo_image');
-                    $input['seo_image'] = time().'.'.$seo_image->getClientOriginalExtension();
+                    $seo_image = $request->file('file');
+                    $input['file'] = time().'.'.$seo_image->getClientOriginalExtension();
 
                     $destinationPath = public_path('/frontend/itineraries');
-                    $seo_image->move($destinationPath, $input['seo_image']);
+                    $seo_image->move($destinationPath, $input['file']);
 
                     $array = Itineraries::find($data['id']);
-                    $array->seo_image = $input['seo_image'];
+                    $array->seo_image = $input['file'];
                     $array->save();
-                    return redirect()->back()->with('success',"Upload Cover Successfully");
+
+                    $response = ['success' =>true];
+                    return response()->json($response);
+                    // return redirect()->back()->with('success',"Upload Cover Successfully");
                 }
                 else
                 {
-                    return redirect()->back()->with('error',"Uploade Image Fail");
+                    $response = ['success' =>false];
+                    return response()->json($response);
+                    // return redirect()->back()->with('error',"Uploade Image Fail");
                 }
 			}
 			catch(Exception $e){
@@ -649,16 +658,18 @@ class HomeController extends Controller
 
     public function single_itinerary_gallery_upload(Request $request)
     {
+
+        // dd($request->all());
         // Validate the user input
         $request->validate([
-			'images' => 'required',
+			'file' => 'required',
 		]);
 
-		if ($request->hasfile('images'))
+		if ($request->hasfile('file'))
 		{
-			$images = $request->file('images');
+			$image = $request->file('file');
 
-			foreach($images as $image) {
+			// foreach($images as $image) {
 
 				$name = time().rand(1,100).'.'.$image->extension();
 				$image->move(public_path('frontend/itineraries'), $name);
@@ -666,13 +677,18 @@ class HomeController extends Controller
                 $array = new ItineraryGallery;
                 $array->itineraryid = $request->id;
                 $array->image = $name;
+                // dd($array);
                 $array->save();
-			}
-            return redirect()->back()->with('success',"Upload Pictures Successfully");
+
+			// }
+            $response = ['success' =>true];
+            return response()->json($response);
         }
         else
         {
-            return redirect()->back()->with('error',"Uploade Image Fail");
+             $response = ['error' => 'Uploade Image Fail'];
+            return response()->json($response);
+            // return redirect()->back()->with('error',"Uploade Image Fail");
         }
     }
 
