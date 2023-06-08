@@ -719,6 +719,12 @@ header {
     object-fit: cover;
 }
 
+.w-150 {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
 .w-120px {
     max-width: 120px;
     width: 100%;
@@ -830,6 +836,10 @@ header {
 
 .margin-custom {
     margin-bottom: 88px;
+}
+
+.dropzone {
+    border: 3px dashed black !important;
 }
 
 .fam-img {

@@ -107,7 +107,7 @@
                 @forelse ($users as $userdata )
 
                 <div class="col-lg-4 mb-5">
-                    <div class="member-info d-flex align-items-center justify-content-between">
+                    <div class="member-info d-flex align-items-center justify-content-between ">
                         <div class="d-flex align-items-center justify-content-start ">
                             @if($userdata->profile != '')
                             <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
