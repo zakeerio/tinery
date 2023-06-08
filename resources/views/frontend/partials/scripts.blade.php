@@ -24,6 +24,8 @@
 
 {{-- scripts --}}
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{{-- <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
 
 <script src="{{asset('js/admin/js/adminlte.js')}}"></script>
 <script src="{{asset('js/admin/custom.js')}}"></script>
