@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="form-section position-relative">
-    <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
     <div class="container-fluid">
 
         <div class="row d-flex align-items-center">
@@ -11,7 +10,7 @@
                 <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
             </div>
             <div class="col-md-7">
-                <div id="loginform">
+                <div class="loginform">
                     {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
                     @csrf
                     <h2 class="member-h2"> Member Login</h2>
@@ -32,10 +31,13 @@
                     <div class="form-group mb-2">
                         {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
                     </div>
-                    <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
+                    <div class="d-flex gap-2">
+                        <a href="javascript:void(0)"  data-role="clicktoforgotloginpage">Forgot Password?</a> <div class="vr"></div>
+                        <a href="{{ route('register') }}" >Register</a>
+                    </div>
                     {!! Form::close() !!}
                 </div>
-                <div id="forgotpasswordform" style="display:none;">
+                <div class="forgotpasswordform" style="display:none;">
                     {!! Form::open(['route' => 'forgotpassworddb', 'method' => 'POST', 'class' => 'p-5']) !!}
                     @csrf
                     <h2 class="member-h2"> Forgot Password</h2>
@@ -64,7 +66,7 @@
                     <div class="form-group mb-2 mt-2">
                         {!! Form::submit("Submit", ['class' => 'btn btn-light become-btn' ]) !!}
                     </div>
-                    <a href="javascript:void(0)" data-role="clicktologin">Login?</a>
+                    <a href="javascript:void(0)" data-role="clicktologinpage">Login?</a>
                     {!! Form::close() !!}
                 </div>
             </div>

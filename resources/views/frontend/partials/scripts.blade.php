@@ -213,6 +213,17 @@ $(document).ready(function() {
             $("#forgotpasswordform").hide();
             $("#loginform").show();
         });
+
+        $(document).on('click','a[data-role=clicktoforgotloginpage]',function(){
+            $(".forgotpasswordform").show();
+            $(".loginform").hide();
+        });
+        $(document).on('click','a[data-role=clicktologinpage]',function(){
+            $(".forgotpasswordform").hide();
+            $(".loginform").show();
+        });
+
+
         $(document).on('click','a[data-role=sendforgotpasswordcode]',function(){
             var csrftoken = $('#csrftoken').val();
             var email = $(".forgotpasswordemail").val();
