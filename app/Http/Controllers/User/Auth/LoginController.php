@@ -48,7 +48,7 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        
+
         // Attempt to authenticate the user
         $attempt = Auth::guard('user')->attempt($credentials);
 
@@ -66,7 +66,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('user.auth.login');
+        return view('frontend.auth.login');
     }
 
     public function showRegistrationForm()
