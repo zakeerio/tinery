@@ -2,24 +2,23 @@
 
 @section('content')
 
-<div class="hero-section">
+<div class="align-items-center d-flex hero-section">
     <div class="container">
         <div class="hero-content">
             <h2>Welcome to Tinery</h2>
-            <p>The Network for travelers, big and small, to discover and <br> share their favourite experiences.</p>
+            <p class="hero-c-p">The Network for travelers, big and small, to discover and share their favourite experiences.</p>
         </div>
 
     </div>
 </div>
 
 <div class="explore">
-    <div class="container">
+    <div class="container px-5 px-lg-0">
         <div class="explore-section py-4">
             <div class="row">
-                <div class="col-lg-6 ">
-                    <h2 class=" fw-bold " >Explore Popular Travel Itineraries</h2>
-                </div>
-                <div class="col-lg-6 text-end">
+                <div class="d-flex justify-content-between align-items-center ">
+                    <h1 class=" " >Explore Popular Travel Itineraries</h1>
+
                     <h2>
                         <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All</a>
                     </h2>
@@ -29,17 +28,17 @@
     </div>
 </div>
 
-<div class="card-section py-3">
-    <div class="container">
+<div class="card-section py-3  px-md-0">
+    <div class="container p-0 mx-md-auto ">
         <div class="cards-item">
             <div class="row slickslider">
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
                     <div class="col-lg-3 ">
-                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
+                        <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}')">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
                                 <div class="Ellipse bg-white m-3 rounded-pill p-1">
-                                    <div class="">
+                                    <div class=" ">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
                                         <img src="{{ asset('frontend/profile_pictures/'.$row->user->profile) }}" alt="" class="width-48">
@@ -47,8 +46,8 @@
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="width-48">
                                         @endif
                                     </div>
-                                    <div class=" ">
-                                        <span class="mx-3">{{ $row->user->name}} {{ $row->user->lastname}}</span>
+                                    <div class="e-text-size ">
+                                        <span class="mx-lg-3 mx-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>
@@ -88,7 +87,7 @@
                                 @endif
                             @endforeach
                         </div>
-                        <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
+                        <p class="city mt-3">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                     @endif
@@ -99,14 +98,14 @@
 </div>
 
 <div class="member-spot">
-    <div class="container">
+    <div class="container px-5 px-lg-0  ">
         <div class="spotlight">
             <div class="row spotlight-center">
                 <h2 class="membr">Members Spotlight</h2>
 
                 @forelse ($users as $userdata )
 
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg-4 mb-5 col-sm-6">
                     <div class="member-info d-flex align-items-center justify-content-between ">
                         <div class="d-flex align-items-center justify-content-start ">
                             @if($userdata->profile != '')
@@ -324,8 +323,8 @@
     </div>
 </div>
 
-<div class="about-us py-4">
-    <div class="container">
+<div class="about-us py-4 d-none d-lg-block">
+    <div class="container ">
         <div class="about-item">
             <div class="content">
                 <h2 class="membrs">About Us</h2>

@@ -66,7 +66,34 @@ $(document).ready(function() {
         autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
         infinite: true,         // Enable continuous loop
         arrows: false,          // Hide navigation arrows (optional)
-        dots: false              // Show navigation dots (optional)
+        dots: false,              // Show navigation dots (optional)
+         responsive: [
+    {
+      breakpoint: 490,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+
+    },
+    {
+      breakpoint: 797,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+
+    },
+    {
+      breakpoint: 360,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+
+    }
+
+  ],
       });
     });
 $(document).ready(function() {
@@ -76,7 +103,43 @@ $(document).ready(function() {
         autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
         infinite: true,         // Enable continuous loop
         arrows: false,          // Hide navigation arrows (optional)
-        dots: false              // Show navigation dots (optional)
+        dots: false,              // Show navigation dots (optional)
+        responsive: [
+    {
+        breakpoint: 1024,
+        settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        },
+
+    },
+
+    {
+      breakpoint: 797,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+
+    },
+    {
+      breakpoint: 490,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+
+    },
+    {
+      breakpoint: 360,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+
+    }
+
+  ],
       });
     });
 

@@ -25,8 +25,8 @@
                         </div>
                         <div class="">
                             <div class="card-body">
-                                <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                                <div class="d-flex  socail-imgaes">
+                                <h5 class="card-title d-none d-lg-flex">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                                <div class="d-flex  socail-imgaes d-none d-lg-flex">
                                     @if(!empty($user->facebook))
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                     @endif
@@ -47,6 +47,7 @@
                         </div>
 
                     </div>
+                    <h5 class="card-title d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
                     <div class="mt-4">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
@@ -309,7 +310,7 @@
 
                 <div class="col-md-8 myitinerylist">
                     <div class=" d-flex justify-content-between align-items-center ">
-                    <ul class="nav nav-tabs profile-tabs d-flex gap-3 " id="myTabs" role="tablist">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
@@ -324,7 +325,7 @@
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
                             <a class="btn btn-danger rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
@@ -345,9 +346,9 @@
                                         @endif
                                         <div class="col-8">
                                             <h2 class="title title1">{{ $itinerary->title }}</h2>
-                                            <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            <p class="title-p">{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                         </div>
-                                        <div class="col-3 d-flex justify-content-end gap-2">
+                                        <div class="col-3 d-flex  gap-2 add-size">
                                             @if(auth('user')->id() && (auth('user')->id() == $itinerary->user->id))
                                                 <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             @endif
@@ -387,7 +388,7 @@
                                                 <h2 class="title title1">{{ $itinerary->title }}</h2>
                                                 <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                             </div>
-                                            <div class="col-3 d-flex justify-content-end gap-2">
+                                            <div class="col-3 d-flex  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                             </div>
                                         </div>
@@ -406,6 +407,11 @@
 
                         </div>
                     </div>
+                    <ul class="nav nav-tabs  d-md-none float-end me-5">
+                        <li class="nav-item " role="presentation">
+                            <a class="btn btn-danger rounded-circle  font-add-bt " href="{{url('/create-itinerary')}}">+</a>
+                        </li>
+                    </ul>
                 </div>
 
             </div>

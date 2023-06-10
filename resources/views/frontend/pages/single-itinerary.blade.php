@@ -8,12 +8,12 @@
                 <div class="row">
                     <div class="col-lg-8">
 
-                        <div class="row d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between  ">
                             <div class="col-lg-8">
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                             </div>
 
-                            <div class="col-lg-4 text-end">
+                            <div class="col-lg-4 text-end pt-3">
                                 @if(Auth::guard('user')->user())
                                     @php
                                         $query = \App\Models\Favorites::where('user_id',Auth::guard('user')->user()->id)
@@ -21,12 +21,12 @@
                                         ->get();
                                     @endphp
                                     @if($query->count() == 1)
-                                        <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" alt=""></a>
+                                        <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" class="heart-size" alt=""></a>
                                     @else
-                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
+                                        <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.svg') }}" class="heart-size" alt=""></a>
                                     @endif
                                 @else
-                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.svg') }}" alt=""></a>
+                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img src="{{ asset('frontend/images/border-heart.svg') }}" class="heart-size" alt=""></a>
                                 @endif
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         </div>
 
 
-                        <div class="city d-flex">
+                        <div class="city d-flex flex-wrap">
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
@@ -314,15 +314,15 @@
                                 <div class="sideprofilepic rounded-circle">
                                     <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
+                                            <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px">
                                         @else
-                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
                                         @endif
                                     </a>
                                 </div>
                                 <div class="sidenameandlinks">
                                     <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
-                                    <div class="d-flex socialpicsize">
+                                    <div class="d-flex socialpicsize d-none d-sm-block">
                                         @if(!empty($itinerary->user->facebook))
                                             <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                         @endif
@@ -348,6 +348,23 @@
                             <h6 class="profile-details p-3">
                                 {{$itinerary->user->bio}}
                             </h6>
+                             <div class="d-flex socialpicsize d-sm-none justify-content-evenly ">
+                                        @if(!empty($itinerary->user->facebook))
+                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->twitter))
+                                            <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->instagram))
+                                            <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->tiktok))
+                                            <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                        @endif
+                                        @if(!empty($itinerary->user->website))
+                                            <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                        @endif
+                                    </div>
                         </div>
 
                         <div class="profiles p-3 mt-32">
