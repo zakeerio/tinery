@@ -88,8 +88,6 @@
                                                     {!! Form::text('username', $user->username, ['class' => 'form-control rounded-pill mb-1']) !!}
                                                 </div>
                                                 <small class="small-tiny-color" >Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
-
-
                                             </div>
                                             <div class="col-lg-12 mt-4">
                                                 <b>Change Password</b>

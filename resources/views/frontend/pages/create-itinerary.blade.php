@@ -369,12 +369,8 @@
                                                                     <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                                                     <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
                                                                 </div>
-
                                                         </div>
                                                     </div>
-
-
-
 {{--
                                         <label for="image-upload" class="text-center ">
                                             <img id="image-preview" src="{{ asset('frontend/images/add-image.png') }}" alt="Image Preview" class="mb-2 w-150 mt-3">
