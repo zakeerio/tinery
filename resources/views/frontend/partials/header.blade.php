@@ -80,11 +80,11 @@
 
                             <div class="row d-flex align-items-center">
 
-                                <div class="col-md-6 d-md-block d-none frame-img p-0">
+                                <div class="col-md-4 d-md-block d-none frame-img p-0">
 
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-6 px-32">
+                                <div class="col-md-8 px-32">
 
                                     <div id="loginform">
                                         {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start']) !!}
@@ -164,10 +164,10 @@
                       <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
                     <div class="container-fluid">
                             <div class="row d-flex align-items-center">
-                                <div class="col-md-6 d-md-block d-none frame-img p-0">
+                                <div class="col-md-4 d-md-block d-none frame-img p-0">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-6 px-32">
+                                <div class="col-md-8 px-32">
                                     <div class="row">
                                         @if (count($errors) > 0)
                                         <div class="alert alert-danger">

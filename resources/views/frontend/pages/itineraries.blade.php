@@ -30,7 +30,7 @@
 
                     <div class="col-lg-2 col-sm-2 col-md-2 mx-4">
                         <div class="dropdown ">
-                            <button class="btn bg-light text-white dropdown-toggle rounded-pill px-3 active"
+                            <button class="btn bg-light border-0 dropdown-toggle rounded-pill px-3 active"
                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Location
                             </button>
@@ -153,7 +153,7 @@
                                 <?php $count2++;?>
                                 @endforeach
                                 @endif
-                                
+
 
                             </div>
                         </div>
