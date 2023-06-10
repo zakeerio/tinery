@@ -369,12 +369,8 @@
                                                                     <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                                                     <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
                                                                 </div>
-
                                                         </div>
                                                     </div>
-
-
-
 {{--
                                         <label for="image-upload" class="text-center ">
                                             <img id="image-preview" src="{{ asset('frontend/images/add-image.png') }}" alt="Image Preview" class="mb-2 w-150 mt-3">
@@ -486,7 +482,7 @@
 
                                                     <div class=" position-relative">
                                                         <img src="{{ asset('frontend/itineraries/'.$files->image) }}" class=" w-200 position-relative img-thumbnail" alt="">
-                                                        <a href="javascritp:;"><div class=" position-absolute top-0 end-0 p-1 ">
+                                                        <a href="{{ url('/delete_gallery_image/'.$files->id)}}"><div class=" position-absolute top-0 end-0 p-1 ">
                                                     <button class="btn-close btn-close-white p-2 bg-body" ></button>
                                                 </div></a>
                                                     </div>

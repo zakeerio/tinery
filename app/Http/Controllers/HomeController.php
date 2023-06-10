@@ -76,8 +76,27 @@ class HomeController extends Controller
 
     public function itineraries()
     {
+        $tagsnames = array();
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(20);
-        return view('frontend.pages.itineraries',compact('itinerary'));
+        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
+        foreach($filter as $itineraries)
+        {
+            if($itineraries->tags != '')
+            {
+                $tags = json_decode($itineraries->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+
+                    array_push($tagsnames,$tag->slug);
+                }
+
+            }
+        }
+        $tags = array_unique($tagsnames);
+        $user_filter = Itineraries::where('itinerary_status','updated')->where('status','published')->distinct('user_id')->get();
+
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter'));
     }
 
     public function slug_itineraries($slug)
