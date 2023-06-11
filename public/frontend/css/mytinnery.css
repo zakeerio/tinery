@@ -741,6 +741,12 @@ header {
     height: 90px;
 }
 
+.w-120i {
+    max-width: 120px;
+    width: 100%;
+    height: 120px;
+}
+
 .mb-36px {
     margin-bottom: 36px;
 }
@@ -1091,7 +1097,8 @@ select.did-floating-select::-ms-expand {
 }
 
 .myitinerylist {
-    padding: 0 69px;
+    padding-left: 69px;
+    padding-right: 69px;
 }
 
 .card-text {
@@ -1222,9 +1229,19 @@ select.did-floating-select::-ms-expand {
 
 }
 
-.font-add-bt {
-    font-size: 42px;
-    line-height: 1em;
+.font-20 {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.font-300-16 {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    background-color: transparent !important;
 }
 
 /* For mobile phones: */
@@ -1435,10 +1452,68 @@ select.did-floating-select::-ms-expand {
     .hero-c-p {
         font-size: 16px !important;
     }
+
+    .font-12 {
+        font-size: 12px !important;
+    }
+
+    .join {
+        font-size: 16px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 16px !important;
+    }
+
+    .w-120i {
+        max-width: 64px !important;
+
+        height: 64px !important;
+    }
+
+    .title1 {
+        font-size: 14px !important;
+
+    }
+
+    .map-img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .font-20 {
+        font-size: 20px !important;
+    }
+
+    .travel {
+        font-size: 20px !important;
+    }
+
+    .filters-p {
+        font-size: 14px;
+    }
 }
 
 
 @media screen and (max-width: 1024px) {
+    .filters-p {
+        font-size: 16px;
+    }
+
+
+    .travel {
+        font-size: 24px;
+    }
+
+    .w-120i {
+        max-width: 80px;
+        height: 80px;
+    }
+
+    .w-24 {
+        width: 24px;
+        height: 24px;
+    }
 
     .w-120 {
         height: 64px;

@@ -13,8 +13,8 @@
 </div>
 
 <div class="explore">
-    <div class="container px-5 px-lg-0">
-        <div class="explore-section py-4">
+    <div class="container ">
+        <div class="explore-section px-lg-4 py-4">
             <div class="row">
                 <div class="d-flex justify-content-between align-items-center ">
                     <h1 class=" " >Explore Popular Travel Itineraries</h1>

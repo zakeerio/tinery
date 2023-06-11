@@ -124,9 +124,10 @@
                                         <div class="accordion-item  border-0  mycollapsebutton">
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $days->id.'-'.$activity->id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ $days->id.'-'.$activity->id }}">
                                                 <div class=" row days-menu ">
+
                                                     <div class=" d-flex ">
                                                         <div class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">  {{ ++$activityKey }}  </div>
-                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3">
+                                                        <div class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3  d-sm-flex">
                                                             <div class="red-p text-danger">{{date('h:ia',strtotime($activity->starttime))}}</div>
                                                             <div class="vr vr2"></div>
                                                             <div class="yoga">{{ $activity->title }}</div>
@@ -135,6 +136,7 @@
                                                             <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </button>
                                             <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
@@ -364,7 +366,7 @@
                                         @if(!empty($itinerary->user->website))
                                             <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
                                         @endif
-                                    </div>
+                            </div>
                         </div>
 
                         <div class="profiles p-3 mt-32">

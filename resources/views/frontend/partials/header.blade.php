@@ -6,7 +6,7 @@
             <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ asset('frontend/images/LOGO.png') }}" alt="Company Logo"></a>
             <div class="d-flex gap-3">
             @if(Auth::guard('user')->user())
-                <div class="">
+                <div class="d-lg-none">
                         <a class="nav-link " href="{{ url('/profile')}}">
                             @if(Auth::guard('user')->user()->profile != '')
                             <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >

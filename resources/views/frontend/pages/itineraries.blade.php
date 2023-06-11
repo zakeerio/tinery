@@ -16,19 +16,20 @@
     <div class="filter">
         <div class="container">
             <div class="filter-body">
-                <div class="row filter-bordr">
+                <div class="d-flex flex-wrap filter-bordr gap-1">
 
-                    <div class="col-lg-2 col-sm-2 col-md-2 mt-2">
+                    <div class=" d-flex gap-2">
                         <div class="filter-logo">
                             <img src="{{ asset('frontend/images/Filter.png') }}" alt="" class="filter-logo-img">
                             <span>Filter</span>
 
                         </div>
+                        <div class="vr"></div>
                     </div>
 
                     <!-- Filter dropdown -->
 
-                    <div class="col-lg-2 col-sm-2 col-md-2 mx-4">
+                    <div class="col-lg-2 col-sm-2 col-md-2">
                         <div class="dropdown ">
                             <button class="btn bg-light border-0 dropdown-toggle rounded-pill px-3 active"
                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -126,7 +127,7 @@
                             <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                 <div id="selected-feild">
                                     <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center "
+                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center  "
                                         type="go">Go <span>X</span>
                                     </button>
                                     <hr>
@@ -169,7 +170,7 @@
                             <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                 <div id="selected-feild">
                                     <button
-                                        class="btn btn-light rounded-pill  text-white d-flex justify-content-between align-items-center "
+                                        class="btn btn-light rounded-pill  text-white d-flex justify-content-between align-items-center  "
                                         type="go">5-7 days <span>x</span>
                                     </button>
 
@@ -274,7 +275,7 @@
 
                 <div id="selected-feild">
                     <button
-                        class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill">Clear
+                        class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2">Clear
                         All filters x</button>
                 </div>
 
@@ -289,8 +290,8 @@
                 <div class="row">
                     @if(!empty($itinerary))
                     @foreach($itinerary as $row)
-                    <div class="col-lg-3 ">
-                        <div class="card bg-im" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
+                    <div class="col-6 col-md-4 col-lg-3 ">
+                        <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
                                 <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class="">
@@ -302,7 +303,7 @@
                                         @endif
                                     </div>
                                     <div class=" ">
-                                        <span class="mx-3">{{ $row->user->name}} {{ $row->user->lastname}}</span>
+                                        <span class="e-text-size ">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>

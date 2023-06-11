@@ -102,7 +102,7 @@
                 </div>
 
 
-                <div class="city d-flex profile-padding-left ">
+                <div class="city d-flex profile-padding-left  flex-wrap">
                     <div class="location d-flex gap-2 align-items-center">
                         <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
                         <p class="my-auto">Location</p>
@@ -137,9 +137,9 @@
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $user->username]) }}">
                                         @if (!empty($user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class=".img-80px">
                                         @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class=".img-80px">
                                         @endif
                                     </a>
                                         </div>
@@ -298,7 +298,7 @@
                                 <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
                             </div>
 
-                            <div class="city d-flex profile-padding-left ">
+                            <div class="city d-flex profile-padding-left  flex-wrap">
                                 <div class="d-flex align-items-center">
                                     <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                     <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_street}} </h6>
@@ -642,7 +642,7 @@
                                         </div>
                                         <div class="sidenameandlinks ">
                                     <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
-                                    <div class="d-flex  socialpicsize">
+                                    <div class="d-flex  socialpicsize d-none d-sm-block">
                                         @if(!empty($itinerary->user->facebook))
                                         <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
                                         @endif
@@ -666,6 +666,23 @@
                                     <h6 class="profile-details p-3">
                                 {{$itinerary->user->bio}}
                             </h6>
+                            <div class="d-flex  socialpicsize d-md-none justify-content-around">
+                                        @if(!empty($itinerary->user->facebook))
+                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->twitter))
+                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
+                                            @endif
+                                            @if(!empty($itinerary->user->instagram))
+                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                        @endif
+                                        @if(!empty($itinerary->user->tiktok))
+                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
+                                            @endif
+                                            @if(!empty($itinerary->user->website))
+                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                            @endif
+                                    </div>
                         </div>
 
                                 <div class="profiles p-3 mt-32">

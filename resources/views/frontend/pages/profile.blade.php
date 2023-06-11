@@ -307,10 +307,10 @@
                 </div>
 
                 <div class="col-md-8 myitinerylist">
-                    <div class=" d-flex justify-content-between align-items-center ">
-                    <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 " id="myTabs" role="tablist">
+                    <div class=" d-flex justify-content-between align-items-center my-sm-5 my-lg-0  ">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
+                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-2"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -318,7 +318,7 @@
 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark" id="tab2" data-bs-toggle="tab"
+                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-2" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
@@ -336,17 +336,19 @@
                             @forelse ( $itineraries as $itinerary )
                             {{-- {{ dd($itinerary) }} --}}
                                 <div class="row mb-3">
-                                    <div class="d-flex gap-3 align-items-center">
+                                    <div class="d-flex gap-3 align-items-center justify-content-between ">
+                                        <div class="d-flex gap-3">
                                         @if (!empty($itinerary->seo_image))
-                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
+                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i  rounded">
                                         @else
-                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
+                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120i">
                                         @endif
-                                        <div class="col-8">
-                                            <h2 class="title title1">{{ $itinerary->title }}</h2>
-                                            <p class="title-p">{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            <div class="">
+                                            <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
+                                            <p class="title-p mb-0">{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            </div>
                                         </div>
-                                        <div class="col-3 d-flex  gap-2 add-size">
+                                        <div class=" d-flex  gap-2 add-size">
                                             @if(auth('user')->id() && (auth('user')->id() == $itinerary->user->id))
                                                 <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             @endif
@@ -359,8 +361,8 @@
 
                                 <div class="text-center p-4">
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                    <h4>No Itineraries, yet</h4>
-                                    <p>No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
+                                    <h4 class="font-20">No Itineraries, yet</h4>
+                                    <p class="font-300-16">No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
                                     <a href="{{url('/create-itinerary')}}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
                                 </div>
 
@@ -405,9 +407,9 @@
 
                         </div>
                     </div>
-                    <ul class="nav nav-tabs  d-md-none float-end me-5">
+                    <ul class="nav nav-tabs  d-md-none float-end ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-circle  font-add-bt " href="{{url('/create-itinerary')}}">+</a>
+                            <a class="btn bg-transparent " href="{{url('/create-itinerary')}}"><img src="{{ asset('frontend/images/button-add.svg') }}"></a>
                         </li>
                     </ul>
                 </div>
