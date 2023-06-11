@@ -32,6 +32,8 @@
     color: #0F6496 !important;
 }
 
+
+
 .hero-section {
     background-position: center;
     background-image: url('../images/Header.png');
@@ -1250,7 +1252,7 @@ select.did-floating-select::-ms-expand {
 
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-    background-color: transparent !important;
+    background-color: black !important;
 }
 
 /* For mobile phones: */

@@ -293,7 +293,7 @@
                     <div class="col-6 col-md-4 col-lg-3 ">
                         <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1 gap-lg-2">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
