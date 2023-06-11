@@ -62,8 +62,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input filter" value="{{$filter->address_city}}"
-                                                    id="option{{$count}}">
-                                                <label for="option{{$count}}" class="form-check-label">{{$filter->address_city}}</label>
+                                                    id="optionaddr{{$count}}">
+                                                <label for="optionaddr{{$count}}" class="form-check-label">{{$filter->address_city}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -105,8 +105,8 @@
                                     <div class="col-lg-12">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input filter" value="{{$tags}}"
-                                                id="option{{$count}}">
-                                            <label for="option{{$count}}" class="form-check-label">{{$tags}}</label>
+                                                id="optiontag{{$count1}}">
+                                            <label for="optiontag{{$count1}}" class="form-check-label">{{$tags}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -146,8 +146,8 @@
                                     <div class="col-lg-12">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input filter" value="{{$filter->user_id}}"
-                                                id="option{{$count2}}">
-                                            <label for="option{{$count2}}" class="form-check-label">{{$filter->user->name}}</label>
+                                                id="optionuser{{$count2}}">
+                                            <label for="optionuser{{$count2}}" class="form-check-label">{{$filter->user->name}}</label>
                                         </div>
                                     </div>
                                 </div>

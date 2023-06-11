@@ -72,7 +72,7 @@
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
                             @php
-                                $tag = $row->tagsdata($itinerarytag);
+                                $tag = $itinerary->tagsdata($itinerarytag);
                             @endphp
                             @if($tag)
                                 <a href="#">
