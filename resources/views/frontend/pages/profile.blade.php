@@ -25,7 +25,7 @@
                         </div>
                         <div class="">
                             <div class="card-body">
-                                <h5 class="card-title d-none d-lg-flex">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                                <h5 class="card-title card-title-profile    d-none d-lg-flex">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
                                 <div class="d-flex  socail-imgaes d-none d-lg-flex">
                                     @if(!empty($user->facebook))
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
@@ -47,8 +47,8 @@
                         </div>
 
                     </div>
-                    <h5 class="card-title d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                    <div class="mt-4">
+                    <h5 class="card-title card-title-profile d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                    <div class="mt-lg-4 mt-1">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
 
