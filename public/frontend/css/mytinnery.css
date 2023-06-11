@@ -254,6 +254,10 @@
 
 }
 
+.filter-bordr .btn:hover {
+    background-color: #6c757d !important;
+}
+
 .anna {
 
     font-family: "Axiforma", Sans-serif;
