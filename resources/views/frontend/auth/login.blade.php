@@ -6,17 +6,17 @@
     <div class="container-fluid">
 
         <div class="row d-flex align-items-center">
-            <div class="col-md-5 d-md-block d-none frame-img p-0">
+            <div class="col-md-4 d-md-block d-none frame-img p-0">
                 <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8 px-32">
                 <div class="loginform">
-                    {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
+                    {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start ']) !!}
                     @csrf
-                    <h2 class="member-h2"> Member Login</h2>
+                    <h2 class="member-h2 my-32"> Member Login</h2>
                     <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="labe-section w-100">
+                        <div class="col-12 col-md-10">
+                            <div class="labe-section w-75 mx-auto mx-md-0">
                                 <div class="did-floating-label-content mb-4">
                                     {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
                                     {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
@@ -31,7 +31,7 @@
                     <div class="form-group mb-2">
                         {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
                     </div>
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 justify-content-center">
                         <a href="javascript:void(0)"  data-role="clicktoforgotloginpage">Forgot Password?</a> <div class="vr"></div>
                         <a href="{{ route('register') }}" >Register</a>
                     </div>

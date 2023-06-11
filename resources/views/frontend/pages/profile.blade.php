@@ -8,10 +8,10 @@
     <section class="profile-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 border-card my-5 ">
+                <div class="col-md-4 border-card my-md-5 my-3 ">
                     <div class="d-flex align-items-center profile-gap ">
                         <div class="position-relative">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="" method="post " enctype="multipart/form-data">
                                 @if($user->profile != '')
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img rounded-circle">
@@ -25,8 +25,8 @@
                         </div>
                         <div class="">
                             <div class="card-body">
-                                <h5 class="card-title">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
-                                <div class="d-flex  socail-imgaes">
+                                <h5 class="card-title card-title-profile    d-none d-lg-flex">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                                <div class="d-flex  socail-imgaes d-none d-lg-flex">
                                     @if(!empty($user->facebook))
                                         <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
                                     @endif
@@ -47,7 +47,8 @@
                         </div>
 
                     </div>
-                    <div class="mt-4">
+                    <h5 class="card-title card-title-profile d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                    <div class="mt-lg-4 mt-1">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
 
@@ -62,7 +63,7 @@
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Admin profile content -->
                                     <div class="row">
                                         @if (count($errors) > 0)
@@ -138,7 +139,7 @@
                             </h2>
                             <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Admin bio content -->
 
 
@@ -188,7 +189,7 @@
                             </h2>
                             <div id="collapseSocialProfile" class="accordion-collapse collapse"
                                 aria-labelledby="socialProfile" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="p-1">
                                     <!-- Social profile content -->
                                     <div class="row">
                                     @if ($usercheck)
@@ -268,7 +269,7 @@
                             </h2>
                             <div id="collapseRelevantTags" class="accordion-collapse collapse"
                                 aria-labelledby="relevantTags" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Relevant tags content -->
                                        <div class="row">
 
@@ -279,7 +280,7 @@
                                                     @if ($singletag)
 
                                                         @foreach($singletag as $singletagitem)
-                                                        <a href="{{url('/slug/'.$singletagitem)}}"><button class="foodie"> {{$singletagitem}} </button> </a>
+                                                        <a href="{{url('/slug/'.$singletagitem)}}" class="mb-1"><button class="foodie "> {{$singletagitem}} </button> </a>
                                                         @endforeach
                                                     @endif
 
@@ -306,10 +307,10 @@
                 </div>
 
                 <div class="col-md-8 myitinerylist">
-                    <div class=" d-flex justify-content-between align-items-center ">
-                    <ul class="nav nav-tabs profile-tabs d-flex gap-3 " id="myTabs" role="tablist">
+                    <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active"
+                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-2"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -317,14 +318,14 @@
 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark" id="tab2" data-bs-toggle="tab"
+                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-2" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4  text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>
@@ -335,17 +336,19 @@
                             @forelse ( $itineraries as $itinerary )
                             {{-- {{ dd($itinerary) }} --}}
                                 <div class="row mb-3">
-                                    <div class="d-flex gap-3 align-items-center">
+                                    <div class="d-flex gap-3 align-items-center justify-content-between ">
+                                        <div class="d-flex gap-3">
                                         @if (!empty($itinerary->seo_image))
-                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
+                                            <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i  rounded">
                                         @else
-                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
+                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120i">
                                         @endif
-                                        <div class="col-8">
-                                            <h2 class="title title1">{{ $itinerary->title }}</h2>
-                                            <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            <div class="">
+                                            <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
+                                            <p class="title-p mb-0">{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            </div>
                                         </div>
-                                        <div class="col-3 d-flex justify-content-end gap-2">
+                                        <div class=" d-flex  gap-2 add-size">
                                             @if(auth('user')->id() && (auth('user')->id() == $itinerary->user->id))
                                                 <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             @endif
@@ -358,8 +361,8 @@
 
                                 <div class="text-center p-4">
                                     <img src="{{ asset('frontend/images/map.png') }}" alt="map Image" class="map-img mb-4">
-                                    <h4>No Itineraries, yet</h4>
-                                    <p>No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
+                                    <h4 class="font-20">No Itineraries, yet</h4>
+                                    <p class="font-300-16">No itineraries in your list yet. Please add your <br> first itinerary to view in the list.</p>
                                     <a href="{{url('/create-itinerary')}}" class="btn btn-danger rounded-pill">+ Add Itinerary</a>
                                 </div>
 
@@ -385,7 +388,7 @@
                                                 <h2 class="title title1">{{ $itinerary->title }}</h2>
                                                 <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
                                             </div>
-                                            <div class="col-3 d-flex justify-content-end gap-2">
+                                            <div class="col-3 d-flex  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                             </div>
                                         </div>
@@ -404,6 +407,11 @@
 
                         </div>
                     </div>
+                    <ul class="nav nav-tabs  d-md-none float-end ">
+                        <li class="nav-item " role="presentation">
+                            <a class="btn bg-transparent " href="{{url('/create-itinerary')}}"><img src="{{ asset('frontend/images/button-add.svg') }}"></a>
+                        </li>
+                    </ul>
                 </div>
 
             </div>

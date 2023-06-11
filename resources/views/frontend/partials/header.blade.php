@@ -4,14 +4,28 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ asset('frontend/images/LOGO.png') }}" alt="Company Logo"></a>
+            <div class="d-flex gap-3">
+            @if(Auth::guard('user')->user())
+                <div class="d-lg-none">
+                        <a class="nav-link " href="{{ url('/profile')}}">
+                            @if(Auth::guard('user')->user()->profile != '')
+                            <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
+                            @else
+                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                            @endif
+                        </a>
+                </div>
+            @endif
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="ms-auto navbar-nav align-items-center">
+                <ul class="ms-auto navbar-nav align-items-center gap-3 gap-xl-0">
                     <li class="nav-item">
-                        <a class="nav-link text-clr" href="{{ route('about') }}">About</a>
+                        <a class="nav-link text-clr " href="{{ route('about') }}">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-clr" href="{{ route('itineraries') }}">Discover</a>
@@ -19,9 +33,9 @@
                     {{-- check user loggedin --}}
 
                     @if(Auth::guard('user')->user())
-                        <div class="profile-item d-flex justify-content-between align-items-center">
+                        <div class="profile-item   d-flex justify-content-between gap-2 align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ url('/profile')}}">
+                                <a class="nav-link d-none d-lg-block " href="{{ url('/profile')}}">
                                     @if(Auth::guard('user')->user()->profile != '')
                                     <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                                     @else
@@ -39,7 +53,7 @@
                         </div>
                     @else
                     <!-- Button trigger modal -->
-                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill px-4 efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
+                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill px-lg-5 px-xl-4   efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
                          <!-- Button trigger modal -->
                         <li class="nav-item"><a href="javascript:;" class="nav-link text-clr" data-bs-toggle="modal" data-bs-target="#userlogin">Login</a></li>
                     @endif
@@ -65,17 +79,21 @@
                         <div class="container-fluid">
 
                             <div class="row d-flex align-items-center">
-                                <div class="col-md-5 d-md-block d-none frame-img p-0">
+
+                                <div class="col-md-4 d-md-block d-none frame-img p-0">
+
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-8 px-32">
+
                                     <div id="loginform">
-                                        {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'p-5']) !!}
+                                        {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start']) !!}
                                         @csrf
-                                        <h2 class="member-h2"> Member Login</h2>
+                                        <h2 class="member-h2 my-32"> Member Login</h2>
                                         <div class="row">
-                                            <div class="col-12 col-lg-6">
-                                                <div class="labe-section w-100">
+                                            <div class="col-12 col-md-10">
+
+                                                <div class="labe-section w-75 mx-auto mx-md-0">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
                                                         {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
@@ -91,6 +109,7 @@
                                             {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
                                         </div>
                                         <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
+
                                         {!! Form::close() !!}
                                     </div>
                                     <div id="forgotpasswordform" style="display:none;">
@@ -145,10 +164,10 @@
                       <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
                     <div class="container-fluid">
                             <div class="row d-flex align-items-center">
-                                <div class="col-md-5 d-md-block d-none frame-img p-0">
+                                <div class="col-md-4 d-md-block d-none frame-img p-0">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-8 px-32">
                                     <div class="row">
                                         @if (count($errors) > 0)
                                         <div class="alert alert-danger">
@@ -161,12 +180,12 @@
                                         </div>
                                         @endif
                                     </div>
-                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => 'ps-3 pe-5']) !!}
+                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => '']) !!}
 
                                     @csrf
-                                    <h2 class="member-h2 mb-3 col-6 mx-auto col-md-12 mt-32">Become a Member</h2>
-                                    <div class="row">
-                                            <div class="col-md-6">
+                                    <h2 class="member-h2 mb-3 col-8 col-sm-6 text-center text-md-start mx-auto col-md-12 my-32">Become a Member</h2>
+                                    <div class="row ">
+                                            <div class="col-8  col-md-5 mx-auto mx-md-3  p-0 ">
                                                 <div class="labe-section w-100">
 
                                                     <div class="did-floating-label-content mb-4">
@@ -197,8 +216,8 @@
                                                     </div>
 
                                             </div>
-                                            <div class="col-md-  ">
-                                                <div class="labe-section mx-0 mx-lg-5 w-100">
+                                            <div class="col-8 col-md-5 mx-auto  p-0 ">
+                                                <div class="labe-section mx-0 w-100">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
                                                         {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label']) !!}
@@ -223,8 +242,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            {!! Form::submit("Become a Member", ['class' => 'btn btn-primary become-btn' ]) !!}
+                                        <div class="form-group text-center text-md-start">
+                                            {!! Form::submit("Become a Member", ['class' => 'btn btn-dark rounded-pill save-bt1  ' ]) !!}
                                             {!! Form::close() !!}
                                         </div>
 
