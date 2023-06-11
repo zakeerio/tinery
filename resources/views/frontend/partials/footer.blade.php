@@ -1,7 +1,7 @@
 <footer class="footer py-4  ">
     <div class="container">
         <div class="row mt-5 px-4">
-            <div class="cool-12 col-sm-2 mb-3 ">
+            <div class="col-12 col-sm-2 mb-3 ">
                 <a href="{{ url('/')}}">
                 <img src="{{ asset("frontend/images/LOGO.png") }}" alt="Logo" class="img-fluid tiny-logo">
                 </a>
@@ -35,7 +35,7 @@
             </div>
             <div class="footer-bar mt-5">
                 <div class="media-links">
-                    <ul class="list-inline">
+                    <ul class="list-inline w-140">
                         <li class="list-inline-item "><a href="#"><img src="{{ asset("frontend/images/facebook.png") }}" class="w-24" alt="Facebook"></a>
                         </li>
                         <li class="list-inline-item "><a href="#"><img src="{{ asset("frontend/images/twitter.png") }}" class="w-24" alt="Twitter"></a>

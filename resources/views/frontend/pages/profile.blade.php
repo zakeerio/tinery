@@ -55,7 +55,7 @@
                     <div class="accordion mt-4 " id="accordionExample">
                         <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="adminBio">
-                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
                                     <span class="fw-bold text-black">{{ $user->username }}</span>
@@ -132,7 +132,7 @@
 
                         <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="bioHeading">
-                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
                                     <span class="fw-bold color-black">Bio</span>
                                 </button>
@@ -181,7 +181,7 @@
 
                         <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="socialProfile">
-                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
                                     <span class="fw-bold color-black">Social Profile</span>
@@ -261,7 +261,7 @@
 
                         <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="relevantTags">
-                                <button class="accordion-button accordionbtn collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
                                     <span class="fw-bold color-black">Relevant Tags</span>

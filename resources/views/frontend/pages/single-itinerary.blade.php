@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                                 @else
@@ -300,7 +300,7 @@
                                 </div>
                             </div>
                             <div class="w-25 m-auto mt-4">
-                                <button class="btn btn-light rounded-pill load-btn px-4 text-center">Load More</button>
+                                <button class="btn btn-light rounded-pill load-btn px-4 text-center text-nowrap">Load More</button>
                             </div>
                         </div>
                         <div>
@@ -385,8 +385,9 @@
                                     </a>
                                     <div class="d-flex align-items-center">
                                         <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
-                                        <p class="lang px-2">{{ $rowrelated->created_at->diffForHumans() }}</p>
+                                        <p class="lang px-2 ">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                     </div>
+
                                 </div>
                             </div>
                             @endforeach

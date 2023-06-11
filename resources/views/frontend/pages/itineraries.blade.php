@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="perfect py-md-5 py-3">
+    <div class="perfect py-5">
         <div class="container">
             <div class="perfect-item ">
                 <h3 class="travel">Find the Perfect Travel Itinerary</h3>
@@ -62,8 +62,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input filter" value="{{$filter->address_city}}"
-                                                    id="optionaddr{{$count}}">
-                                                <label for="optionaddr{{$count}}" class="form-check-label">{{$filter->address_city}}</label>
+                                                    id="option{{$count}}">
+                                                <label for="option{{$count}}" class="form-check-label">{{$filter->address_city}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -105,8 +105,8 @@
                                     <div class="col-lg-12">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input filter" value="{{$tags}}"
-                                                id="optiontag{{$count1}}">
-                                            <label for="optiontag{{$count1}}" class="form-check-label">{{$tags}}</label>
+                                                id="option{{$count}}">
+                                            <label for="option{{$count}}" class="form-check-label">{{$tags}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -146,8 +146,8 @@
                                     <div class="col-lg-12">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input filter" value="{{$filter->user_id}}"
-                                                id="optionuser{{$count2}}">
-                                            <label for="optionuser{{$count2}}" class="form-check-label">{{$filter->user->name}}</label>
+                                                id="option{{$count2}}">
+                                            <label for="option{{$count2}}" class="form-check-label">{{$filter->user->name}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@
 
                 <div id="selected-feild">
                     <button
-                        class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2">Clear
+                        class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-5 me-md-2">Clear
                         All filters x</button>
                 </div>
 
@@ -293,7 +293,7 @@
                     <div class="col-6 col-md-4 col-lg-3 ">
                         <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -332,17 +332,17 @@
                                 $itinerarytag = json_decode($row->tags);
                                 @endphp
                                 @foreach($itinerarytag as $itinerarytag)
-                                    @php
-                                        $tag = $row->tagsdata($itinerarytag);
-                                    @endphp
+                                @php
+                                $tag = \App\Models\Tags::find($itinerarytag);
+                                @endphp
 
-                                    @if($tag)
-                                    <a href="{{url('/slug/'.$tag->slug)}}">
-                                        <button class="foodie">
-                                            {{$tag->name}}
-                                        </button>
-                                    </a>
-                                    @endif
+                                @if($tag)
+                                <a href="{{url('/slug/'.$tag->slug)}}">
+                                    <button class="foodie">
+                                        {{$tag->name}}
+                                    </button>
+                                </a>
+                                @endif
 
                                 {{-- {{ $itinerarytag }} --}}
                                 @endforeach

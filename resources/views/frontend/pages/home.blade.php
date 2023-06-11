@@ -98,14 +98,14 @@
 </div>
 
 <div class="member-spot">
-    <div class="container px-5 px-lg-0  ">
-        <div class="spotlight">
+    <div class="container px-32 px-lg-0  ">
+        <div class="spotlight ">
             <div class="row spotlight-center">
                 <h2 class="membr">Members Spotlight</h2>
 
                 @forelse ($users as $userdata )
 
-                <div class="col-lg-4 mb-5 col-sm-6">
+                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6">
                     <div class="member-info d-flex align-items-center justify-content-between ">
                         <div class="d-flex align-items-center justify-content-start ">
                             @if($userdata->profile != '')
@@ -114,7 +114,7 @@
                             <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
                             @endif
 
-                            <div class="mx-3">
+                            <div class="mx-md-3 mx-2">
                                 <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
                                     <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
                                 </div>
