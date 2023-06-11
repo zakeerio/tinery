@@ -36,8 +36,8 @@
     background-image: url('../images/Header.png');
     background-size: cover;
     background-repeat: no-repeat;
-    /* height: 400px; */
-    height: auto;
+    height: 520px !important;
+    /* height: auto; */
 }
 
 .hero-content {
@@ -56,7 +56,8 @@
 .hero-content p {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
-
+    max-width: 686px;
+    width: 100%;
     font-weight: 400;
     font-size: 24px;
     line-height: 36px;
@@ -64,8 +65,8 @@
     margin: 0;
 }
 
-.sideprofilepic img {
-    width: 100px !important;
+.img-80px {
+    width: 100px;
     height: 100px;
 }
 
@@ -89,12 +90,17 @@
     line-height: 1.4em;
 }
 
+.explore-section h1 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.4em;
+}
+
 .bg-img {
-    background-image: url('../images/Image_2.png');
+    /* background-image: url('../images/Image_2.png'); */
     background-size: cover;
     background-repeat: no-repeat;
-    height: 317px !important;
-
+    height: 290px;
 }
 
 .bg-toro {
@@ -135,6 +141,9 @@
 
 .cards-item {
     border-radius: 20px;
+    overflow: hidden;
+    padding-left: 21px;
+    padding-right: 21px;
 }
 
 .path-img {
@@ -179,8 +188,8 @@
     /* line-height: 1.4em; */
     color: #29293D;
     font-family: "Axiforma", Sans-serif;
-    margin-top: 36px;
-    margin-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 56px;
     gap: 42px;
     font-size: 20px !important;
 
@@ -199,7 +208,7 @@
 .Benjamin {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 18px;
     /* line-height: 25px; */
 
@@ -293,12 +302,13 @@
 
 .frame-img img {
     width: 100%;
-    max-width: 1000px;
     background-size: cover;
     height: 100%;
     min-height: 100vh;
     object-fit: cover;
 }
+
+
 
 .member-h2 {
     font-style: normal;
@@ -372,12 +382,12 @@
 
 
 .profile-tabs .nav-link {
-    font-weight: 600 !important;
-    border: 2px solid #000 !important;
-    color: #000 !important;
+    font-weight: 600;
+    border: 2px solid #000;
+    color: #000;
     font-size: 24px;
     line-height: 40px;
-    padding: 3px 16px !important;
+    padding: 3px 16px;
 }
 
 .profile-tabs .nav-link.active {
@@ -731,6 +741,12 @@ header {
     height: 90px;
 }
 
+.w-120i {
+    max-width: 120px;
+    width: 100%;
+    height: 120px;
+}
+
 .mb-36px {
     margin-bottom: 36px;
 }
@@ -755,7 +771,7 @@ header {
 
 .profile-relate {
     font-weight: 300;
-    font-size: 20px !important;
+    font-size: 20px;
     line-height: 1.4em;
     color: #2A293D;
 }
@@ -838,8 +854,21 @@ header {
     margin-bottom: 88px;
 }
 
+.px-32 {
+    padding: 0 32px !important;
+}
+
+.my-32 {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+}
+
 .dropzone {
     border: 3px dashed black !important;
+}
+
+.save-bt1 {
+    padding: 7px 32px !important;
 }
 
 .fam-img {
@@ -876,7 +905,8 @@ header {
 }
 
 .slickslider .slick-slide {
-    margin-right: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .slickslider .slick-slide:last-child {
@@ -884,7 +914,8 @@ header {
 }
 
 .slickslider6 .slick-slide {
-    margin-right: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .slickslider6 .slick-slide:last-child {
@@ -1055,18 +1086,19 @@ select.did-floating-select::-ms-expand {
 
 }
 
-.card-title {
+.card-title-profile {
     font-family: 'Axiforma';
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 40px;
+    line-height: 1.3em;
     /* identical to box height, or 167% */
     color: #000000;
 }
 
 .myitinerylist {
-    padding: 0 69px;
+    padding-left: 69px;
+    padding-right: 69px;
 }
 
 .card-text {
@@ -1197,6 +1229,21 @@ select.did-floating-select::-ms-expand {
 
 }
 
+.font-20 {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.font-300-16 {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    background-color: transparent !important;
+}
+
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -1222,6 +1269,8 @@ select.did-floating-select::-ms-expand {
         padding-top: 20px;
         margin: 0 auto !important;
     }
+
+
 
     .Benjamin {
 
@@ -1275,5 +1324,350 @@ select.did-floating-select::-ms-expand {
     .hero-section {
         min-height: 400px;
         height: auto;
+    }
+}
+
+@media screen and (max-width: 489px) {
+    .hero-content {
+        padding: 50px 17px !important;
+    }
+
+    .bg-img {
+        height: 172px !important;
+    }
+
+    .trip-h1 {
+        font-size: 28px;
+    }
+
+    .profile-img {
+        width: 107px !important;
+        height: 107px !important;
+    }
+
+    .card-title-profile {
+        font-size: 20px !important;
+    }
+
+    .border-card {
+        min-height: 400px !important;
+        padding: 0 30px !important;
+    }
+
+    .path-img {
+        width: 21px !important;
+        height: 17px !important;
+    }
+
+    .foodie {
+
+        padding: 3px 8px !important;
+    }
+
+
+    .profile-relate {
+        font-size: 16px !important;
+    }
+
+    .hero-content h2 {
+        font-size: 36px !important;
+    }
+
+    .explore-section h1 {
+        font-size: 20px !important;
+        width: 190px;
+
+    }
+
+    .explore-section h2 {
+        font-size: 14px !important;
+    }
+
+    .navbar-brand img {
+        width: 114px !important;
+        height: 40px !important;
+    }
+
+    .membr {
+        font-size: 20px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .member-img {
+        width: 76px !important;
+        height: 76px !important;
+    }
+
+    .Benjamin {
+        font-size: 16px !important;
+    }
+
+    .Benjamin-p {
+        font-size: 12px !important;
+    }
+
+    .heart-size {
+        width: 24px !important;
+        height: 20px !important;
+    }
+
+    .img-80px {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 16px !important;
+        line-height: 1.4em !important;
+    }
+
+    .myitinerylist {
+        padding: 0 30px !important;
+
+    }
+
+    .nav-tabs {
+        padding: 10px 0;
+        margin-left: 31px;
+    }
+
+    .title1 {
+        font-size: 16px !important;
+
+    }
+
+    .title-p {
+        font-size: 12px !important;
+    }
+
+    .add-size img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .w-120 {
+        height: 64px !important;
+    }
+
+    .footer {
+        border: 0px solid black !important;
+    }
+
+    .hero-c-p {
+        font-size: 16px !important;
+    }
+
+    .font-12 {
+        font-size: 12px !important;
+    }
+
+    .join {
+        font-size: 16px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 16px !important;
+    }
+
+    .w-120i {
+        max-width: 64px !important;
+
+        height: 64px !important;
+    }
+
+    .title1 {
+        font-size: 14px !important;
+
+    }
+
+    .map-img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .font-20 {
+        font-size: 20px !important;
+    }
+
+    .travel {
+        font-size: 20px !important;
+    }
+
+    .filters-p {
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+
+
+    .filters-p {
+        font-size: 16px;
+    }
+
+    .my-c {
+        padding: 36px 0;
+    }
+
+    .travel {
+        font-size: 24px;
+    }
+
+    .w-120i {
+        max-width: 80px;
+        height: 80px;
+    }
+
+    .w-24 {
+        width: 24px;
+        height: 24px;
+    }
+
+    .w-120 {
+        height: 64px;
+    }
+
+    .myitinerylist {
+        padding: 0 30px;
+    }
+
+    .add-size img {
+        width: 33px;
+        height: 33px;
+    }
+
+    .border-card {
+        padding: 0 30px;
+    }
+
+    .title-p {
+        font-size: 14px;
+    }
+
+    .bg-img {
+        height: 200px;
+    }
+
+    .border-card {
+        min-height: 566px;
+    }
+
+    .title1 {
+        font-size: 16px;
+        line-height: 1.4em;
+    }
+
+    .e-text-size {
+        font-weight: 300;
+        font-size: 10px;
+    }
+
+    .Ellipse {
+        max-width: 120px;
+
+        padding: 2px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+
+    .width-48 {
+        width: 24px;
+    }
+
+    .path-img {
+        width: 24px;
+        height: 20px;
+    }
+
+    .h-4 {
+        font-size: 16px;
+    }
+
+    .foodie {
+        font-size: 12px;
+        padding: 3px 12px;
+    }
+
+    .city {
+        font-size: 12px !important;
+        margin-top: 10px !important;
+        margin-bottom: 40px !important;
+    }
+
+
+
+    .cards-item {
+        border-radius: 0;
+        padding-left: 5px;
+
+    }
+
+    .hero-content h2 {
+        font-size: 56px;
+        line-height: 1.4em;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+        line-height: 1.4em;
+    }
+
+    .hero-content {
+        padding: 88px 17px;
+    }
+
+    .explore-section h1 {
+        font-size: 24px;
+
+    }
+
+    .explore-section h2 {
+        font-size: 16px;
+    }
+
+    .navbar-brand img {
+        width: 140px;
+        height: 48px;
+    }
+
+    .membr {
+        font-size: 24px;
+        line-height: 1.4em;
+        margin-bottom: 24px;
+    }
+
+    .member-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .Benjamin {
+        font-size: 20px;
+    }
+
+    .heart-size {
+        width: 36px;
+        height: 30px;
+    }
+
+    .related {
+        font-size: 20px;
+    }
+
+    .border-card {
+        min-height: 450px;
+    }
+
+    .nav-tabs {
+        padding: 15px 0;
+    }
+
+    .coments {
+        font-size: 20px;
+
     }
 }
