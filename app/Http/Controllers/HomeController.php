@@ -87,10 +87,8 @@ class HomeController extends Controller
                 foreach($tags as $tags)
                 {
                     $tag = Tags::where('id',$tags)->first();
-
-                    array_push($tagsnames,$tag->slug);
+                    array_push($tagsnames,$tag);
                 }
-
             }
         }
         $tags = array_unique($tagsnames);
@@ -98,6 +96,41 @@ class HomeController extends Controller
 
         return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter'));
     }
+
+
+    public function filteritineraries(Request $request)
+    {
+        if($request){
+            var_dump($request->all());
+        }
+        $tagsfilter = $request->tags;
+
+        $tagsnames = array();
+        $itinerary = Itineraries::where('itinerary_status','updated')
+        ->where('status','published')
+        ->whereJsonContains('tags', $tagsfilter)
+        ->paginate(20);
+        // dd($itinerary);
+        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
+        foreach($filter as $itineraries)
+        {
+            if($itineraries->tags != '')
+            {
+                $tags = json_decode($itineraries->tags);
+                foreach($tags as $tags)
+                {
+                    $tag = Tags::where('id',$tags)->first();
+                    array_push($tagsnames,$tag);
+                }
+
+            }
+        }
+        $tags = array_unique($tagsnames);
+        $user_filter = Itineraries::where('itinerary_status','updated')->where('status','published')->distinct('user_id')->get();
+
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter', 'tagsfilter'));
+    }
+
 
     public function slug_itineraries($slug)
     {
