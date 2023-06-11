@@ -146,6 +146,10 @@ $(document).ready(function() {
 
     $(document).ready(function() {
 
+        $('.dropdown-menu').on('click', function(event) {
+            event.stopPropagation();
+        });
+
         $('#intro').on('shown.bs.modal', function () {
             $('.select2').select2({
                 dropdownParent: $('#intro') // Specify the modal element as the parent container
