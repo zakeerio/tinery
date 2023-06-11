@@ -250,7 +250,7 @@ r>
 
                     <div id="selected-feild">
                         <button type="reset"
-                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2">Clear
+                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2 my-1">Clear
                             All filters x</button>
                     </div>
 

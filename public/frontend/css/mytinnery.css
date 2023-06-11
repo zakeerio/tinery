@@ -260,6 +260,9 @@
 
     color: #000000;
 }
+.filter-bordr .btn:hover {
+    background-color: #6c757d;
+}
 
 .slider-img {
     width: 100%;
@@ -1241,7 +1244,7 @@ select.did-floating-select::-ms-expand {
 
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-    background-color: transparent !important;
+    background-color: black !important;
 }
 
 /* For mobile phones: */
