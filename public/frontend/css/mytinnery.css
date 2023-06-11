@@ -1500,6 +1500,9 @@ select.did-floating-select::-ms-expand {
         font-size: 16px;
     }
 
+    .my-c {
+        padding: 36px 0;
+    }
 
     .travel {
         font-size: 24px;

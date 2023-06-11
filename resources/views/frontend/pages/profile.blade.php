@@ -307,7 +307,7 @@
                 </div>
 
                 <div class="col-md-8 myitinerylist">
-                    <div class=" d-flex justify-content-between align-items-center my-sm-5 my-lg-0  ">
+                    <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-2"
@@ -325,7 +325,7 @@
                     </ul>
                     <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4  text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>
