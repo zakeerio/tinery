@@ -137,9 +137,10 @@
                                                     $tags = json_decode($row->tags)
                                                 @endphp
                                                 @foreach($tags as $tag)
-                                                    @php
-                                                        $tag = \App\Models\Tags::find($tag);
-                                                    @endphp
+
+                                                @php
+                                                    $tag = $row->tagsdata($tag);
+                                                @endphp
                                                     <span class="badge bg-primary">{{$tag->name}}</span>
                                                 @endforeach
                                             @endif

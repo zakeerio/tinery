@@ -66,19 +66,19 @@
                             @php
                                 $itinerarytag = json_decode($itinerary->tags);
                             @endphp
-                            @foreach($itinerarytag as $itinerarytag)
-                            @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
-                                @endphp
-                            @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
-                            @endif
+                                @foreach($itinerarytag as $itinerarytag)
+                                    @php
+                                        $tag = $row->tagsdata($itinerarytag);
+                                    @endphp
+                                    @if($tag)
+                                        <a href="{{url('/slug/'.$tag->slug)}}">
+                                            <button class="foodie">
+                                                {{$tag->name}}
+                                            </button>
+                                        </a>
+                                    @endif
 
-                            @endforeach
+                                @endforeach
                             @endif
                             <!-- <a href="#"> <button class="foodie">Foodie</button></a>
                             <a href="#"> <button class="foodie">Backpacker</button></a>

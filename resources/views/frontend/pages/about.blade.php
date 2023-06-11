@@ -7,7 +7,7 @@
             <div class="hero-content">
                 <div class="row">
                     <div class="col-lg-8">
-                        
+
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-lg-8">
                                 <h1 class="trip-h1">{{ $itinerary->title}}</h1>
@@ -72,8 +72,8 @@
                             @endphp
                             @foreach($itinerarytag as $itinerarytag)
                             @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
-                                @endphp
+                                $tag = $row->tagsdata($itinerarytag);
+                            @endphp
                             @if($tag)
                                 <a href="#">
                                     <button class="foodie">

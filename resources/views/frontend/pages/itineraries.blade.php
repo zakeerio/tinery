@@ -153,7 +153,7 @@
                                 <?php $count2++;?>
                                 @endforeach
                                 @endif
-                                
+
 
                             </div>
                         </div>
@@ -331,17 +331,17 @@
                                 $itinerarytag = json_decode($row->tags);
                                 @endphp
                                 @foreach($itinerarytag as $itinerarytag)
-                                @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
-                                @endphp
+                                    @php
+                                        $tag = $row->tagsdata($itinerarytag);
+                                    @endphp
 
-                                @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
-                                @endif
+                                    @if($tag)
+                                    <a href="{{url('/slug/'.$tag->slug)}}">
+                                        <button class="foodie">
+                                            {{$tag->name}}
+                                        </button>
+                                    </a>
+                                    @endif
 
                                 {{-- {{ $itinerarytag }} --}}
                                 @endforeach
