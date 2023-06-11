@@ -33,11 +33,11 @@
 }
 
 .hero-section {
+    background-position: top;
     background-image: url('../images/Header.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 520px !important;
-    /* height: auto; */
 }
 
 .hero-content {
@@ -1338,6 +1338,10 @@ select.did-floating-select::-ms-expand {
 
     .trip-h1 {
         font-size: 28px;
+    }
+    .slickslider .slick-slide {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .profile-img {

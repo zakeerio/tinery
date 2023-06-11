@@ -325,7 +325,7 @@
                     </ul>
                     <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4  text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>
@@ -407,11 +407,13 @@
 
                         </div>
                     </div>
-                    <ul class="nav nav-tabs  d-md-none float-end ">
-                        <li class="nav-item " role="presentation">
-                            <a class="btn bg-transparent " href="{{url('/create-itinerary')}}"><img src="{{ asset('frontend/images/button-add.svg') }}"></a>
-                        </li>
-                    </ul>
+                    @if ($itineraries->count() > 0)
+                        <ul class="nav nav-tabs  d-md-none float-end ">
+                            <li class="nav-item " role="presentation">
+                                <a class="btn bg-transparent " href="{{url('/create-itinerary')}}"><img src="{{ asset('frontend/images/button-add.svg') }}"></a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
 
             </div>

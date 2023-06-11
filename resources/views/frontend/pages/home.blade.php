@@ -29,7 +29,7 @@
 </div>
 
 <div class="card-section py-3  px-md-0">
-    <div class="container p-0 mx-md-auto ">
+    <div class="container mx-md-auto ">
         <div class="cards-item">
             <div class="row slickslider">
                 @if($itineraries->count() > 0)
