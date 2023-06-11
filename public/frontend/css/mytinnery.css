@@ -1328,6 +1328,10 @@ select.did-floating-select::-ms-expand {
 }
 
 @media screen and (max-width: 489px) {
+    .hero-content {
+        padding: 50px 17px !important;
+    }
+
     .bg-img {
         height: 172px !important;
     }
@@ -1437,8 +1441,8 @@ select.did-floating-select::-ms-expand {
     }
 
     .add-size img {
-        width: 14px !important;
-        height: 14px !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 
     .w-120 {
@@ -1496,6 +1500,8 @@ select.did-floating-select::-ms-expand {
 
 
 @media screen and (max-width: 1024px) {
+
+
     .filters-p {
         font-size: 16px;
     }
@@ -1527,8 +1533,8 @@ select.did-floating-select::-ms-expand {
     }
 
     .add-size img {
-        width: 18px;
-        height: 18px;
+        width: 33px;
+        height: 33px;
     }
 
     .border-card {
@@ -1559,7 +1565,7 @@ select.did-floating-select::-ms-expand {
 
     .Ellipse {
         max-width: 120px;
-        margin: 5px !important;
+
         padding: 2px !important;
     }
 
@@ -1658,5 +1664,10 @@ select.did-floating-select::-ms-expand {
 
     .nav-tabs {
         padding: 15px 0;
+    }
+
+    .coments {
+        font-size: 20px;
+
     }
 }

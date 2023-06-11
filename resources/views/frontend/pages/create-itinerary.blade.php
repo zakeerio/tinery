@@ -642,7 +642,7 @@
                                         </div>
                                         <div class="sidenameandlinks ">
                                     <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
-                                    <div class="d-flex  socialpicsize d-none d-sm-block">
+                                    <div class="d-flex  socialpicsize d-none d-sm-flex">
                                         @if(!empty($itinerary->user->facebook))
                                         <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
                                         @endif
@@ -666,7 +666,7 @@
                                     <h6 class="profile-details p-3">
                                 {{$itinerary->user->bio}}
                             </h6>
-                            <div class="d-flex  socialpicsize d-md-none justify-content-around">
+                            <div class="d-flex  socialpicsize d-sm-none justify-content-around">
                                         @if(!empty($itinerary->user->facebook))
                                         <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
                                         @endif

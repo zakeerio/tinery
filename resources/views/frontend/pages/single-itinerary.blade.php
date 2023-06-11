@@ -183,7 +183,7 @@
                         <div class=" mt-4">
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
-                                <h2 class="coments mt-3 px-2">Comments ({{ ($itinerary->comments) ? count($itinerary->comments) : '0' }})</h2>
+                                <h3 class="coments mt-3 px-2 text-nowrap">Comments ({{ ($itinerary->comments) ? count($itinerary->comments) : '0' }})</h3>
                                 <div class=" d-flex align-items-center">
                                     <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
                                     <img src="{{ asset('frontend/images/up.png') }}" alt="" class="  mx-2">

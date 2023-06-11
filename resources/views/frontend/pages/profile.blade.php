@@ -8,10 +8,10 @@
     <section class="profile-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 border-card my-5 ">
+                <div class="col-md-4 border-card my-md-5 my-3 ">
                     <div class="d-flex align-items-center profile-gap ">
                         <div class="position-relative">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="" method="post " enctype="multipart/form-data">
                                 @if($user->profile != '')
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img rounded-circle">
@@ -63,7 +63,7 @@
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Admin profile content -->
                                     <div class="row">
                                         @if (count($errors) > 0)
@@ -139,7 +139,7 @@
                             </h2>
                             <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Admin bio content -->
 
 
@@ -189,7 +189,7 @@
                             </h2>
                             <div id="collapseSocialProfile" class="accordion-collapse collapse"
                                 aria-labelledby="socialProfile" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="p-1">
                                     <!-- Social profile content -->
                                     <div class="row">
                                     @if ($usercheck)
@@ -269,7 +269,7 @@
                             </h2>
                             <div id="collapseRelevantTags" class="accordion-collapse collapse"
                                 aria-labelledby="relevantTags" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-1">
                                     <!-- Relevant tags content -->
                                        <div class="row">
 
@@ -280,7 +280,7 @@
                                                     @if ($singletag)
 
                                                         @foreach($singletag as $singletagitem)
-                                                        <a href="{{url('/slug/'.$singletagitem)}}"><button class="foodie"> {{$singletagitem}} </button> </a>
+                                                        <a href="{{url('/slug/'.$singletagitem)}}" class="mb-1"><button class="foodie "> {{$singletagitem}} </button> </a>
                                                         @endforeach
                                                     @endif
 
