@@ -80,6 +80,7 @@ class ItinerariesController extends BaseController
             'latitude' => 'nullable|string|max:255',
             'longitude' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255',
+            'duration' => 'nullable|string|max:255',
             'website' => 'nullable|string|max:255',
             'additional_info' => 'nullable|string',
             'featured' => 'nullable|in:0,1',
@@ -142,6 +143,7 @@ class ItinerariesController extends BaseController
             $array->latitude = $data['latitude'];
             $array->longitude = $data['longitude'];
             $array->phone = $data['phone'];
+            $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->additional_info = $data['additional_info'];
             $array->featured = $data['featured'];
@@ -255,6 +257,7 @@ class ItinerariesController extends BaseController
             'latitude' => 'nullable|string|max:255',
             'longitude' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255',
+            'duration' => 'nullable|string|max:255',
             'website' => 'nullable|string|max:255',
             'additional_info' => 'nullable|string',
             'featured' => 'nullable|in:0,1',
@@ -315,6 +318,7 @@ class ItinerariesController extends BaseController
             $array->latitude = $data['latitude'];
             $array->longitude = $data['longitude'];
             $array->phone = $data['phone'];
+            $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->additional_info = $data['additional_info'];
             $array->featured = $data['featured'];
@@ -397,6 +401,14 @@ class ItinerariesController extends BaseController
         $array->itineraries_id = $tempid;
         $array->tempid = $tempid;
         $array->save();
+
+        $array1 = ItineraryDays::where('itineraries_id',$tempid)->count();
+        Itineraries::where('id',$tempid)->update(
+            [
+                'duration'  =>  $array1,
+            ]
+        );
+
     }
 
     public function showitinerarydays(Request $request)
@@ -478,7 +490,7 @@ class ItinerariesController extends BaseController
                         $.ajax({
                             url:"'.url('/admin/itineraries/deleteday').'",
                             method:"post",
-                            data:{_token:csrftoken,id:id},
+                            data:{_token:csrftoken,id:id,itinerariesidloop:itinerariesidloop},
                             success:function(data)
                             {
                                 $.notify({
@@ -554,9 +566,18 @@ class ItinerariesController extends BaseController
     {
         $output = '';
         $id = $request->id;
+        $itinerariesidloop = $request->itinerariesidloop;
 
         $array = ItineraryDays::find($id)->delete();
         $array = ItineraryActivities::where('days_id',$id)->delete();
+
+        $array1 = ItineraryDays::where('itineraries_id',$itinerariesidloop)->count();
+        
+        Itineraries::where('id',$itinerariesidloop)->update(
+            [
+                'duration'  =>  $array1,
+            ]
+        );
     }
 
     public function submitdayform(Request $request)
