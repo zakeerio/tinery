@@ -100,9 +100,6 @@ class HomeController extends Controller
 
     public function filteritineraries(Request $request)
     {
-        if($request){
-            var_dump($request->all());
-        }
         $tagsfilter = $request->tags;
 
         $tagsnames = array();
