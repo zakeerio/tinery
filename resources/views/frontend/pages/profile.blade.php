@@ -325,7 +325,7 @@
                     </ul>
                     <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4 px-md-3 py-1 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>

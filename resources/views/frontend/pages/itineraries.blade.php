@@ -20,7 +20,7 @@
 
                     <div class="d-flex flex-wrap filter-bordr gap-1">
 
-                        <div class=" d-flex gap-2">
+                        <div class=" d-flex gap-2 align-items-center">
                             <div class="filter-logo">
                                 @csrf
                                 <img src="{{ asset('frontend/images/Filter.png') }}" alt="" class="filter-logo-img">
@@ -250,7 +250,7 @@ r>
 
                     <div id="selected-feild">
                         <button type="reset"
-                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2">Clear
+                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-5 me-md-3">Clear
                             All filters x</button>
                     </div>
 

@@ -99,7 +99,7 @@
                   @csrf
                   <h2 class="member-h2 mb-3 col-8 col-sm-6 text-center text-md-start mx-auto col-md-12 my-32">Become a Member</h2>
                   <div class="row">
-                          <div class="col-8  col-md-5 mx-auto mx-md-3  p-0 ">
+                          <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3  p-0 ">
                               <div class="labe-section w-100">
 
                                   <div class="did-floating-label-content mb-4">
@@ -130,7 +130,7 @@
                                   </div>
 
                           </div>
-                          <div class="col-8 col-md-5 mx-auto  p-0  ">
+                          <div class="col-11 col-sm-8 col-md-5 mx-auto  p-0  ">
                               <div class="labe-section mx-0 w-100">
                                   <div class="did-floating-label-content mb-4">
                                       {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}

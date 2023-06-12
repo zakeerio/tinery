@@ -183,7 +183,7 @@
     align-items: center;
     /* justify-content: space-between; */
     overflow: hidden;
-  }
+}
 
 .city {
     font-style: normal;
@@ -268,6 +268,7 @@
 
     color: #000000;
 }
+
 .filter-bordr .btn:hover {
     background-color: #6c757d;
 }
@@ -1409,12 +1410,10 @@ select.did-floating-select::-ms-expand {
 
     .Ellipse {
         max-width: 120px;
-
-        padding: 2px !important;
     }
 
     .profile-tabs .nav-link {
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1.4em;
     }
 
@@ -1698,6 +1697,10 @@ select.did-floating-select::-ms-expand {
     .w-200 {
         width: 155px;
         height: 155px;
+    }
+
+    .member-h2 {
+        font-size: 32px;
     }
 
 
