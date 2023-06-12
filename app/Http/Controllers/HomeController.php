@@ -46,7 +46,7 @@ class HomeController extends Controller
                     {
                         $tag = Tags::where('id',$tags)->first();
 
-                        array_push($tagsnames,$tag->slug);
+                        array_push($tagsnames,$tag);
                     }
 
                 }
@@ -92,7 +92,7 @@ class HomeController extends Controller
             }
         }
         $tags = array_unique($tagsnames);
-        $user_filter = Itineraries::where('itinerary_status','updated')->where('status','published')->distinct('user_id')->get();
+        $user_filter = User::get();
 
         return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter'));
     }
@@ -100,14 +100,30 @@ class HomeController extends Controller
 
     public function filteritineraries(Request $request)
     {
+        // var_dump($request->all());
         $tagsfilter = $request->tags;
-
+        $usersfilter = $request->users;
+        $locationfilter = $request->location;
+        $daysrange = $request->daysrange;
+        $range = ['1',$daysrange];
+        
         $tagsnames = array();
-        $itinerary = Itineraries::where('itinerary_status','updated')
-        ->where('status','published')
-        ->whereJsonContains('tags', $tagsfilter)
-        ->paginate(20);
-        // dd($itinerary);
+        $itinerary = Itineraries::where('itinerary_status', 'updated')
+        ->where('status', 'published');
+        if (!empty($tagsfilter)) {
+            $itinerary->whereJsonContains('tags', $tagsfilter);
+        }
+        if (!empty($usersfilter)) {
+            $itinerary->WhereIn('user_id', $usersfilter);
+        }
+        if (!empty($locationfilter)) {
+            $itinerary->WhereIn('address_city', $locationfilter);
+        }
+        // if (!empty($daysrange)) {
+        //     $itinerary->where('duration', $range);
+        // }
+        $itinerary = $itinerary->paginate(20);
+        
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         foreach($filter as $itineraries)
         {
@@ -119,13 +135,22 @@ class HomeController extends Controller
                     $tag = Tags::where('id',$tags)->first();
                     array_push($tagsnames,$tag);
                 }
-
             }
         }
         $tags = array_unique($tagsnames);
-        $user_filter = Itineraries::where('itinerary_status','updated')->where('status','published')->distinct('user_id')->get();
+        $user_filter = User::get();
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter', 'tagsfilter'));
+        $filteredlocations = array();
+        if(!empty($locationfilter)):
+        $filteredlocations = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('address_city',$locationfilter)->get();
+        endif;
+
+        $filteredusers = array();
+        if(!empty($usersfilter)):
+        $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
+        endif;
+        
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
     }
 
 
@@ -364,7 +389,6 @@ class HomeController extends Controller
 
         $daysupdate->duration = $days;
         $daysupdate->save();
-
 
         return redirect('/edit-itinerary/'.$itineraryid)->with('success','Added Successfully');
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Models\User;
+use App\Models\Itineraries;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Arr;
@@ -198,7 +199,8 @@ class UsersController extends BaseController
      */
     public function destroy($id)
     {
-        $user = User::destroy($id);
+        $user = User::find($id)->delete();
+        Itineraries::where('user_id',$id)->delete();
         if(!$user){
 			return $this->responseRedirectBack('Error occurred while deleting user', 'error', true, true);
 		}

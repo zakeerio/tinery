@@ -46,7 +46,7 @@
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="width-48">
                                         @endif
                                     </div>
-                                    <div class="e-text-size ">
+                                    <div class="e-text-size  text-nowrap">
                                         <span class="mx-lg-3 mx-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
@@ -214,7 +214,6 @@
                         #Tinery #RelaxiTaxi #Fun #Reset</p>
                     </div>
                 </div>
-                $
                 <div class="col-lg-2 ">
                     <div class="social-descover">
                         <div class="">

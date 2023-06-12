@@ -153,9 +153,15 @@
                                 {!! Form::text('longitude', null, ['class' => 'form-control', 'id'=> 'longitude']) !!}
                             </div>
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('phone', 'Phone') !!}
-                            {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                {!! Form::label('phone', 'Phone') !!}
+                                {!! Form::number('phone', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                {!! Form::label('duration', 'Duration') !!}
+                                {!! Form::number('duration', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
                         <div class="form-group">
                             {!! Form::label('website', 'Website') !!}
