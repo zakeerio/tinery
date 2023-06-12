@@ -56,99 +56,100 @@
         });
     </script>
 @endif
-
 <script>
 
-$(document).ready(function() {
-      $('.slickslider').slick({
-        slidesToShow: 4,        // Display 4 items at a time
-        autoplay: true,         // Enable auto start
-        autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
-        infinite: true,         // Enable continuous loop
-        arrows: false,          // Hide navigation arrows (optional)
-        dots: false,              // Show navigation dots (optional)
-         responsive: [
-    {
-      breakpoint: 490,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
+    $(document).ready(function () {
+        $('.slickslider').slick({
+            slidesToShow: 4,        // Display 4 items at a time
+            autoplay: true,         // Enable auto start
+            autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
+            infinite: true,         // Enable continuous loop
+            arrows: false,          // Hide navigation arrows (optional)
+            dots: false,              // Show navigation dots (optional)
+            responsive: [
+                {
+                    breakpoint: 490,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                    },
 
-    },
-    {
-      breakpoint: 797,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
+                },
+                {
+                    breakpoint: 797,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    },
 
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
+                },
+                {
+                    breakpoint: 360,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
 
-    }
+                }
 
-  ],
-      });
+            ],
+        });
     });
-$(document).ready(function() {
-      $('.slickslider6').slick({
-        slidesToShow:6,        // Display 4 items at a time
-        autoplay: true,         // Enable auto start
-        autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
-        infinite: true,         // Enable continuous loop
-        arrows: false,          // Hide navigation arrows (optional)
-        dots: false,              // Show navigation dots (optional)
-        responsive: [
-    {
-        breakpoint: 1024,
-        settings: {
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        },
+    $(document).ready(function () {
+        $('.slickslider6').slick({
+            slidesToShow: 6,        // Display 4 items at a time
+            autoplay: true,         // Enable auto start
+            autoplaySpeed: 2000,    // Set autoplay interval in milliseconds (e.g., 2000ms = 2 seconds)
+            infinite: true,         // Enable continuous loop
+            arrows: false,          // Hide navigation arrows (optional)
+            dots: false,              // Show navigation dots (optional)
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                    },
 
-    },
+                },
 
-    {
-      breakpoint: 797,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
+                {
+                    breakpoint: 797,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    },
 
-    },
-    {
-      breakpoint: 490,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
+                },
+                {
+                    breakpoint: 490,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                    },
 
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
+                },
+                {
+                    breakpoint: 360,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
 
-    }
+                }
 
-  ],
-      });
+            ],
+        });
     });
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $('.dropdown-menu').on('click', function(event) {
+        $('.dropdown-menu').on('click', function (event) {
             event.stopPropagation();
         });
+
+
 
         $('#intro').on('shown.bs.modal', function () {
             $('.select2').select2({
@@ -156,52 +157,53 @@ $(document).ready(function() {
             });
         });
 
-        if($('#address_street').length > 0) {
+        if ($('#address_street').length > 0) {
 
-                var options = {
-                            types: ['(cities)']
-                        };
-                var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
+            var options = {
+                types: ['(cities)']
+            };
 
-                google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                    var result = autocomplete.getPlace();
-                    console.log(result.address_components[0]);
+            var autocomplete = new google.maps.places.Autocomplete($("#address_street")[0], options);
 
-                    var location = result.geometry.location;
-                    var addressComponents = result.address_components;
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var result = autocomplete.getPlace();
+                console.log(result.address_components[0]);
 
-                    var latitude = location.lat;
-                    var longitude = location.lng;
+                var location = result.geometry.location;
+                var addressComponents = result.address_components;
 
-                    var address_street_line1 = result.formatted_address;
-                    var city = getAddressComponent(addressComponents, 'locality');
-                    var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
-                    var country = getAddressComponent(addressComponents, 'country');
-                    var postalCode = getAddressComponent(addressComponents, 'postal_code');
+                var latitude = location.lat;
+                var longitude = location.lng;
 
-
-                    // Update form fields with retrieved values
-
-                    $('#address_street_line1').val(address_street_line1);
-                    $('#address_zipcode').val(postalCode);
-
-                    $('#latitude').val(latitude);
-                    $('#longitude').val(longitude);
-                    $('#address_city').val(city);
-                    $('#address_state').val(state);
-                    $('#address_country').val(country);
-                });
-            }
+                var address_street_line1 = result.formatted_address;
+                var city = getAddressComponent(addressComponents, 'locality');
+                var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                var country = getAddressComponent(addressComponents, 'country');
+                var postalCode = getAddressComponent(addressComponents, 'postal_code');
 
 
-            if($('#map').length > 0 ) {
+                // Update form fields with retrieved values
 
-                initMaps();
-            }
+                $('#address_street_line1').val(address_street_line1);
+                $('#address_zipcode').val(postalCode);
+
+                $('#latitude').val(latitude);
+                $('#longitude').val(longitude);
+                $('#address_city').val(city);
+                $('#address_state').val(state);
+                $('#address_country').val(country);
+            });
+        }
+
+
+        if ($('#map').length > 0) {
+
+            initMaps();
+        }
 
 
 
-        function  initMaps(){
+        function initMaps() {
 
             // execute
             var locations = [
@@ -211,9 +213,9 @@ $(document).ready(function() {
                     'long': -100.7790,
                 },
                 {
-                    'description' : '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
-                    'lat' : 46.8772,
-                    'long' : -96.7894,
+                    'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
+                    'lat': 46.8772,
+                    'long': -96.7894,
                 }
             ];
 
@@ -231,7 +233,7 @@ $(document).ready(function() {
 
             var marker, i;
 
-            locations.forEach(function(location) {
+            locations.forEach(function (location) {
                 // Accessing individual properties
                 var description = location.description;
                 var lat = location.lat;
@@ -242,8 +244,8 @@ $(document).ready(function() {
                     map: map
                 });
 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
                         infowindow.setContent(description);
                         infowindow.open(map, marker);
                     }
@@ -254,8 +256,7 @@ $(document).ready(function() {
                 // console.log('Latitude:', lat);
                 // console.log('Longitude:', long);
             })
-
-}
+        }
 
 
 
@@ -265,55 +266,50 @@ $(document).ready(function() {
                 var componentTypes = component.types;
 
                 if (componentTypes.indexOf(type) !== -1) {
-                return component.long_name;
+                    return component.long_name;
                 }
             }
             return '';
         }
     });
-    $(document).ready(function(){
-        $(document).on('click','a[data-role=clicktoforgot]',function(){
+    $(document).ready(function () {
+        $(document).on('click', 'a[data-role=clicktoforgot]', function () {
             $("#forgotpasswordform").show();
             $("#loginform").hide();
         });
-        $(document).on('click','a[data-role=clicktologin]',function(){
+        $(document).on('click', 'a[data-role=clicktologin]', function () {
             $("#forgotpasswordform").hide();
             $("#loginform").show();
         });
 
-        $(document).on('click','a[data-role=clicktoforgotloginpage]',function(){
+        $(document).on('click', 'a[data-role=clicktoforgotloginpage]', function () {
             $(".forgotpasswordform").show();
             $(".loginform").hide();
         });
-        $(document).on('click','a[data-role=clicktologinpage]',function(){
+        $(document).on('click', 'a[data-role=clicktologinpage]', function () {
             $(".forgotpasswordform").hide();
             $(".loginform").show();
         });
 
 
-        $(document).on('click','a[data-role=sendforgotpasswordcode]',function(){
+        $(document).on('click', 'a[data-role=sendforgotpasswordcode]', function () {
             var csrftoken = $('#csrftoken').val();
             var email = $(".forgotpasswordemail").val();
 
-            if(email == "")
-            {
+            if (email == "") {
                 alert('Email Address is not Empty');
             }
-            else
-            {
+            else {
                 $.ajax({
-                    url:'{{ url("/forgotpasswordcode")}}',
-                    method:'post',
-                    data:{_token:csrftoken,email:email},
-                    success:function(data)
-                    {
+                    url: '{{ url("/forgotpasswordcode")}}',
+                    method: 'post',
+                    data: { _token: csrftoken, email: email },
+                    success: function (data) {
                         var res = $.parseJSON(data);
-                        if(res.error)
-                        {
+                        if (res.error) {
                             alert('Email Address is not Found');
                         }
-                        if(res.success)
-                        {
+                        if (res.success) {
                             $(".forgotpasswordalertsuccess").show();
                         }
                     }
@@ -321,120 +317,111 @@ $(document).ready(function() {
             }
         });
         $('.select2').select2();
-        $(document).on('click','a[data-role=addtowishlist]',function(){
+        $(document).on('click', 'a[data-role=addtowishlist]', function () {
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
 
             $.ajax({
-                url:'{{ url("/favourites")}}',
-                method:'post',
-                data:{_token:csrftoken,id:id},
-                success:function(data)
-                {
+                url: '{{ url("/favourites")}}',
+                method: 'post',
+                data: { _token: csrftoken, id: id },
+                success: function (data) {
                     var res = $.parseJSON(data);
-                    if(res.success)
-                    {
+                    if (res.success) {
                         $.notify({
-                        title: '<strong>SUCCESS!</strong>',
-                        message: res.success
-                        },{
-                        type: 'success'
+                            title: '<strong>SUCCESS!</strong>',
+                            message: res.success
+                        }, {
+                            type: 'success'
                         });
                     }
-                    if(res.error)
-                    {
+                    if (res.error) {
                         $.notify({
-                        title: '<strong>ERROR!</strong>',
-                        message: res.error
-                        },{
-                        type: 'danger'
+                            title: '<strong>ERROR!</strong>',
+                            message: res.error
+                        }, {
+                            type: 'danger'
                         });
                     }
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.history.go(0); // Replace with your desired URL
                     }, 500);
                 }
             });
         });
-        $(document).on('click','a[data-role=removetowishlist]',function(){
+        $(document).on('click', 'a[data-role=removetowishlist]', function () {
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
 
             $.ajax({
-                url:'{{ url("/removefavourites")}}',
-                method:'post',
-                data:{_token:csrftoken,id:id},
-                success:function(data)
-                {
+                url: '{{ url("/removefavourites")}}',
+                method: 'post',
+                data: { _token: csrftoken, id: id },
+                success: function (data) {
                     var res = $.parseJSON(data);
-                    if(res.success)
-                    {
+                    if (res.success) {
                         $.notify({
-                        title: '<strong>SUCCESS!</strong>',
-                        message: res.success
-                        },{
-                        type: 'success'
+                            title: '<strong>SUCCESS!</strong>',
+                            message: res.success
+                        }, {
+                            type: 'success'
                         });
                     }
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.history.go(0); // Replace with your desired URL
                     }, 500);
                 }
             });
         });
-        $(document).on('click','a[data-role=addtowishlistnotlogin]',function(){
+        $(document).on('click', 'a[data-role=addtowishlistnotlogin]', function () {
             $.notify({
-            title: '<strong>ERROR!</strong>',
-            message: 'Login to add your Favourites'
-            },{
-            type: 'danger'
+                title: '<strong>ERROR!</strong>',
+                message: 'Login to add your Favourites'
+            }, {
+                type: 'danger'
             });
         });
     });
 </script>
 <script>
-    $(document).ready(function(){
-        function showdaysactivities(itineraryid,daysid)
-        {
+    $(document).ready(function () {
+        function showdaysactivities(itineraryid, daysid) {
             var csrftoken = $('#csrftoken').val();
             $.ajax({
-                url:'{{ url("/showdaysactivities")}}',
-                method:'post',
-                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
-                success:function(data)
-                {
-                    $("#showitinerariesdaysactivities"+daysid).html(data);
+                url: '{{ url("/showdaysactivities")}}',
+                method: 'post',
+                data: { _token: csrftoken, itineraryid: itineraryid, daysid: daysid },
+                success: function (data) {
+                    $("#showitinerariesdaysactivities" + daysid).html(data);
                 }
             });
         }
-        $(document).on('click','button[data-role=btnshowactivitymodel]',function(){
+        $(document).on('click', 'button[data-role=btnshowactivitymodel]', function () {
             var itineraryid = $(this).data('itineraryid');
             var daysid = $(this).data('daysid');
             var csrftoken = $('#csrftoken').val();
             $.ajax({
-                url:'{{ url("/showdaysactivities")}}',
-                method:'post',
-                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
-                success:function(data)
-                {
-                    $("#showitinerariesdaysactivities"+daysid).html(data);
+                url: '{{ url("/showdaysactivities")}}',
+                method: 'post',
+                data: { _token: csrftoken, itineraryid: itineraryid, daysid: daysid },
+                success: function (data) {
+                    $("#showitinerariesdaysactivities" + daysid).html(data);
                 }
             });
         });
-        $(document).on('click','a[data-role=btnaddactivity]',function(){
+        $(document).on('click', 'a[data-role=btnaddactivity]', function () {
             var itineraryid = $(this).data('itineraryid');
             var daysid = $(this).data('daysid');
             var dataID = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
 
             $.ajax({
-                url:'{{ url("/addactivitydb")}}',
-                method:'post',
-                data:{_token:csrftoken,itineraryid:itineraryid,daysid:daysid},
-                success:function(data)
-                {
-                    showdaysactivities(itineraryid,daysid);
+                url: '{{ url("/addactivitydb")}}',
+                method: 'post',
+                data: { _token: csrftoken, itineraryid: itineraryid, daysid: daysid },
+                success: function (data) {
+                    showdaysactivities(itineraryid, daysid);
                 }
             });
         });

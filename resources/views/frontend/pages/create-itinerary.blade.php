@@ -584,9 +584,12 @@
                                                 }
                                             }
 
-                                            var fileInput = document.getElementById('image-upload-1');
-                                            fileInput.addEventListener('change', previewImages);
-                                            </script>
+                                            if (document.getElementById("image-upload-1")) {
+                                                //It does not exist
+                                                var fileInput = document.getElementById('image-upload-1');
+                                                fileInput.addEventListener('change', previewImages);
+                                            }
+                                        </script>
                                     </div>
                                 </div>
 
