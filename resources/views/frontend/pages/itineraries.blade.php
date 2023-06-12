@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="perfect py-5">
+    <div class="perfect py-md-5 py-3">
         <div class="container">
             <div class="perfect-item ">
                 <h3 class="travel">Find the Perfect Travel Itinerary</h3>
@@ -49,23 +49,6 @@ r>
                                         <button class="btn btn-secondary w-50 rounded-pill  text-white" type="submit">Go</button>
                                     </div>
 
-                                    <?php $count = 1;?>
-                                    @if(!empty($filter))
-                                    @foreach($filter as $filter)
-                                    @if($filter->address_city != '')
-                                    <div class="row py-2">
-                                        <div class="col-lg-12">
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input filter" value="{{$filter->address_city}}"
-                                                    id="option{{$count}}">
-                                                <label for="option{{$count}}" class="form-check-label">{{$filter->address_city}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <?php $count++?>
-                                    @endforeach
-                                    @endif
                                         <?php $count = 1;?>
                                         @if(!empty($filter))
                                             @foreach($filter as $filter)
@@ -102,20 +85,6 @@ r>
                                     </div>
                                     <div class="d-flex py-3">
 
-                                    <input type="search" id="my-input" name="my-input" placeholder=" Tags"
-                                        class="locator rounded-pill px-2 mx-2 ">
-                                    <button class="btn btn-secondary w-50 rounded-pill text-white"
-                                        type="gos">Go</button>
-                                </form>
-                                <?php $count1 = 1;?>
-                                @if(!empty($tags))
-                                @foreach($tags as $tags)
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="{{$tags}}"
-                                                id="option{{$count}}">
-                                            <label for="option{{$count}}" class="form-check-label">{{$tags}}</label>
                                         <input type="search" id="my-input" name="tags-input" placeholder=" Tags" class="locator rounded-pill px-2 mx-2 ">
                                         <button class="btn btn-secondary w-50 rounded-pill text-white" type="submit">Go</button>
                                     </div>
@@ -141,36 +110,6 @@ r>
                             <div class="dropdown">
                                 <button class="btn bg-light dropdown-toggle rounded-pill px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
 
-                            <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                <div id="selected-feild">
-                                    <button
-                                        class="btn btn-light w-25 rounded-pill  text-white d-flex justify-content-between align-items-center  "
-                                        type="go">Go <span>X</span>
-                                    </button>
-                                    <hr>
-                                </div>
-                                <form class="d-flex py-3">
-
-                                    <input type="search" id="my-input" name="my-input" placeholder=" User"
-                                        class="locator rounded-pill px-2 mx-2">
-                                    <button class="btn btn-secondary w-50 rounded-pill  text-white"
-                                        type="gos">Go</button>
-                                </form>
-                                <?php $count2 = 1;?>
-                                @if(!empty($user_filter))
-                                @foreach($user_filter as $filter)
-                                <div class="row py-2">
-                                    <div class="col-lg-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input filter" value="{{$filter->user_id}}"
-                                                id="option{{$count2}}">
-                                            <label for="option{{$count2}}" class="form-check-label">{{$filter->user->name}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php $count2++;?>
-                                @endforeach
-                                @endif
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild">
                                         <button class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center  ">Go <span>X</span>
@@ -311,7 +250,7 @@ r>
 
                     <div id="selected-feild">
                         <button type="reset"
-                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2 my-1">Clear
+                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-2">Clear
                             All filters x</button>
                     </div>
 
@@ -331,7 +270,7 @@ r>
                     <div class="col-6 col-md-4 col-lg-3 ">
                         <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}');">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1 gap-lg-2">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -370,17 +309,17 @@ r>
                                 $itinerarytag = json_decode($row->tags);
                                 @endphp
                                 @foreach($itinerarytag as $itinerarytag)
-                                @php
-                                $tag = \App\Models\Tags::find($itinerarytag);
-                                @endphp
+                                    @php
+                                        $tag = $row->tagsdata($itinerarytag);
+                                    @endphp
 
-                                @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
-                                @endif
+                                    @if($tag)
+                                    <a href="{{url('/slug/'.$tag->slug)}}">
+                                        <button class="foodie">
+                                            {{$tag->name}}
+                                        </button>
+                                    </a>
+                                    @endif
 
                                 {{-- {{ $itinerarytag }} --}}
                                 @endforeach
