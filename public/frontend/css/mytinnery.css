@@ -33,11 +33,15 @@
 }
 
 .hero-section {
-    background-position: top;
+    background-position: center;
     background-image: url('../images/Header.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 520px !important;
+}
+
+.w-140 {
+    width: 140px;
 }
 
 .hero-content {
@@ -248,6 +252,10 @@
 
     color: #000000;
 
+}
+
+.filter-bordr .btn:hover {
+    background-color: #6c757d !important;
 }
 
 .anna {
@@ -552,9 +560,7 @@
 
 }
 
-.gap-2 {
-    line-height: 38px !important;
-}
+
 
 .section-display {
     display: flex !important;
@@ -657,7 +663,10 @@ header {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
+    width: auto !important;
     font-size: 14px !important;
+
+
     /* line-height: 1.4em; */
 
 
@@ -1259,6 +1268,8 @@ select.did-floating-select::-ms-expand {
         font-size: 25px !important;
     }
 
+
+
     .filters-p {
         font-size: 16px;
     }
@@ -1330,180 +1341,6 @@ select.did-floating-select::-ms-expand {
     }
 }
 
-@media screen and (max-width: 489px) {
-    .hero-content {
-        padding: 50px 17px !important;
-    }
-
-    .bg-img {
-        height: 172px !important;
-    }
-
-    .trip-h1 {
-        font-size: 28px;
-    }
-    .slickslider .slick-slide {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .profile-img {
-        width: 107px !important;
-        height: 107px !important;
-    }
-
-    .card-title-profile {
-        font-size: 20px !important;
-    }
-
-    .border-card {
-        min-height: 400px !important;
-        padding: 0 30px !important;
-    }
-
-    .path-img {
-        width: 21px !important;
-        height: 17px !important;
-    }
-
-    .foodie {
-
-        padding: 3px 8px !important;
-    }
-
-
-    .profile-relate {
-        font-size: 16px !important;
-    }
-
-    .hero-content h2 {
-        font-size: 36px !important;
-    }
-
-    .explore-section h1 {
-        font-size: 20px !important;
-        width: 190px;
-
-    }
-
-    .explore-section h2 {
-        font-size: 14px !important;
-    }
-
-    .navbar-brand img {
-        width: 114px !important;
-        height: 40px !important;
-    }
-
-    .membr {
-        font-size: 20px !important;
-        margin-bottom: 16px !important;
-    }
-
-    .member-img {
-        width: 76px !important;
-        height: 76px !important;
-    }
-
-    .Benjamin {
-        font-size: 16px !important;
-    }
-
-    .Benjamin-p {
-        font-size: 12px !important;
-    }
-
-    .heart-size {
-        width: 24px !important;
-        height: 20px !important;
-    }
-
-    .img-80px {
-        width: 80px !important;
-        height: 80px !important;
-    }
-
-    .profile-tabs .nav-link {
-        font-size: 16px !important;
-        line-height: 1.4em !important;
-    }
-
-    .myitinerylist {
-        padding: 0 30px !important;
-
-    }
-
-    .nav-tabs {
-        padding: 10px 0;
-        margin-left: 31px;
-    }
-
-    .title1 {
-        font-size: 16px !important;
-
-    }
-
-    .title-p {
-        font-size: 12px !important;
-    }
-
-    .add-size img {
-        width: 18px !important;
-        height: 18px !important;
-    }
-
-    .w-120 {
-        height: 64px !important;
-    }
-
-    .footer {
-        border: 0px solid black !important;
-    }
-
-    .hero-c-p {
-        font-size: 16px !important;
-    }
-
-    .font-12 {
-        font-size: 12px !important;
-    }
-
-    .join {
-        font-size: 16px !important;
-    }
-
-    .profile-tabs .nav-link {
-        font-size: 16px !important;
-    }
-
-    .w-120i {
-        max-width: 64px !important;
-
-        height: 64px !important;
-    }
-
-    .title1 {
-        font-size: 14px !important;
-
-    }
-
-    .map-img {
-        width: 70px !important;
-        height: 70px !important;
-    }
-
-    .font-20 {
-        font-size: 20px !important;
-    }
-
-    .travel {
-        font-size: 20px !important;
-    }
-
-    .filters-p {
-        font-size: 14px;
-    }
-}
 
 
 @media screen and (max-width: 1024px) {
@@ -1514,7 +1351,7 @@ select.did-floating-select::-ms-expand {
     }
 
     .my-c {
-        padding: 36px 0;
+        padding: 16px 0;
     }
 
     .travel {
@@ -1677,4 +1514,191 @@ select.did-floating-select::-ms-expand {
         font-size: 20px;
 
     }
+}
+
+@media screen and (max-width: 489px) {
+    .city {
+        gap: 10px !important;
+    }
+
+    .hero-content {
+        padding: 50px 17px !important;
+    }
+
+    .bg-img {
+        height: 172px !important;
+    }
+
+    .trip-h1 {
+        font-size: 28px;
+    }
+
+    .slickslider .slick-slide {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .profile-img {
+        width: 107px !important;
+        height: 107px !important;
+    }
+
+    .card-title-profile {
+        font-size: 20px !important;
+    }
+
+    .border-card {
+        min-height: 400px !important;
+        padding: 0 30px !important;
+    }
+
+    .path-img {
+        width: 21px !important;
+        height: 17px !important;
+    }
+
+    .foodie {
+
+        padding: 3px 8px !important;
+    }
+
+
+    .profile-relate {
+        font-size: 16px !important;
+    }
+
+    .hero-content h2 {
+        font-size: 36px !important;
+    }
+
+    .explore-section h1 {
+        font-size: 20px !important;
+        width: 190px;
+
+    }
+
+    .explore-section h2 {
+        font-size: 14px !important;
+    }
+
+    .navbar-brand img {
+        width: 114px !important;
+        height: 40px !important;
+    }
+
+    .membr {
+        font-size: 20px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .member-img {
+        width: 76px !important;
+        height: 76px !important;
+    }
+
+    .Benjamin {
+        font-size: 16px !important;
+    }
+
+    .Benjamin-p {
+        font-size: 12px !important;
+    }
+
+    .heart-size {
+        width: 24px !important;
+        height: 20px !important;
+    }
+
+    .img-80px {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 16px !important;
+        line-height: 1.4em !important;
+    }
+
+    .myitinerylist {
+        padding: 0 30px !important;
+
+    }
+
+    .nav-tabs {
+        padding: 10px 0;
+        margin-left: 31px;
+    }
+
+    .title1 {
+        font-size: 16px !important;
+
+    }
+
+    .title-p {
+        font-size: 12px !important;
+    }
+
+    .add-size img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .w-120 {
+        height: 64px !important;
+    }
+
+    .footer {
+        border: 0px solid black !important;
+    }
+
+    .hero-c-p {
+        font-size: 16px !important;
+    }
+
+    .font-12 {
+        font-size: 12px !important;
+    }
+
+    .join {
+        font-size: 16px !important;
+    }
+
+    .profile-tabs .nav-link {
+        font-size: 16px !important;
+    }
+
+    .w-120i {
+        max-width: 64px !important;
+
+        height: 64px !important;
+    }
+
+    .title1 {
+        font-size: 14px !important;
+
+    }
+
+    .map-img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .font-20 {
+        font-size: 20px !important;
+    }
+
+    .travel {
+        font-size: 20px !important;
+    }
+
+    .filters-p {
+        font-size: 14px;
+    }
+
+    .w-200 {
+        width: 155px;
+        height: 155px;
+    }
+
+
 }

@@ -84,7 +84,7 @@
 
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-8 px-32">
+                                <div class="col-md-8 px-32 my-5 my-md-0">
 
                                     <div id="loginform">
                                         {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start']) !!}
@@ -167,7 +167,7 @@
                                 <div class="col-md-4 d-md-block d-none frame-img p-0">
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
-                                <div class="col-md-8 px-32">
+                                <div class="col-md-8 px-32 my-5 my-md-0">
                                     <div class="row">
                                         @if (count($errors) > 0)
                                         <div class="alert alert-danger">
