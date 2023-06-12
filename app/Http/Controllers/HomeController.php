@@ -46,7 +46,7 @@ class HomeController extends Controller
                     {
                         $tag = Tags::where('id',$tags)->first();
 
-                        array_push($tagsnames,$tag->slug);
+                        array_push($tagsnames,$tag);
                     }
 
                 }

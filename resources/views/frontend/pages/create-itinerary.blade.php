@@ -172,7 +172,7 @@
                         </div>
 
                                 <div class="profiles p-3 mt-5">
-                                    <h6 class="profiler-related related">Related Content</h6>
+                                    <h6 class="profiler-related related">Related Content </h6>
                                     @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
 
@@ -686,15 +686,15 @@
                         </div>
 
                                 <div class="profiles p-3 mt-32">
-                                    <h6 class="profiler-related related">Related Content</h6>
+                                   <h6 class=" profiler-related related">Related Content </h6>
                                     @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
 
-                                    <div class="pt-3 d-flex align-items-center ">
+                                    <div class=" col-md-6 col-lg-12 pt-3 d-flex align-items-center ">
                                         <div class="">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
-                                            </div>
+                                        </div>
                                             <div class="px-2 mx-1">
                                                 <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
                                                     <div class="profiler-relate profile-relate">{{$row->title}}</div>
@@ -702,10 +702,9 @@
                                                 <div class="d-flex align-items-center">
                                                 <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
                                                 <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
+                                                </div>
                                             </div>
-                                        </div>
                                     </div>
-
 
                                     @endforeach
                                     @endif

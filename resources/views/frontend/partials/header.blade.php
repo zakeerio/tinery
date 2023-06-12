@@ -91,9 +91,9 @@
                                         @csrf
                                         <h2 class="member-h2 my-32"> Member Login</h2>
                                         <div class="row">
-                                            <div class="col-12 col-md-10">
+                                            <div class="col-11 col-sm-9 mx-auto mx-md-0">
 
-                                                <div class="labe-section w-75 mx-auto mx-md-0">
+                                                <div class="labe-section">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
                                                         {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
@@ -185,7 +185,7 @@
                                     @csrf
                                     <h2 class="member-h2 mb-3 col-8 col-sm-6 text-center text-md-start mx-auto col-md-12 my-32">Become a Member</h2>
                                     <div class="row ">
-                                            <div class="col-8  col-md-5 mx-auto mx-md-3  p-0 ">
+                                            <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3  p-0 ">
                                                 <div class="labe-section w-100">
 
                                                     <div class="did-floating-label-content mb-4">
@@ -216,7 +216,7 @@
                                                     </div>
 
                                             </div>
-                                            <div class="col-8 col-md-5 mx-auto  p-0 ">
+                                            <div class="col-11 col-sm-8 col-md-5 mx-auto  p-0 ">
                                                 <div class="labe-section mx-0 w-100">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
