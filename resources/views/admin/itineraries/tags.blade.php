@@ -34,7 +34,7 @@
                                                 <th>Title</th>
                                                 <th>Actions</th>
                                             </tr>
-                                            @if(!empty($tags))
+                                            @if(count($tags) > 0)
                                             @foreach($tags as $row)
                                             <tr>
                                                 <td>

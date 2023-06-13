@@ -65,8 +65,9 @@ class TagsController extends BaseController
             $array->save();
         }
         // Logic for storing the data goes here...
+        
+        return $this->responseRedirect('admin.tags.index', 'Tag created successfully','success');
 
-        return redirect()->route('admin.tags.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -129,7 +130,7 @@ class TagsController extends BaseController
         }
         // Logic for storing the data goes here...
 
-		return $this->responseRedirect('admin.tags.index', 'Tag Updated successfully', 'success');
+        return $this->responseRedirect('admin.tags.index', 'Tag Updated successfully','success');
 
     }
 

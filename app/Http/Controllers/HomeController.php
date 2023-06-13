@@ -18,6 +18,7 @@ use Mail;
 use App\Mail\UserForgotPasswordEmail;
 use Hash;
 use App\Models\ItineraryGallery;
+use App\Models\ItineraryLocations;
 
 class HomeController extends Controller
 {
@@ -312,7 +313,8 @@ class HomeController extends Controller
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
+        $itinerary_location = ItineraryLocations::get();
+        return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
     }
 
     public function itineraries_update(Request $request)
@@ -354,11 +356,21 @@ class HomeController extends Controller
             $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
-            $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->featured = '1';
             $array->itinerary_status = 'updated';
+
+            $loc = ItineraryLocations::find($data['address_street']);
+            $array->address_street = $loc->address_street;
+            $array->address_street_line1 = $loc->address_street_line1;
+            $array->address_city = $loc->address_city;
+            $array->address_state = $loc->address_state;
+            $array->address_zipcode = $loc->address_zipcode;
+            $array->address_country = $loc->address_country;
+            $array->latitude = $loc->latitude;
+            $array->longitude = $loc->longitude;
+            
             $array->save();
 
             if($array->itinerarydays->count() < $data['duration'] ){

@@ -80,7 +80,7 @@ class ItineraryLocationsController extends BaseController
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.itinerarylocation.index')->with('success', 'Post created successfully.');
+        return $this->responseRedirect('admin.itinerarylocation.index', 'Location Created successfully', 'success');
     }
 
     /**
@@ -155,7 +155,7 @@ class ItineraryLocationsController extends BaseController
         }
         // Logic for storing the data goes here...
 
-        return redirect()->route('admin.itinerarylocation.index')->with('success', 'Post Updated successfully.');
+        return $this->responseRedirect('admin.itinerarylocation.index', 'Location Updated successfully', 'success');
     }
 
     /**
@@ -167,6 +167,6 @@ class ItineraryLocationsController extends BaseController
     public function destroy($id)
     {
         $locations = ItineraryLocations::find($id)->delete();
-        return redirect()->route('admin.itinerarylocation.index')->with('success', 'Post Updated successfully.');
+        return $this->responseRedirect('admin.itinerarylocation.index', 'Location deleted successfully', 'success');
     }
 }
