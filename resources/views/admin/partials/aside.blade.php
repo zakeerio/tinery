@@ -133,6 +133,15 @@
                                     </a>
                                 </li>
                                 @endcan
+
+                                @can('itinerarylocations-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.itinerarylocation.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.itinerarylocation") !== false ? 'active' :''}}">
+                                        <i class="fa fa-key nav-icon"></i>
+                                        <p>Itineraries Locations</p>
+                                    </a>
+                                </li>
+                                @endcan
                             </ul>
                         </li>
                         <li class="nav-header">System Settings</li>
