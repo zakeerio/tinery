@@ -96,7 +96,7 @@
                                     @if(!empty($tags))
                                         @foreach($tags as $singletag)
 
-                                        {{ dd($singletag) }}
+                                        {{ dd($singletag)  }}
 
                                             {{-- <div class="row py-2">
                                                 <div class="col-lg-12">
