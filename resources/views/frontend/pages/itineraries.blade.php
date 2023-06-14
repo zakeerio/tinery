@@ -94,12 +94,12 @@
                                     <?php $count1 = 1;?>
 
                                     @if(!empty($tags))
-                                    @foreach($tags as $tags)
+                                    @foreach($tags as $singletag)
                                     <div class="row py-2">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" name="tags[]" class="form-check-input filter" value="{{$tags->id}}" id="optiontag{{$count1}}"  {{ (isset($tagsfilter) && in_array($tags->id, $tagsfilter)) ? 'checked' : '' }}>
-                                                <label for="optiontag{{$count1}}" class="form-check-label">{{$tags->name}}</label>
+                                                <input type="checkbox" name="tags[]" class="form-check-input filter" value="{{$singletag->id}}" id="optiontag{{$count1}}"  {{ (isset($tagsfilter) && in_array($singletag->id, $tagsfilter)) ? 'checked' : '' }}>
+                                                <label for="optiontag{{$count1}}" class="form-check-label">{{$singletag->name}}</label>
                                             </div>
                                         </div>
                                     </div>
