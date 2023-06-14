@@ -673,9 +673,9 @@
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px">
                                         @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
                                         @endif
                                     </a>
                                         </div>
