@@ -112,6 +112,22 @@
                             {!! Form::label('tags', 'Tags') !!}
                             {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('location_id', 'Location') !!}
+                            {{-- {!! Form::text('location_id', null, ['class' => 'form-control']) !!} --}}
+
+                            @php
+                                $locationsArr = [];
+                                $locationsArr[''] = 'Select Location';
+                            @endphp
+                            @foreach ($locations as $key => $location)
+                                @php
+                                    $locationsArr[$location->id] = $location->address_street;
+                                @endphp
+                            @endforeach
+                            {!! Form::select('location_id', $locationsArr, null, ['class' => 'form-control select2', 'required']) !!}
+                        </div>
+                        {{--
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 {!! Form::label('address_street', 'Street') !!}
@@ -153,6 +169,7 @@
                                 {!! Form::text('longitude', null, ['class' => 'form-control', 'id'=> 'longitude']) !!}
                             </div>
                         </div>
+                        --}}
                         <div class="form-row">
                             <div class="form-group col-lg-6">
                                 {!! Form::label('phone', 'Phone') !!}

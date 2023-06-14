@@ -113,46 +113,20 @@
                             {!! Form::label('tags', 'Tags') !!}
                             {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_street', 'Street') !!}
-                                {!! Form::text('address_street', null, ['class' => 'form-control', 'id' => 'address_street']) !!}
-                            </div>
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_street_line1', 'Street Line 1') !!}
-                                {!! Form::text('address_street_line1', null, ['class' => 'form-control', 'id'=> 'address_street_line1']) !!}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_city', 'City') !!}
-                                {!! Form::text('address_city', null, ['class' => 'form-control', 'id'=> 'address_city']) !!}
-                            </div>
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_state', 'State') !!}
-                                {!! Form::text('address_state', null, ['class' => 'form-control', 'id'=> 'address_state']) !!}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_zipcode', 'Zipcode') !!}
-                                {!! Form::text('address_zipcode', null, ['class' => 'form-control', 'id'=> 'address_zipcode']) !!}
+                        <div class="form-group">
+                            {!! Form::label('location_id', 'Location') !!}
+                            {{-- {!! Form::text('location_id', null, ['class' => 'form-control']) !!} --}}
 
-                            </div>
-                            <div class="form-group col-md-6">
-                                {!! Form::label('address_country', 'Country') !!}
-                                {!! Form::text('address_country', null, ['class' => 'form-control', 'id'=> 'address_country']) !!}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {!! Form::label('latitude', 'Latitude') !!}
-                                {!! Form::text('latitude', null, ['class' => 'form-control', 'id'=> 'latitude']) !!}
-                            </div>
-                            <div class="form-group col-md-6">
-                                {!! Form::label('longitude', 'Longitude') !!}
-                                {!! Form::text('longitude', null, ['class' => 'form-control', 'id'=> 'longitude']) !!}
-                            </div>
+                            @php
+                                $locationsArr = [];
+                                $locationsArr[''] = 'Select Location';
+                            @endphp
+                            @foreach ($locations as $key => $location)
+                                @php
+                                    $locationsArr[$location->id] = $location->address_street;
+                                @endphp
+                            @endforeach
+                            {!! Form::select('location_id', $locationsArr, null, ['class' => 'form-control select2', 'required']) !!}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-6">

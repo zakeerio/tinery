@@ -13,7 +13,7 @@
             <div class="border rounded col-lg-8">
                 <div class="row  p-3 ">
                     <div class="col-12 d-flex justify-content-between ">
-                        <h2 class=" trip-h1">Itinerary Title</h2>
+                        <h2 class=" trip-h1" style="font-size:35px;">Itinerary Title</h2>
                         <!-- Button trigger modal -->
                         <button type="button " class="bg-transparent border-0 " data-bs-toggle="modal" data-bs-target="#intro"  title="Create Itinerary">
                             <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24" alt="">
@@ -85,7 +85,7 @@
                 </div>
 
 
-                <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                <div class="related d-flex align-items-center gap-2 profile-padding-left" style="margin-top:-20px;">
                     <div class=" ">
                         <a href="{{ route('username', ['username' => $user->username]) }}">
                             @if (!empty($user->profile))
@@ -118,7 +118,7 @@
                 </div>
 
 
-                <div class="col-12 ">
+                <div class="col-12 " style="margin-top:-40px;">
 
 
                         <div class="tags profile-padding-left">
@@ -272,7 +272,7 @@
                                                                 @endphp
                                                             @endforeach
                                                             @endif
-                                                            {!! Form::select('address_street', $locations, null, ['class' => 'form-control select2', 'required']) !!}
+                                                            {!! Form::select('address_street', $locations, $itinerary->location_id, ['class' => 'form-control select2', 'required']) !!}
                                                         {{--<input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>--}}
                                                     </div>
                                                     <div class="mb-3">
@@ -316,8 +316,8 @@
                                 <div class="d-flex align-items-center">
                                     <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                     <h6 class="profile-p pt-2 mx-1">
-                                    @if($itinerary->address_street != '')    
-                                    {{$itinerary->address_street}}
+                                    @if($itinerary->location_id != '0')    
+                                    {{$itinerary->itinerarylocations->address_street}}
                                     @else
                                     Location
                                     @endif

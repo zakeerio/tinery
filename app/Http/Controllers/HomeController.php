@@ -69,6 +69,7 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
+        
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
@@ -310,6 +311,7 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
+        
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
@@ -360,17 +362,7 @@ class HomeController extends Controller
             $array->website = $data['website'];
             $array->featured = '1';
             $array->itinerary_status = 'updated';
-
-            $loc = ItineraryLocations::find($data['address_street']);
-            $array->address_street = $loc->address_street;
-            $array->address_street_line1 = $loc->address_street_line1;
-            $array->address_city = $loc->address_city;
-            $array->address_state = $loc->address_state;
-            $array->address_zipcode = $loc->address_zipcode;
-            $array->address_country = $loc->address_country;
-            $array->latitude = $loc->latitude;
-            $array->longitude = $loc->longitude;
-            
+            $array->location_id = $data['address_street'];
             $array->save();
 
             if($array->itinerarydays->count() < $data['duration'] ){
