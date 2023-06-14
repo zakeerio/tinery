@@ -183,6 +183,8 @@
     align-items: center;
     /* justify-content: space-between; */
     overflow: hidden;
+    min-height: 34px;
+    height: auto;
 }
 
 .city {
