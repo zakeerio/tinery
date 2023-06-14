@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\ItineraryDays;
 use App\Models\Tags;
 use App\Models\ItineraryActivities;
+use App\Models\ItineraryLocations;
 
 class Itineraries extends Model
 {
@@ -45,6 +46,11 @@ class Itineraries extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function itinerarylocations()
+    {
+        return $this->belongsTo(ItineraryLocations::class, 'location_id');
     }
 
     public function favorites()

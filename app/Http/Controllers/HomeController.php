@@ -18,6 +18,7 @@ use Mail;
 use App\Mail\UserForgotPasswordEmail;
 use Hash;
 use App\Models\ItineraryGallery;
+use App\Models\ItineraryLocations;
 
 class HomeController extends Controller
 {
@@ -68,6 +69,7 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
+        
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
@@ -309,10 +311,12 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
+        
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
-        return view('frontend.pages.create-itinerary',compact('itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
+        $itinerary_location = ItineraryLocations::get();
+        return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
     }
 
     public function itineraries_update(Request $request)
@@ -354,11 +358,11 @@ class HomeController extends Controller
             $array->slug = $slug;
             $array->description = $data['description'];
             $array->tags = json_encode($data['tags']);
-            $array->address_street = $data['address_street'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->featured = '1';
             $array->itinerary_status = 'updated';
+            $array->location_id = $data['address_street'];
             $array->save();
 
             if($array->itinerarydays->count() < $data['duration'] ){

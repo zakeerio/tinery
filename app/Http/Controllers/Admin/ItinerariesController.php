@@ -14,6 +14,7 @@ use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
 use App\Models\ItineraryGallery;
+use App\Models\ItineraryLocations;
 
 class ItinerariesController extends BaseController
 {
@@ -53,8 +54,9 @@ class ItinerariesController extends BaseController
         $tempid = $_GET['id'];
         $authors = User::get();
         $tags = Tags::get();
+        $locations = ItineraryLocations::get();
         $this->setPageTitle("Itineraries","Itineraries List");
-        return view('admin.Itineraries.create',compact('authors','tags','tempid'));
+        return view('admin.Itineraries.create',compact('authors','tags','tempid','locations'));
     }
 
     /**
@@ -71,14 +73,14 @@ class ItinerariesController extends BaseController
             'description' => 'required',
             'user_id' => 'required',
             'tags' => 'required|array',
-            'address_street' => 'nullable|string|max:255',
-            'address_street_line1' => 'nullable|string|max:255',
-            'address_city' => 'nullable|string|max:255',
-            'address_state' => 'nullable|string|max:255',
-            'address_zipcode' => 'nullable|string|max:255',
-            'address_country' => 'nullable|string|max:255',
-            'latitude' => 'nullable|string|max:255',
-            'longitude' => 'nullable|string|max:255',
+            // 'address_street' => 'nullable|string|max:255',
+            // 'address_street_line1' => 'nullable|string|max:255',
+            // 'address_city' => 'nullable|string|max:255',
+            // 'address_state' => 'nullable|string|max:255',
+            // 'address_zipcode' => 'nullable|string|max:255',
+            // 'address_country' => 'nullable|string|max:255',
+            // 'latitude' => 'nullable|string|max:255',
+            // 'longitude' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255',
             'duration' => 'nullable|string|max:255',
             'website' => 'nullable|string|max:255',
@@ -134,14 +136,7 @@ class ItinerariesController extends BaseController
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];
             $array->tags = json_encode($data['tags']);
-            $array->address_street = $data['address_street'];
-            $array->address_street_line1 = $data['address_street_line1'];
-            $array->address_city = $data['address_city'];
-            $array->address_state = $data['address_state'];
-            $array->address_zipcode = $data['address_zipcode'];
-            $array->address_country = $data['address_country'];
-            $array->latitude = $data['latitude'];
-            $array->longitude = $data['longitude'];
+            $array->location_id = $data['location_id'];
             $array->phone = $data['phone'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];
@@ -228,10 +223,10 @@ class ItinerariesController extends BaseController
     {
         $authors = User::get();
         $tags = Tags::get();
-
+        $locations = ItineraryLocations::get();
         $this->setPageTitle("Itineraries","Itineraries Edit");
         $itineraries = Itineraries::find($id);
-        return view('admin.itineraries.edit',compact('itineraries','authors','tags'));
+        return view('admin.itineraries.edit',compact('itineraries','authors','tags','locations'));
     }
 
     /**
@@ -248,14 +243,6 @@ class ItinerariesController extends BaseController
             'description' => 'required',
             'user_id' => 'required',
             'tags' => 'required|array',
-            'address_street' => 'nullable|string|max:255',
-            'address_street_line1' => 'nullable|string|max:255',
-            'address_city' => 'nullable|string|max:255',
-            'address_state' => 'nullable|string|max:255',
-            'address_zipcode' => 'nullable|string|max:255',
-            'address_country' => 'nullable|string|max:255',
-            'latitude' => 'nullable|string|max:255',
-            'longitude' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:255',
             'duration' => 'nullable|string|max:255',
             'website' => 'nullable|string|max:255',
@@ -309,14 +296,7 @@ class ItinerariesController extends BaseController
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];
             $array->tags = json_encode($data['tags']);
-            $array->address_street = $data['address_street'];
-            $array->address_street_line1 = $data['address_street_line1'];
-            $array->address_city = $data['address_city'];
-            $array->address_state = $data['address_state'];
-            $array->address_zipcode = $data['address_zipcode'];
-            $array->address_country = $data['address_country'];
-            $array->latitude = $data['latitude'];
-            $array->longitude = $data['longitude'];
+            $array->location_id = $data['location_id'];
             $array->phone = $data['phone'];
             $array->duration = $data['duration'];
             $array->website = $data['website'];

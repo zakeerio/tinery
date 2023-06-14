@@ -41,6 +41,7 @@ Route::group([
 
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
+    Route::resource('itinerarylocation', ItineraryLocationsController::class);
 
     // system settings
     // Route::resource('settings', SettingController::class);

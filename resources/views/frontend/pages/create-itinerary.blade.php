@@ -13,7 +13,7 @@
             <div class="border rounded col-lg-8">
                 <div class="row  p-3 ">
                     <div class="col-12 d-flex justify-content-between ">
-                        <h2 class=" trip-h1">Itinerary Title</h2>
+                        <h2 class=" trip-h1" style="font-size:35px;">Itinerary Title</h2>
                         <!-- Button trigger modal -->
                         <button type="button " class="bg-transparent border-0 " data-bs-toggle="modal" data-bs-target="#intro"  title="Create Itinerary">
                             <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24" alt="">
@@ -85,7 +85,7 @@
                 </div>
 
 
-                <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                <div class="related d-flex align-items-center gap-2 profile-padding-left" style="margin-top:-20px;">
                     <div class=" ">
                         <a href="{{ route('username', ['username' => $user->username]) }}">
                             @if (!empty($user->profile))
@@ -118,7 +118,7 @@
                 </div>
 
 
-                <div class="col-12 ">
+                <div class="col-12 " style="margin-top:-40px;">
 
 
                         <div class="tags profile-padding-left">
@@ -207,8 +207,14 @@
                     <div class="border rounded">
 
                         <div class="row  p-3 ">
-                                <div class="col-12 d-flex justify-content-between ">
-                                    <h1 class="trip-h1">{{ $itinerary->title}}</h1>
+                                <div class="col-12 d-flex justify-content-between profile-padding-left">
+                                    <h1 class="trip-h1" style="font-size:35px;">
+                                        @if($itinerary->title != '')
+                                        {{ $itinerary->title}}
+                                        @else
+                                        Itinerary Name
+                                        @endif
+                                    </h1>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#intro">
                                         <img class="button-24" src="{{ asset('frontend/images/editbt.png')}}" alt="">
@@ -240,14 +246,14 @@
                                                     </div> --}}
                                                     <div class="mb-3">
                                                         <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                                        @php
+                                                            @php
                                                                 $listtags = [];
                                                                 $listtag = json_decode($itinerary->tags);
                                                                 @endphp
                                                             @foreach ($tags as $key => $tags)
                                                             @php
-                                                                    $listtags[$tags->id] = $tags->name;
-                                                                    @endphp
+                                                                $listtags[$tags->id] = $tags->name;
+                                                                @endphp
                                                             @endforeach
                                                             {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
                                                             <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
@@ -259,7 +265,15 @@
 
                                                     <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>
+                                                            @if(!empty($itinerary_location))
+                                                            @foreach ($itinerary_location as $key => $row)
+                                                                @php
+                                                                    $locations[$row->id] = $row->address_street;
+                                                                @endphp
+                                                            @endforeach
+                                                            @endif
+                                                            {!! Form::select('address_street', $locations, $itinerary->location_id, ['class' => 'form-control select2', 'required']) !!}
+                                                        {{--<input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>--}}
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Duration</label>
@@ -282,7 +296,7 @@
                             </div>
 
 
-                            <div class="related d-flex align-items-center gap-2 profile-padding-left">
+                            <div class="related d-flex align-items-center gap-2 profile-padding-left" style="margin-top:-20px;">
                                 <div class=" ">
                                     <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
@@ -301,13 +315,23 @@
                             <div class="city d-flex profile-padding-left  flex-wrap">
                                 <div class="d-flex align-items-center">
                                     <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                    <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_street}} </h6>
+                                    <h6 class="profile-p pt-2 mx-1">
+                                    @if($itinerary->location_id != '0')    
+                                    {{$itinerary->itinerarylocations->address_street}}
+                                    @else
+                                    Location
+                                    @endif
+                                    </h6>
                                 </div>
                                 <div class=" d-flex align-items-center">
                                     <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
                                     <h6 class="profile-p pt-2 mx-2">
-                                        {{count($days)}}
-                                        Days</h6>
+                                        @if(count($days) > 0)
+                                        {{count($days)}} Days
+                                        @else
+                                        Duration
+                                        @endif
+                                    </h6>
                                     </div>
                                     <div class=" d-flex align-items-center">
                                         <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
@@ -315,7 +339,7 @@
                                 </div>
                             </div>
 
-                            <div class="tags profile-padding-left flex-wrap gap-1">
+                            <div class="tags profile-padding-left flex-wrap gap-1" style="margin-top:-40px;">
                                 @php
                                     $itinerarytag = json_decode($itinerary->tags);
                                 @endphp
@@ -332,11 +356,23 @@
                                         </a>
                                         @endif
                                     @endforeach
+                                @else
+                                    <a href="javascript:void(0)">
+                                        <button class="foodie">
+                                            hashtags
+                                        </button>
+                                    </a>
                                 @endif
 
                                 </div>
                                 <div class="col-12 tags-description ">
-                                <p class=" pe-2 ">{{$itinerary->description}}</p>
+                                <p class=" pe-2 ">
+                                    @if($itinerary->description != '')
+                                    {{$itinerary->description}}
+                                    @else
+                                    You itinerary summary will take place here.
+                                    @endif
+                                </p>
                             </div>
 
                             <div class="col-12 mt-4">
@@ -430,7 +466,7 @@
                                     $count = ++$key;
                                 @endphp
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                                    <h2 class="fw-bold mb-0">Day {{$count}}</h2>
+                                    <h2 class="fw-bold mb-0" style="font-size:25px;">Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                         <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
                                         <!-- Modal -->
@@ -468,7 +504,7 @@
                             </div>
                             <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                                 <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
-                                    <h2 class="text-danger fw-bold mb-0">+Add Day</h2>
+                                    <h2 class="text-danger fw-bold mb-0" style="font-size:25px;">+Add Day</h2>
                                 </div>
                             </a>
                             <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5 height-400">

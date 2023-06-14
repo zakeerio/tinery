@@ -10,7 +10,7 @@
 
                         <div class="d-flex justify-content-between  ">
                             <div class="col-lg-8">
-                                <h1 class="trip-h1">{{ $itinerary->title}}</h1>
+                                <h1 class="trip-h1" style="font-size:35px;">{{ $itinerary->title}}</h1>
                             </div>
 
                             <div class="col-lg-4 text-end pt-3">
@@ -49,7 +49,13 @@
                         <div class="city d-flex flex-wrap">
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-1">{{$itinerary->address_city}} </h6>
+                                <h6 class="profile-p pt-2 mx-1">
+                                    @if($itinerary->location_id != '0')    
+                                    {{$itinerary->itinerarylocations->address_street}}
+                                    @else
+                                    Location
+                                    @endif
+                                </h6>
                             </div>
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
@@ -61,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="tags flex-wrap gap-1">
+                        <div class="tags flex-wrap gap-1" style="margin-top:-40px;">
                             @if($itinerary->tags != '')
                             @php
                                 $itinerarytag = json_decode($itinerary->tags);
@@ -80,12 +86,6 @@
 
                                 @endforeach
                             @endif
-                            <!-- <a href="#"> <button class="foodie">Foodie</button></a>
-                            <a href="#"> <button class="foodie">Backpacker</button></a>
-                            <a href="#"> <button class="foodie">Spring</button></a>
-                            <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                            <a href="#"> <button class="foodie">Mexico</button></a> -->
-                            <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                         </div>
 
                         <div class="content mt-4">
