@@ -69,7 +69,7 @@ class HomeController extends Controller
     public function itinerary($slug)
     {
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
-        
+
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
@@ -85,10 +85,10 @@ class HomeController extends Controller
         {
             if($itineraries->tags != '')
             {
-                $tags = json_decode($itineraries->tags);
-                foreach($tags as $tags)
+                $tagsdata = json_decode($itineraries->tags);
+                foreach($tagsdata as $singletag)
                 {
-                    $tag = Tags::where('id',$tags)->first();
+                    $tag = Tags::where('id',$singletag)->first();
                     array_push($tagsnames,$tag);
                 }
             }
@@ -108,7 +108,7 @@ class HomeController extends Controller
         $locationfilter = $request->location;
         $daysrange = $request->daysrange;
         $range = ['1',$daysrange];
-        
+
         $tagsnames = array();
         $itinerary = Itineraries::where('itinerary_status', 'updated')
         ->where('status', 'published');
@@ -125,7 +125,7 @@ class HomeController extends Controller
         //     $itinerary->where('duration', $range);
         // }
         $itinerary = $itinerary->paginate(20);
-        
+
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         foreach($filter as $itineraries)
         {
@@ -151,7 +151,7 @@ class HomeController extends Controller
         if(!empty($usersfilter)):
         $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
         endif;
-        
+
         return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
     }
 
@@ -311,7 +311,7 @@ class HomeController extends Controller
     {
         $tags = Tags::get();
         $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
-        
+
         $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();

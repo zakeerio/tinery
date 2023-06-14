@@ -96,16 +96,14 @@
                                     @if(!empty($tags))
                                         @foreach($tags as $singletag)
 
-                                        {{ dd($singletag)  }}
-
-                                            {{-- <div class="row py-2">
+                                            <div class="row py-2">
                                                 <div class="col-lg-12">
                                                     <div class="form-check">
                                                         <input type="checkbox" name="tags[]" class="form-check-input filter" value="{{$singletag->id}}" id="optiontag{{$count1}}"  {{ (isset($tagsfilter) && in_array($singletag->id, $tagsfilter)) ? 'checked' : '' }}>
                                                         <label for="optiontag{{$count1}}" class="form-check-label">{{$singletag->name}}</label>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <?php $count1++;?>
                                         @endforeach
                                     @endif
