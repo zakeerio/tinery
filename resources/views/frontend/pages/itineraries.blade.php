@@ -83,7 +83,7 @@
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild">
-                                        
+
                                         <hr>
                                     </div>
                                     <div class="d-flex py-3">
@@ -92,7 +92,7 @@
                                         <button class="btn btn-secondary w-50 rounded-pill text-white" type="submit">Go</button>
                                     </div>
                                     <?php $count1 = 1;?>
-                                    
+
                                     @if(!empty($tags))
                                     @foreach($tags as $tags)
                                     <div class="row py-2">
