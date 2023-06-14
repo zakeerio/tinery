@@ -260,7 +260,7 @@
                                 @endforeach
                                 @endif
                         </div>
-                        <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
+                        <p class="city">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_street : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                     @endif
