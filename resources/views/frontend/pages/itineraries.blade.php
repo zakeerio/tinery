@@ -93,10 +93,13 @@
                                     </div>
                                     <?php $count1 = 1;?>
 
-                                    @if(!empty($tags))
-                                        @foreach($tags as $singletag)
+                                    {{ dd($tags) }}
 
-                                        {{ dd($singletag) }}
+                                    @if(!empty($tags))
+
+
+
+                                        @foreach($tags as $singletag)
 
                                             {{-- <div class="row py-2">
                                                 <div class="col-lg-12">
