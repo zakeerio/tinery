@@ -91,7 +91,7 @@
                             @if (!empty($user->profile))
                                 <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="imgagesize rounded-circle">
                             @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="imgagesize rounded-circle">
                             @endif
                         </a>
                     </div>
@@ -302,7 +302,7 @@
                                         @if (!empty($itinerary->user->profile))
                                         <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
                                         @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="imgagesize rounded-circle">
                                             @endif
                                     </a>
                                 </div>
@@ -673,9 +673,9 @@
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80">
                                         @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80">
                                         @endif
                                     </a>
                                         </div>
