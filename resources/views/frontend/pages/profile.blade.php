@@ -280,7 +280,7 @@
                                                     @if ($singletag)
 
                                                         @foreach($singletag as $singletagitem)
-                                                        <a href="{{url('/slug/'.$singletagitem)}}" class="mb-1"><button class="foodie "> {{$singletagitem}} </button> </a>
+                                                        <a href="{{url('/slug/'.$singletagitem->slug)}}" class="mb-1"><button class="foodie "> {{$singletagitem->name}} </button> </a>
                                                         @endforeach
                                                     @endif
 

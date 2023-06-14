@@ -36,7 +36,7 @@
                                     @if (!empty($itinerary->user->profile))
                                         <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="imgagesize rounded-circle">
                                     @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="w-75">
+                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="imgagesize rounded-circle">
                                     @endif
                                 </a>
                             </div>
@@ -50,10 +50,10 @@
                             <div class="d-flex align-items-center">
                                 <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                 <h6 class="profile-p pt-2 mx-1">
-                                    @if($itinerary->location_id != '0')    
-                                    {{$itinerary->itinerarylocations->address_street}}
+                                    @if($itinerary->location_id != 0 && $itinerary->itinerarylocations)
+                                        {{$itinerary->itinerarylocations->address_street}}
                                     @else
-                                    Location
+                                        Location
                                     @endif
                                 </h6>
                             </div>
