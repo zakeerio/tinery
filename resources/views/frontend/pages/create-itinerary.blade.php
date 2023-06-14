@@ -137,9 +137,9 @@
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $user->username]) }}">
                                         @if (!empty($user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class=".img-80px">
+                                            <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="img-80px">
                                         @else
-                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class=".img-80px">
+                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
                                         @endif
                                     </a>
                                         </div>
@@ -316,7 +316,7 @@
                                 <div class="d-flex align-items-center">
                                     <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
                                     <h6 class="profile-p pt-2 mx-1">
-                                    @if($itinerary->location_id != '0')    
+                                    @if($itinerary->location_id != '0')
                                     {{$itinerary->itinerarylocations->address_street}}
                                     @else
                                     Location
