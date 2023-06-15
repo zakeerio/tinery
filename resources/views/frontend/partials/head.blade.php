@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
 <meta property="og:url" content="{{ env('APP_URL') }}">
-<meta property="og:image" content="@yield('seo_image', asset('frontend/images/Header.png') )">
+<meta property="og:image" content="@yield('seo_image', asset('frontend/images/LOGO.png') )">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="@yield('meta_description', config('settings.meta_description') )">
