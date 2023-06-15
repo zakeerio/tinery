@@ -6,8 +6,8 @@
 <meta name="description" content="@yield('meta_description', config('settings.meta_description') )">
 <link rel="canonical" href="{{url()->current()}}"/>
 
-<meta property="og:site_name" content="@yield('title', config('settings.site_name'))">
-<meta property="og:title" content="{{ config('settings.site_name') }}">
+<meta property="og:site_name" content="{{ config('settings.site_name') }}">
+<meta property="og:title" content="@yield('title', config('settings.site_name'))">
 <meta property="og:description" content="@yield('meta_description', config('settings.meta_description') )">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
