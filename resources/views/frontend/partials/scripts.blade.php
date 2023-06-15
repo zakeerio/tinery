@@ -1,6 +1,5 @@
 
 {{-- Plugins --}}
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -196,68 +195,7 @@
         }
 
 
-        if ($('#map').length > 0) {
-
-            initMaps();
-        }
-
-
-
-        function initMaps() {
-
-            // execute
-            var locations = [
-                {
-                    'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="#" >Link<a> of some sort.',
-                    'lat': 46.8133,
-                    'long': -100.7790,
-                },
-                {
-                    'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
-                    'lat': 46.8772,
-                    'long': -96.7894,
-                }
-            ];
-
-            console.log(locations)
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                /* Zoom level of your map */
-                center: new google.maps.LatLng(47.47021625, -100.47173475),
-                /* coordinates for the center of your map */
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-
-            var infowindow = new google.maps.InfoWindow();
-
-            var marker, i;
-
-            locations.forEach(function (location) {
-                // Accessing individual properties
-                var description = location.description;
-                var lat = location.lat;
-                var long = location.long;
-
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(lat, long),
-                    map: map
-                });
-
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        infowindow.setContent(description);
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
-
-                // Perform actions with the location data
-                // console.log('Description:', description);
-                // console.log('Latitude:', lat);
-                // console.log('Longitude:', long);
-            })
-        }
-
+        
 
 
         function getAddressComponent(components, type) {

@@ -3,7 +3,7 @@
         <div class="row mt-5 px-4">
             <div class="col-12 col-sm-2 mb-3 ">
                 <a href="{{ url('/')}}">
-                <img src="{{ asset("frontend/images/LOGO.png") }}" alt="Logo" class="img-fluid tiny-logo">
+                <img src="{{ asset('frontend/images/LOGO.png') }}" alt="Logo" class="img-fluid tiny-logo">
                 </a>
             </div>
             <div class="col-6 col-sm-2 mt-lg-4 pt1 ">

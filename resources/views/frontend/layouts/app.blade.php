@@ -19,6 +19,7 @@
         @include('frontend.partials.footer')
     </div>
     @include('frontend.partials.scripts')
+   
     @yield('custom_scripts')
 
 </body>

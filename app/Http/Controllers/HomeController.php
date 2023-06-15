@@ -24,11 +24,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $itineraries = \App\Models\Itineraries::where('featured','1')
+        $itineraries = Itineraries::where('featured','1')
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
         $users = User::limit('8')->get();
+        
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
     }
     public function username($username = '')

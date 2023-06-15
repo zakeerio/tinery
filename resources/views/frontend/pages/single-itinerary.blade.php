@@ -7,6 +7,20 @@
             <div class="hero-content left-margin">
                 <div class="row">
                     <div class="col-lg-8">
+                        @php
+                        $locationsArr = [];
+                        @endphp
+                        @if(($itinerary->location_id != NULL && $itinerary->itinerarylocations))
+                        @php
+                        $locationsArr[] = [
+                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->excerpt ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
+                            'lat'=>$itinerary->itinerarylocations->latitude,
+                            'long'=>$itinerary->itinerarylocations->longitude];
+                        @endphp
+                        @endif
+                        @php
+                        $locationArrJson = json_encode($locationsArr);
+                        @endphp
 
                         <div class="d-flex justify-content-between  ">
                             <div class="col-lg-8">
@@ -156,14 +170,12 @@
 
 
 
-
+                           @php
+                            $locationArrJson = json_encode($locationsArr);
+                            @endphp
                         <div class="world py-3">
                             <div class="container">
-                                <div class="map">
-                                    <iframe
-                                        src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
-                                        width="100%" height="550"></iframe>
-                                </div>
+                                <div id="homepagemap" style="height: 300px;"></div>
                             </div>
                         </div>
 
@@ -398,6 +410,71 @@
             </div>
 
     </section>
+    <script>
+        $(document).ready(function () {
+            if ($('#homepagemap').length > 0) {
 
+            initMaps();
+            }
+
+            function initMaps() {
+
+            // execute
+            var locations = JSON.parse( '<?php echo $locationArrJson;?>' );
+            // var locations = [
+            //     {
+            //         'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="#" >Link<a> of some sort.',
+            //         'lat': 46.8133,
+            //         'long': -100.7790,
+            //     },
+            //     {
+            //         'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
+            //         'lat': 46.8772,
+            //         'long': -96.7894,
+            //     }
+            // ];
+
+            console.log(locations)
+
+            var map = new google.maps.Map(document.getElementById('homepagemap'), {
+                zoom: 9,
+                /* Zoom level of your map */
+                center: new google.maps.LatLng(locations[0].lat, locations[0].long),
+
+                // center: new google.maps.LatLng(47.47021625, -100.47173475),
+                /* coordinates for the center of your map */
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            locations.forEach(function (location) {
+                // Accessing individual properties
+                var description = location.description;
+                var lat = location.lat;
+                var long = location.long;
+
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(lat, long),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(description);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Perform actions with the location data
+                // console.log('Description:', description);
+                // console.log('Latitude:', lat);
+                // console.log('Longitude:', long);
+            })
+            }
+        });
+    </script>
 
 @endsection

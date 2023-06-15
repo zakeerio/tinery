@@ -39,6 +39,9 @@
 
 {{-- <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
 <style>
     label.required:after {
         content: " *";
