@@ -194,10 +194,6 @@
             });
         }
 
-
-        
-
-
         function getAddressComponent(components, type) {
             for (var i = 0; i < components.length; i++) {
                 var component = components[i];
@@ -363,6 +359,154 @@
                 }
             });
         });
+        $('#signupForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
 
+            // Clear previous error messages
+            $('.invalid-feedback-registeration').empty();
+
+            // Perform client-side validation
+            var firstname = $('.regfirstname').val();
+            var email = $('.regemail').val();
+            var password = $('.regpassword').val();
+            var lastname = $('.reglastname').val();
+            var username = $('.regusername').val();
+            var confirm_password = $('.regconfirm_password').val();
+
+            if (!firstname) {
+                $('#regnameError').text('Name is required.');
+                $(".regfirstname").focus();
+                return;
+            }
+
+            if (!email) {
+                $('#regemailError').text('Email is required.');
+                $(".regemail").focus();
+                return;
+            }
+
+            if (!password) {
+                $('#regpassError').text('Password is required.');
+                $(".regpassword").focus();
+                return;
+            }
+
+            if (password.length < 8) {
+                $('#regpassError').text('Password must be at least 8 characters long.');
+                return;
+            }
+
+            if (!lastname) {
+                $('#reglastnameError').text('last Name is required.');
+                $(".reglastname").focus();
+                return;
+            }
+
+            if (!username) {
+                $('#regusernameError').text('Username is required.');
+                $(".regusername").focus();
+                return;
+            }
+
+            if (!confirm_password) {
+                $('#regconpassError').text('Confirm Password is required.');
+                $(".regconfirm_password").focus();
+                return;
+            }
+
+            if (confirm_password.length < 8) {
+                $('#regconpassError').text('Confirm Password must be at least 8 characters long.');
+                return;
+            }
+
+            if (password != confirm_password) {
+                $('#regconpassError').text('Password and Confirm Password must be same.');
+                return;
+            }
+            // If validation passes, submit the form
+            this.submit();
+        });
+
+        $(".regemail").blur(function(){
+            var email = $(this).val();
+            var csrftoken = $('#csrftoken').val();
+
+            $.ajax({
+                url:'{{ url("/registeremailexistance")}}',
+                method:'post',
+                data:{_token:csrftoken,email:email},
+                success:function(data)
+                {
+                    $('#regemailSuccess').text('');
+                    $('#regemailError').text('');
+                    if(data == 'success')
+                    {
+                        $('#regemailSuccess').text('Email is available.');
+                    }                    
+                    if(data == 'error')
+                    {
+                        $('#regemailError').text('Email is already exist.');
+                        $(".regemail").focus();
+                    }                    
+                }
+            });
+        });
+
+        $(".loginemail").blur(function(){
+            var email = $(this).val();
+            var csrftoken = $('#csrftoken').val();
+
+            $.ajax({
+                url:'{{ url("/loginemailexistance")}}',
+                method:'post',
+                data:{_token:csrftoken,email:email},
+                success:function(data)
+                {
+                    $('#loginemailSuccess').text('');
+                    $('#loginemailError').text('');
+                    if(data == 'success')
+                    {
+                        $('#loginemailSuccess').text('Valid Email.');
+                    }                    
+                    if(data == 'error')
+                    {
+                        $('#loginemailError').text('Invalid Email Address.');
+                        $(".loginemail").focus();
+                    }                    
+                }
+            });
+        });
+
+        $(".loginpassword").blur(function(){
+            var email = $('.loginemail').val();
+            var pass = $(this).val();
+            if (!email) {
+                $('#loginemailError').text('Email is required.');
+                $(".loginemail").focus();
+                return;
+            } 
+            var csrftoken = $('#csrftoken').val();
+
+            $.ajax({
+                url:'{{ url("/loginpasswordcheck")}}',
+                method:'post',
+                data:{_token:csrftoken,email:email,pass:pass},
+                success:function(data)
+                {
+                    $('#loginpassSuccess').text('');
+                    $('#loginpassError').text('');
+                    if(data == 'success')
+                    {
+                        $('#loginpassSuccess').text('Login Now.');
+                        this.submit();
+                    }                    
+                    if(data == 'error')
+                    {
+                        $('#loginpassError').text('Invalid Password.');
+                        $(".loginpassword").focus();
+                    }                    
+                }
+            });
+        });
     });
 </script>

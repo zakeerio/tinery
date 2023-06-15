@@ -85,7 +85,18 @@
                                     <img src="{{ asset('frontend/images/Frame.png') }}" alt="frame image">
                                 </div>
                                 <div class="col-md-8 px-32 my-5 my-md-0">
-
+                                    <div class="row">
+                                        @if (count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                    </div>
                                     <div id="loginform">
                                         {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start']) !!}
                                         @csrf
@@ -95,12 +106,16 @@
 
                                                 <div class="labe-section">
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                        {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginemail', 'required' => 'required']) !!}
                                                         {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
+                                                        <span class="invalid-feedback-login text-danger" role="alert" id="loginemailError"></span>
+                                                        <span class="invalid-feedback-login text-success" role="alert" id="loginemailSuccess"></span>
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                        {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginpassword', 'required' => 'required']) !!}
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
+                                                        <span class="invalid-feedback-login text-danger" role="alert" id="loginpassError"></span>
+                                                        <span class="invalid-feedback-login text-success" role="alert" id="loginpassSuccess"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,7 +195,7 @@
                                         </div>
                                         @endif
                                     </div>
-                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'class' => '']) !!}
+                                    {!! Form::open(['route' => 'register_custom', 'method' => 'POST', 'id' => 'signupForm']) !!}
 
                                     @csrf
                                     <h2 class="member-h2 mb-3 col-8 col-sm-6 text-center text-md-start mx-auto col-md-12 my-32">Become a Member</h2>
@@ -192,23 +207,25 @@
                                                         {{-- <input type="text" name="firstname" class="form-control w-100 rounded-pill did-floating-input p-3" id="firstname" placeholder="Enter your name" required>
                                                             <label for="firstname">Enter Your name</label> --}}
 
-                                                            {!! Form::text('firstname',  (old('firstname')) ? old('firstname') : null, [ 'placeholder' => "Enter your name", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
+                                                            {!! Form::text('firstname',  (old('firstname')) ? old('firstname') : null, [ 'placeholder' => "Enter your name", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regfirstname']) !!}
                                                             {!! Form::label('firstname', 'Enter your name', ['class' => 'did-floating-label']) !!}
+                                                            <span class="invalid-feedback-registeration text-danger" role="alert" id="regnameError"></span>
 
 
                                                         </div>
                                                         <div class="did-floating-label-content mb-4">
-                                                            {!! Form::email('email',  (old('email')) ? old('email') : null, [ 'placeholder' => "Enter your email", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
+                                                            {!! Form::email('email',  (old('email')) ? old('email') : null, [ 'placeholder' => "Enter your email", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regemail']) !!}
                                                             {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
-
+                                                            <span class="invalid-feedback-registeration text-danger" role="alert" id="regemailError"></span>
+                                                            <span class="invalid-feedback-registeration text-success" role="alert" id="regemailSuccess"></span>
                                                             {{-- <input type="email" name="email" class="form-control w-100 rounded-pill did-floating-input p-3" id="email" placeholder="Enter your email" required>
                                                                 <label for="email">Email</label> --}}
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
                                                         {{-- {!! Form::password($name, [$options]) !!} --}}
-                                                        {!! Form::password('password', ['placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
+                                                        {!! Form::password('password', ['placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regpassword']) !!}
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
-
+                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="regpassError"></span>
                                                         {{-- <input type="password" name="password" class="form-control w-100 rounded-pill did-floating-input p-3" id="password" placeholder="Enter your password" required>
                                                             <label for="password">Password</label> --}}
                                                         </div>
@@ -219,22 +236,23 @@
                                             <div class="col-11 col-sm-8 col-md-5 mx-auto  p-0 ">
                                                 <div class="labe-section mx-0 w-100">
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
+                                                        {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 reglastname']) !!}
                                                         {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label']) !!}
+                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="reglastnameError"></span>
                                                         {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your name" required>
                                                         <label for="lastname">Last Name</label> --}}
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::text('username',  (old('username')) ? old('username') : null, [ 'placeholder' => "Enter your Username", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3', 'required' => 'required']) !!}
+                                                        {!! Form::text('username',  (old('username')) ? old('username') : null, [ 'placeholder' => "Enter your Username", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regusername']) !!}
                                                         {!! Form::label('username', 'Enter your Username', ['class' => 'did-floating-label']) !!}
-
+                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="regusernameError"></span>
                                                         {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Username" required>
                                                         <label for="Username">Username</label> --}}
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 ', 'required' => 'required']) !!}
+                                                        {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regconfirm_password ']) !!}
                                                         {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label']) !!}
-
+                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="regconpassError"></span>
                                                         {{-- <input type="password" name="confirm_password" class="form-control w-100 rounded-pill did-floating-input p-3" id="confirm_password" placeholder="Enter your confirm password" required>
                                                         <label for="confirm_password">Confirm Password</label> --}}
                                                     </div>

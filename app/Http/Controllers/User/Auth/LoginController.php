@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -60,7 +62,7 @@ class LoginController extends Controller
         } else {
             // dd($request->input());
             // Authentication failed
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            return back()->withErrors(['error' => 'Invalid credentials']);
         }
     }
 
@@ -74,4 +76,38 @@ class LoginController extends Controller
         return view('frontend.auth.register');
     }
 
+    public function loginemailexistance(Request $request)
+    {
+        $output = '';
+        $email = $request->input('email');
+        
+        $query = User::where('email',$email)->get();
+        if(count($query) == 1)
+        {
+            $output = 'success';
+        }
+        else
+        {
+            $output = 'error';
+        }
+        echo $output;
+    }
+
+    public function loginpasswordcheck(Request $request)
+    {
+        $output = '';
+        $email = $request->input('email');
+        $pass = $request->input('pass');
+        
+        $query = User::where('email',$email)->first();
+        if (Hash::check($pass, $query->password))
+        {
+            echo 'success';
+        }
+        else
+        {
+            echo 'error';
+        }
+        echo $output;
+    }
 }

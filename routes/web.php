@@ -92,6 +92,8 @@ Route::middleware('auth:user')->group(function () {
 Route::group(['namespace' => 'Auth',], function () {
 
     // Authentication Routes...
+    Route::post('loginemailexistance', 'LoginController@loginemailexistance')->name('loginemailexistance');
+    Route::post('loginpasswordcheck', 'LoginController@loginpasswordcheck')->name('loginpasswordcheck');
     Route::get('login', 'LoginController@showLoginForm')->name('login_page');
     Route::post('login', 'LoginController@login')->name('login');
     Route::post('login_new', 'LoginController@login_new')->name('login_new');
@@ -101,6 +103,7 @@ Route::group(['namespace' => 'Auth',], function () {
     Route::get('register', 'RegisterController@showRegistrationForm')->name('register_page');
     Route::post('register', 'RegisterController@register')->name('register');
     Route::post('register_custom', 'RegisterController@register_custom')->name('register_custom');
+    Route::post('registeremailexistance', 'RegisterController@registeremailexistance')->name('registeremailexistance');
     Route::get('register/activate/{token}', 'RegisterController@confirm')->name('email_confirm');
 
     // Password Reset Routes...

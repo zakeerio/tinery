@@ -66,7 +66,7 @@ class RegisterController extends Controller
     public function register_custom(Request $request)
     {
         // Validate the user input
-        // dd($request->firstname);
+        // dd($request->input());
         $rules = [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
@@ -84,7 +84,6 @@ class RegisterController extends Controller
 		}
 		else{
             $data = $request->input();
-
 			try{
                 $user = new User;
                 $user->name = $data['firstname'];
@@ -116,5 +115,22 @@ class RegisterController extends Controller
     {
         // dd("TEST");
         return view('frontend.auth.register');
+    }
+
+    public function registeremailexistance(Request $request)
+    {
+        $output = '';
+        $email = $request->input('email');
+        
+        $query = User::withTrashed()->where('email',$email)->get();
+        if(count($query) == 1)
+        {
+            $output = 'error';
+        }
+        else
+        {
+            $output = 'success';
+        }
+        echo $output;
     }
 }

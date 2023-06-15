@@ -5,7 +5,7 @@
     @include('frontend.partials.head')
     @yield('custom_styles')
 </head>
-
+<input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
 <body id="body" class="hold-transition {{config('settings.ctrl_dark_mode')}} {{config('settings.ctrl_nav_fixed')}} {{config('settings.ctrl_nav_collapsed')}} {{config('settings.ctrl_nav_sidefixed')}} {{config('settings.ctrl_nav_sidemini')}} {{config('settings.ctrl_nav_sidemini-md')}} {{config('settings.ctrl_nav_sidemini-xs')}} {{config('settings.ctrl_fixed_footer')}} {{config('settings.ctrl_body_text_sm')}} {{config('settings.ctrl_navbar_accent')}}">
     <div class="wrapper">
 
