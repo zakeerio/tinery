@@ -30,7 +30,7 @@ Route::post('/itineraries', [HomeController::class, 'filteritineraries'])->name(
 Route::get('/tags/{id}', [HomeController::class, 'slug_itineraries'])->name('slug_itineraries');
 
 
-Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
+Route::get('/itineraries/{slug}',[HomeController::class,'itinerary'])->name('itinerary');
 
 Route::post('/forgotpasswordcode',[HomeController::class,'forgotpasswordcode'])->name('forgotpasswordcode');
 Route::post('/forgotpassworddb',[HomeController::class,'forgotpassworddb'])->name('forgotpassworddb');

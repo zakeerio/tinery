@@ -76,6 +76,20 @@
                                                 class="form-control">{{ config('settings.address') }}</textarea>
                                         </div>
                                     </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="meta_description" class="form-label">Meta Description</label>
+                                            <textarea name="meta_description" id="meta_description" rows="2"
+                                                class="form-control">{{ config('settings.meta_description') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="meta_keywords" class="form-label">SEO Keywords</label>
+                                            <textarea name="meta_keywords" id="meta_keywords" rows="2"
+                                                class="form-control">{{ config('settings.meta_keywords') }}</textarea>
+                                        </div>
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 pt-3">
                                         <p class="text-right"><input type="submit" value="UPDATE" class="btn btn-info"></p>
                                     </div>

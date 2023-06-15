@@ -1,6 +1,27 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>{{ config('app.name') }}</title>
+
+<title>@yield('title', config('settings.site_name')) | {{ config('settings.site_name') }}</title>
+<meta name="keywords" content="@yield('meta_keywords', config('settings.meta_keywords') )">
+<meta name="description" content="@yield('meta_description', config('settings.meta_description') )">
+<link rel="canonical" href="{{url()->current()}}"/>
+
+<meta property="og:site_name" content="@yield('title', config('settings.site_name'))">
+<meta property="og:title" content="{{ config('settings.site_name') }}">
+<meta property="og:description" content="@yield('meta_description', config('settings.meta_description') )">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en">
+<meta property="og:url" content="{{ env('APP_URL') }}">
+<meta property="og:image" content="@yield('seo_image', asset('frontend/images/Header.png') )">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="@yield('meta_description', config('settings.meta_description') )">
+
+{{-- <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@stefanbauerme">
+<meta name="twitter:creator" content="@stefanbauerme">
+<meta name="twitter:title" content="@yield('title', config('settings.site_name'))">
+<meta name="twitter:image" content="{{ asset('img/twitter_summary_card.png') }}"> --}}
 
 
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

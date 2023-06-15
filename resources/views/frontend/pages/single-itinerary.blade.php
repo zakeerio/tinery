@@ -1,5 +1,25 @@
 @extends('frontend.layouts.app')
 
+@section('title', $itinerary->title)
+@section('meta_keywords', 'meta keywords')
+@section('meta_description', $itinerary->excerpt)
+
+@if ($itinerary->seo_image != "")
+    @php
+        $seo_image = asset('frontend/itineraries/'.$itinerary->seo_image);
+    @endphp
+@else
+    @php
+        $seo_image = asset('frontend/images/LOGO.png')
+    @endphp
+@endif
+
+
+@section('seo_image', ($seo_image))
+
+
+
+
 @section('content')
 
     <section class="hero-sections">

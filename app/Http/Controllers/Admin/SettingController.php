@@ -51,5 +51,5 @@ class SettingController extends BaseController
         echo json_encode(['error'=>'true','key'=>$request->key,'value'=>$request->value]);
     }
 
-    
+
 }
