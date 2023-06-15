@@ -37,23 +37,24 @@ class HomeController extends Controller
         $tagsnames = array();
         if(!empty($username)) {
             $user = User::where('username', $username)->with('favorites.itineraries')->first();
-            $itineraries = $user->itineraries;
+            $itineraries = $user->itineraries->where('itinerary_status','updated')->where('status','published');
             foreach($itineraries as $itineraries)
             {
-                $singleitinerary = Itineraries::where('id',$itineraries->id)->first();
-                if($singleitinerary->tags != '')
+                if($itineraries->tags != '')
                 {
-                    $tags = json_decode($singleitinerary->tags);
-                    foreach($tags as $tags)
+                    $tags = json_decode($itineraries->tags);
+                    foreach($tags as $singletag)
                     {
-                        $tag = Tags::where('id',$tags)->first();
+                        $tag = Tags::where('id',$singletag)->first();
 
                         array_push($tagsnames,$tag);
                     }
 
                 }
             }
-            $itineraries = $user->itineraries;
+
+            $itineraries = $user->itineraries->where('itinerary_status','updated')->where('status','published');
+
             $singletag = array_unique($tagsnames);
 
             if($user->count() >  0) {
@@ -72,7 +73,7 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
 
         $days = $itinerary->itinerarydays;
-        $related_itinerary = Itineraries::where('slug','!=',$slug)->get();
+        $related_itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug','!=',$slug)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
         return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
     }

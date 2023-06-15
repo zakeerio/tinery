@@ -351,7 +351,7 @@
                                             </div>
                                         </div>
                                         <div class=" d-flex  gap-2 add-size">
-                                            @if(auth('user')->id() && (auth('user')->id() == $itinerary->user->id))
+                                            @if($usercheck)
                                                 <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             @endif
                                             <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
