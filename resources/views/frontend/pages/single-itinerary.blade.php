@@ -62,22 +62,28 @@
 
                         <div class="city d-flex flex-wrap">
                             <div class="d-flex align-items-center">
-                                <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
+                                <img src="{{ asset('frontend/images/nav.png') }}" alt="">
                                 <h6 class="profile-p pt-2 mx-1">
                                     @if($itinerary->location_id != 0 && $itinerary->itinerarylocations)
-                                        {{$itinerary->itinerarylocations->address_street}}
+                                        {{$itinerary->itinerarylocations->address_city}}
                                     @else
                                         Location
                                     @endif
                                 </h6>
                             </div>
                             <div class="d-flex align-items-center">
-                                <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">3 Days</h6>
+                                <img src="{{ asset('frontend/images/mail.png') }}" alt="">
+                                <h6 class="profile-p pt-2 mx-2">
+                                    @if(count($days) > 0)
+                                            {{count($days)}} Day{{(count($days) > 1) ? 's' : ''}}
+                                    @else
+                                        Duration
+                                    @endif
+                                </h6>
                             </div>
                             <div class="d-flex align-items-center">
-                                <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                                <img src="{{ asset('frontend/images/Link.png') }}" alt="">
+                                <h6 class="profile-p pt-2 mx-2">@if((!empty($itinerary->website))) <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}" class="text-decoration-none .profile-p" >{{ $itinerary->website }}</a> @else Links @endif </h6>
                             </div>
                         </div>
 
@@ -91,7 +97,7 @@
                                         $tag = $itinerary->tagsdata($itinerarytag);
                                     @endphp
                                     @if($tag)
-                                        <a href="{{url('/slug/'.$tag->slug)}}">
+                                        <a href="{{url('/tags/'.$tag->slug)}}">
                                             <button class="foodie">
                                                 {{$tag->name}}
                                             </button>
@@ -120,6 +126,9 @@
 
                             <!--Start  DAY 1 Coding  -->
                             @if(!empty($days))
+                            @php
+                            $activityKey = 0;
+                            @endphp
                             @foreach($days as $key => $days)
                             <div class="accordion accordion-flush  py-4" id="accordionSibglepage{{$days->id}}">
                                 <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
@@ -130,7 +139,7 @@
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                         @endphp
                                         @if(!empty($activities))
-                                        @foreach($activities as $activityKey => $activity)
+                                        @foreach($activities as $activity)
                                         {{-- {{ print_r($activity) }} --}}
                                         @php
                                             $time = $activity->starttime;
@@ -173,11 +182,15 @@
                            @php
                             $locationArrJson = json_encode($locationsArr);
                             @endphp
-                        <div class="world py-3">
-                            <div class="container">
-                                <div id="homepagemap" style="height: 300px;"></div>
-                            </div>
-                        </div>
+
+                            @if ($locationsArr)
+                                <div class="world py-3">
+                                    <div class="container">
+                                        <div id="homepagemap" style="height: 300px;"></div>
+                                    </div>
+                                </div>
+                            @endif
+
 
                         <div class="gallery-img">
                             <div class="row d-flex  images-items">

@@ -252,7 +252,7 @@
                                     @endphp
 
                                     @if($tag)
-                                    <a href="{{url('/slug/'.$tag->slug)}}">
+                                    <a href="{{url('/tags/'.$tag->slug)}}">
                                         <button class="foodie">
                                             {{$tag->name}}
                                         </button>
@@ -264,14 +264,15 @@
                                 @endif
                         </div>
                         @if(($row->location_id != NULL && $row->itinerarylocations))
-                        @php
-                        $locationsArr[] = [
-                            'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
-                            'lat'=>$row->itinerarylocations->latitude,
-                            'long'=>$row->itinerarylocations->longitude];
-                        @endphp
+                            @php
+                                $locationsArr[] = [
+                                    'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                                    'lat'=>$row->itinerarylocations->latitude,
+                                    'long'=>$row->itinerarylocations->longitude
+                                ];
+                            @endphp
                         @endif
-                        <p class="city">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_street : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
+                        <p class="city">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_city : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                     @endif

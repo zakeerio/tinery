@@ -8,200 +8,9 @@
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
     <section class="profile-section py-4">
-        @if(empty($itinerary))
-        <div class="container row margin-top-75 mx-auto">
-            <div class="border rounded col-lg-8">
-                <div class="row  p-3 ">
-                    <div class="col-12 d-flex justify-content-between ">
-                        <h2 class=" trip-h1" style="font-size:35px;">Itinerary Title</h2>
-                        <!-- Button trigger modal -->
-                        <button type="button " class="bg-transparent border-0 " data-bs-toggle="modal" data-bs-target="#intro"  title="Create Itinerary">
-                            <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24" alt="">
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="intro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                                            Intro</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                    <div class="modal-body p-3 ">
-                                        {!! Form::open(['route' => 'itineraries.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                        <div class="mb-3">
-                                            <h4 class="fw-bold">Itinerary info</h4>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
-                                            </label>
-                                            <input type="text" name="title" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
-                                        </div>
-                                        {{-- <div class="mb-3">
-                                            <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
-                                            </label>
-                                            <input type="text" name="slug" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
-                                        </div> --}}
-                                        <div class="mb-3">
-                                            <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
-                                            @php
-                                                    $listtags = [];
-                                                    @endphp
-                                                @foreach ($tags as $key => $tags)
-                                                @php
-                                                        $listtags[$tags->id] = $tags->name;
-                                                    @endphp
-                                                @endforeach
-                                                {!! Form::select('tags[]', $listtags, null, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
-                                                <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5"></textarea>
-                                            </div>
+        @if(!empty($itinerary))
 
-                                            <div class="mb-3">
-                                                <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control rounded-pill" name="address_street" value="" id="address_street" required>
-                                            </div>
-                                        <div class="mb-3">
-                                            <label for="title" class="form-label fw-bold">Duration</label>
-                                            <input type="number" name="duration" value="" class="form-control rounded-pill" placeholder="Duration">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
-                                            <input type="text" name="website" value="" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
-                                        </div>
-
-                                        <div class="text-end ">
-                                            <button type="submit" class="btn save-bt btn-dark rounded-pill ">Save</button>
-                                        </div>
-                                        {!! Form::close() !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="related d-flex align-items-center gap-2 profile-padding-left" style="margin-top:-20px;">
-                    <div class=" ">
-                        <a href="{{ route('username', ['username' => $user->username]) }}">
-                            @if (!empty($user->profile))
-                                <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="imgagesize rounded-circle">
-                            @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="imgagesize rounded-circle">
-                            @endif
-                        </a>
-                    </div>
-
-                    <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $user->username]) }}">{{ ($user) ? $user->name : 'User not found.' }} </a></div>
-                    <div class="vr align-self-center linesize mx-1"></div>
-                    <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime(date(now())))}}</div>
-                </div>
-
-
-                <div class="city d-flex profile-padding-left  flex-wrap">
-                    <div class="location d-flex gap-2 align-items-center">
-                        <img class="w" src="{{ asset('frontend/images/location.png')}}" alt="">
-                        <p class="my-auto">Location</p>
-                    </div>
-                    <div class="location d-flex gap-2 align-items-center">
-                        <img class="w" src="{{ asset('frontend/images/duration.png')}}" alt="">
-                        <p class="my-auto">Duration</p>
-                    </div>
-                    <div class="location d-flex gap-2 align-items-center">
-                        <img class="w" src="{{ asset('frontend/images/world.png')}}" alt="">
-                        <p class="my-auto">Links</p>
-                    </div>
-                </div>
-
-
-                <div class="col-12 " style="margin-top:-40px;">
-
-
-                        <div class="tags profile-padding-left">
-
-                            <button type="button" class="btn rounded-pill px-3 bg-transparent border-primary text-primary my-3">Food</button>
-                        </div>
-                        <div class=" col-12 tags-description ">
-                            <p class=" pe-2 ">This is our itinerary Description</p>
-                        </div>
-                </div>
-
-             </div>
-             <div class="col-lg-4">
-                <div class="profile p-3">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="sideprofilepic rounded-circle">
-                            <a href="{{ route('username', ['username' => $user->username]) }}">
-                                        @if (!empty($user->profile))
-                                            <img src="{{ asset('frontend/profile_pictures/'. $user->profile) }}" alt="" class="img-80px">
-                                        @else
-                                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
-                                        @endif
-                                    </a>
-                                        </div>
-                                        <div class="sidenameandlinks ">
-                                    <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $user->username]) }}">{{$user->name}}</a></div>
-                                    <div class="d-flex  socialpicsize">
-                                        @if(!empty($user->facebook))
-                                        <div>  <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
-                                        @endif
-                                        @if(!empty($user->twitter))
-                                            <div><a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
-                                            @endif
-                                            @if(!empty($user->instagram))
-                                            <div> <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
-                                        @endif
-                                        @if(!empty($user->tiktok))
-                                            <div><a href="{{$user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
-                                            @endif
-                                            @if(!empty($user->website))
-                                            <div> <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
-                                            @endif
-                                    </div>
-                                </div>
-
-
-                            </div>
-                                    <h6 class="profile-details p-3">
-                                {{$user->bio}}
-                            </h6>
-                        </div>
-
-                                <div class="profiles p-3 mt-5">
-                                    <h6 class="profiler-related related">Related Content </h6>
-                                    @if(!$related_itinerary->isEmpty())
-                                    @foreach($related_itinerary as $row)
-
-                                    <div class="pt-3 d-flex align-items-center ">
-                                        <div class="">
-                                            <a href="{{route('itinerary', ['slug' => $row->slug])}}">
-                                                <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
-                                            </div>
-                                            <div class="px-2 mx-1">
-                                                <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;">
-                                                    <div class="profiler-relate profile-relate">{{$row->title}}</div>
-                                                </a>
-                                                <div class="d-flex align-items-center">
-                                                <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
-                                                <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    @endforeach
-                                    @endif
-                                </div>
-                            </div>
-
-        </div>
-
-            @else
-            <div class="container margin-top-75">
+        <div class="container margin-top-75">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="border rounded">
@@ -281,7 +90,14 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
-                                                        <input type="text" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www,nyc,com" id="Personal-blog" aria-describedby="emailHelp">
+                                                        <input type="url" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www.nyc.com" id="Personal-blog" aria-describedby="emailHelp">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Personal-blog" class="form-label fw-bold">Visibility</label>
+                                                        <select name="visibility" class="form-control" required>
+                                                            <option value="public" {{ ($itinerary->visibility == 'public') ? 'selected' : '' }}>Public</option>
+                                                            <option value="private" {{ ($itinerary->visibility == 'private') ? 'selected' : '' }}>Private</option>
+                                                        </select>
                                                     </div>
 
                                                     <div class="text-end ">
@@ -314,28 +130,28 @@
 
                             <div class="city d-flex profile-padding-left  flex-wrap">
                                 <div class="d-flex align-items-center">
-                                    <a href="#"><img src="{{ asset('frontend/images/nav.png') }}" alt=""></a>
+                                    <img src="{{ asset('frontend/images/nav.png') }}" alt="">
                                     <h6 class="profile-p pt-2 mx-1">
-                                    @if($itinerary->location_id != '0')
-                                    {{$itinerary->itinerarylocations->address_street}}
+                                    @if($itinerary->location_id != '0' && $itinerary->itinerarylocations)
+                                        {{$itinerary->itinerarylocations->address_city}}
                                     @else
-                                    Location
+                                        Location
                                     @endif
                                     </h6>
                                 </div>
                                 <div class=" d-flex align-items-center">
-                                    <a href="#"><img src="{{ asset('frontend/images/mail.png') }}" alt=""></a>
+                                    <img src="{{ asset('frontend/images/mail.png') }}" alt="">
                                     <h6 class="profile-p pt-2 mx-2">
                                         @if(count($days) > 0)
-                                        {{count($days)}} Days
+                                            {{count($days)}} Day{{(count($days) > 1) ? 's' : ''}}
                                         @else
-                                        Duration
+                                            Duration
                                         @endif
                                     </h6>
                                     </div>
                                     <div class=" d-flex align-items-center">
-                                        <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '#' }}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
-                                    <h6 class="profile-p pt-2 mx-2">Links<a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}">{{ $itinerary->website }}</a> </h6>
+                                        <img src="{{ asset('frontend/images/Link.png') }}" alt="">
+                                        <h6 class="profile-p pt-2 mx-2">@if((!empty($itinerary->website))) <a href="{{ (!empty($itinerary->website)) ? $itinerary->website : '' }}" class="text-decoration-none profile-p" >{{ $itinerary->website }}</a> @else Links @endif </h6>
                                 </div>
                             </div>
 
@@ -349,7 +165,7 @@
                                             $tag = $itinerary->tagsdata($itinerarytag);
                                         @endphp
                                         @if($tag)
-                                        <a href="{{url('/slug/'.$tag->slug)}}">
+                                        <a href="{{url('/tags/'.$tag->slug)}}">
                                             <button class="foodie">
                                                 {{$tag->name}}
                                             </button>

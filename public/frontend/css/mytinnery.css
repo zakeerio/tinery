@@ -196,7 +196,7 @@
     font-family: "Axiforma", Sans-serif;
     margin-top: 16px;
     margin-bottom: 56px;
-    gap: 42px;
+    column-gap: 42px;
     font-size: 20px !important;
 
 }
@@ -767,7 +767,7 @@ header {
 }
 
 .profile-gap {
-    gap: 35px;
+    column-gap: 35px;
 }
 
 

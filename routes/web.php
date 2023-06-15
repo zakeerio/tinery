@@ -27,7 +27,7 @@ Route::post('/removefavourites', [HomeController::class, 'removefavourites'])->n
 Route::get('/itineraries', [HomeController::class, 'itineraries'])->name('itineraries');
 Route::post('/itineraries', [HomeController::class, 'filteritineraries'])->name('filteritineraries');
 
-Route::get('/slug/{id}', [HomeController::class, 'slug_itineraries'])->name('slug_itineraries');
+Route::get('/tags/{id}', [HomeController::class, 'slug_itineraries'])->name('slug_itineraries');
 
 
 Route::get('/itinerary/{slug}',[HomeController::class,'itinerary'])->name('itinerary');

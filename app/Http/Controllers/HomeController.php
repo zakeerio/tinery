@@ -29,7 +29,7 @@ class HomeController extends Controller
         ->where('itinerary_status','updated')
         ->get();
         $users = User::limit('8')->get();
-        
+
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
     }
     public function username($username = '')
@@ -362,6 +362,7 @@ class HomeController extends Controller
             $array->duration = $data['duration'];
             $array->website = $data['website'];
             $array->featured = '1';
+            $array->visibility = $data['visibility'];
             $array->itinerary_status = 'updated';
             $array->location_id = $data['address_street'];
             $array->save();

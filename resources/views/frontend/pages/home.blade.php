@@ -82,7 +82,7 @@
                                     $tag = $row->tagsdata($itinerarytag);
                                 @endphp
                                 @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
+                                <a href="{{url('/tags/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
@@ -98,7 +98,7 @@
                             'long'=>$row->itinerarylocations->longitude];
                         @endphp
                         @endif
-                        <p class="city mt-3">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_street : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
+                        <p class="city mt-3">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_city : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
                     @endforeach
                     @endif
@@ -154,18 +154,15 @@ $locationArrJson = json_encode($locationsArr);
         </div>
     </div>
 
-    <div class="world">
-        <div class="container">
-            <h2 class="membr">Explore Your World</h2>
-            {{-- <div class="map">
-            <iframe src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
-                width="100%" height="550"></iframe>
+    @if ($locationsArr)
 
-            </div> --}}
-
-            <div id="homepagemap" style="height: 450px;"></div>
+        <div class="world">
+            <div class="container">
+                <h2 class="membr">Explore Your World</h2>
+                <div id="homepagemap" style="height: 450px;"></div>
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="social-media">
         <div class="container">

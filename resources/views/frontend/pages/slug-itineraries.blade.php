@@ -17,6 +17,9 @@
         <div class="container">
             <div class="cards-item">
                 <div class="row">
+                    @php
+                        $locationsArr = [];
+                    @endphp
                     @if(!empty($itineraries))
                     @foreach($itineraries as $row)
                     <div class="col-lg-3 ">
@@ -64,7 +67,7 @@
                                     $tag = $row->tagsdata($itinerarytag);
                                 @endphp
                                 @if($tag)
-                                <a href="{{url('/slug/'.$tag->slug)}}">
+                                <a href="{{url('/tags/'.$tag->slug)}}">
                                     <button class="foodie">
                                         {{$tag->name}}
                                     </button>
@@ -72,8 +75,19 @@
                                 @endif
                             @endforeach
                         </div>
-                        <p class="city">{{ $row->address_city}} | {{ $row->created_at->diffForHumans() }}</p>
+                        <p class="city">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_city : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
+
+                    @if(($row->location_id != NULL && $row->itinerarylocations))
+                        @php
+                            $locationsArr[] = [
+                                'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                                'lat'=>$row->itinerarylocations->latitude,
+                                'long'=>$row->itinerarylocations->longitude
+                            ];
+                        @endphp
+                    @endif
+
                     @endforeach
                     @endif
                 </div>
@@ -82,14 +96,72 @@
         </div>
     </div>
     <hr>
-    <div class="world py-4">
-        <div class="container">
-            <div class="map">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1PdXSyjjbalDBQ2IKJDLhTgnq_9E&hl=en_US&ehbc=2E312F"
-                    width="100%" height="550"></iframe>
+    @if ($locationsArr)
+        <div class="world py-4">
+            <div class="container">
+                <div id="homepagemap" style="height: 450px;"></div>
             </div>
         </div>
-    </div>
+    @endif
+
+    @php
+    $locationArrJson = json_encode($locationsArr);
+    @endphp
+
+<script>
+    $(document).ready(function () {
+        if ($('#homepagemap').length > 0) {
+
+        initMaps();
+        }
+
+        function initMaps() {
+
+        // execute
+        var locations = JSON.parse( '<?php echo $locationArrJson;?>' );
+
+        console.log(locations)
+
+        var map = new google.maps.Map(document.getElementById('homepagemap'), {
+            zoom: 5,
+            /* Zoom level of your map */
+            center: new google.maps.LatLng(locations[0].lat, locations[0].long),
+
+            // center: new google.maps.LatLng(47.47021625, -100.47173475),
+            /* coordinates for the center of your map */
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        locations.forEach(function (location) {
+            // Accessing individual properties
+            var description = location.description;
+            var lat = location.lat;
+            var long = location.long;
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat, long),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(description);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+
+            // Perform actions with the location data
+            // console.log('Description:', description);
+            // console.log('Latitude:', lat);
+            // console.log('Longitude:', long);
+        })
+        }
+    });
+</script>
 
 
 
