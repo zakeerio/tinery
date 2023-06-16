@@ -134,7 +134,7 @@
                                         <td>
                                             @if ($row->tags)
 
-                                                @foreach($tags as $tag)
+                                                @foreach($row->tags as $tag)
 
                                                 @php
                                                     $tag = \App\Models\Tags::find($tag);
