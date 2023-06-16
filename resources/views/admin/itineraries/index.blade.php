@@ -129,7 +129,7 @@
                                         {{-- <td>{{ $row->seo_title}}</td> --}}
                                         {{-- <td>{{ $row->seo_description}}</td> --}}
                                         {{-- <td>{{ $row->seo_image}}</td> --}}
-                                        <td>{{ $row->user_id}}</td>
+                                        <td>{{ $row->user->name}}</td>
 
                                         <td>
                                             @if ($row->tags)
