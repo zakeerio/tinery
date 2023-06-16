@@ -132,9 +132,12 @@
                                         <td>{{ $row->user_id}}</td>
 
                                         <td>
-                                            @if ($row->tags)
+                                            @php
+                                                $tagsdata = $row->tags;
+                                            @endphp
+                                            @if ($tagsdata)
 
-                                                @foreach($row->tags as $tagitem)
+                                                @foreach($tagsdata as $tagitem)
 
                                                 @php
                                                     $tag = \App\Models\Tags::find($tagitem);
