@@ -132,21 +132,24 @@
                                         <td>{{ $row->user_id}}</td>
 
                                         <td>
-                                            {{-- @php
-                                                $tagsdata = $row->tags;
-                                            @endphp
-                                            @if ($tagsdata)
-
-                                                @foreach($tagsdata as $tagitem)
+                                            @if ($row->tags)
 
                                                 @php
-                                                    $tag = \App\Models\Tags::find($tagitem);
+                                                    $tagsdata = $row->tags;
                                                 @endphp
-                                                @if ($tag)
-                                                    <span class="badge bg-primary">{{$tag->name}}</span>
+                                                @if ($tagsdata)
+
+                                                    @foreach($tagsdata as $tagitem)
+
+                                                    @php
+                                                        $tag = \App\Models\Tags::find($tagitem);
+                                                    @endphp
+                                                    @if ($tag)
+                                                        <span class="badge bg-primary">{{$tag->name}}</span>
+                                                    @endif
+                                                    @endforeach
                                                 @endif
-                                                @endforeach
-                                            @endif --}}
+                                            @endif
 
                                         </td>
                                         {{-- <td>{{ $row->address_street}}</td> --}}
