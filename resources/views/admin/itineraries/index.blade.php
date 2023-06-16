@@ -132,7 +132,7 @@
                                         <td>{{ $row->user_id}}</td>
 
                                         <td>
-                                            @php
+                                            {{-- @php
                                                 $tagsdata = $row->tags;
                                             @endphp
                                             @if ($tagsdata)
@@ -146,7 +146,7 @@
                                                     <span class="badge bg-primary">{{$tag->name}}</span>
                                                 @endif
                                                 @endforeach
-                                            @endif
+                                            @endif --}}
 
                                         </td>
                                         {{-- <td>{{ $row->address_street}}</td> --}}
