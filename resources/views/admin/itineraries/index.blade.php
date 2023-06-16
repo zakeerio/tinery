@@ -134,7 +134,7 @@
                                         <td>
                                             @if ($row->tags)
                                                 @php
-                                                    $tags = json_decode($row->tags)
+                                                    $tag = \App\Models\Tags::find($tag);
                                                 @endphp
                                                 @foreach($tags as $tag)
 
