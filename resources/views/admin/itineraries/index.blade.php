@@ -133,8 +133,9 @@
 
                                         <td>
                                             @if ($row->tags)
+                                            {{ "Tag" }}
 
-                                                @php
+                                                {{-- @php
                                                     $tagsdata = $row->tags;
                                                 @endphp
                                                 @if ($tagsdata)
@@ -148,7 +149,7 @@
                                                         <span class="badge bg-primary">{{$tag->name}}</span>
                                                     @endif
                                                     @endforeach
-                                                @endif
+                                                @endif --}}
                                             @endif
 
                                         </td>
