@@ -134,10 +134,10 @@
                                         <td>
                                             @if ($row->tags)
 
-                                                @foreach($row->tags as $tag)
+                                                @foreach($row->tags as $tagitem)
 
                                                 @php
-                                                    $tag = \App\Models\Tags::find($tag);
+                                                    $tag = \App\Models\Tags::find($tagitem);
                                                 @endphp
                                                 @if ($tag)
                                                     <span class="badge bg-primary">{{$tag->name}}</span>
