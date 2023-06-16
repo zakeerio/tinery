@@ -45,6 +45,12 @@ Route::get('/about', function(){
     return view('frontend.pages.about');
 })->name('about');
 
+// Clear application cache:
+Route::get('/optimizeclear', function() {
+    Artisan::call('optimize:clear');
+    return 'Application cache has been cleared';
+});
+
 // Route::post('register', 'RegisterController@store')->name('store');
 
 Route::middleware('auth:user')->group(function () {
