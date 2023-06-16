@@ -552,7 +552,7 @@ class ItinerariesController extends BaseController
         $array = ItineraryActivities::where('days_id',$id)->delete();
 
         $array1 = ItineraryDays::where('itineraries_id',$itinerariesidloop)->count();
-        
+
         Itineraries::where('id',$itinerariesidloop)->update(
             [
                 'duration'  =>  $array1,

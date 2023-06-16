@@ -133,10 +133,9 @@
 
                                         <td>
                                             @if ($row->tags)
-                                            {{ "Tag" }}
 
-                                                {{-- @php
-                                                    $tagsdata = $row->tags;
+                                                @php
+                                                    $tagsdata = json_decode($row->tags);
                                                 @endphp
                                                 @if ($tagsdata)
 
@@ -149,7 +148,7 @@
                                                         <span class="badge bg-primary">{{$tag->name}}</span>
                                                     @endif
                                                     @endforeach
-                                                @endif --}}
+                                                @endif
                                             @endif
 
                                         </td>
