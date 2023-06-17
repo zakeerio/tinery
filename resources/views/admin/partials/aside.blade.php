@@ -145,7 +145,17 @@
                             </ul>
                         </li>
                         <li class="nav-header">System Settings</li>
-                        <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'menu-is-opening menu-open' :''}}">
+                        @can('setting-index')
+                        <li class="nav-item">
+                            <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
+                                <i class="nav-icon fa fa-cogs"></i>
+                                <p>
+                                    Settings
+                                </p>
+                            </a>
+                        </li>
+                        @endcan
+                        <!-- <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'menu-is-opening menu-open' :''}}">
                             <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'active' :''}}">
                                 <i class="nav-icon fa fa-cogs"></i>
                                 <p>
@@ -159,7 +169,7 @@
                                     <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
                                         <i class="nav-icon fa fa-cogs"></i>
                                         <p>
-                                            Admin Settings
+                                            Settings
                                         </p>
                                     </a>
                                 </li>
@@ -176,7 +186,7 @@
                                 </li>
                                 @endcan
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">

@@ -5,9 +5,9 @@
 <div class="align-items-center d-flex hero-section">
     <div class="container">
         <div class="hero-content">
-            <h2>{{$sitedata->banner_title}}</h2>
+            <h2>{{ config('settings.banner_title') }}</h2>
             <p class="hero-c-p">
-                {{$sitedata->banner_description}}
+                {{ config('settings.banner_description') }}
             </p>
         </div>
 
@@ -344,7 +344,7 @@ $locationArrJson = json_encode($locationsArr);
         <div class="about-item">
             <div class="content">
                 <h2 class="membrs">About Us</h2>
-                    <?=$sitedata->about_us?>
+                        <?=config('settings.about_us')?>
                     </div>
 
                     <div>

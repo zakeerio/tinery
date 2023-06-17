@@ -186,6 +186,49 @@
                         </form>
                     </div>
                 </div>
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Home Page Settings</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0" style="display: block;">
+                        <form action="{{ route('admin.settings.update') }}" method="POST">
+                            @csrf
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="banner_title" class="form-label">Banner Title</label>
+                                            <input type="text" name="banner_title" id="banner_title"
+                                                value="{{ config('settings.banner_title') }}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="banner_description" class="form-label">Banner Description</label>
+                                            <input type="text" name="banner_description" id="banner_description"
+                                                value="{{ config('settings.banner_description') }}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="summernote" class="form-label">About Us</label>
+                                                <textarea name="about_us" id="summernote" cols="30" rows="10">{{ config('settings.about_us') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 pt-3">
+                                        <p class="text-right"><input type="submit" value="UPDATE" class="btn btn-success">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
