@@ -38,7 +38,10 @@
                 @if($itineraries->count() > 0)
                     @foreach($itineraries as $row)
                     <div class="col-lg-3 ">
-                        <div class="card bg-img" style="background-image: url('/frontend/itineraries/{{ $row->seo_image}}')">
+                        @php
+                            $bgimage = (!empty($row->seo_image)) ? "/frontend/itineraries/".$row->seo_image : 'frontend/images/annie-spratt.jpg';
+                        @endphp
+                        <div class="card bg-img" style="background-image: url('{{ $bgimage }}')">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
                                 <div class="Ellipse bg-white m-3 rounded-pill p-1">
                                     <div class=" ">

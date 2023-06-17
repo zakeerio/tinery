@@ -204,6 +204,8 @@
                                                 </div>
                                             </div>
                                         </div> -->
+                                        @else
+                                        <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
                                         @endif
                                         <div class=" justify-content-center d-flex align-items-center mb-3">
 

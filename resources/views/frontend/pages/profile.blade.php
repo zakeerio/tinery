@@ -343,7 +343,7 @@
                                         @if (!empty($itinerary->seo_image))
                                             <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i  rounded">
                                         @else
-                                            <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120i">
+                                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120i  rounded">
                                         @endif
                                             <div class="">
                                             <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
@@ -383,7 +383,7 @@
                                             @if (!empty($itinerary->seo_image))
                                                 <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
                                             @else
-                                                <img src="{{ asset('frontend/images/weds.png') }}" alt="" class="col-3 w-120">
+                                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120  rounded">
                                             @endif
 
                                             <div class="col-8">

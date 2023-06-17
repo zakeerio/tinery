@@ -137,7 +137,7 @@
                                 @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                                 @else
-                                {{-- <img src="{{ asset('frontend/images/map.png') }}" alt="" class="wed-img"> --}}
+                                <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
                                 @endif
 
                             </div>
@@ -422,7 +422,12 @@
                             <div class="pt-3 d-flex align-items-center ">
                                 <div class="">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
-                                        <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-120"></a>
+                                        @if (!empty($rowrelated->seo_image))
+                                            <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-120"></a>
+
+                                        @else
+                                            <img src="{{ asset('frontend/images//annie-spratt.jpg') }}" alt="" class="w-120"></a>
+                                        @endif
                                 </div>
                                 <div class="px-2 mx-1">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}" style="text-decoration:none;">

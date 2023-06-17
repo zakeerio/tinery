@@ -123,12 +123,6 @@
                                             {{-- <a href="{{ route('admin.itineraries.destroy', ['itinerary' => $row->id])}}" class="badge bg-danger">Delete</a> --}}
                                         </td>
                                         <td>{{ $row->title}}</td>
-                                        {{-- <td>{{ $row->slug}}</td> --}}
-                                        {{-- <td>{{ $row->description}}</td> --}}
-                                        {{-- <td>{{ $row->excerpt}}</td> --}}
-                                        {{-- <td>{{ $row->seo_title}}</td> --}}
-                                        {{-- <td>{{ $row->seo_description}}</td> --}}
-                                        {{-- <td>{{ $row->seo_image}}</td> --}}
                                         <td>{{ $row->user->name }}</td>
 
                                         <td>
@@ -152,17 +146,6 @@
                                             @endif
 
                                         </td>
-                                        {{-- <td>{{ $row->address_street}}</td> --}}
-                                        {{-- <td>{{ $row->address_street_line1}}</td> --}}
-                                        {{-- <td>{{ $row->address_city}}</td> --}}
-                                        {{-- <td>{{ $row->address_state}}</td> --}}
-                                        {{-- <td>{{ $row->address_zipcode}}</td> --}}
-                                        {{-- <td>{{ $row->address_country}}</td> --}}
-                                        {{-- <td>{{ $row->latitude}}</td> --}}
-                                        {{-- <td>{{ $row->longitude}}</td> --}}
-                                        {{-- <td>{{ $row->phone}}</td> --}}
-                                        {{-- <td>{{ $row->website}}</td> --}}
-                                        {{-- <td>{{ $row->additional_info}}</td> --}}
                                         <td>{{ $row->featured}}</td>
                                         <td>{{ $row->visibility}}</td>
                                         <td>{{ $row->status}}</td>
