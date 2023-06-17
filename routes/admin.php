@@ -44,7 +44,8 @@ Route::group([
     Route::resource('itinerarylocation', ItineraryLocationsController::class);
 
     // system settings
-    // Route::resource('settings', SettingController::class);
+    Route::resource('homesettings', HomeSettingController::class);
+    Route::post('/homesettings/updatepictures', 'HomeSettingController@updatepictures')->name('homesettings.updatepictures');
     Route::get('/settings', 'SettingController@index')->name('settings.index');
     Route::post('/settings/update', 'SettingController@update')->name('settings.update');
     Route::post('/settings/theme-setting', 'SettingController@themeSetting')->name('settings.themesetting');

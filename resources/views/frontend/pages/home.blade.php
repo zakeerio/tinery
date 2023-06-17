@@ -5,8 +5,10 @@
 <div class="align-items-center d-flex hero-section">
     <div class="container">
         <div class="hero-content">
-            <h2>Welcome to Tinery</h2>
-            <p class="hero-c-p">The Network for travelers, big and small, to discover and share their favourite experiences.</p>
+            <h2>{{$sitedata->banner_title}}</h2>
+            <p class="hero-c-p">
+                {{$sitedata->banner_description}}
+            </p>
         </div>
 
     </div>
@@ -342,12 +344,7 @@ $locationArrJson = json_encode($locationsArr);
         <div class="about-item">
             <div class="content">
                 <h2 class="membrs">About Us</h2>
-                <p class="about-p">Join our network today and become part of a growing community of travel
-                    enthusiasts.</p>
-                    <p class="about-p">Tinery aims to disrupt the #travelinspo industry by taking the power away from
-                        algorithms and into the hands of real people. With our unique focus on user-generated content,
-                        we empower travel creators to build awareness and reputation, and allow travel consumers to find
-                        more personalized and authentic travel recommendations from their peers.</p>
+                    <?=$sitedata->about_us?>
                     </div>
 
                     <div>

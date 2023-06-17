@@ -19,18 +19,20 @@ use App\Mail\UserForgotPasswordEmail;
 use Hash;
 use App\Models\ItineraryGallery;
 use App\Models\ItineraryLocations;
+use App\Models\HomeSetting;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $sitedata = HomeSetting::find(1);
         $itineraries = Itineraries::where('featured','1')
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
         $users = User::limit('8')->get();
 
-        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users)->with('sitedata',$sitedata);
     }
     public function username($username = '')
     {

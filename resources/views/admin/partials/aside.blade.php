@@ -145,16 +145,38 @@
                             </ul>
                         </li>
                         <li class="nav-header">System Settings</li>
-                        @can('setting-index')
-                        <li class="nav-item">
-                            <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
+                        <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'menu-is-opening menu-open' :''}}">
+                            <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'active' :''}}">
                                 <i class="nav-icon fa fa-cogs"></i>
                                 <p>
                                     Settings
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview" {{ (strpos(Route::currentRouteName(),"admin.settings") !==false || strpos(Route::currentRouteName(),"admin.homesettings")!== false) ? 'style="display:block"' :'style="display:none"'}}>
+                                @can('setting-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.settings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.settings") !== false ? 'active' :''}}">
+                                        <i class="nav-icon fa fa-cogs"></i>
+                                        <p>
+                                            Admin Settings
+                                        </p>
+                                    </a>
+                                </li>
+                                @endcan
+
+                                @can('homesetting-index')
+                                <li class="nav-item">
+                                    <a href="{{route('admin.homesettings.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.homesettings") !== false ? 'active' :''}}">
+                                        <i class="nav-icon fa fa-cogs"></i>
+                                        <p>
+                                            Home Settings
+                                        </p>
+                                    </a>
+                                </li>
+                                @endcan
+                            </ul>
                         </li>
-                        @endcan
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">

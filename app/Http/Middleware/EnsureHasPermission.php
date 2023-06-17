@@ -21,7 +21,7 @@ class EnsureHasPermission
             $controllerAction = class_basename($routeArray['controller']);
             list($controller, $action) = explode('@', $controllerAction);
             $permissionName = str_replace('controller','',strtolower($controller)).'-'.$action;
-            // dd($permissionName);
+            // dd($permissionName); 
             
             // dd(\Auth::user()->roles[0]->hasPermissionTo($permissionName));
             

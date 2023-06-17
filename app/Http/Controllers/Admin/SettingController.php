@@ -29,7 +29,6 @@ class SettingController extends BaseController
         return view('admin.settings.index');
     }
 
-
     public function update(Request $request)
     {
         $params = $request->except('_token');
