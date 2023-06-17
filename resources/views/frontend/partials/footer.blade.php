@@ -36,11 +36,11 @@
             <div class="footer-bar mt-5">
                 <div class="media-links">
                     <ul class="list-inline w-140">
-                        <li class="list-inline-item "><a href="#"><img src="{{ asset("frontend/images/facebook.png") }}" class="w-24" alt="Facebook"></a>
+                        <li class="list-inline-item "><a href="{{ config('settings.facebook') }}"><img src="{{ asset("frontend/images/facebook.png") }}" class="w-24" alt="Facebook"></a>
                         </li>
-                        <li class="list-inline-item "><a href="#"><img src="{{ asset("frontend/images/twitter.png") }}" class="w-24" alt="Twitter"></a>
+                        <li class="list-inline-item "><a href="{{ config('settings.twitter') }}"><img src="{{ asset("frontend/images/twitter.png") }}" class="w-24" alt="Twitter"></a>
                         </li>
-                        <li class="list-inline-item "><a href="#"><img src="{{ asset("frontend/images/instagram.png") }}" class="w-24" alt="Instagram"></a></li>
+                        <li class="list-inline-item "><a href="{{ config('settings.instagram') }}"><img src="{{ asset("frontend/images/instagram.png") }}" class="w-24" alt="Instagram"></a></li>
                     </ul>
                 </div>
                 <div class="media-p">

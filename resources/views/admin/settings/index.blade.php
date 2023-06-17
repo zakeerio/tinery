@@ -90,6 +90,27 @@
                                                 class="form-control">{{ config('settings.meta_keywords') }}</textarea>
                                         </div>
                                     </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="facebook" class="form-label">Facebook</label>
+                                            <input type="text" name="facebook" id="facebook"
+                                                value="{{ config('settings.facebook') }}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="twitter" class="form-label">Twitter</label>
+                                            <input type="text" name="twitter" id="twitter"
+                                                value="{{ config('settings.twitter') }}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="instagram" class="form-label">Instagram</label>
+                                            <input type="text" name="instagram" id="instagram"
+                                                value="{{ config('settings.instagram') }}" class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 pt-3">
                                         <p class="text-right"><input type="submit" value="UPDATE" class="btn btn-info"></p>
                                     </div>
