@@ -16,10 +16,12 @@ use App\Models\ForgotPasswordCode;
 use Session;
 use Mail;
 use App\Mail\UserForgotPasswordEmail;
+use App\Mail\SubscribeNewsletter;
 use Hash;
 use App\Models\ItineraryGallery;
 use App\Models\ItineraryLocations;
 use App\Models\HomeSetting;
+use App\Models\Subscription;
 
 class HomeController extends Controller
 {
@@ -779,6 +781,16 @@ class HomeController extends Controller
         ItineraryGallery::where('id',$id)->delete();
 
         return back()->with('success','Deleted Successfully');
+    }
 
+    public function subscription(Request $request)
+    {
+        $arr = new Subscription;
+        $arr->email = $request->email;
+        $arr->save();
+
+        Mail::to($request->email)->send(new SubscribeNewsletter());
+
+        return back()->with('success','You have Successfully Subscribed our Newsletter');
     }
 }

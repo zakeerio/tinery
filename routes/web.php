@@ -19,6 +19,7 @@ use App\Http\Controllers\LikeDislikeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/subscription', [HomeController::class, 'subscription'])->name('subscription');
 // User profile
 Route::get('/user/{username}', [HomeController::class, 'username'])->name('username');
 

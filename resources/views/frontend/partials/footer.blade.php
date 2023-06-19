@@ -23,11 +23,12 @@
             <div class="col-12 col-sm mt-lg-3">
                 <h5>Let's stay in touch</h5>
                 <p class="font-12">We are working to make things better. You can get notified subscribing below</p>
-                <form>
+                <form method="POST" action="{{route('subscription')}}">
+                    @csrf
                     <div class="footer-field d-flex align-items-center">
                         <div class="form-group w-100">
-                            <input type="email" class="form-control rounded-pill px-3"
-                                placeholder="Enter your email">
+                            <input type="email" name="email" class="form-control rounded-pill px-3"
+                                placeholder="Enter your email" required>
                         </div>
                         <button type="submit" class="btn btn-dark join rounded-pill px-4 mx-2">Submit</button>
                     </div>
