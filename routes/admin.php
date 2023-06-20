@@ -42,7 +42,7 @@ Route::group([
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
     Route::resource('itinerarylocation', ItineraryLocationsController::class);
-
+    Route::resource('crudpages', CrudPagesController::class);
     // system settings
     Route::resource('homesettings', HomeSettingController::class);
     Route::post('/homesettings/updatepictures', 'HomeSettingController@updatepictures')->name('homesettings.updatepictures');

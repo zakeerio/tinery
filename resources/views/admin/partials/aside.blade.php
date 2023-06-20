@@ -144,6 +144,17 @@
                                 @endcan
                             </ul>
                         </li>
+                        <li class="nav-header">Pages</li>
+                        @can('crudpages-index')
+                        <li class="nav-item">
+                            <a href="{{route('admin.crudpages.index')}}" class="nav-link {{ strpos(Route::currentRouteName(),"admin.crudpages") !== false ? 'active' :''}}">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>
+                                    Crud Pages
+                                </p>
+                            </a>
+                        </li>
+                        @endcan
                         <li class="nav-header">System Settings</li>
                         @can('setting-index')
                         <li class="nav-item">
