@@ -42,7 +42,7 @@
                                     <div id="selected-feild">
                                         @if(isset($filteredlocations) && !empty($filteredlocations))
                                         @foreach($filteredlocations as $filteredlocations)
-                                        <label for="optionaddr{{$filteredlocations->address_city}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->address_city}} <span>X</span>
+                                        <label for="optionaddr{{$filteredlocations->itinerarylocations->address_city}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->itinerarylocations->address_city}} <span>X</span>
                                         </label>
                                         @endforeach
                                         @endif
@@ -55,13 +55,13 @@
                                         <?php $count = 1;?>
                                         @if(!empty($filter))
                                             @foreach($filter as $filter)
-                                                @if($filter->address_city != '')
+                                                @if($filter->location_id != '0')
                                                     <div class="row py-2">
                                                         <div class="col-lg-12">
                                                             <div class="form-check">
-                                                                <input type="checkbox" name="location[]" class="form-check-input filter" value="{{$filter->address_city}}"
-                                                                    id="optionaddr{{$filter->address_city}}" {{ (isset($locationfilter) && in_array($filter->address_city, $locationfilter)) ? 'checked' : '' }}>
-                                                                <label for="optionaddr{{$filter->address_city}}" class="form-check-label">{{$filter->address_city}}</label>
+                                                                <input type="checkbox" name="location[]" class="form-check-input filter" value="{{$filter->location_id}}"
+                                                                    id="optionaddr{{$filter->itinerarylocations->address_city}}" {{ (isset($locationfilter) && in_array($filter->location_id, $locationfilter)) ? 'checked' : '' }}>
+                                                                <label for="optionaddr{{$filter->itinerarylocations->address_city}}" class="form-check-label">{{$filter->itinerarylocations->address_city}}</label>
                                                             </div>
                                                         </div>
                                                     </div>

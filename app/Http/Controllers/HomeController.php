@@ -124,7 +124,7 @@ class HomeController extends Controller
             $itinerary->WhereIn('user_id', $usersfilter);
         }
         if (!empty($locationfilter)) {
-            $itinerary->WhereIn('address_city', $locationfilter);
+            $itinerary->WhereIn('location_id', $locationfilter);
         }
         // if (!empty($daysrange)) {
         //     $itinerary->where('duration', $range);
@@ -149,7 +149,7 @@ class HomeController extends Controller
 
         $filteredlocations = array();
         if(!empty($locationfilter)):
-        $filteredlocations = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('address_city',$locationfilter)->get();
+        $filteredlocations = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('location_id',$locationfilter)->get();
         endif;
 
         $filteredusers = array();
