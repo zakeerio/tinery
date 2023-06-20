@@ -80,7 +80,7 @@ class ItineraryLocationsController extends BaseController
         }
         // Logic for storing the data goes here...
 
-        return $this->responseRedirect('admin.itinerarylocation.index', 'Location Created successfully', 'success');
+        return $this->responseRedirect('admin.itinerarylocation.create', 'Location Created successfully', 'success');
     }
 
     /**
