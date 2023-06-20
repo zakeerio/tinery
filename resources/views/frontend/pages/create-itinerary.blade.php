@@ -490,12 +490,12 @@
 
                     </div>
             <div class="col-lg-4">
-                <div class="profile p-3">
+                <div class="profile p-3 d-sm-flex d-lg-block align-items-sm-baseline">
                     <div class="d-flex align-items-center mb-3">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                         @if (!empty($itinerary->user->profile))
-                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px">
+                                        <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px rounded-circle">
                                         @else
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
                                         @endif
@@ -546,12 +546,12 @@
                                     </div>
                         </div>
 
-                                <div class="profiles p-3 mt-32">
-                                   <h6 class=" profiler-related related">Related Content </h6>
+                                <div class="profiles p-3 mt-32 row">
+                                   <h6 class=" profiler-related related pt-md-4 col-sm-6">Related Content </h6><div class=""></div>
                                     @if(!$related_itinerary->isEmpty())
                                     @foreach($related_itinerary as $row)
 
-                                    <div class=" col-md-6 col-lg-12 pt-3 d-flex align-items-center ">
+                                    <div class=" col-sm-6 col-lg-12 pt-3 d-flex align-items-center ">
                                         <div class="">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
