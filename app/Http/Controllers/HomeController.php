@@ -362,7 +362,6 @@ class HomeController extends Controller
             $array->title = $data['title'];
             $array->slug = $slug;
             $array->description = $data['description'];
-            $array->excerpt = $data['excerpt'];
             $array->tags = json_encode($data['tags']);
             $array->duration = $data['duration'];
             $array->website = $data['website'];

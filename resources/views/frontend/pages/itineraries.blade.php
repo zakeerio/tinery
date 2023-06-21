@@ -54,14 +54,13 @@
 
                                         <?php $count = 1;?>
                                         @if(!empty($filter))
-                                            @foreach($filter as $filter)
-                                                @if($filter->location_id != '0')
+                                            @foreach($filter as $filteritem)
+                                                @if($filteritem->location_id != '0' && $filteritem->itinerarylocations)
                                                     <div class="row py-2">
                                                         <div class="col-lg-12">
                                                             <div class="form-check">
-                                                                <input type="checkbox" name="location[]" class="form-check-input filter" value="{{$filter->location_id}}"
-                                                                    id="optionaddr{{$filter->itinerarylocations->address_city}}" {{ (isset($locationfilter) && in_array($filter->location_id, $locationfilter)) ? 'checked' : '' }}>
-                                                                <label for="optionaddr{{$filter->itinerarylocations->address_city}}" class="form-check-label">{{$filter->itinerarylocations->address_city}}</label>
+                                                                <input type="checkbox" name="location[]" class="form-check-input filter" value="{{$filteritem->location_id}}" id="optionaddr{{$filteritem->itinerarylocations->address_city}}" {{ (isset($locationfilter) && in_array($filteritem->location_id, $locationfilter)) ? 'checked' : '' }}>
+                                                                <label for="optionaddr{{$filteritem->itinerarylocations->address_city}}" class="form-check-label">{{$filteritem->itinerarylocations->address_city}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -269,7 +268,7 @@
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                             @php
                                 $locationsArr[] = [
-                                    'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                                    'description'=>$row->title.'<br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
                                     'lat'=>$row->itinerarylocations->latitude,
                                     'long'=>$row->itinerarylocations->longitude
                                 ];

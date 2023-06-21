@@ -71,10 +71,6 @@
                                                         <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
                                                         <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="excerpt" class="form-label fw-bold">Itinerary Excerpt<span class="text-danger">*</span></label>
-                                                        <textarea class="form-control" name="excerpt" required id="excerpt" rows="3">{{ $itinerary->excerpt}}</textarea>
-                                                    </div>
 
                                                     <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>

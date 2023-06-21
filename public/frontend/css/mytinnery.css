@@ -724,7 +724,7 @@ header {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-    margin: 64px 0;
+    /* margin: 64px 0; */
 
 }
 
@@ -732,6 +732,9 @@ header {
     margin: 72px 0;
 }
 
+.featuredimg-padding {
+    padding: 64px 0;
+}
 .margin-top-75 {
     margin-top: 75px;
 
@@ -1531,6 +1534,9 @@ select.did-floating-select::-ms-expand {
 }
 
 @media screen and (max-width: 489px) {
+    .featuredimg-padding {
+        padding: 34px 0;
+    }
     .city {
         gap: 10px !important;
     }

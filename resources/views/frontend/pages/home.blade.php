@@ -103,7 +103,7 @@
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                         @php
                         $locationsArr[] = [
-                            'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                            'description'=>$row->title.'<br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
                             'lat'=>$row->itinerarylocations->latitude,
                             'long'=>$row->itinerarylocations->longitude];
                         @endphp

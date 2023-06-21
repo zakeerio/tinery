@@ -131,7 +131,6 @@ class ItinerariesController extends BaseController
 
 
             $array->description = $data['description'];
-            $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];
@@ -291,7 +290,6 @@ class ItinerariesController extends BaseController
             $array->slug = $slug;
 
             $array->description = $data['description'];
-            $array->excerpt = $data['excerpt'];
             $array->seo_title = $data['seo_title'];
             $array->seo_description = $data['seo_description'];
             $array->user_id = $data['user_id'];

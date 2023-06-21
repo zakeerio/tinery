@@ -18,7 +18,6 @@ class CreateItinerariesTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->text('excerpt')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->string('seo_image')->nullable();

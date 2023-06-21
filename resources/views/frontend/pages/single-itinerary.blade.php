@@ -2,7 +2,7 @@
 
 @section('title', $itinerary->title)
 @section('meta_keywords', 'meta keywords')
-@section('meta_description', $itinerary->excerpt)
+@section('meta_description', $itinerary->description)
 
 @if ($itinerary->seo_image != "")
     @php
@@ -33,7 +33,7 @@
                         @if(($itinerary->location_id != NULL && $itinerary->itinerarylocations))
                         @php
                         $locationsArr[] = [
-                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->excerpt ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
+                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->description ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
                             'lat'=>$itinerary->itinerarylocations->latitude,
                             'long'=>$itinerary->itinerarylocations->longitude];
                         @endphp
@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12 mb-3 bright-70">
+                            <div class="col-lg-12 mb-3 bright-70 featuredimg-padding">
                                 @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                                 @else
@@ -205,9 +205,7 @@
 
                             @if ($locationsArr)
                                 <div class="world py-3">
-                                    <div class="container">
-                                        <div id="homepagemap" style="height: 300px;"></div>
-                                    </div>
+                                    <div id="homepagemap" style="height: 300px;"></div>
                                 </div>
                             @endif
 
