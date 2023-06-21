@@ -76,7 +76,7 @@ class HomeController extends Controller
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug',$slug)->first();
 
         $days = $itinerary->itinerarydays;
-        $related_itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug','!=',$slug)->get();
+        $related_itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug','!=',$slug)->limit(5)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
         return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
     }
@@ -317,7 +317,7 @@ class HomeController extends Controller
         $tags = Tags::get();
         $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', Auth::guard('user')->user()->id)->first();
 
-        $related_itinerary = Itineraries::where('id','!=',$itineraryid)->get();
+        $related_itinerary = Itineraries::where('id','!=',$itineraryid)->limit(5)->get();
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
         $itinerary_location = ItineraryLocations::get();
