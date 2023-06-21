@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12 mb-3">
+                            <div class="col-lg-12 mb-3 bright-70">
                                 @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                                 @else
@@ -414,12 +414,12 @@
                             </div>
                         </div>
 
-                        <div class="profiles p-3 mt-32">
-                            <h6 class="profiler-related related">Related Content</h6>
+                        <div class="profiles p-3 mt-32 row">
+                            <h6 class="profiler-related related pt-md-4 col-sm-6">Related Content</h6><div class=""></div>
 
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)
-                            <div class="pt-3 d-flex align-items-center ">
+                            <div class="pt-3 d-flex align-items-center   col-sm-6 col-lg-12 ">
                                 <div class="">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
                                         @if (!empty($rowrelated->seo_image))

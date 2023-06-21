@@ -199,7 +199,7 @@
                                 <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
 
                                     @if($itinerary->seo_image != '')
-                                    <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4">
+                                    <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4 bright-70">
                                     <!-- <div class="ms-2">
                                         <div class=" position-relative w-120">
                                             <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
@@ -209,7 +209,7 @@
                                             </div>
                                         </div> -->
                                         @else
-                                        <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
+                                        <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img bright-70">
                                         @endif
                                         <div class=" justify-content-center d-flex align-items-center mb-3">
 
