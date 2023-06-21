@@ -536,7 +536,9 @@
     padding: 8px 0;
 }
 
-.selected-feild button, .selected-feild label, .selected-feild a.clearbtn {
+.selected-feild button,
+.selected-feild label,
+.selected-feild a.clearbtn {
     display: flex;
 
     justify-content: center;
@@ -684,6 +686,7 @@ header {
 
 .bright-70 {
     filter: brightness(70%);
+    object-fit: cover;
 
 }
 
@@ -728,6 +731,7 @@ header {
 .featuredimg-padding {
     padding: 64px 0;
 }
+
 .margin-top-75 {
     margin-top: 75px;
 
@@ -1531,6 +1535,7 @@ select.did-floating-select::-ms-expand {
     .featuredimg-padding {
         padding: 34px 0;
     }
+
     .city {
         gap: 10px !important;
     }
