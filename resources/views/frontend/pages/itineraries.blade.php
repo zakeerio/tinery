@@ -39,7 +39,7 @@
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
                                         @if(isset($filteredlocations) && !empty($filteredlocations))
                                         @foreach($filteredlocations as $filteredlocations)
                                         <label for="optionaddr{{$filteredlocations->itinerarylocations->address_city}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->itinerarylocations->address_city}} <span>X</span>
@@ -81,7 +81,7 @@
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
 
                                         <hr>
                                     </div>
@@ -117,7 +117,7 @@
                                 <button class="btn bg-light dropdown-toggle rounded-pill px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
                                         @if(isset($filteredusers) && !empty($filteredusers))
                                         @foreach($filteredusers as $filteredusers)
                                         <label for="optionuser{{$filteredusers->user->name}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredusers->user->name}} <span>X</span>
@@ -367,6 +367,45 @@
                 // console.log('Longitude:', long);
             })
             }
+        });
+
+        $(document).ready(function() {
+            $('.form-check-input').on('change', function() {
+                var checkbox = $(this);
+                var value = checkbox.val();
+                var label = checkbox.next().text();
+
+                if (checkbox.is(':checked')) {
+                    // Create a new selected item
+                    var item = $('<label>', {
+                        'class': 'btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center',
+                        'text': label + ' '
+                    });
+
+                    var cross = $('<span>', {
+                        'text': 'X'
+                    });
+
+                    item.append(cross);
+
+                    // Add click event to remove the selected item
+                    cross.on('click', function() {
+                        checkbox.prop('checked', false);
+                        item.remove();
+                    });
+
+                    $(this).parents(".dropdown-menu").find('.selected-feild').append(item);
+                } else {
+                    // Remove the selected item
+                    var items = $('.selected-feild label');
+                    items.each(function() {
+                        if ($(this).text().includes(label)) {
+                            $(this).remove();
+                            return false;
+                        }
+                    });
+                }
+            });
         });
     </script>
 @endsection

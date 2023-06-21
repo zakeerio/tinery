@@ -552,13 +552,6 @@
     color: #FFFFFF;
 }
 
-#selected-feild {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
 .filter-logo-img {
     width: 21.33px;
 
