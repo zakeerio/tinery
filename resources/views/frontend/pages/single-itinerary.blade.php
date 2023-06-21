@@ -413,11 +413,11 @@
                         </div>
 
                         <div class="profiles p-3 mt-32 row">
-                            <h6 class="profiler-related related pt-md-4 col-sm-6">Related Content</h6><div class=""></div>
+                            <h6 class="profiler-related related pt-md-4 col-sm-6 align-self-sm-center">Related Content</h6><div class="d-sm-none d-md-block "></div>
 
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)
-                            <div class="pt-3 d-flex align-items-center   col-sm-6 col-lg-12 ">
+                            <div class="pt-3 d-flex align-items-lg-center   col-sm-6 col-lg-12 ">
                                 <div class="">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
                                         @if (!empty($rowrelated->seo_image))
