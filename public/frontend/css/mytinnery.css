@@ -105,6 +105,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 290px;
+
 }
 
 .bg-toro {
@@ -688,6 +689,13 @@ header {
 
 }
 
+.bright-70 {
+    filter: brightness(70%);
+
+}
+
+
+
 .city .profile-p {
     font-size: 20px;
 }
@@ -707,6 +715,8 @@ header {
     height: 32px;
 }
 
+
+
 .wed-img {
     width: 100%;
     max-width: 1032px;
@@ -714,8 +724,8 @@ header {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-
     margin: 64px 0;
+
 }
 
 .map-margin {
@@ -1140,7 +1150,10 @@ select.did-floating-select::-ms-expand {
     width: 48px;
     background: #CCC;
     border-radius: 50%;
+
 }
+
+
 
 .tags-links1 {
     font-family: 'Axiforma';
