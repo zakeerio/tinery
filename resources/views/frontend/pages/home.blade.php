@@ -43,22 +43,27 @@
                         @php
                             $bgimage = (!empty($row->seo_image)) ? "/frontend/itineraries/".$row->seo_image : 'frontend/images/annie-spratt.jpg';
                         @endphp
-                        <div class="card bg-img" style="background-image: url('{{ $bgimage }}')">
+                        {{-- <div class="card bg-img position-relative " style="background-image: url('{{ $bgimage }}')"> --}}
+                            <div class="card bg-img position-relative ">
+                            <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img">
+                            <div class=" position-absolute">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 ">
                                     <div class=" ">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
-                                        <img src="{{ asset('frontend/profile_pictures/'.$row->user->profile) }}" alt="" class="width-48">
+                                        <img src="{{ asset('frontend/profile_pictures/'.$row->user->profile) }}" alt="" class="width-48 ">
                                         @else
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="width-48">
                                         @endif
                                     </div>
                                     <div class="e-text-size  text-nowrap">
-                                        <span class="mx-lg-3 mx-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
+                                        <span class="mx-lg-2 mx-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>
+                            </div>
+
 
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
@@ -98,7 +103,7 @@
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                         @php
                         $locationsArr[] = [
-                            'description'=>$row->title.'<br>'.Str::words($row->excerpt ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                            'description'=>$row->title.'<br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
                             'lat'=>$row->itinerarylocations->latitude,
                             'long'=>$row->itinerarylocations->longitude];
                         @endphp

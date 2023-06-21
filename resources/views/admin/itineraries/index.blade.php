@@ -85,25 +85,8 @@
                                     <tr>
                                         <th>Actions</th>
                                         <th>Title</th>
-                                        {{-- <th>Slug</th> --}}
-                                        {{-- <th>Description</th> --}}
-                                        {{-- <th>Excerpt</th> --}}
-                                        {{-- <th>SEO Title</th> --}}
-                                        {{-- <th>SEO Description</th> --}}
-                                        {{-- <th>SEO Image</th> --}}
                                         <th>Author</th>
                                         <th>Tags</th>
-                                        {{-- <th>Street</th> --}}
-                                        {{-- <th>Street Line 1</th> --}}
-                                        {{-- <th>City</th> --}}
-                                        {{-- <th>State</th> --}}
-                                        {{-- <th>Zipcode</th> --}}
-                                        {{-- <th>Country</th> --}}
-                                        {{-- <th>Latitude</th> --}}
-                                        {{-- <th>Longitude</th> --}}
-                                        {{-- <th>Phone</th> --}}
-                                        {{-- <th>Website</th> --}}
-                                        {{-- <th>Additional Info</th> --}}
                                         <th>Featured</th>
                                         <th>Visibility</th>
                                         <th>Status</th>

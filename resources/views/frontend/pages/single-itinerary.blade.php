@@ -2,7 +2,7 @@
 
 @section('title', $itinerary->title)
 @section('meta_keywords', 'meta keywords')
-@section('meta_description', $itinerary->excerpt)
+@section('meta_description', $itinerary->description)
 
 @if ($itinerary->seo_image != "")
     @php
@@ -33,7 +33,7 @@
                         @if(($itinerary->location_id != NULL && $itinerary->itinerarylocations))
                         @php
                         $locationsArr[] = [
-                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->excerpt ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
+                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->description ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
                             'lat'=>$itinerary->itinerarylocations->latitude,
                             'long'=>$itinerary->itinerarylocations->longitude];
                         @endphp
@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12 mb-3">
+                            <div class="col-lg-12 mb-3 bright-70 featuredimg-padding">
                                 @if ($itinerary->seo_image != "")
                                 <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
                                 @else
@@ -205,9 +205,7 @@
 
                             @if ($locationsArr)
                                 <div class="world py-3">
-                                    <div class="container">
-                                        <div id="homepagemap" style="height: 300px;"></div>
-                                    </div>
+                                    <div id="homepagemap" style="height: 300px;"></div>
                                 </div>
                             @endif
 
@@ -414,12 +412,12 @@
                             </div>
                         </div>
 
-                        <div class="profiles p-3 mt-32">
-                            <h6 class="profiler-related related">Related Content</h6>
+                        <div class="profiles p-3 mt-32 row">
+                            <h6 class="profiler-related related pt-md-4 col-sm-6">Related Content</h6><div class=""></div>
 
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)
-                            <div class="pt-3 d-flex align-items-center ">
+                            <div class="pt-3 d-flex align-items-center   col-sm-6 col-lg-12 ">
                                 <div class="">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
                                         @if (!empty($rowrelated->seo_image))

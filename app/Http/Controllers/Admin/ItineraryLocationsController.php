@@ -46,7 +46,7 @@ class ItineraryLocationsController extends BaseController
             'address_street_line1' => 'required|max:255',
             'address_city' => 'required|max:255',
             'address_state' => 'required|max:255',
-            'address_zipcode' => 'required|max:255',
+            'address_zipcode' => 'max:255',
             'address_country' => 'required|max:255',
             'latitude' => 'required|max:255',
             'longitude' => 'required|max:255',

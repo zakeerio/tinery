@@ -40,6 +40,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <tr>
+                                                <th>Sr#</th>
                                                 <th>Street</th>
                                                 <th>Street Line 1</th>
                                                 <th>City</th>
@@ -51,8 +52,12 @@
                                                 <th>Actions</th>
                                             </tr>
                                             @if(!empty($locations))
+                                            @php
+                                                $count=1;
+                                            @endphp
                                             @foreach($locations as $row)
                                             <tr>
+                                                <td>{{$count}}</td>
                                                 <td>{{$row->address_street}}</td>
                                                 <td>{{$row->address_street_line1}}</td>
                                                 <td>{{$row->address_city}}</td>
@@ -70,6 +75,10 @@
                                                     </form>
                                                 </td>
                                             </tr>
+
+                                            @php
+                                                $count++;
+                                            @endphp
                                             @endforeach
                                             @endif
                                         </table>

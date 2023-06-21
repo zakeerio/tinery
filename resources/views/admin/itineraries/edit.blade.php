@@ -69,10 +69,7 @@
                             {!! Form::label('description', 'Description') !!}
                             {!! Form::textarea('description', null, ['class' => 'form-control', 'required', 'rows' => 5]) !!}
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('excerpt', 'Excerpt') !!}
-                            {!! Form::textarea('excerpt', null, ['class' => 'form-control', 'required', 'rows' => 3]) !!}
-                        </div>
+
                         <div class="form-group">
                             {!! Form::label('seo_title', 'SEO Title') !!}
                             {!! Form::text('seo_title', null, ['class' => 'form-control']) !!}
@@ -123,7 +120,7 @@
                             @endphp
                             @foreach ($locations as $key => $location)
                                 @php
-                                    $locationsArr[$location->id] = $location->address_street;
+                                    $locationsArr[$location->id] = $location->city;
                                 @endphp
                             @endforeach
                             {!! Form::select('location_id', $locationsArr, null, ['class' => 'form-control select2', 'required']) !!}

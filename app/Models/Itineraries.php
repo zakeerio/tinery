@@ -19,7 +19,6 @@ class Itineraries extends Model
         'title',
         'slug',
         'description',
-        'excerpt',
         'seo_title',
         'seo_description',
         'seo_image',
@@ -74,7 +73,7 @@ class Itineraries extends Model
     }
 
     public function tagsdata($tags){
-        
+
         $singletag = Tags::find($tags);
 
         return $singletag;

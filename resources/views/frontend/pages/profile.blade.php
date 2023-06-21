@@ -347,7 +347,7 @@
                                         @endif
                                             <div class="">
                                             <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
-                                            <p class="title-p mb-0">{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                            <p class="title-p mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                         </div>
                                         <div class=" d-flex  gap-2 add-size">
@@ -388,7 +388,7 @@
 
                                             <div class="col-8">
                                                 <h2 class="title title1">{{ $itinerary->title }}</h2>
-                                                <p>{{ \Str::limit($itinerary->excerpt, 150); }}</p>
+                                                <p>{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                             <div class="col-3 d-flex  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>

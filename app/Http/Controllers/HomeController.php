@@ -85,7 +85,7 @@ class HomeController extends Controller
     {
         $tagsnames = array();
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(20);
-        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
+        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
         foreach($filter as $itineraries)
         {
             if($itineraries->tags != '')
@@ -131,8 +131,8 @@ class HomeController extends Controller
         // }
         $itinerary = $itinerary->paginate(20);
 
-        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
-        foreach($filter as $itineraries)
+        $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
+        foreach($filterdata as $itineraries)
         {
             if($itineraries->tags != '')
             {
@@ -149,8 +149,10 @@ class HomeController extends Controller
 
         $filteredlocations = array();
         if(!empty($locationfilter)):
-        $filteredlocations = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('location_id',$locationfilter)->get();
+        $filteredlocations = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('location_id',$locationfilter)->groupBy('location_id')->get();
         endif;
+        $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
+
 
         $filteredusers = array();
         if(!empty($usersfilter)):
@@ -362,7 +364,6 @@ class HomeController extends Controller
             $array->title = $data['title'];
             $array->slug = $slug;
             $array->description = $data['description'];
-            $array->excerpt = $data['excerpt'];
             $array->tags = json_encode($data['tags']);
             $array->duration = $data['duration'];
             $array->website = $data['website'];
