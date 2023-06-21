@@ -123,7 +123,7 @@
                             @endphp
                             @foreach ($locations as $key => $location)
                                 @php
-                                    $locationsArr[$location->id] = $location->address_street;
+                                    $locationsArr[$location->id] = $location->city;
                                 @endphp
                             @endforeach
                             {!! Form::select('location_id', $locationsArr, null, ['class' => 'form-control select2', 'required']) !!}

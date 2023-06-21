@@ -122,7 +122,7 @@
                             @endphp
                             @foreach ($locations as $key => $location)
                                 @php
-                                    $locationsArr[$location->id] = $location->address_street;
+                                    $locationsArr[$location->id] = $location->city;
                                 @endphp
                             @endforeach
                             {!! Form::select('location_id', $locationsArr, null, ['class' => 'form-control select2', 'required']) !!}
@@ -432,10 +432,10 @@
 
     @include('admin.partials.scripts')
     @include('admin.itineraries.itineraryscript')
-    
+
     <script>
         $(document).ready(function() {
-            
+
             // Add click event to accordion header buttons
             $('.card-header button').click(function(e) {
                 // Toggle the right-side icon
