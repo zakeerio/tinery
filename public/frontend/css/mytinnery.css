@@ -536,12 +536,12 @@
     padding: 8px 0;
 }
 
-#selected-feild button {
+.selected-feild button, .selected-feild label, .selected-feild a.clearbtn {
     display: flex;
 
     justify-content: center;
     align-items: center;
-    padding: 4px 18px;
+    /* padding: 4px 10px; */
     background: #0F6496;
     border-radius: 20px;
     font-family: "Axiforma", Sans-serif;

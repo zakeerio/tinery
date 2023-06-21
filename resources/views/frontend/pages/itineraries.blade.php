@@ -42,7 +42,7 @@
                                     <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
                                         @if(isset($filteredlocations) && !empty($filteredlocations))
                                         @foreach($filteredlocations as $filteredlocations)
-                                        <label for="optionaddr{{$filteredlocations->itinerarylocations->address_city}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->itinerarylocations->address_city}} <span>X</span>
+                                        <label for="optionaddr{{$filteredlocations->itinerarylocations->address_city}}" class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->itinerarylocations->address_city}} <span>X</span>
                                         </label>
                                         @endforeach
                                         @endif
@@ -120,7 +120,7 @@
                                     <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
                                         @if(isset($filteredusers) && !empty($filteredusers))
                                         @foreach($filteredusers as $filteredusers)
-                                        <label for="optionuser{{$filteredusers->user->name}}" class="btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredusers->user->name}} <span>X</span>
+                                        <label for="optionuser{{$filteredusers->user->name}}" class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredusers->user->name}} <span>X</span>
                                         </label>
                                         @endforeach
                                         @endif
@@ -158,7 +158,7 @@
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild">
+                                    <div id="selected-feild" class="selected-field">
                                         <button
                                             class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center  ">5-7 days <span>x</span>
                                         </button>
@@ -184,10 +184,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="selected-feild">
-                        <a href="{{ route('itineraries') }}"
-                            class="btn btn-light d-flex justify-content-between align-items-center px-3 rounded-pill flex-shrink-0 me-5 me-md-3">Clear
-                            All filters x</a>
+                    <div class="selected-feild">
+                        <a href="{{ route('itineraries') }}" class="btn clearbtn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">Clear All filters x</a>
                     </div>
                 </form>
             </div>
@@ -378,7 +376,7 @@
                 if (checkbox.is(':checked')) {
                     // Create a new selected item
                     var item = $('<label>', {
-                        'class': 'btn btn-info rounded-pill gap-2 text-white d-flex justify-content-between align-items-center',
+                        'class': 'btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center',
                         'text': label + ' '
                     });
 
