@@ -111,7 +111,6 @@
                                 </div>
                             </div>
 
-
                             <div class="related d-flex align-items-center gap-2 profile-padding-left" style="margin-top:-20px;">
                                 <div class=" ">
                                     <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
@@ -190,7 +189,12 @@
                                     @endif
                                 </p>
                             </div>
-
+                            @if(Session::has('successitinerary'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{Session::get('successitinerary')}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
                             <div class="col-12 mt-4">
                                 <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
 

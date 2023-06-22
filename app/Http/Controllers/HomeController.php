@@ -311,7 +311,7 @@ class HomeController extends Controller
         }
 
         // Logic for storing the data goes here...
-        return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
+        return redirect('/edit-itinerary/'.$array->id)->with('successitinerary','Saved Successfully');
     }
 
     public function edit_itinerary($itineraryid)
@@ -386,7 +386,7 @@ class HomeController extends Controller
         }
 
         // Logic for storing the data goes here...
-        return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
+        return redirect('/edit-itinerary/'.$array->id)->with('successitinerary','Saved Successfully');
     }
 
     public function create_itinerary_day($itineraryid)
@@ -458,6 +458,14 @@ class HomeController extends Controller
                             <div class="px-3">
                                 <div class="bg-light rounded-2 p-2 mt-2 mb-2">
                                     <div class="mb-3 ">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="alert alert-success alert-dismissible fade show activityadddivalert" role="alert" style="display:none;">
+                                                    Activity Updated Successfully
+                                                    <button type="button" class="btn-close" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-3 d-flex gap-1 flex-wrap">
                                             <div class="">
                                                 <label class="form-label fw-bold">Title</label>
@@ -521,7 +529,9 @@ class HomeController extends Controller
                             }
                         });
                     }
-
+                    $(".btn-close").click(function(){
+                        $(".activityadddivalert").hide(); 
+                    });
                     $(document).on("click","button[data-role=btnaddactivitydb]",function(e){
                         e.preventDefault();
                         var csrftoken = $("#csrftoken").val();
@@ -541,12 +551,7 @@ class HomeController extends Controller
                             data:{_token:csrftoken,activitytitle:activitytitle,activitystarttime:activitystarttime,activityendtime:activityendtime,activitydescription:activitydescription,activityid:activityid},
                             success:function(data)
                             {
-                                $.notify({
-                                title: "<strong>SUCCESS!</strong>",
-                                message: "Updated"
-                                },{
-                                type: "success"
-                                });
+                                $(".activityadddivalert").show();
                             }
                         });
                     });
