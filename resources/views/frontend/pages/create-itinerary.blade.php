@@ -196,7 +196,7 @@
                             </div>
                             @endif
                             <div class="col-12 mt-4">
-                                <div class="bg-light col-12 d-flex flex-column px-3 rounded-2">
+                                <div class="bg-light col-12 d-flex flex-column px-3 rounded-2 position-relative ">
 
                                     @if($itinerary->seo_image != '')
                                     <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4 bright-70">
@@ -211,18 +211,18 @@
                                         @else
                                         <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img bright-70">
                                         @endif
-                                        <div class=" justify-content-center d-flex align-items-center mb-3">
+                                        <div class=" justify-content-center d-flex align-self-center pt-5 mb-3 position-absolute ">
 
                                         {{-- {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
-                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone w-100 bg-transparent rounded', 'id' =>'my-awesome-dropzone1']) !!}
+                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone w-100 bg-transparent rounded ', 'id' =>'my-awesome-dropzone1']) !!}
 
                                         @csrf
                                              <input type="hidden" value="{{$itinerary->id}}" name="id">
                                                     <div class="dz-message" data-dz-message>
-                                                        <div  class="text-center ">
-                                                            <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.png')}}" alt=""></div>
-                                                            <h3>Add cover photo!</h3>
-                                                                <p>Showcase the itinerary showing image.</p>
+                                                        <div  class="text-center badge ">
+                                                            <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.png')}}" alt="" class=" bg-body opacity-50"></div>
+                                                            <h3 class="bg-secondary">Add cover photo!</h3>
+                                                                <p class="bg-secondary">Showcase the itinerary showing image.</p>
                                                                 <div class="d-flex gap-2 justify-content-center">
                                                                     <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                                                     <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
