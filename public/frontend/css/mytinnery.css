@@ -691,7 +691,6 @@ header {
 }
 
 
-
 .city .profile-p {
     font-size: 20px;
 }
@@ -711,8 +710,6 @@ header {
     height: 32px;
 }
 
-
-
 .wed-img {
     width: 100%;
     max-width: 1032px;
@@ -721,8 +718,13 @@ header {
     object-fit: cover;
     border-radius: 12px;
     /* margin: 64px 0; */
-
 }
+
+.h-412 {
+    width: 100%;
+    height: 412px;
+}
+
 
 .map-margin {
     margin: 72px 0;
@@ -1271,6 +1273,14 @@ select.did-floating-select::-ms-expand {
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
     background-color: black !important;
+}
+
+.border-white {
+    border-color: white !important;
+}
+
+.bg-c-o {
+    background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* For mobile phones: */
