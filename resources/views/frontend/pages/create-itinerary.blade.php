@@ -196,10 +196,13 @@
                             </div>
                             @endif
                             <div class="col-12 mt-4">
-                                <div class="bg-light col-12 d-flex flex-column px-3 rounded-2 position-relative ">
+                                @php
+                                    $featured_image = ($itinerary->seo_image != '') ? asset('/frontend/itineraries/'.$itinerary->seo_image) : asset('frontend/images/annie-spratt.jpg');
+                                @endphp
+                                <div class="bg-light col-12 d-flex flex-column align-items-center rounded-2 position-relative h-412 " style="background-image:url({{$featured_image }} ); background-size: cover; ">
 
                                     @if($itinerary->seo_image != '')
-                                    <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4 bright-70">
+                                    {{-- <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4 bright-70"> --}}
                                     <!-- <div class="ms-2">
                                         <div class=" position-relative w-120">
                                             <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
@@ -209,20 +212,19 @@
                                             </div>
                                         </div> -->
                                         @else
-                                        <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img bright-70">
+                                        {{-- <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img bright-70"> --}}
                                         @endif
-                                        <div class=" justify-content-center d-flex align-self-center pt-5 mb-3 position-absolute ">
-
+                                        <div class=" w-100 h-100 p-2 bg-c-o ">
                                         {{-- {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
-                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone w-100 bg-transparent rounded ', 'id' =>'my-awesome-dropzone1']) !!}
+                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white   d-flex align-items-center justify-content-center h-100 w-100 rounded ', 'id' =>'my-awesome-dropzone1']) !!}
 
                                         @csrf
                                              <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                                    <div class="dz-message" data-dz-message>
-                                                        <div  class="text-center badge ">
-                                                            <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.png')}}" alt="" class=" bg-body opacity-50"></div>
-                                                            <h3 class="bg-secondary">Add cover photo!</h3>
-                                                                <p class="bg-secondary">Showcase the itinerary showing image.</p>
+                                                    <div class="dz-message  p-0 m-0  " data-dz-message>
+                                                        <div  class="text-center text-white ">
+                                                            <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.svg')}}" alt="" class="  "></div>
+                                                            <h3 class="">Add cover photo!</h3>
+                                                                <p class="">Showcase the itinerary showing image.</p>
                                                                 <div class="d-flex gap-2 justify-content-center">
                                                                     <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
                                                                     <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
