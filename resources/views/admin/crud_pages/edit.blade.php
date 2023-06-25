@@ -43,6 +43,11 @@
                     <div class="card-body">
                     {!! Form::model($array, ['route' => ['admin.crudpages.update', $array->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                         <div class="row">
+                            <div class="col-lg-4">
+                                @if ($array->file != "")
+                                <img src="{{ asset('frontend/img/'.$array->file) }}" alt="" height="100px">
+                                @endif
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Title:</strong>
@@ -51,6 +56,15 @@
                                 <div class="form-group">
                                     <strong>Image:</strong>
                                     {!! Form::file('image',  ['class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    <strong>SEO Description:</strong>
+                                    {!! Form::text('seo_description', null, ['placeholder' => 'Write SEO Description', 'class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    <strong>SEO Keywords:</strong>
+                                    {!! Form::text('seo_keywords', null, ['placeholder' => 'Write Keywords seperate by commac (,) after each word', 'class' => 'form-control']) !!}
+                                    <small>Enter comma (,) to seperate each keywords</small>
                                 </div>
                                 <div class="form-group">
                                     <strong>Description:</strong>

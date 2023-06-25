@@ -199,88 +199,51 @@
                                 @php
                                     $featured_image = ($itinerary->seo_image != '') ? asset('/frontend/itineraries/'.$itinerary->seo_image) : asset('frontend/images/annie-spratt.jpg');
                                 @endphp
+                                {{--
                                 <div class="bg-light col-12 d-flex flex-column align-items-center rounded-2 position-relative h-412 " style="background-image:url({{$featured_image }} ); background-size: cover; ">
-
-                                    @if($itinerary->seo_image != '')
-                                    {{-- <img src="{{asset('/frontend/itineraries/'.$itinerary->seo_image)}}" alt="Image Preview" class="wed-img m-0 mb-4 bright-70"> --}}
-                                    <!-- <div class="ms-2">
-                                        <div class=" position-relative w-120">
-                                            <a href=""><img src="{{ asset('frontend/images/fam.png') }}" class="  position-relative img-thumbnail" alt=""></a>
-                                            <div class=" position-absolute top-0 end-0 p-1">
-                                                    <button class="btn-close" ></button>
+                                    <div class=" w-100 h-100 p-2 bg-c-o ">
+                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white   d-flex align-items-center justify-content-center h-100 w-100 rounded ', 'id' =>'my-awesome-dropzone1']) !!}
+                                        
+                                        @csrf
+                                        <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                        <div class="dz-message  p-0 m-0  " data-dz-message>
+                                            <div  class="text-center text-white ">
+                                                <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.svg')}}" alt="" class="  "></div>
+                                                <h3 class="">Add cover photo!</h3>
+                                                <p class="">Showcase the itinerary showing image.</p>
+                                                <div class="d-flex gap-2 justify-content-center">
+                                                    <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
+                                                    <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
                                                 </div>
                                             </div>
-                                        </div> -->
-                                        @else
-                                        {{-- <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img bright-70"> --}}
-                                        @endif
-                                        <div class=" w-100 h-100 p-2 bg-c-o ">
-                                        {{-- {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
-                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white   d-flex align-items-center justify-content-center h-100 w-100 rounded ', 'id' =>'my-awesome-dropzone1']) !!}
-
-                                        @csrf
-                                             <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                                    <div class="dz-message  p-0 m-0  " data-dz-message>
-                                                        <div  class="text-center text-white ">
-                                                            <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.svg')}}" alt="" class="  "></div>
-                                                            <h3 class="">Add cover photo!</h3>
-                                                                <p class="">Showcase the itinerary showing image.</p>
-                                                                <div class="d-flex gap-2 justify-content-center">
-                                                                    <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
-                                                                    <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
-                                                                </div>
-                                                        </div>
-                                                    </div>
-{{--
-                                        <label for="image-upload" class="text-center ">
-                                            <img id="image-preview" src="{{ asset('frontend/images/add-image.png') }}" alt="Image Preview" class="mb-2 w-150 mt-3">
-                                            <h3>Add cover photo!</h3>
-                                             <p>Showcase the itinerary showing image.</p>
-                                            <div class="d-flex gap-2 justify-content-center">
-                                            <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
-                                            <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
-                                            </div>
-                                        </label> --}}
-
+                                        </div>
+                                        
                                         {!! Form::close() !!}
-                                           </div>
-
-
-                                    {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                                    <!-- <input type='file' id="imgInp"/>
-                                        <img id="blah" src="#" alt="your image" /> -->
-                                         <div class="col-12 d-none">
-                                             <input type="file" id="image-upload" name="seo_image" accept="image/*" required class="form-control py-3">
-                                            <input type="hidden" value="{{$itinerary->id}}" name="id">
-                                            <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
-                                            </div>
-                                            {{-- <div class="col-12 py-4"> --}}
-
-                                                {{-- <img id="image-preview" src="{{ asset('frontend/images/map.png') }}" alt="Image Preview" class="img-thumbnail w-200"> --}}
-                                                <!-- <label for="file" class="text-center">
-                                                    <img src="{{ asset('frontend/images/add-image.png')}}" alt="">
-                                                    <h3>Add cover photo!</h3>
-                                                    <p>Showcase the itinerary showing image.</p>
-                                                    <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
-                                                </label> -->
-
-
-                                        {{-- </div> --}}
-                                        {!! Form::close() !!}
-                                        <script>
-                                        function previewImage(event) {
-                                            var reader = new FileReader();
-                                            reader.onload = function() {
-                                            var output = document.getElementById('image-preview');
-                                            output.src = reader.result;
-                                        };
-                                        reader.readAsDataURL(event.target.files[0]);
-                                    }
-
-                                        var fileInput = document.getElementById('image-upload');
-                                        fileInput.addEventListener('change', previewImage);
-                                     </script>
+                                    </div>
                                 </div>
+                                --}}
+                                <div id="bgimg" class="bg-light col-12 d-flex flex-column align-items-center rounded-2 position-relative" style="background-image:url({{$featured_image }} ); background-size: cover; ">
+                                    <div class="w-100 h-100 p-2 bg-c-o">
+                                        {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white d-flex align-items-center justify-content-center h-100 w-100 rounded', 'id' =>'my-awesome-dropzone1']) !!}
+                                        @csrf
+                                        <input type="hidden" value="{{$itinerary->id}}" name="id">
+                                        <div class="dz-message p-0 m-0" data-dz-message>
+                                            <div class="text-center text-white">
+                                                <div id="image-preview-1" class="image-preview-1">
+                                                    <img src="{{ asset('frontend/images/add-image.svg')}}" alt="" class=" ">
+                                                </div>
+                                                <h3 class="">Add cover photo!</h3>
+                                                <p class="">Showcase the itinerary showing image.</p>
+                                                <div class="d-flex gap-2 justify-content-center">
+                                                    <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
+                                                    <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-12">

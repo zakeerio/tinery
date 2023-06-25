@@ -3,7 +3,10 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ asset('frontend/images/LOGO.png') }}" alt="Company Logo"></a>
+            <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ config('settings.site_logo') }}" alt="Company Logo"></a>
+            {{--
+                <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ asset('frontend/images/LOGO.png') }}" alt="Company Logo"></a>
+                --}}
             <div class="d-flex gap-3">
             @if(Auth::guard('user')->user())
                 <div class="d-lg-none">

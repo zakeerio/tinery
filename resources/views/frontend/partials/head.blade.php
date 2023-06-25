@@ -5,6 +5,7 @@
 <meta name="keywords" content="@yield('meta_keywords', config('settings.meta_keywords') )">
 <meta name="description" content="@yield('meta_description', config('settings.meta_description') )">
 <link rel="canonical" href="{{url()->current()}}"/>
+<link rel="shortcut icon" href="{{ config('settings.site_icon') }}">
 
 <meta property="og:site_name" content="{{ config('settings.site_name') }}">
 <meta property="og:title" content="@yield('title', config('settings.site_name'))">
@@ -64,13 +65,3 @@
 
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 
-<style>
-    label.required:after {
-        content: " *";
-        color: red;
-    }
-    .select2-container--default .select2-selection--single {
-        height: 40px;
-        width: 100%;
-    }
-</style>

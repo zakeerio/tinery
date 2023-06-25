@@ -22,6 +22,7 @@ use App\Models\ItineraryGallery;
 use App\Models\ItineraryLocations;
 use App\Models\HomeSetting;
 use App\Models\Subscription;
+use App\Models\CrudPages;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,21 @@ class HomeController extends Controller
 
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
     }
+
+    public function term_of_use()
+    {
+        $pages = CrudPages::where('slug','term-of-use')->first();
+        
+        return view('frontend.pages.term_of_use')->with('pages', $pages);
+    }
+
+    public function privacy_policy()
+    {
+        $pages = CrudPages::where('slug','privacy-policy')->first();
+        
+        return view('frontend.pages.privacy_policy')->with('pages', $pages);
+    }
+
     public function username($username = '')
     {
         $tagsnames = array();
@@ -716,7 +732,6 @@ class HomeController extends Controller
             $data = $request->input();
 
 			try{
-
                 if($request->hasFile('file'))
                 {
                     $seo_image = $request->file('file');
@@ -729,9 +744,13 @@ class HomeController extends Controller
                     $array->seo_image = $input['file'];
                     $array->save();
 
-                    $response = ['success' =>true];
-                    return response()->json($response);
+                    $url = asset('/frontend/itineraries/'.$input['file']);
+
                     // return redirect()->back()->with('success',"Upload Cover Successfully");
+
+                    $response = ['success' =>true,'url'=>$url];
+                    return response()->json($response);
+
                 }
                 else
                 {

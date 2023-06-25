@@ -1283,6 +1283,24 @@ select.did-floating-select::-ms-expand {
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
+label.required:after {
+    content: " *";
+    color: red;
+}
+.select2-container--default .select2-selection--single {
+    height: 40px;
+    width: 100%;
+}
+#bgimg {
+    position: relative;
+    height: 412px;
+    background-size: cover;
+}
+
+#bgimg .dz-preview {
+    display: none;
+}
+
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -1735,3 +1753,4 @@ select.did-floating-select::-ms-expand {
 
 
 }
+

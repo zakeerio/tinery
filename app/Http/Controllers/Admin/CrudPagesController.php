@@ -45,6 +45,8 @@ class CrudPagesController extends BaseController
     {
         $rules = [
             'title' => 'required|max:255',
+            'seo_description' => 'required',
+            'seo_keywords' => 'required',
             'description' => 'required',
             'slug' => 'required|unique:crud_pages',
         ];
@@ -67,6 +69,8 @@ class CrudPagesController extends BaseController
             $array = new CrudPages;
             $array->title = $data['title'];
             $array->slug = $data['slug'];
+            $array->seo_description = $data['seo_description'];
+            $array->seo_keywords = $data['seo_keywords'];
             $array->description = $data['description'];
 
             if($request->hasFile('image'))
@@ -121,6 +125,8 @@ class CrudPagesController extends BaseController
     {
         $rules = [
             'title' => 'required|max:255',
+            'seo_description' => 'required',
+            'seo_keywords' => 'required',
             'description' => 'required',
         ];
 
@@ -141,6 +147,8 @@ class CrudPagesController extends BaseController
 
             $array = CrudPages::find($crudPages);
             $array->title = $data['title'];
+            $array->seo_description = $data['seo_description'];
+            $array->seo_keywords = $data['seo_keywords'];
             $array->description = $data['description'];
 
             if($request->hasFile('image'))

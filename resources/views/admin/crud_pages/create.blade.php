@@ -60,6 +60,15 @@
                                     {!! Form::file('image',  ['class' => 'form-control']) !!}
                                 </div>
                                 <div class="form-group">
+                                    <strong>SEO Description:</strong>
+                                    {!! Form::text('seo_description', null, ['placeholder' => 'Write SEO Description', 'class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    <strong>SEO Keywords:</strong>
+                                    {!! Form::text('seo_keywords', null, ['placeholder' => 'Write Keywords seperate by commac (,) after each word', 'class' => 'form-control']) !!}
+                                    <small>Enter comma (,) to seperate each keywords</small>
+                                </div>
+                                <div class="form-group">
                                     <strong>Description:</strong>
                                     {!! Form::textarea('description', null, ['placeholder' => 'Name', 'class' => 'form-control','id'=>'summernote']) !!}
                                 </div>
