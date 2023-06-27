@@ -46,6 +46,7 @@
                 var bgimg = document.getElementById("bgimg");
                 bgimg.style.backgroundImage = "url(" + imageUrl + ")";
                 bgimg.getElementsByClassName("dz-preview")[0].style.display = "none";
+                window.history.go(0);
             });
 
             this.on("addedfile", function () {
@@ -53,6 +54,15 @@
                 if (this.files[1] != null) {
                     this.removeFile(this.files[0]);
                 }
+            });
+        }
+    };
+    Dropzone.options.myAwesomeDropzone2 = {
+        url: "{{ route('single.itinerary.gallery.upload') }}",
+        acceptedFiles: "image/*",
+        init: function () {
+            this.on("success", function (file, response) {
+                window.history.go(0);
             });
         }
     };
@@ -170,8 +180,6 @@
         $('.dropdown-menu').on('click', function (event) {
             event.stopPropagation();
         });
-
-
 
         $('#intro').on('shown.bs.modal', function () {
             $('.select2').select2({

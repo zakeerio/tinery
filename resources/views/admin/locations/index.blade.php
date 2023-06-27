@@ -23,8 +23,13 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-lg-7">
                                 <h3 class="card-title">Location Management</h3>
+                            </div>
+                            <div class="col-lg-3">
+                                @can('permission-create')
+                                    <a class="btn btn-success" href="{{ url('/admin/itinerarylocation/uploadexcel') }}">Upload Locations using Excel File</a>
+                                @endcan
                             </div>
                             <div class="col-lg-2">
                                 @can('permission-create')

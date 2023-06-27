@@ -236,7 +236,7 @@
                                                 <p class="">Showcase the itinerary showing image.</p>
                                                 <div class="d-flex gap-2 justify-content-center">
                                                     <img src="{{ asset('frontend/images/add-cover.svg')}}" alt="">
-                                                    <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none">
+                                                    <input type="submit" id="submitbtn" value="Save" class="btn btn-dark rounded-pill save-bt d-none savecoveritinerary">
                                                 </div>
                                             </div>
                                         </div>
@@ -318,7 +318,7 @@
                                         @endif
                                     @if($itinerary_gallery)
                                     <div class=" justify-content-center d-flex align-items-center">
-                                        {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone w-100 rounded bg-transparent', 'id' =>'my-awesome-dropzone']) !!}
+                                        {!! Form::open(['route' => 'single.itinerary.gallery.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone w-100 rounded bg-transparent', 'id' =>'my-awesome-dropzone2']) !!}
                                         {{-- <form action="{{'route('single.itinerary.gallery.upload')}}" class="dropzone w-100 " id="my-awesome-dropzone"> --}}
                                             @csrf
                                              <input type="hidden" value="{{$itinerary->id}}" name="id">
@@ -402,7 +402,6 @@
 
                                                         previewContainer.appendChild(previewImage);
                                                     };
-
                                                     reader.readAsDataURL(files[i]);
                                                 }
                                             }

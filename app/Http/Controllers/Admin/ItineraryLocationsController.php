@@ -169,4 +169,10 @@ class ItineraryLocationsController extends BaseController
         $locations = ItineraryLocations::find($id)->delete();
         return $this->responseRedirect('admin.itinerarylocation.index', 'Location deleted successfully', 'success');
     }
+
+    public function uploadexcel()
+    {
+        $this->setPageTitle("Locations","Create Locations");
+        return view('admin.locations.uploadexcel');
+    }
 }
