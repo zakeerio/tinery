@@ -20,6 +20,9 @@ use App\Http\Controllers\LikeDislikeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/subscription', [HomeController::class, 'subscription'])->name('subscription');
+Route::get('/term-of-use', [HomeController::class, 'term_of_use'])->name('term_of_use');
+Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy_policy');
+Route::post('/subscription', [HomeController::class, 'subscription'])->name('subscription');
 // User profile
 Route::get('/user/{username}', [HomeController::class, 'username'])->name('username');
 

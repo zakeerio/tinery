@@ -3,7 +3,7 @@
         <div class="row mt-5 px-4">
             <div class="col-12 col-sm-2 mb-3 ">
                 <a href="{{ url('/')}}">
-                <img src="{{ asset('frontend/images/LOGO.png') }}" alt="Logo" class="img-fluid tiny-logo">
+                <img src="{{ config('settings.site_logo') }}" alt="Logo" class="img-fluid tiny-logo">
                 </a>
             </div>
             <div class="col-6 col-sm-2 mt-lg-4 pt1 ">
@@ -15,9 +15,9 @@
             </div>
             <div class="col-6 col-sm-2 px-2 mb-4 pb-1">
                 <ul class="d-flex flex-column gap-3 list-unstyled">
-                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="{{ url('/term-of-use')}}">Terms of Use</a></li>
                     <li><a href="#" class="gap-2">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{ url('/privacy-policy')}}">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm mt-lg-3">

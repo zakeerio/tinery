@@ -18,6 +18,8 @@ class CreateCrudPagesTable extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->string('file')->unique();
+            $table->text('seo_description')->nullable();
+            $table->text('seo_keywords')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

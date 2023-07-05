@@ -22,6 +22,7 @@ use App\Models\ItineraryGallery;
 use App\Models\ItineraryLocations;
 use App\Models\HomeSetting;
 use App\Models\Subscription;
+use App\Models\CrudPages;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,21 @@ class HomeController extends Controller
 
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
     }
+
+    public function term_of_use()
+    {
+        $pages = CrudPages::where('slug','term-of-use')->first();
+        
+        return view('frontend.pages.term_of_use')->with('pages', $pages);
+    }
+
+    public function privacy_policy()
+    {
+        $pages = CrudPages::where('slug','privacy-policy')->first();
+        
+        return view('frontend.pages.privacy_policy')->with('pages', $pages);
+    }
+
     public function username($username = '')
     {
         $tagsnames = array();
@@ -432,7 +448,18 @@ class HomeController extends Controller
         ->get();
         if(!empty($query))
         {
-            $output .= '<div class="accordion" id="accordionExample">';
+            $output .= 
+            '
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible fade show activityadddivalert" role="alert" style="display:none;">
+                        Activity Updated Successfully
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="accordionExample">
+            ';
             foreach($query as $key => $query)
             {
                 $count = ++$key;
@@ -441,70 +468,63 @@ class HomeController extends Controller
                 '
                 <div class="accordion-item focus-bt border-0">
                     <h2 class="accordion-header" id="headingOne'.$count.'">
-                    <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
-                        <div class="row border rounded-pill ">
-                        <div class="d-flex justify-content-between py-2 align-items-center">
-                            <div class="m-0 activitytitle">'.$count.'. '.$query->title.'</div>
-                            <a href="#" class="bg-transparent border-0" >
-                                <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    </button>
+                        <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
+                            <div class="row border rounded-pill ">
+                                <div class="d-flex justify-content-between py-2 align-items-center">
+                                    <div class="m-0 activitytitle">'.$count.'. '.$query->title.'</div>
+                                    <a href="#" class="bg-transparent border-0" >
+                                        <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </button>
                     </h2>
                     <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
-                    <div class="accordion-body p-0">
-                        <form action="#" class="">
-                            <div class="px-3">
-                                <div class="bg-light rounded-2 p-2 mt-2 mb-2">
-                                    <div class="mb-3 ">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="alert alert-success alert-dismissible fade show activityadddivalert" role="alert" style="display:none;">
-                                                    Activity Updated Successfully
-                                                    <button type="button" class="btn-close" aria-label="Close"></button>
+                        <div class="accordion-body p-0">
+                            <form action="#" class="">
+                                <div class="px-3">
+                                    <div class="bg-light rounded-2 p-2 mt-2 mb-2">
+                                        <div class="mb-3 ">
+                                            <div class="mb-3 d-flex gap-1 flex-wrap">
+                                                <div class="">
+                                                    <label class="form-label fw-bold">Title</label>
+                                                    <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
+                                                </div>
+                                                <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
+                                                <input type="hidden" name="daysid" value="'.$query->days_id.'">
+                                                <input type="hidden" name="activityid" value="'.$query->id.'">
+                                                <input type="hidden" name="activitydivcount" value="'.$count.'">
+                                                <div class="">
+                                                    <label class="form-label fw-bold">Time</label>
+                                                    <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                                </div>
+                                                <div class=" d-flex align-items-end">
+                                                    <label class="form-label fw-bold">&nbsp;</label>
+                                                    <label class="form-label fw-bold px-1">
+                                                        <h4 class="m-0">:</h4>
+                                                    </label>
+                                                </div>
+                                                <div class="">
+                                                    <label class="form-label fw-bold">&nbsp;</label>
+                                                    <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-3 d-flex gap-1 flex-wrap">
-                                            <div class="">
-                                                <label class="form-label fw-bold">Title</label>
-                                                <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
-                                            </div>
-                                            <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
-                                            <input type="hidden" name="daysid" value="'.$query->days_id.'">
-                                            <input type="hidden" name="activityid" value="'.$query->id.'">
-                                            <div class="">
-                                                <label class="form-label fw-bold">Time</label>
-                                                <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
-                                            </div>
-                                            <div class=" d-flex align-items-end">
-                                                <label class="form-label fw-bold">&nbsp;</label>
-                                                <label class="form-label fw-bold px-1">
-                                                    <h4 class="m-0">:</h4>
-                                                </label>
-                                            </div>
-                                            <div class="">
-                                                <label class="form-label fw-bold">&nbsp;</label>
-                                                <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="summary" class="form-label fw-bold">Summary</label>
+                                            <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
+                                        </div>
+                                        <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
+                                            <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
+                                            <input type="text" class="form-control rounded-pill " placeholder="Add map location">
+                                        </div>
+                                        <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
+                                            <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
+                                            <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="summary" class="form-label fw-bold">Summary</label>
-                                        <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
-                                    </div>
-                                    <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
-                                        <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
-                                        <input type="text" class="form-control rounded-pill " placeholder="Add map location">
-                                    </div>
-                                    <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
-                                        <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
-                                        <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
-                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -542,6 +562,7 @@ class HomeController extends Controller
                         var itineraryid = $(this).closest("form").find("input[name=itineraryid]").val();
                         var daysid = $(this).closest("form").find("input[name=daysid]").val();
                         var activityid = $(this).closest("form").find("input[name=activityid]").val();
+                        var activitydivcount = $(this).closest("form").find("input[name=activitydivcount]").val();
 
                         // $(this).closest(".accordion-item").find(".activitytitle").text($(this).closest(".accordion").find(".accordion-item").length + ". "+activitytitle);
 
@@ -551,6 +572,8 @@ class HomeController extends Controller
                             data:{_token:csrftoken,activitytitle:activitytitle,activitystarttime:activitystarttime,activityendtime:activityendtime,activitydescription:activitydescription,activityid:activityid},
                             success:function(data)
                             {
+                                $("#collapseOne"+activitydivcount).slideUp();
+                                showdaysactivities(itineraryid,daysid);
                                 $(".activityadddivalert").show();
                             }
                         });
@@ -716,7 +739,6 @@ class HomeController extends Controller
             $data = $request->input();
 
 			try{
-
                 if($request->hasFile('file'))
                 {
                     $seo_image = $request->file('file');
@@ -729,9 +751,13 @@ class HomeController extends Controller
                     $array->seo_image = $input['file'];
                     $array->save();
 
-                    $response = ['success' =>true];
-                    return response()->json($response);
+                    $url = asset('/frontend/itineraries/'.$input['file']);
+
                     // return redirect()->back()->with('success',"Upload Cover Successfully");
+
+                    $response = ['success' =>true,'url'=>$url];
+                    return response()->json($response);
+
                 }
                 else
                 {

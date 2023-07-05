@@ -33,7 +33,40 @@
     $key = env('GOOGLE_MAP_API_KEY');
 @endphp
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{ $key }}"></script>
+<script>
+    Dropzone.options.myAwesomeDropzone1 = {
+        url: "{{ route('single.itinerary.cover.upload') }}",
+        acceptedFiles: "image/*",
+        maxFiles: 1,
+        init: function () {
+            this.on("success", function (file, response) {
+                var imageUrl = response.url;
+                console.log(response);
 
+                var bgimg = document.getElementById("bgimg");
+                bgimg.style.backgroundImage = "url(" + imageUrl + ")";
+                bgimg.getElementsByClassName("dz-preview")[0].style.display = "none";
+                window.history.go(0);
+            });
+
+            this.on("addedfile", function () {
+                console.log(this.files[0]);
+                if (this.files[1] != null) {
+                    this.removeFile(this.files[0]);
+                }
+            });
+        }
+    };
+    Dropzone.options.myAwesomeDropzone2 = {
+        url: "{{ route('single.itinerary.gallery.upload') }}",
+        acceptedFiles: "image/*",
+        init: function () {
+            this.on("success", function (file, response) {
+                window.history.go(0);
+            });
+        }
+    };
+</script>
 <input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
 @if(Session::has('success'))
     <script>
@@ -147,8 +180,6 @@
         $('.dropdown-menu').on('click', function (event) {
             event.stopPropagation();
         });
-
-
 
         $('#intro').on('shown.bs.modal', function () {
             $('.select2').select2({

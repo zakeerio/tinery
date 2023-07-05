@@ -41,7 +41,10 @@ Route::group([
 
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
+    Route::get('/itinerarylocation/uploadexcel', 'ItineraryLocationsController@uploadexcel')->name('itinerarylocation.uploadexcel');
+    Route::post('/itinerarylocation/uploadexceldb', 'ItineraryLocationsController@uploadexceldb')->name('itinerarylocation.uploadexceldb');
     Route::resource('itinerarylocation', ItineraryLocationsController::class);
+
     Route::resource('crudpages', CrudPagesController::class);
     // system settings
     Route::resource('homesettings', HomeSettingController::class);
