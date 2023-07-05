@@ -11,7 +11,7 @@
 
     @foreach ($pages as $page)
         <url>
-            <loc>{{ url('/').$page->slug }}</loc>
+            <loc>{{ url('/')."/".$page->slug }}</loc>
             <lastmod>{{ $page->created_at->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
