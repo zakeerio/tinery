@@ -13,7 +13,7 @@ class SitemapController extends Controller
     public function index() {
         Sitemap::truncate();
 
-        $itineraries = Itineraries::all();
+        $itineraries = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         $pages = CrudPages::all();
 
         return response()->view('frontend.pages.sitemap', compact('itineraries', 'pages'))->header('Content-Type', 'text/xml');

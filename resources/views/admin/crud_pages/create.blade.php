@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <strong>Slug:</strong>
                                     @php
-                                        $arr[] = array(''=>'Select Slug','term-of-use'=>'Term of use','privacy-policy'=>'Privacy Policy')
+                                        $arr[] = array(''=>'Select Slug',''=>'Home','term-of-use'=>'Term of use','privacy-policy'=>'Privacy Policy','contact'=>'Contact')
                                     @endphp
                                     {!! Form::select('slug', $arr, null, ['class' => 'form-control select2']) !!}
                                 </div>
