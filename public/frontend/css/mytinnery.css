@@ -1368,7 +1368,11 @@ select.did-floating-select::-ms-expand {
     }
 }
 
-
+@media screen and (max-width: 1200px){
+    .profile-tabs .nav-link{
+        font-size: 18px;
+    }
+}
 
 @media screen and (max-width: 1024px) {
 

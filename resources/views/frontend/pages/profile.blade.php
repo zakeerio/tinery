@@ -310,7 +310,7 @@
 
                 <div class="col-md-8 myitinerylist">
                     <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
-                    <ul class="nav nav-tabs profile-tabs d-flex gap-1 gap-lg-3 m-0 " id="myTabs" role="tablist">
+                    <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-2"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
@@ -379,16 +379,16 @@
                                 @endphp
 
                                     <div class="row mb-3">
-                                        <div class="d-flex gap-3 align-items-center">
+                                        <div class="d-flex gap-3 align-items-center justify-content-between ">
                                             @if (!empty($itinerary->seo_image))
-                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120 rounded">
+                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i rounded">
                                             @else
-                                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120  rounded">
+                                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120i  rounded">
                                             @endif
 
                                             <div class="col-8">
-                                                <h2 class="title title1">{{ $itinerary->title }}</h2>
-                                                <p>{{ \Str::limit($itinerary->description, 150); }}</p>
+                                                <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
+                                                <p class="mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                             <div class="col-3 d-flex  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
