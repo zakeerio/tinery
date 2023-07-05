@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeDislikeController;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\LikeDislikeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/subscription', [HomeController::class, 'subscription'])->name('subscription');
