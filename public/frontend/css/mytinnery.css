@@ -1386,6 +1386,12 @@ label.required:after {
     }
 }
 
+@media screen and (min-width: 1000px){
+    .mfp-content .white-popup {
+        width: auto !important;
+    }
+}
+
 @media screen and (max-width: 1200px){
     .profile-tabs .nav-link{
         font-size: 18px;
