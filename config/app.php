@@ -242,14 +242,14 @@ return [
         // ......,
         // ......,
         Intervention\Image\ImageServiceProvider::class,
-        // Maatwebsite\Excel\ExcelServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
     $aliases => [
         // ......,
         // .....,
         'Image' => Intervention\Image\Facades\Image::class,
-        // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ]
 ];
