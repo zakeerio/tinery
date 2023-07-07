@@ -190,7 +190,7 @@ class ItineraryLocationsController extends BaseController
 
         $file = $request->file('file');
 
-        Excel::import([],new ItineraryLocationsImport, $file);
+        Excel::import(new ItineraryLocationsImport, $file);
 
         return $this->responseRedirect('admin.itinerarylocation.uploadexcel', 'File Uploaded Successfully', 'success');
     }
