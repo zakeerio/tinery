@@ -183,14 +183,14 @@ class ItineraryLocationsController extends BaseController
         $validator = Validator::make($request->all(), [
             'file' => 'required|mimes:xlsx,xls|max:2048' // Validate file type and size
         ]);
-    
+
         if ($validator->fails()) {
             return $this->responseRedirect('admin.itinerarylocation.uploadexcel', 'Error in File Format', 'error');
         }
 
         $file = $request->file('file');
 
-        Excel::import(new ItineraryLocationsImport, $file);
+        Excel::import([],new ItineraryLocationsImport, $file);
 
         return $this->responseRedirect('admin.itinerarylocation.uploadexcel', 'File Uploaded Successfully', 'success');
     }
