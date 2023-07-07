@@ -177,7 +177,7 @@ $locationArrJson = json_encode($locationsArr);
     <div class="social-media">
         <div class="container">
             <h2 class="membr my-2">Discover More on Social</h2>
-            <div class="row slickslider6">
+            <!-- <div class="row slickslider6">
                 <div class="col-lg-2 ">
                     <div class="social-descover">
                         <div class="">
@@ -215,9 +215,9 @@ $locationArrJson = json_encode($locationsArr);
                         <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
                             #Tinery #RelaxiTaxi #Fun #Reset</p>
                 </div>
-            </div>
+             </div>
 
-            <div class="col-lg-2 ">
+                <div class="col-lg-2 ">
                 <div class="social-descover">
                     <div class="">
                         <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
@@ -296,7 +296,7 @@ $locationArrJson = json_encode($locationsArr);
 
                         </div>
                      </div>
-            <div class="col-lg-2 ">
+                <div class="col-lg-2 ">
                 <div class="social-descover">
                     <div class="">
                         <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
@@ -316,9 +316,9 @@ $locationArrJson = json_encode($locationsArr);
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="row slickslider6 d-flex mb-5  align-items-center">
+            <!-- <div class="row slickslider6 d-flex mb-5  align-items-center">
                 <div class="col-lg-2 ">
                     <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
                 </div>
@@ -339,11 +339,12 @@ $locationArrJson = json_encode($locationsArr);
             </div>
             <div class="col-lg-2 ">
                 <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
-
+<div class='sk-ww-instagram-hashtag-feed' data-embed-id='163541'></div><script src='https://widgets.sociablekit.com/instagram-hashtag-feed/widget.js' async defer></script>
+<div class='sk-ww-tiktok-hashtag-feed' data-embed-id='163335'></div><script src='https://widgets.sociablekit.com/tiktok-hashtag-feed/widget.js' async defer></script>
 <div class="about-us py-4 d-none d-lg-block">
     <div class="container ">
         <div class="about-item">
