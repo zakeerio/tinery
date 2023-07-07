@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\ItineraryLocations;
+use App\Imports\ItineraryLocationsImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\ItineraryLocations;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
@@ -174,5 +176,22 @@ class ItineraryLocationsController extends BaseController
     {
         $this->setPageTitle("Locations","Create Locations");
         return view('admin.locations.uploadexcel');
+    }
+
+    public function uploadexceldb(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|mimes:xlsx,xls|max:2048' // Validate file type and size
+        ]);
+    
+        if ($validator->fails()) {
+            return $this->responseRedirect('admin.itinerarylocation.uploadexcel', 'Error in File Format', 'error');
+        }
+
+        $file = $request->file('file');
+
+        Excel::import(new ItineraryLocationsImport, $file);
+
+        return $this->responseRedirect('admin.itinerarylocation.uploadexcel', 'File Uploaded Successfully', 'success');
     }
 }
