@@ -38,36 +38,36 @@ class CacheManager extends Manager
     /**
      * @return MemoryCache
      */
-    public function createMemoryDriver(): CacheInterface
-    {
-        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
-            return new MemoryCacheDeprecated(
-                config('excel.cache.batch.memory_limit', 60000)
-            );
-        }
+    // public function createMemoryDriver(): CacheInterface
+    // {
+    //     if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
+    //         return new MemoryCacheDeprecated(
+    //             config('excel.cache.batch.memory_limit', 60000)
+    //         );
+    //     }
 
-        return new MemoryCache(
-            config('excel.cache.batch.memory_limit', 60000)
-        );
-    }
+    //     return new MemoryCache(
+    //         config('excel.cache.batch.memory_limit', 60000)
+    //     );
+    // }
 
     /**
      * @return BatchCache
      */
-    public function createBatchDriver(): CacheInterface
-    {
-        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
-            return new BatchCacheDeprecated(
-                $this->createIlluminateDriver(),
-                $this->createMemoryDriver()
-            );
-        }
+    // public function createBatchDriver(): CacheInterface
+    // {
+    //     if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
+    //         return new BatchCacheDeprecated(
+    //             $this->createIlluminateDriver(),
+    //             $this->createMemoryDriver()
+    //         );
+    //     }
 
-        return new BatchCache(
-            $this->createIlluminateDriver(),
-            $this->createMemoryDriver()
-        );
-    }
+    //     return new BatchCache(
+    //         $this->createIlluminateDriver(),
+    //         $this->createMemoryDriver()
+    //     );
+    // }
 
     /**
      * @return CacheInterface
