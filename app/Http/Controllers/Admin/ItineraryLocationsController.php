@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Imports\ItineraryLocationsImport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+use Excel;
 use App\Models\ItineraryLocations;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Str;
