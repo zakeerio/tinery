@@ -40,7 +40,7 @@ class CacheManager extends Manager
      */
     public function createMemoryDriver(): CacheInterface
     {
-        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
+        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^1.0')) {
             return new MemoryCacheDeprecated(
                 config('excel.cache.batch.memory_limit', 60000)
             );
@@ -56,7 +56,7 @@ class CacheManager extends Manager
      */
     public function createBatchDriver(): CacheInterface
     {
-        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^3.0')) {
+        if (!InstalledVersions::satisfies(new VersionParser, 'psr/simple-cache', '^1.0')) {
             return new BatchCacheDeprecated(
                 $this->createIlluminateDriver(),
                 $this->createMemoryDriver()
