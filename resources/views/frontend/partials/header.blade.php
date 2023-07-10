@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="ms-auto navbar-nav align-items-center gap-3 gap-xl-0">
                     <li class="nav-item">
-                        <a class="nav-link text-clr " href="{{ route('about') }}">About</a>
+                        <a class="nav-link text-clr " href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-clr" href="{{ route('itineraries') }}">Discover</a>
