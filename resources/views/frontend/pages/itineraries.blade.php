@@ -204,7 +204,7 @@
                     @foreach($itinerary as $row)
                     <div class="col-6 col-md-4 col-lg-3 ">
                         @php
-                             $bgimage = (!empty($row->seo_image)) ? "/frontend/itineraries/".$row->seo_image : 'frontend/images/annie-spratt.jpg';
+                             $bgimage = (!empty($row->seo_image)) ? asset("/frontend/itineraries/".$row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                         @endphp
                         <div class="card bg-img position-relative" style="background-image: url('{{ $bgimage }}');">
                             <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img">

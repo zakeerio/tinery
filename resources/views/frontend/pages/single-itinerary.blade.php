@@ -132,15 +132,14 @@
                             {{ $itinerary->description }}
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-12 mb-3 bright-70 featuredimg-padding">
-                                @if ($itinerary->seo_image != "")
-                                <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
-                                @else
-                                <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
-                                @endif
 
-                            </div>
+                        <div class="col-lg-12 mb-3 bright-70 featuredimg-padding">
+                            @if ($itinerary->seo_image != "")
+                            <img src="{{ asset('frontend/itineraries/'.$itinerary->seo_image) }}" alt="" class="wed-img">
+                            @else
+                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
+                            @endif
+
                         </div>
 
 
