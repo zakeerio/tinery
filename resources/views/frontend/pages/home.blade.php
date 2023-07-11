@@ -48,7 +48,7 @@
                             <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img">
                             <div class=" position-absolute">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1 ">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 pe-2 ">
                                     <div class=" ">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
