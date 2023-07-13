@@ -160,7 +160,9 @@
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild" class="selected-field">
                                         <button
-                                            class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center  ">5-7 days <span>x</span>
+                                            class="btn btn-primary rounded-pill gap-2 text-white d-flex justify-content-between align-items-center  ">
+                                            {{ (isset($daysrange)) ? '0-'.$daysrange : '0' }} days
+                                            <span>x</span>
                                         </button>
                                     </div>
                                     <hr>
@@ -171,7 +173,7 @@
                                                 <p>Max</p>
                                             </div>
                                             <!-- <input type="range" id="days" min="5" max="7" step="1"> -->
-                                            <input type="range" class="form-range" id="days-range" name="daysrange" min="1" max="14" value="{{ (isset($daysrange)) ? $daysrange : '7' }}" step="2">
+                                            <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '$largestnumber/2' }}" step="2">
 
                                         </div>
                                         <div>

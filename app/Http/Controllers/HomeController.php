@@ -102,6 +102,8 @@ class HomeController extends Controller
     public function itineraries()
     {
         $tagsnames = array();
+        $smallestnumber = Itineraries::min('duration');
+        $largestnumber = Itineraries::max('duration');
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(20);
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
         foreach($filter as $itineraries)
@@ -119,13 +121,14 @@ class HomeController extends Controller
         $tags = array_unique($tagsnames);
         $user_filter = User::get();
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter'));
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber'));
     }
 
 
     public function filteritineraries(Request $request)
     {
         // var_dump($request->all());
+        // dd($request->all());
         $tagsfilter = $request->tags;
         $usersfilter = $request->users;
         $locationfilter = $request->location;
@@ -133,6 +136,8 @@ class HomeController extends Controller
         $range = ['1',$daysrange];
 
         $tagsnames = array();
+        $smallestnumber = Itineraries::min('duration');
+        $largestnumber = Itineraries::max('duration');
         $itinerary = Itineraries::where('itinerary_status', 'updated')
         ->where('status', 'published');
         if (!empty($tagsfilter)) {
@@ -144,9 +149,9 @@ class HomeController extends Controller
         if (!empty($locationfilter)) {
             $itinerary->WhereIn('location_id', $locationfilter);
         }
-        // if (!empty($daysrange)) {
-        //     $itinerary->where('duration', $range);
-        // }
+        if (!empty($daysrange)) {
+            $itinerary->whereBetween('duration', $range);
+        }
         $itinerary = $itinerary->paginate(20);
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
@@ -177,7 +182,7 @@ class HomeController extends Controller
         $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
         endif;
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
     }
 
 
