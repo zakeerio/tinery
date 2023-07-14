@@ -212,7 +212,7 @@
                             <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img">
                             <div class=" position-absolute">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1 pe-2 gap-1">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -221,7 +221,7 @@
                                         <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="width-48">
                                         @endif
                                     </div>
-                                    <div class="e-text-size  text-nowrap">
+                                    <div class="e-text-size  text-nowrap pe-2">
                                         <span class="e-text-size ">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
@@ -270,8 +270,10 @@
                         </div>
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                             @php
+                            $link = route("itinerary", ["slug" => $row->slug]) ;
+
                                 $locationsArr[] = [
-                                    'description'=> '<a>'.$row->title.'</a><br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                                    'description'=> '<a href="'.$link.'">'.$row->title.'</a>',
                                     'lat'=>$row->itinerarylocations->latitude,
                                     'long'=>$row->itinerarylocations->longitude
                                 ];
