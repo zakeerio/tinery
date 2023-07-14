@@ -173,7 +173,7 @@
                                                 <p>Max</p>
                                             </div>
                                             <!-- <input type="range" id="days" min="5" max="7" step="1"> -->
-                                            <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '$largestnumber/2' }}" step="2">
+                                            <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : $largestnumber }}" step="2">
 
                                         </div>
                                         <div>
@@ -271,7 +271,7 @@
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                             @php
                                 $locationsArr[] = [
-                                    'description'=>$row->title.'<br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
+                                    'description'=> '<a>'.$row->title.'</a><br>'.Str::words($row->description ?? '',5,' ...').'<br>'.$row->itinerarylocations->address_street.'<br>'.$row->itinerarylocations->address_city.'<br>'.$row->itinerarylocations->address_country,
                                     'lat'=>$row->itinerarylocations->latitude,
                                     'long'=>$row->itinerarylocations->longitude
                                 ];
@@ -324,7 +324,7 @@
             //         'long': -100.7790,
             //     },
             //     {
-            //         'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
+            //         'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<;> of some sort.',
             //         'lat': 46.8772,
             //         'long': -96.7894,
             //     }
