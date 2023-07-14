@@ -270,10 +270,10 @@
                         </div>
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                             @php
-                            $link = route("itinerary", ["slug" => $row->slug]) ;
+                                $link = '<a href="' . route("itinerary", ["slug" => $row->slug]) . '">' . $row->title . '</a>';
 
                                 $locationsArr[] = [
-                                    'description'=> '<a href="'.$link.'">'.$row->title.'</a>',
+                                    'description' => htmlspecialchars($link, ENT_QUOTES, 'UTF-8'),
                                     'lat'=>$row->itinerarylocations->latitude,
                                     'long'=>$row->itinerarylocations->longitude
                                 ];
