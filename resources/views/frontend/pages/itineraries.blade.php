@@ -270,10 +270,12 @@
                         </div>
                         @if(($row->location_id != NULL && $row->itinerarylocations))
                             @php
-                                $link = '<a href="' . route("itinerary", ["slug" => $row->slug]) . '">' . $row->title . '</a>';
+                                $link = route("itinerary", ["slug" => $row->slug]);
+                                $title = $row->title;
 
                                 $locationsArr[] = [
-                                    'description' => htmlspecialchars($link, ENT_QUOTES, 'UTF-8'),
+                                    'url' => $link,
+                                    'title' => $title,
                                     'lat'=>$row->itinerarylocations->latitude,
                                     'long'=>$row->itinerarylocations->longitude
                                 ];
@@ -332,7 +334,7 @@
             //     }
             // ];
 
-            console.log(locations)
+            // console.log(locations)
 
             var map = new google.maps.Map(document.getElementById('homepagemap'), {
                 zoom: 5,
@@ -350,7 +352,7 @@
 
             locations.forEach(function (location) {
                 // Accessing individual properties
-                var description = location.description;
+                var description = '<a href="'+location.url+'">'+location.title+'</a>';
                 var lat = location.lat;
                 var long = location.long;
 
