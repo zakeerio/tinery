@@ -133,33 +133,33 @@ $locationArrJson = json_encode($locationsArr);
                     <!-- Hide on moible only -->
 
 
-                @forelse ($users as $userdata )
+                    @forelse ($users as $userdata )
 
-                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-none d-lg-block">
-                    <div class="member-info d-flex align-items-center justify-content-between ">
-                        <div class="d-flex align-items-center justify-content-start ">
-                            @if($userdata->profile != '')
-                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
-                            @else
-                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
-                            @endif
+                        <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-none d-lg-block">
+                            <div class="member-info d-flex align-items-center justify-content-between ">
+                                <div class="d-flex align-items-center justify-content-start ">
+                                    @if($userdata->profile != '')
+                                    <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
+                                    @else
+                                    <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
+                                    @endif
 
-                            <div class="mx-md-3 mx-2">
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
-                                    <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                    <div class="mx-md-3 mx-2">
+                                        <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
+                                        <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
                                 </div>
                             </div>
 
-                            <div class="">
-                                <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                            </div>
                         </div>
-
-                    </div>
 
                     @empty
 
-                    <div class="">No users found! </div>
+                        <div class="">No users found! </div>
 
                     @endforelse
 
@@ -167,31 +167,31 @@ $locationArrJson = json_encode($locationsArr);
 
                     @forelse ($users_mobile as $userdata )
 
-                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-block d-lg-none">
-                    <div class="member-info d-flex align-items-center justify-content-between ">
-                        <div class="d-flex align-items-center justify-content-start ">
-                            @if($userdata->profile != '')
-                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
-                            @else
-                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
-                            @endif
+                        <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-block d-lg-none">
+                            <div class="member-info d-flex align-items-center justify-content-between ">
+                                <div class="d-flex align-items-center justify-content-start ">
+                                    @if($userdata->profile != '')
+                                    <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
+                                    @else
+                                    <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
+                                    @endif
 
-                            <div class="mx-md-3 mx-2">
-                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
-                                    <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                    <div class="mx-md-3 mx-2">
+                                        <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
+                                            <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
                                 </div>
                             </div>
 
-                            <div class="">
-                                <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
-                            </div>
                         </div>
-
-                    </div>
 
                     @empty
 
-                    <div class="">No users found! </div>
+                        <div class="">No users found! </div>
 
                     @endforelse
 
