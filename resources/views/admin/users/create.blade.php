@@ -128,6 +128,12 @@
                                         {!! Form::textarea('bio', null, ['placeholder' => 'Bio', 'class' => 'form-control','rows'=>'5']) !!}
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="featured" id="featured" class="" value="true">
+                                        <label class="form-check-label" for="featured">Featured</label>
+                                    </div>
+                                </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                                     <button type="submit" class="btn btn-success">SAVE</button>
                                 </div>
