@@ -15,7 +15,7 @@ class AddFeaturedToTableUsers extends Migration
     {
         Schema::table('table_users', function (Blueprint $table) {
             //
-            $table->text('featured')->nullable();
+            $table->string('featured')->nullable();
 
         });
     }
