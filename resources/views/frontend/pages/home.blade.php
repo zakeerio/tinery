@@ -43,7 +43,7 @@
                         @php
                             $bgimage = (!empty($row->seo_image)) ? asset("frontend/itineraries/".$row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                         @endphp
-                        {{-- <div class="card bg-img position-relative " style="background-image: url('{{ $bgimage }}')"> --}}
+                        {{-- <div class="card bg-img position-relative " --}}
                             <div class="card bg-img position-relative ">
                                 <a href="{{route('itinerary', ['slug' => $row->slug])}}" class="h-100 text-decoration-none">
                                     <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img w-100">
@@ -130,9 +130,44 @@ $locationArrJson = json_encode($locationsArr);
             <div class="row spotlight-center">
                 <h2 class="membr">Members Spotlight</h2>
 
+                    <!-- Hide on moible only -->
+
+
                 @forelse ($users as $userdata )
 
-                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6">
+                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-none d-lg-block">
+                    <div class="member-info d-flex align-items-center justify-content-between ">
+                        <div class="d-flex align-items-center justify-content-start ">
+                            @if($userdata->profile != '')
+                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/'.$userdata->profile) }}" alt="" class="rounded-circle member-img"></a>
+                            @else
+                            <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block"> <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="rounded-circle member-img"></a>
+                            @endif
+
+                            <div class="mx-md-3 mx-2">
+                                <a href="{{ route('username', ['username' => $userdata->username]) }}" class="d-block text-decoration-none"><h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}</h4></a>
+                                    <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100); }}</p>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <img src="{{ asset('frontend/images/black.png') }}" alt="" class="heart-img">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @empty
+
+                    <div class="">No users found! </div>
+
+                    @endforelse
+
+                    <!-- display on moible only -->
+
+                    @forelse ($users as $userdata )
+
+                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-block d-lg-none">
                     <div class="member-info d-flex align-items-center justify-content-between ">
                         <div class="d-flex align-items-center justify-content-start ">
                             @if($userdata->profile != '')
