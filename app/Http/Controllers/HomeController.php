@@ -34,8 +34,8 @@ class HomeController extends Controller
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
-        $users = User::limit('6')->get();
-        $users_mobile = User::limit('5')->get();
+        $users = User::where('featured', 'true')->limit('6')->get();
+        $users_mobile = User::where('featured', 'true')->limit('5')->get();
 
         return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users)->with('users_mobile', $users_mobile);
     }
