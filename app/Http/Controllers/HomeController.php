@@ -34,9 +34,10 @@ class HomeController extends Controller
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
-        $users = User::limit('8')->get();
+        $users = User::limit('6')->get();
+        $users_mobile = User::limit('5')->get();
 
-        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users)->with('users_mobile', $users_mobile);
     }
 
     public function term_of_use()
@@ -135,6 +136,8 @@ class HomeController extends Controller
         $daysrange = $request->daysrange;
         $range = ['1',$daysrange];
 
+        // var_dump($range);
+
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
         $largestnumber = Itineraries::max('duration');
@@ -153,6 +156,7 @@ class HomeController extends Controller
             $itinerary->whereBetween('duration', $range);
         }
         $itinerary = $itinerary->paginate(20);
+        // dd($itinerary);
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         foreach($filterdata as $itineraries)
@@ -182,7 +186,8 @@ class HomeController extends Controller
         $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
         endif;
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        // return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
     }
 
 
