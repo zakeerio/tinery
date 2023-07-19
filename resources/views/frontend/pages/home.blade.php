@@ -165,7 +165,7 @@ $locationArrJson = json_encode($locationsArr);
 
                     <!-- display on moible only -->
 
-                    @forelse ($users as $userdata )
+                    @forelse ($users_mobile as $userdata )
 
                 <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-block d-lg-none">
                     <div class="member-info d-flex align-items-center justify-content-between ">
