@@ -417,7 +417,7 @@
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)
                             <div class="pt-3 d-flex align-items-lg-center   col-sm-6 col-lg-12 ">
-                                <div class="">
+                                <div class="h-100">
                                     <a href="{{route('itinerary', ['slug' => $rowrelated->slug])}}">
                                         @if (!empty($rowrelated->seo_image))
                                             <img src="{{ asset('frontend/itineraries/'.$rowrelated->seo_image) }}" alt="" class="w-120"></a>
