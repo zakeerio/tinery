@@ -605,6 +605,7 @@ header {
 
 .btn-check:checked+.btn,
 .btn.show,
+.btn.activedropdown,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
     background-color: black !important;

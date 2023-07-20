@@ -134,9 +134,6 @@ class HomeController extends Controller
         $usersfilter = $request->users;
         $locationfilter = $request->location;
         $daysrange = $request->daysrange;
-        $range = ['1',$daysrange];
-
-        // var_dump($range);
 
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
@@ -153,10 +150,15 @@ class HomeController extends Controller
             $itinerary->WhereIn('location_id', $locationfilter);
         }
         if (!empty($daysrange)) {
+            $range = ['0',$daysrange];
             $itinerary->whereBetween('duration', $range);
         }
         $itinerary = $itinerary->paginate(20);
-        // dd($itinerary);
+        // $itinerary = $itinerary->toSql();
+
+        // return $itinerary;
+
+
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         foreach($filterdata as $itineraries)
