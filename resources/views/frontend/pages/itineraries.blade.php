@@ -427,11 +427,15 @@
 
                         console.log('testing');
 
-                        if($(this).parents(".dropdown-menu").find('.selected-feild').find('label').length > 0 ){
-                            $(this).closest('.dropdown').find('button').addClass('activedropdown');
+                        if($(this).closest(".dropdown-menu").find('.selected-feild').find('label').length > 0 ){
+                            console.log('Found here')
+                            $(this).closest('.dropdown').find('button.dropdown-toggle').addClass('activedropdown');
                         } else {
-                            $(this).closest('.dropdown').find('button').removeClass('activedropdown');
+                            console.log('Found else')
+                            console.log($(this).closest('.dropdown').html());
+                            $(this).closest('.dropdown').find('button.dropdown-toggle').removeClass('activedropdown');
                         }
+                        // return false;
 
                     });
 
