@@ -159,7 +159,7 @@ $locationArrJson = json_encode($locationsArr);
 
                     @empty
 
-                        <div class="">No users found! </div>
+                        <div class=" d-lg-block">No users found! </div>
 
                     @endforelse
 
@@ -191,7 +191,7 @@ $locationArrJson = json_encode($locationsArr);
 
                     @empty
 
-                        <div class="">No users found! </div>
+                        <div class=" d-lg-none">No users found! </div>
 
                     @endforelse
 

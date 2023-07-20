@@ -47,7 +47,7 @@
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ ($user->featured) ? "Featured" : "" }}</td>
+                                    <td>{{ ($user->featured && $user->featured == 'true') ? "Featured" : "" }}</td>
                                     <td>
                                         <div class="btn-group">
                                             @can('adminuser-show')

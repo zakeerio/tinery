@@ -13,7 +13,7 @@ class AddFeaturedToTableUsers extends Migration
      */
     public function up()
     {
-        Schema::table('table_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
             $table->string('featured')->nullable();
 
@@ -27,7 +27,7 @@ class AddFeaturedToTableUsers extends Migration
      */
     public function down()
     {
-        Schema::table('table_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
             $table->dropColumn('featured');
 
