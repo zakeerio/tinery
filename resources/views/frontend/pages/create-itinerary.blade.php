@@ -203,7 +203,7 @@
                                 <div class="bg-light col-12 d-flex flex-column align-items-center rounded-2 position-relative h-412 " style="background-image:url({{$featured_image }} ); background-size: cover; ">
                                     <div class=" w-100 h-100 p-2 bg-c-o ">
                                         {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white   d-flex align-items-center justify-content-center h-100 w-100 rounded ', 'id' =>'my-awesome-dropzone1']) !!}
-                                        
+
                                         @csrf
                                         <input type="hidden" value="{{$itinerary->id}}" name="id">
                                         <div class="dz-message  p-0 m-0  " data-dz-message>
@@ -217,7 +217,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
@@ -243,7 +243,7 @@
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="col-12">
@@ -516,7 +516,7 @@
                                     @foreach($related_itinerary as $row)
 
                                     <div class=" col-sm-6 col-lg-12 pt-lg-3 d-flex align-items-lg-center ">
-                                        <div class="">
+                                        <div class="h-100">
                                             <a href="{{route('itinerary', ['slug' => $row->slug])}}">
                                                 <img src="{{ asset('frontend/itineraries/'.$row->seo_image) }}" alt="" class="w-120"></a>
                                         </div>
