@@ -187,6 +187,49 @@
             });
         });
 
+        $(".locationModal").on("shown.bs.modal", function() {
+
+            if($(".map_address_field").length > 0 ){
+                console.log("map_address_field exist");
+                var options = {
+                    types: ['(cities)']
+                };
+
+                var autocomplete = new google.maps.places.Autocomplete($(".map_address_field")[0], options);
+
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var result = autocomplete.getPlace();
+                    console.log(result.address_components[0]);
+
+                    var location = result.geometry.location;
+                    var addressComponents = result.address_components;
+
+                    var latitude = location.lat;
+                    var longitude = location.lng;
+
+                    var address_street_line1 = result.formatted_address;
+                    var city = getAddressComponent(addressComponents, 'locality');
+                    var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                    var country = getAddressComponent(addressComponents, 'country');
+                    var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+                    console.log(address_street_line1+" "+city+" "+state+" "+country+" "+postalCode);
+
+
+                    // Update form fields with retrieved values
+
+                    // $('#address_street_line1').val(address_street_line1);
+                    // $('#address_zipcode').val(postalCode);
+
+                    // $('#latitude').val(latitude);
+                    // $('#longitude').val(longitude);
+                    // $('#address_city').val(city);
+                    // $('#address_state').val(state);
+                    // $('#address_country').val(country);
+                });
+            }
+        });
+
         if ($('#address_street').length > 0) {
 
             var options = {
@@ -473,12 +516,12 @@
                     if(data == 'success')
                     {
                         $('#regemailSuccess').text('Email is available.');
-                    }                    
+                    }
                     if(data == 'error')
                     {
                         $('#regemailError').text('Email is already exist.');
                         $(".regemail").focus();
-                    }                    
+                    }
                 }
             });
         });
@@ -498,12 +541,12 @@
                     if(data == 'success')
                     {
                         $('#loginemailSuccess').text('Valid Email.');
-                    }                    
+                    }
                     if(data == 'error')
                     {
                         $('#loginemailError').text('Invalid Email Address.');
                         $(".loginemail").focus();
-                    }                    
+                    }
                 }
             });
         });
@@ -515,7 +558,7 @@
                 $('#loginemailError').text('Email is required.');
                 $(".loginemail").focus();
                 return;
-            } 
+            }
             var csrftoken = $('#csrftoken').val();
 
             $.ajax({
@@ -530,12 +573,12 @@
                     {
                         $('#loginpassSuccess').text('Login Now.');
                         this.submit();
-                    }                    
+                    }
                     if(data == 'error')
                     {
                         $('#loginpassError').text('Invalid Password.');
                         $(".loginpassword").focus();
-                    }                    
+                    }
                 }
             });
         });

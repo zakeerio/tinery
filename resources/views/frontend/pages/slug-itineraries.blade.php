@@ -27,14 +27,17 @@
                     @endphp
                     @if(!empty($itineraries))
                     @foreach($itineraries as $row)
-                    <div class="col-lg-3 ">
+                    <div class="col-6 col-md-4 col-lg-3 ">
                         @php
-                            $bgimage = (!empty($row->seo_image)) ? asset("frontend/itineraries/".$row->seo_image) : asset('frontend/images/annie-spratt.jpg');
+                             $bgimage = (!empty($row->seo_image)) ? asset("/frontend/itineraries/".$row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                         @endphp
-
-                        <div class="card bg-im" style="background-image: url('{{ $bgimage }}');background-size: cover;background-repeat: no-repeat;height: 317px;  !important;">
+                        <div class="card bg-img position-relative" >
+                            <a href="{{route('itinerary', ['slug' => $row->slug])}}" class="h-100 text-decoration-none">
+                                <img src="{{ $bgimage }}" alt="" class=" bright-70 h-100 bf-img w-100">
+                            </a>
+                            <div class=" position-absolute">
                             <a href="{{ route('username', ['username' => $row->user->username]) }}" class="d-inline-flex text-dark text-decoration-none">
-                                <div class="Ellipse bg-white m-3 rounded-pill p-1">
+                                <div class="Ellipse bg-white m-3 rounded-pill p-1 gap-1">
                                     <div class="">
                                         {{-- <img src="{{ asset('frontend/images/toro (2).png') }}" alt=""> --}}
                                         @if($row->user->profile != '')
@@ -44,10 +47,11 @@
                                         @endif
                                     </div>
                                     <div class="e-text-size  text-nowrap pe-2">
-                                        <span class="mx-3">{{ $row->user->name}} {{ $row->user->lastname}}</span>
+                                        <span class="e-text-size ">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>
+                            </div>
 
                             <div class="heart-icon">
                                 @if(Auth::guard('user')->user())
@@ -68,22 +72,40 @@
                         </div>
                         <a href="{{route('itinerary', ['slug' => $row->slug])}}" style="text-decoration:none;"><h4 class="h-4">{{ $row->title}}</h4></a>
                         <div class="tags">
-                            @php
-                                $itinerarytag = json_decode($row->tags);
-                            @endphp
-                            @foreach($itinerarytag as $itinerarytag)
+                                @if($row->tags != '')
                                 @php
-                                    $tag = $row->tagsdata($itinerarytag);
+                                $itinerarytag = json_decode($row->tags);
                                 @endphp
-                                @if($tag)
-                                <a href="{{url('/tags/'.$tag->slug)}}">
-                                    <button class="foodie">
-                                        {{$tag->name}}
-                                    </button>
-                                </a>
+                                @foreach($itinerarytag as $itinerarytag)
+                                    @php
+                                        $tag = $row->tagsdata($itinerarytag);
+                                    @endphp
+
+                                    @if($tag)
+                                    <a href="{{url('/tags/'.$tag->slug)}}">
+                                        <button class="foodie">
+                                            {{$tag->name}}
+                                        </button>
+                                    </a>
+                                    @endif
+
+                                {{-- {{ $itinerarytag }} --}}
+                                @endforeach
                                 @endif
-                            @endforeach
                         </div>
+                        @if(($row->location_id != NULL && $row->itinerarylocations))
+                            @php
+                                $link = route("itinerary", ["slug" => $row->slug]);
+                                $title = $row->title;
+
+                                $locationsArr[] = [
+                                    'url' => $link,
+                                    'title' => $title,
+                                    'lat'=>$row->itinerarylocations->latitude,
+                                    'long'=>$row->itinerarylocations->longitude
+                                ];
+                            @endphp
+                        @endif
                         <p class="city">{{ ($row->location_id != NULL && $row->itinerarylocations) ? $row->itinerarylocations->address_city : 'Location' }} | {{ $row->created_at->diffForHumans() }}</p>
                     </div>
 

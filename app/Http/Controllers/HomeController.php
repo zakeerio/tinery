@@ -34,22 +34,23 @@ class HomeController extends Controller
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
-        $users = User::limit('8')->get();
+        $users = User::where('featured', 'true')->limit('6')->get();
+        $users_mobile = User::where('featured', 'true')->limit('5')->get();
 
-        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users);
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users)->with('users_mobile', $users_mobile);
     }
 
     public function term_of_use()
     {
         $pages = CrudPages::where('slug','term-of-use')->first();
-        
+
         return view('frontend.pages.term_of_use')->with('pages', $pages);
     }
 
     public function privacy_policy()
     {
         $pages = CrudPages::where('slug','privacy-policy')->first();
-        
+
         return view('frontend.pages.privacy_policy')->with('pages', $pages);
     }
 
@@ -133,7 +134,6 @@ class HomeController extends Controller
         $usersfilter = $request->users;
         $locationfilter = $request->location;
         $daysrange = $request->daysrange;
-        $range = ['1',$daysrange];
 
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
@@ -150,9 +150,15 @@ class HomeController extends Controller
             $itinerary->WhereIn('location_id', $locationfilter);
         }
         if (!empty($daysrange)) {
+            $range = ['0',$daysrange];
             $itinerary->whereBetween('duration', $range);
         }
         $itinerary = $itinerary->paginate(20);
+        // $itinerary = $itinerary->toSql();
+
+        // return $itinerary;
+
+
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
         foreach($filterdata as $itineraries)
@@ -182,7 +188,8 @@ class HomeController extends Controller
         $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
         endif;
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        // return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
     }
 
 
@@ -455,7 +462,7 @@ class HomeController extends Controller
         ->get();
         if(!empty($query))
         {
-            $output .= 
+            $output .=
             '
             <div class="row">
                 <div class="col-lg-12">
@@ -486,7 +493,7 @@ class HomeController extends Controller
                             </div>
                         </button>
                     </h2>
-                    <div id="collapseOne'.$count.'" class="accordion-collapse collapse" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
+                    <div id="collapseOne'.$count.'" class="accordion-collapse collapse locationModal" aria-labelledby="headingOne'.$count.'" data-bs-parent="#accordionExample">
                         <div class="accordion-body p-0">
                             <form action="#" class="">
                                 <div class="px-3">
@@ -523,7 +530,7 @@ class HomeController extends Controller
                                         </div>
                                         <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
                                             <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
-                                            <input type="text" class="form-control rounded-pill " placeholder="Add map location">
+                                            <input type="text" class="form-control rounded-pill map_address_field " placeholder="Add map location">
                                         </div>
                                         <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
                                             <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
@@ -557,7 +564,7 @@ class HomeController extends Controller
                         });
                     }
                     $(".btn-close").click(function(){
-                        $(".activityadddivalert").hide(); 
+                        $(".activityadddivalert").hide();
                     });
                     $(document).on("click","button[data-role=btnaddactivitydb]",function(e){
                         e.preventDefault();

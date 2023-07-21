@@ -50,7 +50,7 @@ class UsersController extends BaseController
         $rules = [
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',    
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|unique:users|max:255',
             'password' => 'required|string|min:8',
             'confirm_password' => 'required_with:password|same:password|min:8'
@@ -80,6 +80,7 @@ class UsersController extends BaseController
                 $user->website = $data['website'];
                 $user->tags = $data['tags'];
                 $user->bio = $data['bio'];
+                $user->featured = isset($data['featured']) ? "true" : "false";
 
                 if($request->hasFile('file'))
                 {
@@ -91,10 +92,11 @@ class UsersController extends BaseController
 
                     $user->profile = $input['file'];
                 }
-        
+
                 $user->save();
 
-                return redirect()->route('admin.users.index')->with('success',"Registered Successfully");
+                return $this->responseRedirect('admin.users.index', 'Registered Successfully', 'success');
+
 			}
 			catch(Exception $e){
 				return back()->with('error',"Error Occured");
@@ -125,7 +127,7 @@ class UsersController extends BaseController
     {
         $this->setPageTitle("Users","Edit User");
         $user = User::find($id);
-    
+
         return view('admin.users.edit',compact('user'));
     }
 
@@ -141,7 +143,7 @@ class UsersController extends BaseController
         $rules = [
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,'.$id,    
+            'username' => 'required|string|max:255|unique:users,username,'.$id,
             'email' => 'required|string|max:255|email|unique:users,email,'.$id,
 		];
 
@@ -169,6 +171,7 @@ class UsersController extends BaseController
                 $user->website = $data['website'];
                 $user->tags = $data['tags'];
                 $user->bio = $data['bio'];
+                $user->featured = isset($data['featured']) ? "true" : "false";
 
                 if($request->hasFile('file'))
                 {
@@ -180,10 +183,10 @@ class UsersController extends BaseController
 
                     $user->profile = $input['file'];
                 }
-        
+
                 $user->save();
 
-                return redirect()->route('admin.users.index')->with('success',"Updated Successfully");
+                return $this->responseRedirect('admin.users.index', 'Updated Successfully', 'success');
 			}
 			catch(Exception $e){
 				return back()->with('error',"Error Occured");

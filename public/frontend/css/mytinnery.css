@@ -392,6 +392,8 @@
 .w-120 {
     max-width: 64px;
     width: 100%;
+    max-height:64px;
+    height: 100%;
     border-radius: 6px;
 }
 
@@ -605,6 +607,7 @@ header {
 
 .btn-check:checked+.btn,
 .btn.show,
+.btn.activedropdown,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
     background-color: black !important;
@@ -751,8 +754,7 @@ header {
 }
 
 .w-200 {
-    width: 200px;
-    height: 200px;
+
     object-fit: cover;
 }
 
@@ -766,6 +768,7 @@ header {
     max-width: 120px;
     width: 100%;
     height: 90px;
+
 }
 
 .w-120i {
@@ -870,9 +873,9 @@ header {
 }
 
 .sea-img {
-    max-width: 200px;
+
     width: 100%;
-    max-height: 264px;
+
     height: 100%;
     object-fit: cover;
 
@@ -976,15 +979,12 @@ header {
     font-size: 16px !important;
     line-height: 1.4em;
     /* or 150% */
-
-
+    border: 1px solid#7F7F8B;
     /* Primary/Dark Blue/500 */
-
     color: #2A293D !important;
 }
 
 /* Floating input label */
-
 
 .did-floating-label-content {
     position: relative;
@@ -1568,7 +1568,11 @@ label.required:after {
 
     }
 }
-
+@media screen and (max-width: 767px){
+    .border-card {
+        border: 0;
+    }
+}
 @media screen and (max-width: 489px) {
     .featuredimg-padding {
         padding: 34px 0;
@@ -1752,10 +1756,7 @@ label.required:after {
         font-size: 14px;
     }
 
-    .w-200 {
-        width: 155px;
-        height: 155px;
-    }
+
 
     .member-h2 {
         font-size: 32px;
