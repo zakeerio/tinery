@@ -31,8 +31,11 @@
                         @endphp
                         @if(($itinerary->location_id != NULL && $itinerary->itinerarylocations))
                         @php
+                        $link = route("itinerary", ["slug" => $itinerary->slug]);
+                        $title = $itinerary->title;
                         $locationsArr[] = [
-                            'description'=>$itinerary->title.'<br>'.Str::words($itinerary->description ?? '',5,' ...').'<br>'.$itinerary->itinerarylocations->address_street.'<br>'.$itinerary->itinerarylocations->address_city.'<br>'.$itinerary->itinerarylocations->address_country,
+                            'url' => $link,
+                            'title' => $title,  
                             'lat'=>$itinerary->itinerarylocations->latitude,
                             'long'=>$itinerary->itinerarylocations->longitude];
                             @endphp
@@ -508,7 +511,7 @@
 
             locations.forEach(function (location) {
                 // Accessing individual properties
-                var description = location.description;
+                var description = '<a href="'+location.url+'">'+location.title+'</a>';
                 var lat = location.lat;
                 var long = location.long;
 
