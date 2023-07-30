@@ -128,6 +128,17 @@
                                         {!! Form::textarea('bio', null, ['placeholder' => 'Bio', 'class' => 'form-control','rows'=>'5']) !!}
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        {{-- {!! Form::checkbox('featured', null, [ 'class' => 'form-check-input', 'id' => 'featured']) !!} --}}
+                                        <input type="checkbox" name="featured" {{ ($user->featured && $user->featured == 'true') ? "checked='checked'" : '' }} id="featured" value="{{ ($user->featured) ? $user->featured : '' }}"  class="" >
+
+                                        <label class="form-check-label" for="featured">
+                                            <strong>Featured</strong>
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                                     <button type="submit" class="btn btn-success">SAVE</button>
                                 </div>

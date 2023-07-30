@@ -338,7 +338,7 @@
                             @forelse ( $itineraries as $itinerary )
                             {{-- {{ dd($itinerary) }} --}}
                                 <div class="row mb-3">
-                                    <div class="d-flex gap-3 align-items-center justify-content-between ">
+                                    <div class="d-flex gap-3 justify-content-between ">
                                         <div class="d-flex gap-3">
                                         @if (!empty($itinerary->seo_image))
                                             <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i  rounded">
@@ -379,7 +379,7 @@
                                 @endphp
 
                                     <div class="row mb-3">
-                                        <div class="d-flex gap-3 align-items-center justify-content-between ">
+                                        <div class="d-flex gap-3 justify-content-between ">
                                             @if (!empty($itinerary->seo_image))
                                                 <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i rounded">
                                             @else
