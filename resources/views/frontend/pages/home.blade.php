@@ -60,7 +60,7 @@
                                         @endif
                                     </div>
                                     <div class="e-text-size  text-nowrap pe-2">
-                                        <span class="mx-lg-2 mx-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
+                                        <span class=" ps-2 pe-2 me-1">{{ $row->user->name}} {{ $row->user->lastname}}</span>
                                     </div>
                                 </div>
                             </a>

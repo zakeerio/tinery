@@ -53,14 +53,14 @@
     font-style: normal;
     font-weight: 700;
     font-size: 72px;
-    line-height: 76px;
+
     color: #FFFFFF;
 }
 
 .hero-content p {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
-    max-width: 686px;
+    max-width: 619px;
     width: 100%;
     font-weight: 400;
     font-size: 24px;
@@ -96,7 +96,7 @@
 
 .explore-section h1 {
     font-weight: 600;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 1.4em;
 }
 
@@ -191,7 +191,6 @@
 .city {
     font-style: normal;
     font-weight: 200;
-    font-size: 16px;
     /* line-height: 1.4em; */
     color: #29293D;
     font-family: "Axiforma", Sans-serif;
@@ -207,7 +206,7 @@
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 76px;
     color: #000000;
 }
@@ -216,7 +215,7 @@
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 24px;
     /* line-height: 25px; */
 
     /* Shades/Black/500 */
@@ -375,8 +374,6 @@
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
-    line-height: 64px;
-
     color: #29293D;
 }
 
@@ -384,7 +381,7 @@
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 32px;
     color: #545464;
 }
@@ -392,8 +389,7 @@
 .w-120 {
     max-width: 64px;
     width: 100%;
-    max-height:64px;
-    height: 100%;
+    height: 64px;
     border-radius: 6px;
 }
 
@@ -584,6 +580,7 @@ header {
     font-size: 42px;
     line-height: 76px;
     color: #2A293D;
+    text-transform: capitalize;
 
 }
 
@@ -1080,13 +1077,13 @@ select.did-floating-select::-ms-expand {
 .input-group {
     display: flex;
 
-    .did-floating-input {
-        border-radius: 0 4px 4px 0;
-        border-left: 0;
-        padding-left: 0;
-    }
-}
 
+}
+.did-floating-input {
+    border-radius: 0 4px 4px 0;
+    border-left: 0;
+    padding-left: 0;
+}
 .input-group-append {
     display: flex;
     align-items: center;
@@ -1115,7 +1112,7 @@ select.did-floating-select::-ms-expand {
 }
 
 .card-title-profile {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1130,7 +1127,7 @@ select.did-floating-select::-ms-expand {
 }
 
 .card-text {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -1159,7 +1156,7 @@ select.did-floating-select::-ms-expand {
 
 
 .tags-links1 {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -1395,6 +1392,7 @@ label.required:after {
 @media screen and (max-width: 1200px){
     .profile-tabs .nav-link{
         font-size: 18px;
+
     }
 }
 
@@ -1469,6 +1467,7 @@ label.required:after {
     .profile-tabs .nav-link {
         font-size: 14px;
         line-height: 1.4em;
+        padding: 10px;
     }
 
     .width-48 {
@@ -1760,6 +1759,9 @@ label.required:after {
 
     .member-h2 {
         font-size: 32px;
+    }
+    .border-card{
+        border: none;
     }
 
 
