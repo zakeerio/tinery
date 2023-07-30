@@ -52,7 +52,7 @@
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
     font-weight: 700;
-    font-size: 68px;
+    font-size: 72px;
 
     color: #FFFFFF;
 }
@@ -1077,13 +1077,13 @@ select.did-floating-select::-ms-expand {
 .input-group {
     display: flex;
 
-    .did-floating-input {
-        border-radius: 0 4px 4px 0;
-        border-left: 0;
-        padding-left: 0;
-    }
-}
 
+}
+.did-floating-input {
+    border-radius: 0 4px 4px 0;
+    border-left: 0;
+    padding-left: 0;
+}
 .input-group-append {
     display: flex;
     align-items: center;
@@ -1112,7 +1112,7 @@ select.did-floating-select::-ms-expand {
 }
 
 .card-title-profile {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -1127,7 +1127,7 @@ select.did-floating-select::-ms-expand {
 }
 
 .card-text {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -1156,7 +1156,7 @@ select.did-floating-select::-ms-expand {
 
 
 .tags-links1 {
-    font-family: 'Axiforma';
+    font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
