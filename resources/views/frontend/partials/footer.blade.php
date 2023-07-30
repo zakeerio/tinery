@@ -6,14 +6,14 @@
                 <img src="{{ config('settings.site_logo') }}" alt="Logo" class="img-fluid tiny-logo">
                 </a>
             </div>
-            <div class="col-6 col-sm-2 mt-lg-4 pt1 ">
+            <div class="col-6 col-sm-2 mt-4 mt-sm-0 ">
                 <ul class="d-flex flex-column gap-3 list-unstyled">
                     <li><a href="#">Share an Itinerary</a></li>
                     <li><a href="#" class="gap-2">Discover</a></li>
                     <li><a href="#">Blog</a></li>
                 </ul>
             </div>
-            <div class="col-6 col-sm-2 px-2 mb-4 pb-1">
+            <div class="col-6 col-sm-2 px-2 mb-4 pb-1 mt-4 mt-sm-0">
                 <ul class="d-flex flex-column gap-3 list-unstyled">
                     <li><a href="{{ url('/term-of-use')}}">Terms of Use</a></li>
                     <li><a href="#" class="gap-2">Contact Us</a></li>

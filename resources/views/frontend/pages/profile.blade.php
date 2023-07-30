@@ -47,7 +47,7 @@
                         </div>
 
                     </div>
-                    <h5 class="card-title card-title-profile d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
+                    <h5 class="card-title card-title-profile mt-2 d-lg-none">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
                     <div class="mt-lg-4 mt-1">
                             <p class="card-text">{{ $user->bio}}</p>
                         </div>
@@ -312,7 +312,7 @@
                     <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-2"
+                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-3"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -320,14 +320,14 @@
 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-2" id="tab2" data-bs-toggle="tab"
+                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-3" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
                     <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4 px-md-3 py-1 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4 px-md-3 py-2 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>
