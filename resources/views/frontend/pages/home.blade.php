@@ -209,7 +209,7 @@ $locationArrJson = json_encode($locationsArr);
 
         <div class="world">
             <div class="container">
-                <h2 class="membr">Explore Your World</h2>
+              <a href="Javascript:void(0)" data-bs-toggle="modal" data-bs-target="#done-page"><h2 class="membr">Explore Your World</h2>   </a>
                 <div id="homepagemap" style="height: 450px;"></div>
             </div>
         </div>

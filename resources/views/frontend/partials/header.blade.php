@@ -14,7 +14,7 @@
                             @if(Auth::guard('user')->user()->profile != '')
                             <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                             @else
-                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                            <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
                             @endif
                         </a>
                 </div>
@@ -42,7 +42,7 @@
                                     @if(Auth::guard('user')->user()->profile != '')
                                     <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                                     @else
-                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                                    <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
                                     @endif
                                 </a>
                             </li>
@@ -272,6 +272,26 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- done page  Modal -->
+     <div class="modal fade" id="done-page" tabindex="-1" role="dialog" aria-labelledby="userloginLabel" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="form-section h-100 position-relative">
+                        <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
+                        <div class="row justify-content-center h-100 align-content-center">
+                            <div class="col-8 text-center">
+                                <img src="frontend/images/done-tick.svg" alt="">
+                                <h1>Welcome To Tinery</h1>
+                                <button class="btn btn-dark rounded-pill save-bt1">Continue</button>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>
