@@ -16,7 +16,7 @@
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img rounded-circle">
                                 @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="Profile Image" class="profile-img rounded-circle">
+                                <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image" class="profile-img rounded-circle">
                                 @endif
                                 <!-- <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
                                         class="fa-solid fa-circle-plus"></i></label>
@@ -58,7 +58,7 @@
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="fw-bold text-black">{{ $user->username }}</span>
+                                    <span class="fw-bold text-black">Admin</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"

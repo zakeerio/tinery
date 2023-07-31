@@ -14,7 +14,7 @@
                             @if(Auth::guard('user')->user()->profile != '')
                             <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                             @else
-                            <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                            <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
                             @endif
                         </a>
                 </div>
@@ -42,7 +42,7 @@
                                     @if(Auth::guard('user')->user()->profile != '')
                                     <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
                                     @else
-                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                                    <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
                                     @endif
                                 </a>
                             </li>
