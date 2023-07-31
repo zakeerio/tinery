@@ -35,7 +35,7 @@
                         $title = $itinerary->title;
                         $locationsArr[] = [
                             'url' => $link,
-                            'title' => $title,  
+                            'title' => $title,
                             'lat'=>$itinerary->itinerarylocations->latitude,
                             'long'=>$itinerary->itinerarylocations->longitude];
                             @endphp
@@ -46,7 +46,7 @@
 
                             <div class="d-flex justify-content-between  ">
                                 <div class="col-lg-8">
-                                    <h1 class="trip-h1" style="font-size:35px;">{{ $itinerary->title}}</h1>
+                                    <h1 class="trip-h1">{{ $itinerary->title}}</h1>
                                 </div>
 
                                 <div class="col-lg-4 text-end pt-3">
@@ -382,9 +382,9 @@
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                 @if (!empty($itinerary->user->profile))
-                                <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px">
+                                <img src="{{ asset('frontend/profile_pictures/'. $itinerary->user->profile) }}" alt="" class="img-80px rounded-circle">
                                 @else
-                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px">
+                                <img src="{{ asset('frontend/profile_pictures/avatar.png') }}" alt="" class="img-80px rounded-circle">
                                 @endif
                             </a>
                         </div>
