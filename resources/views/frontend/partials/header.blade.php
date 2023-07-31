@@ -282,13 +282,13 @@
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen" role="document">
             <div class="modal-content">
                 <div class="modal-body p-0">
-                    <div class="form-section h-100 position-relative">
+                    <div class="form-section h-100  position-relative">
                         <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="modal" aria-label="Close"></button> </div>
-                        <div class="row justify-content-center h-100 align-content-center">
+                        <div class="row justify-content-center h-100 w-100 align-content-center">
                             <div class="col-8 text-center">
                                 <img src="frontend/images/done-tick.svg" alt="">
-                                <h1>Welcome To Tinery</h1>
-                                <button class="btn btn-dark rounded-pill save-bt1">Continue</button>
+                                <h2 class="travel mb-4">Welcome To Tinery</h2>
+                                <a href="#" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
                             </div>
                         </div>
                      </div>
