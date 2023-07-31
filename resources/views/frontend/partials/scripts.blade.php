@@ -577,7 +577,7 @@
                     if(data == 'error')
                     {
                         $('#loginpassError').text('Invalid Password.');
-                        $(".loginpassword").focus();
+                        // $(".loginpassword").focus();
                     }
                 }
             });

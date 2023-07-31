@@ -58,7 +58,7 @@ class LoginController extends Controller
         if ($attempt) {
             // dd($request);
             // Authentication successful
-            return redirect()->intended('/');
+            return redirect()->intended('/profile');
         } else {
             // dd($request->input());
             // Authentication failed
