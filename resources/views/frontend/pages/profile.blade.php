@@ -58,7 +58,7 @@
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="fw-bold text-black">{{ $user->username }}</span>
+                                    <span class="fw-bold text-black">Admin</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
