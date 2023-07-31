@@ -96,7 +96,37 @@
                 <div class="col-lg-12">
                     <div class="cpagination padding5050">
                         <nav aria-label="Page navigation example">
-                            {{ $itinerary->links() }}
+                            <ul class="pagination">
+                                @php
+                                    $totalPages = ceil($total / $limit);
+                                @endphp
+
+                                @if ($offset > 0)
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$offset-1}}" data-limit="{{$limit}}" aria-label="Previous"> <span aria-hidden="true"><i class="fas fa-caret-left"></i></span>
+                                        </a>
+                                    </li>
+                                    <!-- <a href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$offset-1}}" data-limit="{{$limit}}">Previous</a> -->
+                                @endif
+
+                                @for ($i = 0; $i < $totalPages; $i++)
+                                    @if ($i == $offset)
+                                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">{{ $i+1 }}</a></li>
+                                        <!-- <span>{{ $i+1 }}</span> -->
+                                    @else
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$i}}" data-limit="{{$limit}}">{{ $i+1 }}</a></li>
+                                        <!-- <a href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$i}}" data-limit="{{$limit}}">{{ $i+1 }}</a> -->
+                                    @endif
+                                @endfor
+
+                                @if ($offset < $totalPages - 1)
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$offset+1}}" data-limit="{{$limit}}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
+                                        </a>
+                                    </li>
+                                    <!-- <a href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{$offset+1}}" data-limit="{{$limit}}">Next</a> -->
+                                @endif
+                            </ul>
                         </nav>
                     </div>
                 </div>

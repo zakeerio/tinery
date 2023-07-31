@@ -105,7 +105,7 @@ class HomeController extends Controller
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
         $largestnumber = Itineraries::max('duration');
-        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(20);
+        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(4);
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
         foreach($filter as $itineraries)
         {
@@ -134,10 +134,34 @@ class HomeController extends Controller
         $usersfilter = $request->users;
         $locationfilter = $request->location;
         $daysrange = $request->daysrange;
+        
+        $page = $request->page;
+        $limit = $request->input('limit', 4); // Custom items per page, default is 15
+        $offset = $request->input('offset', $page); // Custom page number offset, default is 0
+
+        $total = Itineraries::count();
 
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
         $largestnumber = Itineraries::max('duration');
+        
+        $total = Itineraries::where('itinerary_status', 'updated')
+        ->where('status', 'published');
+        if (!empty($tagsfilter)) {
+            $total->whereJsonContains('tags', $tagsfilter);
+        }
+        if (!empty($usersfilter)) {
+            $total->WhereIn('user_id', $usersfilter);
+        }
+        if (!empty($locationfilter)) {
+            $total->WhereIn('location_id', $locationfilter);
+        }
+        if (!empty($daysrange)) {
+            $range = ['0',$daysrange];
+            $total->whereBetween('duration', $range);
+        }
+        $total = $total->count();
+
         $itinerary = Itineraries::where('itinerary_status', 'updated')
         ->where('status', 'published');
         if (!empty($tagsfilter)) {
@@ -153,11 +177,7 @@ class HomeController extends Controller
             $range = ['0',$daysrange];
             $itinerary->whereBetween('duration', $range);
         }
-        $itinerary = $itinerary->paginate(20);
-        // $itinerary = $itinerary->toSql();
-
-        // return $itinerary;
-
+        $itinerary = $itinerary->offset($offset * $limit)->limit($limit)->get();
 
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
@@ -188,8 +208,15 @@ class HomeController extends Controller
         $filteredusers = Itineraries::where('itinerary_status','updated')->where('status','published')->whereIn('user_id',$usersfilter)->groupby('user_id')->get();
         endif;
 
+        // $data = [];
+
+        // $data['itineraries'] =  view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        // $data['response'] = 'sucess';
+
+        // return json_encode($data);
         // return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
-        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
+        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers','total', 'limit', 'offset'));
+
     }
 
 

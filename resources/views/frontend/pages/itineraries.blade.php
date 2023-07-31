@@ -288,7 +288,7 @@
                         <div class="col-lg-12">
                             <div class="cpagination padding5050">
                                 <nav aria-label="Page navigation example">
-                                    {{ $itinerary->links() }}
+                                    {{ $itinerary->links('vendor.pagination.custom_links') }}
                                 </nav>
                             </div>
                         </div>
@@ -374,14 +374,16 @@
 
         $(".submitBtn").on('click', function(e){
             e.preventDefault();
-
+            var page = 0;
             var dataToSend = $("#filteForm").serialize();
+            console.log(dataToSend+'&page='+page);
+
 
             // Make the AJAX POST request
             $.ajax({
                 url: '{{ route('filteritineraries') }}', // Replace with your API endpoint URL
                 method: "POST",
-                data: dataToSend,
+                data: dataToSend+'&page='+page,
             })
             .done(function (response) {
                 // Handle the successful response
@@ -395,11 +397,36 @@
                 alert("Request failed!");
             });
 
-            //
+        });
+
+        
+        $(document).on('click','a[data-role=btnfilterpagination]',function(e){
+            e.preventDefault();
+            var page = $(this).data('offset');
+            var limit = $(this).data('limit');
+            var dataToSend = $("#filteForm").serialize();
+            console.log(dataToSend+'&page='+page+'&limit'+limit);
 
 
-            return false;
-        })
+            // Make the AJAX POST request
+            $.ajax({
+                url: '{{ route('filteritineraries') }}', // Replace with your API endpoint URL
+                method: "POST",
+                data: dataToSend+'&page='+page,
+            })
+            .done(function (response) {
+                // Handle the successful response
+                $("#ajaxresponsedata").html(response);
+                // console.log("Success:", response);
+                console.log("Request was successful!");
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                // Handle the failed response
+                console.log("Error:", errorThrown);
+                alert("Request failed!");
+            });
+
+        });
 
         $(document).ready(function() {
             $('.form-check-input').on('change', function() {
