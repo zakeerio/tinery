@@ -16,11 +16,11 @@
                                 <img src="{{ asset('frontend/profile_pictures/'.$user->profile) }}" alt="Profile Image"
                                     class="profile-img rounded-circle">
                                 @else
-                                <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image" class="profile-img rounded-circle">
+                                <img src="{{ asset('frontend/images/profile-default-pic.svg') }}" alt="Profile Image" class="profile-img rounded-circle">
                                 @endif
-                                <!-- <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
-                                        class="fa-solid fa-circle-plus"></i></label>
-                                <div class="d-none"><input type="file" id="profileimg"></div> -->
+                                 <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
+                                        class="fa-solid fs-4 fa-circle-plus"></i></label>
+                                <div class="d-none"><input type="file" id="profileimg"></div>
                             </form>
                         </div>
                         <div class="">
@@ -350,7 +350,7 @@
                                             <p class="title-p mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                         </div>
-                                        <div class=" d-flex  gap-2 add-size">
+                                        <div class=" d-flex  gap-2 align-items-center add-size">
                                             @if($usercheck)
                                                 <a href="{{ url('/edit-itinerary/'.$itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}"></a>
                                             @endif
@@ -390,7 +390,7 @@
                                                 <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
                                                 <p class="mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
-                                            <div class="col-3 d-flex  gap-2">
+                                            <div class="col-3 d-flex align-items-center  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>
                                             </div>
                                         </div>
