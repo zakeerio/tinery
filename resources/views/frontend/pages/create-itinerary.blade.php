@@ -17,7 +17,7 @@
 
                         <div class="row  p-3 ">
                                 <div class="col-12 d-flex justify-content-between profile-padding-left">
-                                    <h1 class="trip-h1" style="font-size:35px;">
+                                    <h1 class="trip-h1" >
                                         @if($itinerary->title != '')
                                         {{ $itinerary->title}}
                                         @else
@@ -253,7 +253,7 @@
                                     $count = ++$key;
                                 @endphp
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                                    <h2 class="fw-bold mb-0" style="font-size:25px;">Day {{$count}}</h2>
+                                    <h2 class="fw-bold mb-0 gallery py-2" >Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                         <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
                                         <!-- Modal -->
@@ -269,12 +269,12 @@
                                                 </div>
                                                 <div class="mb-3 activity-bt border border-0 mx-3 mb-3">
                                                     <a href="javascript:void(0)" class="text-decoration-none" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
-                                                        <h5 class="text-center text-danger add-activity-bt rounded-pill fw-bold m-0 p-2"> + Add activity </h5>
+                                                        <p class="text-center text-danger add-activity-bt rounded-pill  m-0 py-3 fs-13-700"> + Add activity </p>
                                                     </a>
                                                 </div>
                                                 <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
                                                     <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
-                                                        <h5 class="text-center text-danger m-0 p-2 fw-bold">
+                                                        <h5 class="text-center text-danger m-0  py-3 fs-16-700">
                                                             Delete Day
                                                         </h5>
                                                     </a>
@@ -291,13 +291,13 @@
                             </div>
                             <a href="{{ url('create-itinerary-day/'.$itinerary->id)}}" style="text-decoration:none;">
                                 <div class="col-12  text-center border rounded-3 px-3 py-2 my-3 mt-0">
-                                    <h2 class="text-danger fw-bold mb-0" style="font-size:25px;">+Add Day</h2>
+                                    <h2 class="text-danger fw-bold mb-0 gallery py-2" >+Add Day</h2>
                                 </div>
                             </a>
                             <div class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5 height-400">
 
                                 <div class="col-12 gallery-images p-3">
-                                    <h3 class="align-self-start justify-content-start px-3 fw-bold">Gallery Pictures</h3>
+                                    <h3 class="align-self-start justify-content-start px-3 pt-3 gallery">Gallery Pictures</h3>
                                     @if($itinerary_gallery)
                                             <div class="gallery-img py-2">
                                                 <div class="d-flex images-items flex-wrap gap-3 mb-3">

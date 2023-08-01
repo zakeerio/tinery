@@ -21,6 +21,7 @@
     padding-right: 64px !important;
     max-width: 1920px !important; */
 }
+
 .hero-content h2 {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
@@ -42,12 +43,14 @@
     color: #FFFFFF;
     margin: 0;
 }
+
 .explore-section h1 {
     font-weight: 600;
     /* font-size: 32px; */
     font-size: 25px;
     line-height: 1.4em;
 }
+
 .membr {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -57,6 +60,7 @@
     line-height: 76px;
     color: #000000;
 }
+
 .explore-section h2 {
     font-weight: 300;
     /* font-size: 20px; */
@@ -75,6 +79,7 @@
     padding: 12px 0;
     margin: 0;
 }
+
 .Benjamin {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -100,6 +105,7 @@
 
     color: #0E0E14;
 }
+
 .city {
     font-style: normal;
     font-weight: 200;
@@ -110,8 +116,9 @@
     margin-bottom: 56px;
     column-gap: 42px;
     /* font-size: 20px !important; */
-    font-size: 16px ;
+    font-size: 16px;
 }
+
 .travel {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -120,6 +127,7 @@
     font-size: 32px;
     color: #29293D;
 }
+
 .filters-p {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -141,6 +149,7 @@
     text-transform: capitalize;
 
 }
+
 .profile-relate {
     font-weight: 300;
     /* font-size: 20px; */
@@ -148,8 +157,25 @@
     line-height: 1.4em;
     color: #2A293D;
 }
+
+.profiler {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    /* font-size: 24px; */
+    font-size: 20px;
+    line-height: 48px;
+    /* identical to box height, or 200% */
+
+
+    /* Primary/Dark Blue/500 */
+
+    color: #2A293D;
+}
+
 .card-title-profile {
-    font-family: "Axiforma", Sans-serif;;
+    font-family: "Axiforma", Sans-serif;
+    ;
     font-style: normal;
     font-weight: 600;
     /* font-size: 24px; */
@@ -157,6 +183,33 @@
     line-height: 1.3em;
     /* identical to box height, or 167% */
     color: #000000;
+}
+
+.city .profile-p {
+    /* font-size: 20px; */
+    font-size: 16px;
+}
+
+.related {
+    font-weight: 600;
+    font-size: 20px !important;
+    font-size: 16px;
+    line-height: 33px;
+}
+
+.gallery {
+    /* font-size: 24px; */
+    font-size: 20px;
+    font-weight: 700;
+}
+.fs-16-700{
+    font-size: 16px;
+    font-weight: 700;
+}
+.time-left{
+    font-size: 16px;
+    font-weight: 300;
+    color: #6E6E72;
 }
 /* .left-margin {
     margin-left: 200px;
@@ -650,19 +703,7 @@ header {
     border: 1px solid #f8f9fa;
 }
 
-.profiler {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 48px;
-    /* identical to box height, or 200% */
 
-
-    /* Primary/Dark Blue/500 */
-
-    color: #2A293D;
-}
 
 .mt-32 {
     margin-top: 32px;
@@ -725,9 +766,7 @@ header {
 }
 
 
-.city .profile-p {
-    font-size: 20px;
-}
+
 
 .related {
     width: 100%;
@@ -781,7 +820,13 @@ header {
 
 .heart-size {
     width: 36px;
-    height: 30px;
+    height: 36px;
+}
+
+.heart-position {
+    top: 0;
+    left: 0;
+    padding: 11px 0 0 11px;
 }
 
 .w-200 {
@@ -832,11 +877,7 @@ header {
 }
 
 
-.related {
-    font-weight: 600;
-    font-size: 20px !important;
-    line-height: 33px;
-}
+
 
 .vector-img {
     height: 330px;
@@ -998,17 +1039,31 @@ header {
 }
 
 .load-btn {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px !important;
-    line-height: 1.4em;
-    /* or 150% */
+    font-size: 16px;
     border: 1px solid#7F7F8B;
-    /* Primary/Dark Blue/500 */
-    color: #2A293D !important;
+    color: #2A293D ;
+    background: transparent;
+    border-radius: 50px;
 }
-
+.load-btn:hover{
+    background: #7F7F8B;
+    border: 1px solid#7F7F8B;
+    color: white;
+}
+.fs-16-400{
+    font-size: 16px;
+    font-weight: 400;
+}
+.fs-16-300{
+    font-size: 16px;
+    font-weight: 300;
+    color: #3E3E43;
+}
+.fs-20-300{
+    font-size: 20px;
+    font-weight: 300;
+    color: #2A293D;
+}
 /* Floating input label */
 
 .did-floating-label-content {
@@ -1107,11 +1162,13 @@ select.did-floating-select::-ms-expand {
 
 
 }
+
 .did-floating-input {
     border-radius: 0 4px 4px 0;
     border-left: 0;
     padding-left: 0;
 }
+
 .input-group-append {
     display: flex;
     align-items: center;
@@ -1304,10 +1361,12 @@ label.required:after {
     content: " *";
     color: red;
 }
+
 .select2-container--default .select2-selection--single {
     height: 40px;
     width: 100%;
 }
+
 #bgimg {
     position: relative;
     height: 412px;
@@ -1403,14 +1462,14 @@ label.required:after {
     }
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px) {
     .mfp-content .white-popup {
         width: auto !important;
     }
 }
 
-@media screen and (max-width: 1200px){
-    .profile-tabs .nav-link{
+@media screen and (max-width: 1200px) {
+    .profile-tabs .nav-link {
         font-size: 18px;
 
     }
@@ -1587,11 +1646,13 @@ label.required:after {
 
     }
 }
-@media screen and (max-width: 767px){
+
+@media screen and (max-width: 767px) {
     .border-card {
         border: 0;
     }
 }
+
 @media screen and (max-width: 489px) {
     .featuredimg-padding {
         padding: 34px 0;
@@ -1780,7 +1841,8 @@ label.required:after {
     .member-h2 {
         font-size: 32px;
     }
-    .border-card{
+
+    .border-card {
         border: none;
     }
 

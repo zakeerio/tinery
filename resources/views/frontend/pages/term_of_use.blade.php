@@ -29,7 +29,7 @@
                     <div class="col-lg-8">
                         <div class="d-flex justify-content-between  ">
                             <div class="col-lg-8">
-                                <h1 class="trip-h1" style="font-size:35px;">{{ $pages->title}}</h1>
+                                <h1 class="trip-h1" >{{ $pages->title}}</h1>
                             </div>
                         </div>
 
