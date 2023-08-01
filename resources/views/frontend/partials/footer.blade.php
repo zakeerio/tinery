@@ -30,7 +30,7 @@
                             <input type="email" name="email" class="form-control rounded-pill px-3"
                                 placeholder="Enter your email" required>
                         </div>
-                        <button type="submit" class="btn btn-dark join rounded-pill px-4 mx-2">Submit</button>
+                        <button type="submit" class="btn btn-dark fs-16-400 rounded-pill px-4 mx-2">Submit</button>
                     </div>
                 </form>
             </div>

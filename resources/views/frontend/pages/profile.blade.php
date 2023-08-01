@@ -381,7 +381,10 @@
                                     <div class="row mb-3">
                                         <div class="d-flex gap-3 justify-content-between ">
                                             @if (!empty($itinerary->seo_image))
-                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="col-3 w-120i rounded">
+                                               <div class="col-3 w-120i rounded position-relative">
+                                                <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="w-120i rounded">
+                                                <img src="frontend/images/heart-red.png" alt="" class=" position-absolute heart-position">
+                                                </div>
                                             @else
                                             <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120i  rounded">
                                             @endif

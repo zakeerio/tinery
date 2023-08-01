@@ -184,7 +184,7 @@
                                                 </div>
                                             </button>
                                             <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
-                                                <div class="accordion-body px-5">{{ $activity->description }}</div>
+                                                <div class="accordion-body px-lg-5">{{ $activity->description }}</div>
                                             </div>
                                         </div>
                                         @endforeach
@@ -226,7 +226,7 @@
 
                         <div class=" mt-4">
                             {{-- <div class="d-flex align-items-center">
-                                <a href="#"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
+                                <a href="javascript:void(0)"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
                                 <h3 class="coments mt-3 px-2 text-nowrap">Comments ({{ ($itinerary->comments) ? count($itinerary->comments) : '0' }})</h3>
                                 <div class=" d-flex align-items-center">
                                     <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
@@ -239,7 +239,7 @@
                                         <div class="accordion-item  border-0  mycollapsebutton">
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <div class="d-flex align-items-center w-100">
-                                                    <a href="#"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
+                                                    <a href="javascript:void(0)"><img src="{{ asset('frontend/images/chat.png') }}" alt=""></a>
                                                     <h3 class="coments mt-3 px-2 text-nowrap">Comments ({{ ($itinerary->comments) ? count($itinerary->comments) : '0' }})</h3>
                                                     <div class=" px-1 align-items-center w-100">
                                                         <img src="{{ asset('frontend/images/Line.png') }}" alt="" class=" line mt-2">
@@ -250,8 +250,8 @@
                                                 <div class="accordion-body px-5">
                                                     @if(auth('user')->id() == '')
                                                     <div class=" d-flex align-items-center">
-                                                        <a href="#"> <img src="{{ asset('frontend/images/User Image.png') }}" alt=""></a>
-                                                        <p class="login-to-add mt-3 px-2">Login to add a comment</p>
+                                                        <a href="javascript:void(0)"> <img src="{{ asset('frontend/images/User Image.png') }}" alt=""></a>
+                                                        <p class="login-to-add  px-2">Login to add a comment</p>
                                                     </div>
                                                     @else
                                                     <form action="{{route('comments.store',$itinerary)}}" method="POST">
@@ -266,7 +266,7 @@
                                                     <div class="row">
 
                                                         <div class="col-md-12">
-                                                            <h3>Comments</h3>
+                                                            {{-- <h3>Comments</h3> --}}
                                                             @if ($itinerary->comments)
 
 
@@ -275,7 +275,7 @@
                                                             {{--{{ dd($comment->likesDislikes) }}--}}
 
                                                             <div class="d-flex flex-row comment-row">
-                                                                <div class="p-2">
+                                                                <div class="pe-3">
                                                                     @if (!empty($comment->user->profile))
                                                                     <img src="{{ asset('frontend/profile_pictures/'. $comment->user->profile) }}" alt="user-image" width="50" class="rounded-circle">
                                                                     @else
@@ -284,12 +284,16 @@
                                                                     {{-- <img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50" class="rounded-circle"> --}}
                                                                 </div>
                                                                 <div class="comment-text w-100">
-                                                                    <h5 class="font-medium">{{ $comment->user->name }} {{ $comment->user->last_name }}</h5>
-                                                                    <span class="m-b-15 d-block">{{ $comment->body }}</span>
+                                                                  {{-- <div class="d-flex justify-content-between"><div class=" d-flex align-items-center mb-2 mt-3 flex-wrap "><div class="fs-20-300 me-2">{{ $comment->user->name }} {{ $comment->user->last_name }}</div><div class="vr d-none d-sm-block "></div><div class="ms-2 time-left ">12 Hours Ago</div></div><div class=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7609 9.45008L17.8517 6.11865C18.2537 5.47888 17.794 4.64746 17.0375 4.64746H7.28532C6.75362 4.64746 6.32422 5.07686 6.32422 5.60856V14.2541H17.0375C17.7926 14.2541 18.2522 13.4227 17.8517 12.7829L15.7609 9.45008Z" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    <path d="M6.32398 20.0225V14.2588" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg></div></div> --}}
+                                                                    <div class=" d-flex align-items-center mb-2 mt-3 flex-wrap "><div class="fs-20-300 me-2">{{ $comment->user->name }} {{ $comment->user->last_name }}</div><div class="vr d-none d-sm-block "></div><div class="ms-2 time-left ">12 Hours Ago</div></div>
+                                                                    <span class="m-b-15 fs-16-300 d-block mt-1">{{ $comment->body }}</span>
                                                                     <div class="comment-footer">
                                                                         <div class="row">
                                                                             @if(auth('user')->id() != '')
-                                                                            <div class="col-lg-1">
+                                                                            <div class="col-1">
                                                                                 @if(count($comment->likesDislikes) > 0)
                                                                                 @foreach($comment->likesDislikes as $likeDislike)
                                                                                 @if($likeDislike->type == 'like')
@@ -314,7 +318,7 @@
                                                                                         </form>
                                                                                         @endif
                                                                                     </div>
-                                                                                    <div class="col-lg-1">
+                                                                                    <div class="col-1">
                                                                                         @if(count($comment->likesDislikes) > 0)
                                                                                         @foreach($comment->likesDislikes as $likeDislike)
                                                                                         @if($likeDislike->type == 'dislike')
@@ -345,7 +349,7 @@
                                                                                         </form>--}}
                                                                                     </div>
                                                                                     @endif
-                                                                                    <div class="col-lg-3 mt-2">
+                                                                                    <div class="col-md-3  mt-2">
                                                                                         <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span>
                                                                                     </div>
                                                                                 </div>
@@ -366,7 +370,7 @@
                     </div>
 
                     <div class="w-25 m-auto mt-4">
-                        <button class="btn btn-transparent rounded-pill load-btn px-4 text-center text-nowrap">Load More</button>
+                        <button class="btn load-btn px-4 text-center text-nowrap">Load More</button>
                     </div>
                 </div>
                 <div>
@@ -482,12 +486,12 @@
                     var locations = JSON.parse( '<?php echo $locationArrJson;?>' );
                     var locations = [
                     {
-                        'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="#" >Link<a> of some sort.',
+                        'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="javascript:void(0)" >Link<a> of some sort.',
                         'lat': 46.8133,
                         'long': -100.7790,
                     },
                     {
-                        'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.',
+                        'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="javascript:void(0)" target="_blank">Link<a> of some sort.',
                         'lat': 46.8772,
                         'long': -96.7894,
                     }
