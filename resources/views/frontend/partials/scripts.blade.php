@@ -97,7 +97,18 @@
             var csrftoken = $('#csrftoken').val();
                     
             var file = this.files[0];
-            
+            var imageTypes = ['image/jpeg', 'image/png', 'image/gif']; // Add other image formats as needed
+            if (imageTypes.indexOf(file.type) === -1) {
+                alert('Please select a valid image file (JPEG, PNG, GIF).');
+                return;
+            }
+
+            // Check if the file size is within the allowed limit (optional)
+            var maxSize = 1024 * 1024; // 1 MB (adjust the value as per your requirements)
+            if (file.size > maxSize) {
+                alert('The selected image exceeds the allowed size limit.');
+                return;
+            }
             // Show the selected file's name (optional)
             // You can display the file name somewhere on the page to let the user know the selected file.
             var fileName = file.name;
