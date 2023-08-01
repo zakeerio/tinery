@@ -101,6 +101,23 @@ class UserController extends Controller
 		}
     }
 
+    public function profilepictureupdate(Request $request)
+    {
+        if($request->hasFile('file'))
+        {
+            $file = $request->file('file');
+            $input['file'] = time().'.'.$file->getClientOriginalExtension();
+
+            $destinationPath = public_path('/frontend/profile_pictures');
+            $file->move($destinationPath, $input['file']);
+
+            $user = User::find(Auth::guard('user')->user()->id);
+            $user->profile = $input['file'];
+            $user->save();
+
+        }
+    }
+
     public function bioupdate(Request $request)
     {
         $rules = [

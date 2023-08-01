@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,40 +69,46 @@ class RegisterController extends Controller
     {
         // Validate the user input
         // dd($request->input());
-        $rules = [
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',    
-            'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:8',
-            'confirm_password' => 'required_with:password|same:password|min:8'
-		];
+        $output = '';
 
-		$validator = Validator::make($request->all(),$rules);
-		if ($validator->fails()) {
-			return back()->with('error','Fields Error')
-			->withInput()
-			->withErrors($validator);
-		}
-		else{
-            $data = $request->input();
-			try{
-                $user = new User;
-                $user->name = $data['firstname'];
-                $user->lastname = $data['lastname'];
-                $user->username = $data['username'];
-                $user->email = $data['email'];
-                $user->password = Hash::make($data['password']);
-                $user->confirmpassword = Hash::make($data['password']);
-        
-                $user->save();
+        $firstname = $request->input('firstname');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $lastname = $request->input('lastname');
+        $username = $request->input('username');
+        $confirm_password = $request->input('confirm_password');
 
-                return redirect('/')->with('success',"Registered Successfully");
-			}
-			catch(Exception $e){
-				return back()->with('error',"Error Occured");
-			}
-		}
+        $q1 = User::where('email',$email)->get();
+        if(count($q1) == 1)
+        {
+            $output = 'erroremail';
+        }
+        $q2 = User::where('username',$username)->get();
+        if(count($q2) == 1)
+        {
+            $output = 'errorusername';
+        }
+
+        $user = new User;
+        $user->name = $firstname;
+        $user->lastname = $lastname;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = Hash::make($password);
+        $user->confirmpassword = Hash::make($confirm_password);
+        $user->save();
+
+        $credentials = $request->only('email', 'password');
+        $attempt = Auth::guard('user')->attempt($credentials);
+        if ($attempt) {
+
+            $output = 'success';
+        }
+        else
+        {
+            $output ='registrationfailed';
+        }
+        echo $output;
     }
     protected function create(array $data)
     {
@@ -123,6 +131,28 @@ class RegisterController extends Controller
         $email = $request->input('email');
         
         $query = User::withTrashed()->where('email',$email)->get();
+        if(count($query) == 1)
+        {
+            $output = 'error';
+        }
+        else
+        {
+            $output = 'success';
+        }
+        echo $output;
+    }
+
+    public function registerusernameexistance(Request $request)
+    {
+        $output = '';
+        $username = $request->input('username');
+
+        if($username == '')
+        {
+            $output = 'error';
+        }
+        
+        $query = User::withTrashed()->where('username',$username)->get();
         if(count($query) == 1)
         {
             $output = 'error';

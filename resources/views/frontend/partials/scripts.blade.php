@@ -67,6 +67,7 @@
         }
     };
 </script>
+
 <input type="hidden" name="_token" id="csrftoken" value="{{ csrf_token() }}">
 @if(Session::has('success'))
     <script>
@@ -91,6 +92,37 @@
 <script>
 
     $(document).ready(function () {
+        $('#profileimg').on('change', function() {
+            // Get the selected file
+            var csrftoken = $('#csrftoken').val();
+                    
+            var file = this.files[0];
+            
+            // Show the selected file's name (optional)
+            // You can display the file name somewhere on the page to let the user know the selected file.
+            var fileName = file.name;
+            console.log('Selected file: ' + fileName);
+            
+            // Create a FormData object to send the file to the server
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('_token', csrftoken);
+            
+            // Use AJAX to submit the form without page refresh
+            $.ajax({
+                url: '{{ route('profilepictureupdate') }}',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    window.location.href = "/profile";
+                },
+                error: function(error) {
+                    console.error(error); // Handle any errors that occur during the upload.
+                }
+            });
+        });
         $('.slickslider').slick({
             slidesToShow: 4,        // Display 4 items at a time
             autoplay: true,         // Enable auto start
@@ -438,6 +470,7 @@
 
             // Clear previous error messages
             $('.invalid-feedback-registeration').empty();
+            var csrftoken = $('#csrftoken').val();
 
             // Perform client-side validation
             var firstname = $('.regfirstname').val();
@@ -498,7 +531,36 @@
                 return;
             }
             // If validation passes, submit the form
-            this.submit();
+            // this.submit();
+
+            $.ajax({
+                url:'{{ url("/register_custom")}}',
+                method:'post',
+                data:{_token:csrftoken,firstname:firstname,email:email,password:password,lastname:lastname,username:username,confirm_password:confirm_password},
+                success:function(data)
+                {
+                    $('.regalertdanger').html('');
+                    if(data == 'erroremail')
+                    {
+                        $('.regalertdangerdiv').show();
+                        $('.regalertdanger').text('Email is not valid.');
+                    }
+                    if(data == 'errorusername')
+                    {
+                        $('.regalertdangerdiv').show();
+                        $('.regalertdanger').text('Username is not valid.');
+                    }
+                    if(data == 'registrationfailed')
+                    {
+                        $('.regalertdangerdiv').show();
+                        $('.regalertdanger').text('Registration Failed');
+                    }
+                    if(data == 'success')
+                    {
+                        $('#done-page').modal('toggle');
+                    }
+                }
+            });
         });
 
         $(".regemail").blur(function(){
@@ -521,6 +583,31 @@
                     {
                         $('#regemailError').text('Email is already exist.');
                         $(".regemail").focus();
+                    }
+                }
+            });
+        });
+
+        $(".regusername").blur(function(){
+            var username = $(this).val();
+            var csrftoken = $('#csrftoken').val();
+
+            $.ajax({
+                url:'{{ url("/registerusernameexistance")}}',
+                method:'post',
+                data:{_token:csrftoken,username:username},
+                success:function(data)
+                {
+                    $('#regusernameSuccess').text('');
+                    $('#regusernameError').text('');
+                    if(data == 'success')
+                    {
+                        $('#regusernameSuccess').text('username is available.');
+                    }
+                    if(data == 'error')
+                    {
+                        $('#regusernameError').text('username is already exist.');
+                        $(".regusername").focus();
                     }
                 }
             });

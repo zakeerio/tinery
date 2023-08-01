@@ -10,13 +10,13 @@
             <div class="d-flex gap-3">
             @if(Auth::guard('user')->user())
                 <div class="d-lg-none">
-                        <a class="nav-link " href="{{ url('/profile')}}">
-                            @if(Auth::guard('user')->user()->profile != '')
-                            <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
-                            @else
-                            <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
-                            @endif
-                        </a>
+                    <a class="nav-link " href="{{ url('/profile')}}">
+                        @if(Auth::guard('user')->user()->profile != '')
+                        <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
+                        @else
+                        <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                        @endif
+                    </a>
                 </div>
             @endif
 
@@ -202,7 +202,12 @@
 
                                     @csrf
                                     <h2 class="member-h2 mb-3 col-8 col-sm-6 text-center text-md-start mx-auto col-md-12 my-32">Become a Member</h2>
-                                    <div class="row ">
+                                        <div class="row ">
+                                            <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3 p-0 regalertdangerdiv" style="display:none">
+                                                <div class="alert alert-danger regalertdanger">
+                                                    
+                                                </div>
+                                            </div>
                                             <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3  p-0 ">
                                                 <div class="labe-section w-100">
 
@@ -234,7 +239,6 @@
                                                         </div>
 
                                                     </div>
-
                                             </div>
                                             <div class="col-11 col-sm-8 col-md-5 mx-auto  p-0 ">
                                                 <div class="labe-section mx-0 w-100">
@@ -249,6 +253,7 @@
                                                         {!! Form::text('username',  (old('username')) ? old('username') : null, [ 'placeholder' => "Enter your Username", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regusername']) !!}
                                                         {!! Form::label('username', 'Enter your Username', ['class' => 'did-floating-label']) !!}
                                                         <span class="invalid-feedback-registeration text-danger" role="alert" id="regusernameError"></span>
+                                                        <span class="invalid-feedback-registeration text-success" role="alert" id="regusernameSuccess"></span>
                                                         {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Username" required>
                                                         <label for="Username">Username</label> --}}
                                                     </div>
@@ -288,7 +293,7 @@
                             <div class="col-8 text-center">
                                 <img src="frontend/images/done-tick.svg" alt="">
                                 <h2 class="travel mb-4">Welcome To Tinery</h2>
-                                <a href="javascript:void(0)" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
+                                <a href="{{ route('profile')}}" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
                             </div>
                         </div>
                      </div>

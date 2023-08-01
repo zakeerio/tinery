@@ -18,9 +18,12 @@
                                 @else
                                 <img src="{{ asset('frontend/images/profile-default-pic.svg') }}" alt="Profile Image" class="profile-img rounded-circle">
                                 @endif
-                                 <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
-                                        class="fa-solid fs-4 fa-circle-plus"></i></label>
-                                <div class="d-none"><input type="file" id="profileimg"></div>
+                                <form action="{{route('profilepictureupdate')}}" method="POST" id="formprofilepictrueupdate" enctype="multipart/form-data">
+                                    <label for="profileimg" class="position-absolute bottom-0 end-0 position-absolute"><i
+                                            class="fa-solid fs-4 fa-circle-plus"></i></label>
+                                    <div class="d-none"><input type="file" name="file" id="profileimg"></div>
+                                </form>
+                                 
                             </form>
                         </div>
                         <div class="">

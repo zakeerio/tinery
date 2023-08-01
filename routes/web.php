@@ -62,7 +62,8 @@ Route::get('/optimizeclear', function() {
 Route::middleware('auth:user')->group(function () {
     // Routes that require user authentication
     Route::get('/dashboard', [UserController::class, 'dashboard']);
-    Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::post('/profilepictureupdate', [UserController::class, 'profilepictureupdate'])->name('profilepictureupdate');
     Route::post('/profileupdate', [UserController::class, 'profileupdate'])->name('profileupdate');
     Route::post('/bioupdate', [UserController::class, 'bioupdate'])->name('bioupdate');
     Route::post('/socialprofileupdate', [UserController::class, 'socialprofileupdate'])->name('socialprofileupdate');
@@ -116,6 +117,7 @@ Route::group(['namespace' => 'Auth',], function () {
     Route::post('register', 'RegisterController@register')->name('register');
     Route::post('register_custom', 'RegisterController@register_custom')->name('register_custom');
     Route::post('registeremailexistance', 'RegisterController@registeremailexistance')->name('registeremailexistance');
+    Route::post('registerusernameexistance', 'RegisterController@registerusernameexistance')->name('registerusernameexistance');
     Route::get('register/activate/{token}', 'RegisterController@confirm')->name('email_confirm');
 
     // Password Reset Routes...
