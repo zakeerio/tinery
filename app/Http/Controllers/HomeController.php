@@ -134,7 +134,7 @@ class HomeController extends Controller
         $usersfilter = $request->users;
         $locationfilter = $request->location;
         $daysrange = $request->daysrange;
-        
+
         $page = $request->page;
         $limit = $request->input('limit', 4); // Custom items per page, default is 15
         $offset = $request->input('offset', $page); // Custom page number offset, default is 0
@@ -144,7 +144,7 @@ class HomeController extends Controller
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
         $largestnumber = Itineraries::max('duration');
-        
+
         $total = Itineraries::where('itinerary_status', 'updated')
         ->where('status', 'published');
         if (!empty($tagsfilter)) {
@@ -511,9 +511,9 @@ class HomeController extends Controller
                     <h2 class="accordion-header" id="headingOne'.$count.'">
                         <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
                             <div class="row border rounded-pill ">
-                                <div class="d-flex justify-content-between py-2 align-items-center">
-                                    <div class="m-0 activitytitle">'.$count.'. '.$query->title.'</div>
-                                    <a href="#" class="bg-transparent border-0" >
+                                <div class="d-flex justify-content-between py-1 align-items-center">
+                                    <div class="m-0 activitytitle fs-16-300 black-300">'.'Activity - '.$count.' '.$query->title.'</div>
+                                    <a href="javascript:void(0)" class="bg-transparent border-0" >
                                         <img class="w-75" src="'.asset("frontend/images/editbt.png").'" alt="">
                                     </a>
                                 </div>
@@ -524,20 +524,20 @@ class HomeController extends Controller
                         <div class="accordion-body p-0">
                             <form action="#" class="">
                                 <div class="px-3">
-                                    <div class="bg-light rounded-2 p-2 mt-2 mb-2">
+                                    <div class="bg-activity rounded-2 p-2 mt-2 mb-2">
                                         <div class="mb-3 ">
                                             <div class="mb-3 d-flex gap-1 flex-wrap">
                                                 <div class="">
-                                                    <label class="form-label fw-bold">Title</label>
-                                                    <input type="text" class="form-control rounded-pill" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
+                                                    <label class="form-label fs-16-700">Title</label>
+                                                    <input type="text" class="form-control rounded-pill fs-16-300 black-300" name="activitytitle" value="'.$query->title.'" placeholder="Ex. Metropolitan Museum" aria-describedby="titleHelp">
                                                 </div>
                                                 <input type="hidden" name="itineraryid" value="'.$query->itineraries_id.'">
                                                 <input type="hidden" name="daysid" value="'.$query->days_id.'">
                                                 <input type="hidden" name="activityid" value="'.$query->id.'">
                                                 <input type="hidden" name="activitydivcount" value="'.$count.'">
                                                 <div class="">
-                                                    <label class="form-label fw-bold">Time</label>
-                                                    <input type="time" class="form-control rounded-pill" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                                    <label class="form-label fs-16-700">Time</label>
+                                                    <input type="time" class="form-control rounded-pill fs-16-300" value="'.$query->starttime.'" name="activitystarttime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                                 </div>
                                                 <div class=" d-flex align-items-end">
                                                     <label class="form-label fw-bold">&nbsp;</label>
@@ -547,21 +547,21 @@ class HomeController extends Controller
                                                 </div>
                                                 <div class="">
                                                     <label class="form-label fw-bold">&nbsp;</label>
-                                                    <input type="time" class="form-control rounded-pill" value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
+                                                    <input type="time" class="form-control rounded-pill fs-16-300 " value="'.$query->endtime.'" name="activityendtime" placeholder="Ex. Metropolitan Museum" aria-describedby="timeHelp">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="summary" class="form-label fw-bold">Summary</label>
-                                            <textarea class="form-control" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
+                                            <textarea class="form-control r-10 fs-16-300 black-300" placeholder="Please add summary" name="activitydescription" id="exampleFormControlTextarea1" rows="5">'.$query->description.'</textarea>
                                         </div>
                                         <div class="mb-3 d-flex align-items-center gap-2 border rounded-pill p-2 map-focus">
                                             <img class="ps-2" src="'.asset("frontend/images/location1.png").'" alt="">
-                                            <input type="text" class="form-control rounded-pill map_address_field " placeholder="Add map location">
+                                            <input type="text" class="form-control rounded-pill fs-16-300 black-300 map_address_field " placeholder="Add map location">
                                         </div>
                                         <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
-                                            <button class="btn btn-danger  rounded-pill save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
-                                            <button type="button" class="btn save-bt btn-dark rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                            <button class="btn btn-danger  rounded-pill fs-16-300 save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
+                                            <button type="button" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
                                         </div>
                                     </div>
                                 </div>
