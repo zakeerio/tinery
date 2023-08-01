@@ -33,7 +33,7 @@
                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                                                    <h5 class="modal-title fs-18-600 dark-blue-500" id="staticBackdropLabel">
                                                     Edit Intro</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
@@ -41,12 +41,12 @@
                                                     {!! Form::open(['route' => 'itineraries.update', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                                     <input type="hidden" name="id" value="{{$itinerary->id}}">
                                                     <div class="mb-3">
-                                                        <h4 class="fw-bold">Itinerary info</h4>
+                                                        <h4 class="fs-24-600 dark-blue-500">Itinerary info</h4>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label fw-bold">Itinerary Title<span class="text-danger">*</span>
+                                                        <label for="title" class="form-label fs-16-700">Itinerary Title<span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
+                                                        <input type="text" name="title" value="{{ $itinerary->title}}" class="form-control fs-16-300 black-300 rounded-pill" required placeholder="Ex. My Winter Break 2022" id="title" aria-describedby="emailHelp">
                                                     </div>
                                                     {{-- <div class="mb-3">
                                                         <label for="title" class="form-label fw-bold">Slug Title<span class="text-danger">*</span>
@@ -54,7 +54,7 @@
                                                         <input type="text" name="slug" value="{{ $itinerary->slug}}" class="form-control rounded-pill" required placeholder="Slug" id="title" aria-describedby="emailHelp">
                                                     </div> --}}
                                                     <div class="mb-3">
-                                                        <label for="tags" class="form-label fw-bold">Add Tags<span class="text-danger">*</span></label>
+                                                        <label for="tags" class="form-label fs-16-700 ">Add Tags<span class="text-danger">*</span></label>
                                                             @php
                                                                 $listtags = [];
                                                                 $listtag = json_decode($itinerary->tags);
@@ -64,16 +64,16 @@
                                                                 $listtags[$tags->id] = $tags->name;
                                                                 @endphp
                                                             @endforeach
-                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control select2', 'required', 'multiple' => true]) !!}
-                                                            <small class="small-tiny-color" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
+                                                            {!! Form::select('tags[]', $listtags, $listtag, ['class' => 'form-control fs-16-300 black-300 rounded-pill select2', 'required', 'multiple' => true]) !!}
+                                                            <small class="black-300 fs-12-400" >Add a tag by typing in the field above and hitting ‘enter’ on your keyboard or by clicking on a suggested tag.</small>
                                                         </div>
                                                     <div class="mb-3">
-                                                        <label for="summary" class="form-label fw-bold">Itinerary Summary<span class="text-danger">*</span></label>
-                                                        <textarea class="form-control" name="description" required id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
+                                                        <label for="summary" class="form-label fs-16-700">Itinerary Summary<span class="text-danger">*</span></label>
+                                                        <textarea class="form-control fs-16-300 black-300" name="description" required placeholder="Please add summary" id="exampleFormControlTextarea1" rows="5">{{ $itinerary->description}}</textarea>
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label fw-bold">Location<span class="text-danger">*</span></label>
+                                                        <label for="title" class="form-label fs-16-700">Location<span class="text-danger">*</span></label>
                                                             @if(!empty($itinerary_location))
                                                             @foreach ($itinerary_location as $key => $row)
                                                                 @php
@@ -85,16 +85,16 @@
                                                         {{--<input type="text" class="form-control rounded-pill" name="address_street" value="{{ $itinerary->address_street}}" id="address_street" required>--}}
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="title" class="form-label fw-bold">Duration</label>
-                                                        <input type="number" name="duration" value="{{ $itinerary->duration}}" class="form-control rounded-pill" placeholder="Duration">
+                                                        <label for="title" class="form-label fs-16-700">Duration</label>
+                                                        <input type="number" name="duration" value="{{ $itinerary->duration}}" class="form-control fs-16-300 rounded-pill" placeholder="Duration">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Personal-blog" class="form-label fw-bold">Personal Blog or Relevant Site</label>
-                                                        <input type="url" name="website" value="{{ $itinerary->website}}" class="form-control rounded-pill" placeholder="Ex: www.nyc.com" id="Personal-blog" aria-describedby="emailHelp">
+                                                        <label for="Personal-blog" class="form-label fs-16-700">Personal Blog or Relevant Site</label>
+                                                        <input type="url" name="website" value="{{ $itinerary->website}}" class="form-control fs-16-300 rounded-pill" placeholder="Ex: www.nyc.com" id="Personal-blog" aria-describedby="emailHelp">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Personal-blog" class="form-label fw-bold">Visibility</label>
-                                                        <select name="visibility" class="form-control" required>
+                                                        <label for="Personal-blog" class="form-label fs-16-700">Visibility</label>
+                                                        <select name="visibility" class="form-control fs-16-300" required>
                                                             <option value="public" {{ ($itinerary->visibility == 'public') ? 'selected' : '' }}>Public</option>
                                                             <option value="private" {{ ($itinerary->visibility == 'private') ? 'selected' : '' }}>Private</option>
                                                         </select>
@@ -253,7 +253,7 @@
                                     $count = ++$key;
                                 @endphp
                                 <div class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
-                                    <h2 class="fw-bold mb-0 gallery py-2" >Day {{$count}}</h2>
+                                    <h2 class="mb-0 gallery py-2" >Day {{$count}}</h2>
                                     <button type="button" class="bg-transparent border-0" data-role="btnshowactivitymodel" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}" data-bs-toggle="modal" data-bs-target="#day{{$count}}">
                                         <img src="{{ asset('frontend/images/editbt.png')}}" class="button-24"  alt=""></button>
                                         <!-- Modal -->
@@ -261,7 +261,7 @@
                                         <div class="modal-dialog day-pop-width modal-dialog-centered modal-dialog-scrollable">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">Day {{$count}} Activities</h5>
+                                                    <h5 class="modal-title fs-18-600 dark-blue-500" id="staticBackdropLabel">Day {{$count}} Activities</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body" id="showitinerariesdaysactivities{{$days->id}}">
@@ -269,12 +269,12 @@
                                                 </div>
                                                 <div class="mb-3 activity-bt border border-0 mx-3 mb-3">
                                                     <a href="javascript:void(0)" class="text-decoration-none" data-id="showitinerariesdaysactivities{{$days->id}}" data-role="btnaddactivity" data-itineraryid="{{$itinerary->id}}" data-daysid="{{$days->id}}">
-                                                        <p class="text-center text-danger add-activity-bt rounded-pill  m-0 py-3 fs-13-700"> + Add activity </p>
+                                                        <p class="text-center text-danger add-activity-bt rounded-pill  m-0 py-2 fs-13-700"> + Add activity </p>
                                                     </a>
                                                 </div>
                                                 <div class="mb-3 activity-bt border rounded-pill mx-3 mb-3">
                                                     <a href="{{url('/deleteday/'.$days->id.'/'.$days->itineraries_id)}}" style="text-decoration:none;">
-                                                        <h5 class="text-center text-danger m-0  py-3 fs-16-700">
+                                                        <h5 class="text-center text-danger m-0  py-2 fs-16-700">
                                                             Delete Day
                                                         </h5>
                                                     </a>
@@ -327,10 +327,10 @@
 
                                                         {{-- <div class="col-12 d-none"><input type="file" id="image-upload-1" name="images[]" required class="form-control" accept="image/*" multiple></div> --}}
                                                         <div id="image-preview-1" class="image-preview-1">  <img  src="{{ asset('frontend/images/add-image.png')}}" alt=""></div>
-                                                        <p class="attach-area-width text-center mx-auto">
-                                                            <span class="fw-bold">Attach or drop your images here.</span><br>
+                                                        <p class="attach-area-width fs-16-300 text-center mx-auto">
+                                                            <span class="fs-16-700">Attach or drop your images here.</span><br>
                                                             Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                                                            <p class="fw-bold">Maximum file size is 5 MB</p>
+                                                            <p class="fs-16-400">Maximum file size is 5 MB</p>
 
                                                             <!-- <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button> -->
                                                             {{-- <input type="file" id="image-upload-1" class="d-none"> --}}
@@ -525,8 +525,8 @@
                                                     <div class="profiler-relate profile-relate">{{$row->title}}</div>
                                                 </a>
                                                 <div class="d-flex align-items-center">
-                                                <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
-                                                <p class="lang px-2">{{ $row->created_at->diffForHumans() }}</p>
+                                                <p class="lang"><a class="text-decoration-none " href="{{ route('username', ['username' => $row->user->username]) }}">{{$row->user->name}} </a> |</p>
+                                                <p class="lang1 px-2">{{ $row->created_at->diffForHumans() }}</p>
                                                 </div>
                                             </div>
                                     </div>

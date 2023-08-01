@@ -48,7 +48,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="btn btn-danger  rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                                <a class="btn btn-danger fs-16-300 text-white  rounded-pill px-4" href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ route('logout') }}"><img src="{{ asset('frontend/images/logout.png') }}" alt=" logout link"></a>
@@ -288,7 +288,7 @@
                             <div class="col-8 text-center">
                                 <img src="frontend/images/done-tick.svg" alt="">
                                 <h2 class="travel mb-4">Welcome To Tinery</h2>
-                                <a href="#" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
+                                <a href="javascript:void(0)" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
                             </div>
                         </div>
                      </div>
