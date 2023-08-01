@@ -22,7 +22,19 @@
                     <h1 class=" " >Explore Popular Travel Itineraries</h1>
 
                     <h2>
-                        <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All</a>
+                        <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_1280_4499)">
+                            <path d="M19 12H5" stroke="#0E0E14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 7L19 12" stroke="#0E0E14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 17L19 12" stroke="#0E0E14" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_1280_4499">
+                            <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                        </a>
                     </h2>
                 </div>
             </div>
@@ -209,7 +221,7 @@ $locationArrJson = json_encode($locationsArr);
 
         <div class="world">
             <div class="container">
-              <a href="Javascript:void(0)" data-bs-toggle="modal" data-bs-target="#done-page"><h2 class="membr">Explore Your World</h2>   </a>
+             <h2 class="membr">Explore Your World</h2>
                 <div id="homepagemap" style="height: 450px;"></div>
             </div>
         </div>

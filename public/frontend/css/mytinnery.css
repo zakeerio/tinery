@@ -17,9 +17,147 @@
 .container {
     width: 100%;
     max-width: 1366px;
-    /* max-width: 1920px !important; */
+    /* padding-left: 64px !important;
+    padding-right: 64px !important;
+    max-width: 1920px !important; */
+}
+.hero-content h2 {
+    /* font-family: "Axiforma", Sans-serif; */
+    font-style: normal;
+    font-weight: 700;
+    /* font-size: 72px; */
+    font-size: 57px;
+    color: #FFFFFF;
 }
 
+.hero-content p {
+    /* font-family: "Axiforma", Sans-serif; */
+    font-style: normal;
+    max-width: 580px;
+    width: 100%;
+    font-weight: 400;
+    /* font-size: 24px; */
+    font-size: 19px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin: 0;
+}
+.explore-section h1 {
+    font-weight: 600;
+    /* font-size: 32px; */
+    font-size: 25px;
+    line-height: 1.4em;
+}
+.membr {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 32px; */
+    font-size: 25px;
+    line-height: 76px;
+    color: #000000;
+}
+.explore-section h2 {
+    font-weight: 300;
+    /* font-size: 20px; */
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+.h-4 {
+    font-style: normal;
+    font-weight: 300;
+    /* font-size: 24px; */
+    font-size: 20px;
+    line-height: 1.4em;
+    color: #29293D;
+    font-family: "Axiforma", Sans-serif;
+    padding: 12px 0;
+    margin: 0;
+}
+.Benjamin {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    /* font-size: 24px; */
+    font-size: 20px;
+    /* line-height: 25px; */
+
+    /* Shades/Black/500 */
+
+    color: #0E0E14;
+}
+
+.Benjamin-p {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    /* font-weight: 300; */
+    /* font-size: 16px; */
+    font-size: 14px;
+    /* line-height: 25px; */
+
+    /* Shades/Black/500 */
+
+    color: #0E0E14;
+}
+.city {
+    font-style: normal;
+    font-weight: 200;
+    /* line-height: 1.4em; */
+    color: #29293D;
+    font-family: "Axiforma", Sans-serif;
+    margin-top: 16px;
+    margin-bottom: 56px;
+    column-gap: 42px;
+    /* font-size: 20px !important; */
+    font-size: 16px ;
+}
+.travel {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    /* font-size: 40px; */
+    font-size: 32px;
+    color: #29293D;
+}
+.filters-p {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    /* font-size: 20px; */
+    font-size: 16px;
+    line-height: 32px;
+    color: #545464;
+}
+
+.trip-h1 {
+    font-family: "Axiforma", Sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    /* font-size: 42px; */
+    font-size: 34px;
+    line-height: 76px;
+    color: #2A293D;
+    text-transform: capitalize;
+
+}
+.profile-relate {
+    font-weight: 300;
+    /* font-size: 20px; */
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #2A293D;
+}
+.card-title-profile {
+    font-family: "Axiforma", Sans-serif;;
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 24px; */
+    font-size: 20px;
+    line-height: 1.3em;
+    /* identical to box height, or 167% */
+    color: #000000;
+}
 /* .left-margin {
     margin-left: 200px;
 } */
@@ -48,26 +186,7 @@
     padding: 88px 30px;
 }
 
-.hero-content h2 {
-    /* font-family: "Axiforma", Sans-serif; */
-    font-style: normal;
-    font-weight: 700;
-    font-size: 72px;
 
-    color: #FFFFFF;
-}
-
-.hero-content p {
-    /* font-family: "Axiforma", Sans-serif; */
-    font-style: normal;
-    max-width: 619px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 36px;
-    color: #FFFFFF;
-    margin: 0;
-}
 
 .img-80px {
     width: 100px;
@@ -88,17 +207,8 @@
     padding-left: 12px;
 }
 
-.explore-section h2 {
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 1.4em;
-}
 
-.explore-section h1 {
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 1.4em;
-}
+
 
 .bg-img {
     /* background-image: url('../images/Image_2.png'); */
@@ -157,17 +267,6 @@
     left: 79%;
 }
 
-.h-4 {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 1.4em;
-    color: #29293D;
-    font-family: "Axiforma", Sans-serif;
-    padding: 12px 0;
-    margin: 0;
-}
-
 .foodie {
     border: 1px solid #0F6496;
     border-radius: 40px;
@@ -188,52 +287,11 @@
     height: auto;
 }
 
-.city {
-    font-style: normal;
-    font-weight: 200;
-    /* line-height: 1.4em; */
-    color: #29293D;
-    font-family: "Axiforma", Sans-serif;
-    margin-top: 16px;
-    margin-bottom: 56px;
-    column-gap: 42px;
-    font-size: 20px !important;
-
-}
 
 
-.membr {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 76px;
-    color: #000000;
-}
 
-.Benjamin {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    /* line-height: 25px; */
 
-    /* Shades/Black/500 */
 
-    color: #0E0E14;
-}
-
-.Benjamin-p {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    /* font-weight: 300; */
-    font-size: 16px;
-    /* line-height: 25px; */
-
-    /* Shades/Black/500 */
-
-    color: #0E0E14;
-}
 
 .team-img {
     width: 120px;
@@ -369,22 +427,8 @@
     color: #2A293D;
 }
 
-.travel {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    color: #29293D;
-}
 
-.filters-p {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 32px;
-    color: #545464;
-}
+
 
 .w-120 {
     max-width: 64px;
@@ -573,16 +617,6 @@ header {
     border-bottom: 1px solid #2A293D;
 }
 
-.trip-h1 {
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 42px;
-    line-height: 76px;
-    color: #2A293D;
-    text-transform: capitalize;
-
-}
 
 .profile {
     background: #FFFFFF;
@@ -797,12 +831,6 @@ header {
     border-radius: 6px;
 }
 
-.profile-relate {
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 1.4em;
-    color: #2A293D;
-}
 
 .related {
     font-weight: 600;
@@ -1111,15 +1139,7 @@ select.did-floating-select::-ms-expand {
 
 }
 
-.card-title-profile {
-    font-family: "Axiforma", Sans-serif;;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.3em;
-    /* identical to box height, or 167% */
-    color: #000000;
-}
+
 
 .myitinerylist {
     padding-left: 69px;
