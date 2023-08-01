@@ -13,10 +13,10 @@
                         <img src="{{asset('img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{auth()->user()->name}}<br>{{auth()->user()->roles()->first()->name}}</a>
+                        <a href="javascript:void(0)" class="d-block">{{auth()->user()->name}}<br>{{auth()->user()->roles()->first()->name}}</a>
                     </div>
                 </div>
-                
+
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul id="main_nav_ul" class="nav nav-pills nav-sidebar flex-column {{config('settings.ctrl_nav_flat')}} {{config('settings.ctrl_nav_legacy')}} {{config('settings.ctrl_nav_compact')}} {{config('settings.ctrl_nav_child_indent')}} {{config('settings.ctrl_nav_collapse_hide_child')}}" data-widget="treeview" role="menu"
@@ -43,7 +43,7 @@
                         </li>
                         @endcan
                         <li class="nav-item {{ (strpos(Route::currentRouteName(),"admin.roles") !==false || strpos(Route::currentRouteName(),"admin.permissions")!== false) ? 'menu-is-opening menu-open' :''}}">
-                            <a href="#" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.roles") !==false || strpos(Route::currentRouteName(),"admin.permissions")!== false) ? 'active' :''}}">
+                            <a href="javascript:void(0)" class="nav-link {{ (strpos(Route::currentRouteName(),"admin.roles") !==false || strpos(Route::currentRouteName(),"admin.permissions")!== false) ? 'active' :''}}">
                                 <i class="nav-icon fa fa-low-vision"></i>
                                 <p>
                                     Roles & Permissions

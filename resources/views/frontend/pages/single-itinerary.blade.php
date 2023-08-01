@@ -76,9 +76,9 @@
                                         @endif
                                     </a>
                                 </div>
-                                <div class="profile-p px-1 profilefont"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                                <div class="profile-p px-1 profilefont"><a class="text-black fs-16-300 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
                             <div class="vr align-self-center linesize mx-1"></div>
-                            <div class="profile-p px-3 profilefont1">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
+                            <div class="fs-20-300 px-3  ">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
                         </div>
 
 
@@ -120,7 +120,7 @@
                                         @endphp
                                     @if($tag)
                                     <a href="{{url('/tags/'.$tag->slug)}}">
-                                            <button class="foodie">
+                                            <button class="foodie ">
                                                 {{$tag->name}}
                                             </button>
                                         </a>
@@ -130,7 +130,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="content mt-4">
+                                    <div class="time-left mt-4">
                                         {{ $itinerary->description }}
                                     </div>
 
@@ -152,7 +152,7 @@
                             @endphp
                             @foreach($days as $key => $days)
                             <div class="accordion accordion-flush  py-4" id="accordionSibglepage{{$days->id}}">
-                                <h5 class=" text-dark tripday m-0"> Day {{++$key}}</h5>
+                                <h5 class=" text-dark fs-24-700 m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
                                     <div class="d-flex flex-column gap-4 py-4 w-100 ">
@@ -393,7 +393,7 @@
                             </a>
                         </div>
                         <div class="sidenameandlinks">
-                            <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
+                            <div class="profiler"><a class="text-black fs-16-300 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
                                     <div class="d-flex socialpicsize d-none d-sm-block">
                                         @if(!empty($itinerary->user->facebook))
                                             <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
@@ -440,7 +440,7 @@
                         </div>
 
                         <div class="profiles p-3 mt-32 row">
-                            <h6 class="profiler-related related pt-md-4 col-sm-6 align-self-sm-center">Related Content</h6><div class="d-sm-none d-md-block "></div>
+                            <h6 class=" related pt-md-4 col-sm-6 align-self-sm-center">Related Content</h6><div class="d-sm-none d-md-block "></div>
 
                             @if(!$related_itinerary->isEmpty())
                             @foreach($related_itinerary as $rowrelated)

@@ -54,7 +54,7 @@ class HomeSettingController extends BaseController
             $array->save();
         }
 
-        return $this->responseRedirect('admin.homesettings.index', 'Updated successfully.', 'success');        
+        return $this->responseRedirect('admin.homesettings.index', 'Updated successfully.', 'success');
     }
 
     /**

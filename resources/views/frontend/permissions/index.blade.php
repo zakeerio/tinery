@@ -63,7 +63,7 @@
                                                                         class="fa fa-edit text-primary"></i></a>
                                                             @endcan
                                                             @can('permission-destroy')
-                                                                <a href="#" class="permission_dlt_btn"
+                                                                <a href="javascript:void(0)" class="permission_dlt_btn"
                                                                     data-formid="{{ 'permission-deleteform' . $item[1] }}""><i class="
                                                                     fa fa-trash text-danger"></i></a>
                                                             @endcan

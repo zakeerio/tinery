@@ -58,7 +58,7 @@
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
-                                    <span class="fw-bold text-black">Admin</span>
+                                    <span class="fs-18-600 text-black">Admin</span>
                                 </button>
                             </h2>
                             <div id="collapseAdminBio" class="accordion-collapse collapse" aria-labelledby="adminBio"
@@ -134,7 +134,7 @@
                             <h2 class="accordion-header" id="bioHeading">
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
-                                    <span class="fw-bold color-black">Bio</span>
+                                    <span class="fs-18-600">Bio</span>
                                 </button>
                             </h2>
                             <div id="collapseBio" class="accordion-collapse collapse" aria-labelledby="bioHeading"
@@ -184,7 +184,7 @@
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
-                                    <span class="fw-bold color-black">Social Profile</span>
+                                    <span class="fs-18-600">Social Profile</span>
                                 </button>
                             </h2>
                             <div id="collapseSocialProfile" class="accordion-collapse collapse"
@@ -264,7 +264,7 @@
                                 <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
-                                    <span class="fw-bold color-black">Relevant Tags</span>
+                                    <span class="fs-18-600">Relevant Tags</span>
                                 </button>
                             </h2>
                             <div id="collapseRelevantTags" class="accordion-collapse collapse"
@@ -312,7 +312,7 @@
                     <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger rounded-pill nav-link active px-3"
+                            <button id="tab1" class="btn btn-outline-danger  rounded-pill nav-link active px-3"
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -320,14 +320,14 @@
 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="btn btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-3" id="tab2" data-bs-toggle="tab"
+                            <button class=" btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-3" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>
                     </ul>
                     <ul class="nav nav-tabs d-none d-md-block ">
                         <li class="nav-item " role="presentation">
-                            <a class="btn btn-danger rounded-pill px-4 px-md-3 py-2 text-nowrap " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
+                            <a class="btn btn-danger rounded-pill px-4 px-md-3 py-2 text-nowrap fs-16-300 text-white " href="{{url('/create-itinerary')}}">+ Add Itinerary</a>
                         </li>
                     </ul>
                 </div>
@@ -347,7 +347,7 @@
                                         @endif
                                             <div class="">
                                             <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
-                                            <p class="title-p mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
+                                            <p class="fs-16-300 mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                         </div>
                                         <div class=" d-flex  gap-2 align-items-center add-size">
@@ -391,7 +391,7 @@
 
                                             <div class="col-8">
                                                 <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
-                                                <p class="mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
+                                                <p class="fs-16-300 mb-0">{{ \Str::limit($itinerary->description, 150); }}</p>
                                             </div>
                                             <div class="col-3 d-flex align-items-center  gap-2">
                                                 <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a>

@@ -144,7 +144,7 @@
                         <option class="bg-light" value="navbar-light" {{config('settings.ctrl_brand_logo_varient') =="navbar-light" ? 'selected="selected"':'' }}>Light</option>
                         <option class="bg-warning" value="navbar-warning" {{config('settings.ctrl_brand_logo_varient') =="navbar-warning" ? 'selected="selected"':'' }}>Warning</option>
                         <option class="bg-white" value="navbar-white" {{config('settings.ctrl_brand_logo_varient') =="navbar-white" ? 'selected="selected"':'' }}>White</option>
-                        <option class="bg-orange" value="navbar-orange" {{config('settings.ctrl_brand_logo_varient') =="navbar-orange" ? 'selected="selected"':'' }}>Orange</option><a href="#">clear</a>
+                        <option class="bg-orange" value="navbar-orange" {{config('settings.ctrl_brand_logo_varient') =="navbar-orange" ? 'selected="selected"':'' }}>Orange</option><a href="javascript:void(0)">clear</a>
                     </select>
                     <h6>Sidebar Elevation</h6>
                     <div class="d-flex"></div><select name="ctrl_sidebar_elevation" class="custom-select mb-3 border-0 control-setting-field" data-target_id="main-aside" data-old_class="{{config('settings.ctrl_sidebar_elevation')}}" data-class="{{config('settings.ctrl_sidebar_elevation')}}">
