@@ -57,7 +57,7 @@
                                         ->get();
                                         @endphp
                                     @if($query->count() == 1)
-                                    <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.png') }}" class="heart-size" alt=""></a>
+                                    <a href="javascript:void(0)" data-role="removetowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/heart-red.svg') }}" class="heart-size" alt=""></a>
                                     @else
                                     <a href="javascript:void(0)" data-role="addtowishlist" data-id="{{ $itinerary->id}}"> <img src="{{ asset('frontend/images/border-heart.svg') }}" class="heart-size" alt=""></a>
                                     @endif
