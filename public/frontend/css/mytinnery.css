@@ -425,7 +425,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 290px;
+    border-radius: 12px;
 
+}
+.r-12{
+    border-radius: 12px;
 }
 
 .bg-toro {
