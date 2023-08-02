@@ -288,7 +288,7 @@
                                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7609 9.45008L17.8517 6.11865C18.2537 5.47888 17.794 4.64746 17.0375 4.64746H7.28532C6.75362 4.64746 6.32422 5.07686 6.32422 5.60856V14.2541H17.0375C17.7926 14.2541 18.2522 13.4227 17.8517 12.7829L15.7609 9.45008Z" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                     <path d="M6.32398 20.0225V14.2588" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                     </svg></div></div> --}}
-                                                                    <div class=" d-flex align-items-center mb-2 mt-3 flex-wrap "><div class="fs-20-300 me-2">{{ $comment->user->name }} {{ $comment->user->last_name }}</div><div class="vr d-none d-sm-block "></div><div class="ms-2 time-left ">12 Hours Ago</div></div>
+                                                                    <div class=" d-flex align-items-center mb-2 mt-3 flex-wrap "><div class="fs-20-300 me-2">{{ $comment->user->name }} {{ $comment->user->last_name }}</div><div class="vr d-none d-sm-block "></div><div class="ms-2 time-left ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y h:i a')}}</div></div>
                                                                     <span class="m-b-15 fs-16-300 d-block mt-1">{{ $comment->body }}</span>
                                                                     <div class="comment-footer">
                                                                         <div class="row">
