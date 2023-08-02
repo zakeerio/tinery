@@ -448,31 +448,26 @@
                         'text': label + ' '
                     });
 
-                    var cross = $('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/> </svg>');
+                    var cross = $('<span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/> </svg></span>');
 
                     item.append(cross);
 
                     // Add click event to remove the selected item
-                    cross.on('click', function() {
+                    cross.on('click', function(e) {
                         checkbox.prop('checked', false);
                         item.remove();
-
-                        console.log('testing');
-
-                        if($(this).closest(".dropdown-menu").find('.selected-feild').find('label').length > 0 ){
+                        if($(checkbox).closest(".dropdown-menu").find('.selected-feild').find('label').length > 0 ){
                             console.log('Found here')
-                            $(this).closest('.dropdown').find('button.dropdown-toggle').addClass('activedropdown');
+                            $(checkbox).closest('.dropdown').find('button.dropdown-toggle').addClass('activedropdown');
                         } else {
-                            console.log('Found else')
-                            console.log($(this).closest('.dropdown').html());
-                            $(this).closest('.dropdown').find('button.dropdown-toggle').removeClass('activedropdown');
+                            console.log('Found else');
+                            $(checkbox).closest('.dropdown').find('button.dropdown-toggle').removeClass('activedropdown');
                         }
                         // return false;
 
                     });
 
                     $(this).parents(".dropdown-menu").find('.selected-feild').append(item);
-
 
                 } else {
                     // Remove the selected item
