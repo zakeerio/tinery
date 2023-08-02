@@ -2,11 +2,35 @@
     font-family:  "ProximaNova-Regular";
     src: url("../fonts/ProximaNova-Regular.eot");
 } */
+
 @font-face {
     font-family: "Axiforma", Sans-serif;
-    src: url('../fonts/Axiforma-SemiBold.eot');
-
+    src: url('../fonts/Axiforma-Light.ttf') ;
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Axiforma", Sans-serif;
+    src: url('../fonts/Axiforma-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Axiforma", Sans-serif;
+    src: url('../fonts/Axiforma-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Axiforma", Sans-serif;
+    src: url('../fonts/Axiforma-SemiBold.ttf');
     font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Axiforma", Sans-serif;
+    src: url('../fonts/Axiforma-Bold.ttf');
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -96,7 +120,7 @@
 .Benjamin-p {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
-    /* font-weight: 300; */
+    font-weight: 300;
     /* font-size: 16px; */
     font-size: 14px;
     /* line-height: 25px; */
@@ -136,6 +160,15 @@
     font-size: 16px;
     line-height: 32px;
     color: #545464;
+}
+
+.btn-dark-r {
+    border-radius: 20px;
+    border: 1px solid #545464;
+    font-size: 14px;
+    font-weight: 300;
+    color: #545464;
+
 }
 
 .trip-h1 {
@@ -202,15 +235,18 @@
     font-size: 20px;
     font-weight: 700;
 }
-.fs-16-700{
+
+.fs-16-700 {
     font-size: 14px;
     font-weight: 700;
 }
-.time-left{
+
+.time-left {
     font-size: 14px;
     font-weight: 300;
     color: #6E6E72;
 }
+
 .card-text {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -220,6 +256,7 @@
     line-height: 1.4em;
     color: #6E6E72;
 }
+
 .profile-tabs .nav-link {
     font-weight: 600;
     border: 2px solid #000;
@@ -229,6 +266,7 @@
     line-height: 40px;
     padding: 3px 16px;
 }
+
 .title1 {
     /* font-size: 20px; */
     font-size: 18px;
@@ -236,6 +274,7 @@
     line-height: 32px;
 
 }
+
 .foodie {
     border: 1px solid #0F6496;
     border-radius: 40px;
@@ -250,6 +289,7 @@
     font-weight: 300;
 
 }
+
 .profile-details {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
@@ -259,18 +299,21 @@
     line-height: 1.4em;
     color: #1d1d1e;
 }
+
 .profiler-related {
     font-weight: 600;
     /* font-size: 20px; */
-    font-size: 16px ;
+    font-size: 16px;
     line-height: 48px;
     color: #2A293D;
 }
-.fs-14-300{
+
+.fs-14-300 {
     /* font-size: 14px; */
     font-size: 12px;
     font-weight: 300;
 }
+
 .list-unstyled a {
     text-decoration: none;
     font-family: "Axiforma", Sans-serif;
@@ -281,11 +324,13 @@
     line-height: 1.4em;
     color: #2A293D;
 }
-.black-300{
-    color: #6E6E72!important;
+
+.black-300 {
+    color: #6E6E72 !important;
 }
-.dark-blue-500{
-    color: #2A293D!important;
+
+.dark-blue-500 {
+    color: #2A293D !important;
 }
 
 
@@ -345,28 +390,35 @@
 .sidenameandlinks {
     padding-left: 12px;
 }
-.select2-container--default .select2-selection--multiple{
-    border-radius: 50px!important;
+
+.select2-container--default .select2-selection--multiple {
+    border-radius: 50px !important;
 
 }
-.select2-container--default .select2-selection--multiple .select2-selection__choice{
-    border-radius: 50px!important;
-    padding-right: 10px!important;
-    padding-right: 10px!important;
-    background: transparent!important;
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 50px !important;
+    padding-right: 10px !important;
+    padding-right: 10px !important;
+    background: transparent !important;
     border: 1px solid #0F6496 !important;
-    color: #0F6496!important;
+    color: #0F6496 !important;
 
 }
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     border: 0px !important;
-    color: #0F6496!important;
+    color: #0F6496 !important;
 }
-.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
     font-size: 14px;
     font-weight: 300;
 }
-
+.mx-32{
+    margin-left: 32px;
+    margin-right: 16px;
+}
 
 .bg-img {
     /* background-image: url('../images/Image_2.png'); */
@@ -421,7 +473,7 @@
 
 .path-img {
     position: absolute;
-    top: 85%;
+    top: 82%;
     left: 79%;
 }
 
@@ -478,9 +530,6 @@
     color: #000000;
 }
 
-.filter-bordr .btn:hover {
-    background-color: #6c757d;
-}
 
 .slider-img {
     width: 100%;
@@ -714,25 +763,36 @@
 .selected-feild button,
 .selected-feild label,
 .selected-feild a.clearbtn {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    /* padding: 4px 10px; */
-    background: #0F6496;
+    text-align: center;
     border-radius: 20px;
-    font-family: "Axiforma", Sans-serif;
-    font-style: normal;
     font-weight: 300;
-    font-size: 12px;
-    line-height: 1.4em;
-    color: #FFFFFF;
-}
-
-.filter-logo-img {
-    width: 21.33px;
+    font-size: 10px;
+    color: #FFF;
+    background: #0F6496;
+    padding: 2px 12px 0px 12px;
 
 }
+.clearbtn1 {
+    text-align: center;
+    width: 121px;
+    border-radius: 20px;
+    font-weight: 300;
+    font-size: 10px;
+    color: #FFF;
+    background: #0F6496;
+    padding: 3px 12px 1px 12px;
+}
+.clearbtn {
+    text-align: center;
+
+    border-radius: 20px;
+    font-weight: 300;
+    font-size: 10px;
+    color: #FFF;
+    background: #0F6496;
+    padding: 3px 12px 1px 12px;
+}
+
 
 
 
@@ -771,18 +831,27 @@ header {
 
 .btn-check:checked+.btn,
 .btn.show,
-.btn.activedropdown,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-    background-color: black !important;
+    background-color: #545464 !important;
+    color: white;
+}
+
+.btn-check:checked+.btn,
+.btn.activedropdown,
+.btn.show {
+    background-color: #2A293D !important;
     color: white;
 }
 
 .filter-bordr .btn:hover {
-    background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
 }
 
+.filter .filter-bordr .btn:hover {
+    background-color: #2A293D !important;
+    color: white;
+}
 
 
 .mt-32 {
@@ -794,19 +863,21 @@ header {
 .lang {
     font-weight: 300;
     /* font-size: 14px ; */
-    font-size: 12px ;
-    color: #7F7F8B ;
+    font-size: 12px;
+    color: #7F7F8B;
 
 }
+
 .lang1 {
     font-weight: 300;
     /* font-size: 14px ; */
-    font-size: 12px ;
+    font-size: 12px;
     color: #6E6E72;
 
 }
-.lang a{
-    color: #7F7F8B ;
+
+.lang a {
+    color: #7F7F8B;
 
 }
 
@@ -1105,70 +1176,84 @@ header {
 .load-btn {
     font-size: 16px;
     border: 1px solid#7F7F8B;
-    color: #2A293D ;
+    color: #2A293D;
     background: transparent;
     border-radius: 50px;
 }
-.load-btn:hover{
+
+.load-btn:hover {
     background: #7F7F8B;
     border: 1px solid#7F7F8B;
     color: white;
 }
-.fs-16-400{
+
+.fs-16-400 {
     font-size: 14px;
     font-weight: 400;
 }
-.fs-16-500{
+
+.fs-16-500 {
     font-size: 14px;
     font-weight: 500;
 }
-.fs-16-300{
+
+.fs-16-300 {
     font-size: 14px;
     font-weight: 300;
     color: #3E3E43;
 }
-.fs-20-300{
+
+.fs-20-300 {
     font-size: 16px;
     font-weight: 300;
     color: #2A293D;
 }
-.fs-24-600{
+
+.fs-24-600 {
     font-size: 20px;
     /* font-size: 24px; */
     font-weight: 600;
 }
-.fs-24-700{
+
+.fs-24-700 {
     font-size: 20px;
     /* font-size: 24px; */
     font-weight: 700;
 }
-.fs-18-600{
+
+.fs-18-600 {
     font-size: 15px;
     /* font-size: 18px; */
     font-weight: 600;
 }
-.fs-12-300{
+
+.fs-12-300 {
     /* font-size: 12px; */
     font-weight: 300;
     font-size: 10px;
 }
-.fs-12-400{
+
+.fs-12-400 {
     /* font-size: 12px; */
     font-weight: 400;
     font-size: 10px;
 }
-.bg-activity{
+
+.bg-activity {
     background: #F5F5F6;
 }
+
 /* Floating input label */
 
 .did-floating-label-content {
     position: relative;
     margin-bottom: 20px;
 }
-.r-10{
+
+.r-10 {
     border-radius: 10px;
 }
+
 .did-floating-label {
     font-size: 16px;
     color: #0F6496;
@@ -1320,7 +1405,8 @@ select.did-floating-select::-ms-expand {
     border-radius: 50%;
 
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered{
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
     font-size: 14px !important;
     font-weight: 300;
 }
