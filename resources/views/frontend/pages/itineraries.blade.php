@@ -16,30 +16,30 @@
     <div class="filter">
         <div class="container">
             <div class="filter-body">
-                <form action="#" method="POST" class="d-flex justify-content-between w-100" id="filteForm">
+                <form action="#" method="POST" class="d-flex justify-content-between align-items-center w-100" id="filteForm">
 
-                    <div class="d-flex flex-wrap filter-bordr gap-1">
+                    <div class="d-flex flex-wrap filter-bordr gap-3">
 
                         <div class=" d-flex gap-2 align-items-center">
                             <div class="filter-logo">
                                 @csrf
                                 <img src="{{ asset('frontend/images/Filter.png') }}" alt="" class="filter-logo-img">
-                                <span>Filter</span>
+                                <span class="fs-24-600">Filter</span>
 
                             </div>
-                            <div class="vr"></div>
+                            <div class="vr mx-32"></div>
                         </div>
 
                         <!-- Filter dropdown -->
 
-                        <div class="col-lg-2 col-sm-2 col-md-2">
+                        <div class="">
                             <div class="dropdown ">
-                                <button class="btn bg-light border-0 dropdown-toggle rounded-pill px-3 active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-dark-r dropdown-toggle px-3 active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Location
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap align-items-center">
                                         @if(isset($filteredlocations) && !empty($filteredlocations))
                                         @foreach($filteredlocations as $filteredlocations)
                                         <label for="optionaddr{{$filteredlocations->itinerarylocations->address_city}}" class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredlocations->itinerarylocations->address_city}} <span>X</span>
@@ -48,7 +48,7 @@
                                         @endif
                                     </div>
                                     <div class="d-flex py-3">
-                                        <input type="search" id="my-input" name="my-input" placeholder=" Locations" class="locator rounded-pill px-2 mx-2 ">
+                                        <input type="search" id="my-input" name="my-input" placeholder=" Locations" class="locator fs-16-300 rounded-pill px-2 mx-2 ">
                                         <button class="btn btn-secondary w-50 rounded-pill  text-white submitBtn" type="button">Go</button>
                                     </div>
 
@@ -60,7 +60,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="form-check">
                                                                 <input type="checkbox" name="location[]" class="form-check-input filter" value="{{$filteritem->location_id}}" id="optionaddr{{$filteritem->itinerarylocations->address_city}}" {{ (isset($locationfilter) && in_array($filteritem->location_id, $locationfilter)) ? 'checked' : '' }}>
-                                                                <label for="optionaddr{{$filteritem->itinerarylocations->address_city}}" class="form-check-label">{{$filteritem->itinerarylocations->address_city}}</label>
+                                                                <label for="optionaddr{{$filteritem->itinerarylocations->address_city}}" class="form-check-label fs-16-400">{{$filteritem->itinerarylocations->address_city}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,15 +73,15 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-sm-2 col-md-2 ">
+                        <div class=" ">
                             <div class="dropdown">
-                                <button class="btn bg-light dropdown-toggle rounded-pill px-3" type="button"
+                                <button class="btn btn-dark-r filter dropdown-toggle  px-3" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tags
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap align-items-center">
 
                                         <hr>
                                     </div>
@@ -112,12 +112,12 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-sm-2 col-md-2 ">
+                        <div class=" ">
                             <div class="dropdown">
-                                <button class="btn bg-light dropdown-toggle rounded-pill px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
+                                <button class="btn btn-dark-r dropdown-toggle px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
-                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap">
+                                    <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap align-items-center">
                                         @if(isset($filteredusers) && !empty($filteredusers))
                                         @foreach($filteredusers as $filteredusers)
                                         <label for="optionuser{{$filteredusers->user->name}}" class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{$filteredusers->user->name}} <span>X</span>
@@ -150,16 +150,16 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-sm-2 col-md-2 ">
+                        <div class=" ">
                             <div class="dropdown">
-                                <button class="btn bg-light dropdown-toggle rounded-pill px-3" type="button"
+                                <button class="btn btn-dark-r dropdown-toggle px-3" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Trip length
                                 </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild" class="selected-field">
-                                        <button class="btn btn-primary rounded-pill gap-2 text-white d-flex justify-content-between align-items-center  " id="rangslide"> {{ (isset($daysrange)) ? '0-'.$daysrange : '0' }} days<span>x</span></button>
+                                        <button class=" clearbtn gap-2  d-flex justify-content-between align-items-center  " id="rangslide"> {{ (isset($daysrange)) ? '0-'.$daysrange : '0' }} days<span>x</span></button>
                                     </div>
                                     <hr>
                                     <div class="form-rang ">
@@ -183,7 +183,11 @@
                         </div>
                     </div>
                     <div class="selected-feild">
-                        <a href="{{ route('itineraries') }}" class="btn clearbtn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">Clear All filters x</a>
+                        <a href="{{ route('itineraries') }}" class="btn clearbtn1 ">Clear All filters <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </form>
             </div>
@@ -399,7 +403,7 @@
 
         });
 
-        
+
         $(document).on('click','a[data-role=btnfilterpagination]',function(e){
             e.preventDefault();
             var page = $(this).data('offset');
@@ -437,13 +441,11 @@
                 if (checkbox.is(':checked')) {
                     // Create a new selected item
                     var item = $('<label>', {
-                        'class': 'btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center',
+                        'class': 'btn clearbtn ',
                         'text': label + ' '
                     });
 
-                    var cross = $('<span>', {
-                        'text': 'X'
-                    });
+                    var cross = $('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/> </svg>');
 
                     item.append(cross);
 
