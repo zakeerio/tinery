@@ -1661,6 +1661,21 @@ label.required:after {
 
 @media screen and (max-width: 1024px) {
 
+    .fs-16-300{
+        font-size: 14px;
+    }
+    .fs-16-400{
+        font-size: 14px;
+    }
+    .fs-16-500{
+        font-size: 14px;
+    }
+    .fs-16-600{
+        font-size: 14px;
+    }
+    .fs-16-700{
+        font-size: 14px;
+    }
 
     .filters-p {
         font-size: 16px;
@@ -1724,7 +1739,7 @@ label.required:after {
     }
 
     .Ellipse {
-        max-width: 120px;
+        max-width: 160px;
     }
 
     .profile-tabs .nav-link {
