@@ -159,7 +159,10 @@
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild" class="selected-field">
-                                        <button class=" clearbtn gap-2  d-flex justify-content-between align-items-center  " id="rangslide"> {{ (isset($daysrange)) ? '0-'.$daysrange : '0' }} days<span>x</span></button>
+                                        <button class=" clearbtn gap-2  d-flex justify-content-between align-items-center  " id="rangslide"> {{ (isset($daysrange)) ? '0-'.$daysrange : '0' }} days<span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg></span></button>
                                     </div>
                                     <hr>
                                     <div class="form-rang ">
@@ -441,7 +444,7 @@
                 if (checkbox.is(':checked')) {
                     // Create a new selected item
                     var item = $('<label>', {
-                        'class': 'btn clearbtn ',
+                        'class': 'btn clearbtn gap-2 d-flex justify-content-between align-items-center ',
                         'text': label + ' '
                     });
 
