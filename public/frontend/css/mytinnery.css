@@ -46,7 +46,7 @@
     max-width: 1920px !important; */
 }
 
-.hero-content h2 {
+.hero-content-h2 {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
     font-weight: 700;
@@ -55,7 +55,7 @@
     color: #FFFFFF;
 }
 
-.hero-content p {
+.hero-content-p {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
     max-width: 580px;
@@ -289,7 +289,7 @@
     border-radius: 40px;
     color: #0F6496;
     text-decoration: none;
-    padding: 4px 20px;
+    padding: 4px 20px 2px 20px;
     background-color: transparent;
     /* margin: 0px 10px; */
     margin-right: 6px;
@@ -1120,7 +1120,7 @@ header {
 }
 
 .save-bt1 {
-    padding: 7px 32px !important;
+    padding: 7px 32px 5px 32px !important;
 }
 
 .fam-img {
@@ -1222,41 +1222,46 @@ header {
     font-weight: 300;
     color: #3E3E43;
 }
+.fs-23-300 {
+    font-size: 23px;
+    font-weight: 300;
+
+}
 
 .fs-20-300 {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 300;
     color: #2A293D;
 }
 
 .fs-24-600 {
-    font-size: 20px;
-    /* font-size: 24px; */
+    font-size: 24px;
+
     font-weight: 600;
 }
 
 .fs-24-700 {
-    font-size: 20px;
-    /* font-size: 24px; */
+    font-size: 24px;
+
     font-weight: 700;
 }
 
 .fs-18-600 {
-    font-size: 15px;
-    /* font-size: 18px; */
+    font-size: 18px;
+
     font-weight: 600;
 }
 
 .fs-12-300 {
-    /* font-size: 12px; */
+
     font-weight: 300;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .fs-12-400 {
-    /* font-size: 12px; */
+
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .bg-activity {
@@ -1280,13 +1285,17 @@ header {
 .nav-tabs .nav-link:hover{
     border: 2px solid #000;
 }
+.pass-icon{
+    top:32%;
+    right: 8%;
+}
 .did-floating-label {
     font-size: 16px;
     color: #0F6496;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 28px;
+    left: 17px;
     top: 30%;
     padding: 0 5px;
     background: #fff;
