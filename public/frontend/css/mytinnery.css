@@ -802,7 +802,7 @@
     background: #0F6496 !important;
     color: white;
 }
-.clearbtn {
+.clearbtn, .clearbtn_range {
     text-align: center;
 
     border-radius: 20px;
