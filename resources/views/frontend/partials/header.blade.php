@@ -12,9 +12,9 @@
                 <div class="d-lg-none">
                     <a class="nav-link " href="{{ url('/profile')}}">
                         @if(Auth::guard('user')->user()->profile != '')
-                        <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
+                        <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" alt="Profile Image" class=" rounded-circle w-40 " >
                         @else
-                        <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                        <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image" class=" rounded-circle w-40">
                         @endif
                     </a>
                 </div>
@@ -40,9 +40,9 @@
                             <li class="nav-item">
                                 <a class="nav-link d-none d-lg-block " href="{{ url('/profile')}}">
                                     @if(Auth::guard('user')->user()->profile != '')
-                                    <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" width="100%" height="50px" alt="Profile Image" class=" rounded-circle" >
+                                    <img src="{{ asset('frontend/profile_pictures/'.Auth::guard('user')->user()->profile) }}" alt="Profile Image" class=" rounded-circle w-40" >
                                     @else
-                                    <img src="{{ asset('frontend/images/profile-img.png') }}" width="100%" height="40px" alt="Profile Image" class=" rounded-circle">
+                                    <img src="{{ asset('frontend/images/profile-img.png') }}" alt="Profile Image" class=" rounded-circle w-40">
                                     @endif
                                 </a>
                             </li>
@@ -56,7 +56,7 @@
                         </div>
                     @else
                     <!-- Button trigger modal -->
-                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill px-lg-5 px-xl-4   efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
+                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill px-lg-5 px-xl-4  save-bt1 efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
                          <!-- Button trigger modal -->
                         <li class="nav-item"><a href="javascript:;" class="nav-link text-clr" data-bs-toggle="modal" data-bs-target="#userlogin">Login</a></li>
                     @endif
@@ -110,13 +110,14 @@
                                                 <div class="labe-section">
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::email('email', (old('email')) ? old('email') : null, [ 'placeholder' => "Email address", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginemail', 'required' => 'required']) !!}
-                                                        {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
+                                                        {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label fs-20-300']) !!}
                                                         <span class="invalid-feedback-login text-danger" role="alert" id="loginemailError"></span>
                                                         <span class="invalid-feedback-login text-success" role="alert" id="loginemailSuccess"></span>
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
-                                                        {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginpassword', 'required' => 'required']) !!}
+                                                        {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginpassword', 'required' => 'required' , 'id' => 'login-password']) !!}
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
+                                                        <span toggle="#login-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
                                                         <span class="invalid-feedback-login text-danger" role="alert" id="loginpassError"></span>
                                                         <span class="invalid-feedback-login text-success" role="alert" id="loginpassSuccess"></span>
                                                     </div>
@@ -205,66 +206,65 @@
                                         <div class="row ">
                                             <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3 p-0 regalertdangerdiv" style="display:none">
                                                 <div class="alert alert-danger regalertdanger">
-                                                    
                                                 </div>
                                             </div>
-                                            <div class="col-11 col-sm-8  col-md-5 mx-auto mx-md-3  p-0 ">
-                                                <div class="labe-section w-100">
-
-                                                    <div class="did-floating-label-content mb-4">
+                                            <div class=" mx-auto   p-0 ">
+                                                <div class="justify-content-center labe-section row w-100">
+                                                    <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
                                                         {{-- <input type="text" name="firstname" class="form-control w-100 rounded-pill did-floating-input p-3" id="firstname" placeholder="Enter your name" required>
                                                             <label for="firstname">Enter Your name</label> --}}
-
                                                             {!! Form::text('firstname',  (old('firstname')) ? old('firstname') : null, [ 'placeholder' => "Enter your name", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regfirstname']) !!}
-                                                            {!! Form::label('firstname', 'Enter your name', ['class' => 'did-floating-label']) !!}
+                                                            {!! Form::label('firstname', 'Enter your name', ['class' => 'did-floating-label ms-2']) !!}
                                                             <span class="invalid-feedback-registeration text-danger" role="alert" id="regnameError"></span>
-
-
                                                         </div>
-                                                        <div class="did-floating-label-content mb-4">
-                                                            {!! Form::email('email',  (old('email')) ? old('email') : null, [ 'placeholder' => "Enter your email", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regemail']) !!}
-                                                            {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label']) !!}
-                                                            <span class="invalid-feedback-registeration text-danger" role="alert" id="regemailError"></span>
-                                                            <span class="invalid-feedback-registeration text-success" role="alert" id="regemailSuccess"></span>
-                                                            {{-- <input type="email" name="email" class="form-control w-100 rounded-pill did-floating-input p-3" id="email" placeholder="Enter your email" required>
-                                                                <label for="email">Email</label> --}}
+                                                        <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
+                                                            {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 reglastname']) !!}
+                                                            {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label ms-2']) !!}
+                                                            <span class="invalid-feedback-registeration text-danger" role="alert" id="reglastnameError"></span>
+                                                            {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your name" required>
+                                                            <label for="lastname">Last Name</label> --}}
+                                                        </div>
                                                     </div>
-                                                    <div class="did-floating-label-content mb-4">
+                                            </div>
+                                            <div class=" mx-auto  p-0 ">
+                                                <div class="justify-content-center labe-section row w-100">
+                                                    <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
+                                                        {!! Form::email('email',  (old('email')) ? old('email') : null, [ 'placeholder' => "Enter your email", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regemail']) !!}
+                                                        {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label ms-2']) !!}
+                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="regemailError"></span>
+                                                        <span class="invalid-feedback-registeration text-success" role="alert" id="regemailSuccess"></span>
+                                                        {{-- <input type="email" name="email" class="form-control w-100 rounded-pill did-floating-input p-3" id="email" placeholder="Enter your email" required>
+                                                            <label for="email">Email</label> --}}
+                                                </div>
+                                                <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
+                                                    {!! Form::text('username',  (old('username')) ? old('username') : null, [ 'placeholder' => "Enter your Username", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regusername']) !!}
+                                                    {!! Form::label('username', 'Enter your Username', ['class' => 'did-floating-label ms-2']) !!}
+                                                    <span class="invalid-feedback-registeration text-danger" role="alert" id="regusernameError"></span>
+                                                    <span class="invalid-feedback-registeration text-success" role="alert" id="regusernameSuccess"></span>
+                                                    {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Username" required>
+                                                    <label for="Username">Username</label> --}}
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class=" mx-auto  p-0 ">
+                                                <div class="justify-content-center labe-section row w-100">
+                                                    <div class="col-md-6 col-sm-8 did-floating-label-content mb-4 position-relative">
                                                         {{-- {!! Form::password($name, [$options]) !!} --}}
-                                                        {!! Form::password('password', ['placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regpassword']) !!}
-                                                        {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
+                                                        {!! Form::password('password', ['placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regpassword','id' => 'password']) !!}
+                                                        {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label ms-2']) !!}
+                                                        <span toggle="#password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
                                                         <span class="invalid-feedback-registeration text-danger" role="alert" id="regpassError"></span>
                                                         {{-- <input type="password" name="password" class="form-control w-100 rounded-pill did-floating-input p-3" id="password" placeholder="Enter your password" required>
                                                             <label for="password">Password</label> --}}
                                                         </div>
-
-                                                    </div>
-                                            </div>
-                                            <div class="col-11 col-sm-8 col-md-5 mx-auto  p-0 ">
-                                                <div class="labe-section mx-0 w-100">
-                                                    <div class="did-floating-label-content mb-4">
-                                                        {!! Form::text('lastname',  (old('lastname')) ? old('lastname') : null, [ 'placeholder' => "Enter your lastname", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 reglastname']) !!}
-                                                        {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label']) !!}
-                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="reglastnameError"></span>
-                                                        {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your name" required>
-                                                        <label for="lastname">Last Name</label> --}}
-                                                    </div>
-                                                    <div class="did-floating-label-content mb-4">
-                                                        {!! Form::text('username',  (old('username')) ? old('username') : null, [ 'placeholder' => "Enter your Username", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regusername']) !!}
-                                                        {!! Form::label('username', 'Enter your Username', ['class' => 'did-floating-label']) !!}
-                                                        <span class="invalid-feedback-registeration text-danger" role="alert" id="regusernameError"></span>
-                                                        <span class="invalid-feedback-registeration text-success" role="alert" id="regusernameSuccess"></span>
-                                                        {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Username" required>
-                                                        <label for="Username">Username</label> --}}
-                                                    </div>
-                                                    <div class="did-floating-label-content mb-4">
-                                                        {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regconfirm_password ']) !!}
-                                                        {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label']) !!}
+                                                    <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
+                                                        {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regconfirm_password ','id' => 'c-password']) !!}
+                                                        {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label ms-2']) !!}
+                                                        <span toggle="#c-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
                                                         <span class="invalid-feedback-registeration text-danger" role="alert" id="regconpassError"></span>
                                                         {{-- <input type="password" name="confirm_password" class="form-control w-100 rounded-pill did-floating-input p-3" id="confirm_password" placeholder="Enter your confirm password" required>
                                                         <label for="confirm_password">Confirm Password</label> --}}
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
