@@ -4,9 +4,9 @@
 
 <div class="align-items-center d-flex hero-section">
     <div class="container">
-        <div class="hero-content">
-            <h2>{{ config('settings.banner_title') }}</h2>
-            <p class="hero-c-p">
+        <div class="">
+            <h2 class="hero-content-h2">{{ config('settings.banner_title') }}</h2>
+            <p class="hero-c-p hero-content-p">
                 {{ config('settings.banner_description') }}
             </p>
         </div>
@@ -20,7 +20,6 @@
             <div class="row">
                 <div class="d-flex justify-content-between align-items-center ">
                     <h1 class=" " >Explore Popular Travel Itineraries</h1>
-
                     <h2>
                         <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_1280_4499)">
