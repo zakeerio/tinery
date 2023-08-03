@@ -95,7 +95,7 @@
         $('#profileimg').on('change', function() {
             // Get the selected file
             var csrftoken = $('#csrftoken').val();
-                    
+
             var file = this.files[0];
             var imageTypes = ['image/jpeg', 'image/png', 'image/gif']; // Add other image formats as needed
             if (imageTypes.indexOf(file.type) === -1) {
@@ -113,12 +113,12 @@
             // You can display the file name somewhere on the page to let the user know the selected file.
             var fileName = file.name;
             console.log('Selected file: ' + fileName);
-            
+
             // Create a FormData object to send the file to the server
             var formData = new FormData();
             formData.append('file', file);
             formData.append('_token', csrftoken);
-            
+
             // Use AJAX to submit the form without page refresh
             $.ajax({
                 url: '{{ route('profilepictureupdate') }}',

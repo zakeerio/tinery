@@ -23,7 +23,7 @@
                                             class="fa-solid fs-4 fa-circle-plus"></i></label>
                                     <div class="d-none"><input type="file" name="file" id="profileimg"></div>
                                 </form>
-                                 
+
                             </form>
                         </div>
                         <div class="">
@@ -386,7 +386,7 @@
                                             @if (!empty($itinerary->seo_image))
                                                <div class="col-3 w-120i rounded position-relative">
                                                 <img src="{{ asset('frontend/itineraries/'. $itinerary->seo_image) }}" alt="" class="w-120i rounded">
-                                                <img src="frontend/images/heart-red.png" alt="" class=" position-absolute heart-position">
+                                                <img src="frontend/images/heart-red.svg" alt="" class=" position-absolute heart-position">
                                                 </div>
                                             @else
                                             <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="col-3 w-120i  rounded">
