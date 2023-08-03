@@ -379,20 +379,24 @@
                 success: function (data) {
                     var res = $.parseJSON(data);
                     if (res.success) {
-                        $.notify({
-                            title: '<strong>SUCCESS!</strong>',
-                            message: res.success
-                        }, {
-                            type: 'success'
-                        });
+                        $(".divheartitinerarysuccess").show();
+                        $(".divheartitinerarysuccesshtml").html('Itinerary has saved Successfully.');
+                        // $.notify({
+                        //     title: '<strong>SUCCESS!</strong>',
+                        //     message: res.success
+                        // }, {
+                        //     type: 'success'
+                        // });
                     }
                     if (res.error) {
-                        $.notify({
-                            title: '<strong>ERROR!</strong>',
-                            message: res.error
-                        }, {
-                            type: 'danger'
-                        });
+                        $(".divheartitineraryerror").show();
+                        $(".divheartitineraryerrorhtml").html('Error to save Itinerary in your wishlist!');
+                        // $.notify({
+                        //     title: '<strong>ERROR!</strong>',
+                        //     message: res.error
+                        // }, {
+                        //     type: 'danger'
+                        // });
                     }
                     setTimeout(function () {
                         window.history.go(0); // Replace with your desired URL
@@ -411,12 +415,14 @@
                 success: function (data) {
                     var res = $.parseJSON(data);
                     if (res.success) {
-                        $.notify({
-                            title: '<strong>SUCCESS!</strong>',
-                            message: res.success
-                        }, {
-                            type: 'success'
-                        });
+                        $(".divheartitinerarysuccess").show();
+                        $(".divheartitinerarysuccesshtml").html('Itinerary has deleted Successfully.');
+                        // $.notify({
+                        //     title: '<strong>SUCCESS!</strong>',
+                        //     message: res.success
+                        // }, {
+                        //     type: 'success'
+                        // });
                     }
 
                     setTimeout(function () {
@@ -426,12 +432,14 @@
             });
         });
         $(document).on('click', 'a[data-role=addtowishlistnotlogin]', function () {
-            $.notify({
-                title: '<strong>ERROR!</strong>',
-                message: 'Login to add your Favourites'
-            }, {
-                type: 'danger'
-            });
+            $(".divheartitineraryerror").show();
+            $(".divheartitineraryerrorhtml").html('Login first to add Itinerary to your Favourites');
+            // $.notify({
+            //     title: '<strong>ERROR!</strong>',
+            //     message: 'Login to add your Favourites'
+            // }, {
+            //     type: 'danger'
+            // });
         });
     });
 </script>

@@ -20,7 +20,6 @@
             <div class="row">
                 <div class="d-flex justify-content-between align-items-center ">
                     <h1 class=" " >Explore Popular Travel Itineraries</h1>
-
                     <h2>
                         <a href="{{ route('itineraries') }}" class="text-decoration-none text-dark">Explore All <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_1280_4499)">
@@ -41,7 +40,34 @@
         </div>
     </div>
 </div>
-
+<div class="cards-item">
+    <div class="container divheartitineraryerror" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> <span class="divheartitineraryerrorhtml"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cards-item">
+    <div class="container divheartitinerarysuccess" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> <span class="divheartitinerarysuccesshtml"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card-section py-3  px-md-0">
     <div class="container mx-md-auto ">
         <div class="cards-item">

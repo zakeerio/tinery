@@ -13,6 +13,35 @@
         </div>
     </div>
 
+    <div class="cards-item">
+        <div class="container divheartitineraryerror" style="display:none;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> <span class="divheartitineraryerrorhtml"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-item">
+        <div class="container divheartitinerarysuccess" style="display:none;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> <span class="divheartitinerarysuccesshtml"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="filter">
         <div class="container">
             <div class="filter-body">
