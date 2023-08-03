@@ -58,7 +58,7 @@
                     <div class="accordion mt-4 " id="accordionExample">
                         <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="adminBio">
-                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 border-bottom collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseAdminBio" aria-expanded="true"
                                     aria-controls="collapseAdminBio">
                                     <span class="fs-18-600 text-black">Admin</span>
@@ -88,7 +88,7 @@
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    {!! Form::label('username', 'Username',['class'=>'fw-bold required mb-3']) !!}
+                                                    {!! Form::label('username', 'Username',['class'=>'fw-bold required my-1']) !!}
                                                     {!! Form::text('username', $user->username, ['class' => 'form-control rounded-pill mb-1']) !!}
                                                 </div>
                                                 <small class="small-tiny-color" >Your Tinery URL: {{ route('username', ['username' => $user->username]) }}</small>
@@ -135,7 +135,7 @@
 
                         <div class="accordion-item border-0 border-bottom ">
                             <h2 class="accordion-header" id="bioHeading">
-                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 border-bottom collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseBio" aria-expanded="false" aria-controls="collapseBio">
                                     <span class="fs-18-600">Bio</span>
                                 </button>
@@ -184,7 +184,7 @@
 
                         <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="socialProfile">
-                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 border-bottom collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSocialProfile" aria-expanded="false"
                                     aria-controls="collapseSocialProfile">
                                     <span class="fs-18-600">Social Profile</span>
@@ -264,7 +264,7 @@
 
                         <div class="accordion-item border-0 border-bottom">
                             <h2 class="accordion-header" id="relevantTags">
-                                <button class="accordion-button accordionbtn px-1 collapsed" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button accordionbtn px-1 border-bottom collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseRelevantTags" aria-expanded="false"
                                     aria-controls="collapseRelevantTags">
                                     <span class="fs-18-600">Relevant Tags</span>
@@ -315,7 +315,7 @@
                     <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
                     <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button id="tab1" class="btn btn-outline-danger  rounded-pill nav-link active px-3"
+                            <button id="tab1" class=" nav-link active btn-dark-r1 px-3 py-2 "
                                 type="button" role="tab" aria-controls="content1" aria-selected="true"
                                 data-bs-toggle="tab" data-bs-target="#content1">
                                 My Itinerary List
@@ -323,7 +323,7 @@
 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class=" btn-link nav-link rounded-pill btn btn-outlie-light text-dark px-3" id="tab2" data-bs-toggle="tab"
+                            <button class="btn-dark-r1 px-3 py-2 nav-link" id="tab2" data-bs-toggle="tab"
                                 data-bs-target="#content2" type="button" role="tab" aria-controls="content2"
                                 aria-selected="false"><i class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
                         </li>

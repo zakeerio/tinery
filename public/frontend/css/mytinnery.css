@@ -263,10 +263,19 @@
     color: #000;
     /* font-size: 24px; */
     font-size: 20px;
-    line-height: 40px;
     padding: 3px 16px;
+    line-height: 1.4em;
 }
+.btn-dark-r1{
+    border-radius: 50px;
+    border: 2px solid #000;
+    background: transparent;
 
+}
+.btn-dark-r1:focus{
+    color: #C83232;
+    border: 2px solid #C83232;
+}
 .title1 {
     /* font-size: 20px; */
     font-size: 18px;
@@ -491,7 +500,10 @@
     min-height: 34px;
     height: auto;
 }
-
+.w-40{
+    width: 40px;
+    height: 40px;
+}
 
 
 
@@ -1261,14 +1273,20 @@ header {
 .r-10 {
     border-radius: 10px;
 }
-
+.nav-tabs .nav-link{
+    border-top-left-radius:50px;
+    border-top-right-radius: 50px;
+}
+.nav-tabs .nav-link:hover{
+    border: 2px solid #000;
+}
 .did-floating-label {
     font-size: 16px;
     color: #0F6496;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 15px;
+    left: 28px;
     top: 30%;
     padding: 0 5px;
     background: #fff;
