@@ -75,17 +75,25 @@
         title: '<strong>SUCCESS!</strong>',
         message: '<?= Session::get('success')?>'
         },{
-        type: 'success'
+        type: 'success',
+        placement: {
+            from: "center",  // Place the notification in the center
+            align: "center"  // Align the notification content to the center
+        }
         });
     </script>
 @endif
 @if(Session::has('error'))
     <script>
         $.notify({
-        title: '<strong>Error!</strong>',
-        message: '<?= Session::get('error')?>'
+            title: '<strong>Error!</strong>',
+            message: '<?= Session::get('error')?>'
         },{
-        type: 'danger'
+            type: 'danger',
+            placement: {
+                from: "center",  // Place the notification in the center
+                align: "center"  // Align the notification content to the center
+            }
         });
     </script>
 @endif
@@ -369,8 +377,20 @@
         });
         $('.select2').select2();
         $(document).on('click', 'a[data-role=addtowishlist]', function () {
+            var currentElement = this;
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
+            var img_source =  $(this).data("source");
+            var single_img_path = `{{ asset('frontend/images/heart-red.svg') }}`;
+            var general_img_path = `{{ asset('frontend/images/border-heart.svg') }}`;
+            var added_img_path = '';
+            if(img_source) {
+                added_img_path = single_img_path;
+            } else {
+                added_img_path = general_img_path;
+            }
+            var condition_true = false;
+
 
             $.ajax({
                 url: '{{ url("/favourites")}}',
@@ -379,30 +399,59 @@
                 success: function (data) {
                     var res = $.parseJSON(data);
                     if (res.success) {
-                        $.notify({
+                        condition_true = true;
+
+                        var notification = $.notify({
                             title: '<strong>SUCCESS!</strong>',
                             message: res.success
                         }, {
-                            type: 'success'
+                            type: 'success',
+                            placement: {
+                                // from: "center",  // Place the notification in the center
+                                align: "center"  // Align the notification content to the center
+                            }
                         });
                     }
                     if (res.error) {
-                        $.notify({
+                        var notification = $.notify({
                             title: '<strong>ERROR!</strong>',
                             message: res.error
                         }, {
-                            type: 'danger'
+                            type: 'danger',
+                            placement: {
+                                // from: "center",  // Place the notification in the center
+                                align: "center"  // Align the notification content to the center
+                            }
                         });
                     }
+                    if(condition_true){
+                        $(currentElement).find('img').attr('src', added_img_path);
+                        $(currentElement).attr('data-role', 'removetowishlist');
+                    }
                     setTimeout(function () {
-                        window.history.go(0); // Replace with your desired URL
+                        notification.close();
+                        // window.history.go(0); // Replace with your desired URL
                     }, 500);
                 }
             });
+
+
         });
         $(document).on('click', 'a[data-role=removetowishlist]', function () {
+            var currentElement = this;
             var id = $(this).data('id');
             var csrftoken = $('#csrftoken').val();
+            var img_source =  $(this).data("source");
+            var single_img_path = `{{ asset('frontend/images/border-heart.svg') }}`;
+            var general_img_path = `{{ asset('frontend/images/Path.png') }}`;
+            var added_img_path = '';
+            if(img_source) {
+                added_img_path = single_img_path;
+            } else {
+                added_img_path = general_img_path;
+            }
+
+            var condition_true = false;
 
             $.ajax({
                 url: '{{ url("/removefavourites")}}',
@@ -411,27 +460,48 @@
                 success: function (data) {
                     var res = $.parseJSON(data);
                     if (res.success) {
-                        $.notify({
+                        condition_true = true;
+
+                        var notification = $.notify({
                             title: '<strong>SUCCESS!</strong>',
                             message: res.success
                         }, {
-                            type: 'success'
+                            type: 'success',
+                            placement: {
+                                // from: "center",  // Place the notification in the center
+                                align: "center"  // Align the notification content to the center
+                            }
                         });
                     }
 
+                    if(condition_true){
+                        $(currentElement).find('img').attr('src', added_img_path);
+                        $(currentElement).attr('data-role', 'addtowishlist');
+                    }
+
                     setTimeout(function () {
-                        window.history.go(0); // Replace with your desired URL
+                        notification.close()
+                        // window.history.go(0); // Replace with your desired URL
                     }, 500);
                 }
             });
+
         });
         $(document).on('click', 'a[data-role=addtowishlistnotlogin]', function () {
-            $.notify({
+            var notification = $.notify({
                 title: '<strong>ERROR!</strong>',
                 message: 'Login to add your Favourites'
             }, {
-                type: 'danger'
+                type: 'danger',
+                placement: {
+                    // from: "center",  // Place the notification in the center
+                    align: "center"  // Align the notification content to the center
+                }
             });
+
+            setTimeout(function () {
+                notification.close()
+            }, 1000);
         });
     });
 </script>
