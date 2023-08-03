@@ -395,6 +395,8 @@ $locationArrJson = json_encode($locationsArr);
         </div>
     </div>
 </div>
+<?=config('settings.social_instagram')?>
+<?=config('settings.social_tiktok')?>
 <div class='sk-ww-instagram-hashtag-feed' data-embed-id='163541'></div><script src='https://widgets.sociablekit.com/instagram-hashtag-feed/widget.js' async defer></script>
 <div class='sk-ww-tiktok-hashtag-feed' data-embed-id='163335'></div><script src='https://widgets.sociablekit.com/tiktok-hashtag-feed/widget.js' async defer></script>
 <div class="about-us py-4 d-none d-lg-block">

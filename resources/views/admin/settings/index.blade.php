@@ -230,6 +230,43 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Home Page Social Scripts</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0" style="display: block;">
+                        <form action="{{ route('admin.settings.update') }}" method="POST">
+                            @csrf
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="summernote" class="form-label">Instagram Script</label>
+                                            <textarea name="social_instagram" class="form-control" cols="30" rows="5">{{ config('settings.social_instagram') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="summernote" class="form-label">Tiktok Script</label>
+                                            <textarea name="social_tiktok" class="form-control" cols="30" rows="5">{{ config('settings.social_tiktok') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 pt-3">
+                                        <p class="text-right"><input type="submit" value="UPDATE" class="btn btn-success">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>
