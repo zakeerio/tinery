@@ -117,7 +117,7 @@
                                                     <div class="did-floating-label-content mb-4">
                                                         {!! Form::password('password', [ 'placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 loginpassword', 'required' => 'required' , 'id' => 'login-password']) !!}
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
-                                                        <span toggle="#login-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
+                                                        <span toggle="#login-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-26-300"></span>
                                                         <span class="invalid-feedback-login text-danger" role="alert" id="loginpassError"></span>
                                                         <span class="invalid-feedback-login text-success" role="alert" id="loginpassSuccess"></span>
                                                     </div>
@@ -125,7 +125,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-2">
-                                            {!! Form::submit("Login", ['class' => 'btn btn-light become-btn' ]) !!}
+                                            {!! Form::submit("Login", ['class' => ' become-btn' ]) !!}
                                         </div>
                                         <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
 
@@ -252,7 +252,7 @@
                                                         {{-- {!! Form::password($name, [$options]) !!} --}}
                                                         {!! Form::password('password', ['placeholder' => "Enter your password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regpassword','id' => 'password']) !!}
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label ms-2']) !!}
-                                                        <span toggle="#password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
+                                                        <span toggle="#password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-26-300"></span>
                                                         <span class="invalid-feedback-registeration text-danger" role="alert" id="regpassError"></span>
                                                         {{-- <input type="password" name="password" class="form-control w-100 rounded-pill did-floating-input p-3" id="password" placeholder="Enter your password" required>
                                                             <label for="password">Password</label> --}}
@@ -260,7 +260,7 @@
                                                     <div class="col-md-6 col-sm-8 did-floating-label-content mb-4">
                                                         {!! Form::password('confirm_password', [ 'placeholder' => "Confirm Password", 'class' => 'form-control w-100 rounded-pill did-floating-input p-3 regconfirm_password ','id' => 'c-password']) !!}
                                                         {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label ms-2']) !!}
-                                                        <span toggle="#c-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-23-300"></span>
+                                                        <span toggle="#c-password" class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-26-300"></span>
                                                         <span class="invalid-feedback-registeration text-danger" role="alert" id="regconpassError"></span>
                                                         {{-- <input type="password" name="confirm_password" class="form-control w-100 rounded-pill did-floating-input p-3" id="confirm_password" placeholder="Enter your confirm password" required>
                                                         <label for="confirm_password">Confirm Password</label> --}}
@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group text-center text-md-start">
-                                            {!! Form::submit("Become a Member", ['class' => 'btn btn-dark rounded-pill save-bt1  ' ]) !!}
+                                            {!! Form::submit("Become a Member", ['class' => ' become-btn  ' ]) !!}
                                             {!! Form::close() !!}
                                         </div>
 

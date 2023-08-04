@@ -58,7 +58,7 @@
 .hero-content-p {
     /* font-family: "Axiforma", Sans-serif; */
     font-style: normal;
-    max-width: 580px;
+    max-width: 530px;
     width: 100%;
     font-weight: 400;
     /* font-size: 24px; */
@@ -607,11 +607,13 @@
 }
 
 .become-btn {
-    width: 201px;
-    height: 48px;
+    width: 250px;
+    padding: 18px 0px 15px 0px;
     color: aliceblue;
-    background: #7F7F8B;
-    border-radius: 26px;
+    background: #29293D;
+    border-radius: 50px;
+    text-align: center;
+
 }
 
 .perfect-item {
@@ -1222,9 +1224,10 @@ header {
     font-weight: 300;
     color: #3E3E43;
 }
-.fs-23-300 {
-    font-size: 23px;
-    font-weight: 300;
+
+.fs-26-300 {
+    font-size: 26px !important;
+    font-weight: 300 !important;
 
 }
 
@@ -1286,9 +1289,10 @@ header {
     border: 2px solid #000;
 }
 .pass-icon{
-    top:32%;
-    right: 8%;
+    top:19px;
+    right: 30px;
 }
+
 .did-floating-label {
     font-size: 16px;
     color: #0F6496;
@@ -1296,7 +1300,7 @@ header {
     position: absolute;
     pointer-events: none;
     left: 17px;
-    top: 30%;
+    top: 20px;
     padding: 0 5px;
     background: #fff;
     transition: 0.2s ease all;
