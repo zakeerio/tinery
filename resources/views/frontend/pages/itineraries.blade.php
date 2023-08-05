@@ -34,7 +34,7 @@
 
                         <div class="">
                             <div class="dropdown ">
-                                <button class="btn btn-dark-r dropdown-toggle px-3 active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-dark-r dropdown-toggle px-3 pt-2 active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Location
                                 </button>
 
@@ -75,7 +75,7 @@
 
                         <div class=" ">
                             <div class="dropdown">
-                                <button class="btn btn-dark-r filter dropdown-toggle  px-3" type="button"
+                                <button class="btn btn-dark-r filter dropdown-toggle px-3 pt-2" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tags
                                 </button>
@@ -114,7 +114,7 @@
 
                         <div class=" ">
                             <div class="dropdown">
-                                <button class="btn btn-dark-r dropdown-toggle px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
+                                <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User </button>
 
                                 <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
                                     <div id="selected-feild" class="selected-feild d-flex gap-1 flex-wrap align-items-center">
@@ -152,7 +152,7 @@
 
                         <div class=" ">
                             <div class="dropdown">
-                                <button class="btn btn-dark-r dropdown-toggle px-3" type="button"
+                                <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Trip length
                                 </button>
