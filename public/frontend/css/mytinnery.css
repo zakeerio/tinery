@@ -608,7 +608,7 @@
 
 .become-btn {
     width: 250px;
-    padding: 18px 0px 15px 0px;
+    padding: 12px 0px 9px 0px;
     color: aliceblue;
     background: #29293D;
     border-radius: 50px;
@@ -1289,18 +1289,23 @@ header {
     border: 2px solid #000;
 }
 .pass-icon{
-    top:19px;
-    right: 30px;
+    top:18px;
+    right: 28px;
+}
+.pass-icon1{
+    top:18px;
+    right: 20px;
 }
 
+
 .did-floating-label {
-    font-size: 16px;
+    font-size: 15px;
     color: #0F6496;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     left: 17px;
-    top: 20px;
+    top: 14px;
     padding: 0 5px;
     background: #fff;
     transition: 0.2s ease all;
@@ -1312,8 +1317,10 @@ header {
 .did-floating-select {
     display: block;
     width: 100%;
-    height: 58px;
-    padding: 0 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+    font-weight: 300;
     background: #fff;
     color: #323840;
     border: 1px solid #29293D;
@@ -1808,6 +1815,7 @@ label.required:after {
     .cards-item {
         border-radius: 0;
         padding-left: 5px;
+        padding-right: 5px;
 
     }
 
@@ -1877,17 +1885,36 @@ label.required:after {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .border-card {
         border: 0;
     }
+    .did-floating-input{
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    .did-floating-label{
+        top: 9px;
+    }
+    .pass-icon{
+        top: 13px;
+        right: 26px;
+    }
+    .pass-icon1{
+        top: 13px;
+        right: 15px;
+    }
+
+
 }
 
 @media screen and (max-width: 489px) {
     .featuredimg-padding {
         padding: 34px 0;
     }
-
+    .cards-item{
+        padding-right: 5px;
+    }
     .city {
         gap: 10px !important;
     }
