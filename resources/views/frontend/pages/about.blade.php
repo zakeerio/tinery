@@ -408,22 +408,22 @@
                                     <div class="row w-50">
                                         @if(!empty($itinerary->user->facebook))
                                         <div class="col-lg-3">
-                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
                                         </div>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
                                         <div class="col-lg-3">
-                                            <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
                                         </div>
                                         @endif
                                         @if(!empty($itinerary->user->instagram))
                                         <div class="col-lg-3">
-                                            <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
                                         </div>
                                         @endif
                                         @if(!empty($itinerary->user->website))
                                         <div class="col-lg-3">
-                                            <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
                                         </div>
                                         @endif
                                     </div>

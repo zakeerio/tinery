@@ -469,19 +469,19 @@
                                     <div class="profiler"><a class="text-black text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
                                     <div class="d-flex  socialpicsize d-none d-sm-flex">
                                         @if(!empty($itinerary->user->facebook))
-                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
-                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
+                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a></div>
                                             @endif
                                             @if(!empty($itinerary->user->instagram))
-                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->tiktok))
-                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
+                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a></div>
                                             @endif
                                             @if(!empty($itinerary->user->website))
-                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a></div>
                                             @endif
                                     </div>
                                 </div>
@@ -493,19 +493,19 @@
                             </h6>
                             <div class="d-flex  socialpicsize d-sm-none justify-content-around">
                                         @if(!empty($itinerary->user->facebook))
-                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a></div>
+                                        <div>  <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
-                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a></div>
+                                            <div><a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a></div>
                                             @endif
                                             @if(!empty($itinerary->user->instagram))
-                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a></div>
+                                            <div> <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a></div>
                                         @endif
                                         @if(!empty($itinerary->user->tiktok))
-                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a></div>
+                                            <div><a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a></div>
                                             @endif
                                             @if(!empty($itinerary->user->website))
-                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a></div>
+                                            <div> <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a></div>
                                             @endif
                                     </div>
                         </div>
