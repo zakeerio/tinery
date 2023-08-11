@@ -225,8 +225,7 @@
 
 .related {
     font-weight: 600;
-    /* font-size: 20px; */
-    font-size: 16px;
+    font-size: 20px;
     line-height: 33px;
 }
 
@@ -289,7 +288,7 @@
     border-radius: 40px;
     color: #0F6496;
     text-decoration: none;
-    padding: 4px 20px 2px 20px;
+    padding: 4px 20px 0px 20px;
     background-color: transparent;
     /* margin: 0px 10px; */
     margin-right: 6px;
@@ -387,8 +386,8 @@
 }
 
 .socialpicsize img {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     object-fit: cover;
 }
 
@@ -610,9 +609,13 @@
     width: 250px;
     padding: 12px 0px 9px 0px;
     color: aliceblue;
-    background: #29293D;
+    /* background: #29293D; */
+    background: var(--updated-primary-dark-blue-dark-blue-300, #7F7F8B);
+    border: none;
     border-radius: 50px;
     text-align: center;
+    font-size: 16px;
+    font-weight: 600;
 
 }
 
@@ -969,10 +972,13 @@ header {
 
 }
 
-.socail-imgaes {
+.socail-imgaes img {
     width: 24px;
     height: 24px;
-    gap: 10px;
+
+}
+.socail-imgaes{
+    gap: 7px;
 }
 
 .heart-size {
@@ -1016,7 +1022,7 @@ header {
 }
 
 .profile-gap {
-    column-gap: 35px;
+    column-gap: 25px;
 }
 
 
@@ -1232,7 +1238,8 @@ header {
 }
 
 .fs-20-300 {
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 16px;
     font-weight: 300;
     color: #2A293D;
 }
@@ -1599,6 +1606,12 @@ label.required:after {
     display: none;
 }
 
+
+
+
+
+
+
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -1819,15 +1832,9 @@ label.required:after {
 
     }
 
-    .hero-content h2 {
-        font-size: 56px;
-        line-height: 1.4em;
-    }
 
-    .hero-content p {
-        font-size: 20px;
-        line-height: 1.4em;
-    }
+
+
 
     .hero-content {
         padding: 88px 17px;
@@ -1904,11 +1911,20 @@ label.required:after {
         top: 13px;
         right: 15px;
     }
-
+    .profiler .fs-16-300{
+        font-size: 24px;
+        font-weight: 500;
+    }
 
 }
+@media screen and (max-width: 575px){
+    .hero-content-h2{
+        font-size: 48px;
+    }
+    .hero-content-p{
+        max-width: 440px;
+    }
 
-@media screen and (max-width: 489px) {
     .featuredimg-padding {
         padding: 34px 0;
     }
@@ -2102,6 +2118,14 @@ label.required:after {
     .border-card {
         border: none;
     }
+    .socialpicsize img{
+        width: 32px;
+        height: 32px;
+    }
+    .profiler .fs-24-500{
+        font-weight: 600;
+    }
+
 
 
 }
