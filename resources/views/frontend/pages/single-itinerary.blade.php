@@ -184,7 +184,7 @@
                                                 </div>
                                             </button>
                                             <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
-                                                <div class="accordion-body px-lg-5">{{ $activity->description }}</div>
+                                                <div class="accordion-body px-5">{{ $activity->description }}</div>
                                             </div>
                                         </div>
                                         @endforeach
@@ -388,7 +388,7 @@
             </div>
 
             <div class="col-lg-4 mt-3">
-                <div class="profile p-3">
+                <div class="profile p-3 d-sm-flex d-lg-block align-items-sm-baseline">
                     <div class="d-flex align-items-center">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
