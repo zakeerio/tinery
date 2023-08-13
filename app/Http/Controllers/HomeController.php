@@ -105,7 +105,7 @@ class HomeController extends Controller
         $tagsnames = array();
         $smallestnumber = Itineraries::min('duration');
         $largestnumber = Itineraries::max('duration');
-        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(4);
+        $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(15);
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
         foreach($filter as $itineraries)
         {
@@ -136,7 +136,7 @@ class HomeController extends Controller
         $daysrange = $request->daysrange;
 
         $page = $request->page;
-        $limit = $request->input('limit', 4); // Custom items per page, default is 15
+        $limit = $request->input('limit', 15); // Custom items per page, default is 15
         $offset = $request->input('offset', $page); // Custom page number offset, default is 0
 
         $total = Itineraries::count();
