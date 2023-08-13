@@ -4,7 +4,7 @@
 
 <div class="align-items-center d-flex hero-section">
     <div class="container">
-        <div class="">
+        <div class="ps-5">
             <h2 class="hero-content-h2">{{ config('settings.banner_title') }}</h2>
             <p class="hero-c-p hero-content-p">
                 {{ config('settings.banner_description') }}

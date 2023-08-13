@@ -31,19 +31,19 @@
                                 <h5 class="card-title card-title-profile    d-none d-lg-flex">Hi, {{ $user->name }} {{ $user->lastname }}!</h5>
                                 <div class="d-flex  socail-imgaes d-none d-lg-flex">
                                     @if(!empty($user->facebook))
-                                        <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                        <a href="{{$user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->twitter))
-                                        <a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                        <a href="{{$user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->instagram))
-                                        <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                        <a href="{{$user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->tiktok))
-                                        <a href="{{$user->tiktok}}"><img class=" socail-imgaes" src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                        <a href="{{$user->tiktok}}"><img class=" socail-imgaes" src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a>
                                     @endif
                                     @if(!empty($user->website))
-                                        <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                        <a href="{{$user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
                                     @endif
                                 </div>
                             </div>

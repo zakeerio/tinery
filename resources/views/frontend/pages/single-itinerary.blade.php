@@ -76,7 +76,7 @@
                                         @endif
                                     </a>
                                 </div>
-                                <div class="profile-p px-1 profilefont"><a class="text-black fs-16-300 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
+                                <div class="profile-p px-1 profilefont"><a class="text-black fs-24-500 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ ($itinerary->user) ? $itinerary->user->name : 'User not found.' }} </a></div>
                             <div class="vr align-self-center linesize mx-1"></div>
                             <div class="fs-20-300 px-3  ">{{date('d/y/Y',strtotime($itinerary->created_at))}}</div>
                         </div>
@@ -151,11 +151,11 @@
                             $activityKey = 0;
                             @endphp
                             @foreach($days as $key => $days)
-                            <div class="accordion accordion-flush  py-4" id="accordionSibglepage{{$days->id}}">
+                            <div class="accordion accordion-flush " id="accordionSibglepage{{$days->id}}">
                                 <h5 class=" text-dark fs-24-700 m-0"> Day {{++$key}}</h5>
                                 <div class="sideborder d-flex position-relative">
                                     <div class="vr text-dark h-100 position-absolute  vr1">&nbsp;</div>
-                                    <div class="d-flex flex-column gap-4 py-4 w-100 ">
+                                    <div class="d-flex flex-column gap-4 py-5 w-100 ">
                                         @php
                                             $activities = \App\Models\ItineraryActivities::where('days_id',$days->id)->get();
                                             @endphp
@@ -184,7 +184,7 @@
                                                 </div>
                                             </button>
                                             <div id="flush-collapseOne{{ $days->id.'-'.$activity->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionSibglepage{{$days->id}}">
-                                                <div class="accordion-body px-lg-5">{{ $activity->description }}</div>
+                                                <div class="accordion-body px-5">{{ $activity->description }}</div>
                                             </div>
                                         </div>
                                         @endforeach
@@ -205,7 +205,7 @@
                             @endphp
 
                             @if ($locationsArr)
-                            <div class="world py-3">
+                            <div class="world pt-5 pb-4">
                                 <div id="homepagemap" style="height: 300px;"></div>
                             </div>
                             @endif
@@ -235,7 +235,7 @@
                             </div> --}}
                             <div class="accordion accordion-flush  py-4" id="message-accord">
                                 <div class="sideborder d-flex position-relative">
-                                    <div class="d-flex flex-column gap-4 py-4 w-100 ">
+                                    <div class="d-flex flex-column gap-4 py-5 w-100 ">
                                         <div class="accordion-item  border-0  mycollapsebutton">
                                             <button class="accordion-button collapsed acordionsinglepage " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <div class="d-flex align-items-center w-100">
@@ -259,7 +259,7 @@
                                                         <label>Comment</label>
                                                         <textarea name="body" class="form-control" cols="10" rows="5" required></textarea>
                                                         <br>
-                                                        <input type="submit" value="Save" class="btn btn-primary">
+                                                        <input type="submit" value="Save" class="btn btn-dark px-4 rounded-pill">
                                                     </form>
                                                     @endif
                                                     <hr>
@@ -357,7 +357,7 @@
                                                                             </div>
                                                                             @endif
                                                                             <div class="col-md-3  mt-2">
-                                                                                <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span>
+                                                                                {{-- <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span> --}}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -388,7 +388,7 @@
             </div>
 
             <div class="col-lg-4 mt-3">
-                <div class="profile p-3">
+                <div class="profile p-3 d-sm-flex d-lg-block align-items-sm-baseline">
                     <div class="d-flex align-items-center">
                         <div class="sideprofilepic rounded-circle">
                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
@@ -400,22 +400,22 @@
                             </a>
                         </div>
                         <div class="sidenameandlinks">
-                            <div class="profiler"><a class="text-black fs-16-300 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
+                            <div class="profiler"><a class="text-black fs-24-500 text-decoration-none" href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{$itinerary->user->name}}</a></div>
                                     <div class="d-flex socialpicsize d-none d-sm-block">
                                         @if(!empty($itinerary->user->facebook))
-                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                            <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
                                         @endif
                                         @if(!empty($itinerary->user->twitter))
-                                        <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                        <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
                                         @endif
                                         @if(!empty($itinerary->user->instagram))
-                                        <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                        <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
                                         @endif
                                         @if(!empty($itinerary->user->tiktok))
-                                        <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                        <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a>
                                         @endif
                                         @if(!empty($itinerary->user->website))
-                                        <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                        <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
                                         @endif
                                     </div>
 
@@ -429,19 +429,19 @@
                             </h6>
                             <div class="d-flex socialpicsize d-sm-none justify-content-evenly ">
                                 @if(!empty($itinerary->user->facebook))
-                                <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.png') }}" alt=""></a>
+                                <a href="{{$itinerary->user->facebook}}"><img src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
                                 @endif
                                 @if(!empty($itinerary->user->twitter))
-                                <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.png') }}" alt=""></a>
+                                <a href="{{$itinerary->user->twitter}}"><img src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
                                 @endif
                                 @if(!empty($itinerary->user->instagram))
-                                <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.png') }}" alt=""></a>
+                                <a href="{{$itinerary->user->instagram}}"><img src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
                                 @endif
                                 @if(!empty($itinerary->user->tiktok))
-                                <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.png') }}" alt=""></a>
+                                <a href="{{$itinerary->user->tiktok}}"><img src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a>
                                 @endif
                                 @if(!empty($itinerary->user->website))
-                                <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.png') }}" alt=""></a>
+                                <a href="{{$itinerary->user->website}}"><img src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
                                 @endif
                             </div>
                         </div>
@@ -466,7 +466,7 @@
                                             <div class="profiler-relate profile-relate">{{$rowrelated->title}}</div>
                                         </a>
                                         <div class="d-flex align-items-center">
-                                            <p class="lang"><a class="text-black text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
+                                            <p class="lang"><a class=" text-decoration-none " href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{$rowrelated->user->name}} </a> |</p>
                                             <p class="lang px-2 ">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                         </div>
 

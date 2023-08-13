@@ -16,11 +16,11 @@
     <div class="filter">
         <div class="container">
             <div class="filter-body">
-                <form action="#" method="POST" class="d-flex justify-content-between align-items-center w-100" id="filteForm">
+                <form action="#" method="POST" class="d-flex justify-content-between align-items-center w-100  " id="filteForm">
 
                     <div class="d-flex flex-wrap filter-bordr gap-3">
 
-                        <div class=" d-flex gap-2 align-items-center">
+                        <div class=" d-flex gap-2 align-items-center flex-shrink-0">
                             <div class="filter-logo">
                                 @csrf
                                 <img src="{{ asset('frontend/images/Filter.png') }}" alt="" class="filter-logo-img">
@@ -182,7 +182,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="selected-feild">
+                    <div class="selected-feild ps-5">
                         <a href="{{ route('itineraries') }}" class="btn clearbtn1 ">Clear All filters <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
