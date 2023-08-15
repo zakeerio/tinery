@@ -1,8 +1,8 @@
 
 <!-- Navbar -->
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container px-5">
             <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ config('settings.site_logo') }}" alt="Company Logo"></a>
             {{--
                 <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ asset('frontend/images/LOGO.png') }}" alt="Company Logo"></a>
@@ -56,7 +56,7 @@
                         </div>
                     @else
                     <!-- Button trigger modal -->
-                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill px-lg-5 px-xl-4  save-bt1 efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
+                        <li class="nav-item"><button type="button" class="btn btn-outline-secondary rounded-pill become-member px-lg-5 px-xl-4  save-bt1 efect-none" data-bs-toggle="modal" data-bs-target="#userregistration"> Become a Member</button></li>
                          <!-- Button trigger modal -->
                         <li class="nav-item"><a href="javascript:;" class="nav-link text-clr" data-bs-toggle="modal" data-bs-target="#userlogin">Login</a></li>
                     @endif
