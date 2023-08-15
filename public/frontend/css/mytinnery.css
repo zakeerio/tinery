@@ -1983,14 +1983,23 @@ label.required:after {
     .fs-16-300{
         font-size: 10px;
     }
+    .hero-content-h2{
+        font-size: 50px;
+    }
+    .hero-content-p {
+        max-width: 450px;
+        font-size: 16px;
+    }
     
 }
 @media screen and (max-width: 575px){
     .hero-content-h2{
-        font-size: 48px;
+        font-size: 36px;
     }
     .hero-content-p{
-        max-width: 440px;
+        max-width: 330px;
+    
+
     }
     #bgimg{
         height: 200px;
@@ -2139,7 +2148,7 @@ label.required:after {
     }
 
     .hero-c-p {
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
 
     .font-12 {
