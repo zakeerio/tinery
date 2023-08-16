@@ -4,21 +4,17 @@
 @section('meta_keywords', $pages->seo_keywords)
 @section('meta_description', $pages->seo_description)
 
-@if ($pages->file != "")
+@if ($pages->file != '')
     @php
-        $file = asset('frontend/img/'.$pages->file);
+        $file = asset('frontend/img/' . $pages->file);
     @endphp
 @else
     @php
-        $file = asset('frontend/images/LOGO.png')
+        $file = asset('frontend/images/LOGO.png');
     @endphp
 @endif
 
-
-@section('file', ($file))
-
-
-
+@section('file', $file)
 
 @section('content')
 
@@ -31,16 +27,18 @@
                             <div class="col-lg-8">
                                 <div class="d-flex justify-content-between  ">
                                     <div class="col-lg-8">
-                                        <h1 class="trip-h1" >{{ $pages->title}}</h1>
+                                        <h1 class="trip-h1">{{ $pages->title }}</h1>
                                     </div>
                                 </div>
-        
+
                                 <div class="row">
                                     <div class="col-lg-12 mb-3 bright-70">
-                                        @if ($pages->file != "")
-                                        <img src="{{ asset('frontend/img/'.$pages->file) }}" alt="" class="wed-img">
+                                        @if ($pages->file != '')
+                                            <img src="{{ asset('frontend/img/' . $pages->file) }}" alt=""
+                                                class="wed-img">
                                         @else
-                                        <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt="" class="wed-img">
+                                            <img src="{{ asset('frontend/images/annie-spratt.jpg') }}" alt=""
+                                                class="wed-img">
                                         @endif
                                     </div>
                                 </div>
@@ -49,14 +47,14 @@
                                         echo $pages->description;
                                     @endphp
                                 </div>
-        
+
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
-      
+        </div>
+
     </section>
 
 @endsection
