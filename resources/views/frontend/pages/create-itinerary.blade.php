@@ -4,7 +4,7 @@
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;
         $user = auth('user')->user();
-        
+
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
     <section class="profile-section py-4">
@@ -25,7 +25,6 @@
                                                     Itinerary Name
                                                 @endif
                                             </h1>
-
                                             <!-- Button trigger modal -->
                                             <button type="button" class="bg-transparent border-0" data-bs-toggle="modal"
                                                 data-bs-target="#intro">
