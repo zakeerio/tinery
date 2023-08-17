@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <header>
     <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container px-5">
+        <div class="container px-md-5 px-3">
             <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ config('settings.site_logo') }}"
                     alt="Company Logo"></a>
             {{--
@@ -9,7 +9,7 @@
                 --}}
             <div class="d-flex gap-3">
                 @if (Auth::guard('user')->user())
-                    <div class="d-lg-none">
+                    <div class="d-md-none">
                         <a class="nav-link " href="{{ url('/profile') }}">
                             @if (Auth::guard('user')->user()->profile != '')
                                 <img src="{{ asset('frontend/profile_pictures/' . Auth::guard('user')->user()->profile) }}"
@@ -22,9 +22,9 @@
                     </div>
                 @endif
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class=""><img src="{{ asset('frontend/images/menu.svg') }}" alt=""></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,7 +40,7 @@
                     @if (Auth::guard('user')->user())
                         <div class="profile-item   d-flex justify-content-between gap-2 align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link d-none d-lg-block " href="{{ url('/profile') }}">
+                                <a class="nav-link d-none d-md-block " href="{{ url('/profile') }}">
                                     @if (Auth::guard('user')->user()->profile != '')
                                         <img src="{{ asset('frontend/profile_pictures/' . Auth::guard('user')->user()->profile) }}"
                                             alt="Profile Image" class=" rounded-circle w-40">

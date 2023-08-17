@@ -11,7 +11,7 @@
         @if (!empty($itinerary))
             <div class="container margin-top-75">
                 <div class="row justify-content-center">
-                    <div class="col-11">
+                    <div class="col-11 px-0">
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="border rounded">

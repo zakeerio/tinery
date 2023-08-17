@@ -8,7 +8,7 @@
     <section class="profile-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="row">
                         <div class="col-md-4 border-card my-md-5 my-3 ">
                             <div class="d-flex align-items-center profile-gap ">
@@ -382,10 +382,10 @@
                                                 <div class="d-flex gap-3">
                                                     @if (!empty($itinerary->seo_image))
                                                         <img src="{{ asset('frontend/itineraries/' . $itinerary->seo_image) }}"
-                                                            alt="" class="col-3 w-120i  rounded">
+                                                            alt="" class="col-3 w-120i">
                                                     @else
                                                         <img src="{{ asset('frontend/images/annie-spratt.jpg') }}"
-                                                            alt="" class="col-3 w-120i  rounded">
+                                                            alt="" class="col-3 w-120i ">
                                                     @endif
                                                     <div class="">
                                                         <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
@@ -393,15 +393,15 @@
                                                             {{ \Str::limit($itinerary->description, 150) }}</p>
                                                     </div>
                                                 </div>
-                                                <div class=" d-flex  gap-2 align-items-center add-size">
+                                                <div class=" d-flex  gap-2 align-items-center ">
                                                     @if ($usercheck)
                                                         <a href="{{ url('/edit-itinerary/' . $itinerary->id) }}"
                                                             class=""><img
-                                                                src="{{ asset('frontend/images/edit-btn.png') }}"></a>
+                                                                src="{{ asset('frontend/images/edit-btn.png') }}" class="add-size-img"></a>
                                                     @endif
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
                                                         class=""><img
-                                                            src="{{ asset('frontend/images/view-arrow.png') }}"></a>
+                                                            src="{{ asset('frontend/images/view-arrow.svg') }}" class="add-size-img"></a>
                                                     {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
                                                 </div>
                                             </div>
@@ -431,15 +431,15 @@
                                         <div class="row mb-3">
                                             <div class="d-flex gap-3 justify-content-between ">
                                                 @if (!empty($itinerary->seo_image))
-                                                    <div class="col-3 w-120i rounded position-relative">
+                                                    <div class="col-3 w-120i position-relative">
                                                         <img src="{{ asset('frontend/itineraries/' . $itinerary->seo_image) }}"
-                                                            alt="" class="w-120i rounded">
+                                                            alt="" class="w-120i">
                                                         <img src="frontend/images/heart-red.svg" alt=""
-                                                            class=" position-absolute heart-position">
+                                                            class=" position-absolute heart-position heart-size-red">
                                                     </div>
                                                 @else
                                                     <img src="{{ asset('frontend/images/annie-spratt.jpg') }}"
-                                                        alt="" class="col-3 w-120i  rounded">
+                                                        alt="" class="col-3 w-120i">
                                                 @endif
 
                                                 <div class="col-8">
@@ -450,7 +450,7 @@
                                                 <div class="col-3 d-flex align-items-center  gap-2">
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
                                                         class=""><img
-                                                            src="{{ asset('frontend/images/view-arrow.png') }}"></a>
+                                                            src="{{ asset('frontend/images/view-arrow.svg') }}"class="add-size-img"></a>
                                                 </div>
                                             </div>
                                         </div>

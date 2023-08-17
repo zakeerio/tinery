@@ -4,7 +4,7 @@
     <section class="hero-sections">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="hero-content">
                         <div class="row">
                             <div class="col-lg-8">

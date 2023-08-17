@@ -5,7 +5,7 @@
     <div class="perfect py-md-5 py-3">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="perfect-item ">
                         <h3 class="travel">Find the Perfect Travel Itinerary</h3>
                         <p class="filters-p">Filter by location, trip length, tag or user. Don’t see your location? New
@@ -21,7 +21,7 @@
     <div class="filter">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="filter-body">
                         <form action="#" method="POST"
                             class="d-flex justify-content-between align-items-center w-100  " id="filteForm">
@@ -250,7 +250,7 @@
         <div class="card-section py-3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-11">
+                    <div class="col-11 px-0">
                         <div class="cards-item">
                             <div class="row">
                                 @php
@@ -384,7 +384,7 @@
         <div class="world py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-11">
+                    <div class="col-11 px-0">
                         <div id="homepagemap" style="height: 450px;"></div>
                     </div>
                 </div>

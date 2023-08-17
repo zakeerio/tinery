@@ -67,7 +67,7 @@
     font-weight: 400;
     /* font-size: 24px; */
     font-size: 19px;
-    line-height: 36px;
+  
     color: #FFFFFF;
     margin: 0;
 }
@@ -183,7 +183,6 @@
     font-weight: 700;
     /* font-size: 42px; */
     font-size: 34px;
-    line-height: 76px;
     color: #2A293D;
     text-transform: capitalize;
 
@@ -305,7 +304,6 @@
     /* font-size: 16px; */
     font-weight: 300;
     line-height: 1.3em;
-
 }
 
 .profile-details {
@@ -375,6 +373,7 @@
 .w-140 {
     width: 140px;
 }
+
 .hero-content {
     padding: 88px 30px;
 }
@@ -774,7 +773,11 @@
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    max-width: 400px;
+ 
+}
+button:focus:not(:focus-visible).navbar-toggler{
+    box-shadow: none;
+    
 }
 
 .heart-img {
@@ -1018,7 +1021,6 @@ header {
 
 .wed-img {
     width: 100%;
-    max-width: 1032px;
     max-height: 412px;
     height: 100%;
     -o-object-fit: cover;
@@ -1064,7 +1066,7 @@ header {
 .heart-position {
     top: 0;
     left: 0;
-    padding: 11px 0 0 11px;
+    padding: 4px 0 0 4px;
 }
 
 .w-200 {
@@ -1094,6 +1096,7 @@ header {
     height: 120px;
     -o-object-fit: cover;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .mb-36px {
@@ -1101,9 +1104,10 @@ header {
 }
 
 .profile-gap {
-    -webkit-column-gap: 25px;
-    -moz-column-gap: 25px;
-    column-gap: 25px;
+
+    column-gap: 20px;
+    -webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
 }
 
 
@@ -1550,16 +1554,12 @@ select.did-floating-select::-ms-expand {
 
 
 
-.myitinerylist {
-    padding-left: 69px;
-    padding-right: 69px;
-}
 
 
 
 .border-card {
     border-right: 2px solid #000000;
-    padding-right: 30px;
+    
     min-height: 744px;
     height: auto;
 }
@@ -1755,8 +1755,14 @@ label.required:after {
 
 
 }
-
-
+.add-size-img{
+    width: 48px;
+    height: 48px;
+}
+.heart-size-red{
+    width: 25px;
+    height: 25px;
+}
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -1815,11 +1821,6 @@ label.required:after {
         flex-wrap: wrap;
     }
 
-    .hero-content h2 {
-        font-size: 42px;
-        line-height: 76px;
-
-    }
 
     .tiny-logo {
         margin-bottom: 30px;
@@ -1872,7 +1873,10 @@ label.required:after {
     .fs-16-300{
         font-size: 14px;
     }
-
+    .heart-size-red{
+        width: 20px;
+        height: 20px;
+    }   
     .fs-16-400{
         font-size: 14px;
     }
@@ -1915,18 +1919,14 @@ label.required:after {
         height: 64px;
     }
 
-    .myitinerylist {
-        padding: 0 30px;
+ 
+
+    .add-size-img {
+        width: 32px;
+        height: 32px;
     }
 
-    .add-size img {
-        width: 33px;
-        height: 33px;
-    }
-
-    .border-card {
-        padding: 0 30px;
-    }
+   
 
     .title-p {
         font-size: 14px;
@@ -2034,7 +2034,7 @@ label.required:after {
         width: 36px;
         height: 30px;
     }
-
+   
     .related {
         font-size: 20px;
     }
@@ -2152,7 +2152,7 @@ label.required:after {
     }
 
     .hero-content {
-        padding: 50px 17px !important;
+        padding: 50px 0px !important;
     }
 
     .bg-img {
@@ -2178,8 +2178,8 @@ label.required:after {
     }
 
     .border-card {
-        min-height: 400px !important;
-        padding: 0 30px !important;
+        min-height: 360px !important;
+        
     }
 
     .path-img {
@@ -2197,9 +2197,7 @@ label.required:after {
         font-size: 16px !important;
     }
 
-    .hero-content h2 {
-        font-size: 36px !important;
-    }
+   
 
     .explore-section h1 {
         font-size: 20px !important;
@@ -2244,15 +2242,8 @@ label.required:after {
         height: 80px !important;
     }
 
-    .profile-tabs .nav-link {
-        font-size: 10px !important;
-        line-height: 1.4em !important;
-    }
-
-    .myitinerylist {
-        padding: 0 30px !important;
-
-    }
+   
+    
 
     .nav-tabs {
         padding: 10px 0;
@@ -2268,9 +2259,9 @@ label.required:after {
         font-size: 12px !important;
     }
 
-    .add-size img {
-        width: 18px !important;
-        height: 18px !important;
+    .add-size-img {
+        width: 24px !important;
+        height: 24px !important;
     }
 
     .w-120 {
@@ -2340,6 +2331,10 @@ label.required:after {
 
     .profiler .fs-24-500 {
         font-weight: 600;
+    }
+    .heart-size-red{
+        width: 15px;
+        height: 15px;
     }
 
 

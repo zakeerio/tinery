@@ -5,7 +5,7 @@
     <div class="align-items-center d-flex hero-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="">
                         <h2 class="hero-content-h2">{{ config('settings.banner_title') }}</h2>
                         <p class="hero-c-p hero-content-p">
@@ -16,18 +16,11 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-11">
-
-            </div>
-        </div>
-    </div>
 
     <div class="explore">
         <div class="container ">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="explore-section pb-3 pt-5">
                         <div class="row">
                             <div class="d-flex justify-content-between align-items-center ">
@@ -50,7 +43,7 @@
     <div class="card-section py-3  px-md-0">
         <div class="container mx-md-auto ">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="cards-item">
                         <div class="row slickslider">
                             @php
@@ -172,96 +165,96 @@
     <div class="member-spot">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
-                    <div class="spotlight ">
-                        <div class="row spotlight-center">
-                            <h2 class="membr">Members Spotlight</h2>
+                <div class="col-11 ">
 
-                            <!-- Hide on moible only -->
+                    <div class="row col-12 m-0">
+                        <h2 class="membr px-0">Members Spotlight</h2>
 
-                            @forelse ($users as $userdata)
-                                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-none d-lg-block">
-                                    <div class="member-info d-flex align-items-center justify-content-between ">
-                                        <div class="d-flex align-items-center justify-content-start ">
-                                            @if ($userdata->profile != '')
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block"> <img
-                                                        src="{{ asset('frontend/profile_pictures/' . $userdata->profile) }}"
-                                                        alt="" class="rounded-circle member-img"></a>
-                                            @else
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block"> <img
-                                                        src="{{ asset('frontend/profile_pictures/avatar.png') }}"
-                                                        alt="" class="rounded-circle member-img"></a>
-                                            @endif
+                        <!-- Hide on moible only -->
 
-                                            <div class="mx-md-3 mx-2">
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block text-decoration-none">
-                                                    <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}
-                                                    </h4>
-                                                </a>
-                                                <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100) }}</p>
-                                            </div>
-                                        </div>
+                        @forelse ($users as $userdata)
+                            <div class="col-lg-4 col-md-6 mb-md-5 mb-4 d-none d-lg-block">
+                                <div class="member-info d-flex p-xl-4 align-items-center justify-content-between ">
+                                    <div class="d-flex align-items-center justify-content-start ">
+                                        @if ($userdata->profile != '')
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block">
+                                                <img src="{{ asset('frontend/profile_pictures/' . $userdata->profile) }}"
+                                                    alt="" class="rounded-circle member-img">
+                                            </a>
+                                        @else
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block"> <img
+                                                    src="{{ asset('frontend/profile_pictures/avatar.png') }}"
+                                                    alt="" class="rounded-circle member-img"></a>
+                                        @endif
 
-                                        <div class="">
-                                            <img src="{{ asset('frontend/images/black.png') }}" alt=""
-                                                class="heart-img">
+                                        <div class="mx-md-3 mx-2">
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block text-decoration-none">
+                                                <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}
+                                                </h4>
+                                            </a>
+                                            <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100) }}</p>
                                         </div>
                                     </div>
 
+                                    <div class="">
+                                        <img src="{{ asset('frontend/images/black.png') }}" alt=""
+                                            class="heart-img">
+                                    </div>
                                 </div>
 
-                            @empty
+                            </div>
 
-                                <div class=" d-lg-block">No users found! </div>
-                            @endforelse
+                        @empty
 
-                            <!-- display on moible only -->
+                            <div class=" d-lg-block">No users found! </div>
+                        @endforelse
 
-                            @forelse ($users_mobile as $userdata)
-                                <div class="col-lg-4 mb-md-5 mb-4 px-1 col-sm-6 d-block d-lg-none">
-                                    <div class="member-info d-flex align-items-center justify-content-between ">
-                                        <div class="d-flex align-items-center justify-content-start ">
-                                            @if ($userdata->profile != '')
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block"> <img
-                                                        src="{{ asset('frontend/profile_pictures/' . $userdata->profile) }}"
-                                                        alt="" class="rounded-circle member-img"></a>
-                                            @else
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block"> <img
-                                                        src="{{ asset('frontend/profile_pictures/avatar.png') }}"
-                                                        alt="" class="rounded-circle member-img"></a>
-                                            @endif
+                        <!-- display on moible only -->
 
-                                            <div class="mx-md-3 mx-2">
-                                                <a href="{{ route('username', ['username' => $userdata->username]) }}"
-                                                    class="d-block text-decoration-none">
-                                                    <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}
-                                                    </h4>
-                                                </a>
-                                                <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100) }}</p>
-                                            </div>
-                                        </div>
+                        @forelse ($users_mobile as $userdata)
+                            <div class="col-lg-4 mb-md-5 col-md-6 mb-4  d-block d-lg-none">
+                                <div class="member-info d-flex align-items-center justify-content-between ">
+                                    <div class="d-flex align-items-center justify-content-start ">
+                                        @if ($userdata->profile != '')
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block"> <img
+                                                    src="{{ asset('frontend/profile_pictures/' . $userdata->profile) }}"
+                                                    alt="" class="rounded-circle member-img"></a>
+                                        @else
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block"> <img
+                                                    src="{{ asset('frontend/profile_pictures/avatar.png') }}"
+                                                    alt="" class="rounded-circle member-img"></a>
+                                        @endif
 
-                                        <div class="">
-                                            <img src="{{ asset('frontend/images/black.png') }}" alt=""
-                                                class="heart-img">
+                                        <div class="mx-md-3 mx-2">
+                                            <a href="{{ route('username', ['username' => $userdata->username]) }}"
+                                                class="d-block text-decoration-none">
+                                                <h4 class="Benjamin">{{ $userdata->name }} {{ $userdata->lastname }}
+                                                </h4>
+                                            </a>
+                                            <p class="Benjamin-p">{{ \Str::limit($userdata->bio, 100) }}</p>
                                         </div>
                                     </div>
 
+                                    <div class="">
+                                        <img src="{{ asset('frontend/images/black.png') }}" alt=""
+                                            class="heart-img">
+                                    </div>
                                 </div>
 
-                            @empty
+                            </div>
 
-                                <div class=" d-lg-none">No users found! </div>
-                            @endforelse
+                        @empty
 
-                        </div>
+                            <div class=" d-lg-none">No users found! </div>
+                        @endforelse
 
                     </div>
+
                 </div>
             </div>
         </div>
@@ -272,7 +265,7 @@
         <div class="world">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-11">
+                    <div class="col-11 px-0">
                         <h2 class="membr">Explore Your World</h2>
                         <div id="homepagemap" class="h-700p r-12"></div>
                     </div>
@@ -284,171 +277,9 @@
     <div class="social-media">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <h2 class="membr py-4">Discover More on Social</h2>
-                    <!-- <div class="row slickslider6">
-                    <div class="col-lg-2 ">
-                        <div class="social-descover">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                            </div>
-                            <div class="">
-                                <h6 class="anna">Anna Jones</h6>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                            </div>
-                        </div>
-                    <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
 
-                    <div class="pt-2">
-                        <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                            #Tinery #RelaxiTaxi #Fun #Reset</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 ">
-                        <div class="social-descover">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                            </div>
-                            <div class="">
-                                <h6 class="anna">Anna Jones</h6>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                            </div>
-                        </div>
-                        <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                        <div class="pt-2">
-                            <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                                #Tinery #RelaxiTaxi #Fun #Reset</p>
-                    </div>
-                 </div>
-
-                    <div class="col-lg-2 ">
-                    <div class="social-descover">
-                        <div class="">
-                            <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                        </div>
-                        <div class="">
-                            <h6 class="anna">Anna Jones</h6>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                        </div>
-                    </div>
-                    <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                    <div class="pt-2">
-                        <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                            #Tinery #RelaxiTaxi #Fun #Reset</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 ">
-                        <div class="social-descover">
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                            </div>
-                            <div class="">
-                                <h6 class="anna">Anna Jones</h6>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                            </div>
-                        </div>
-                        <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                        <div class="pt-2">
-                            <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                                #Tinery #RelaxiTaxi #Fun #Reset</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 ">
-                            <div class="social-descover">
-                                <div class="">
-                                    <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                                </div>
-                                <div class="">
-                                    <h6 class="anna">Anna Jones</h6>
-                                </div>
-                                <div class="">
-                                    <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                            <div class="pt-2">
-                                <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                            #Tinery #RelaxiTaxi #Fun #Reset</p>
-
-                            </div>
-                         </div>
-                         <div class="col-lg-2 ">
-                            <div class="social-descover">
-                                <div class="">
-                                    <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                                </div>
-                                <div class="">
-                                    <h6 class="anna">Anna Jones</h6>
-                                </div>
-                                <div class="">
-                                    <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                            <div class="pt-2">
-                                <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                            #Tinery #RelaxiTaxi #Fun #Reset</p>
-
-                            </div>
-                         </div>
-                    <div class="col-lg-2 ">
-                    <div class="social-descover">
-                        <div class="">
-                            <img src="{{ asset('frontend/images/Ellipse 6.png') }}" alt="">
-                        </div>
-                        <div class="">
-                            <h6 class="anna">Anna Jones</h6>
-                        </div>
-                        <div class="">
-                            <img src="{{ asset('frontend/images/Logo 2.png') }}" alt="">
-                        </div>
-                    </div>
-                    <img src="{{ asset('frontend/images/Frame 189.png') }}" alt="" class="w-100">
-
-                    <div class="pt-2">
-                        <p class="meet-p">Had a lovely break.Meet my new best friend Mr.Flamingo! 😂😂
-                            #Tinery #RelaxiTaxi #Fun #Reset</p>
-                        </div>
-                    </div>
-
-                </div> -->
-
-                    <!-- <div class="row slickslider6 d-flex mb-5  align-items-center">
-                    <div class="col-lg-2 ">
-                        <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                    </div>
-                    <div class="col-lg-2 ">
-                        <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                    </div>
-                    <div class="col-lg-2 ">
-                        <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                    </div>
-                    <div class="col-lg-2 ">
-                        <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                    </div>
-                    <div class="col-lg-2 ">
-                    <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                </div>
-                <div class="col-lg-2 ">
-                    <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                </div>
-                <div class="col-lg-2 ">
-                    <img src="{{ asset('frontend/images/Tiktok Post 01.png') }}" alt="" class="slider-img">
-                </div> -->
                 </div>
             </div>
 
@@ -460,7 +291,7 @@
     <div class="about-us py-4 d-none d-lg-block">
         <div class="container ">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="about-item">
                         <div class="content">
                             <h2 class="membrs">About Us</h2>

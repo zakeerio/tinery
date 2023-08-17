@@ -1,7 +1,7 @@
 <div class="card-section py-3">
     <div class="container">
         <div class="row  justify-content-center">
-            <div class="col-11">
+            <div class="col-11 px-0">
                 <div class="cards-item">
                     <div class="row">
                         @php
@@ -174,7 +174,7 @@
 <div class="world py-4">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-11">
+            <div class="col-11 px-0">
                 <div id="homepagemap" style="height: 450px;"></div>
             </div>
         </div>
