@@ -832,12 +832,12 @@ button:focus:not(:focus-visible).navbar-toggler{
 }
 
 footer {
-    border-top: 1px solid #2A293D;
+    border-top: 1px solid #CFCFD0;
 
 }
 
 header {
-    border-bottom: 1px solid #2A293D;
+    border-bottom: 1px solid #CFCFD0;
 }
 
 
