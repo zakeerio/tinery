@@ -288,13 +288,14 @@
     border-radius: 40px;
     color: #0F6496;
     text-decoration: none;
-    padding: 1px 20px 0px 20px;
+    padding: 4px 20px;
     background-color: transparent;
     /* margin: 0px 10px; */
     margin-right: 6px;
     font-size: 14px;
     /* font-size: 16px; */
     font-weight: 300;
+    line-height: 1.3em;
 
 }
 
