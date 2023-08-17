@@ -25,6 +25,7 @@
                                                     Itinerary Name
                                                 @endif
                                             </h1>
+
                                             <!-- Button trigger modal -->
                                             <button type="button" class="bg-transparent border-0" data-bs-toggle="modal"
                                                 data-bs-target="#intro">
