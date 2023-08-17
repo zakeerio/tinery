@@ -331,10 +331,10 @@
                                                     <!-- <div class=" tags-links1"><a href="">Clear all tags</a></div> -->
                                                 </div>
                                                 <!-- <div class="float-end">
-                                                            <div class="form-group text-end">
-                                                                {!! Form::submit('Save', ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt']) !!}
-                                                            </div>
-                                                        </div> -->
+                                                                <div class="form-group text-end">
+                                                                    {!! Form::submit('Save', ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt']) !!}
+                                                                </div>
+                                                            </div> -->
                                             </div>
 
                                         </div>
@@ -397,11 +397,13 @@
                                                     @if ($usercheck)
                                                         <a href="{{ url('/edit-itinerary/' . $itinerary->id) }}"
                                                             class=""><img
-                                                                src="{{ asset('frontend/images/edit-btn.png') }}" class="add-size-img"></a>
+                                                                src="{{ asset('frontend/images/edit-btn.png') }}"
+                                                                class="add-size-img"></a>
                                                     @endif
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
                                                         class=""><img
-                                                            src="{{ asset('frontend/images/view-arrow.svg') }}" class="add-size-img"></a>
+                                                            src="{{ asset('frontend/images/view-arrow.svg') }}"
+                                                            class="add-size-img"></a>
                                                     {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
                                                 </div>
                                             </div>

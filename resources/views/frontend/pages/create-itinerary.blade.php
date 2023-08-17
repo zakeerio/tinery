@@ -4,7 +4,7 @@
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;
         $user = auth('user')->user();
-
+        
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
     <section class="profile-section py-4">
@@ -480,17 +480,17 @@
 
                                             {!! Form::close() !!} --}}
             <!-- <label for="file" class="text-center">
-                                                    <img src="{{ asset('frontend/images/add-image.png') }}" alt="">
+                                                        <img src="{{ asset('frontend/images/add-image.png') }}" alt="">
 
-                                                    <p class="attach-area-width text-center">
-                                                        <span class="fw-bold">Attach or drop your images here.</span><br>
-                                                        Accepts .jpg, .jpeg, .png, and .gif file types.</p>
-                                                        <p class="fw-bold">Maximum file size is 5 MB</p>
+                                                        <p class="attach-area-width text-center">
+                                                            <span class="fw-bold">Attach or drop your images here.</span><br>
+                                                            Accepts .jpg, .jpeg, .png, and .gif file types.</p>
+                                                            <p class="fw-bold">Maximum file size is 5 MB</p>
 
-                                                    <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
-                                                    <input type="file" id="file" class="d-none">
+                                                        <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
+                                                        <input type="file" id="file" class="d-none">
 
-                                                    <img src="{{ asset('frontend/images/Attach.png') }}" alt=""></label> -->
+                                                        <img src="{{ asset('frontend/images/Attach.png') }}" alt=""></label> -->
             <script>
                 function previewImages(event) {
                     var files = event.target.files;
