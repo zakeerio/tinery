@@ -175,7 +175,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-11 px-0">
-                <div id="homepagemap" style="height: 450px;"></div>
+                <div id="homepagemap" class="h-700p r-12"></div>
             </div>
         </div>
        
