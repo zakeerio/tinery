@@ -7,7 +7,7 @@
         
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
-    <section class="profile-section py-4">
+    <section class="profile-section py-4"> 
         @if (!empty($itinerary))
 
             <div class="container margin-top-75">
