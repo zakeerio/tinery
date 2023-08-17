@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2023 at 02:12 PM
+-- Generation Time: Aug 16, 2023 at 03:27 PM
 -- Server version: 10.5.19-MariaDB-cll-lve
 -- PHP Version: 7.2.34
 
@@ -393,7 +393,12 @@ INSERT INTO `itinerary_galleries` (`id`, `itineraryid`, `image`, `created_at`, `
 (6, '6', '168608768433.png', '2023-06-06 21:41:24', '2023-06-06 21:41:24'),
 (7, '6', '168608768438.png', '2023-06-06 21:41:24', '2023-06-06 21:41:24'),
 (8, '6', '168608768425.png', '2023-06-06 21:41:24', '2023-06-06 21:41:24'),
-(10, '23', '168778592635.png', '2023-06-26 13:25:26', '2023-06-26 13:25:26');
+(10, '23', '168778592635.png', '2023-06-26 13:25:26', '2023-06-26 13:25:26'),
+(20, '22', '169201373321.jpg', '2023-08-14 11:48:53', '2023-08-14 11:48:53'),
+(19, '22', '169201373368.jpg', '2023-08-14 11:48:53', '2023-08-14 11:48:53'),
+(18, '22', '169201373382.jpg', '2023-08-14 11:48:53', '2023-08-14 11:48:53'),
+(21, '22', '169201373316.jpg', '2023-08-14 11:48:53', '2023-08-14 11:48:53'),
+(22, '22', '169201373459.webp', '2023-08-14 11:48:54', '2023-08-14 11:48:54');
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1055,7 @@ CREATE TABLE `users` (
   `website` varchar(255) DEFAULT NULL,
   `tags` varchar(255) DEFAULT NULL,
   `profile` varchar(255) DEFAULT NULL,
-  `featured` varchar(10) DEFAULT NULL,
+  `featured` varchar(10) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1058,9 +1063,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`, `deleted_at`) VALUES
-(4, 'ali', 'zafar', 'test@test.com', 'alizafar', NULL, '$2y$10$L4/Lc8lmthoDYe9ne54skOSX673eZEJTqH1Eef0mwMerYX6zNUBb.', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png', NULL, NULL),
+INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `email_verified_at`, `password`, `created_at`, `updated_at`, `confirmpassword`, `remember_token`, `bio`, `facebook`, `twitter`, `instagram`, `tiktok`, `website`, `tags`, `profile`, `featured`, `deleted_at`) VALUES
+(4, 'ali', 'zafar', 'test@test.com', 'alizafar', NULL, '$2y$10$L4/Lc8lmthoDYe9ne54skOSX673eZEJTqH1Eef0mwMerYX6zNUBb.', '2023-05-18 09:13:06', '2023-05-18 09:13:06', NULL, NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'true', NULL),
+(6, 'Benjamin', 'Franklin', 'benjaminfranklin@gmail.com', 'benjaminfranklin', NULL, '$2y$10$1jPH0tJJpjlvj4TxuIXgxuG0PPMMyvRrnFEue/ZSKa/XgVpzqV3U.', '2023-05-22 06:04:55', '2023-05-22 07:10:40', '$2y$10$0CdtE.VqzVT3WpYdYRQ4WOTAGzEUhTI1YLL1eRY5QUAnu7B1qC5R6', NULL, 'I like to travel all around the world.', NULL, NULL, NULL, NULL, NULL, NULL, '1684757440.png', 'true', NULL),
 (9, 'James', 'Dean', 'jamesdean@gmail.com', 'jamesdean', NULL, '$2y$10$IFiqJItMoVk7RQnGt1lLa.7qlpYXgZ/o.TASQqgOccg1yKjqe3L6q', '2023-05-29 18:20:02', '2023-05-29 18:20:56', '$2y$10$fNWK93JyNnoRlnXwYTnJFeKTNaG/viXI259Wn92dzq3tuN/RNK1xa', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402446.png', 'true', NULL),
 (10, 'Angelina', 'Smith', 'angelinasmith@gmail.com', 'angelinasmith', NULL, '$2y$10$U8BKIe2boEaM6qZktEOSae8T7IHhmBLY7pHTUKj1ekVUHsOgLrbvi', '2023-05-29 18:21:32', '2023-05-29 18:22:23', '$2y$10$Y.mBCCk6tFYIszPieGuFyOrofykO5GtrouZJrpsEfzb64jpNYTNLe', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit....', '#', '#', '#', '#', '#', NULL, '1685402534.png', 'true', NULL),
 (11, 'Megan', 'James', 'meganjames@gmail.com', 'meganjames', NULL, '$2y$10$FoXdCQ5E99VgoM/CqehDQevRyfIPu3B0MCzeOsOIlUqIm5W1dAzt2', '2023-05-29 18:24:48', '2023-06-26 07:33:06', '$2y$10$EyPxFCLOkV1xMcCRrhrbD.lHbPaAPpzs3xr4im8XRrstdbKr2e702', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit........', '#', '#', '#', '#', '#', NULL, '1685402723.png', 'true', NULL),
@@ -1314,7 +1319,7 @@ ALTER TABLE `itinerary_days`
 -- AUTO_INCREMENT for table `itinerary_galleries`
 --
 ALTER TABLE `itinerary_galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `itinerary_locations`

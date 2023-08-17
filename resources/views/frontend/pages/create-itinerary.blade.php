@@ -4,12 +4,11 @@
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;
         $user = auth('user')->user();
-        
+
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
     <section class="profile-section py-4">
         @if (!empty($itinerary))
-
             <div class="container margin-top-75">
                 <div class="row justify-content-center">
                     <div class="col-11 px-0">
@@ -262,7 +261,7 @@
                                         <div class="bg-light col-12 d-flex flex-column align-items-center rounded-2 position-relative h-412 " style="background-image:url({{$featured_image }} ); background-size: cover; ">
                                             <div class=" w-100 h-100 p-2 bg-c-o ">
                                                 {!! Form::open(['route' => 'single.itinerary.cover.upload', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'dropzone bg-c-o border-white   d-flex align-items-center justify-content-center h-100 w-100 rounded ', 'id' =>'my-awesome-dropzone1']) !!}
-        
+
                                                 @csrf
                                                 <input type="hidden" value="{{$itinerary->id}}" name="id">
                                                 <div class="dz-message  p-0 m-0  " data-dz-message>
@@ -276,7 +275,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-        
+
                                                 {!! Form::close() !!}
                                             </div>
                                         </div>
@@ -474,23 +473,23 @@
                                             <input type="file" id="image-upload-1" name="images[]" required class="form-control" accept="image/*" multiple>
                                             </div>
                                             <br>
-        
-        
-        
+
+
+
                                             <input type="hidden" value="{{$itinerary->id}}" name="id">
-        
+
                                             {!! Form::close() !!} --}}
             <!-- <label for="file" class="text-center">
                                                     <img src="{{ asset('frontend/images/add-image.png') }}" alt="">
-            
+
                                                     <p class="attach-area-width text-center">
                                                         <span class="fw-bold">Attach or drop your images here.</span><br>
                                                         Accepts .jpg, .jpeg, .png, and .gif file types.</p>
                                                         <p class="fw-bold">Maximum file size is 5 MB</p>
-            
+
                                                     <button type="button" class="btn btn-danger rounded-pill px-4 text-center">Attach</button>
                                                     <input type="file" id="file" class="d-none">
-            
+
                                                     <img src="{{ asset('frontend/images/Attach.png') }}" alt=""></label> -->
             <script>
                 function previewImages(event) {
