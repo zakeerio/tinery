@@ -9,7 +9,6 @@
     @endphp
     <section class="profile-section py-4">
         @if (!empty($itinerary))
-
             <div class="container margin-top-75">
                 <div class="row justify-content-center">
                     <div class="col-11">
