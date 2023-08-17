@@ -92,10 +92,10 @@
                                         @endforeach
                                     @endif
                                     <!-- <a href="#"> <button class="foodie">Foodie</button></a>
-                                        <a href="#"> <button class="foodie">Backpacker</button></a>
-                                        <a href="#"> <button class="foodie">Spring</button></a>
-                                        <a href="#"> <button class="foodie">Holiday Destination</button></a>
-                                        <a href="#"> <button class="foodie">Mexico</button></a> -->
+                                            <a href="#"> <button class="foodie">Backpacker</button></a>
+                                            <a href="#"> <button class="foodie">Spring</button></a>
+                                            <a href="#"> <button class="foodie">Holiday Destination</button></a>
+                                            <a href="#"> <button class="foodie">Mexico</button></a> -->
                                     <!-- <a href="#"> <button class="foodie">Backpacker</button></a> -->
                                 </div>
                                 <div class="row">

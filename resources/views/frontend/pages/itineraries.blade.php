@@ -524,7 +524,7 @@
 
                     var cross = $(
                         '<span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round" stroke-linejoin="round"/> </svg></span>'
-                        );
+                    );
 
                     item.append(cross);
 
