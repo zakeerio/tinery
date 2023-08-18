@@ -531,6 +531,11 @@
                 }
             });
         });
+        function isValidEmail(email) {
+            // Regular expression pattern for basic email validation
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+        }
         $(document).on('click', 'a[data-role=btnaddactivity]', function () {
             var itineraryid = $(this).data('itineraryid');
             var daysid = $(this).data('daysid');
@@ -648,50 +653,60 @@
             var email = $(this).val();
             var csrftoken = $('#csrftoken').val();
 
-            $.ajax({
-                url:'{{ url("/registeremailexistance")}}',
-                method:'post',
-                data:{_token:csrftoken,email:email},
-                success:function(data)
-                {
-                    $('#regemailSuccess').text('');
-                    $('#regemailError').text('');
-                    if(data == 'success')
+            if(email != '' && isValidEmail(email))
+            {
+                $.ajax({
+                    url:'{{ url("/registeremailexistance")}}',
+                    method:'post',
+                    data:{_token:csrftoken,email:email},
+                    success:function(data)
                     {
-                        $('#regemailSuccess').text('Email is available.');
+                        $('#regemailSuccess').text('');
+                        $('#regemailError').text('');
+                        if(data == 'success')
+                        {
+                            $('#regemailSuccess').text('Email is available.');
+                        }
+                        if(data == 'error')
+                        {
+                            $('#regemailError').text('Email is already exist.');
+                            $(".regemail").focus();
+                        }
                     }
-                    if(data == 'error')
-                    {
-                        $('#regemailError').text('Email is already exist.');
-                        $(".regemail").focus();
-                    }
-                }
-            });
+                });
+            }
+            else
+            {
+                $("#regemailError").text("Please enter a valid Email.");
+            }
         });
 
         $(".regusername").blur(function(){
             var username = $(this).val();
             var csrftoken = $('#csrftoken').val();
 
-            $.ajax({
-                url:'{{ url("/registerusernameexistance")}}',
-                method:'post',
-                data:{_token:csrftoken,username:username},
-                success:function(data)
-                {
-                    $('#regusernameSuccess').text('');
-                    $('#regusernameError').text('');
-                    if(data == 'success')
+            if(username != '')
+            {
+                $.ajax({
+                    url:'{{ url("/registerusernameexistance")}}',
+                    method:'post',
+                    data:{_token:csrftoken,username:username},
+                    success:function(data)
                     {
-                        $('#regusernameSuccess').text('username is available.');
+                        $('#regusernameSuccess').text('');
+                        $('#regusernameError').text('');
+                        if(data == 'success')
+                        {
+                            $('#regusernameSuccess').text('username is available.');
+                        }
+                        if(data == 'error')
+                        {
+                            $('#regusernameError').text('username is already exist.');
+                            $(".regusername").focus();
+                        }
                     }
-                    if(data == 'error')
-                    {
-                        $('#regusernameError').text('username is already exist.');
-                        $(".regusername").focus();
-                    }
-                }
-            });
+                });
+            }
         });
 
         $(".loginemail").blur(function(){
