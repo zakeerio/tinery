@@ -214,7 +214,7 @@
                                                     {{-- <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '' }}" step="2"> --}}
                                                     <input type="range" class="form-range" id="days-range"
                                                         name="daysrange" min="0" max="{{ $largestnumber }}"
-                                                        value="">
+                                                        value="{{$largestnumber}}">
 
                                                 </div>
                                                 <div>
