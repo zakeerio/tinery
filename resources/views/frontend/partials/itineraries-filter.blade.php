@@ -131,7 +131,7 @@
                                             </li>
                                             <!-- <a href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{ $offset - 1 }}" data-limit="{{ $limit }}">Previous</a> -->
                                         @endif
-        
+                                        @if($totalPages>1)
                                         @for ($i = 0; $i < $totalPages; $i++)
                                             @if ($i == $offset)
                                                 <li class="page-item active"><a class="page-link"
@@ -144,7 +144,7 @@
                                                 <!-- <a href="javascript:void(0);" data-role="btnfilterpagination" data-offset="{{ $i }}" data-limit="{{ $limit }}">{{ $i + 1 }}</a> -->
                                             @endif
                                         @endfor
-        
+                                        @endif
                                         @if ($offset < $totalPages - 1)
                                             <li class="page-item">
                                                 <a class="page-link" href="javascript:void(0);" data-role="btnfilterpagination"
