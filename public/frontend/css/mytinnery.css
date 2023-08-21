@@ -225,10 +225,7 @@
     color: #000000;
 }
 
-.city .profile-p {
-    /* font-size: 20px; */
-    font-size: 16px;
-}
+
 
 .related {
     font-weight: 600;
@@ -987,7 +984,7 @@ header {
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4em;
 
 
@@ -1594,8 +1591,8 @@ select.did-floating-select::-ms-expand {
 }
 
 .button-24 {
-    /* max-width: 45px; */
-    max-width: 36px;
+    max-width: 45px;
+    /* max-width: 36px; */
     width: 100%;
 
 }
@@ -1765,6 +1762,7 @@ label.required:after {
     width: 25px;
     height: 25px;
 }
+
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -2341,7 +2339,12 @@ label.required:after {
         width: 15px;
         height: 15px;
     }
-
-
+    .city img{
+        width: 24px;
+        height: 24px;
+    }
+   .add-photo-p {
+    font-size: 18px;
+   }
 
 }

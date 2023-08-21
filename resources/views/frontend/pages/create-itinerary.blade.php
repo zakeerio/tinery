@@ -172,7 +172,7 @@
                                                 href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ $itinerary->user ? $itinerary->user->name : 'User not found.' }}
                                             </a></div>
                                         <div class="vr align-self-center linesize mx-1"></div>
-                                        <div class="profile-p px-3 profilefont1">
+                                        <div class="profile-p px-3">
                                             {{ date('d/y/Y', strtotime($itinerary->created_at)) }}</div>
                                     </div>
 
@@ -298,7 +298,7 @@
                                                             <img src="{{ asset('frontend/images/add-image.svg') }}"
                                                                 alt="" class="w-h-68p ">
                                                         </div>
-                                                        <h3 class=" fs-24-600 fw-semibold ">Add cover photo!</h3>
+                                                        <h3 class=" fs-24-600  add-photo-p ">Add cover photo!</h3>
                                                         <p class="fs-16-300 text-white">Showcase the itinerary showing
                                                             image.</p>
                                                         <div class="d-flex gap-2 justify-content-center">
