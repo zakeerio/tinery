@@ -397,11 +397,10 @@
                                                             class=""><img
                                                                 src="{{ asset('frontend/images/edit-btn.png') }}"
                                                                 class="add-size-img"></a>
-                                                    @endif
+                                                                @endif
+                                                    <a href="javascript:void(0)"><img src="{{ asset('frontend/images/trash.svg') }}" alt="" class="add-size-img p-1"></a>
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
-                                                        class=""><img
-                                                            src="{{ asset('frontend/images/view-arrow.svg') }}"
-                                                            class="add-size-img"></a>
+                                                        class=""><img src="{{ asset('frontend/images/view-arrow.svg') }}"  class="add-size-img"></a>
                                                     {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
                                                 </div>
                                             </div>

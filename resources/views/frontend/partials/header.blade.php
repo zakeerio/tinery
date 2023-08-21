@@ -22,15 +22,16 @@
                     </div>
                 @endif
 
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class=""><img src="{{ asset('frontend/images/menu.svg') }}" alt=""></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="ms-auto navbar-nav align-items-center gap-3 gap-xl-0">
                     <li class="nav-item">
-                        <a class="nav-link text-clr " href="#">About</a>
+                        <a class="nav-link text-clr " href="#" data-bs-toggle="modal" data-bs-target="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-clr" href="{{ route('itineraries') }}">Discover</a>
@@ -369,12 +370,11 @@
                         <div class="bg-dark position-absolute position-close-bt rounded-circle"><button type="button"
                                 class="btn-close btn-close-white p-3" data-bs-dismiss="modal"
                                 aria-label="Close"></button> </div>
-                        <div class="row justify-content-center h-100 w-100 align-content-center">
+                        <div class="row justify-content-center m-0 h-100 w-100 align-content-center">
                             <div class="col-8 text-center">
-                                <img class="border-0 img-thumbnail" src="frontend/images/done-tick.svg" alt="">
+                                    <img class="border-0 img-thumbnail " src="frontend/images/done-tick.svg"alt="">
                                 <h2 class="travel mb-4">Welcome To Tinery</h2>
-                                <a href="{{ route('profile') }}"
-                                    class="btn btn-secondary rounded-pill save-bt1">Continue</a>
+                                <a href="{{ route('profile') }}" class="btn btn-secondary rounded-pill save-bt1">Continue</a>
                             </div>
                         </div>
                     </div>
