@@ -3,7 +3,7 @@
 @section('content')
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;
-        
+
     @endphp
     <section class="profile-section">
         <div class="container">
@@ -308,9 +308,7 @@
 
                                                 <input type="hidden" name="id" value="{{ $user->id }}">
                                                 <div class="col-lg-12">
-                                                    <small class="small-tiny-color ">Add a tag by typing in the field above
-                                                        and hitting ‘enter’ on your keyboard or by clicking on a suggested
-                                                        tag.</small>
+                                                    <small class="small-tiny-color ">Relevant tags will auto-populate here based on the tags used in your itineraries.</small>
                                                     <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
                                                         @if ($singletag)
                                                             @foreach ($singletag as $singletagitem)
@@ -324,7 +322,7 @@
 
                                                     </div>
                                                     {{-- <div class="form-group">
-        
+
                                                             {!! Form::label('tags', 'tags',['class'=>'fw-bold required mb-3']) !!}
                                                             {!! Form::text('tags', $user->tags, ['class' => 'form-control rounded-pill mb-1' , 'placeholder' => 'Ex: locations, subjects, themes, etc.' ]) !!}
                                                         </div> --}}

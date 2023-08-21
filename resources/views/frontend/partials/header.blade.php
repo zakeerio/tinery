@@ -260,19 +260,19 @@
                                                     {{-- <input type="text" name="firstname" class="form-control w-100 rounded-pill did-floating-input p-3" id="firstname" placeholder="Enter your name" required>
                                                             <label for="firstname">Enter Your name</label> --}}
                                                     {!! Form::text('firstname', old('firstname') ? old('firstname') : null, [
-                                                        'placeholder' => 'Enter your name',
+                                                        'placeholder' => 'Enter your first name',
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regfirstname',
                                                     ]) !!}
-                                                    {!! Form::label('firstname', 'Enter your name', ['class' => 'did-floating-label ms-2']) !!}
+                                                    {!! Form::label('firstname', 'Enter your first name', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span class="invalid-feedback-registeration text-danger"
                                                         role="alert" id="regnameError"></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-8 col-10 did-floating-label-content">
                                                     {!! Form::text('lastname', old('lastname') ? old('lastname') : null, [
-                                                        'placeholder' => 'Enter your lastname',
+                                                        'placeholder' => 'Enter your last name',
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 reglastname',
                                                     ]) !!}
-                                                    {!! Form::label('lastname', 'Enter your lastname', ['class' => 'did-floating-label ms-2']) !!}
+                                                    {!! Form::label('lastname', 'Enter your last name', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span class="invalid-feedback-registeration text-danger"
                                                         role="alert" id="reglastnameError"></span>
                                                     {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your name" required>
@@ -297,10 +297,10 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-8 col-10 did-floating-label-content">
                                                     {!! Form::text('username', old('username') ? old('username') : null, [
-                                                        'placeholder' => 'Enter your Username',
+                                                        'placeholder' => 'Enter your username',
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regusername',
                                                     ]) !!}
-                                                    {!! Form::label('username', 'Enter your Username', ['class' => 'did-floating-label ms-2']) !!}
+                                                    {!! Form::label('username', 'Enter your username', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span class="invalid-feedback-registeration text-danger"
                                                         role="alert" id="regusernameError"></span>
                                                     <span class="invalid-feedback-registeration text-success"
@@ -330,11 +330,11 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-8 col-10 did-floating-label-content">
                                                     {!! Form::password('confirm_password', [
-                                                        'placeholder' => 'Confirm Password',
+                                                        'placeholder' => 'Confirm your password',
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regconfirm_password ',
                                                         'id' => 'c-password',
                                                     ]) !!}
-                                                    {!! Form::label('confirm_password', 'Confirm Password', ['class' => 'did-floating-label ms-2']) !!}
+                                                    {!! Form::label('confirm_password', 'Confirm your password', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span toggle="#c-password"
                                                         class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-16-300"></span>
                                                     <span class="invalid-feedback-registeration text-danger"
@@ -371,7 +371,7 @@
                                 aria-label="Close"></button> </div>
                         <div class="row justify-content-center h-100 w-100 align-content-center">
                             <div class="col-8 text-center">
-                                <img src="frontend/images/done-tick.svg" alt="">
+                                <img class="border-0 img-thumbnail" src="frontend/images/done-tick.svg" alt="">
                                 <h2 class="travel mb-4">Welcome To Tinery</h2>
                                 <a href="{{ route('profile') }}"
                                     class="btn btn-secondary rounded-pill save-bt1">Continue</a>
