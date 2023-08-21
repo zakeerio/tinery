@@ -371,7 +371,7 @@
                                 aria-label="Close"></button> </div>
                         <div class="row justify-content-center h-100 w-100 align-content-center">
                             <div class="col-8 text-center">
-                                <img src="frontend/images/done-tick.svg" alt="">
+                                <img class="border-0 img-thumbnail" src="frontend/images/done-tick.svg" alt="">
                                 <h2 class="travel mb-4">Welcome To Tinery</h2>
                                 <a href="{{ route('profile') }}"
                                     class="btn btn-secondary rounded-pill save-bt1">Continue</a>
