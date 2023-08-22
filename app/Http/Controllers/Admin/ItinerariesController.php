@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use App\Models\Itineraries;
 use App\Models\User;
+use App\Models\Comment;
+use App\Models\Favorites;
 use App\Models\Tags;
 use App\Models\ItineraryDays;
 use App\Models\ItineraryActivities;
@@ -364,6 +366,12 @@ class ItinerariesController extends BaseController
         // dd($itinerary);
         $itinerary = Itineraries::findOrFail($itinerary);
         $itinerary->delete();
+
+        Comment::where('itineraries_id',$itinerary)->delete();
+        Favorites::where('itineraries_id',$itinerary)->delete();
+        ItineraryDays::where('itineraries_id',$itinerary)->delete();
+        ItineraryActivities::where('itineraries_id',$itinerary)->delete();
+        ItineraryGallery::where('itineraryid',$itinerary)->delete();
 
         return $this->responseRedirect('admin.itineraries.index', 'Itinerary deleted successfully', 'success');
 

@@ -258,7 +258,7 @@
                                         <div class=" mx-auto   p-0 ">
                                             <div class="justify-content-center labe-section row w-100">
                                                 <div class="col-md-6 col-sm-8 col-10 did-floating-label-content">
-                                                    {{-- <input type="text" name="firstname" class="form-control w-100 rounded-pill did-floating-input p-3" id="firstname" placeholder="Enter your name" required>
+                                                    {{-- <input type="text" name="firstname" class="form-control w-100 rounded-pill did-floating-input p-3" id="firstname" placeholder="Enter your first name" required>
                                                             <label for="firstname">Enter Your name</label> --}}
                                                     {!! Form::text('firstname', old('firstname') ? old('firstname') : null, [
                                                         'placeholder' => 'Enter your first name',
@@ -276,7 +276,7 @@
                                                     {!! Form::label('lastname', 'Enter your last name', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span class="invalid-feedback-registeration text-danger"
                                                         role="alert" id="reglastnameError"></span>
-                                                    {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your name" required>
+                                                    {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your last name" required>
                                                             <label for="lastname">Last Name</label> --}}
                                                 </div>
                                             </div>
@@ -306,7 +306,7 @@
                                                         role="alert" id="regusernameError"></span>
                                                     <span class="invalid-feedback-registeration text-success"
                                                         role="alert" id="regusernameSuccess"></span>
-                                                    {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Username" required>
+                                                    {{-- <input type="text" name="username" class="form-control w-100 rounded-pill did-floating-input p-3" id="Username" placeholder="Enter your username" required>
                                                     <label for="Username">Username</label> --}}
                                                 </div>
                                             </div>
