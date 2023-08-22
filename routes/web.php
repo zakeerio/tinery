@@ -91,6 +91,7 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/itineraries_store',[HomeController::class,'itineraries_store'])->name('itineraries.store');
     Route::post('/itineraries_update',[HomeController::class,'itineraries_update'])->name('itineraries.update');
     Route::get('/edit-itinerary/{id}',[HomeController::class,'edit_itinerary'])->name('edit-itinerary');
+    Route::get('/delete-itinerary/{id}',[HomeController::class,'delete_itinerary'])->name('delete-itinerary');
     Route::get('/delete_gallery_image/{id}',[HomeController::class,'delete_gallery_image'])->name('delete_gallery_image');
     Route::get('/create-itinerary-day/{id}',[HomeController::class,'create_itinerary_day'])->name('create-itinerary-day');
     Route::get('/deleteday/{id}/{id1}',[HomeController::class,'deleteday'])->name('deleteday');

@@ -25,6 +25,7 @@ use App\Models\ItineraryLocations;
 use App\Models\HomeSetting;
 use App\Models\Subscription;
 use App\Models\CrudPages;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -381,6 +382,21 @@ class HomeController extends Controller
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
         $itinerary_location = ItineraryLocations::get();
         return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
+    }
+
+    public function delete_itinerary($itineraryid)
+    {
+        $itinerary = Itineraries::findOrFail($itineraryid);
+        $itinerary->delete();
+
+        Comment::where('itineraries_id',$itineraryid)->delete();
+        Favorites::where('itineraries_id',$itineraryid)->delete();
+        ItineraryDays::where('itineraries_id',$itineraryid)->delete();
+        ItineraryActivities::where('itineraries_id',$itineraryid)->delete();
+        ItineraryGallery::where('itineraryid',$itineraryid)->delete();
+
+        return back();
+        
     }
 
     public function itineraries_update(Request $request)
