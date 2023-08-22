@@ -397,9 +397,7 @@
                                                     <a href="{{ url('/delete-itinerary/' . $itinerary->id) }}" class="add-size-img align-items-center border d-flex justify-content-center rounded-pill text-decoration-none"><i class="fa fa-trash icons-color"></i></a>
                                                     @endif
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
-                                                        class=""><img
-                                                            src="{{ asset('frontend/images/view-arrow.svg') }}"
-                                                            class="add-size-img"></a>
+                                                        class=""><img src="{{ asset('frontend/images/view-arrow.svg') }}"  class="add-size-img"></a>
                                                     {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
                                                 </div>
                                             </div>
