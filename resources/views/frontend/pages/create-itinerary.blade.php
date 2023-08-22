@@ -100,7 +100,7 @@
                                                                 @if (!empty($itinerary_location))
                                                                     @foreach ($itinerary_location as $key => $row)
                                                                         @php
-                                                                            $locations[$row->id] = $row->address_street;
+                                                                            $locations[$row->id] = $row->address_city;
                                                                         @endphp
                                                                     @endforeach
                                                                 @endif
@@ -245,13 +245,13 @@
                                             @endif
                                         </p>
                                     </div>
-                                    @if (Session::has('successitinerary'))
+                                    {{-- @if (Session::has('successitinerary'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             {{ Session::get('successitinerary') }}
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                 aria-label="Close"></button>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                     <div class="col-12 mt-4 px-3 pb-4">
                                         @php
                                             $featured_image = $itinerary->seo_image != '' ? asset('/frontend/itineraries/' . $itinerary->seo_image) : asset('frontend/images/annie-spratt.jpg');

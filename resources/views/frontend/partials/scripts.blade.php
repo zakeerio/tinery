@@ -77,7 +77,7 @@
         },{
         type: 'success',
         placement: {
-            from: "center",  // Place the notification in the center
+            // from: "center",  // Place the notification in the center
             align: "center"  // Align the notification content to the center
         }
         });
@@ -91,7 +91,7 @@
         },{
             type: 'danger',
             placement: {
-                from: "center",  // Place the notification in the center
+                // from: "center",  // Place the notification in the center
                 align: "center"  // Align the notification content to the center
             }
         });
@@ -238,6 +238,47 @@
             });
         });
 
+        $(".deleteItinerary").on('click', function(e){
+            e.preventDefault();
+            var csrftoken = $('#csrftoken').val();
+            var confirmval =  confirm('Are you sure you want to delete this itinerary?');
+            var id = $(this).data("id");
+            var itineraryItem = $(this).closest(".itineraryItem");
+            var postlink = $(this).data("href");
+            if(confirmval == false){
+                return false;
+            } else {
+                $.ajax({
+                    url: postlink,
+                    method: 'post',
+                    data: { _token: csrftoken, id: id },
+                    success: function (data) {
+                        var res = $.parseJSON(data);
+                        if (res.success) {
+                            condition_true = true;
+
+                            var notification = $.notify({
+                                title: '<strong>SUCCESS!</strong>',
+                                message: res.success
+                            }, {
+                                type: 'success',
+                                placement: {
+                                    // from: "center",  // Place the notification in the center
+                                    align: "center"  // Align the notification content to the center
+                                }
+                            });
+                        }
+
+                        setTimeout(function () {
+                            itineraryItem.remove();
+                            notification.close()
+                            // window.history.go(0); // Replace with your desired URL
+                        }, 500);
+                    }
+                });
+            }
+        })
+
         function locationModelLoad(){
             // $(".locationModal").on("shown.bs.modal", function() {
                 if($(this).find(".map_address_field").length > 0 ){
@@ -253,7 +294,6 @@
 
                         var autocomplete = new google.maps.places.Autocomplete($(current)[0], options);
 
-                        alert("test");
                         google.maps.event.addListener(autocomplete, 'place_changed', function () {
                             var result = autocomplete.getPlace();
                             console.log(result.address_components[0]);

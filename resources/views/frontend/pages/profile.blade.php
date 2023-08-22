@@ -375,7 +375,7 @@
                                     {{-- {{ dd($itineraries) }} --}}
                                     @forelse ($itineraries as $itinerary)
                                         {{-- {{ dd($itinerary) }} --}}
-                                        <div class="row mb-3">
+                                        <div class="row mb-3 itineraryItem">
                                             <div class="d-flex gap-3 justify-content-between ">
                                                 <div class="d-flex gap-3">
                                                     @if (!empty($itinerary->seo_image))
@@ -394,7 +394,7 @@
                                                 <div class=" d-flex  gap-2 align-items-center ">
                                                     @if ($usercheck)
                                                     <a href="{{ url('/edit-itinerary/' . $itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}" class="add-size-img"></a>
-                                                    <a href="{{ url('/delete-itinerary/' . $itinerary->id) }}" class="add-size-img align-items-center border d-flex justify-content-center rounded-pill text-decoration-none"><i class="fa fa-trash icons-color"></i></a>
+                                                    <a href="javascript:;" data-id="{{ $itinerary->id }}" data-href="{{ url('/delete-itinerary/' . $itinerary->id) }}" class="add-size-img align-items-center border d-flex justify-content-center rounded-pill text-decoration-none deleteItinerary"><i class="fa fa-trash icons-color"></i></a>
                                                     @endif
                                                     <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
                                                         class=""><img src="{{ asset('frontend/images/view-arrow.svg') }}"  class="add-size-img"></a>

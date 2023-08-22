@@ -384,19 +384,28 @@ class HomeController extends Controller
         return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
     }
 
-    public function delete_itinerary($itineraryid)
+    public function delete_itinerary(Request $request)
     {
-        $itinerary = Itineraries::findOrFail($itineraryid);
-        $itinerary->delete();
+        $itineraryid = $request->id;
 
-        Comment::where('itineraries_id',$itineraryid)->delete();
-        Favorites::where('itineraries_id',$itineraryid)->delete();
-        ItineraryDays::where('itineraries_id',$itineraryid)->delete();
-        ItineraryActivities::where('itineraries_id',$itineraryid)->delete();
-        ItineraryGallery::where('itineraryid',$itineraryid)->delete();
+        $itinerary = Itineraries::where('id',$itineraryid)->where('user_id', auth('user')->user()->id);
+        $output = [];
+        if($itinerary) {
+            $itinerary->delete();
+            Comment::where('itineraries_id',$itineraryid)->delete();
+            Favorites::where('itineraries_id',$itineraryid)->delete();
+            ItineraryDays::where('itineraries_id',$itineraryid)->delete();
+            ItineraryActivities::where('itineraries_id',$itineraryid)->delete();
+            ItineraryGallery::where('itineraryid',$itineraryid)->delete();
 
-        return back();
-        
+            $output['success'] = 'Itinerary Deleted Successfully';
+            echo json_encode($output);
+        } else {
+            $output['error'] = 'Invalid Itinerary';
+            echo json_encode($output);
+        }
+
+
     }
 
     public function itineraries_update(Request $request)
@@ -459,7 +468,7 @@ class HomeController extends Controller
         }
 
         // Logic for storing the data goes here...
-        return redirect('/edit-itinerary/'.$array->id)->with('successitinerary','Saved Successfully');
+        return redirect('/edit-itinerary/'.$array->id)->with('success','Saved Successfully');
     }
 
     public function create_itinerary_day($itineraryid)

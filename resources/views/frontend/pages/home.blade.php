@@ -134,7 +134,7 @@
                                             @php
                                                 $link = route('itinerary', ['slug' => $row->slug]);
                                                 $title = $row->title;
-                                                
+
                                                 $locationsArr[] = [
                                                     'url' => $link,
                                                     'title' => $title,
@@ -335,7 +335,7 @@
                 console.log(locations)
 
                 var map = new google.maps.Map(document.getElementById('homepagemap'), {
-                    zoom: 5,
+                    zoom: 2,
                     /* Zoom level of your map */
                     center: new google.maps.LatLng(locations[0].lat, locations[0].long),
 
