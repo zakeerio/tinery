@@ -238,48 +238,59 @@
             });
         });
 
-        $(".locationModal").on("shown.bs.modal", function() {
+        function locationModelLoad(){
+            // $(".locationModal").on("shown.bs.modal", function() {
+                if($(this).find(".map_address_field").length > 0 ){
 
-            if($(".map_address_field").length > 0 ){
-                console.log("map_address_field exist");
-                var options = {
-                    types: ['(cities)']
-                };
+                    console.log($(this).find(".map_address_field").length);
 
-                var autocomplete = new google.maps.places.Autocomplete($(".map_address_field")[0], options);
+                    console.log("map_address_field exist");
+                    var options = {
+                        types: ['(cities)']
+                    };
 
-                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                    var result = autocomplete.getPlace();
-                    console.log(result.address_components[0]);
+                    $(this).find(".map_address_field").each(function(current){
 
-                    var location = result.geometry.location;
-                    var addressComponents = result.address_components;
+                        var autocomplete = new google.maps.places.Autocomplete($(current)[0], options);
 
-                    var latitude = location.lat;
-                    var longitude = location.lng;
+                        alert("test");
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            var result = autocomplete.getPlace();
+                            console.log(result.address_components[0]);
 
-                    var address_street_line1 = result.formatted_address;
-                    var city = getAddressComponent(addressComponents, 'locality');
-                    var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
-                    var country = getAddressComponent(addressComponents, 'country');
-                    var postalCode = getAddressComponent(addressComponents, 'postal_code');
+                            var location = result.geometry.location;
+                            var addressComponents = result.address_components;
 
-                    console.log(address_street_line1+" "+city+" "+state+" "+country+" "+postalCode);
+                            var latitude = location.lat;
+                            var longitude = location.lng;
+
+                            var address_street_line1 = result.formatted_address;
+                            var city = getAddressComponent(addressComponents, 'locality');
+                            var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                            var country = getAddressComponent(addressComponents, 'country');
+                            var postalCode = getAddressComponent(addressComponents, 'postal_code');
+
+                            console.log(address_street_line1+" "+city+" "+state+" "+country+" "+postalCode);
 
 
-                    // Update form fields with retrieved values
+                            // Update form fields with retrieved values
 
-                    // $('#address_street_line1').val(address_street_line1);
-                    // $('#address_zipcode').val(postalCode);
+                            // $('#address_street_line1').val(address_street_line1);
+                            // $('#address_zipcode').val(postalCode);
 
-                    // $('#latitude').val(latitude);
-                    // $('#longitude').val(longitude);
-                    // $('#address_city').val(city);
-                    // $('#address_state').val(state);
-                    // $('#address_country').val(country);
-                });
-            }
-        });
+                            // $('#latitude').val(latitude);
+                            // $('#longitude').val(longitude);
+                            // $('#address_city').val(city);
+                            // $('#address_state').val(state);
+                            // $('#address_country').val(country);
+                        });
+
+                    })
+                }
+            // });
+        }
+
+
 
         if ($('#address_street').length > 0) {
 
