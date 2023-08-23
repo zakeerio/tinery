@@ -262,6 +262,7 @@
 
 .profile-tabs .nav-link {
     font-weight: 600;
+    font-family: "Axiforma", Sans-serif;
     border: 2px solid #000;
     color: #000;
     /* font-size: 24px; */
@@ -1410,7 +1411,7 @@ header {
     pointer-events: none;
     left: 17px;
     top: 14px;
-    padding: 0 8px;
+    padding: 0 10px;
     background: #fff;
     -o-transition: 0.2s ease all;
     transition: 0.2s ease all;
