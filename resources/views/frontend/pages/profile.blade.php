@@ -24,7 +24,7 @@
                                         <form action="{{ route('profilepictureupdate') }}" method="POST"
                                             id="formprofilepictrueupdate" enctype="multipart/form-data">
                                             <label for="profileimg"
-                                                class="position-absolute bottom-0 end-0 position-absolute"><a href=>
+                                                class="position-absolute bottom-0 end-0 position-absolute p-up "><a  href>
                                                     <i
                                                     class="fa-solid fs-4 fa-circle-plus"></i>
                                                 </a>

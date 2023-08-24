@@ -184,7 +184,7 @@
                                                             @php
                                                                 $time = $activity->starttime;
                                                             @endphp
-                                                            <div class="accordion-item  border-0  mycollapsebutton">
+                                                            <div class="accordion-item m-p border-0  mycollapsebutton">
                                                                 <button
                                                                     class="accordion-button collapsed acordionsinglepage "
                                                                     type="button" data-bs-toggle="collapse"
@@ -194,11 +194,11 @@
                                                                     <div class=" row days-menu ">
 
                                                                         <div class=" d-flex ">
-                                                                            <div
-                                                                                class="align-items-center d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">
-                                                                                {{ ++$activityKey }} </div>
-                                                                            <div
-                                                                                class="align-items-center d-flex flex-shrink-0 gap-3 justify-content-between px-3  d-sm-flex">
+                                                                            <div class="align-items-center  d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">
+                                                                                {{ ++$activityKey }} 
+                                                                            </div>
+                                                                            <div class="idays ">
+                                                                            <div class="align-items-center d-flex flex-shrink-0 gap-3 l1  px-3 ">
                                                                                 <div class="red-p text-danger">
                                                                                     {{ date('h:ia', strtotime($activity->starttime)) }}
                                                                                 </div>
@@ -206,11 +206,13 @@
                                                                                 <div class="yoga">{{ $activity->title }}
                                                                                 </div>
                                                                             </div>
-                                                                            <div class=" px-1 align-items-center w-100">
+                                                                            <div class=" px-1 align-items-center line-idays">
                                                                                 <img src="{{ asset('frontend/images/Line.png') }}"
-                                                                                    alt="" class=" line mt-2">
+                                                                                    alt="" class=" line ">
                                                                             </div>
                                                                         </div>
+                                                                        </div>
+                                                                        
 
                                                                     </div>
                                                                 </button>
