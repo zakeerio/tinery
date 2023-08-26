@@ -113,9 +113,9 @@
                                         @endif
                                     </div>
                                     <div id="loginform">
-                                        {!! Form::open(['route' => 'login_new', 'method' => 'POST', 'class' => 'text-center text-md-start']) !!}
+                                        {!! Form::open(['route' => 'login_new', 'method' => 'POST',]) !!}
                                         @csrf
-                                        <h2 class="member-h2 my-32"> Member Login</h2>
+                                        <h2 class="member-h2 my-32 text-center text-md-start"> Member Login</h2>
                                         <div class="row">
                                             <div class="col-10 col-sm-8 mx-auto mx-md-0">
 
@@ -150,10 +150,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-2">
+                                        <div class="form-group mb-2 text-center text-md-start">
                                             {!! Form::submit('Login', ['class' => ' become-btn']) !!}
                                         </div>
-                                        <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
+                                        <div class="text-center text-md-start w-100 ">
+
+                                            <a href="javascript:void(0)" data-role="clicktoforgot">Forgot Password?</a>
+                                        </div>
 
                                         {!! Form::close() !!}
                                     </div>

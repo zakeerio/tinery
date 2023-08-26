@@ -282,11 +282,13 @@
     color: #C83232;
     border: 2px solid #C83232;
 }
-.p-up a{
+.p-up {
     color: #2A293D;
+    cursor: pointer;
 }
-.p-up a:hover{
-    color: black;
+.p-up:hover{
+    color: rgb(0, 39, 145);
+    
 }
 .title1 {
     /* font-size: 20px; */
@@ -2086,6 +2088,9 @@ label.required:after {
     .profiles{
         height: auto;
     }
+    .become-btn{
+        background-color: #29293D;
+    }
 
 }
 @media screen and (max-width: 768px) {
@@ -2104,8 +2109,9 @@ label.required:after {
         height: 300px;
     }
     .did-floating-input{
-        padding-top: 6px;
-        padding-bottom: 6px;
+        padding-top: 9;
+        padding-bottom: 9px;
+        font-size: 12px;
     }
 
     .did-floating-label {
@@ -2113,12 +2119,12 @@ label.required:after {
     }
 
     .pass-icon {
-        top: 13px;
+        top: 15px;
         right: 26px;
     }
 
     .pass-icon1 {
-        top: 13px;
+        top: 15px;
         right: 15px;
     }
 
