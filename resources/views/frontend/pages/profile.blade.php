@@ -377,7 +377,6 @@
                                     role="tabpanel" aria-labelledby="tab1">
                                     {{-- {{ dd($itineraries) }} --}}
                                     @forelse ($itineraries as $itinerary)
-                                        {{-- {{ dd($itinerary) }} --}}
                                         <div class="row mb-3 itineraryItem">
                                             <div class="d-flex gap-3 justify-content-between ">
                                                 <div class="d-flex gap-3">
