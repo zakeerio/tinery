@@ -582,13 +582,11 @@
                                     </div>
                                 </div>
 
-                                <div class="profiles p-3 mt-32">
-                                    <h6 class=" related pt-md-4  align-self-sm-center">Related Content</h6>
-
-                                    <div class="row">
+                                <div class="profiles mt-32 row g-3">
+                                    <h6 class="  profiler-related  align-self-center m-0 col-12 ">Related Content</h6>
                                         @if (!$related_itinerary->isEmpty())
                                             @foreach ($related_itinerary as $rowrelated)
-                                                <div class="pt-3 d-flex align-items-lg-center   col-sm-6 col-lg-12 ">
+                                                <div class=" col-sm-6 col-lg-12  d-flex align-items-lg-center px-0 ">
                                                     <div class="h-100">
                                                         <a href="{{ route('itinerary', ['slug' => $rowrelated->slug]) }}">
                                                             @if (!empty($rowrelated->seo_image))
@@ -609,14 +607,15 @@
                                             <p class="lang"><a class=" text-decoration-none "
                                                     href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{ $rowrelated->user->name }}
                                                 </a> |</p>
-                                            <p class="lang px-2 ">{{ $rowrelated->created_at->diffForHumans() }}</p>
+                                            <p class="lang1 px-2 ">{{ $rowrelated->created_at->diffForHumans() }}</p>
                                         </div>
 
                                     </div>
+                                    
                                 </div>
                                 @endforeach
                                 @endif
-                            </div>
+                            
                         </div>
 
                     </div>
