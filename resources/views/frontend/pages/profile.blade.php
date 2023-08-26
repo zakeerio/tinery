@@ -350,7 +350,7 @@
                                 <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs"
                                     role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button id="tab1" class=" nav-link active btn-dark-r1 px-3 py-2 "
+                                        <button id="tab1" class=" nav-link active btn-dark-r1  py-2 "
                                             type="button" role="tab" aria-controls="content1" aria-selected="true"
                                             data-bs-toggle="tab" data-bs-target="#content1">
                                             My Itinerary List
@@ -358,7 +358,7 @@
 
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="btn-dark-r1 px-3 py-2 nav-link" id="tab2"
+                                        <button class="btn-dark-r1  py-2 nav-link" id="tab2"
                                             data-bs-toggle="tab" data-bs-target="#content2" type="button"
                                             role="tab" aria-controls="content2" aria-selected="false"><i
                                                 class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
@@ -379,29 +379,32 @@
                                     @forelse ($itineraries as $itinerary)
                                         <div class="row mb-3 itineraryItem">
                                             <div class="d-flex gap-3 justify-content-between ">
-                                                <div class="d-flex gap-3">
+                                                <div class="row g-3">
                                                     @if (!empty($itinerary->seo_image))
                                                         <img src="{{ asset('frontend/itineraries/' . $itinerary->seo_image) }}"
-                                                            alt="" class="col-3 w-120i">
+                                                            alt="" class="col-3 w-120i px-0">
                                                     @else
                                                         <img src="{{ asset('frontend/images/annie-spratt.jpg') }}"
-                                                            alt="" class="col-3 w-120i ">
+                                                            alt="" class="col-3 w-120i px-0">
                                                     @endif
-                                                    <div class="">
-                                                        <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
-                                                        <p class="fs-16-300 mb-0">
-                                                            {{ \Str::limit($itinerary->description, 150) }}</p>
+                                                   <div class="col">
+                                                       <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
+                                                       <div class="d-flex gap-2">
+                                                           <p class="fs-16-300 mb-0 line-set">
+                                                               {{ \Str::limit($itinerary->description, 150) }}</p>
+                                                               <div class=" d-flex  gap-2 align-items-center ">
+                                                                   @if ($usercheck)
+                                                                   <a href="{{ url('/edit-itinerary/' . $itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}" class="add-size-img"></a>
+                                                                   <a href="javascript:;" data-id="{{ $itinerary->id }}" data-href="{{ url('/delete-itinerary/' . $itinerary->id) }}" class="add-size-img align-items-center border d-flex justify-content-center rounded-pill text-decoration-none deleteItinerary"><i class="fa fa-trash icons-color"></i></a>
+                                                                   @endif
+                                                                   <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
+                                                                       class=""><img src="{{ asset('frontend/images/view-arrow.svg') }}"  class="add-size-img"></a>
+                                                                       {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
+                                                                   </div>
+
+                                                            </div>
+                                                        </div> 
                                                     </div>
-                                                </div>
-                                                <div class=" d-flex  gap-2 align-items-center ">
-                                                    @if ($usercheck)
-                                                    <a href="{{ url('/edit-itinerary/' . $itinerary->id) }}" class=""><img src="{{ asset('frontend/images/edit-btn.png') }}" class="add-size-img"></a>
-                                                    <a href="javascript:;" data-id="{{ $itinerary->id }}" data-href="{{ url('/delete-itinerary/' . $itinerary->id) }}" class="add-size-img align-items-center border d-flex justify-content-center rounded-pill text-decoration-none deleteItinerary"><i class="fa fa-trash icons-color"></i></a>
-                                                    @endif
-                                                    <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}"
-                                                        class=""><img src="{{ asset('frontend/images/view-arrow.svg') }}"  class="add-size-img"></a>
-                                                    {{-- <a href="{{ route('itinerary', ['slug' => $itinerary->slug]) }}" class=""><img src="{{ asset('frontend/images/view-arrow.png') }}"></a> --}}
-                                                </div>
                                             </div>
                                         </div>
                                     @empty
@@ -472,7 +475,7 @@
                                 <ul class="nav nav-tabs  d-md-none float-end ">
                                     <li class="nav-item " role="presentation">
                                         <a class="btn bg-transparent " href="{{ url('/create-itinerary') }}"><img
-                                                src="{{ asset('frontend/images/button-add.svg') }}"></a>
+                                                src="{{ asset('frontend/images/button-add.svg') }}" class="w-h-52p"></a>
                                     </li>
                                 </ul>
                             @endif

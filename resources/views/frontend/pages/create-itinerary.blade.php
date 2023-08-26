@@ -7,16 +7,16 @@
 
         $key = env('GOOGLE_MAP_API_KEY');
     @endphp
-    <section class="profile-section py-4">
+    <section class="profile-section ">
         @if (!empty($itinerary))
             <div class="container margin-top-75">
                 <div class="row justify-content-center">
                     <div class="col-11 px-0">
                         <div class="row">
                             <div class="col-lg-8">
-                                <div class="border rounded">
-                                    <div class="row  p-3 ">
-                                        <div class="col-12 d-flex justify-content-between profile-padding-left">
+                                <div class="border rounded  p-30p">
+                                    <div class="row  ">
+                                        <div class="col-12 d-flex pb-lg-4 pb-2 justify-content-between ">
                                             <h1 class="trip-h1">
                                                 @if ($itinerary->title != '')
                                                     {{ $itinerary->title }}
@@ -154,8 +154,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="related d-flex align-items-center gap-2 profile-padding-left"
-                                        style="margin-top:-20px;">
+                                    <div class="related d-flex align-items-center gap-2 " >
                                         <div class=" ">
                                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                                 @if (!empty($itinerary->user->profile))
@@ -176,7 +175,7 @@
                                             {{ date('d/y/Y', strtotime($itinerary->created_at)) }}</div>
                                     </div>
 
-                                    <div class="city d-flex profile-padding-left  flex-wrap">
+                                    <div class="city d-flex   flex-wrap">
                                         <div class="d-flex align-items-center">
                                             <img src="{{ asset('frontend/images/nav.png') }}" alt="">
                                             <h6 class="profile-p pt-2 mx-1">
@@ -210,7 +209,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="tags profile-padding-left flex-wrap gap-1" style="margin-top:-40px;">
+                                    <div class="tags  flex-wrap gap-1" style="margin-top:-40px;">
                                         @php
                                             $itinerarytag = json_decode($itinerary->tags);
                                         @endphp
@@ -252,7 +251,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @endif --}}
-                                    <div class="col-12 mt-4 px-3 pb-4">
+                                    <div class="col-12 mt-4 pb-4">
                                         @php
                                             $featured_image = $itinerary->seo_image != '' ? asset('/frontend/itineraries/' . $itinerary->seo_image) : asset('frontend/images/annie-spratt.jpg');
                                         @endphp
@@ -322,7 +321,7 @@
                                                 $count = ++$key;
                                             @endphp
                                             <div
-                                                class="col-12 d-flex justify-content-between  border rounded-3 px-3 py-2 mt-3">
+                                                class="col-12 d-flex justify-content-between align-items-center  border rounded-3 px-3 py-2 mt-3">
                                                 <h2 class="mb-0 gallery py-2">Day {{ $count }}</h2>
                                                 <button type="button" class="bg-transparent border-0"
                                                     data-role="btnshowactivitymodel"
@@ -389,7 +388,7 @@
                                         class="col-12 rounded-2 bg-light align-items-center d-flex flex-column justify-content-center mb-5 height-400">
 
                                         <div class="col-12 gallery-images p-3">
-                                            <h3 class="align-self-start justify-content-start px-3 pt-3 gallery">Gallery
+                                            <h3 class="align-self-start justify-content-start px-lg-3 pt-3 gallery">Gallery
                                                 Pictures</h3>
                                             @if ($itinerary_gallery)
                                                 <div class="gallery-img py-2">
@@ -628,12 +627,11 @@
                     </div>
                 </div>
 
-                <div class="profiles p-3 mt-32 row">
-                    <h6 class=" profiler-related related align-self-center pt-md-4 col-sm-6">Related Content </h6>
-                    <div class="d-sm-none d-md-block"></div>
+                <div class="profiles mt-32 row g-3">
+                    <h6 class=" profiler-related  align-self-center m-0 col-12 ">Related Content </h6>
                     @if (!$related_itinerary->isEmpty())
                         @foreach ($related_itinerary as $row)
-                            <div class=" col-sm-6 col-lg-12 pt-lg-3 d-flex align-items-lg-center ">
+                            <div class=" col-sm-6 col-lg-12  d-flex align-items-lg-center px-0 ">
                                 <div class="h-100">
                                     <a href="{{ route('itinerary', ['slug' => $row->slug]) }}">
                                         <img src="{{ asset('frontend/itineraries/' . $row->seo_image) }}" alt=""
