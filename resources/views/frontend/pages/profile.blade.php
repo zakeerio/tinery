@@ -24,10 +24,10 @@
                                         <form action="{{ route('profilepictureupdate') }}" method="POST"
                                             id="formprofilepictrueupdate" enctype="multipart/form-data">
                                             <label for="profileimg"
-                                                class="position-absolute bottom-0 end-0 position-absolute p-up "><a  href>
+                                                class="position-absolute bottom-0 end-0 position-absolute p-up ">
                                                     <i
                                                     class="fa-solid fs-4 fa-circle-plus"></i>
-                                                </a>
+                                                
                                                 </label>
                                             <div class="d-none"><input type="file" name="file" id="profileimg"></div>
                                         </form>
