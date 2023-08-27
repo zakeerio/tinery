@@ -27,7 +27,7 @@
                                                 class="position-absolute bottom-0 end-0 position-absolute p-up ">
                                                     <i
                                                     class="fa-solid fs-4 fa-circle-plus"></i>
-                                                
+
                                                 </label>
                                             <div class="d-none"><input type="file" name="file" id="profileimg"></div>
                                         </form>
@@ -371,7 +371,6 @@
                                     </li>
                                 </ul>
                             </div>
-
                             <div class="tab-content" id="myTabsContent">
                                 <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1"
                                     role="tabpanel" aria-labelledby="tab1">
@@ -403,7 +402,7 @@
                                                                    </div>
 
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                     </div>
                                             </div>
                                         </div>
