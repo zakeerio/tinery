@@ -3,7 +3,6 @@
 @section('content')
     @php
         $usercheck = isset($isloggedin) ? $isloggedin : false;
-
     @endphp
     <section class="profile-section">
         <div class="container">
