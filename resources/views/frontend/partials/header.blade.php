@@ -129,7 +129,7 @@
                                                         {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label fs-20-300']) !!}
                                                         <span class="invalid-feedback-login text-danger" role="alert"
                                                             id="loginemailError"></span>
-                                                        <span class="invalid-feedback-login text-success" role="alert"
+                                                        <span class="invalid-feedback-login text-success d-flex mt-1" role="alert"
                                                             id="loginemailSuccess"></span>
                                                     </div>
                                                     <div class="did-floating-label-content mb-4">
@@ -144,7 +144,7 @@
                                                             class=" position-absolute pass-icon1 fa fa-fw fa-eye field-icon toggle-password fs-16-300"></span>
                                                         <span class="invalid-feedback-login text-danger"
                                                             role="alert" id="loginpassError"></span>
-                                                        <span class="invalid-feedback-login text-success"
+                                                        <span class="invalid-feedback-login text-success d-flex mt-1 "
                                                             role="alert" id="loginpassSuccess"></span>
                                                     </div>
                                                 </div>
@@ -268,7 +268,7 @@
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regfirstname',
                                                     ]) !!}
                                                     {!! Form::label('firstname', 'Enter your first name', ['class' => 'did-floating-label ms-2']) !!}
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex mt-1"
                                                         role="alert" id="regnameError"></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-8 col-10 did-floating-label-content">
@@ -277,7 +277,7 @@
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 reglastname',
                                                     ]) !!}
                                                     {!! Form::label('lastname', 'Enter your last name', ['class' => 'did-floating-label ms-2']) !!}
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex mt-1"
                                                         role="alert" id="reglastnameError"></span>
                                                     {{-- <input type="text" class="form-control w-100 rounded-pill did-floating-input p-3" id="lastname" placeholder="Enter your last name" required>
                                                             <label for="lastname">Last Name</label> --}}
@@ -292,7 +292,7 @@
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regemail',
                                                     ]) !!}
                                                     {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label ms-2']) !!}
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex mt-1"
                                                         role="alert" id="regemailError"></span>
                                                     <span class="invalid-feedback-registeration text-success"
                                                         role="alert" id="regemailSuccess"></span>
@@ -305,7 +305,7 @@
                                                         'class' => 'form-control w-100 rounded-pill did-floating-input  ps-3 regusername',
                                                     ]) !!}
                                                     {!! Form::label('username', 'Enter your username', ['class' => 'did-floating-label ms-2']) !!}
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex  mt-1 "
                                                         role="alert" id="regusernameError"></span>
                                                     <span class="invalid-feedback-registeration text-success"
                                                         role="alert" id="regusernameSuccess"></span>
@@ -327,7 +327,7 @@
                                                     {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span toggle="#password"
                                                         class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-16-300"></span>
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex mt-1"
                                                         role="alert" id="regpassError"></span>
                                                     {{-- <input type="password" name="password" class="form-control w-100 rounded-pill did-floating-input p-3" id="password" placeholder="Enter your password" required>
                                                             <label for="password">Password</label> --}}
@@ -341,7 +341,7 @@
                                                     {!! Form::label('confirm_password', 'Confirm your password', ['class' => 'did-floating-label ms-2']) !!}
                                                     <span toggle="#c-password"
                                                         class=" position-absolute pass-icon fa fa-fw fa-eye field-icon toggle-password fs-16-300"></span>
-                                                    <span class="invalid-feedback-registeration text-danger"
+                                                    <span class="invalid-feedback-registeration text-danger d-flex mt-1"
                                                         role="alert" id="regconpassError"></span>
                                                     {{-- <input type="password" name="confirm_password" class="form-control w-100 rounded-pill did-floating-input p-3" id="confirm_password" placeholder="Enter your confirm password" required>
                                                         <label for="confirm_password">Confirm Password</label> --}}
