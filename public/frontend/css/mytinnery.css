@@ -1440,6 +1440,7 @@ header {
     padding-top: 12px;
     padding-bottom: 12px;
     font-size: 16px;
+    border: 1px solid !important;
     font-weight: 300;
     background: #fff;
     color: #323840;
@@ -2125,22 +2126,22 @@ label.required:after {
         height: 300px;
     }
     .did-floating-input{
-        padding-top: 9;
-        padding-bottom: 9px;
-        font-size: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        font-size: 16px;
     }
 
     .did-floating-label {
-        top: 9px;
+        top: 14px;
     }
 
     .pass-icon {
-        top: 15px;
+        top: 20px;
         right: 26px;
     }
 
     .pass-icon1 {
-        top: 15px;
+        top: 20px;
         right: 15px;
     }
 
