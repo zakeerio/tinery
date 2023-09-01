@@ -127,7 +127,7 @@
                                                             'required' => 'required',
                                                         ]) !!}
                                                         {!! Form::label('email', 'Enter your email', ['class' => 'did-floating-label fs-20-300']) !!}
-                                                        <span class="invalid-feedback-login text-danger" role="alert"
+                                                        <span class="invalid-feedback-login text-danger d-block mt-2" role="alert"
                                                             id="loginemailError"></span>
                                                         <span class="invalid-feedback-login text-success d-flex mt-1" role="alert"
                                                             id="loginemailSuccess"></span>
@@ -142,7 +142,7 @@
                                                         {!! Form::label('password', 'Enter your password', ['class' => 'did-floating-label']) !!}
                                                         <span toggle="#login-password"
                                                             class=" position-absolute pass-icon1 fa fa-fw fa-eye field-icon toggle-password fs-16-300"></span>
-                                                        <span class="invalid-feedback-login text-danger"
+                                                        <span class="invalid-feedback-login text-danger d-block mt-2"
                                                             role="alert" id="loginpassError"></span>
                                                         <span class="invalid-feedback-login text-success d-flex mt-1 "
                                                             role="alert" id="loginpassSuccess"></span>
