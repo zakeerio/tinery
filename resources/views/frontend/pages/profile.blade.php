@@ -17,8 +17,7 @@
                                             <img src="{{ asset('frontend/profile_pictures/' . $user->profile) }}"
                                                 alt="Profile Image" class="profile-img rounded-circle">
                                         @else
-                                            <img src="{{ asset('frontend/images/profile-default-pic.svg') }}"
-                                                alt="Profile Image" class="profile-img rounded-circle">
+                                            <img src="{{ asset('frontend/images/profile-default-pic.svg') }}" alt="Profile Image" class="profile-img rounded-circle">
                                         @endif
                                         <form action="{{ route('profilepictureupdate') }}" method="POST"
                                             id="formprofilepictrueupdate" enctype="multipart/form-data">
