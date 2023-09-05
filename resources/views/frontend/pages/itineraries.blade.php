@@ -345,7 +345,7 @@
                                                 @php
                                                     $link = route('itinerary', ['slug' => $row->slug]);
                                                     $title = $row->title;
-                                                    
+
                                                     $locationsArr[] = [
                                                         'url' => $link,
                                                         'title' => $title,
@@ -380,7 +380,7 @@
             $locationArrJson = json_encode($locationsArr);
         @endphp
 
-        <hr>
+        {{-- <hr>
         <div class="world py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -390,7 +390,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
@@ -409,7 +409,8 @@
             })
 
             if ($('#homepagemap').length > 0) {
-                initMaps();
+                // Disabled the google map temperary
+               // initMaps();
             }
 
             function initMaps() {
