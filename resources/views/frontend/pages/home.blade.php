@@ -113,7 +113,7 @@
                                             style="text-decoration:none;">
                                             <h4 class="h-4">{{ $row->title }}</h4>
                                         </a>
-                                        <div class="tags">
+                                        <div class="tags scroller-h ">
                                             @php
                                                 $itinerarytag = json_decode($row->tags);
                                             @endphp
@@ -123,7 +123,7 @@
                                                 @endphp
                                                 @if ($tag)
                                                     <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                        <button class="foodie">
+                                                        <button class="foodie text-nowrap">
                                                             {{ $tag->name }}
                                                         </button>
                                                     </a>
@@ -374,5 +374,6 @@
             }
         });
     </script>
+   
 
 @endsection

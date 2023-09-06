@@ -48,7 +48,8 @@
                                             Location
                                         </button>
 
-                                        <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
+                                        <div class="dropdown-menu scroller-white s_h-300px  p-4"
+                                            aria-labelledby="dropdownMenuButton1">
                                             <div id="selected-feild"
                                                 class="selected-feild d-flex gap-1 flex-wrap align-items-center">
                                                 @if (isset($filteredlocations) && !empty($filteredlocations))
@@ -103,7 +104,8 @@
                                             Tags
                                         </button>
 
-                                        <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
+                                        <div class="dropdown-menu scroller-white s_h-300px p-4"
+                                            aria-labelledby="dropdownMenuButton1">
                                             <div id="selected-feild"
                                                 class="selected-feild d-flex gap-1 flex-wrap align-items-center">
 
@@ -148,7 +150,8 @@
                                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User
                                         </button>
 
-                                        <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
+                                        <div class="dropdown-menu scroller-white s_h-300px p-4"
+                                            aria-labelledby="dropdownMenuButton1">
                                             <div id="selected-feild"
                                                 class="selected-feild d-flex gap-1 flex-wrap align-items-center">
                                                 @if (isset($filteredusers) && !empty($filteredusers))
@@ -192,13 +195,13 @@
                                 </div>
 
                                 <div class=" ">
-                                    <div class="dropdown">
+                                    <div class="dropdown ">
                                         <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
                                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Trip length
                                         </button>
 
-                                        <div class="dropdown-menu p-4" aria-labelledby="dropdownMenuButton1">
+                                        <div class="dropdown-menu  p-4" aria-labelledby="dropdownMenuButton1">
                                             <div id="selected-feild" class="selected-field">
                                                 <a href="javascript:;" class="btn clearbtn_range" id="rangslide">
                                                     {{ isset($daysrange) ? '0-' . $daysrange : '0' }} days</a>
@@ -214,7 +217,7 @@
                                                     {{-- <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '' }}" step="2"> --}}
                                                     <input type="range" class="form-range" id="days-range"
                                                         name="daysrange" min="0" max="{{ $largestnumber }}"
-                                                        value="{{$largestnumber}}">
+                                                        value="{{ $largestnumber }}">
 
                                                 </div>
                                                 <div>
@@ -227,6 +230,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="selected-feild ps-5">
                                 <a href="{{ route('itineraries') }}" class="btn clearbtn1 ">Clear All filters <svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -319,7 +323,7 @@
                                                 style="text-decoration:none;">
                                                 <h4 class="h-4">{{ $row->title }}</h4>
                                             </a>
-                                            <div class="tags">
+                                            <div class="tags scroller-h">
                                                 @if ($row->tags != '')
                                                     @php
                                                         $itinerarytag = json_decode($row->tags);
@@ -345,7 +349,7 @@
                                                 @php
                                                     $link = route('itinerary', ['slug' => $row->slug]);
                                                     $title = $row->title;
-
+                                                    
                                                     $locationsArr[] = [
                                                         'url' => $link,
                                                         'title' => $title,
@@ -410,7 +414,7 @@
 
             if ($('#homepagemap').length > 0) {
                 // Disabled the google map temperary
-               // initMaps();
+                // initMaps();
             }
 
             function initMaps() {

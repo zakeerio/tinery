@@ -298,6 +298,43 @@
     line-height: 32px;
 
 }
+.scroller-white::-webkit-scrollbar {
+    width: 4px;
+
+}
+
+.scroller-white::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scroller-white::-webkit-scrollbar-thumb {
+    background-color: white;
+    outline: 1px solid white;
+    border-radius: 20px;
+
+}
+
+   
+
+.scroller-h::-webkit-scrollbar {
+    height: 6px;
+
+}
+
+.scroller-h::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(245, 218, 218, 0.3);
+}
+
+.scroller-h::-webkit-scrollbar-thumb {
+    background-color: rgb(238, 238, 238);
+    outline: 1px solid rgb(139, 139, 139);
+    border-radius: 20px;
+
+}
+.s_h-300px{
+    height: 350px;
+    overflow: auto;
+}
 
 .foodie {
     border: 1px solid #0F6496;
@@ -312,6 +349,8 @@
     /* font-size: 16px; */
     font-weight: 300;
     line-height: 1.3em;
+    
+    
 }
 
 .profile-details {
@@ -510,9 +549,10 @@
     -ms-flex-align: center;
     align-items: center;
     /* justify-content: space-between; */
-    overflow: hidden;
+    overflow: auto;
     min-height: 34px;
     height: auto;
+    padding-bottom: 10px;
 }
 
 .w-40 {
@@ -2139,7 +2179,10 @@ label.required:after {
         top: 20px;
         right: 26px;
     }
-
+    .d-h{
+        height: 200px !important;
+        overflow: hidden;
+    }
     .pass-icon1 {
         top: 20px;
         right: 15px;
