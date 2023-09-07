@@ -415,7 +415,8 @@
             if ($('#homepagemap').length > 0) {
                 // Disabled the google map temperary
                 // initMaps();
-            }
+
+}
 
             function initMaps() {
 
