@@ -83,8 +83,8 @@
                                                 $tag = $itinerary->tagsdata($itinerarytag);
                                             @endphp
                                             @if ($tag)
-                                                <a href="#">
-                                                    <button class="foodie">
+                                                <a href="{{ url('/tags/' . $tag->slug) }}">
+                                                    <button class="foodie text-nowrap">
                                                         {{ $tag->name }}
                                                     </button>
                                                 </a>

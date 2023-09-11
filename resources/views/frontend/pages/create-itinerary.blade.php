@@ -220,18 +220,13 @@
                                                 @endphp
                                                 @if ($tag)
                                                     <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                        <button class="foodie">
+                                                        <button class="foodie text-nowrap">
                                                             {{ $tag->name }}
                                                         </button>
                                                     </a>
                                                 @endif
                                             @endforeach
-                                        @else
-                                            <a href="javascript:void(0)">
-                                                <button class="foodie">
-                                                    hashtags
-                                                </button>
-                                            </a>
+
                                         @endif
 
                                     </div>

@@ -105,7 +105,7 @@
 
                                                     @if ($tag)
                                                         <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                            <button class="foodie">
+                                                            <button class="foodie text-nowrap">
                                                                 {{ $tag->name }}
                                                             </button>
                                                         </a>
@@ -119,7 +119,7 @@
                                             @php
                                                 $link = route('itinerary', ['slug' => $row->slug]);
                                                 $title = $row->title;
-                                                
+
                                                 $locationsArr[] = [
                                                     'url' => $link,
                                                     'title' => $title,

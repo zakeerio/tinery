@@ -40,7 +40,7 @@
                                                 </div>
                                             </a>
                                         </div>
-        
+
                                         <div class="heart-icon">
                                             @if (Auth::guard('user')->user())
                                                 @php
@@ -78,15 +78,15 @@
                                                 @php
                                                     $tag = $row->tagsdata($itinerarytag);
                                                 @endphp
-        
+
                                                 @if ($tag)
                                                     <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                        <button class="foodie">
+                                                        <button class="foodie text-nowrap">
                                                             {{ $tag->name }}
                                                         </button>
                                                     </a>
                                                 @endif
-        
+
                                                 {{-- {{ $itinerarytag }} --}}
                                             @endforeach
                                         @endif
@@ -95,7 +95,7 @@
                                         @php
                                             $link = route('itinerary', ['slug' => $row->slug]);
                                             $title = $row->title;
-                                            
+
                                             $locationsArr[] = [
                                                 'url' => $link,
                                                 'title' => $title,
@@ -104,7 +104,7 @@
                                             ];
                                         @endphp
                                     @endif
-        
+
                                     <p class="city">
                                         {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }}
                                         | {{ $row->created_at->diffForHumans() }}</p>
@@ -120,7 +120,7 @@
                                         @php
                                             $totalPages = ceil($total / $limit);
                                         @endphp
-        
+
                                         @if ($offset > 0)
                                             <li class="page-item">
                                                 <a class="page-link" href="javascript:void(0);" data-role="btnfilterpagination"
@@ -163,7 +163,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 @php
@@ -178,7 +178,7 @@
                 <div id="homepagemap" class="h-700p r-12"></div>
             </div>
         </div>
-       
+
     </div>
 </div>
 

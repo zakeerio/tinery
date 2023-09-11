@@ -315,7 +315,7 @@
                                                             @foreach ($singletag as $singletagitem)
                                                                 @if ($singletagitem)
                                                                     <a href="{{ url('/tags/' . $singletagitem->slug) }}"
-                                                                        class="mb-1"><button class="foodie ">
+                                                                        class="mb-1"><button class="foodie text-nowrap">
                                                                             {{ $singletagitem->name }} </button> </a>
                                                                 @endif
                                                             @endforeach

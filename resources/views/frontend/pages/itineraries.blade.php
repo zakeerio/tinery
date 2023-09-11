@@ -57,7 +57,7 @@
                                                         <label
                                                             for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
                                                             class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
-                                                            {{ $filteredlocations->itinerarylocations->address_city }}, {{ $filteredlocations->itinerarylocations->address_country }} 
+                                                            {{ $filteredlocations->itinerarylocations->address_city }}, {{ $filteredlocations->itinerarylocations->address_country }}
                                                             <span>X</span>
                                                         </label>
                                                     @endforeach
@@ -231,7 +231,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="selected-feild ps-5">
                                 <a href="{{ route('itineraries') }}" class="btn clearbtn1 ">Clear All filters <svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -336,7 +336,7 @@
 
                                                         @if ($tag)
                                                             <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                                <button class="foodie">
+                                                                <button class="foodie text-nowrap">
                                                                     {{ $tag->name }}
                                                                 </button>
                                                             </a>
@@ -350,7 +350,7 @@
                                                 @php
                                                     $link = route('itinerary', ['slug' => $row->slug]);
                                                     $title = $row->title;
-                                                    
+
                                                     $locationsArr[] = [
                                                         'url' => $link,
                                                         'title' => $title,
