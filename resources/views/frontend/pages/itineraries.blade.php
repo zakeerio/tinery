@@ -58,11 +58,11 @@
                                                             for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
                                                             class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
                                                             @if($filteredlocations->itinerarylocations->address_country == 'United States')
-                                                            {{ $filteredlocations->itinerarylocations->address_city }}, 
-                                                            {{ $filteredlocations->itinerarylocations->address_state }}, 
+                                                            {{ $filteredlocations->itinerarylocations->address_city }},
+                                                            {{ $filteredlocations->itinerarylocations->address_state }},
                                                             {{ $filteredlocations->itinerarylocations->address_country }}
                                                             @else
-                                                            {{ $filteredlocations->itinerarylocations->address_city }}, 
+                                                            {{ $filteredlocations->itinerarylocations->address_city }},
                                                             {{ $filteredlocations->itinerarylocations->address_country }}
                                                             @endif
                                                             <span>X</span>
@@ -94,11 +94,11 @@
                                                                         for="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
                                                                         class="form-check-label fs-16-400">
                                                                         @if($filteritem->itinerarylocations->address_country == 'United States')
-                                                                        {{ $filteritem->itinerarylocations->address_city }}, 
-                                                                        {{ $filteritem->itinerarylocations->address_state }}, 
+                                                                        {{ $filteritem->itinerarylocations->address_city }},
+                                                                        {{ $filteritem->itinerarylocations->address_state }},
                                                                         {{ $filteritem->itinerarylocations->address_country }}
                                                                         @else
-                                                                        {{ $filteritem->itinerarylocations->address_city }}, 
+                                                                        {{ $filteritem->itinerarylocations->address_city }},
                                                                         {{ $filteritem->itinerarylocations->address_country }}
                                                                         @endif
                                                                     </label>
@@ -267,7 +267,6 @@
         </div>
     </div>
     <div id="ajaxresponsedata">
-
         <div class="card-section py-3">
             <div class="container">
                 <div class="row justify-content-center">
