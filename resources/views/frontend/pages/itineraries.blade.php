@@ -56,7 +56,8 @@
                                                     @foreach ($filteredlocations as $filteredlocations)
                                                         <label
                                                             for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
-                                                            class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{ $filteredlocations->itinerarylocations->address_city }}
+                                                            class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
+                                                            {{ $filteredlocations->itinerarylocations->address_city }}, {{ $filteredlocations->itinerarylocations->address_country }} 
                                                             <span>X</span>
                                                         </label>
                                                     @endforeach
@@ -84,7 +85,7 @@
                                                                         {{ isset($locationfilter) && in_array($filteritem->location_id, $locationfilter) ? 'checked' : '' }}>
                                                                     <label
                                                                         for="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
-                                                                        class="form-check-label fs-16-400">{{ $filteritem->itinerarylocations->address_city }}</label>
+                                                                        class="form-check-label fs-16-400">{{ $filteritem->itinerarylocations->address_city }}, {{ $filteritem->itinerarylocations->address_country }}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
