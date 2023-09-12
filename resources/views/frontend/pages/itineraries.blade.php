@@ -185,23 +185,12 @@
                                                         <div class="row py-2">
                                                             <div class="col-lg-12">
                                                                 <div class="form-check">
-                                                                    <input type="checkbox" name="location[]"
-                                                                        class="form-check-input filter"
-                                                                        value="{{ $filteritem->location_id }}"
-                                                                        id="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
-                                                                        {{ isset($locationfilter) && in_array($filteritem->location_id, $locationfilter) ? 'checked' : '' }}>
-                                                                    <label
-                                                                        for="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
-                                                                        class="form-check-label fs-16-400">
-                                                                        @if($filteritem->itinerarylocations->address_country == 'United States')
-                                                                        {{ $filteritem->itinerarylocations->address_city }},
-                                                                        {{ $filteritem->itinerarylocations->address_state }},
-                                                                        {{ $filteritem->itinerarylocations->address_country }}
-                                                                        @else
-                                                                        {{ $filteritem->itinerarylocations->address_city }},
-                                                                        {{ $filteritem->itinerarylocations->address_country }}
-                                                                        @endif
-                                                                    </label>
+                                                                    <input type="checkbox" class="form-check-input filter"
+                                                                        name="users[]" value="{{ $filter->id }}"
+                                                                        id="optionuser{{ $filter->name }}"
+                                                                        {{ isset($usersfilter) && in_array($filter->id, $usersfilter) ? 'checked' : '' }}>
+                                                                    <label for="optionuser{{ $filter->name }}"
+                                                                        class="form-check-label">{{ $filter->name }}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -261,7 +250,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -378,13 +367,13 @@
                                                 @endphp
                                             @endif
                                             <p class="city">
-                                                @if($row->location_id != null && $row->itinerarylocations) 
+                                                @if($row->location_id != null && $row->itinerarylocations)
                                                     @if($row->itinerarylocations->address_country == 'United States')
-                                                    {{ $row->itinerarylocations->address_city }}, 
-                                                    {{ $row->itinerarylocations->address_state }}, 
+                                                    {{ $row->itinerarylocations->address_city }},
+                                                    {{ $row->itinerarylocations->address_state }},
                                                     {{ $row->itinerarylocations->address_country }}
                                                     @else
-                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_city }},
                                                     {{ $row->itinerarylocations->address_country }}
                                                     @endif
                                                 @else
@@ -575,7 +564,7 @@
 
                     $(this).parents(".dropdown-menu").find('.selected-feild').append(item);
                     clearbtnfunciton();
-                    
+
 
                 } else {
                     // Remove the selected item
