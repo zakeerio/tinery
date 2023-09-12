@@ -315,10 +315,26 @@
 }
 
    
-
+.scroller-h{
+    overflow: hidden;
+}
 .scroller-h::-webkit-scrollbar {
-    height: 6px;
+    height: 0px;
 
+
+
+}
+.filter-section .form-check-input:checked{
+    background-color: #0F6496;
+    border-color: #0F6496;
+}
+.cpagination .active>.page-link, .page-link.active{
+    background-color: #0F6496;
+    border-color: #0F6496;
+    
+}
+.page-link{
+    color: #0F6496;
 }
 
 .scroller-h::-webkit-scrollbar-track {
@@ -327,7 +343,7 @@
 
 .scroller-h::-webkit-scrollbar-thumb {
     background-color: rgb(238, 238, 238);
-    outline: 1px solid rgb(139, 139, 139);
+    outline: 1px solid #fefefe;
     border-radius: 20px;
 
 }
@@ -549,7 +565,7 @@
     -ms-flex-align: center;
     align-items: center;
     /* justify-content: space-between; */
-    overflow: auto;
+   
     min-height: 34px;
     height: auto;
     padding-bottom: 10px;
@@ -2133,6 +2149,9 @@ label.required:after {
     .width-48{
         width: 24px;
     }
+   .scroller-h{
+    overflow: auto;
+   }
     .h-700p{
         height: 584px;
     }
