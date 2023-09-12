@@ -321,11 +321,11 @@
 }
 
 .scroller-h {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .scroller-h::-webkit-scrollbar {
-    height: 8px;
+    height: 0px;
 }
 
 .filter-section .form-check-input:checked {
