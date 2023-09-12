@@ -507,8 +507,8 @@
                             </div>
 
                             <div class="col-lg-4 mt-3">
-                                <div class="profile p-3 d-sm-flex d-lg-block align-items-sm-baseline">
-                                    <div class="d-flex align-items-center">
+                                <div class="align-items-sm-baseline d-flex flex-column flex-lg-column flex-sm-row  profile">
+                                    <div class="d-flex align-items-center gap-2 ">
                                         <div class="sideprofilepic rounded-circle">
                                             <a href="{{ route('username', ['username' => $itinerary->user->username]) }}">
                                                 @if (!empty($itinerary->user->profile))
@@ -524,7 +524,7 @@
                                             <div class="profiler"><a class="text-black fs-24-500 text-decoration-none"
                                                     href="{{ route('username', ['username' => $itinerary->user->username]) }}">{{ $itinerary->user->name }}</a>
                                             </div>
-                                            <div class="d-flex socialpicsize d-none d-sm-block">
+                                            <div class="socialpicsize d-none d-sm-flex flex-wrap ">
                                                 @if (!empty($itinerary->user->facebook))
                                                     <a href="{{ $itinerary->user->facebook }}"><img
                                                             src="{{ asset('frontend/images/fb.svg') }}"
@@ -555,10 +555,10 @@
                                         </div>
 
                                     </div>
-                                    <h6 class="profile-details p-lg-3 ps-3">
+                                    <h6 class="profile-details ">
                                         {{ $itinerary->user->bio }}
                                     </h6>
-                                    <div class="d-flex socialpicsize d-sm-none justify-content-evenly ">
+                                    <div class="d-flex socialpicsize d-sm-none justify-content-between ">
                                         @if (!empty($itinerary->user->facebook))
                                             <a href="{{ $itinerary->user->facebook }}"><img
                                                     src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
@@ -603,7 +603,7 @@
                                             style="text-decoration:none;">
                                             <div class="profiler-relate profile-relate">{{ $rowrelated->title }}</div>
                                         </a>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex  align-items-center">
                                             <p class="lang"><a class=" text-decoration-none "
                                                     href="{{ route('username', ['username' => $rowrelated->user->username]) }}">{{ $rowrelated->user->name }}
                                                 </a> |</p>
