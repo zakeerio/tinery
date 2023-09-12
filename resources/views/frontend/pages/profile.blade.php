@@ -19,6 +19,7 @@
                                         @else
                                             <img src="{{ asset('frontend/images/profile-default-pic.svg') }}" alt="Profile Image" class="profile-img rounded-circle">
                                         @endif
+                                        @if(Auth::guard('user')->user())
                                         <form action="{{ route('profilepictureupdate') }}" method="POST"
                                             id="formprofilepictrueupdate" enctype="multipart/form-data">
                                             <label for="profileimg"
@@ -29,7 +30,7 @@
                                                 </label>
                                             <div class="d-none"><input type="file" name="file" id="profileimg"></div>
                                         </form>
-
+                                        @endif
                                     </form>
                                 </div>
                                 <div class="">
@@ -315,7 +316,7 @@
                                                             @foreach ($singletag as $singletagitem)
                                                                 @if ($singletagitem)
                                                                     <a href="{{ url('/tags/' . $singletagitem->slug) }}"
-                                                                        class="mb-1"><button class="foodie ">
+                                                                        class="mb-1"><button class="foodie text-nowrap">
                                                                             {{ $singletagitem->name }} </button> </a>
                                                                 @endif
                                                             @endforeach

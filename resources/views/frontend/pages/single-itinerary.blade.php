@@ -139,7 +139,7 @@
                                             @endphp
                                             @if ($tag)
                                                 <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                    <button class="foodie ">
+                                                    <button class="foodie text-nowrap">
                                                         {{ $tag->name }}
                                                     </button>
                                                 </a>
@@ -195,7 +195,7 @@
 
                                                                         <div class=" d-flex ">
                                                                             <div class="align-items-center  d-flex itemnumbers justify-content-center px-3 rounded-circle text-bg-danger ">
-                                                                                {{ ++$activityKey }} 
+                                                                                {{ ++$activityKey }}
                                                                             </div>
                                                                             <div class="idays ">
                                                                             <div class="align-items-center d-flex flex-shrink-0 gap-3 l1  px-3 ">
@@ -212,7 +212,7 @@
                                                                             </div>
                                                                         </div>
                                                                         </div>
-                                                                        
+
 
                                                                     </div>
                                                                 </button>
@@ -611,11 +611,11 @@
                                         </div>
 
                                     </div>
-                                    
+
                                 </div>
                                 @endforeach
                                 @endif
-                            
+
                         </div>
 
                     </div>

@@ -55,11 +55,18 @@
                                                     class="selected-feild d-flex gap-1 flex-wrap align-items-center">
                                                     @if (isset($filteredlocations) && !empty($filteredlocations))
                                                         @foreach ($filteredlocations as $filteredlocations)
-                                                            <label
-                                                                for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
-                                                                class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{ $filteredlocations->itinerarylocations->address_city }}
-                                                                <span>X</span>
-                                                            </label>
+                                                        <label for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
+                                                        class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
+                                                        @if($filteredlocations->itinerarylocations->address_country == 'United States')
+                                                        {{ $filteredlocations->itinerarylocations->address_city }},
+                                                        {{ $filteredlocations->itinerarylocations->address_state }},
+                                                        {{ $filteredlocations->itinerarylocations->address_country }}
+                                                        @else
+                                                        {{ $filteredlocations->itinerarylocations->address_city }},
+                                                        {{ $filteredlocations->itinerarylocations->address_country }}
+                                                        @endif
+                                                        <span>X</span>
+                                                    </label>
                                                         @endforeach
                                                     @endif
                                                 </div>
@@ -178,12 +185,23 @@
                                                         <div class="row py-2">
                                                             <div class="col-lg-12">
                                                                 <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input filter"
-                                                                        name="users[]" value="{{ $filter->id }}"
-                                                                        id="optionuser{{ $filter->name }}"
-                                                                        {{ isset($usersfilter) && in_array($filter->id, $usersfilter) ? 'checked' : '' }}>
-                                                                    <label for="optionuser{{ $filter->name }}"
-                                                                        class="form-check-label">{{ $filter->name }}</label>
+                                                                    <input type="checkbox" name="location[]"
+                                                                        class="form-check-input filter"
+                                                                        value="{{ $filteritem->location_id }}"
+                                                                        id="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
+                                                                        {{ isset($locationfilter) && in_array($filteritem->location_id, $locationfilter) ? 'checked' : '' }}>
+                                                                    <label
+                                                                        for="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
+                                                                        class="form-check-label fs-16-400">
+                                                                        @if($filteritem->itinerarylocations->address_country == 'United States')
+                                                                        {{ $filteritem->itinerarylocations->address_city }},
+                                                                        {{ $filteritem->itinerarylocations->address_state }},
+                                                                        {{ $filteritem->itinerarylocations->address_country }}
+                                                                        @else
+                                                                        {{ $filteritem->itinerarylocations->address_city }},
+                                                                        {{ $filteritem->itinerarylocations->address_country }}
+                                                                        @endif
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -244,7 +262,6 @@
                                 </div>
                             </div>
                             
-                            
                         </form>
                     </div>
                 </div>
@@ -253,7 +270,6 @@
         </div>
     </div>
     <div id="ajaxresponsedata">
-
         <div class="card-section py-3">
             <div class="container">
                 <div class="row justify-content-center">
@@ -338,7 +354,7 @@
 
                                                         @if ($tag)
                                                             <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                                <button class="foodie">
+                                                                <button class="foodie text-nowrap">
                                                                     {{ $tag->name }}
                                                                 </button>
                                                             </a>
@@ -352,7 +368,7 @@
                                                 @php
                                                     $link = route('itinerary', ['slug' => $row->slug]);
                                                     $title = $row->title;
-                                                    
+
                                                     $locationsArr[] = [
                                                         'url' => $link,
                                                         'title' => $title,
@@ -362,7 +378,19 @@
                                                 @endphp
                                             @endif
                                             <p class="city">
-                                                {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }}
+                                                @if($row->location_id != null && $row->itinerarylocations) 
+                                                    @if($row->itinerarylocations->address_country == 'United States')
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_state }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @else
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @endif
+                                                @else
+                                                Location
+                                                @endif
+                                                <!-- {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }} -->
                                                 | {{ $row->created_at->diffForHumans() }}</p>
                                         </div>
                                     @endforeach
@@ -407,7 +435,8 @@
             if ($('#homepagemap').length > 0) {
                 // Disabled the google map temperary
                 // initMaps();
-            }
+
+}
 
             function initMaps() {
 

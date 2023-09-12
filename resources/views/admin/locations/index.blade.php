@@ -22,19 +22,22 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col-lg-7">
+                        <div class="align-items-center d-flex justify-content-between">
+                            <div class="">
                                 <h3 class="card-title">Location Management</h3>
                             </div>
-                            <div class="col-lg-3">
-                                @can('permission-create')
+                            <div class="d-flex justify-content-between gap-2">
+
+                                <div class="">
+                                    @can('permission-create')
                                     <a class="btn btn-success" href="{{ url('/admin/itinerarylocation/uploadexcel') }}">Upload Locations using Excel File</a>
-                                @endcan
-                            </div>
-                            <div class="col-lg-2">
-                                @can('permission-create')
+                                    @endcan
+                                </div>
+                                <div class="" style="margin-left: 10px;">
+                                    @can('permission-create')
                                     <a class="btn btn-success" href="{{ url('/admin/itinerarylocation/create') }}">Create Location</a>
-                                @endcan
+                                    @endcan
+                                </div>
                             </div>
                         </div>
                     </div>
