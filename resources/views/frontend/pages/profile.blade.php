@@ -19,7 +19,7 @@
                                         @else
                                             <img src="{{ asset('frontend/images/profile-default-pic.svg') }}" alt="Profile Image" class="profile-img rounded-circle">
                                         @endif
-                                        @if(Auth::guard('user')->user())
+                                        @if(Auth::guard('user')->user() && $usercheck)
                                         <form action="{{ route('profilepictureupdate') }}" method="POST"
                                             id="formprofilepictrueupdate" enctype="multipart/form-data">
                                             <label for="profileimg"
@@ -377,7 +377,7 @@
                                     @forelse ($itineraries as $itinerary)
                                         <div class="row mb-3 itineraryItem">
                                             <div class="d-flex gap-3 justify-content-between ">
-                                                <div class="row g-3">
+                                                <div class=" d-flex w-100   gap-3">
                                                     @if (!empty($itinerary->seo_image))
                                                         <img src="{{ asset('frontend/itineraries/' . $itinerary->seo_image) }}"
                                                             alt="" class="col-3 w-120i px-0">
@@ -385,9 +385,9 @@
                                                         <img src="{{ asset('frontend/images/annie-spratt.jpg') }}"
                                                             alt="" class="col-3 w-120i px-0">
                                                     @endif
-                                                   <div class="col">
-                                                       <h2 class="title title1 mb-0">{{ $itinerary->title }}</h2>
-                                                       <div class="d-flex gap-2">
+                                                   <div class="w-100">
+                                                       <h2 class="title title1 mb-0">{{ $itinerary->title }} &nbsp;</h2>
+                                                       <div class="d-flex w-100 justify-content-between  gap-2">
                                                            <p class="fs-16-300 mb-0 line-set">
                                                                {{ \Str::limit($itinerary->description, 150) }}</p>
                                                                <div class=" d-flex  gap-2 align-items-center ">

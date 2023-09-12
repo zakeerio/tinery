@@ -33,14 +33,14 @@
                                         @csrf
                                         <img src="{{ asset('frontend/images/Filter.png') }}" alt=""
                                             class="filter-logo-img">
-                                        <span class="fs-24-600">Filter</span>
+                                        <span class="filter-h2">Filter</span>
 
                                     </div>
                                     <div class="vr mx-32"></div>
                                 </div>
 
                                 <!-- Filter dropdown -->
-                                <div class="d-flex gap-2 filter-section ">
+                                <div class="d-flex gap-2 filter-section w-100 flex-wrap  ">
 
                                     <div class="">
                                         <div class="dropdown ">
@@ -248,7 +248,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="selected-feild ps-5">
+                                    <div class="selected-feild ps-5 my-auto ms-auto ">
                                         <a href="{{ route('itineraries') }}" class="btn clearbtn1 d-none ">Clear All filters <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none">
