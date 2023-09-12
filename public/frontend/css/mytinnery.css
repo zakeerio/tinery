@@ -207,7 +207,7 @@
     font-weight: 500;
     /* font-size: 24px; */
     font-size: 20px;
-    line-height: 48px;
+    word-break: break-word;
     /* identical to box height, or 200% */
 
 
@@ -321,11 +321,11 @@
 }
 
 .scroller-h {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .scroller-h::-webkit-scrollbar {
-    height: 8px;
+    height: 0px;
 }
 
 .filter-section .form-check-input:checked {
@@ -390,7 +390,6 @@
 .profiler-related {
     font-weight: 600;
     font-size: 20px;
-    line-height: 48px;
     color: #2A293D;
 }
 
