@@ -238,6 +238,7 @@
                 var address_street_line1 = result.formatted_address;
                 var city = getAddressComponent(addressComponents, 'locality');
                 var state = getAddressComponent(addressComponents, 'administrative_area_level_1');
+                alert(state);
                 var country = getAddressComponent(addressComponents, 'country');
                 var postalCode = getAddressComponent(addressComponents, 'postal_code');
 
@@ -260,10 +261,11 @@
                 for (var i = 0; i < components.length; i++) {
                     var component = components[i];
                     var componentTypes = component.types;
-                    if(type == "administrative_area_level_1"){
+                    // console.log(component.types);
+                    if(component.types[0] == "administrative_area_level_1"){
                         return component.short_name;
                     }
-                    if (componentTypes.indexOf(type) !== -1) {
+                    else if (componentTypes.indexOf(type) !== -1) {
                         return component.long_name;
                     }
                 }

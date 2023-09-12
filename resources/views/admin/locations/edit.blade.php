@@ -260,11 +260,12 @@
                 for (var i = 0; i < components.length; i++) {
                     var component = components[i];
                     var componentTypes = component.types;
-                    if(type == "administrative_area_level_1"){
+                    // console.log(component.types);
+                    if(component.types[0] == "administrative_area_level_1"){
                         return component.short_name;
                     }
-                    if (componentTypes.indexOf(type) !== -1) {
-                    return component.long_name;
+                    else if (componentTypes.indexOf(type) !== -1) {
+                        return component.long_name;
                     }
                 }
                 return '';
