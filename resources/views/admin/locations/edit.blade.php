@@ -98,10 +98,10 @@
 
     @include('admin.partials.scripts')
     @include('admin.itineraries.itineraryscript')
-    
+
     <script>
         $(document).ready(function() {
-            
+
             // Add click event to accordion header buttons
             $('.card-header button').click(function(e) {
                 // Toggle the right-side icon
@@ -260,7 +260,9 @@
                 for (var i = 0; i < components.length; i++) {
                     var component = components[i];
                     var componentTypes = component.types;
-
+                    if(type == "administrative_area_level_1"){
+                        return component.short_name;
+                    }
                     if (componentTypes.indexOf(type) !== -1) {
                     return component.long_name;
                     }
