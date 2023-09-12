@@ -6,10 +6,10 @@
 
 @section('content')
 
-    <div class="perfect py-5">
+    <div class="perfect py-md-5 py-3">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 px-0">
                     <div class="perfect-item ">
                         <h3 class="travel">Find the Perfect Travel Itinerary</h3>
                         <p class="filters-p">Filter by location, trip length, tag or user. Don’t see your location? New
@@ -24,7 +24,7 @@
     <div class="card-section py-3">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11">
+                <div class="col-11 p-0">
                     <div class="cards-item">
                         <div class="row">
                             @php
@@ -36,11 +36,11 @@
                                         @php
                                             $bgimage = !empty($row->seo_image) ? asset('/frontend/itineraries/' . $row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                                         @endphp
-                                        <div class="card bg-img position-relative p-0">
+                                            <div class="card bg-img position-relative r-12 p-0">
                                             <a href="{{ route('itinerary', ['slug' => $row->slug]) }}"
-                                                class="h-100 text-decoration-none">
+                                                    class="h-100 text-decoration-none r-12">
                                                 <img src="{{ $bgimage }}" alt=""
-                                                    class=" bright-70 h-100 bf-img w-100">
+                                                        class=" bright-70 h-100 bf-img r-12 w-100">
                                             </a>
                                             <div class=" position-absolute">
                                                 <a href="{{ route('username', ['username' => $row->user->username]) }}"
@@ -83,9 +83,9 @@
                                                                 alt="" class="path-img"></a>
                                                     @endif
                                                 @else
-                                                    <a href="javascript:void(0)" data-role="addtowishlistnotlogin"> <img
-                                                            src="{{ asset('frontend/images/Path.png') }}" alt=""
-                                                            class="path-img"></a>
+                                                        <a href="javascript:void(0)" data-role="addtowishlistnotlogin">
+                                                            <img src="{{ asset('frontend/images/Path.png') }}"
+                                                                alt="" class="path-img"></a>
                                                 @endif
                                             </div>
                                         </div>
@@ -93,12 +93,12 @@
                                             style="text-decoration:none;">
                                             <h4 class="h-4">{{ $row->title }}</h4>
                                         </a>
-                                        <div class="tags">
+                                            <div class="tags scroller-h">
                                             @if ($row->tags != '')
                                                 @php
-                                                    $itinerarytag = json_decode($row->tags);
+                                                    $itinerarytag1 = json_decode($row->tags);
                                                 @endphp
-                                                @foreach ($itinerarytag as $itinerarytag)
+                                                @foreach ($itinerarytag1 as $itinerarytag)
                                                     @php
                                                         $tag = $row->tagsdata($itinerarytag);
                                                     @endphp
@@ -129,7 +129,19 @@
                                             @endphp
                                         @endif
                                         <p class="city">
-                                            {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }}
+                                                @if($row->location_id != null && $row->itinerarylocations) 
+                                                    @if($row->itinerarylocations->address_country == 'United States')
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_state }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @else
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @endif
+                                                @else
+                                                Location
+                                                @endif
+                                                <!-- {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }} -->
                                             | {{ $row->created_at->diffForHumans() }}</p>
                                     </div>
 
@@ -145,7 +157,8 @@
                                 @endforeach
                             @endif
                         </div>
-
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,8 +170,8 @@
         <div class="world py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-11">
-                        <div id="homepagemap" style="height: 450px;"></div>
+                    <div class="col-11 px-0">
+                        <div id="homepagemap" class="h-700p r-12"></div>
                     </div>
                 </div>
 
