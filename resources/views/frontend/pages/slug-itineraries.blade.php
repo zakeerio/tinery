@@ -157,7 +157,15 @@
                                 @endforeach
                             @endif
                         </div>
-                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cpagination padding5050">
+                                        <nav aria-label="Page navigation example">
+                                            {{ $itineraries->links('vendor.pagination.custom_links') }}
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

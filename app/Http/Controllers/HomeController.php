@@ -226,8 +226,11 @@ class HomeController extends Controller
         $tag = Tags::where('slug',$slug)->first();
         if(!empty($tag))
         {
-            $itineraries = Itineraries::where('itinerary_status','updated')->where('status','published')->whereJsonContains('tags',json_encode($tag->id))
-            ->get();
+            $itineraries = Itineraries::where('itinerary_status','updated')
+            ->where('status','published')
+            ->whereJsonContains('tags',json_encode($tag->id))
+            ->paginate(16);
+            // ->get();
 
             // dd($itineraries);
             return view('frontend.pages.slug-itineraries',compact('itineraries'));
