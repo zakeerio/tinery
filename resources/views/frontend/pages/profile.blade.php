@@ -9,7 +9,7 @@
             <div class="row justify-content-center">
                 <div class="col-11 px-0">
                     <div class="row">
-                        <div class="col-md-4 border-card my-md-5 my-3 ">
+                        <div class="col-md-4 border-card my-md-5 my-3 p-0 ">
                             <div class="d-flex align-items-center profile-gap ">
                                 <div class="position-relative">
                                     <form action="" method="post " enctype="multipart/form-data">

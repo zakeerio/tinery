@@ -36,7 +36,7 @@
                                         @php
                                             $bgimage = !empty($row->seo_image) ? asset('/frontend/itineraries/' . $row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                                         @endphp
-                                        <div class="card bg-img position-relative">
+                                        <div class="card bg-img position-relative p-0">
                                             <a href="{{ route('itinerary', ['slug' => $row->slug]) }}"
                                                 class="h-100 text-decoration-none">
                                                 <img src="{{ $bgimage }}" alt=""

@@ -26,7 +26,7 @@
                         <form action="#" method="POST"
                             class="d-flex justify-content-between align-items-center w-100  " id="filteForm">
 
-                            <div class="d-flex flex-wrap filter-bordr gap-3">
+                            <div class="d-flex filter-bordr gap-3">
 
                                 <div class=" d-flex gap-2 align-items-center flex-shrink-0">
                                     <div class="filter-logo">
@@ -40,48 +40,148 @@
                                 </div>
 
                                 <!-- Filter dropdown -->
+                                <div class="d-flex gap-2 filter-section ">
 
-                                <div class="">
-                                    <div class="dropdown ">
-                                        <button class="btn btn-dark-r dropdown-toggle px-3 pt-2 active" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Location
-                                        </button>
+                                    <div class="">
+                                        <div class="dropdown ">
+                                            <button class="btn btn-dark-r dropdown-toggle px-3 pt-2 active" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Location
+                                            </button>
 
-                                        <div class="dropdown-menu scroller-white s_h-300px  p-4"
-                                            aria-labelledby="dropdownMenuButton1">
-                                            <div id="selected-feild"
-                                                class="selected-feild d-flex gap-1 flex-wrap align-items-center">
-                                                @if (isset($filteredlocations) && !empty($filteredlocations))
-                                                    @foreach ($filteredlocations as $filteredlocations)
-                                                        <label
-                                                            for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
-                                                            class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
-                                                            @if($filteredlocations->itinerarylocations->address_country == 'United States')
-                                                            {{ $filteredlocations->itinerarylocations->address_city }},
-                                                            {{ $filteredlocations->itinerarylocations->address_state }},
-                                                            {{ $filteredlocations->itinerarylocations->address_country }}
-                                                            @else
-                                                            {{ $filteredlocations->itinerarylocations->address_city }},
-                                                            {{ $filteredlocations->itinerarylocations->address_country }}
-                                                            @endif
-                                                            <span>X</span>
-                                                        </label>
+                                            <div class="dropdown-menu scroller-white s_h-300px  p-4"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <div id="selected-feild"
+                                                    class="selected-feild d-flex gap-1 flex-wrap align-items-center">
+                                                    @if (isset($filteredlocations) && !empty($filteredlocations))
+                                                        @foreach ($filteredlocations as $filteredlocations)
+                                                        <label for="optionaddr{{ $filteredlocations->itinerarylocations->address_city }}"
+                                                        class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">
+                                                        @if($filteredlocations->itinerarylocations->address_country == 'United States')
+                                                        {{ $filteredlocations->itinerarylocations->address_city }},
+                                                        {{ $filteredlocations->itinerarylocations->address_state }},
+                                                        {{ $filteredlocations->itinerarylocations->address_country }}
+                                                        @else
+                                                        {{ $filteredlocations->itinerarylocations->address_city }},
+                                                        {{ $filteredlocations->itinerarylocations->address_country }}
+                                                        @endif
+                                                        <span>X</span>
+                                                    </label>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                                <div class="d-flex py-3">
+                                                    <input type="search" id="my-input" name="my-input"
+                                                        placeholder=" Locations"
+                                                        class="locator fs-16-300 rounded-pill px-2 mx-2 ">
+                                                    <button class="btn btn-secondary w-50 rounded-pill  text-white submitBtn"
+                                                        type="button">Go</button>
+                                                </div>
+
+                                                <?php $count = 1; ?>
+                                                @if (!empty($filter))
+                                                    @foreach ($filter as $filteritem)
+                                                        @if ($filteritem->location_id != '0' && $filteritem->itinerarylocations)
+                                                            <div class="row py-2">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" name="location[]"
+                                                                            class="form-check-input filter"
+                                                                            value="{{ $filteritem->location_id }}"
+                                                                            id="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
+                                                                            {{ isset($locationfilter) && in_array($filteritem->location_id, $locationfilter) ? 'checked' : '' }}>
+                                                                        <label
+                                                                            for="optionaddr{{ $filteritem->itinerarylocations->address_city }}"
+                                                                            class="form-check-label fs-16-400">{{ $filteritem->itinerarylocations->address_city }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        <?php $count++; ?>
+                                                    @endforeach
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-dark-r filter dropdown-toggle px-3 pt-2" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Tags
+                                            </button>
+
+                                            <div class="dropdown-menu scroller-white s_h-300px p-4"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <div id="selected-feild"
+                                                    class="selected-feild d-flex gap-1 flex-wrap align-items-center">
+
+                                                    <hr>
+                                                </div>
+                                                <div class="d-flex py-3">
+
+                                                    <input type="search" id="my-input" name="tags-input" placeholder=" Tags"
+                                                        class="locator rounded-pill px-2 mx-2 ">
+                                                    <button class="btn btn-secondary w-50 rounded-pill text-white submitBtn"
+                                                        type="button">Go</button>
+                                                </div>
+                                                <?php $count1 = 1; ?>
+
+                                                @if (!empty($tags))
+                                                    @foreach ($tags as $singletag)
+                                                        @if ($singletag)
+                                                            <div class="row py-2">
+                                                                <div class="col-lg-12">
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" name="tags[]"
+                                                                            class="form-check-input filter"
+                                                                            value="{{ $singletag->id }}"
+                                                                            id="optiontag{{ $count1 }}"
+                                                                            {{ isset($tagsfilter) && in_array($singletag->id, $tagsfilter) ? 'checked' : '' }}>
+                                                                        <label for="optiontag{{ $count1 }}"
+                                                                            class="form-check-label">{{ $singletag->name }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?php $count1++; ?>
+                                                        @endif
                                                     @endforeach
                                                 @endif
                                             </div>
-                                            <div class="d-flex py-3">
-                                                <input type="search" id="my-input" name="my-input"
-                                                    placeholder=" Locations"
-                                                    class="locator fs-16-300 rounded-pill px-2 mx-2 ">
-                                                <button class="btn btn-secondary w-50 rounded-pill  text-white submitBtn"
-                                                    type="button">Go</button>
-                                            </div>
+                                        </div>
+                                    </div>
 
-                                            <?php $count = 1; ?>
-                                            @if (!empty($filter))
-                                                @foreach ($filter as $filteritem)
-                                                    @if ($filteritem->location_id != '0' && $filteritem->itinerarylocations)
+                                    <div class=" ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User
+                                            </button>
+
+                                            <div class="dropdown-menu scroller-white s_h-300px p-4"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <div id="selected-feild"
+                                                    class="selected-feild d-flex gap-1 flex-wrap align-items-center">
+                                                    @if (isset($filteredusers) && !empty($filteredusers))
+                                                        @foreach ($filteredusers as $filteredusers)
+                                                            <label for="optionuser{{ $filteredusers->user->name }}"
+                                                                class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{ $filteredusers->user->name }}
+                                                                <span>X</span>
+                                                            </label>
+                                                        @endforeach
+                                                    @endif
+                                                    <hr>
+                                                </div>
+                                                <div class="d-flex py-3">
+                                                    <input type="search" id="my-input" name="my-input"
+                                                        name="user_search"placeholder=" User"
+                                                        class="locator rounded-pill px-2 mx-2">
+                                                    <button class="btn btn-secondary w-50 rounded-pill  text-white submitBtn"
+                                                        type="button">Go</button>
+                                                </div>
+                                                <?php $count2 = 1; ?>
+                                                @if (!empty($user_filter))
+                                                    @foreach ($user_filter as $filter)
                                                         <div class="row py-2">
                                                             <div class="col-lg-12">
                                                                 <div class="form-check">
@@ -105,160 +205,63 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endif
-                                                    <?php $count++; ?>
-                                                @endforeach
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class=" ">
-                                    <div class="dropdown">
-                                        <button class="btn btn-dark-r filter dropdown-toggle px-3 pt-2" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Tags
-                                        </button>
-
-                                        <div class="dropdown-menu scroller-white s_h-300px p-4"
-                                            aria-labelledby="dropdownMenuButton1">
-                                            <div id="selected-feild"
-                                                class="selected-feild d-flex gap-1 flex-wrap align-items-center">
-
-                                                <hr>
-                                            </div>
-                                            <div class="d-flex py-3">
-
-                                                <input type="search" id="my-input" name="tags-input" placeholder=" Tags"
-                                                    class="locator rounded-pill px-2 mx-2 ">
-                                                <button class="btn btn-secondary w-50 rounded-pill text-white submitBtn"
-                                                    type="button">Go</button>
-                                            </div>
-                                            <?php $count1 = 1; ?>
-
-                                            @if (!empty($tags))
-                                                @foreach ($tags as $singletag)
-                                                    @if ($singletag)
-                                                        <div class="row py-2">
-                                                            <div class="col-lg-12">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" name="tags[]"
-                                                                        class="form-check-input filter"
-                                                                        value="{{ $singletag->id }}"
-                                                                        id="optiontag{{ $count1 }}"
-                                                                        {{ isset($tagsfilter) && in_array($singletag->id, $tagsfilter) ? 'checked' : '' }}>
-                                                                    <label for="optiontag{{ $count1 }}"
-                                                                        class="form-check-label">{{ $singletag->name }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php $count1++; ?>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class=" ">
-                                    <div class="dropdown">
-                                        <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> User
-                                        </button>
-
-                                        <div class="dropdown-menu scroller-white s_h-300px p-4"
-                                            aria-labelledby="dropdownMenuButton1">
-                                            <div id="selected-feild"
-                                                class="selected-feild d-flex gap-1 flex-wrap align-items-center">
-                                                @if (isset($filteredusers) && !empty($filteredusers))
-                                                    @foreach ($filteredusers as $filteredusers)
-                                                        <label for="optionuser{{ $filteredusers->user->name }}"
-                                                            class="btn btn-light rounded-pill gap-2 text-white d-flex justify-content-between align-items-center">{{ $filteredusers->user->name }}
-                                                            <span>X</span>
-                                                        </label>
+                                                        <?php $count2++; ?>
                                                     @endforeach
                                                 @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" ">
+                                        <div class="dropdown ">
+                                            <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Trip length
+                                            </button>
+
+                                            <div class="dropdown-menu  p-4" aria-labelledby="dropdownMenuButton1">
+                                                <div id="selected-feild" class="selected-field">
+                                                    <a href="javascript:;" class="btn clearbtn_range" id="rangslide">
+                                                        {{ isset($daysrange) ? '0-' . $daysrange : $largestnumber }} days</a>
+                                                </div>
                                                 <hr>
-                                            </div>
-                                            <div class="d-flex py-3">
-                                                <input type="search" id="my-input" name="my-input"
-                                                    name="user_search"placeholder=" User"
-                                                    class="locator rounded-pill px-2 mx-2">
-                                                <button class="btn btn-secondary w-50 rounded-pill  text-white submitBtn"
-                                                    type="button">Go</button>
-                                            </div>
-                                            <?php $count2 = 1; ?>
-                                            @if (!empty($user_filter))
-                                                @foreach ($user_filter as $filter)
-                                                    <div class="row py-2">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input filter"
-                                                                    name="users[]" value="{{ $filter->id }}"
-                                                                    id="optionuser{{ $filter->name }}"
-                                                                    {{ isset($usersfilter) && in_array($filter->id, $usersfilter) ? 'checked' : '' }}>
-                                                                <label for="optionuser{{ $filter->name }}"
-                                                                    class="form-check-label">{{ $filter->name }}</label>
-                                                            </div>
+                                                <div class="form-rang ">
+                                                    <div>
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <p>Min</p>
+                                                            <p>Max</p>
                                                         </div>
+                                                        <!-- <input type="range" id="days" min="5" max="7" step="1"> -->
+                                                        {{-- <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '' }}" step="2"> --}}
+                                                        <input type="range" class="form-range" id="days-range"
+                                                            name="daysrange" min="0" max="{{ $largestnumber }}"
+                                                            value="{{ $largestnumber }}">
+
                                                     </div>
-                                                    <?php $count2++; ?>
-                                                @endforeach
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class=" ">
-                                    <div class="dropdown ">
-                                        <button class="btn btn-dark-r dropdown-toggle px-3 pt-2" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Trip length
-                                        </button>
-
-                                        <div class="dropdown-menu  p-4" aria-labelledby="dropdownMenuButton1">
-                                            <div id="selected-feild" class="selected-field">
-                                                <a href="javascript:;" class="btn clearbtn_range" id="rangslide">
-                                                    {{ isset($daysrange) ? '0-' . $daysrange : '0' }} days</a>
-                                            </div>
-                                            <hr>
-                                            <div class="form-rang ">
-                                                <div>
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <p>Min</p>
-                                                        <p>Max</p>
+                                                    <div>
+                                                        <p><button
+                                                                class="btn btn-secondary w-50 rounded-pill  bg-dark text-white submitBtn"
+                                                                type="button">Go</button></p>
                                                     </div>
-                                                    <!-- <input type="range" id="days" min="5" max="7" step="1"> -->
-                                                    {{-- <input type="range" class="form-range" id="days-range" name="daysrange" min="{{$smallestnumber}}" max="{{$largestnumber}}" value="{{ (isset($daysrange)) ? $daysrange : '' }}" step="2"> --}}
-                                                    <input type="range" class="form-range" id="days-range"
-                                                        name="daysrange" min="0" max="{{ $largestnumber }}"
-                                                        value="{{ $largestnumber }}">
-
-                                                </div>
-                                                <div>
-                                                    <p><button
-                                                            class="btn btn-secondary w-50 rounded-pill  bg-dark text-white submitBtn"
-                                                            type="button">Go</button></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="selected-feild ps-5">
+                                        <a href="{{ route('itineraries') }}" class="btn clearbtn1 d-none ">Clear All filters <svg
+                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="selected-feild ps-5">
-                                <a href="{{ route('itineraries') }}" class="btn clearbtn1 ">Clear All filters <svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <path d="M5.83203 14.1673L14.1654 5.83398" stroke="white" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M14.1654 14.1673L5.83203 5.83398" stroke="white" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </a>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -282,7 +285,7 @@
                                             @php
                                                 $bgimage = !empty($row->seo_image) ? asset('/frontend/itineraries/' . $row->seo_image) : asset('frontend/images/annie-spratt.jpg');
                                             @endphp
-                                            <div class="card bg-img position-relative r-12">
+                                            <div class="card bg-img position-relative r-12 p-0">
                                                 <a href="{{ route('itinerary', ['slug' => $row->slug]) }}"
                                                     class="h-100 text-decoration-none r-12">
                                                     <img src="{{ $bgimage }}" alt=""
@@ -429,17 +432,6 @@
     <script>
         $(document).ready(function() {
 
-            $("#days-range").on('change', function() {
-                var values = $(this).val();
-                $("#rangslide").html(values + " days");
-
-                if (values > 0) {
-                    $(this).closest('.dropdown').find('button').addClass('activedropdown');
-                } else {
-                    $(this).closest('.dropdown').find('button').removeClass('activedropdown');
-                }
-            })
-
             if ($('#homepagemap').length > 0) {
                 // Disabled the google map temperary
                 // initMaps();
@@ -545,6 +537,7 @@
 
         $(document).ready(function() {
             $('.form-check-input').on('change', function() {
+
                 var checkbox = $(this);
                 var value = checkbox.val();
                 var label = checkbox.next().text();
@@ -581,6 +574,8 @@
                     });
 
                     $(this).parents(".dropdown-menu").find('.selected-feild').append(item);
+                    clearbtnfunciton();
+                    
 
                 } else {
                     // Remove the selected item
@@ -588,6 +583,7 @@
                     items.each(function() {
                         if ($(this).text().includes(label)) {
                             $(this).remove();
+                            clearbtnfunciton();
                             return false;
                         }
                     });
@@ -600,6 +596,35 @@
                 }
 
             });
+
+            $("#days-range").on('change', function() {
+                var values = $(this).val();
+                $("#rangslide").html(values + " days");
+
+                if (values > 0) {
+                    $(this).attr('value',values);
+                    $(this).closest('.dropdown').find('button').addClass('activedropdown');
+                } else {
+                    $(this).attr('value','0');
+                    $(this).closest('.dropdown').find('button').removeClass('activedropdown');
+                }
+                clearbtnfunciton();
+            })
+
         });
+
+        function clearbtnfunciton(){
+            var daysval = parseInt($("#days-range").val());
+            console.log(daysval);
+            $(".form-check-input.filter").each(function(){
+                // console.log($(this).prop('checked'));
+                if($(this).prop("checked") == true || daysval > 0) {
+                    $(".clearbtn1").removeClass('d-none');
+                    return false;
+                } else {
+                    $(".clearbtn1").addClass('d-none');
+                }
+            })
+        }
     </script>
 @endsection
