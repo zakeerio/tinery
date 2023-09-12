@@ -2208,7 +2208,7 @@ label.required:after {
     }
 
     .scroller-h {
-        overflow: auto;
+        overflow-x: scroll;
     }
 
     .h-700p {
