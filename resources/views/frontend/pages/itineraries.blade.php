@@ -375,7 +375,19 @@
                                                 @endphp
                                             @endif
                                             <p class="city">
-                                                {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }}
+                                                @if($row->location_id != null && $row->itinerarylocations) 
+                                                    @if($row->itinerarylocations->address_country == 'United States')
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_state }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @else
+                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_country }}
+                                                    @endif
+                                                @else
+                                                Location
+                                                @endif
+                                                <!-- {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }} -->
                                                 | {{ $row->created_at->diffForHumans() }}</p>
                                         </div>
                                     @endforeach
