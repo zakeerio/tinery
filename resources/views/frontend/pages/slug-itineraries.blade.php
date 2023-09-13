@@ -129,13 +129,13 @@
                                             @endphp
                                         @endif
                                         <p class="city">
-                                                @if($row->location_id != null && $row->itinerarylocations) 
+                                                @if($row->location_id != null && $row->itinerarylocations)
                                                     @if($row->itinerarylocations->address_country == 'United States')
-                                                    {{ $row->itinerarylocations->address_city }}, 
-                                                    {{ $row->itinerarylocations->address_state }}, 
+                                                    {{ $row->itinerarylocations->address_city }},
+                                                    {{ $row->itinerarylocations->address_state }},
                                                     {{ $row->itinerarylocations->address_country }}
                                                     @else
-                                                    {{ $row->itinerarylocations->address_city }}, 
+                                                    {{ $row->itinerarylocations->address_city }},
                                                     {{ $row->itinerarylocations->address_country }}
                                                     @endif
                                                 @else
@@ -202,46 +202,43 @@
 
                 // execute
                 var locations = JSON.parse('<?php echo $locationArrJson; ?>');
+                if (locations) {
 
-                console.log(locations)
+                    var map = new google.maps.Map(document.getElementById('homepagemap'), {
+                        zoom: 5,
+                        /* Zoom level of your map */
+                        center: new google.maps.LatLng(locations[0].lat, locations[0].long),
 
-                var map = new google.maps.Map(document.getElementById('homepagemap'), {
-                    zoom: 5,
-                    /* Zoom level of your map */
-                    center: new google.maps.LatLng(locations[0].lat, locations[0].long),
-
-                    // center: new google.maps.LatLng(47.47021625, -100.47173475),
-                    /* coordinates for the center of your map */
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
-
-                var infowindow = new google.maps.InfoWindow();
-
-                var marker, i;
-
-                locations.forEach(function(location) {
-                    // Accessing individual properties
-                    var description = location.description;
-                    var lat = location.lat;
-                    var long = location.long;
-
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(lat, long),
-                        map: map
+                        // center: new google.maps.LatLng(47.47021625, -100.47173475),
+                        /* coordinates for the center of your map */
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
 
-                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                        return function() {
-                            infowindow.setContent(description);
-                            infowindow.open(map, marker);
-                        }
-                    })(marker, i));
+                    var infowindow = new google.maps.InfoWindow();
 
-                    // Perform actions with the location data
-                    // console.log('Description:', description);
-                    // console.log('Latitude:', lat);
-                    // console.log('Longitude:', long);
-                })
+                    var marker, i;
+
+                    locations.forEach(function(location) {
+                        // Accessing individual properties
+                        var description = '<a href="' + location.url + '">' + location.title + '</a>';
+                        var lat = location.lat;
+                        var long = location.long;
+
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(lat, long),
+                            map: map
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                                infowindow.setContent(description);
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                    })
+
+                }
             }
         });
     </script>
