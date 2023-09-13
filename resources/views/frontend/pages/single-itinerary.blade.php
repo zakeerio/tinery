@@ -27,10 +27,12 @@
                                 @php
                                     $locationsArr = [];
                                 @endphp
+
                                 @if ($itinerary->location_id != null && $itinerary->itinerarylocations)
                                     @php
                                         $link = route('itinerary', ['slug' => $itinerary->slug]);
                                         $title = $itinerary->title;
+
                                         $locationsArr[] = [
                                             'url' => $link,
                                             'title' => $title,
@@ -39,9 +41,6 @@
                                         ];
                                     @endphp
                                 @endif
-                                @php
-                                    $locationArrJson = json_encode($locationsArr);
-                                @endphp
 
                                 <div class="d-flex justify-content-between  ">
                                     <div class="col-lg-8">
@@ -636,57 +635,43 @@
 
                 // execute
                 var locations = JSON.parse('<?php echo $locationArrJson; ?>');
-                var locations = [{
-                        'description': '<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="javascript:void(0)" >Link<a> of some sort.',
-                        'lat': 46.8133,
-                        'long': -100.7790,
-                    },
-                    {
-                        'description': '<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="javascript:void(0)" target="_blank">Link<a> of some sort.',
-                        'lat': 46.8772,
-                        'long': -96.7894,
-                    }
-                ];
+                if (locations) {
 
-                console.log(locations)
+                    var map = new google.maps.Map(document.getElementById('homepagemap'), {
+                        zoom: 5,
+                        /* Zoom level of your map */
+                        center: new google.maps.LatLng(locations[0].lat, locations[0].long),
 
-                var map = new google.maps.Map(document.getElementById('homepagemap'), {
-                    zoom: 9,
-                    /* Zoom level of your map */
-                    center: new google.maps.LatLng(locations[0].lat, locations[0].long),
-
-                    // center: new google.maps.LatLng(47.47021625, -100.47173475),
-                    /* coordinates for the center of your map */
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
-
-                var infowindow = new google.maps.InfoWindow();
-
-                var marker, i;
-
-                locations.forEach(function(location) {
-                    // Accessing individual properties
-                    var description = '<a href="' + location.url + '">' + location.title + '</a>';
-                    var lat = location.lat;
-                    var long = location.long;
-
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(lat, long),
-                        map: map
+                        // center: new google.maps.LatLng(47.47021625, -100.47173475),
+                        /* coordinates for the center of your map */
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
 
-                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                        return function() {
-                            infowindow.setContent(description);
-                            infowindow.open(map, marker);
-                        }
-                    })(marker, i));
+                    var infowindow = new google.maps.InfoWindow();
 
-                    // Perform actions with the location data
-                    // console.log('Description:', description);
-                    // console.log('Latitude:', lat);
-                    // console.log('Longitude:', long);
-                })
+                    var marker, i;
+
+                    locations.forEach(function(location) {
+                        // Accessing individual properties
+                        var description = '<a href="' + location.url + '">' + location.title + '</a>';
+                        var lat = location.lat;
+                        var long = location.long;
+
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(lat, long),
+                            map: map
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                                infowindow.setContent(description);
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                    })
+
+                }
             }
         });
     </script>
