@@ -97,10 +97,17 @@
                                     <div class="d-flex align-items-center">
                                         <img src="{{ asset('frontend/images/nav.png') }}" alt="">
                                         <h6 class="profile-p pt-2 mx-1">
-                                            @if ($itinerary->location_id != 0 && $itinerary->itinerarylocations)
-                                                {{ $itinerary->itinerarylocations->address_city }}
+                                            @if($itinerary->location_id != null && $itinerary->itinerarylocations) 
+                                                @if($itinerary->itinerarylocations->address_country == 'United States')
+                                                {{ $itinerary->itinerarylocations->address_city }}, 
+                                                {{ $itinerary->itinerarylocations->address_state }}, 
+                                                {{ $itinerary->itinerarylocations->address_country }}
+                                                @else
+                                                {{ $itinerary->itinerarylocations->address_city }}, 
+                                                {{ $itinerary->itinerarylocations->address_country }}
+                                                @endif
                                             @else
-                                                Location
+                                            Location
                                             @endif
                                         </h6>
                                     </div>
