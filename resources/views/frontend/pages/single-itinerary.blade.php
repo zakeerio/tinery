@@ -325,23 +325,18 @@
                                                                                 class="d-flex flex-row py-4 mt-4 border-top-line comment-row">
                                                                                 <div class="pe-3">
                                                                                     @if (!empty($comment->user->profile))
-                                                                                        <img src="{{ asset('frontend/profile_pictures/' . $comment->user->profile) }}"
-                                                                                            alt="user-image"
-                                                                                            width="48px" height="48px"
-                                                                                            class="rounded-circle">
+                                                                                    <img src="{{ asset('frontend/profile_pictures/' . $comment->user->profile) }}"
+                                                                                        alt="user-image"
+                                                                                        width="48px" height="48px"
+                                                                                        class="rounded-circle">
                                                                                     @else
-                                                                                        <img src="{{ asset('frontend/profile_pictures/avatar.png') }}"
-                                                                                            alt="user-image"
-                                                                                            width="48px" height="48px"
-                                                                                            class="rounded-circle">
+                                                                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}"
+                                                                                        alt="user-image"
+                                                                                        width="48px" height="48px"
+                                                                                        class="rounded-circle">
                                                                                     @endif
-                                                                                    {{-- <img src="{{ asset('frontend/images/user1.png') }}" alt="user" width="50" class="rounded-circle"> --}}
                                                                                 </div>
                                                                                 <div class="comment-text w-100">
-                                                                                    {{-- <div class="d-flex justify-content-between"><div class=" d-flex align-items-center mb-2 mt-3 flex-wrap "><div class="fs-20-300 me-2">{{ $comment->user->name }} {{ $comment->user->last_name }}</div><div class="vr d-none d-sm-block "></div><div class="ms-2 time-left ">12 Hours Ago</div></div><div class=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7609 9.45008L17.8517 6.11865C18.2537 5.47888 17.794 4.64746 17.0375 4.64746H7.28532C6.75362 4.64746 6.32422 5.07686 6.32422 5.60856V14.2541H17.0375C17.7926 14.2541 18.2522 13.4227 17.8517 12.7829L15.7609 9.45008Z" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                            <path d="M6.32398 20.0225V14.2588" stroke="#6E6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                            </svg></div></div> --}}
                                                                                     <div
                                                                                         class=" d-flex align-items-center mb-2 mt-3 flex-wrap ">
                                                                                         <div class="fs-20-300 me-2">
