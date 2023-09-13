@@ -20,6 +20,7 @@ use Mail;
 use App\Mail\UserForgotPasswordEmail;
 use App\Mail\SubscribeNewsletter;
 use Hash;
+use App\Models\LikeDislike;
 use App\Models\ItineraryGallery;
 use App\Models\ItineraryLocations;
 use App\Models\HomeSetting;
@@ -99,6 +100,250 @@ class HomeController extends Controller
         $related_itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug','!=',$slug)->limit(5)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
         return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
+    }
+
+    public function getcomments(Request $request)
+    {
+        $offset = $request->input('offset');
+        $limit = $request->input('limit');
+        $itineraryid = $request->input('itineraryid');
+
+        $output = '';
+
+        $itinerarycomment = Comment::where('itineraries_id',$itineraryid)->offset($offset)->limit($limit)->get();
+        if($itinerarycomment)
+        {
+            foreach($itinerarycomment as $comment)
+            {
+                $output .=
+                '
+                <div class="d-flex flex-row py-4 mt-4 border-top-line comment-row">
+                    <div class="pe-3">
+                ';
+                if(!empty($comment->user->profile))
+                {
+                    $output .=
+                    '
+                    <img src="'.asset("frontend/profile_pictures/" . $comment->user->profile).'" alt="user-image" width="48px" height="48px" class="rounded-circle">
+                    ';
+                }
+                else
+                {
+                    $output .=
+                    '
+                    <img src="'.asset("frontend/profile_pictures/avatar.png").'" alt="user-image" width="48px" height="48px" class="rounded-circle">
+                    ';
+                }
+                $output .=
+                '
+                    </div>
+                    <div class="comment-text w-100">
+                        <div class=" d-flex align-items-center mb-2 mt-3 flex-wrap ">
+                            <div class="fs-20-300 me-2">
+                ';
+                        $output .= $comment->user->name;
+                        $output .= $comment->user->last_name;
+                $output .=
+                '
+                            </div>
+                            <div class="vr d-none d-sm-block ">
+                            </div>
+                            <div class="ms-2 time-left text-capitalize  ">
+                ';
+                        $output .= $comment->created_at->diffForHumans();
+                $output .=
+                '
+                            </div>
+                        </div>
+                        <span class="m-b-15 fs-16-300 d-block mt-1">
+                ';
+                        $output .= $comment->body;
+                $output .=
+                '
+                        </span>
+                        <div class="comment-footer">
+                            <div class="d-flex gap-12p mt-3">
+                ';
+                if(auth('user')->id() != '')
+                {
+                    $output .=
+                    '
+                        <div class="">
+                    ';
+                        if(count($comment->likesDislikes) > 0)
+                        {
+                            foreach($comment->likesDislikes as $likeDislike)
+                            {
+                                if ($likeDislike->type == 'like')
+                                {
+                                    $output .=
+                                    '
+                                    <a href="javascript:;" data-role="changecommentstatus" data-value="'.$likeDislike->type.'" data-id="'.$likeDislike->id.'" data-id1="0" class="btn btn-transparent">
+                                        <img src="'.asset("frontend/images/liked.svg").'" alt="">
+                                    </a>
+                                    ';
+                                }
+                                else
+                                {
+                                    $output .=
+                                    '
+                                    <a href="javascript:;" data-role="changecommentstatus" data-value="'.$likeDislike->type.'" data-id="'.$likeDislike->id.'" data-id1="0" class="btn btn-transparent">
+                                        <img src="'.asset("frontend/images/Like Animation.png").'" alt="">
+                                    </a>
+                                    ';
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $output .=
+                            '
+                            <a href="javascript:;" data-role="changecommentstatus" data-value="firstlike" data-id="0" data-id1="'.$comment->id.'" class="btn btn-transparent">
+                                <img src="'.asset("frontend/images/Like Animation.png").'" alt="">
+                            </a>
+                            ';
+                        }
+                    $output .=
+                    '
+                        </div>
+                        <div class="">
+                    ';
+                        if(count($comment->likesDislikes) > 0)
+                        {
+                            foreach($comment->likesDislikes as $likeDislike)
+                            {
+                                if ($likeDislike->type == 'dislike')
+                                {
+                                    $output .=
+                                    '
+                                    <a href="javascript:;" data-role="changecommentstatus" data-value="'.$likeDislike->type.'" data-id="'.$likeDislike->id.'" data-id1="0" class="btn btn-transparent">
+                                        <img src="'.asset("frontend/images/disliked.svg").'" alt="">
+                                    </a>
+                                    ';
+                                }
+                                else
+                                {
+                                    $output .=
+                                    '
+                                    <a href="javascript:;" data-role="changecommentstatus" data-value="'.$likeDislike->type.'" data-id="'.$likeDislike->id.'" data-id1="0" class="btn btn-transparent">
+                                        <img src="'.asset("frontend/images/Dislike Animation.png").'" alt="">
+                                    </a>
+                                    ';
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $output .=
+                            '
+                            <a href="javascript:;" data-role="changecommentstatus" data-value="firstdislike" data-id="0" data-id1="'.$comment->id.'" class="btn btn-transparent">
+                                <img src="'.asset("frontend/images/Dislike Animation.png").'" alt="">
+                            </a>
+                            ';
+                        }
+                    $output .=
+                    '
+                        </div>
+                    ';
+                }
+                else
+                {
+                    $output .=
+                    '
+                    <div class="">
+                        <a href="javascript:;" onclick="return alert("Please Login your self before doing action")" class=" btn-transparent">
+                            <img src="{{ asset("frontend/images/Like Animation.png") }}" alt="">
+                        </a>
+                    </div>
+                    <div class="">
+                        <a href="javascript:;" onclick="return alert("Please Login your self before doing action")" class=" btn-transparent">
+                            <img src="{{ asset("frontend/images/Dislike Animation.png") }}" alt="">
+                        </a>
+                    </div>
+                    ';
+                }
+                $output .=
+                '
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+                ';
+            }
+        }
+        // echo json_encode($done);
+
+        echo $output;
+
+        // return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
+    }
+
+    public function getcommentscount(Request $request)
+    {
+        $itineraryid = $request->input('itineraryid');
+
+        $output = '';
+
+        $itinerarycomment = Comment::where('itineraries_id',$itineraryid)->get();
+
+        echo count($itinerarycomment);
+    }
+
+    public function changecommentstatus(Request $request)
+    {
+        $likedislike = $request->input('likedislike');
+        $comment = $request->input('comment');
+        $value = $request->input('value');
+
+        if($comment != 0)
+        {
+            $check = LikeDislike::where('comment_id',$comment)->first();
+            if(!empty($check))
+            {
+                $var = LikeDislike::find($check->id);
+                if($value == 'firstlike')
+                {
+                    $var->type = 'like';
+                }
+                if($value == 'firstdislike')
+                {
+                    $var->type = 'dislike';
+                }
+                $var->save();    
+            }
+            else
+            {
+                $var = new LikeDislike;
+                $var->user_id = Auth::guard('user')->user()->id;
+                $var->comment_id = $comment;
+                if($value == 'firstlike')
+                {
+                    $var->type = 'like';
+                }
+                if($value == 'firstdislike')
+                {
+                    $var->type = 'dislike';
+                }
+                $var->save();    
+            }
+        }
+
+        if($likedislike != 0)
+        {
+            $var = LikeDislike::find($likedislike);
+            $var->type = $value;
+            if($value == 'like')
+            {
+                $var->type = 'dislike';
+            }
+            if($value == 'dislike')
+            {
+                $var->type = 'like';
+            }
+            $var->save();
+        }
+
+        echo 'success';
     }
 
     public function itineraries()
@@ -523,7 +768,7 @@ class HomeController extends Controller
                 <div class="col-lg-12">
                     <div class="alert alert-success alert-dismissible fade show activityadddivalert" role="alert" style="display:none;">
                         Activity Updated Successfully
-                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <button href="javascript:;" data-role="changecommentstatus" class="btn-close" aria-label="Close"></button>
                     </div>
                 </div>
             </div>
@@ -537,7 +782,7 @@ class HomeController extends Controller
                 '
                 <div class="accordion-item focus-bt border-0">
                     <h2 class="accordion-header" id="headingOne'.$count.'">
-                        <button class="accordion-button d-block py-2 shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
+                        <button class="accordion-button d-block py-2 shadow-none " href="javascript:;" data-role="changecommentstatus" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$count.'" aria-expanded="true" aria-controls="collapseOne'.$count.'">
                             <div class="row border rounded-pill ">
                                 <div class="d-flex justify-content-between py-1 align-items-center">
                                     <div class="m-0 activitytitle fs-16-300 black-300">'.'Activity - '.$count.' '.$query->title.'</div>
@@ -589,7 +834,7 @@ class HomeController extends Controller
                                         </div>
                                         <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
                                             <button class="btn btn-danger  rounded-pill fs-16-300 save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
-                                            <button type="button" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                            <button href="javascript:;" data-role="changecommentstatus" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
                                         </div>
                                     </div>
                                 </div>

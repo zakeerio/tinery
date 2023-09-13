@@ -41,6 +41,9 @@ Route::get('/itineraries/{slug}',[HomeController::class,'itinerary'])->name('iti
 Route::post('/forgotpasswordcode',[HomeController::class,'forgotpasswordcode'])->name('forgotpasswordcode');
 Route::post('/forgotpassworddb',[HomeController::class,'forgotpassworddb'])->name('forgotpassworddb');
 
+Route::post('/getcomments',[HomeController::class,'getcomments'])->name('getcomments');
+Route::post('/getcommentscount',[HomeController::class,'getcommentscount'])->name('getcommentscount');
+Route::post('/changecommentstatus',[HomeController::class,'changecommentstatus'])->name('changecommentstatus');
 
 
 Route::get('/discover', function(){

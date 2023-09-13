@@ -318,165 +318,9 @@
                                                                 </form>
                                                             @endif
                                                             <div class="row">
-                                                                <div class="col-md-12">
-                                                                    @if ($itinerary->comments)
-                                                                        @foreach ($itinerary->comments as $comment)
-                                                                            <div
-                                                                                class="d-flex flex-row py-4 mt-4 border-top-line comment-row">
-                                                                                <div class="pe-3">
-                                                                                    @if (!empty($comment->user->profile))
-                                                                                    <img src="{{ asset('frontend/profile_pictures/' . $comment->user->profile) }}"
-                                                                                        alt="user-image"
-                                                                                        width="48px" height="48px"
-                                                                                        class="rounded-circle">
-                                                                                    @else
-                                                                                    <img src="{{ asset('frontend/profile_pictures/avatar.png') }}"
-                                                                                        alt="user-image"
-                                                                                        width="48px" height="48px"
-                                                                                        class="rounded-circle">
-                                                                                    @endif
-                                                                                </div>
-                                                                                <div class="comment-text w-100">
-                                                                                    <div
-                                                                                        class=" d-flex align-items-center mb-2 mt-3 flex-wrap ">
-                                                                                        <div class="fs-20-300 me-2">
-                                                                                            {{ $comment->user->name }}
-                                                                                            {{ $comment->user->last_name }}
-                                                                                        </div>
-                                                                                        <div class="vr d-none d-sm-block ">
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="ms-2 time-left text-capitalize  ">
-                                                                                            {{ $comment->created_at->diffForHumans() }}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <span class="m-b-15 fs-16-300 d-block mt-1">{{ $comment->body }}</span>
-                                                                                    <div class="comment-footer">
-                                                                                        <div class="d-flex gap-12p mt-3">
-                                                                                            @if (auth('user')->id() != '')
-                                                                                            <div class="">
-                                                                                                @if (count($comment->likesDislikes) > 0)
-                                                                                                    @foreach ($comment->likesDislikes as $likeDislike)
-                                                                                                        @if ($likeDislike->type == 'like')
-                                                                                                        <form
-                                                                                                            action="{{ route('likesDislikes.destroy', $likeDislike) }}"
-                                                                                                            method="POST">
-                                                                                                            @csrf
-                                                                                                            @method('DELETE')
-                                                                                                            <button
-                                                                                                                type="submit"
-                                                                                                                class="btn btn-transparent"><img
-                                                                                                                    src="{{ asset('frontend/images/liked.svg') }}"
-                                                                                                                    alt=""></button>
-                                                                                                        </form>
-                                                                                                        @else
-                                                                                                        <form
-                                                                                                            action="{{ route('likesDislikes.store', $comment) }}"
-                                                                                                            method="POST">
-                                                                                                            @csrf
-                                                                                                            <input
-                                                                                                                type="hidden"
-                                                                                                                value="like"
-                                                                                                                name="type">
-                                                                                                            <button
-                                                                                                                type="submit"
-                                                                                                                class="btn btn-transparent"><img
-                                                                                                                    src="{{ asset('frontend/images/Like Animation.png') }}"
-                                                                                                                    alt=""></button>
-                                                                                                        </form>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                @else
-                                                                                                <form
-                                                                                                    action="{{ route('likesDislikes.store', $comment) }}"
-                                                                                                    method="POST">
-                                                                                                    @csrf
-                                                                                                    <input
-                                                                                                        type="hidden"
-                                                                                                        value="like"
-                                                                                                        name="type">
-                                                                                                    <button
-                                                                                                        type="submit"
-                                                                                                        class="btn btn-transparent"><img
-                                                                                                            src="{{ asset('frontend/images/Like Animation.png') }}"
-                                                                                                            alt=""></button>
-                                                                                                </form>
-                                                                                                @endif
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                @if (count($comment->likesDislikes) > 0)
-                                                                                                    @foreach ($comment->likesDislikes as $likeDislike)
-                                                                                                        @if ($likeDislike->type == 'dislike')
-                                                                                                        <form
-                                                                                                            action="{{ route('likesDislikes.destroy', $likeDislike) }}"
-                                                                                                            method="POST">
-                                                                                                            @csrf
-                                                                                                            @method('DELETE')
-                                                                                                            <button
-                                                                                                                type="submit"
-                                                                                                                class="btn btn-transparent"><img
-                                                                                                                    src="{{ asset('frontend/images/disliked.svg') }}"
-                                                                                                                    alt=""></button>
-                                                                                                        </form>
-                                                                                                        @else
-                                                                                                        <form
-                                                                                                            action="{{ route('likesDislikes.store', $comment) }}"
-                                                                                                            method="POST">
-                                                                                                            @csrf
-                                                                                                            <input
-                                                                                                                type="hidden"
-                                                                                                                value="dislike"
-                                                                                                                name="type">
-                                                                                                            <button
-                                                                                                                type="submit"
-                                                                                                                class="btn btn-transparent"><img
-                                                                                                                    src="{{ asset('frontend/images/Dislike Animation.png') }}"
-                                                                                                                    alt=""></button>
-                                                                                                        </form>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                @else
-                                                                                                <form
-                                                                                                    action="{{ route('likesDislikes.store', $comment) }}"
-                                                                                                    method="POST">
-                                                                                                    @csrf
-                                                                                                    <input
-                                                                                                        type="hidden"
-                                                                                                        value="dislike"
-                                                                                                        name="type">
-                                                                                                    <button
-                                                                                                        type="submit"
-                                                                                                        class="btn btn-transparent"><img
-                                                                                                            src="{{ asset('frontend/images/Dislike Animation.png') }}"
-                                                                                                            alt=""></button>
-                                                                                                </form>
-                                                                                                @endif
-                                                                                            </div>
-                                                                                            @else
-                                                                                            <div class="">
-                                                                                                <a href="javascript:;"
-                                                                                                    onclick="return alert('Please Login your self before doing action')"
-                                                                                                    class=" px-0 btn-transparent"><img
-                                                                                                        src="{{ asset('frontend/images/Like Animation.png') }}"
-                                                                                                        alt=""></a>
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                <a href="javascript:;"
-                                                                                                    onclick="return alert('Please Login your self before doing action')"
-                                                                                                    class=" btn-transparent"><img
-                                                                                                        src="{{ asset('frontend/images/Dislike Animation.png') }}"
-                                                                                                        alt=""></a>
-                                                                                            </div>
-                                                                                            @endif
-                                                                                            <div class="col-md-3  mt-2">
-                                                                                                {{-- <span class="text-muted ">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y')}}</span> --}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        @endforeach
-                                                                    @endif
+                                                                <input type="hidden" class="commentitineraryid" name="itineraryid" value="{{$itinerary->id}}">
+                                                                <div class="col-md-12 getcomments">
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -485,9 +329,9 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="w-25 m-auto mt-4">
-                                        <button class="btn load-btn px-4 text-center text-nowrap">Load More</button>
+                                    <div class="w-25 m-auto mt-4 divcommentsload">
+                                        <button class="btn load-btn px-4 text-center text-nowrap" id="load-more" data-offset="0">Load More</button>
+                                        <input type="hidden" class="getcommentscountinput">
                                     </div>
                                 </div>
                                 <div>
@@ -663,6 +507,76 @@
 
                 }
             }
+
+            function getcommentscount()
+            {
+                var itineraryid = $(".commentitineraryid").val();
+                var csrftoken = $('#csrftoken').val();
+                $.ajax({
+                    url: '{{ url("/getcommentscount")}}',
+                    method: 'post',
+                    data: { _token: csrftoken, itineraryid: itineraryid, },
+                    success: function (data) 
+                    {
+                        $(".getcommentscountinput").val(data);
+                    }
+                });
+            }
+            getcommentscount();
+
+            function getcomments()
+            {
+                var offset = $('#load-more').data('offset');
+                var itineraryid = $(".commentitineraryid").val();
+                var getcommentscountinput = $(".getcommentscountinput").val();
+                var csrftoken = $('#csrftoken').val();
+                var limit = 2;
+                $.ajax({
+                    url: '{{ url("/getcomments")}}',
+                    method: 'post',
+                    data: { _token: csrftoken, offset: offset, limit: limit, itineraryid: itineraryid, },
+                    success: function (data) 
+                    {
+                        $(".getcomments").append(data);                        
+                        if(offset == 0)
+                        {
+                            offset = limit;
+                        }
+                        else
+                        {
+                            offset = offset+limit;
+                        }
+
+                        if(getcommentscountinput == offset)
+                        {
+                            $(".divcommentsload").hide();
+                        }
+                        $('#load-more').data('offset', offset);
+                    }
+                });
+            }
+            getcomments();
+       
+            $('#load-more').click(function () {
+                getcomments();
+            });
+            $(document).on("click", "a[data-role=changecommentstatus]", function () {
+                var likedislike = $(this).data('id');
+                var comment = $(this).data('id1');
+                var value = $(this).data('value');
+                var csrftoken = $('#csrftoken').val();
+
+                $.ajax({
+                    url: '{{ url("/changecommentstatus")}}',
+                    method: 'post',
+                    data: { _token: csrftoken, likedislike: likedislike, comment: comment,  value: value },
+                    success: function (data) 
+                    {
+                        
+                    }
+                });
+            }); 
+
         });
     </script>
 
