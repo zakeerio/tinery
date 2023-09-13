@@ -147,13 +147,18 @@
 
                                     @if ($row->location_id != null && $row->itinerarylocations)
                                         @php
+                                            $link = route('itinerary', ['slug' => $row->slug]);
+                                            $title = $row->title;
+
                                             $locationsArr[] = [
-                                                'description' => $row->title . '<br>' . Str::words($row->description ?? '', 5, ' ...') . '<br>' . $row->itinerarylocations->address_street . '<br>' . $row->itinerarylocations->address_city . '<br>' . $row->itinerarylocations->address_country,
+                                                'url' => $link,
+                                                'title' => $title,
                                                 'lat' => $row->itinerarylocations->latitude,
                                                 'long' => $row->itinerarylocations->longitude,
                                             ];
                                         @endphp
                                     @endif
+
                                 @endforeach
                             @endif
                         </div>
