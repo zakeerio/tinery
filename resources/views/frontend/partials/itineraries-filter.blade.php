@@ -106,13 +106,13 @@
                                     @endif
 
                                     <p class="city">
-                                        @if($row->location_id != null && $row->itinerarylocations) 
+                                        @if($row->location_id != null && $row->itinerarylocations)
                                             @if($row->itinerarylocations->address_country == 'United States')
-                                            {{ $row->itinerarylocations->address_city }}, 
-                                            {{ $row->itinerarylocations->address_state }}, 
+                                            {{ $row->itinerarylocations->address_city }},
+                                            {{ $row->itinerarylocations->address_state }},
                                             {{ $row->itinerarylocations->address_country }}
                                             @else
-                                            {{ $row->itinerarylocations->address_city }}, 
+                                            {{ $row->itinerarylocations->address_city }},
                                             {{ $row->itinerarylocations->address_country }}
                                             @endif
                                         @else
@@ -182,7 +182,7 @@
     $locationArrJson = json_encode($locationsArr);
 @endphp
 
-<hr>
+{{-- <hr>
 <div class="world py-4">
     <div class="container">
         <div class="row justify-content-center">
@@ -192,13 +192,13 @@
         </div>
 
     </div>
-</div>
+</div> --}}
 
 <script>
     $(document).ready(function() {
         if ($('#homepagemap').length > 0) {
 
-            initMaps();
+            // initMaps();
         }
 
         function initMaps() {
