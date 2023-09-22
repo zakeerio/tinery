@@ -345,31 +345,40 @@
                         </div>
 
                         <div class="col-md-8 myitinerylist">
-                            <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
-                                <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs"
-                                    role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button id="tab1" class=" nav-link active btn-dark-r1  py-2 "
-                                            type="button" role="tab" aria-controls="content1" aria-selected="true"
-                                            data-bs-toggle="tab" data-bs-target="#content1">
-                                            My Itinerary List
-                                        </button>
-
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="btn-dark-r1  py-2 nav-link" id="tab2"
-                                            data-bs-toggle="tab" data-bs-target="#content2" type="button"
-                                            role="tab" aria-controls="content2" aria-selected="false"><i
-                                                class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
-                                    </li>
-                                </ul>
-                                <ul class="nav nav-tabs d-none d-md-block ">
-                                    <li class="nav-item " role="presentation">
-                                        <a class="btn btn-danger rounded-pill px-4 px-md-3 py-2 text-nowrap fs-16-300 text-white add-itinerary "
-                                            href="{{ url('/create-itinerary') }}">+ Add Itinerary</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <div class="row justify-content-center ">
+                                <div class="col-lg-11">
+                                    <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
+                                        @if (Auth::guard('user')->user())
+                                        <ul class="nav nav-tabs profile-tabs d-flex gap-3 gap-lg-4 m-0 " id="myTabs"
+                                            role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button id="tab1" class=" nav-link active btn-dark-r1  py-2 "
+                                                    type="button" role="tab" aria-controls="content1" aria-selected="true"
+                                                    data-bs-toggle="tab" data-bs-target="#content1">
+                                                    My Itinerary List
+                                                </button>
+        
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="btn-dark-r1  py-2 nav-link" id="tab2"
+                                                    data-bs-toggle="tab" data-bs-target="#content2" type="button"
+                                                    role="tab" aria-controls="content2" aria-selected="false"><i
+                                                        class="fa-regular fa-heart px-2"></i>Saved Itineraries</button>
+                                            </li>
+                                        </ul>
+                                        <ul class="nav nav-tabs d-none d-md-block ">
+                                            <li class="nav-item " role="presentation">
+                                                <a class="btn btn-danger rounded-pill px-4 px-md-3 py-2 text-nowrap fs-16-300 text-white add-itinerary "
+                                                    href="{{ url('/create-itinerary') }}">+ Add Itinerary</a>
+                                            </li>
+                                        </ul>
+                                        @else
+                                            <h3 class="my_itinery_list">My Itinerary List</h3>
+                                        @endif
+                                    </div>
+                             
+                            
+                            
                             <div class="tab-content" id="myTabsContent">
                                 <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1"
                                     role="tabpanel" aria-labelledby="tab1">
@@ -469,6 +478,8 @@
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
                             @if ($itineraries->count() > 0)
                                 <ul class="nav nav-tabs  d-md-none float-end ">
                                     <li class="nav-item " role="presentation">
