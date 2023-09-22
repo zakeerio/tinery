@@ -78,6 +78,7 @@
                             </div>
 
                             <div class="accordion mt-4 " id="accordionExample">
+                                @if (Auth::guard('user')->user())
                                 <div class="accordion-item border-0 border-bottom ">
                                     <h2 class="accordion-header" id="adminBio">
                                         <button class="accordion-button accordionbtn px-1 border-bottom collapsed"
@@ -90,6 +91,7 @@
                                         aria-labelledby="adminBio" data-bs-parent="#accordionExample">
                                         <div class="accordion-body p-1">
                                             <!-- Admin profile content -->
+                                            
                                             <div class="row">
                                                 @if (count($errors) > 0)
                                                     <div class="alert alert-danger">
@@ -151,7 +153,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                             
                                 <div class="accordion-item border-0 border-bottom ">
                                     <h2 class="accordion-header" id="bioHeading">
                                         <button class="accordion-button accordionbtn px-1 border-bottom collapsed"
@@ -292,7 +294,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @else
                                 <div class="accordion-item border-0 border-bottom">
                                     <h2 class="accordion-header" id="relevantTags">
                                         <button class="accordion-button accordionbtn px-1 border-bottom collapsed"
@@ -340,6 +342,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
 
                         </div>
