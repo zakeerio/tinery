@@ -2013,7 +2013,10 @@ label.required:after {
     .fs-16-300 {
         font-size: 14px;
     }
-
+    .my_itinery_list{
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
     .heart-size-red {
         width: 20px;
         height: 20px;
@@ -2192,7 +2195,7 @@ label.required:after {
 
     }
  
-    
+
     .mt-32 {
         margin-top: 24px;
     }
