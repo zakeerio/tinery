@@ -91,7 +91,7 @@
                                         aria-labelledby="adminBio" data-bs-parent="#accordionExample">
                                         <div class="accordion-body p-1">
                                             <!-- Admin profile content -->
-                                            
+
                                             <div class="row">
                                                 @if (count($errors) > 0)
                                                     <div class="alert alert-danger">
@@ -153,7 +153,7 @@
                                         </div>
                                     </div>
                                 </div>
-                             
+
                                 <div class="accordion-item border-0 border-bottom ">
                                     <h2 class="accordion-header" id="bioHeading">
                                         <button class="accordion-button accordionbtn px-1 border-bottom collapsed"
@@ -365,7 +365,7 @@
                                                             @foreach ($singletag as $singletagitem)
                                                                 @if ($singletagitem)
                                                                     <a href="{{ url('/tags/' . $singletagitem->slug) }}"
-                                                                        class="mb-1"><button class="foodie text-nowrap">
+                                                                        class="mb-2"><button class="foodie text-nowrap">
                                                                             {{ $singletagitem->name }} </button> </a>
                                                                 @endif
                                                             @endforeach
@@ -407,7 +407,7 @@
                                                     data-bs-toggle="tab" data-bs-target="#content1">
                                                     My Itinerary List
                                                 </button>
-        
+
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <button class="btn-dark-r1  py-2 nav-link" id="tab2"
@@ -426,9 +426,9 @@
                                             <h3 class="my_itinery_list">My Itinerary List</h3>
                                         @endif
                                     </div>
-                             
-                            
-                            
+
+
+
                             <div class="tab-content" id="myTabsContent">
                                 <div class="tab-pane fade show active w-100 m-auto tab-content" id="content1"
                                     role="tabpanel" aria-labelledby="tab1">
