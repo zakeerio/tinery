@@ -294,6 +294,53 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="accordion-item border-0 border-bottom">
+                                    <h2 class="accordion-header" id="relevant_Tags">
+                                        <button class="accordion-button accordionbtn px-1 border-bottom collapsed"
+                                            type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseRelevantTags" aria-expanded="false"
+                                            aria-controls="collapseRelevantTags">
+                                            <span class="fs-18-600">Relevant Tags</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseRelevantTags" class="accordion-collapse collapse"
+                                        aria-labelledby="relevant_Tags" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body p-1">
+                                            <!-- Relevant tags content -->
+                                            <div class="row">
+
+                                                <input type="hidden" name="id" value="{{ $user->id }}">
+                                                <div class="col-lg-12">
+                                                    <small class="small-tiny-color ">Relevant tags will auto-populate here based on the tags used in your itineraries.</small>
+                                                    <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
+                                                        @if ($singletag)
+                                                            @foreach ($singletag as $singletagitem)
+                                                                @if ($singletagitem)
+                                                                    <a href="{{ url('/tags/' . $singletagitem->slug) }}"
+                                                                        class="mb-1"><button class="foodie text-nowrap">
+                                                                            {{ $singletagitem->name }} </button> </a>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+
+                                                    </div>
+                                                    {{-- <div class="form-group">
+
+                                                            {!! Form::label('tags', 'tags',['class'=>'fw-bold required mb-3']) !!}
+                                                            {!! Form::text('tags', $user->tags, ['class' => 'form-control rounded-pill mb-1' , 'placeholder' => 'Ex: locations, subjects, themes, etc.' ]) !!}
+                                                        </div> --}}
+                                                    <!-- <div class=" tags-links1"><a href="">Clear all tags</a></div> -->
+                                                </div>
+                                                <!-- <div class="float-end">
+                                                                <div class="form-group text-end">
+                                                                    {!! Form::submit('Save', ['class' => 'btn btn-dark mt-3 rounded-pill px-4 save-bt']) !!}
+                                                                </div>
+                                                            </div> -->
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                                 @else
                                 <div class="accordion-item border-0 border-bottom">
                                     <h2 class="accordion-header" id="relevantTags">
