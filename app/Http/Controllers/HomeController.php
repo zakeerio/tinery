@@ -841,7 +841,8 @@ class HomeController extends Controller
                                         </div>
                                         <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
                                             <button class="btn btn-danger  rounded-pill fs-16-300 save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
-                                            <button href="javascript:;" data-role="changecommentstatus" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                            <button href="javascript:;" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
+
                                         </div>
                                     </div>
                                 </div>
