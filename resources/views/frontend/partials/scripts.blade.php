@@ -700,7 +700,7 @@
             });
         });
 
-        $(".regemail").blur(function(){
+        $(".regemail").keyup(function(){
             var email = $(this).val();
             var csrftoken = $('#csrftoken').val();
 
@@ -732,7 +732,7 @@
             }
         });
 
-        $(".regusername").blur(function(){
+        $(".regusername").keyup(function(){
             var username = $(this).val();
             var csrftoken = $('#csrftoken').val();
 
@@ -760,7 +760,7 @@
             }
         });
 
-        $(".loginemail").blur(function(){
+        $(".loginemail").keyup(function(){
             var email = $(this).val();
             var csrftoken = $('#csrftoken').val();
 
@@ -779,13 +779,14 @@
                     if(data == 'error')
                     {
                         $('#loginemailError').text('Invalid Email Address.');
+                        $('.loginbtnforuser').prop('disabled', true);
                         $(".loginemail").focus();
                     }
                 }
             });
         });
 
-        $(".loginpassword").blur(function(){
+        $(".loginpassword").keyup(function(){
             var email = $('.loginemail').val();
             var pass = $(this).val();
             if (!email) {
@@ -807,11 +808,12 @@
                     {
                         $('#loginpassSuccess').text('Login Now.');
                         $('.loginbtnforuser').prop('disabled', false);
-                        this.submit();
+                        // this.submit();
                     }
                     if(data == 'error')
                     {
                         $('#loginpassError').text('Invalid Password.');
+                        $('.loginbtnforuser').prop('disabled', true);
                         // $(".loginpassword").focus();
                     }
                 }

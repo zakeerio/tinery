@@ -69,25 +69,26 @@
                                     <a href="{{ route('itinerary', ['slug' => $row->slug]) }}" style="text-decoration:none;">
                                         <h4 class="h-4">{{ $row->title }}</h4>
                                     </a>
-                                    <div class="tags">
+                                    <div class="tags scroller-h">
                                         @if ($row->tags != '')
                                             @php
-                                                $itinerarytag = json_decode($row->tags);
+                                                // Convert the string array to an actual array
+                                                $itineraryTagIds = json_decode($row->tags);
                                             @endphp
-                                            @foreach ($itinerarytag as $itinerarytag)
-                                                @php
-                                                    $tag = $row->tagsdata($itinerarytag);
-                                                @endphp
 
-                                                @if ($tag)
-                                                    <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                        <button class="foodie text-nowrap">
-                                                            {{ $tag->name }}
-                                                        </button>
-                                                    </a>
+                                            @foreach ($alltags as $itinerarytag)
+
+                                                @if ($itinerarytag)
+                                                    @if (in_array($itinerarytag->id, $itineraryTagIds))
+                                                        <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
+                                                            <button class="foodie text-nowrap">
+                                                                {{ $itinerarytag->name }}
+                                                            </button>
+                                                        </a>
+
+                                                    @endif
+
                                                 @endif
-
-                                                {{-- {{ $itinerarytag }} --}}
                                             @endforeach
                                         @endif
                                     </div>

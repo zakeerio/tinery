@@ -97,13 +97,13 @@
                                     <div class="d-flex align-items-center">
                                         <img src="{{ asset('frontend/images/nav.png') }}" alt="">
                                         <h6 class="profile-p pt-2 mx-1">
-                                            @if($itinerary->location_id != null && $itinerary->itinerarylocations) 
+                                            @if($itinerary->location_id != null && $itinerary->itinerarylocations)
                                                 @if($itinerary->itinerarylocations->address_country == 'United States')
-                                                {{ $itinerary->itinerarylocations->address_city }}, 
-                                                {{ $itinerary->itinerarylocations->address_state }}, 
+                                                {{ $itinerary->itinerarylocations->address_city }},
+                                                {{ $itinerary->itinerarylocations->address_state }},
                                                 {{ $itinerary->itinerarylocations->address_country }}
                                                 @else
-                                                {{ $itinerary->itinerarylocations->address_city }}, 
+                                                {{ $itinerary->itinerarylocations->address_city }},
                                                 {{ $itinerary->itinerarylocations->address_country }}
                                                 @endif
                                             @else
@@ -137,18 +137,18 @@
                                 <div class="tags flex-wrap gap-1" style="margin-top:-40px;">
                                     @if ($itinerary->tags != '')
                                         @php
-                                            $itinerarytag = json_decode($itinerary->tags);
+                                            $itineraryTagIds = json_decode($itinerary->tags);
                                         @endphp
-                                        @foreach ($itinerarytag as $itinerarytag)
-                                            @php
-                                                $tag = $itinerary->tagsdata($itinerarytag);
-                                            @endphp
-                                            @if ($tag)
-                                                <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                    <button class="foodie text-nowrap">
-                                                        {{ $tag->name }}
-                                                    </button>
-                                                </a>
+
+                                        @foreach ($alltags as $itinerarytag)
+                                            @if ($itinerarytag)
+                                                @if (in_array($itinerarytag->id, $itineraryTagIds))
+                                                    <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
+                                                        <button class="foodie text-nowrap">
+                                                            {{ $itinerarytag->name }}
+                                                        </button>
+                                                    </a>
+                                                @endif
                                             @endif
                                         @endforeach
                                     @endif
@@ -320,7 +320,7 @@
                                                             <div class="row">
                                                                 <input type="hidden" class="commentitineraryid" name="itineraryid" value="{{$itinerary->id}}">
                                                                 <div class="col-md-12 getcomments">
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -516,7 +516,7 @@
                     url: '{{ url("/getcommentscount")}}',
                     method: 'post',
                     data: { _token: csrftoken, itineraryid: itineraryid, },
-                    success: function (data) 
+                    success: function (data)
                     {
                         $(".getcommentscountinput").val(data);
                     }
@@ -535,9 +535,9 @@
                     url: '{{ url("/getcomments")}}',
                     method: 'post',
                     data: { _token: csrftoken, offset: offset, limit: limit, itineraryid: itineraryid, },
-                    success: function (data) 
+                    success: function (data)
                     {
-                        $(".getcomments").append(data);                        
+                        $(".getcomments").append(data);
                         if(offset == 0)
                         {
                             offset = limit;
@@ -556,7 +556,7 @@
                 });
             }
             getcomments();
-       
+
             $('#load-more').click(function () {
                 getcomments();
             });
@@ -570,12 +570,12 @@
                     url: '{{ url("/changecommentstatus")}}',
                     method: 'post',
                     data: { _token: csrftoken, likedislike: likedislike, comment: comment,  value: value },
-                    success: function (data) 
+                    success: function (data)
                     {
-                        
+
                     }
                 });
-            }); 
+            });
 
         });
     </script>

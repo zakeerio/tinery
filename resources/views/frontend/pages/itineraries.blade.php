@@ -333,49 +333,25 @@
                                             </a>
                                             <div class="tags scroller-h">
                                                 @if ($row->tags != '')
-                                                    {{-- @php
-                                                        $itinerarytag = json_decode($row->tags);
-                                                    @endphp
-                                                    @foreach ($itinerarytag as $itinerarytag)
-                                                        @php
-                                                            $tag = $row->tagsdata($itinerarytag);
-                                                        @endphp
-
-                                                        @if ($tag)
-                                                            <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                                <button class="foodie text-nowrap">
-                                                                    {{ $tag->name }}
-                                                                </button>
-                                                            </a>
-                                                        @endif
-
-                                                    @endforeach --}}
-
                                                     @php
-                                                // Convert the string array to an actual array
-                                                $itineraryTagIds = json_decode($row->tags);
+                                                        // Convert the string array to an actual array
+                                                        $itineraryTagIds = json_decode($row->tags);
+                                                    @endphp
 
-                                                // Fetch the related tags based on the tag IDs
-                                                // $tags = Tags::whereIn('id', $itineraryTagIds)->get();
-                                                // dd($tags);
-                                            @endphp
+                                                    @foreach ($alltags as $itinerarytag)
 
-                                            @foreach ($tags as $itinerarytag)
-                                                @php
-                                                    // $tag = $row->tagsdata($itinerarytag);
-                                                @endphp
-                                                @if ($itinerarytag)
-                                                    @if (in_array($itinerarytag->id, $itineraryTagIds))
-                                                        <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
-                                                            <button class="foodie text-nowrap">
-                                                                {{ $itinerarytag->name }}
-                                                            </button>
-                                                        </a>
+                                                        @if ($itinerarytag)
+                                                            @if (in_array($itinerarytag->id, $itineraryTagIds))
+                                                                <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
+                                                                    <button class="foodie text-nowrap">
+                                                                        {{ $itinerarytag->name }}
+                                                                    </button>
+                                                                </a>
 
-                                                    @endif
+                                                            @endif
 
-                                                @endif
-                                            @endforeach
+                                                        @endif
+                                                    @endforeach
                                                 @endif
                                             </div>
                                             @if ($row->location_id != null && $row->itinerarylocations)

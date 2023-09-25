@@ -63,18 +63,18 @@ class HomeController extends Controller
         if(!empty($username)) {
             $user = User::where('username', $username)->with('favorites.itineraries')->first();
             $itineraries = $user->itineraries->where('itinerary_status','updated')->where('status','published');
+            $alltags = Tags::get();
+
             foreach($itineraries as $itineraries)
             {
                 if($itineraries->tags != '')
                 {
-                    $tags = json_decode($itineraries->tags);
-                    foreach($tags as $singletag)
-                    {
-                        $tag = Tags::where('id',$singletag)->first();
-
-                        array_push($tagsnames,$tag);
+                    $itineraryTagIds = json_decode($itineraries->tags);
+                    foreach ($alltags as $itinerarytag){
+                        if (in_array($itinerarytag->id, $itineraryTagIds)){
+                            array_push($tagsnames,$itinerarytag);
+                        }
                     }
-
                 }
             }
 
@@ -100,7 +100,8 @@ class HomeController extends Controller
         $days = $itinerary->itinerarydays;
         $related_itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->where('slug','!=',$slug)->limit(5)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itinerary->id)->get();
-        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery'));
+        $alltags = Tags::get();
+        return view('frontend.pages.single-itinerary',compact('itinerary','related_itinerary','days','itinerary_gallery','alltags'));
     }
 
     public function getcomments(Request $request)
@@ -354,22 +355,24 @@ class HomeController extends Controller
         $largestnumber = Itineraries::max('duration');
         $itinerary = Itineraries::where('itinerary_status','updated')->where('status','published')->paginate(15);
         $filter = Itineraries::where('itinerary_status','updated')->where('status','published')->groupBy('location_id')->get();
+
+        $alltags = Tags::get();
         foreach($filter as $itineraries)
         {
             if($itineraries->tags != '')
             {
-                $tagsdata = json_decode($itineraries->tags);
-                foreach($tagsdata as $singletag)
-                {
-                    $tag = Tags::where('id',$singletag)->first();
-                    array_push($tagsnames,$tag);
+                $itineraryTagIds = json_decode($itineraries->tags);
+                foreach ($alltags as $itinerarytag){
+                    if (in_array($itinerarytag->id, $itineraryTagIds)){
+                        array_push($tagsnames,$itinerarytag);
+                    }
                 }
             }
         }
         $tags = array_unique($tagsnames);
         $user_filter = User::get();
 
-        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber'));
+        return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber','alltags'));
     }
 
 
@@ -428,15 +431,16 @@ class HomeController extends Controller
 
 
         $filterdata = Itineraries::where('itinerary_status','updated')->where('status','published')->get();
+        $alltags = Tags::get();
         foreach($filterdata as $itineraries)
         {
             if($itineraries->tags != '')
             {
-                $tags = json_decode($itineraries->tags);
-                foreach($tags as $tags)
-                {
-                    $tag = Tags::where('id',$tags)->first();
-                    array_push($tagsnames,$tag);
+                $itineraryTagIds = json_decode($itineraries->tags);
+                foreach ($alltags as $itinerarytag){
+                    if (in_array($itinerarytag->id, $itineraryTagIds)){
+                        array_push($tagsnames,$itinerarytag);
+                    }
                 }
             }
         }
@@ -462,7 +466,7 @@ class HomeController extends Controller
 
         // return json_encode($data);
         // return view('frontend.pages.itineraries',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers'));
-        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers','total', 'limit', 'offset'));
+        return view('frontend.partials.itineraries-filter',compact('itinerary','filter','tags','user_filter','smallestnumber','largestnumber', 'tagsfilter','usersfilter','locationfilter','daysrange','filteredlocations','filteredusers','total', 'limit', 'offset','alltags'));
 
     }
 
@@ -479,7 +483,9 @@ class HomeController extends Controller
             // ->get();
 
             // dd($itineraries);
-            return view('frontend.pages.slug-itineraries',compact('itineraries'));
+            $alltags = Tags::get();
+
+            return view('frontend.pages.slug-itineraries',compact('itineraries','alltags'));
         }
         else
         {
@@ -835,7 +841,7 @@ class HomeController extends Controller
                                         </div>
                                         <div class="mb-3 d-flex justify-content-end gap-2 flex-wrap">
                                             <button class="btn btn-danger  rounded-pill fs-16-300 save-bt text-white" data-role="deleteactivity" data-id="'.$query->id.'" data-itineraryid="'.$query->itineraries_id.'" data-daysid="'.$query->days_id.'">Delete</button>
-                                            <button href="javascript:;" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
+                                            <button href="javascript:;" data-role="changecommentstatus" class="btn save-bt btn-dark fs-16-300 text-white rounded-pill " data-role="btnaddactivitydb">Save</button>
                                         </div>
                                     </div>
                                 </div>

@@ -118,20 +118,9 @@
                                             @php
                                                 // Convert the string array to an actual array
                                                 $itineraryTagIds = json_decode($row->tags);
-
-                                                // Fetch the related tags based on the tag IDs
-                                                // $tags = Tags::whereIn('id', $itineraryTagIds)->get();
-                                                // dd($tags);
                                             @endphp
 
-
-                                            @php
-                                                // $itinerarytag = json_decode($row->tags);
-                                            @endphp
                                             @foreach ($tags as $itinerarytag)
-                                                @php
-                                                    // $tag = $row->tagsdata($itinerarytag);
-                                                @endphp
                                                 @if ($itinerarytag)
                                                     @if (in_array($itinerarytag->id, $itineraryTagIds))
                                                         <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
