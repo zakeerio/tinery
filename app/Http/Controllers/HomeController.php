@@ -36,10 +36,11 @@ class HomeController extends Controller
         ->where('status','published')
         ->where('itinerary_status','updated')
         ->get();
+        $tags = Tags::get();
         $users = User::where('featured', 'true')->limit('6')->get();
         $users_mobile = User::where('featured', 'true')->limit('5')->get();
 
-        return view('frontend.pages.home')->with('itineraries', $itineraries)->with('user')->with('users', $users)->with('users_mobile', $users_mobile);
+        return view('frontend.pages.home')->with('itineraries', $itineraries)->with("tagsdata")->with('user')->with('users', $users)->with('users_mobile', $users_mobile)->with('tags', $tags);
     }
 
     public function term_of_use()
@@ -265,7 +266,7 @@ class HomeController extends Controller
                 $output .=
                 '
                             </div>
-                        </div>            
+                        </div>
                     </div>
                 </div>
                 ';
@@ -309,7 +310,7 @@ class HomeController extends Controller
                 {
                     $var->type = 'dislike';
                 }
-                $var->save();    
+                $var->save();
             }
             else
             {
@@ -324,7 +325,7 @@ class HomeController extends Controller
                 {
                     $var->type = 'dislike';
                 }
-                $var->save();    
+                $var->save();
             }
         }
 

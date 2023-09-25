@@ -114,19 +114,34 @@
                                             <h4 class="h-4">{{ $row->title }}</h4>
                                         </a>
                                         <div class="tags scroller-h ">
+
                                             @php
-                                                $itinerarytag = json_decode($row->tags);
+                                                // Convert the string array to an actual array
+                                                $itineraryTagIds = json_decode($row->tags);
+
+                                                // Fetch the related tags based on the tag IDs
+                                                // $tags = Tags::whereIn('id', $itineraryTagIds)->get();
+                                                // dd($tags);
                                             @endphp
-                                            @foreach ($itinerarytag as $itinerarytag)
+
+
+                                            @php
+                                                // $itinerarytag = json_decode($row->tags);
+                                            @endphp
+                                            @foreach ($tags as $itinerarytag)
                                                 @php
-                                                    $tag = $row->tagsdata($itinerarytag);
+                                                    // $tag = $row->tagsdata($itinerarytag);
                                                 @endphp
-                                                @if ($tag)
-                                                    <a href="{{ url('/tags/' . $tag->slug) }}">
-                                                        <button class="foodie text-nowrap">
-                                                            {{ $tag->name }}
-                                                        </button>
-                                                    </a>
+                                                @if ($itinerarytag)
+                                                    @if (in_array($itinerarytag->id, $itineraryTagIds))
+                                                        <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
+                                                            <button class="foodie text-nowrap">
+                                                                {{ $itinerarytag->name }}
+                                                            </button>
+                                                        </a>
+
+                                                    @endif
+
                                                 @endif
                                             @endforeach
                                         </div>
@@ -144,13 +159,13 @@
                                             @endphp
                                         @endif
                                         <p class="city mt-3">
-                                            @if($row->location_id != null && $row->itinerarylocations) 
+                                            @if($row->location_id != null && $row->itinerarylocations)
                                                 @if($row->itinerarylocations->address_country == 'United States')
-                                                {{ $row->itinerarylocations->address_city }}, 
-                                                {{ $row->itinerarylocations->address_state }}, 
+                                                {{ $row->itinerarylocations->address_city }},
+                                                {{ $row->itinerarylocations->address_state }},
                                                 {{ $row->itinerarylocations->address_country }}
                                                 @else
-                                                {{ $row->itinerarylocations->address_city }}, 
+                                                {{ $row->itinerarylocations->address_city }},
                                                 {{ $row->itinerarylocations->address_country }}
                                                 @endif
                                             @else
@@ -386,6 +401,6 @@
             }
         });
     </script>
-   
+
 
 @endsection
