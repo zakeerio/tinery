@@ -100,7 +100,7 @@ class LoginController extends Controller
         $pass = $request->input('pass');
         
         $query = User::where('email',$email)->first();
-        if (Hash::check($pass, $query->password))
+        if (!empty($query) && !empty($pass) && Hash::check($pass, $query->password))
         {
             echo 'success';
         }

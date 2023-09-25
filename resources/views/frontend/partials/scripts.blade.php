@@ -806,6 +806,7 @@
                     if(data == 'success')
                     {
                         $('#loginpassSuccess').text('Login Now.');
+                        $('.loginbtnforuser').prop('disabled', false);
                         this.submit();
                     }
                     if(data == 'error')

@@ -151,7 +151,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-2 text-center text-md-start">
-                                            {!! Form::submit('Login', ['class' => ' become-btn']) !!}
+                                            <input type="submit" value="Login" class="become-btn loginbtnforuser" disabled>
                                         </div>
                                         <div class="text-center text-md-start w-100 ">
 
