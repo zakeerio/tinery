@@ -64,11 +64,15 @@
 
                                         <div class=" d-none d-lg-flex content_view"><h3>Content Views</h3> <p>62</p> </div>
                                         @endif
+                                        @if (Auth::guard('user')->user())
                                         <div class=" d-none d-lg-flex">
                                             <p class="card-text">{{ $user->bio }}</p>
                                         </div>
+                                        @endif
                                     </div>
+
                                 </div>
+
                                 <div class=" d-md-none">
                                     <h5 class="card-title card-title-profile mt-2 d-lg-none">Hi, {{ $user->name }}
                                         {{ $user->lastname }}!</h5>
@@ -98,12 +102,16 @@
 
                                         <div class=" d-flex d-lg-none content_view"><h3>Content Views</h3> <p>62</p> </div>
                                         @endif
-                                    <div class="mt-lg-4 mt-1">
-                                        <p class="card-text">{{ $user->bio }}</p>
-                                    </div>
+                                        @if (Auth::guard('user')->user())
+                                        <div class="mt-lg-4 mt-1">
+                                            <p class="card-text">{{ $user->bio }}</p>
+                                        </div>
+                                        @endif
+
 
                                 </div>
                             </div>
+
                             <div class=" d-none d-md-block">
                                 <h5 class="card-title card-title-profile mt-2 d-lg-none">Hi, {{ $user->name }}
                                     {{ $user->lastname }}!</h5>
@@ -132,9 +140,12 @@
                                     @if (!Auth::guard('user')->user())
                                     <div class=" d-flex d-lg-none content_view"><h3>Content Views</h3> <p>62</p> </div>
                                     @endif
-                                <div class="mt-lg-4 mt-1 d-lg-none">
-                                    <p class="card-text">{{ $user->bio }}</p>
-                                </div>
+                                    @if (Auth::guard('user')->user())
+                                    <div class="mt-lg-4 mt-1 d-lg-none">
+                                        <p class="card-text">{{ $user->bio }}</p>
+                                    </div>
+                                    @endif
+
                             </div>
 
                             <div class="accordion " id="accordionExample">
@@ -405,7 +416,7 @@
                                         </div>
                                     </div>
                                 @else
-                                <div class="mt-lg-4 mt-3 d-md-none">
+                                <div class="mt-lg-4 mt-3 ">
                                     <p class="card-text">{{ $user->bio }}</p>
                                 </div>
                                 <div class="line-x-32"></div>
