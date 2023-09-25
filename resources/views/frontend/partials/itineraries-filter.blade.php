@@ -118,7 +118,7 @@
                                         @else
                                         Location
                                         @endif
-                                        {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }}
+                                        {{-- {{ $row->location_id != null && $row->itinerarylocations ? $row->itinerarylocations->address_city : 'Location' }} --}}
                                         | {{ $row->created_at->diffForHumans() }}</p>
                                 </div>
                             @endforeach

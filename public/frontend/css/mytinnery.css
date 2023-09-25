@@ -1892,6 +1892,17 @@ label.required:after {
     -webkit-box-orient: vertical;
 }
 
+.my_itinery_list {
+    padding-top: 37px;
+    padding-bottom: 32px;
+    color: #000;
+    font-family: "Axiforma", Sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+}
+
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -2002,7 +2013,10 @@ label.required:after {
     .fs-16-300 {
         font-size: 14px;
     }
-
+    .my_itinery_list{
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
     .heart-size-red {
         width: 20px;
         height: 20px;
@@ -2180,6 +2194,7 @@ label.required:after {
         font-size: 20px;
 
     }
+ 
 
     .mt-32 {
         margin-top: 24px;
@@ -2201,7 +2216,7 @@ label.required:after {
     .width-48 {
         width: 24px;
     }
-
+    
     .mx-32 {
         margin-left: 24px;
         margin-right: 24px;
@@ -2246,7 +2261,9 @@ label.required:after {
         height: 41px;
         width: 41px;
     }
-
+    .my_itinery_list{
+        font-size: 20px;
+    }
     #bgimg {
         height: 300px;
     }

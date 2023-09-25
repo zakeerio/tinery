@@ -90,19 +90,6 @@
                                         aria-labelledby="adminBio" data-bs-parent="#accordionExample">
                                         <div class="accordion-body p-1">
                                             <!-- Admin profile content -->
-                                            <!-- <div class="row">
-                                                @if (count($errors) > 0)
-                                                    <div class="alert alert-danger">
-                                                        <strong>Whoops!</strong> There were some problems with your
-                                                        input.<br><br>
-                                                        <ul>
-                                                            @foreach ($errors->all() as $error)
-                                                                <li>{{ $error }}</li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                @endif
-                                            </div> -->
                                             <div class="row">
                                                 @if ($usercheck)
                                                     {!! Form::open(['route' => 'profileupdate', 'method' => 'POST']) !!}
