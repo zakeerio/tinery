@@ -256,10 +256,10 @@
     font-family: "Axiforma", Sans-serif;
     font-style: normal;
     font-weight: 300;
-    /* font-size: 16px; */
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.4em;
-    color: #6E6E72;
+    color: #3E3E43;
+
 }
 
 .profile-tabs .nav-link {
@@ -367,11 +367,10 @@
     padding: 4px 20px;
     background-color: transparent;
     /* margin: 0px 10px; */
-    margin-right: 6px;
     font-size: 14px;
     /* font-size: 16px; */
     font-weight: 300;
-    line-height: 1.3em;
+    line-height: 1;
 
 
 }
@@ -572,10 +571,10 @@
     -ms-flex-align: center;
     align-items: center;
     /* justify-content: space-between; */
-
+    margin-top: 30px;
     min-height: 34px;
     height: auto;
-    padding-bottom: 10px;
+    gap: 10px;
 }
 
 .w-40 {
@@ -1497,7 +1496,12 @@ header {
     top: 18px;
     right: 28px;
 }
-
+.line-x-32{
+    border-top: 1px solid #D4D4D8;
+    height: 0;
+    width: 100%;
+    margin: 32px 0;
+}
 .pass-icon1 {
     top: 18px;
     right: 20px;
@@ -1660,9 +1664,9 @@ select.did-floating-select::-ms-expand {
 
 
 .border-card {
-    border-right: 2px solid #000000;
+    border-right: 2px solid #D4D4D8;
 
-    min-height: 744px;
+    /* min-height: 744px; */
     height: auto;
 }
 
@@ -1893,8 +1897,7 @@ label.required:after {
 }
 
 .my_itinery_list {
-    padding-top: 37px;
-    padding-bottom: 32px;
+    margin-bottom: 32px;
     color: #000;
     font-family: "Axiforma", Sans-serif;
     font-size: 24px;
@@ -1902,7 +1905,33 @@ label.required:after {
     font-weight: 600;
     line-height: 40px;
 }
+.content_view {
+    gap: 16px;
+    margin-top: 16px;
+}
+.content_view h3 {
+    color: #000;
+    font-family: "Axiforma", Sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
 
+}
+.content_view p {
+    color:  #0F6496;
+    text-align: right;
+    font-family: "Axiforma", Sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+
+}
+
+.profile-section {
+    padding-top: 64px;
+}
 /* For mobile phones: */
 
 @media only screen and(min-width: 576px) {
@@ -2013,10 +2042,8 @@ label.required:after {
     .fs-16-300 {
         font-size: 14px;
     }
-    .my_itinery_list{
-        padding-top: 20px;
-        padding-bottom: 0;
-    }
+
+
     .heart-size-red {
         width: 20px;
         height: 20px;
@@ -2042,9 +2069,7 @@ label.required:after {
         font-size: 16px;
     }
 
-    .my-c {
-        padding: 16px 0;
-    }
+
 
     .travel {
         font-size: 24px;
@@ -2182,9 +2207,9 @@ label.required:after {
         font-size: 20px;
     }
 
-    .border-card {
+    /* .border-card {
         min-height: 375px;
-    }
+    } */
 
     .nav-tabs {
         padding: 15px 0;
@@ -2194,7 +2219,7 @@ label.required:after {
         font-size: 20px;
 
     }
- 
+
 
     .mt-32 {
         margin-top: 24px;
@@ -2212,11 +2237,21 @@ label.required:after {
         background: #2A293D;
         color: white;
     }
+    .content_view {
 
+        margin-top: 12px;
+    }
+
+    .profile-section {
+        padding-top: 56px;
+    }
     .width-48 {
         width: 24px;
     }
-    
+    .tags{
+        margin-top: 16px;
+        gap: 8px;
+    }
     .mx-32 {
         margin-left: 24px;
         margin-right: 24px;
@@ -2245,6 +2280,9 @@ label.required:after {
     .profiles {
         padding: 24px 36px;
     }
+    .line-x-32{
+        margin: 24px 0;
+    }
 
 }
 
@@ -2252,7 +2290,35 @@ label.required:after {
     .border-card {
         border: 0;
     }
-
+    .profile-section {
+        padding-top: 40px;
+    }
+    .line-x-32{
+        margin: 16px 0;
+    }
+    .socail-imgaes img{
+        width: 20px;
+        height: 20px;
+    }
+    .line-x-m{
+        border-top: 1px solid #D4D4D8;
+        height: 0;
+        width: 100%;
+        margin: 40px 0;
+    }
+    .profile-gap {
+        gap: 16px;
+    }
+    .profile-img{
+        width: 96px;
+        height: 96px;
+    }
+    .content_view h3{
+        font-size: 14px;
+    }
+    .content_view p{
+        font-size: 14px;
+    }
     .icons-color {
         font-size: 85%;
     }
@@ -2261,9 +2327,12 @@ label.required:after {
         height: 41px;
         width: 41px;
     }
-    .my_itinery_list{
+
+    .my_itinery_list {
         font-size: 20px;
+        margin-bottom: 16px;
     }
+
     #bgimg {
         height: 300px;
     }
@@ -2387,19 +2456,16 @@ label.required:after {
         margin-right: 10px;
     }
 
-    .profile-img {
-        width: 107px !important;
-        height: 107px !important;
-    }
+
 
     .card-title-profile {
         font-size: 20px !important;
     }
-
+/*
     .border-card {
         min-height: 360px !important;
 
-    }
+    } */
 
     .path-img {
         width: 21px !important;

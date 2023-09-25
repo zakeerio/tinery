@@ -7,9 +7,9 @@
     <section class="profile-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-11 px-0">
+                <div class="col-11 ">
                     <div class="row">
-                        <div class="col-md-4 border-card my-md-5 my-3 p-0 ">
+                        <div class="col-md-4 border-card  ">
                             <div class="d-flex align-items-center profile-gap ">
                                 <div class="position-relative">
                                     <form action="" method="post " enctype="multipart/form-data">
@@ -60,25 +60,73 @@
                                                         src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
                                             @endif
                                         </div>
+                                        <div class=" d-none d-lg-flex content_view"><h3>Content Views</h3> <p>62</p> </div>
                                     </div>
                                 </div>
                                 <div class=" d-md-none">
                                     <h5 class="card-title card-title-profile mt-2 d-lg-none">Hi, {{ $user->name }}
                                         {{ $user->lastname }}!</h5>
-                                    <div class="mt-lg-4 mt-1">
+                                        <div class="d-flex  socail-imgaes  d-lg-none">
+                                            @if (!empty($user->facebook))
+                                                <a href="{{ $user->facebook }}"><img
+                                                        src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
+                                            @endif
+                                            @if (!empty($user->twitter))
+                                                <a href="{{ $user->twitter }}"><img
+                                                        src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
+                                            @endif
+                                            @if (!empty($user->instagram))
+                                                <a href="{{ $user->instagram }}"><img
+                                                        src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
+                                            @endif
+                                            @if (!empty($user->tiktok))
+                                                <a href="{{ $user->tiktok }}"><img class=" socail-imgaes"
+                                                        src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a>
+                                            @endif
+                                            @if (!empty($user->website))
+                                                <a href="{{ $user->website }}"><img
+                                                        src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
+                                            @endif
+                                        </div>
+                                        <div class=" d-flex d-lg-none content_view"><h3>Content Views</h3> <p>62</p> </div>
+                                    {{-- <div class="mt-lg-4 mt-1">
                                         <p class="card-text">{{ $user->bio }}</p>
-                                    </div>
+                                    </div> --}}
+
                                 </div>
                             </div>
                             <div class=" d-none d-md-block">
                                 <h5 class="card-title card-title-profile mt-2 d-lg-none">Hi, {{ $user->name }}
                                     {{ $user->lastname }}!</h5>
+                                    <div class="d-flex  socail-imgaes  d-lg-none">
+                                        @if (!empty($user->facebook))
+                                            <a href="{{ $user->facebook }}"><img
+                                                    src="{{ asset('frontend/images/fb.svg') }}" alt=""></a>
+                                        @endif
+                                        @if (!empty($user->twitter))
+                                            <a href="{{ $user->twitter }}"><img
+                                                    src="{{ asset('frontend/images/tw.svg') }}" alt=""></a>
+                                        @endif
+                                        @if (!empty($user->instagram))
+                                            <a href="{{ $user->instagram }}"><img
+                                                    src="{{ asset('frontend/images/insta.svg') }}" alt=""></a>
+                                        @endif
+                                        @if (!empty($user->tiktok))
+                                            <a href="{{ $user->tiktok }}"><img class=" socail-imgaes"
+                                                    src="{{ asset('frontend/images/tiktok.svg') }}" alt=""></a>
+                                        @endif
+                                        @if (!empty($user->website))
+                                            <a href="{{ $user->website }}"><img
+                                                    src="{{ asset('frontend/images/Link.svg') }}" alt=""></a>
+                                        @endif
+                                    </div>
+                                    <div class=" d-flex d-lg-none content_view"><h3>Content Views</h3> <p>62</p> </div>
                                 <div class="mt-lg-4 mt-1">
                                     <p class="card-text">{{ $user->bio }}</p>
                                 </div>
                             </div>
 
-                            <div class="accordion mt-4 " id="accordionExample">
+                            <div class="accordion " id="accordionExample">
                                 @if (Auth::guard('user')->user())
                                     <div class="accordion-item border-0 border-bottom ">
                                         <h2 class="accordion-header" id="adminBio">
@@ -346,22 +394,25 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div class="">
-                                        <h2 id="relevantTags">
+                                <div class="mt-lg-4 mt-3 d-md-none">
+                                    <p class="card-text">{{ $user->bio }}</p>
+                                </div>
+                                <div class="line-x-32"></div>
+                                    <div class="relevant-pt ">
+                                        <h2 id="relevantTags" class="m-0">
                                             <span class="fs-18-600">Relevant Tags</span>
                                         </h2>
                                         <div>
-                                            <div class=" p-1">
+                                            <div class=" p-0">
                                                 <!-- Relevant tags content -->
                                                 <div class="row">
                                                     <input type="hidden" name="id" value="{{ $user->id }}">
                                                     <div class="col-lg-12">
-                                                        <div class="tags d-flex flex-wrap mt-3 mb-2 gap-1">
+                                                        <div class="tags d-flex flex-wrap ">
                                                             @if ($singletag)
                                                                 @foreach ($singletag as $singletagitem)
                                                                     @if ($singletagitem)
-                                                                        <a href="{{ url('/tags/' . $singletagitem->slug) }}"
-                                                                            class="mb-2"><button
+                                                                        <a href="{{ url('/tags/' . $singletagitem->slug) }}"><button
                                                                                 class="foodie text-nowrap">
                                                                                 {{ $singletagitem->name }} </button> </a>
                                                                     @endif
@@ -392,6 +443,7 @@
                         </div>
 
                         <div class="col-md-8 myitinerylist">
+                            <div class="line-x-m"></div>
                             <div class="row justify-content-center ">
                                 <div class="col-lg-11">
                                     <div class=" d-flex justify-content-between align-items-center  my-lg-0 my-c ">
