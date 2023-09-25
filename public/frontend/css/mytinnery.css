@@ -261,7 +261,10 @@
     color: #3E3E43;
 
 }
+.profile-tabs{
+    gap: 19px;
 
+}
 .profile-tabs .nav-link {
     font-weight: 600;
     font-family: "Axiforma", Sans-serif;
@@ -269,8 +272,9 @@
     color: #000;
     /* font-size: 24px; */
     font-size: 20px;
-    padding: 3px 16px;
-    line-height: 1.4em;
+    height: 50px;
+    text-align: center;
+    line-height: 1;
 }
 
 .btn-dark-r1 {
@@ -1733,7 +1737,7 @@ select.did-floating-select::-ms-expand {
 
 .nav-tabs {
     border-bottom: none !important;
-    padding: 50px 0;
+    padding-bottom: 33px;
 
     --bs-nav-tabs-border-width: 1px;
     --bs-nav-tabs-border-color: #dee2e6;
@@ -1928,7 +1932,9 @@ label.required:after {
     line-height: 1;
 
 }
-
+.profile_border-accordion{
+    border-bottom: 1px solid #D9D9D9 !important;
+}
 .profile-section {
     padding-top: 64px;
 }
@@ -2125,7 +2131,7 @@ label.required:after {
     .profile-tabs .nav-link {
         font-size: 18px;
         line-height: 1.4em;
-        padding: 10px;
+
     }
 
     .width-48 {
@@ -2211,9 +2217,7 @@ label.required:after {
         min-height: 375px;
     } */
 
-    .nav-tabs {
-        padding: 15px 0;
-    }
+
 
     .coments {
         font-size: 20px;
@@ -2236,6 +2240,9 @@ label.required:after {
     .become-member {
         background: #2A293D;
         color: white;
+    }
+    .profile-tabs .nav-link{
+        height: 45px;
     }
     .content_view {
 
@@ -2295,6 +2302,10 @@ label.required:after {
     }
     .line-x-32{
         margin: 16px 0;
+    }
+    .profile-tabs{
+        gap: 9px;
+        padding-top: 32px;
     }
     .socail-imgaes img{
         width: 20px;
@@ -2527,14 +2538,6 @@ label.required:after {
         height: 80px !important;
     }
 
-
-
-
-    .nav-tabs {
-        padding: 10px 0;
-        margin-left: 31px;
-    }
-
     .title1 {
         font-size: 16px !important;
 
@@ -2657,7 +2660,7 @@ label.required:after {
     .profile-tabs .nav-link {
         font-size: 15px;
         line-height: 1.4em;
-        padding: 10px;
+
     }
 
     .profile-gap {
