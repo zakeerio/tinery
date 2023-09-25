@@ -226,7 +226,7 @@
                                                                     class="accordion-collapse collapse"
                                                                     aria-labelledby="flush-headingOne"
                                                                     data-bs-parent="#accordionSibglepage{{ $days->id }}">
-                                                                    <div class="accordion-body px-5">
+                                                                    <div class="accordion-body px-lg-5">
                                                                         {{ $activity->description }}</div>
                                                                 </div>
                                                             </div>
@@ -297,7 +297,7 @@
                                                     <div id="flush-collapseOne" class="accordion-collapse collapse"
                                                         aria-labelledby="flush-headingOne"
                                                         data-bs-parent="#message-accord">
-                                                        <div class="accordion-body px-5">
+                                                        <div class="accordion-body px-lg-5">
                                                             @if (auth('user')->id() == '')
                                                                 <div class=" d-flex align-items-center ">
                                                                     <a href="javascript:void(0)"> <img

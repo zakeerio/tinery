@@ -575,7 +575,7 @@
     -ms-flex-align: center;
     align-items: center;
     /* justify-content: space-between; */
-    margin-top: 30px;
+    /* margin-top: 30px; */
     min-height: 34px;
     height: auto;
     gap: 10px;
@@ -1895,7 +1895,7 @@ label.required:after {
 .line-set {
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
@@ -2256,7 +2256,7 @@ label.required:after {
         width: 24px;
     }
     .tags{
-        margin-top: 16px;
+        /* margin-top: 16px; */
         gap: 8px;
     }
     .mx-32 {

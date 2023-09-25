@@ -373,7 +373,7 @@
                                     </div>
                                     <div class="line-x-32"></div>
                                     <div class="relevant-pt ">
-                                        <h2 id="relevantTags" class="m-0">
+                                        <h2 id="relevantTags" class="mb-3">
                                             <span class="fs-18-600">Relevant Tags</span>
                                         </h2>
                                         <div>
