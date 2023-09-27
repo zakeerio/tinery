@@ -771,14 +771,6 @@ class HomeController extends Controller
         {
             $output .=
             '
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="alert alert-success alert-dismissible fade show activityadddivalert" role="alert" style="display:none;">
-                        Activity Updated Successfully
-                        <button href="javascript:;" data-role="changecommentstatus" class="btn-close" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
             <div class="accordion" id="accordionExample">
             ';
             foreach($query as $key => $query)
