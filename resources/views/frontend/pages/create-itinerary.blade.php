@@ -211,23 +211,23 @@
 
                                     <div class="tags  flex-wrap gap-1" style="margin-top:-40px;">
                                         @php
-                                            $itinerarytag = json_decode($itinerary->tags);
+                                            // Convert the string array to an actual array
+                                            $itineraryTagIds = json_decode($itinerary->tags);
                                         @endphp
-                                        @if ($itinerarytag)
-                                            @foreach ($itinerarytag as $itinerarytag)
-                                                @php
-                                                    $tag = $itinerary->tagsdata($itinerarytag);
-                                                @endphp
-                                                @if ($tag)
-                                                    <a href="{{ url('/tags/' . $tag->slug) }}">
+
+                                        @foreach ($alltags as $itinerarytag)
+                                            @if ($itinerarytag)
+                                                @if (in_array($itinerarytag->id, $itineraryTagIds))
+                                                    <a href="{{ url('/tags/' . $itinerarytag->slug) }}">
                                                         <button class="foodie text-nowrap">
-                                                            {{ $tag->name }}
+                                                            {{ $itinerarytag->name }}
                                                         </button>
                                                     </a>
-                                                @endif
-                                            @endforeach
 
-                                        @endif
+                                                @endif
+
+                                            @endif
+                                        @endforeach
 
                                     </div>
                                     <div class="col-12 tags-description ">

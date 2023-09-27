@@ -636,7 +636,8 @@ class HomeController extends Controller
         $days = ItineraryDays::where('itineraries_id',$itineraryid)->get();
         $itinerary_gallery = ItineraryGallery::where('itineraryid','=',$itineraryid)->get();
         $itinerary_location = ItineraryLocations::get();
-        return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery'));
+        $alltags = Tags::get();
+        return view('frontend.pages.create-itinerary',compact('itinerary_location','itinerary','itineraryid','tags','days','related_itinerary','itinerary_gallery','alltags'));
     }
 
     public function delete_itinerary(Request $request)
@@ -889,6 +890,9 @@ class HomeController extends Controller
                                 $("#collapseOne"+activitydivcount).slideUp();
                                 showdaysactivities(itineraryid,daysid);
                                 $(".activityadddivalert").show();
+                                setTimeout(function(){
+                                    $(".activityadddivalert").hide();
+                                }, 2000)
                             }
                         });
                     });
@@ -905,13 +909,14 @@ class HomeController extends Controller
                             data:{_token:csrftoken,id:id},
                             success:function(data)
                             {
+                                showdaysactivities(itineraryid,daysid);
                                 $.notify({
                                 title: "<strong>SUCCESS!</strong>",
                                 message: "Deleted"
                                 },{
                                 type: "success"
                                 });
-                                showdaysactivities(itineraryid,daysid);
+
                             }
                         });
                     });
